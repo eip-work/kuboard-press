@@ -1,0 +1,40 @@
+## Kuboard
+A cool Kubernetes dashboard.
+
+Kuboard 可以有效降低 Kubernetes 初学者的学习门槛，对于有经验的用户，也是非常顺手的一款运维工具。已在多个项目中投产使用。
+
+Kuboard 的主要特点：
+* 场景化设计
+* 微服务分层显示
+* 微服务上下文监控
+
+![image-20190716234146419](./README.assets/image-20190716234146419.png)
+
+
+
+
+## Demo
+
+[Kuboard 在线体验](http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi02djZiZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjhiYTU3YmI1LWFiMTctNDM1NS1hNTM0LTQ0Njk4NGY0NzFlZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.DcXNIp0RKha1zkV4ga_QlGfcvMLGx2LOyzX-0VeboC3FojKFhxnfBeoda-zTeh6ugJlSM4kQYrRcof1Kx8Mg3-UgofNmgRySbDEVKtJZyMUoHqLmySKUIn8sbX8q83RNcqwcvY-fM8-w8HSuzU7Td7WWNuZrlCL4q_LQDYIBet1nlQ83YsENKNE8rsZQFDw8YM0MH6BEZLdwyhaboy_jjYbsU7kv8gks3aIX4lh1Fs9ZFQpC_6B0_MZvb7rEeG2M8QWXoUkDoL5JCKu6Wot5GlWf0kDMxIsViggP0NmSDTKh6kIvCkT2FZ2I4guEcjE_EjBpdOS6Abta22tzLlPKhg)
+为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
+
+<p>
+  <a target="_blank" href="http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi02djZiZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjhiYTU3YmI1LWFiMTctNDM1NS1hNTM0LTQ0Njk4NGY0NzFlZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.DcXNIp0RKha1zkV4ga_QlGfcvMLGx2LOyzX-0VeboC3FojKFhxnfBeoda-zTeh6ugJlSM4kQYrRcof1Kx8Mg3-UgofNmgRySbDEVKtJZyMUoHqLmySKUIn8sbX8q83RNcqwcvY-fM8-w8HSuzU7Td7WWNuZrlCL4q_LQDYIBet1nlQ83YsENKNE8rsZQFDw8YM0MH6BEZLdwyhaboy_jjYbsU7kv8gks3aIX4lh1Fs9ZFQpC_6B0_MZvb7rEeG2M8QWXoUkDoL5JCKu6Wot5GlWf0kDMxIsViggP0NmSDTKh6kIvCkT2FZ2I4guEcjE_EjBpdOS6Abta22tzLlPKhg">
+    <img src="./README.assets/image-20190723104717575.png"></img>
+  </a>
+</p>
+
+
+
+
+## Getting Started
+
+[如何降低K8S学习门槛<span style="color: red;">（必读）</span>](concepts)
+
+[安装](/install/index)
+
+[使用](/guide/index)
+
+## 在线提问
+
+![Kuboard 兴趣群二维码](./README.assets/kuboard_qq.png)
