@@ -14,7 +14,7 @@ module.exports = {
     '@vuepress/back-to-top': {},
     '@vuepress/last-updated': {},
     '@vuepress/pwa': {
-      serviceWorker: true,
+      serviceWorker: false,
       updatePopup: {
         message: "内容已更新",
         buttonText: "刷新"
