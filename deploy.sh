@@ -11,7 +11,6 @@ npm run docs:build
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
-git init
 git add -A
 git commit -m 'deploy'
 
@@ -20,5 +19,3 @@ git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:eip-work/kuboard-press.git master
-
-cd -
