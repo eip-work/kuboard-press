@@ -12,7 +12,7 @@ npm run docs:build
 # echo 'www.example.com' > CNAME
 
 git add -A
-git commit -m 'deploy'
+git commit -m 'deploy '$1
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master

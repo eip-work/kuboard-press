@@ -13,8 +13,6 @@ module.exports = {
         },
     '@vuepress/back-to-top': {},
     '@vuepress/last-updated': {},
-    '@vuepress/medium-zoom': {},
-    '@vuepress/nprogress': {},
     '@vuepress/pwa': {
       serviceWorker: true,
       updatePopup: {
