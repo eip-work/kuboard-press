@@ -12,14 +12,7 @@ module.exports = {
           ga: 'UA-144196556-1',
         },
     '@vuepress/back-to-top': {},
-    '@vuepress/last-updated': {},
-    '@vuepress/pwa': {
-      serviceWorker: false,
-      updatePopup: {
-        message: "内容已更新",
-        buttonText: "刷新"
-      }
-    }
+    '@vuepress/last-updated': {}
   },
   themeConfig: {
     nav: [
