@@ -31,12 +31,13 @@
 
 
 
+
+::: warning
 **Kubernetes 安装方式**
-
-> * 部分用户使用二进制包的形式安装 Kubernetes，Kuboard 现在的版本不能在这类 Kubernetes 集群中正常工作，作者正在解决此问题。
-> * 如果您是使用 kubeadm 安装的 Kubernetes 集群（Kubernetes 官方推荐的安装方式），请放心使用 Kuboard。
-> * Kubeadm 相关资料请参考 https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/
-
+* 部分用户使用二进制包的形式安装 Kubernetes，Kuboard 现在的版本不能在这类 Kubernetes 集群中正常工作，作者正在解决此问题。
+* 如果您是使用 kubeadm 安装的 Kubernetes 集群（Kubernetes 官方推荐的安装方式），请放心使用 Kuboard。
+* Kubeadm 相关资料请参考 https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/
+:::
 
 
 ## 安装

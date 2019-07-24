@@ -14,6 +14,7 @@ module.exports = {
     '@vuepress/back-to-top': {},
     '@vuepress/last-updated': {}
   },
+  extend: '@vuepress/theme-default',
   themeConfig: {
     nav: [
       { text: '简介', link: '/overview/' },
@@ -26,40 +27,48 @@ module.exports = {
     serviceWorker: {
       updatePopup: true
     },
+    lastUpdated: '更新时间',
     sidebar: {
       '/overview/': [
-        ['', '简介'],
-        ['why-kuboard', '为什么选择 Kuboard'],
-        ['concepts', '如何降低K8S学习门槛']
+        {
+          title: '简介',
+          collapsable: false,
+          children: [
+            ''
+          ]
+        }, {
+          title: 'Why Kuboard',
+          collapsable: false,
+          children: [
+            'why-kuboard',
+            'concepts'
+          ]
+        }
       ],
 
       '/install/': [
-        '',
-        'install-k8s',
-        'install-kubernetes',
-        'install-dashboard'
-        // {
-        //   title: '概述',
-        //   collapsable: false,
-        //   children: [
-        //     ['', '概述']
-        //   ]
-        // },
-        // {
-        //   title: '安装 Kubernetes',
-        //   collapsable: false,
-        //   children: [
-        //     ['install-k8s', '安装 Kubernetes 用于测试'],
-        //     ['install-kubernetes', '安装 Kubernetes 高可用'],
-        //   ]
-        // },
-        // {
-        //   title: '安装 Kuboard',
-        //   collapsable: false,
-        //   children: [
-        //     ['install-dashboard', '安装 Kuboard'],
-        //   ]
-        // },
+        {
+          title: '概述',
+          collapsable: false,
+          children: [
+            ''
+          ]
+        },
+        {
+          title: '安装 Kubernetes',
+          collapsable: false,
+          children: [
+            'install-k8s',
+            'install-kubernetes',
+          ]
+        },
+        {
+          title: '安装 Kuboard',
+          collapsable: false,
+          children: [
+            'install-dashboard'
+          ]
+        },
       ],
 
       '/guide/': [
@@ -122,11 +131,6 @@ module.exports = {
       '/support/': [
         ''
       ],
-
-      // // fallback
-      // '/': [
-      //   ''
-      // ]
     }
   }
 }
