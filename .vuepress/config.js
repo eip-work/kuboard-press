@@ -6,14 +6,23 @@ module.exports = {
   },
   dest: 'docs',
   serviceWorker: true,
-  plugins: [
-    [ 
-      '@vuepress/google-analytics',
-      {
-        ga: 'UA-144196556-1',
+  plugins: {
+    '@vuepress/google-analytics':
+        {
+          ga: 'UA-144196556-1',
+        },
+    '@vuepress/back-to-top': {},
+    '@vuepress/last-updated': {},
+    '@vuepress/medium-zoom': {},
+    '@vuepress/nprogress': {},
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: {
+        message: "内容已更新",
+        buttonText: "刷新"
       }
-    ]  
-  ],
+    }
+  },
   themeConfig: {
     nav: [
       { text: '简介', link: '/overview/' },
