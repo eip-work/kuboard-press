@@ -17,13 +17,6 @@ module.exports = {
       transformer: (timestamp, lang) => {
         return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
       }
-    },
-    '@vuepress/pwa': {
-      serviceWorker: true,
-      updatePopup: {
-        message: "内容已更新",
-        buttonText: "刷新"
-      }
     }
   },
   themeConfig: {

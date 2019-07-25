@@ -8,7 +8,6 @@
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
     "@vuepress/plugin-medium-zoom": "^1.0.0-rc.1",
     "@vuepress/plugin-nprogress": "^1.0.2",
-    "@vuepress/plugin-pwa": "^1.0.0-rc.1",
     "date-fns": "^1.30.1",
     "vuepress": "^1.0.2"
   }
