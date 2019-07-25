@@ -121,6 +121,7 @@ export default {
       border-bottom 1px solid darken($accentColor, 10%)
       &:hover
         background-color lighten($accentColor, 10%)
+        color #fff
     .action-button2
       color $accentColor
       background-color #ffffff
