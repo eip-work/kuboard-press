@@ -1,3 +1,5 @@
+let dateFns = require('date-fns')
+
 module.exports = {
   title: 'Kuboard',
   description: 'A cool Kubernetes Dashboard',
@@ -5,16 +7,18 @@ module.exports = {
     toc: { includeLevel: [2, 3] }
   },
   dest: 'docs',
-  serviceWorker: true,
   plugins: {
     '@vuepress/google-analytics':
         {
           ga: 'UA-144196556-1',
         },
     '@vuepress/back-to-top': {},
-    '@vuepress/last-updated': {}
+    '@vuepress/last-updated': {
+      transformer: (timestamp, lang) => {
+        return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
+      }
+    }
   },
-  extend: '@vuepress/theme-default',
   themeConfig: {
     nav: [
       { text: '简介', link: '/overview/' },

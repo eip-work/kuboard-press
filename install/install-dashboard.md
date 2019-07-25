@@ -23,9 +23,9 @@
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
-| v1.15           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | Kuboard作者所使用的Kubernetes版本                            |
-| v1.14           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | Kuboard作者所使用的Kubernetes版本                            |
-| v1.13           | v1.0.0-beta.10 | <span style="font-size: 24px;">🤔</span>      | 理论上可以，尚未听到用户反馈兼容性问题                       |
+| v1.15           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.14           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.13           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
 | v1.12           | v1.0.0-beta.10 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api 尚不支持 dryRun，<br />忽略Kuboard在执行命令式的参数校验错误，可正常工作 |
 | v1.11           | v1.0.0-beta.10 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 
