@@ -26,7 +26,7 @@
 | v1.15           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.14           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.13           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
-| v1.12           | v1.0.0-beta.10 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api 尚不支持 dryRun，<br />忽略Kuboard在执行命令式的参数校验错误，可正常工作 |
+| v1.12           | v1.0.0-beta.10 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
 | v1.11           | v1.0.0-beta.10 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 
 
@@ -58,19 +58,26 @@ kubectl apply -f kuboard.yaml
 
 ## 获取 token
 
-### 获取管理员用户 token
+您可以获得管理员用户、只读用户的Token
+
+:::: tabs type:border-card
+
+::: tab 管理员用户 lazy
 
 **拥有的权限**
 
-此Token拥有 ClusterAdmin 的权限，可以执行所有操作
+* 此Token拥有 ClusterAdmin 的权限，可以执行所有操作
+
+**执行命令**
 
 ```bash
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}')   
 ```
 
-执行完该命令后，可获得类似如下的输出：
+**输出**
 
-```
+取输出信息中 token 字段
+```{13}
 Name: admin-user-token-g8hxb
 Namespace: kube-system
 Labels: <none>
@@ -86,8 +93,10 @@ namespace: 11 bytes
 token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLWc4aHhiIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI5NDhiYjVlNi04Y2RjLTExZTktYjY3ZS1mYTE2M2U1ZjdhMGYiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.DZ6dMTr8GExo5IH_vCWdB_MDfQaNognjfZKl0E5VW8vUFMVvALwo0BS-6Qsqpfxrlz87oE9yGVCpBYV0D00811bLhHIg-IR_MiBneadcqdQ_TGm_a0Pz0RbIzqJlRPiyMSxk1eXhmayfPn01upPdVCQj6D3vAY77dpcGplu3p5wE6vsNWAvrQ2d_V1KhR03IB1jJZkYwrI8FHCq_5YuzkPfHsgZ9MBQgH-jqqNXs6r8aoUZIbLsYcMHkin2vzRsMy_tjMCI9yXGiOqI-E5efTb-_KbDVwV5cbdqEIegdtYZ2J3mlrFQlmPGYTwFI8Ba9LleSYbCi4o0k74568KcN_w
 ```
 
+:::
 
-### 获取只读用户的Token
+
+::: tab 只读用户 lazy
 
 **拥有的权限**
 
@@ -99,31 +108,95 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 只读用户不能对集群的配置执行修改操作，非常适用于将开发环境中的 kuboard 只读权限分发给开发者，以便开发者可以便捷地诊断问题
 
+**执行命令**
+
 执行如下命令可以获得 <span style="color: #F56C6C; font-weight: 500;">只读用户</span> 的 Token
 
 ```bash
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep kuboard-viewer | awk '{print $1}')   
 ```
 
+**输出**
+
+取输出信息中 token 字段
+```{13}
+Name: admin-user-token-g8hxb
+Namespace: kube-system
+Labels: <none>
+Annotations: [kubernetes.io/service-account.name](http://kubernetes.io/service-account.name): kuboard-viewer
+[kubernetes.io/service-account.uid](http://kubernetes.io/service-account.uid): 948bb5e6-8cdc-11e9-b67e-fa163e5f7a0f
+
+Type: [kubernetes.io/service-account-token](http://kubernetes.io/service-account-token)
+
+Data
+====
+ca.crt: 1025 bytes
+namespace: 11 bytes
+token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLWc4aHhiIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI5NDhiYjVlNi04Y2RjLTExZTktYjY3ZS1mYTE2M2U1ZjdhMGYiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.DZ6dMTr8GExo5IH_vCWdB_MDfQaNognjfZKl0E5VW8vUFMVvALwo0BS-6Qsqpfxrlz87oE9yGVCpBYV0D00811bLhHIg-IR_MiBneadcqdQ_TGm_a0Pz0RbIzqJlRPiyMSxk1eXhmayfPn01upPdVCQj6D3vAY77dpcGplu3p5wE6vsNWAvrQ2d_V1KhR03IB1jJZkYwrI8FHCq_5YuzkPfHsgZ9MBQgH-jqqNXs6r8aoUZIbLsYcMHkin2vzRsMy_tjMCI9yXGiOqI-E5efTb-_KbDVwV5cbdqEIegdtYZ2J3mlrFQlmPGYTwFI8Ba9LleSYbCi4o0k74568KcN_w
+```
+
+:::
+::::
 
 
 ## 访问 Kuboard
 
-### 通过域名访问
+您可以通过NodePort、Port-forward、域名三种方式访问 Kuboard
 
-在浏览器打开链接 http://kuboard.yourclustername.yourdomain.com （使用前面已修改的域名）
+:::: tabs type:border-card
+
+::: tab 通过NodePort访问 lazy
+
+kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 kuboard。（可以使用集群中任意节点的 IP 地址）
+
+`
+http://any-of-your-node-ip:32567/
+`
 
 输入前一步骤中获得的 token，可进入控制台界面
 
-### 通过 NodePort 访问
+::: tip
+您也可以修改 kuboard.yaml 文件，使用自己定义的 NodePort 端口号
 
-kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 kuboard
 
+:::
+
+::: tab 通过port-forward访问 lazy
+
+在您的客户端电脑中执行如下命令
+
+```sh
+kubectl port-forward service/kuboard 8080:80 -n kube-system
 ```
-http://any-of-your-node-ip:32567/
-```
 
-> 您也可以修改 kuboard.yaml 文件，使用自己定义的 NodePort 端口号
+在浏览器打开链接 （请使用 kubectl 所在机器的IP地址）
+
+`http://localhost:8080`
+
+::: tip
+需要您自行设定 kubectl 的配置
+
+
+:::
+
+::: tab 通过域名访问 lazy
+
+在浏览器打开链接 （请使用前面已修改的域名）
+
+`http://kuboard.yourclustername.yourdomain.com`
+
+
+输入前一步骤中获得的 token，可进入控制台界面
+
+::: tip
+需要您
+* 正确安装 Ingress Controller
+* 将您所使用的域名指向 Kubernetes 中的一个 Worker 节点（或者Ingress Controller所在机器的IP，不同类型的Ingress Controller配置不同）
+
+:::
+
+::::
+
 
 
 
