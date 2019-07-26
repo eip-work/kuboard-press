@@ -39,7 +39,7 @@
 **获取并修改yaml文件**
 
 ```bash
-wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/Kuboard.yaml
+wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
 ```
 
 修改文件 Kuboard.yaml 中 Ingress 的 host 为 Kuboard.yourclustername.yourdomain.com
@@ -65,7 +65,7 @@ kubectl apply -f Kuboard.yaml
 **执行命令**
 
 ```bash
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep Kuboard-user | awk '{print $1}')   
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}')   
 ```
 
 **输出**
@@ -107,7 +107,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 执行如下命令可以获得 <span style="color: #F56C6C; font-weight: 500;">只读用户</span> 的 Token
 
 ```bash
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep Kuboard-viewer | awk '{print $1}')   
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep kuboard-viewer | awk '{print $1}')   
 ```
 
 **输出**
