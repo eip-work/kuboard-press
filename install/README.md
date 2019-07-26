@@ -5,8 +5,8 @@ Kuboard 作为一个 Deployment 运行在 Kubernetes 集群中，通过 apiserve
 如果您已经有一个 Kubernetes 集群，请直接 [安装 Kuboard](install-dashboard)。
 
 如果您当下没有 Kubernetes 集群：
-  * 想要安装一个简单的集群，对 Kuboard 进行测试， 请 [安装 Kubernetes 用于测试](install-k8s)
-  * 想要安装一个高可用的集群，并使用 Kuboard 进行管理，请 [安装 Kubernetes 高可用](install-kubernetes)
+  * 想要安装一个简单的集群，用于学习 Kubernetes， 请 [安装 Kubernetes 单Master节点](install-k8s)
+  * 想要安装一个高可用的集群，请 [安装 Kubernetes 高可用](install-kubernetes)
 
 <br>
 

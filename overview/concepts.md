@@ -1,4 +1,4 @@
-# 如何降低 Kubernetes 学习门槛 :tada:
+# 如何降低 Kubernetes 学习门槛
 
 ## Kubernetes 学习门槛在哪儿
 
