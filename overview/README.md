@@ -39,17 +39,21 @@ Kuboard 的主要特点：
 
 <span style="color: red; font-weight: 500;">读100页 K8S 文档，不如把 K8S 安装一遍</span>
 
-Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
+Kuboard 为 Kubernetes 初学者设计了如下学习路径：
+
+**Kubernetes 入门**
 
 * [安装 Kubernetes 单Master节点](/install/install-k8s) （初学者也许要花费1小时或更多）
-
 * [安装 Kuboard](/install/install-dashboard) （5分钟）
-
 * 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+* 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index) （15分钟）
 
-* 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index)
+**Kubernetes 进阶** （筹备中）
 
-
+* 深入理解 Kubernetes 核心概念
+* 部署 Spring Cloud 微服务
+* 集成 DevOps
+* 安装高可用 Kubernetes 集群
 
 ## Kubernetes 有经验者
 
