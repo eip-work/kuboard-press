@@ -143,22 +143,6 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 >         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 >         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 >         at java.lang.Thread.run(Thread.java:748)
-> [DiscoveryClient-InstanceInfoReplicator-0] WARN com.netflix.discovery.InstanceInfoReplicator - There was a problem with the instance info replicator
-> com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
->         at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
->         at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
->         at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
->         at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
->         at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
->         at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:829)
->         at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
->         at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
->         at java.util.concurrent.FutureTask.run(FutureTask.java:266)
->         at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
->         at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
->         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
->         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
->         at java.lang.Thread.run(Thread.java:748)
 > ```
 >
 > 

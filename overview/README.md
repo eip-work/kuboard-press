@@ -41,27 +41,29 @@ Kuboard 的主要特点：
 
 Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
-**Kubernetes 入门**
+* **Kubernetes 入门**
+  * [安装 Kubernetes 单Master节点](/install/install-k8s) （1小时，初学者也许需要更多）
+  * [安装 Kuboard](/install/install-dashboard) （5分钟）
+  * 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+  * [导入 example 微服务应用](/guide/example/import) （15分钟）
 
-* [安装 Kubernetes 单Master节点](/install/install-k8s) （初学者也许要花费1小时或更多）
-* [安装 Kuboard](/install/install-dashboard) （5分钟）
-* 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
-* [导入 example 微服务应用](/guide/example/import) （15分钟）
-
-**Kubernetes 进阶** （筹备中）
-
-* 深入理解 Kubernetes 核心概念
-* 部署 Spring Cloud 微服务
-* 集成 DevOps
-* 安装高可用 Kubernetes 集群
+* **Kubernetes 进阶** （筹备中）
+  * 深入理解 Kubernetes 核心概念
+  * 部署 Spring Cloud 微服务
+  * 集成 DevOps
+  * 安装高可用 Kubernetes 集群
 
 ## Kubernetes 有经验者
 
 作为资深的 Kubernetes 用户，您一定有如下痛苦：
 
-* YAML 文件越来越多，越来越复杂，编写和维护 YAML 文件耗费了大量的时间
-* 准备了开发环境，又要维护测试环境、准上线环境、生产环境
-* kubectl 反复执行 kubectl 命令，与集群的交互界面始终处于片段化的信息中，需要连续好几个命令才能诊断问题
+* **Yaml 复杂繁多**
+  * Yaml 文件冗长、繁多
+  * 编写和维护 YAML 文件耗费了大量的时间
+* **多环境**
+  * 准备了开发环境，又要维护测试环境、准上线环境、生产环境
+* **kubectl 命令复杂难记**
+  * 反复执行 kubectl 命令，与集群的交互界面始终处于片段化的信息中，需要连续好几个命令才能诊断问题
 
 Kuboard 为您的这些痛苦提供了极佳的解决方案，Wanna feel cool ? Start with:  
 
