@@ -9,8 +9,8 @@
 
 如果没有 Kubernetes 集群，可以有如下选项：
 
-* 参考 [安装 Kubernetes 单Master节点](install-k8s)
-* 参考 [安装 Kubernetes 高可用](install-kubernetes)
+* 初学者，  请参考 [安装 Kubernetes 单Master节点](install-k8s)
+* 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes)
 
 ## 兼容性
 

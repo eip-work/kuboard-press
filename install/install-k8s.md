@@ -292,8 +292,7 @@ cp -i /etc/kubernetes/admin.conf /root/.kube/config
 **安装 calico**
 
 ```bash
-kubectl apply -f \
-https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 ```
 
 > 安装calico， 请参考https://docs.projectcalico.org/v3.6/getting-started/kubernetes/
