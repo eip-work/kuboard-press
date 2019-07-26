@@ -29,7 +29,7 @@ Kuboard 的主要特点：
 
 ## Getting Started
 
-[如何降低K8S学习门槛<span style="color: red;">（必读）</span>](concepts)
+[如何降低 Kubernetes 学习门槛<span style="color: red;">（必读）</span>](concepts)
 
 [安装](/install/index)
 

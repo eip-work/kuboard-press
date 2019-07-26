@@ -1,4 +1,4 @@
-# 如何降低K8S学习门槛 :tada:
+# 如何降低 Kubernetes 学习门槛 :tada:
 
 ## Kubernetes 学习门槛在哪儿
 
@@ -17,24 +17,20 @@
 
 ## 降低 Kubernetes 学习门槛
 
+单纯地按章节学习 Linux 基础知识、网络知识、容器技术等，每一块儿的基础入门书籍就有几百页之多。作者认为，最好的学习方法是在实践中学习，碰到问题时去寻求答案，解决问题后去反思总结。这种学习方法趣味性强，得来的知识也最为牢靠，如果选对了方向，所学知识通常也是工作中实用性最高的知识。<span style="color: red; font-weight: 500;">读了100页 K8S 文档，也不如安装一遍 K8S</span>
+
 Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 
-* 跟随文档 [安装 Kubernetes 用于测试](/install/install-k8s) 快速安装一个可以练习使用的 Kubernetes 环境，（初学者也许要花费2小时或更多）
+* 跟随文档 [安装 Kubernetes 单Master节点](/install/install-k8s) 快速安装一个可以练习使用的 Kubernetes 环境，（初学者也许要花费2小时或更多）
 * 跟随文档 [安装 Kuboard](/install/install-dashboard) （5分钟）
 * 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
 * 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index)
 
-后续使用 Kuboard 进行 Kubernetes 运维时，学习者、使用者除了在极少数场景下需要依赖 kubectl 命令之外，完全可以使用 Kuboard 完成日常运维任务。
-
-> 日常的 Kubernetes 运维过程中，为了排查问题，您可能需要：
->
-> * 使用 kubectl port-forward 命令实现 [端口转发](/guide/diagonize/port-forward)（已在 Kuboard 开发计划中）
-> * 使用 kubectl cp 命令向容器中复制文件（极低频场景）
-
+进阶路线：
+* 在 Kubernetes 中部署 Spring Cloud 微服务应用
 
 
 本文后续章节介绍了 Kuboard 工作负载编辑器的设计，如果您能够大致理解当中的概念，说明您已经完全准备好了，可以开始自己的 Kubernetes 之旅。
-
 
 
 ## 工作负载编辑器设计
@@ -57,9 +53,9 @@ Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 
 ## 工作负载编辑器介绍
 
-​		为了降低 Kubernetes 的学习难度和使用难度，Kuboard 尝试对 Kubernetes 中管理的各种对象做了一个梳理，并以此为基础，设计了 Kuboard 工作负载编辑器。
+为了降低 Kubernetes 的学习难度和使用难度，Kuboard 对 Kubernetes 中管理的各种对象做了一个梳理，并以此为基础，设计了 Kuboard 工作负载编辑器。
 
-​		Kuboard 工作负载编辑器以下图的方式理解和管理 Kubernetes 对象。
+Kuboard 工作负载编辑器以下图的方式理解和管理 Kubernetes 对象。
 
 ![image-20190722165648180](./concepts.assets/image-20190722165648180.png)
 
@@ -79,16 +75,7 @@ Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 * StatefulSet
 * DaemonSet
 
-除此之外，Kubernetes 还有如下几类 Controller：
-
-* ReplicaSet （Kubernetes 官方推荐使用 Deployment 而不是 ReplicaSet）
-* ReplicationController （Kubernetes 官方推荐使用 Deployment 而不是 ReplicationController）
-* Garbage Collection
-* TTL controller For Finished Resources
-* Jobs
-* Cron Job
-
-Kuboard 未来将陆续支持 Garbage Collection，TTL Controller，Jobs 和 Cron Job。
+> Kuboard 将陆续支持其他低频使用的 Controller:  Garbage Collection, TTL Controller, Jobs, Cron Job。
 
 
 
@@ -101,8 +88,6 @@ Kubernetes Workload Controller 主要用于：
 > 例如：Workload Controller 起初在节点 A 上创建并运行了一个容器组 pod_a，当节点 A 出现故障不能正常工作时，Workload Controller 可以自动地在其他可用的节点上运行一个完全相同的容器组实例 pod_a' 以替代 pod_a。
 >
 > 不同类型的 Workload Controller 在处理容器组时，会有各自不同的行为。
-
-
 
 > 请参考 https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pods-and-controllers
 
