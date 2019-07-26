@@ -135,7 +135,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 ## 访问 Kuboard
 
-您可以通过NodePort、Port-forward、域名三种方式访问 Kuboard
+您可以通过NodePort、Port-forward、域名三种方式当中的任意一种访问 Kuboard
 
 :::: tabs type:border-card
 

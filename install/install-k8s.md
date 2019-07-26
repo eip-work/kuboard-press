@@ -1,20 +1,21 @@
 # 安装 Kubernetes 单Master节点
 
-如果您想拥有一个供个人学习测试使用的 kubernetes 集群，推荐的做法是在阿里云采购如下配置：
+对于 Kubernetes 初学者，推荐的在阿里云采购如下配置：
 
-* 3台 2核4G 的ECS（突发性能实例 t5 ecs.t5-c1m2.large，或同等配置）
+* 3台 2核4G 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
 * Cent OS 7.6
-
-Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了如何在完成该 demo 环境的搭建。（在阿里云上，拥有一个3节点 Kubernetes 集群，每天的成本不超过12元，且，停机状态下不收费，非常适合于技术爱好者学习时使用。）
+  
 
 [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
-[Kuboard Live Demo](http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi02djZiZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjhiYTU3YmI1LWFiMTctNDM1NS1hNTM0LTQ0Njk4NGY0NzFlZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.DcXNIp0RKha1zkV4ga_QlGfcvMLGx2LOyzX-0VeboC3FojKFhxnfBeoda-zTeh6ugJlSM4kQYrRcof1Kx8Mg3-UgofNmgRySbDEVKtJZyMUoHqLmySKUIn8sbX8q83RNcqwcvY-fM8-w8HSuzU7Td7WWNuZrlCL4q_LQDYIBet1nlQ83YsENKNE8rsZQFDw8YM0MH6BEZLdwyhaboy_jjYbsU7kv8gks3aIX4lh1Fs9ZFQpC_6B0_MZvb7rEeG2M8QWXoUkDoL5JCKu6Wot5GlWf0kDMxIsViggP0NmSDTKh6kIvCkT2FZ2I4guEcjE_EjBpdOS6Abta22tzLlPKhg)
-为保证环境的稳定性，Live Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
+Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了如何在完成该 demo 环境的搭建。
 
+完成安装后，对应的软件版本为：
 
+* Kubernetes v1.15.0
+* Docker 18.09.7
 
-![image-20190726144001775](./install-k8s.assets/image-20190726144001775.png)
+![image-20190726214032585](./install-k8s.assets/image-20190726214032585.png)
 
 
 ## 制作标准机镜像
@@ -27,7 +28,7 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 标准机镜像中预装了如下内容：
 
   - docker
-  - gitlab-runner
+  - nfs-utils
   - kubernetes images
 
 ::: tip
@@ -57,9 +58,7 @@ sudo yum remove docker \
 
 ```bash
 wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
-
 wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-cli-18.09.7-3.el7.x86_64.rpm
-
 wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.09.7-3.el7.x86_64.rpm
 ```
 
@@ -99,7 +98,7 @@ docker version
 **执行安装命令**
 
 ```bash
-sudo yum install nfs-utils
+sudo yum install -y nfs-utils
 ```
 
 必须先安装 nfs-utils 才能挂载 nfs 网络存储
@@ -119,19 +118,14 @@ enabled=1
 gpgcheck=0
 repo_gpgcheck=0
 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
-        http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+       http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
 ```
 
-**关闭swap、防火墙**
+**关闭swap/SeLinux**
 
 ```bash
 swapoff -a
-```
-
-**关闭SeLinux**
-
-```bash
 setenforce 0
 ```
 
@@ -246,9 +240,9 @@ docker tag 2c4adeb21b4f k8s.gcr.io/etcd:3.3.10
 
 ## 初始化 master 节点
 
-### 在 demo-master-a-1 机器上执行
-
-以下命令以 root 身份执行
+::: tip
+以 root 身份在 demo-master-a-1 机器上执行
+:::
 
 **配置 apiserver.demo 的域名**
 
@@ -297,8 +291,6 @@ cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
 **安装 calico**
 
-（需要在安全组–ServerFarm需要为集群服务器器端口6443建立安全组规则）
-
 ```bash
 kubectl apply -f \
 https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
@@ -310,16 +302,16 @@ https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/host
 
 **等待calico安装就绪：**
 
-执行如下命令，等待3-10分钟，直到所有的容器组处于 Running 状态
+执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
 
 ```bash
 watch kubectl get pod -n kube-system
 ```
 
 
-### 检查 apiserver初始化结果
+**检查 master 初始化结果**
 
-在第一个master节点 demo-master-a-1 上执行
+在 master 节点 demo-master-a-1 上执行
 
 ```bash
 kubectl get nodes
@@ -360,9 +352,9 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 :::
 
 
-### 检查 apiserver初始化结果
+### 检查初始化结果
 
-在第一个master节点 demo-master-a-1 上执行
+在 master 节点 demo-master-a-1 上执行
 
 ```bash
 kubectl get nodes
@@ -375,7 +367,7 @@ kubectl get nodes
 ## 移除 worker 节点
 
 ::: warning
-正常情况下，您无需移除 worker 节点
+正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加
 :::
 
 在准备移除的 worker 节点上执行
@@ -384,7 +376,7 @@ kubectl get nodes
 kubeadm reset
 ```
 
-在第一个 master 节点 demo-master-a-1 上执行
+在 master 节点 demo-master-a-1 上执行
 
 ```bash
 kubectl delete node demo-worker-x-x
@@ -406,24 +398,32 @@ kubectl delete node demo-worker-x-x
 >
 > kubernetes支持多种Ingress Controllers，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
 
-
-### 在 demo-master-a-1 上执行
+**在 demo-master-a-1 上执行**
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/nginx-ingress.yaml
 ```
 
-### 配置域名解析
+**配置域名解析**
 
-将域名 *.demo.yourdomain.com 解析到地址负载均衡服务器 的 IP 地址 z.z.z.z
+将域名 *.demo.yourdomain.com 解析到 demo-worker-a-2 的 IP 地址 z.z.z.z （也可以是 demo-worker-a-1 的地址 y.y.y.y）
 
-### 验证配置
+::: tip
+由于需要申请域名，过程会比较繁琐，有如下两种替代方案：
+
+* 在您的客户端机器（访问部署在K8S上的 web 应用的浏览器所在的机器）设置 hosts 配置；
+* 暂时放弃域名的配置，临时使用 NodePort 或者 `kubectl port-forward` 的方式访问部署在 K8S 上的 web 应用
+:::
+
+**验证配置**
 
 在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面
+
 
 ## 下一步
 :tada: :tada: 
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
+[从客户端电脑远程管理 Kubernetes](/install/install-kubectl)
 [安装 Kuboard](/install/install-dashboard)

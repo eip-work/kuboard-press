@@ -82,6 +82,7 @@ module.exports = {
           children: [
             'install-k8s',
             'install-kubernetes',
+            'install-kubectl'
           ]
         },
         {
