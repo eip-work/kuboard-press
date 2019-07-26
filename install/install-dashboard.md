@@ -1,17 +1,17 @@
-# 安装 kuboard
+# 安装 Kuboard
 
 ## 前提
 
-安装 kuboard 时，假设您已经：
+安装 Kuboard 时，假设您已经：
 
-* 已经有一个 kubernetes 集群
-* 拥有对该 kubernetes 集群执行 kubectl 命令时的所有权限
+* 已经有一个 Kubernetes 集群
+* 拥有对该 Kubernetes 集群执行 kubectl 命令时的所有权限
 
-如果没有 kubernetes 集群，可以有如下选项：
+如果没有 Kubernetes 集群，可以有如下选项：
 
-* 通过 阿里云 创建 kubernetes 容器服务，并获得和配置 kubectl 的访问参数
-* 参考 [安装 kubernetes 用于测试](install-k8s)
-* 或参考 [安装 kubernetes 高可用](install-kubernetes)
+* 通过 阿里云 创建 Kubernetes 容器服务，并获得和配置 kubectl 的访问参数
+* 参考 [安装 Kubernetes 单 Master 节点](install-k8s)
+* 或参考 [安装 Kubernetes 高可用](install-kubernetes)
 
 [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
@@ -45,15 +45,15 @@
 **获取并修改yaml文件**
 
 ```bash
-wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
+wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/Kuboard.yaml
 ```
 
-修改文件 kuboard.yaml 中 Ingress 的 host 为 kuboard.yourclustername.yourdomain.com
+修改文件 Kuboard.yaml 中 Ingress 的 host 为 Kuboard.yourclustername.yourdomain.com
 
 **执行安装**
 
 ```bash
-kubectl apply -f kuboard.yaml 
+kubectl apply -f Kuboard.yaml 
 ```
 
 ## 获取 token
@@ -71,7 +71,7 @@ kubectl apply -f kuboard.yaml
 **执行命令**
 
 ```bash
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}')   
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep Kuboard-user | awk '{print $1}')   
 ```
 
 **输出**
@@ -81,7 +81,7 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 Name: admin-user-token-g8hxb
 Namespace: kube-system
 Labels: <none>
-Annotations: [kubernetes.io/service-account.name](http://kubernetes.io/service-account.name): kuboard-user
+Annotations: [kubernetes.io/service-account.name](http://kubernetes.io/service-account.name): Kuboard-user
 [kubernetes.io/service-account.uid](http://kubernetes.io/service-account.uid): 948bb5e6-8cdc-11e9-b67e-fa163e5f7a0f
 
 Type: [kubernetes.io/service-account-token](http://kubernetes.io/service-account-token)
@@ -106,14 +106,14 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 **适用场景**
 
-只读用户不能对集群的配置执行修改操作，非常适用于将开发环境中的 kuboard 只读权限分发给开发者，以便开发者可以便捷地诊断问题
+只读用户不能对集群的配置执行修改操作，非常适用于将开发环境中的 Kuboard 只读权限分发给开发者，以便开发者可以便捷地诊断问题
 
 **执行命令**
 
 执行如下命令可以获得 <span style="color: #F56C6C; font-weight: 500;">只读用户</span> 的 Token
 
 ```bash
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep kuboard-viewer | awk '{print $1}')   
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep Kuboard-viewer | awk '{print $1}')   
 ```
 
 **输出**
@@ -123,7 +123,7 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 Name: admin-user-token-g8hxb
 Namespace: kube-system
 Labels: <none>
-Annotations: [kubernetes.io/service-account.name](http://kubernetes.io/service-account.name): kuboard-viewer
+Annotations: [kubernetes.io/service-account.name](http://kubernetes.io/service-account.name): Kuboard-viewer
 [kubernetes.io/service-account.uid](http://kubernetes.io/service-account.uid): 948bb5e6-8cdc-11e9-b67e-fa163e5f7a0f
 
 Type: [kubernetes.io/service-account-token](http://kubernetes.io/service-account-token)
@@ -147,7 +147,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 ::: tab 通过NodePort访问 lazy
 
-kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 kuboard。（可以使用集群中任意节点的 IP 地址）
+Kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 Kuboard。（可以使用集群中任意节点的 IP 地址）
 
 `
 http://any-of-your-node-ip:32567/
@@ -156,7 +156,7 @@ http://any-of-your-node-ip:32567/
 输入前一步骤中获得的 token，可进入控制台界面
 
 ::: tip
-您也可以修改 kuboard.yaml 文件，使用自己定义的 NodePort 端口号
+您也可以修改 Kuboard.yaml 文件，使用自己定义的 NodePort 端口号
 
 
 :::
@@ -166,7 +166,7 @@ http://any-of-your-node-ip:32567/
 在您的客户端电脑中执行如下命令
 
 ```sh
-kubectl port-forward service/kuboard 8080:80 -n kube-system
+kubectl port-forward service/Kuboard 8080:80 -n kube-system
 ```
 
 在浏览器打开链接 （请使用 kubectl 所在机器的IP地址）
@@ -183,7 +183,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 在浏览器打开链接 （请使用前面已修改的域名）
 
-`http://kuboard.yourclustername.yourdomain.com`
+`http://Kuboard.yourclustername.yourdomain.com`
 
 
 输入前一步骤中获得的 token，可进入控制台界面

@@ -1,18 +1,20 @@
-# 安装 Kubernetes 用于测试
+# 安装 Kubernetes 单Master节点
 
 如果您想拥有一个供个人学习测试使用的 kubernetes 集群，推荐的做法是在阿里云采购如下配置：
 
 * 3台 2核4G 的ECS（突发性能实例 t5 ecs.t5-c1m2.large，或同等配置）
-* 100G EFS
+* Cent OS 7.6
 
-Kuboard 的在线 demo 环境使用的是如下拓扑结构，本文档描述了如何在阿里云完成该 demo 环境的搭建。（推荐阿里云是因为，阿里云是当下技术爱好者最容易接触到的云环境，拥有一个3节点 Kubernetes 集群，每天的成本不超过12元，且，停机状态下不收费，非常适合于技术爱好者学习时使用。）
+Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了如何在完成该 demo 环境的搭建。（在阿里云上，拥有一个3节点 Kubernetes 集群，每天的成本不超过12元，且，停机状态下不收费，非常适合于技术爱好者学习时使用。）
 
 [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
-[Kuboard 在线体验](http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi02djZiZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjhiYTU3YmI1LWFiMTctNDM1NS1hNTM0LTQ0Njk4NGY0NzFlZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.DcXNIp0RKha1zkV4ga_QlGfcvMLGx2LOyzX-0VeboC3FojKFhxnfBeoda-zTeh6ugJlSM4kQYrRcof1Kx8Mg3-UgofNmgRySbDEVKtJZyMUoHqLmySKUIn8sbX8q83RNcqwcvY-fM8-w8HSuzU7Td7WWNuZrlCL4q_LQDYIBet1nlQ83YsENKNE8rsZQFDw8YM0MH6BEZLdwyhaboy_jjYbsU7kv8gks3aIX4lh1Fs9ZFQpC_6B0_MZvb7rEeG2M8QWXoUkDoL5JCKu6Wot5GlWf0kDMxIsViggP0NmSDTKh6kIvCkT2FZ2I4guEcjE_EjBpdOS6Abta22tzLlPKhg)
-为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
+[Kuboard Live Demo](http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi02djZiZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjhiYTU3YmI1LWFiMTctNDM1NS1hNTM0LTQ0Njk4NGY0NzFlZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.DcXNIp0RKha1zkV4ga_QlGfcvMLGx2LOyzX-0VeboC3FojKFhxnfBeoda-zTeh6ugJlSM4kQYrRcof1Kx8Mg3-UgofNmgRySbDEVKtJZyMUoHqLmySKUIn8sbX8q83RNcqwcvY-fM8-w8HSuzU7Td7WWNuZrlCL4q_LQDYIBet1nlQ83YsENKNE8rsZQFDw8YM0MH6BEZLdwyhaboy_jjYbsU7kv8gks3aIX4lh1Fs9ZFQpC_6B0_MZvb7rEeG2M8QWXoUkDoL5JCKu6Wot5GlWf0kDMxIsViggP0NmSDTKh6kIvCkT2FZ2I4guEcjE_EjBpdOS6Abta22tzLlPKhg)
+为保证环境的稳定性，Live Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
 
-![image-20190718175957160](./install-k8s.assets/image-20190718175957160.png)
+
+
+![image-20190726144001775](./install-k8s.assets/image-20190726144001775.png)
 
 
 ## 制作标准机镜像
@@ -28,9 +30,11 @@ Kuboard 的在线 demo 环境使用的是如下拓扑结构，本文档描述了
   - gitlab-runner
   - kubernetes images
 
-本文档描述的安装过程已基于 centos 7.6 验证
+::: tip
+* 您也可以不制作标准机镜像，而是在三台机器上都执行 ***制作标准机镜像*** 中的所有操作步骤
+:::
 
-标准机镜像的制作过程描述如下：
+**标准机镜像的制作过程描述如下：**
 
 ### 安装docker
 
@@ -82,11 +86,11 @@ docker version
 
 
 
-**参考文档**
-
-https://docs.docker.com/install/linux/docker-ce/centos/
-
-https://docs.docker.com/install/linux/linux-postinstall/
+> **参考文档**
+> 
+> https://docs.docker.com/install/linux/docker-ce/centos/
+> 
+> https://docs.docker.com/install/linux/linux-postinstall/
 
 
 
@@ -133,7 +137,9 @@ setenforce 0
 
 **修改 /etc/sysctl.conf**
 
-```vim /etc/sysctl.conf```
+```
+vim /etc/sysctl.conf
+```
 
 向其中添加
 
@@ -159,11 +165,15 @@ yum install -y kubelet-1.15.0 kubeadm-1.15.0 kubectl-1.15.0
 
 **修改docker Cgroup Driver为systemd**
 
-```vim /usr/lib/systemd/system/docker.service```
+```
+vim /usr/lib/systemd/system/docker.service
+```
 
 向其中他添加
 
-```--exec-opt native.cgroupdriver=systemd```
+```
+--exec-opt native.cgroupdriver=systemd
+```
 
 如下图所示
 
@@ -246,8 +256,9 @@ docker tag 2c4adeb21b4f k8s.gcr.io/etcd:3.3.10
 echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 ```
 
-> 请替换其中的 x.x.x.x 为您的 demo-master-a-1 的实际 ip 地址
-
+::: warning
+请替换其中的 x.x.x.x 为您的 demo-master-a-1 的实际 ip 地址
+:::
 
 
 **创建 /root/k8s/kubeadm-config.yaml**
@@ -343,10 +354,10 @@ echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
 
-> * 将 x.x.x.x 替换为 loader balancer 的实际 ip
->
-> * 将 kubeadm join 命令后的参数替换为上一个步骤中实际从 demo-master-a-1 节点获得的参数
-
+::: tip
+* 将 x.x.x.x 替换为 demo-master-a-1 的实际 ip
+* 将 kubeadm join 命令后的参数替换为上一个步骤中实际从 demo-master-a-1 节点获得的参数
+:::
 
 
 ### 检查 apiserver初始化结果
@@ -363,7 +374,9 @@ kubectl get nodes
 
 ## 移除 worker 节点
 
-> 正常情况下，您无需移除 worker 节点
+::: warning
+正常情况下，您无需移除 worker 节点
+:::
 
 在准备移除的 worker 节点上执行
 
@@ -377,23 +390,21 @@ kubeadm reset
 kubectl delete node demo-worker-x-x
 ```
 
-> * 将 demo-worker-x-x 替换为要移除的 worker 节点的名字
-> * worker 节点的名字可以通过在第一个 master 节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
-
+::: tip
+* 将 demo-worker-x-x 替换为要移除的 worker 节点的名字
+* worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
+:::
 
 
 ## 安装 Ingress Controller
 
-> ingress官方文档：https://kubernetes.io/docs/concepts/services-networking/ingress/
+> Ingress官方文档：https://kubernetes.io/docs/concepts/services-networking/ingress/
 >
-> Ingress Controllers官网介绍：[https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
+> Ingress Controllers官网介绍：https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 >
 > 本文中使用如下部署方式：https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
 >
-> kubernetes支持多种Ingress Controllers，本文推荐使用
->
-> https://github.com/nginxinc/kubernetes-ingress
-
+> kubernetes支持多种Ingress Controllers，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
 
 
 ### 在 demo-master-a-1 上执行
@@ -402,15 +413,17 @@ kubectl delete node demo-worker-x-x
 kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/nginx-ingress.yaml
 ```
 
-
-
 ### 配置域名解析
 
 将域名 *.demo.yourdomain.com 解析到地址负载均衡服务器 的 IP 地址 z.z.z.z
-
-
 
 ### 验证配置
 
 在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面
 
+## 下一步
+:tada: :tada: 
+
+您已经完成了 Kubernetes 集群的安装，下一步请：
+
+[安装 Kuboard](/install/install-dashboard)
