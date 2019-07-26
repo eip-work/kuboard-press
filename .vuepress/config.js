@@ -23,7 +23,6 @@ module.exports = {
     },
     'reading-progress': {},
     'vuepress-plugin-element-tabs': {},
-    'vuepress-plugin-baidu-autopush':{},
     'seo': {
       siteTitle: (_, $site) => $site.title,
       title: $page => $page.title,
