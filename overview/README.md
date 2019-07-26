@@ -46,7 +46,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 * [安装 Kubernetes 单Master节点](/install/install-k8s) （初学者也许要花费1小时或更多）
 * [安装 Kuboard](/install/install-dashboard) （5分钟）
 * 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
-* 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index) （15分钟）
+* [导入 example 微服务应用](/guide/example/import) （15分钟）
 
 **Kubernetes 进阶** （筹备中）
 
@@ -66,11 +66,9 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 Kuboard 为您的这些痛苦提供了极佳的解决方案，Wanna feel cool ? Start with:  
 
 * [安装 Kuboard](/install/install-dashboard) （5分钟）
-
-- 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
-
-- 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index)
-
+* 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+* [导入 example 微服务应用](/guide/example/import)  （15分钟）
+* [在微服务上下文中监控 example](/guide/example/monitor) （15分钟）
 
 
 ## 在线提问

@@ -47,7 +47,7 @@ wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/da
 **执行安装**
 
 ```bash
-kubectl apply -f Kuboard.yaml 
+kubectl apply -f kuboard.yaml 
 ```
 
 ## 获取 token
