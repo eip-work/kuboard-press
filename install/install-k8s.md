@@ -421,9 +421,8 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 
 
 ## 下一步
-:tada: :tada: 
+:tada: :tada: :tada: 
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[从客户端电脑远程管理 Kubernetes](/install/install-kubectl)
 [安装 Kuboard](/install/install-dashboard)
