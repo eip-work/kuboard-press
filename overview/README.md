@@ -27,11 +27,45 @@ Kuboard 的主要特点：
 
 
 
-## Getting Started
+## Get Started
 
-[安装](/install/index)
 
-[使用](/guide/index)
+
+## Kubernetes 初学者
+
+单纯地按章节学习 Linux 基础知识、网络知识、容器技术等，每一块儿的基础入门书籍就有几百页之多。作者认为，最好的学习方法是在 **实践中学习**，碰到问题时去寻求答案，解决问题后去总结反思。这种学习方法趣味性强，得来的知识也最为牢靠，如果选对了方向，所学知识通常也是工作中实用性最高的知识。
+
+<span style="color: red; font-weight: 500;">读了100页 K8S 文档，也不如安装一遍 K8S</span>
+
+Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
+
+* 跟随文档 [安装 Kubernetes 单Master节点](/install/install-k8s) 快速安装一个可以练习使用的 Kubernetes 环境，（初学者也许要花费2小时或更多）
+
+* 跟随文档 [安装 Kuboard](/install/install-dashboard) （5分钟）
+
+* 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+
+* 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index)
+
+
+
+## Kubernetes 有经验者
+
+作为资深的 Kubernetes 用户，您一定有如下痛苦：
+
+* YAML 文件越来越多，越来越复杂，编写和维护 YAML 文件耗费了大量的时间
+* 准备了开发环境，又要维护测试环境、准上线环境、生产环境
+* kubectl 反复执行 kubectl 命令，与集群的交互界面始终处于片段化的信息中，需要连续好几个命令才能诊断问题
+
+Kuboard 为您的这些痛苦提供了极佳的解决方案，Wanna feel cool ? Start with 
+
+* [安装 Kuboard](/install/install-dashboard) （5分钟）
+
+- 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+
+- 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index)
+
+
 
 ## 在线提问
 

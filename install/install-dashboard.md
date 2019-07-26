@@ -9,16 +9,10 @@
 
 如果没有 Kubernetes 集群，可以有如下选项：
 
-* 通过 阿里云 创建 Kubernetes 容器服务，并获得和配置 kubectl 的访问参数
-* 参考 [安装 Kubernetes 单 Master 节点](install-k8s)
-* 或参考 [安装 Kubernetes 高可用](install-kubernetes)
-
-[领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
-
-
+* 参考 [安装 Kubernetes 单Master节点](install-k8s)
+* 参考 [安装 Kubernetes 高可用](install-kubernetes)
 
 ## 兼容性
-
 
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
@@ -198,5 +192,8 @@ kubectl port-forward service/Kuboard 8080:80 -n kube-system
 ::::
 
 
+**下一步**
 
+- 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
 
+- 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index)
