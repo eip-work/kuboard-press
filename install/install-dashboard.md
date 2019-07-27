@@ -17,20 +17,27 @@
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
-| v1.15           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.14           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.13           | v1.0.0-beta.10 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
-| v1.12           | v1.0.0-beta.10 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
-| v1.11           | v1.0.0-beta.10 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
+| v1.15           | v1.0.0-beta.11 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.14           | v1.0.0-beta.11 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.13           | v1.0.0-beta.11 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
+| v1.12           | v1.0.0-beta.11 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
+| v1.11           | v1.0.0-beta.11 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 
 
 
 
 ::: warning
-**Kubernetes 安装方式**
-* 部分用户使用二进制包的形式安装 Kubernetes，Kuboard 现在的版本不能在这类 Kubernetes 集群中正常工作，作者正在解决此问题。
-* 如果您是使用 kubeadm 安装的 Kubernetes 集群（Kubernetes 官方推荐的安装方式），请放心使用 Kuboard。
-* Kubeadm 相关资料请参考 https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/
+
+**如何确定我的 Kubernetes 是否可以安装 Kuboard？**
+
+执行如下命令
+
+```sh
+kubectl get pods -n kube-system -l 'component=kube-apiserver'
+```
+
+如果查询结果中至少有一个容器组处于 Running 状态，则 Kuboard 可以完美地运行在您的 Kubernetes 集群上。
+
 :::
 
 
