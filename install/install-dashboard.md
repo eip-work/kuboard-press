@@ -175,7 +175,7 @@ kubectl port-forward service/Kuboard 8080:80 -n kube-system
 `http://localhost:8080`
 
 ::: tip
-需要您自行设定 kubectl 的配置
+需要您先完成 [从客户端电脑远程管理 Kubernetes](install-kubectl) 的配置
 
 
 :::
