@@ -6,7 +6,7 @@
           <a href="/overview/" class="nav-link">简介</a>
         </div>
         <div class="side-nav-item" :style="activeLinkStyle('/install/')">
-          <a href="/install/" class="nav-link router-link-exact-active router-link-active">安装</a>
+          <a href="/install/install-dashboard" class="nav-link router-link-exact-active router-link-active">安装</a>
         </div>
         <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
           <a href="/guide/" class="nav-link">使用</a>

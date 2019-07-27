@@ -40,7 +40,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '简介', link: '/overview/' },
-      { text: '安装', link: '/install/' },
+      { text: '安装', link: '/install/install-dashboard' },
       { text: '使用', link: '/guide/' },
       { text: '支持', link: '/support/' },
     ],
@@ -85,13 +85,6 @@ module.exports = {
       ],
 
       '/install/': [
-        {
-          title: '概述',
-          collapsable: false,
-          children: [
-            ''
-          ]
-        },
         {
           title: '安装 Kubernetes',
           collapsable: false,

@@ -2,15 +2,16 @@
 
 ## 前提
 
-安装 Kuboard 时，假设您已经：
+安装 Kuboard 时，假设您已经有一个 Kubernetes 集群
 
-* 已经有一个 Kubernetes 集群
-* 拥有对该 Kubernetes 集群执行 kubectl 命令时的所有权限
-
-如果没有 Kubernetes 集群，可以有如下选项：
+如果没有 Kubernetes 集群：
 
 * 初学者，  请参考 [安装 Kubernetes 单Master节点](install-k8s)
 * 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes)
+
+碰到问题？ **在线提问**
+
+![Kuboard 兴趣群二维码](./../overview/README.assets/kuboard_qq.png)
 
 ## 兼容性
 
