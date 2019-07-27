@@ -177,7 +177,7 @@ kubectl port-forward service/Kuboard 8080:80 -n kube-system
 
 在浏览器打开链接 （请使用前面已修改的域名）
 
-`http://Kuboard.yourclustername.yourdomain.com`
+`http://kuboard.yourclustername.yourdomain.com`
 
 
 输入前一步骤中获得的 token，可进入控制台界面
