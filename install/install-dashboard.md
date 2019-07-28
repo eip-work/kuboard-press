@@ -42,7 +42,7 @@ wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/da
 kubectl apply -f kuboard.yaml 
 ```
 
-## 获取 token
+## 获取 Token
 
 您可以获得管理员用户、只读用户的Token
 
@@ -127,7 +127,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 ## 访问 Kuboard
 
-您可以通过NodePort、Port-forward、域名三种方式当中的任意一种访问 Kuboard
+您可以通过NodePort、port-forward、域名三种方式当中的任意一种访问 Kuboard
 
 :::: tabs type:border-card
 

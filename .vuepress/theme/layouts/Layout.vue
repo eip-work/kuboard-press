@@ -11,6 +11,9 @@
         <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
           <a href="/guide/" class="nav-link">使用</a>
         </div>
+        <div class="side-nav-item" :style="activeLinkStyle('/micro-service/')">
+          <a href="/micro-service/spring-cloud/" class="nav-link">微服务</a>
+        </div>
         <div class="side-nav-item" :style="activeLinkStyle('/support/')">
           <a href="/support/" class="nav-link">支持</a>
         </div>
@@ -47,7 +50,7 @@ export default {
 }
 .side-nav-item {
   margin-bottom: -2px;
-  margin-left: 20px;
+  margin-left: 10px;
   display: inline-block;
   line-height: 1.4rem;
   white-space: nowrap;

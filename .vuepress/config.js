@@ -42,6 +42,7 @@ module.exports = {
       { text: '简介', link: '/overview/' },
       { text: '安装', link: '/install/install-dashboard' },
       { text: '使用', link: '/guide/' },
+      { text: '微服务', link: '/micro-service/spring-cloud/' },
       { text: '支持', link: '/support/' },
     ],
     displayAllHeaders: false,
@@ -98,7 +99,8 @@ module.exports = {
           title: '安装 Kuboard',
           collapsable: false,
           children: [
-            'install-dashboard'
+            'install-dashboard',
+            'install-dashboard-upgrade'
           ]
         },
       ],
@@ -156,6 +158,17 @@ module.exports = {
           children: [
             'monitor/',
             'monitor/apis'
+          ]
+        },
+      ],
+
+      '/micro-service/': [
+        {
+          title: 'Spring Cloud',
+          collapsable: false,
+          children: [
+            'spring-cloud/',
+            'spring-cloud/cloud-eureka'
           ]
         },
       ],

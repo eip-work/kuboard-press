@@ -20,11 +20,9 @@ Kuboard 的主要特点：
 
 <p>
   <a target="_blank" href="http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi1mdGw0diIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE1YWFiMmQxLTQxMjYtNDU5Yi1hZmNhLTkyYzMwZDk0NTQzNSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.eYqN3FLIT6xs0-lm8AidZtaiuHeX70QTn9FhJglhEyh5dlyMU5lo8UtR-h1OY8sTSeYdYKJAS83-9SUObKQhp6XNmRgOYAfZblKUy4mvbGVQ3dn_qnzxYxt6zdGCwIY7E34eNNd9IjMF7G_Y4eJLWE7NvkSB1O8zbdn8En9rQXv_xJ9-ugCyr4CYB1lDGuZl3CIXgQ1FWcQdUBrxTT95tzcNTB0l6OUOGhRxOfw-RyIOST83GV5U0iVzxnD4sjgSaJefvCU-BmwXgpxAwRVhFyHEziXXa0CuZfBfJbmnQW308B4wocr4QDm6Nvmli1P3B6Yo9-HNF__d2hCwZEr7eg">
-    <img src="./README.assets/image-20190723104717575.png"></img>
+    <img src="./README.assets/image-20190728145108904.png"></img>
   </a>
 </p>
-
-
 
 
 ## 开始使用
@@ -72,6 +70,16 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 * [导入 example 微服务应用](/guide/example/import)  （15分钟）
 * [在微服务上下文中监控 example](/guide/example/monitor) （15分钟）
 
+### Kubernetes + Spring Cloud
+
+使用 Kuboard 在 Kubernetes 上部署 Spring Cloud 微服务：（正在编写文档）
+* [概述](/micro-service/spring-cloud/)
+* [部署服务注册中心](/micro-service/spring-cloud/cloud-eureka)
+* [部署数据库（用于测试）]
+* [部署微服务]
+* [部署服务网关]
+* [部署Web前端]
+* [导出配置]
 
 ## 在线提问
 

@@ -9,6 +9,7 @@
 **优化**
 
 * 调整主题色
+* 查看 Kuboard 版本信息
 * 一次删除 Deployment 下所有的错误事件 ([# 1](https://github.com/shaohq/kuboard-issues/issues/1))
 
 **BUG 修复**
