@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div slot="page-bottom" class="bottom-description">Copyright © 2019-present HuanQing Shao</div>
+    <div slot="page-bottom" class="bottom-description">Copyright © 2019-present Huanqing Shao</div>
   </ParentLayout>
 </template>
 
