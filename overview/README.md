@@ -1,7 +1,8 @@
 ## Kuboard 简介
+
 A cool Kubernetes dashboard.
 
-Kuboard 可以有效降低 Kubernetes 初学者的学习门槛，对于有经验的用户，也是非常顺手的一款运维工具。已在多个项目中投产使用。
+Kuboard 可以有效降低 Kubernetes 初学者的学习门槛，对于有经验的用户，也是非常顺手的一款运维工具。
 
 Kuboard 的主要特点：
 * 场景化设计
@@ -42,7 +43,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 * **Kubernetes 入门**
   * [安装 Kubernetes 单Master节点](/install/install-k8s) （1小时，初学者也许需要更多）
   * [安装 Kuboard](/install/install-dashboard) （5分钟）
-  * 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+  * 使用 Kuboard [创建 busybox](/guide/example/busybox) （10分钟）
   * [导入 example 微服务应用](/guide/example/import) （15分钟）
 
 * **Kubernetes 进阶** （筹备中）
@@ -66,7 +67,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 
 * [安装 Kuboard](/install/install-dashboard) （5分钟）
-* 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+* 使用 Kuboard [创建 busybox](/guide/example/busybox) （10分钟）
 * [导入 example 微服务应用](/guide/example/import)  （15分钟）
 * [在微服务上下文中监控 example](/guide/example/monitor) （15分钟）
 

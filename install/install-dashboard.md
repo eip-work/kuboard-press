@@ -139,7 +139,7 @@ Kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；
 http://any-of-your-node-ip:32567/
 `
 
-输入前一步骤中获得的 token，可进入控制台界面
+输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
 
 ::: tip
 您也可以修改 Kuboard.yaml 文件，使用自己定义的 NodePort 端口号
@@ -159,6 +159,8 @@ kubectl port-forward service/Kuboard 8080:80 -n kube-system
 
 `http://localhost:8080`
 
+输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
+
 ::: tip
 需要您先完成 [从客户端电脑远程管理 Kubernetes](install-kubectl) 的配置
 
@@ -167,12 +169,12 @@ kubectl port-forward service/Kuboard 8080:80 -n kube-system
 
 ::: tab 通过域名访问 lazy
 
-在浏览器打开链接 （请使用前面已修改的域名）
+在浏览器打开链接 （请使用前面安装 Kuboard 时已修改的域名）
 
 `http://kuboard.yourclustername.yourdomain.com`
 
 
-输入前一步骤中获得的 token，可进入控制台界面
+输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
 
 ::: tip
 需要您

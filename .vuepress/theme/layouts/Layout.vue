@@ -47,6 +47,7 @@ export default {
   text-align: center;
   font-size: 0.8rem;
   color: #909399;
+  margin-top: 2rem;
 }
 .side-nav-item {
   margin-bottom: -2px;

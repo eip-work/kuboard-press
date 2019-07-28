@@ -1,6 +1,6 @@
 # 安装 Kubernetes 单Master节点
 
-对于 Kubernetes 初学者，推荐的在阿里云采购如下配置：
+对于 Kubernetes 初学者，推荐在阿里云采购如下配置：
 
 * 3台 2核4G 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
 * Cent OS 7.6
