@@ -18,28 +18,12 @@
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
-| v1.15           | v1.0.0-beta.11 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.14           | v1.0.0-beta.11 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.13           | v1.0.0-beta.11 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
-| v1.12           | v1.0.0-beta.11 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
-| v1.11           | v1.0.0-beta.11 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
+| v1.15           | v1.0.0-beta.13 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.14           | v1.0.0-beta.13 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.13           | v1.0.0-beta.13 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
+| v1.12           | v1.0.0-beta.13 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
+| v1.11           | v1.0.0-beta.13 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 
-
-
-
-::: warning
-
-**如何确定我的 Kubernetes 是否可以安装 Kuboard？**
-
-执行如下命令
-
-```sh
-kubectl get pods -n kube-system -l 'component=kube-apiserver'
-```
-
-如果查询结果中至少有一个容器组处于 Running 状态，则 Kuboard 可以完美地运行在您的 Kubernetes 集群上。
-
-:::
 
 
 ## 安装
