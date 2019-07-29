@@ -17,6 +17,8 @@
 
 ## 降低 Kubernetes 学习门槛
 
+### 学习路线
+
 单纯地按章节学习 Linux 基础知识、网络知识、容器技术等，每一块儿的基础入门书籍就有几百页之多。作者认为，最好的学习方法是在实践中学习，碰到问题时去寻求答案，解决问题后去反思总结。这种学习方法趣味性强，得来的知识也最为牢靠，如果选对了方向，所学知识通常也是工作中实用性最高的知识。<span style="color: red; font-weight: 500;">读了100页 K8S 文档，也不如安装一遍 K8S</span>
 
 Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
@@ -29,11 +31,7 @@ Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 进阶路线：
 * 在 Kubernetes 中部署 Spring Cloud 微服务应用
 
-
-本文后续章节介绍了 Kuboard 工作负载编辑器的设计，如果您能够大致理解当中的概念，说明您已经完全准备好了，可以开始自己的 Kubernetes 之旅。
-
-
-## 工作负载编辑器设计
+### 快速入门
 
 ​		在向 Kubernetes 集群部署应用时，开发者或者运维团队必须花大量的时间去理解 Kubernetes 中各种对象的概念，并编写 Yaml 文件去描述 Kubernetes 对象以及他们之间的关系，然而，不同的人因为经验、视角的不同，对Kubernetes 中各对象之间关系的理解并不完全一致，也因此产生了一系列问题：
 
@@ -41,17 +39,11 @@ Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 * 由于理解方式的不一致，不同技术人员编写的 yaml 文件结构各不一样，降低了部署在后期的可维护性；
 * 由于部署数量的增加，导致 YAML 文件的数量和代码行数不断增长；
 
-
-
 ​		Kubernetes 官方提供的 Kubernetes Dashboard 充分意识到了 Kubernete 对象类型在种类上的多样性以及关系上的复杂性，到目前为止并没有在全功能 Dashboard 上做出过多努力，尤其是没有付出过多努力去打造工作负载的 UI 编辑器。在 Kubernetes Dashboard 中，如果想要对 Service、Deployment、StatefulSet、ConfigMap 等各种 Kubernetes 对象执行新增或者变更操作时，您必须编写 YAML 文件。从这个意义上来讲，截止到作者写这篇文章的时间点，Kubernetes 的官方 Dashboard 仍然是一个 “只读” 型 Dashboard，几乎所有的运维操作仍然需要技术人员去编写和维护冗长的 YAML 文件，并通过 kubectl 命令来完成。
 
 ​		由于 Kubernetes YAML 文件复杂性，以及开发/运维团队在多环境复制（开发环境、测试环境、准上线环境、生产环境等）方面的普遍需求，Kubernetes 社区提出了各种各样的解决方案，例如 kustomize / helm chart 等，这些解决方案在解决一个问题的同时，又在另一方面增加了复杂度，为 Kubernetes 爱好者增加了新的学习门槛。
 
-​		Kuboard 与 Kubernetes Dashboard 相同的是，架构上的简洁性。尤其是，使用 Kuboard 并不需要我们去学习和理解新的概念，而是和 Kuboard 一起，将 Kubernetes 对象中各种复杂的概念和关系梳理清楚，将各种知识点条理化，清晰化。在 Kuboard 的辅助下，轻松掌握 Kubernetes 的使用和运维，并利用 Kuboard 完成 Kubernetes 的日常运维工作。
-
-
-
-## 工作负载编辑器介绍
+## 入门利器
 
 为了降低 Kubernetes 的学习难度和使用难度，Kuboard 对 Kubernetes 中管理的各种对象做了一个梳理，并以此为基础，设计了 Kuboard 工作负载编辑器。
 

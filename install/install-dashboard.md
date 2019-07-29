@@ -142,10 +142,10 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 ::: tab 通过NodePort访问 lazy
 
-Kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 Kuboard。（可以使用集群中任意节点的 IP 地址）
+Kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 Kuboard。
 
 `
-http://any-of-your-node-ip:32567/
+http://任意一个Worker节点的IP地址:32567/
 `
 
 输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
