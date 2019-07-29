@@ -122,11 +122,18 @@ gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
 EOF
 ```
 
-**关闭swap/SeLinux**
+**关闭 防火墙、SeLinux、swap**
 
 ```bash
-swapoff -a
+systemctl stop firewalld
+systemctl disable firewalld
+
 setenforce 0
+sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+
+swapoff -a
+yes | cp /etc/fstab /etc/fstab_bak
+cat /etc/fstab_bak |grep -v swap > /etc/fstab
 ```
 
 **修改 /etc/sysctl.conf**
