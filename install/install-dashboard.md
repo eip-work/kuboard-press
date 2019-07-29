@@ -28,19 +28,28 @@
 
 ## 安装
 
-**获取并修改yaml文件**
+:::: tabs 安装 type:border-card
 
-```bash
-wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
+::: tab 安装 lazy
+
+安装 Kuboard
+
+``` sh
+kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
 ```
 
-修改文件 Kuboard.yaml 中 Ingress 的 host 为 kuboard.yourclustername.yourdomain.com
+:::
 
-**执行安装**
+::: tab 卸载 lazy
 
-```bash
-kubectl apply -f kuboard.yaml 
+卸载 Kuboard
+
+``` sh
+kubectl delete -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
 ```
+:::
+
+::::
 
 ## 获取 Token
 
@@ -127,7 +136,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 ## 访问 Kuboard
 
-您可以通过NodePort、port-forward、域名三种方式当中的任意一种访问 Kuboard
+您可以通过NodePort、port-forward 两种方式当中的任意一种访问 Kuboard
 
 :::: tabs type:border-card
 
@@ -149,10 +158,11 @@ http://any-of-your-node-ip:32567/
 
 ::: tab 通过port-forward访问 lazy
 
+
 在您的客户端电脑中执行如下命令
 
 ```sh
-kubectl port-forward service/Kuboard 8080:80 -n kube-system
+kubectl port-forward service/kuboard 8080:80 -n kube-system
 ```
 
 在浏览器打开链接 （请使用 kubectl 所在机器的IP地址）
@@ -161,26 +171,9 @@ kubectl port-forward service/Kuboard 8080:80 -n kube-system
 
 输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
 
+
 ::: tip
 需要您先完成 [从客户端电脑远程管理 Kubernetes](install-kubectl) 的配置
-
-
-:::
-
-::: tab 通过域名访问 lazy
-
-在浏览器打开链接 （请使用前面安装 Kuboard 时已修改的域名）
-
-`http://kuboard.yourclustername.yourdomain.com`
-
-
-输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
-
-::: tip
-需要您
-* 正确安装 Ingress Controller
-* 将您所使用的域名指向 Kubernetes 中的一个 Worker 节点（或者Ingress Controller所在机器的IP，不同类型的Ingress Controller配置不同）
-
 :::
 
 ::::

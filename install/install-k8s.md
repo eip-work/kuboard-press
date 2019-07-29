@@ -41,7 +41,8 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 
 **卸载旧版本**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 sudo yum remove docker \
 	docker-client \
 	docker-client-latest \
@@ -56,7 +57,8 @@ sudo yum remove docker \
 
 **下载依赖包及安装包**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
 wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-cli-18.09.7-3.el7.x86_64.rpm
 wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.09.7-3.el7.x86_64.rpm
@@ -64,7 +66,8 @@ wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce
 
 **安装**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 sudo yum install -y containerd.io-1.2.6-3.3.el7.x86_64.rpm
 sudo yum install -y docker-ce-cli-18.09.7-3.el7.x86_64.rpm
 sudo yum install -y docker-ce-18.09.7-3.el7.x86_64.rpm
@@ -73,13 +76,15 @@ sudo systemctl enable docker
 
 **启动 docker 服务**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 sudo systemctl start docker
 ```
 
 **检查 docker 版本**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 docker version
 ```
 
@@ -97,7 +102,8 @@ docker version
 
 **执行安装命令**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 sudo yum install -y nfs-utils
 ```
 
@@ -109,7 +115,8 @@ sudo yum install -y nfs-utils
 
 **配置K8S的yum源**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -124,7 +131,8 @@ EOF
 
 **关闭 防火墙、SeLinux、swap**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 systemctl stop firewalld
 systemctl disable firewalld
 
@@ -138,7 +146,8 @@ cat /etc/fstab_bak |grep -v swap > /etc/fstab
 
 **修改 /etc/sysctl.conf**
 
-```
+``` sh
+# 在 master 节点和 worker 节点都要执行
 vim /etc/sysctl.conf
 ```
 
@@ -157,12 +166,14 @@ net.bridge.bridge-nf-call-iptables = 1
 执行命令以应用
 
 ```sh
+# 在 master 节点和 worker 节点都要执行
 sysctl -p
 ```
 
 **安装kubelet、kubeadm、kubectl**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 yum install -y kubelet-1.15.0 kubeadm-1.15.0 kubectl-1.15.0
 ```
 
@@ -170,11 +181,12 @@ yum install -y kubelet-1.15.0 kubeadm-1.15.0 kubectl-1.15.0
 
 **修改docker Cgroup Driver为systemd**
 
-```
+``` sh
+# 在 master 节点和 worker 节点都要执行
 vim /usr/lib/systemd/system/docker.service
 ```
 
-向其中他添加
+向其中添加
 
 ```
 --exec-opt native.cgroupdriver=systemd
@@ -188,7 +200,8 @@ vim /usr/lib/systemd/system/docker.service
 
 重启 docker
 
-```
+``` sh
+# 在 master 节点和 worker 节点都要执行
 systemctl daemon-reload
 systemctl restart docker
 ```
@@ -197,7 +210,8 @@ systemctl restart docker
 
 **启动kubelet**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 systemctl enable kubelet && systemctl start kubelet
 ```
 
@@ -209,7 +223,8 @@ systemctl enable kubelet && systemctl start kubelet
 
 执行以下命令添加docker k8s国内镜像源
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
 
 systemctl restart docker
@@ -217,7 +232,8 @@ systemctl restart docker
 
 **拉取k8s相关镜像**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 docker pull mirrorgooglecontainers/kube-apiserver:v1.15.0
 docker pull mirrorgooglecontainers/kube-controller-manager:v1.15.0
 docker pull mirrorgooglecontainers/kube-scheduler:v1.15.0
@@ -229,7 +245,8 @@ docker pull coredns/coredns:1.3.1
 
 **更改镜像名为k8s官网镜像**
 
-```bash
+``` sh
+# 在 master 节点和 worker 节点都要执行
 docker tag d235b23c3570 k8s.gcr.io/kube-proxy:v1.15.0
 docker tag 201c7a840312 k8s.gcr.io/kube-apiserver:v1.15.0
 docker tag 2d3813851e87 k8s.gcr.io/kube-scheduler:v1.15.0
@@ -257,7 +274,8 @@ docker tag 2c4adeb21b4f k8s.gcr.io/etcd:3.3.10
 
 **配置 apiserver.demo 的域名**
 
-```bash
+``` sh
+# 只在 master 节点执行
 echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 ```
 
@@ -266,9 +284,14 @@ echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 :::
 
 
-**创建 /root/k8s/kubeadm-config.yaml**
+**创建 ./kubeadm-config.yaml**
 
-```yaml
+``` sh
+# 只在 master 节点执行
+vim ./kubeadm-config.yaml
+```
+
+``` yaml
 apiVersion: kubeadm.k8s.io/v1beta1
 kind: ClusterConfiguration
 kubernetesVersion: v1.15.0
@@ -280,7 +303,8 @@ controlPlaneEndpoint: "apiserver.demo:6443"
 
 **初始化 apiserver**
 
-```bash
+``` sh
+# 只在 master 节点执行
 kubeadm init --config=kubeadm-config.yaml --upload-certs
 ```
 
@@ -292,7 +316,8 @@ kubeadm init --config=kubeadm-config.yaml --upload-certs
 
 **初始化 root 用户的 kubectl 配置**
 
-```bash
+``` sh
+# 只在 master 节点执行
 rm -rf /root/.kube/
 mkdir /root/.kube/
 cp -i /etc/kubernetes/admin.conf /root/.kube/config
@@ -302,7 +327,8 @@ cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
 **安装 calico**
 
-```bash
+``` sh
+# 只在 master 节点执行
 kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 ```
 
@@ -314,7 +340,8 @@ kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/
 
 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
 
-```bash
+``` sh
+# 只在 master 节点执行
 watch kubectl get pod -n kube-system
 ```
 
@@ -323,7 +350,8 @@ watch kubectl get pod -n kube-system
 
 在 master 节点 demo-master-a-1 上执行
 
-```bash
+``` sh
+# 只在 master 节点执行
 kubectl get nodes
 ```
 
@@ -335,13 +363,15 @@ kubectl get nodes
 
 **在 master 节点 demo-master-a-1 节点执行**
 
-```bash
+``` sh
+# 只在 master 节点执行
 kubeadm token create --print-join-command
 ```
 
 可获取kubeadm join 命令及参数，如下所示
 
-```bash
+``` sh
+# kubeadm token create 命令的输出
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
 
@@ -351,7 +381,8 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 **针对所有的 worker 节点执行**
 
-```bash
+``` sh
+# 只在 worker 节点执行
 echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
@@ -366,7 +397,8 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 在 master 节点 demo-master-a-1 上执行
 
-```bash
+``` sh
+# 只在 master 节点执行
 kubectl get nodes
 ```
 
@@ -382,13 +414,15 @@ kubectl get nodes
 
 在准备移除的 worker 节点上执行
 
-```bash
+``` sh
+# 只在 worker 节点执行
 kubeadm reset
 ```
 
 在 master 节点 demo-master-a-1 上执行
 
-```bash
+``` sh
+# 只在 master 节点执行
 kubectl delete node demo-worker-x-x
 ```
 
@@ -410,7 +444,8 @@ kubectl delete node demo-worker-x-x
 
 **在 demo-master-a-1 上执行**
 
-```bash
+``` sh
+# 只在 master 节点执行
 kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/nginx-ingress.yaml
 ```
 
