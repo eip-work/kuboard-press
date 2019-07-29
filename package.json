@@ -13,5 +13,6 @@
     "vuepress-plugin-element-tabs": "^0.1.8",
     "vuepress-plugin-reading-progress": "^1.0.7",
     "vuepress-plugin-seo": "^0.1.2"
-  }
+  },
+  "dependencies": {}
 }

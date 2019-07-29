@@ -154,7 +154,11 @@ net.bridge.bridge-nf-call-iptables = 1
 
 ![image-20190715085036593](./install-common-vm.assets/image-20190715085036593.png ':size=600x445')
 
+执行命令以应用
 
+```sh
+sysctl -p
+```
 
 **安装kubelet、kubeadm、kubectl**
 
