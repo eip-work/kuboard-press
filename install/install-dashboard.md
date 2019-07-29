@@ -34,7 +34,7 @@
 wget https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
 ```
 
-修改文件 Kuboard.yaml 中 Ingress 的 host 为 Kuboard.yourclustername.yourdomain.com
+修改文件 Kuboard.yaml 中 Ingress 的 host 为 kuboard.yourclustername.yourdomain.com
 
 **执行安装**
 

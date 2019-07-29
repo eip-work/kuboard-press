@@ -73,7 +73,8 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 
 ### Kubernetes + Spring Cloud
 
-使用 Kuboard 在 Kubernetes 上部署 Spring Cloud 微服务：（正在编写文档）
+使用 Kuboard 在 Kubernetes 上部署 Spring Cloud 微服务：（正在编写文档，[准备好后，请通知我](https://www.wjx.top/jq/43409534.aspx)）
+
 * [概述](/micro-service/spring-cloud/)
 * [部署服务注册中心](/micro-service/spring-cloud/cloud-eureka)
 * [部署数据库（用于测试）]
