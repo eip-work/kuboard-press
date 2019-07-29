@@ -38,12 +38,13 @@ module.exports = {
     }
   },
   themeConfig: {
+    kuboardToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi1mdGw0diIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE1YWFiMmQxLTQxMjYtNDU5Yi1hZmNhLTkyYzMwZDk0NTQzNSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.eYqN3FLIT6xs0-lm8AidZtaiuHeX70QTn9FhJglhEyh5dlyMU5lo8UtR-h1OY8sTSeYdYKJAS83-9SUObKQhp6XNmRgOYAfZblKUy4mvbGVQ3dn_qnzxYxt6zdGCwIY7E34eNNd9IjMF7G_Y4eJLWE7NvkSB1O8zbdn8En9rQXv_xJ9-ugCyr4CYB1lDGuZl3CIXgQ1FWcQdUBrxTT95tzcNTB0l6OUOGhRxOfw-RyIOST83GV5U0iVzxnD4sjgSaJefvCU-BmwXgpxAwRVhFyHEziXXa0CuZfBfJbmnQW308B4wocr4QDm6Nvmli1P3B6Yo9-HNF__d2hCwZEr7eg',
     nav: [
       { text: '简介', link: '/overview/' },
       { text: '安装', link: '/install/install-dashboard' },
       { text: '使用', link: '/guide/' },
       { text: '微服务', link: '/micro-service/spring-cloud/' },
-      { text: '支持', link: '/support/' },
+      // { text: 'DevOps', link: '/devops/' }
     ],
     displayAllHeaders: false,
     sidebarDepth: 2,
@@ -81,6 +82,13 @@ module.exports = {
           children: [
             'why-kuboard',
             'concepts'
+          ]
+        }, {
+          title: '技术支持',
+          collapsable: false,
+          children: [
+            'support',
+            'change-log'
           ]
         }
       ],
@@ -171,6 +179,16 @@ module.exports = {
             'spring-cloud/cloud-eureka'
           ]
         },
+      ],
+
+      '/devops/': [
+        {
+          title: 'Devops',
+          collapsable: false,
+          children: [
+            ''
+          ]
+        }
       ],
 
       '/support/': [

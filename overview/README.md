@@ -16,11 +16,15 @@ Kuboard 的主要特点：
 
 ## 在线体验
 
-[Kuboard 在线体验](http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi1mdGw0diIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE1YWFiMmQxLTQxMjYtNDU5Yi1hZmNhLTkyYzMwZDk0NTQzNSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.eYqN3FLIT6xs0-lm8AidZtaiuHeX70QTn9FhJglhEyh5dlyMU5lo8UtR-h1OY8sTSeYdYKJAS83-9SUObKQhp6XNmRgOYAfZblKUy4mvbGVQ3dn_qnzxYxt6zdGCwIY7E34eNNd9IjMF7G_Y4eJLWE7NvkSB1O8zbdn8En9rQXv_xJ9-ugCyr4CYB1lDGuZl3CIXgQ1FWcQdUBrxTT95tzcNTB0l6OUOGhRxOfw-RyIOST83GV5U0iVzxnD4sjgSaJefvCU-BmwXgpxAwRVhFyHEziXXa0CuZfBfJbmnQW308B4wocr4QDm6Nvmli1P3B6Yo9-HNF__d2hCwZEr7eg)
+<p>
+<a target="_blank" :href="`http://demo.eip.work/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+  Kuboard 在线体验
+</a>
+</p>
 为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
 
 <p>
-  <a target="_blank" href="http://demo.eip.work/#/login?isReadOnly=true&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi1mdGw0diIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE1YWFiMmQxLTQxMjYtNDU5Yi1hZmNhLTkyYzMwZDk0NTQzNSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.eYqN3FLIT6xs0-lm8AidZtaiuHeX70QTn9FhJglhEyh5dlyMU5lo8UtR-h1OY8sTSeYdYKJAS83-9SUObKQhp6XNmRgOYAfZblKUy4mvbGVQ3dn_qnzxYxt6zdGCwIY7E34eNNd9IjMF7G_Y4eJLWE7NvkSB1O8zbdn8En9rQXv_xJ9-ugCyr4CYB1lDGuZl3CIXgQ1FWcQdUBrxTT95tzcNTB0l6OUOGhRxOfw-RyIOST83GV5U0iVzxnD4sjgSaJefvCU-BmwXgpxAwRVhFyHEziXXa0CuZfBfJbmnQW308B4wocr4QDm6Nvmli1P3B6Yo9-HNF__d2hCwZEr7eg">
+  <a target="_blank" :href="`http://demo.eip.work/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
     <img src="./README.assets/image-20190728145108904.png"></img>
   </a>
 </p>
@@ -34,9 +38,9 @@ Kuboard 的主要特点：
 
 单纯地按章节学习 Linux 基础知识、网络知识、容器技术等，每一块儿的基础入门书籍就有几百页之多。
 
-最好的学习方法是在 **实践中学习**，碰到问题时去寻求答案，**解决问题** 之后 **总结反思**。这种学习方法趣味性强，得来的知识也最为牢靠，所学知识通常也是工作中实用性最高的知识。
+最好的学习方法是在 **实践中学习**，碰到问题时去寻求答案，**解决问题** 之后 **总结反思**。这种学习方法趣味性强，得来的知识也最为牢靠，所学知识通常也是工作中实用性最高的。
 
-<span style="color: red; font-weight: 500;">读100页 K8S 文档，不如把 K8S 安装一遍</span>
+<span style="color: red; font-weight: 500;">读 100 页 K8S 文档，不如把 K8S 安装一遍</span>
 
 Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
@@ -48,7 +52,6 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 * **Kubernetes 进阶** （筹备中）
   * 深入理解 Kubernetes 核心概念
-  * 部署 Spring Cloud 微服务
   * 集成 DevOps
   * 安装高可用 Kubernetes 集群
 
@@ -82,6 +85,10 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 * [部署服务网关]
 * [部署Web前端]
 * [导出配置]
+
+### Kubernetes + Devops
+
+
 
 ## 在线提问
 

@@ -15,7 +15,7 @@
 
       <span
         class="action"
-        v-if="data.actionText && data.actionLink"
+        v-if="data.actionText"
       >
         <NavLink
           class="action-button"
@@ -71,7 +71,7 @@ export default {
 
     actionLink () {
       return {
-        link: this.data.actionLink,
+        link: `http://demo.eip.work/#/login?isReadOnly=true&token=${this.$site.themeConfig.kuboardToken}`,
         text: this.data.actionText
       }
     },

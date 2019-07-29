@@ -14,9 +14,9 @@
         <div class="side-nav-item" :style="activeLinkStyle('/micro-service/')">
           <a href="/micro-service/spring-cloud/" class="nav-link">微服务</a>
         </div>
-        <div class="side-nav-item" :style="activeLinkStyle('/support/')">
+        <!-- <div class="side-nav-item" :style="activeLinkStyle('/support/')">
           <a href="/support/" class="nav-link">支持</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <div slot="page-bottom" class="bottom-description">Copyright © 2019-present Huanqing Shao</div>
@@ -51,7 +51,7 @@ export default {
 }
 .side-nav-item {
   margin-bottom: -2px;
-  margin-left: 10px;
+  margin-left: 15px;
   display: inline-block;
   line-height: 1.4rem;
   white-space: nowrap;
