@@ -17,7 +17,7 @@
 
 * 根据微服务上下文查看监控结果
 
-  [在微服务上下文中监控 example](example/monitor)
+  [在微服务上下文中监控 example](example/monitor) <Badge text="alpha" type="warn"/>
 
 **Kuboard 可用于**
 

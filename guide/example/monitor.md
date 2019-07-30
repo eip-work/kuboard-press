@@ -1,6 +1,6 @@
 
 
-# 监控 example (alpha)
+# 监控 example <Badge text="alpha" type="warn"/>
 
 ## 前提
 
@@ -8,7 +8,11 @@
 
 * 已完成 [导入 example 微服务](/guide/example/import)
 
-!> 监控套件相关的功能目前处于 alpha 状态，虽然在实际投产项目中取得了非常好的效果，但是产品化封装还需要进一步改进。
+::: warning
+
+监控套件相关的功能目前处于 alpha 状态，虽然在实际投产项目中取得了非常好的效果，但是产品化封装还需要进一步改进。
+
+:::
 
 假设您已进入 example 名称空间，如下图所示：
 

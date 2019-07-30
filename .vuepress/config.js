@@ -161,7 +161,7 @@ module.exports = {
           ]
         },
         {
-          title: '监控套件 （alpha）',
+          title: '监控套件',
           collapsable: false,
           children: [
             'monitor/',
