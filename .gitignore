@@ -29,3 +29,4 @@ HELP.md
 .vscode/
 
 /node_modules/
+/.vuepress/dist/
