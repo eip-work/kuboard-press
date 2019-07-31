@@ -6,7 +6,7 @@
 
 必须具备如下条件：
 
-* 已完成 [导入 example 微服务](/guide/example/import)
+* 已完成 [导入 example 微服务](/guide/example/import.html)
 
 ::: warning
 

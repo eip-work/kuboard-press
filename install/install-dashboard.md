@@ -6,8 +6,8 @@
 
 如果没有 Kubernetes 集群：
 
-* 初学者，  请参考 [安装 Kubernetes 单Master节点](install-k8s)
-* 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes)
+* 初学者，  请参考 [安装 Kubernetes 单Master节点](install-k8s.html)
+* 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes.html)
 
 碰到问题？ **在线提问**
 
@@ -181,6 +181,6 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 **下一步**
 
-- 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox) （10分钟）
+- 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox.html) （10分钟）
 
-- 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index)
+- 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)

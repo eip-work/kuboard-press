@@ -45,13 +45,13 @@ Kuboard 的主要特点：
 Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 * **Kubernetes 入门**
-  * [安装 Kubernetes 单Master节点](/install/install-k8s) （1小时，初学者也许需要更多）
-  * [安装 Kuboard](/install/install-dashboard) （5分钟）
-  * 使用 Kuboard [创建 busybox](/guide/example/busybox) （10分钟）
-  * [导入 example 微服务应用](/guide/example/import) （15分钟）
+  * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （1小时，初学者也许需要更多）
+  * [安装 Kuboard](/install/install-dashboard.html) （5分钟）
+  * 使用 Kuboard [创建 busybox](/guide/example/busybox.html) （10分钟）
+  * [导入 example 微服务应用](/guide/example/import.html) （15分钟）
 
 * **Kubernetes 进阶**
-  * [十分钟带你理解Kubernetes核心概念](k8s-core-concepts)
+  * [十分钟带你理解Kubernetes核心概念](k8s-core-concepts.html)
   * 集成 DevOps
   * 安装高可用 Kubernetes 集群
 
@@ -69,17 +69,17 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 
-* [安装 Kuboard](/install/install-dashboard) （5分钟）
-* 使用 Kuboard [创建 busybox](/guide/example/busybox) （10分钟）
-* [导入 example 微服务应用](/guide/example/import)  （15分钟）
-* [在微服务上下文中监控 example](/guide/example/monitor) （15分钟）
+* [安装 Kuboard](/install/install-dashboard.html) （5分钟）
+* 使用 Kuboard [创建 busybox](/guide/example/busybox.html) （10分钟）
+* [导入 example 微服务应用](/guide/example/import.html)  （15分钟）
+* [在微服务上下文中监控 example](/guide/example/monitor.html) （15分钟）
 
 ### Kubernetes + Spring Cloud
 
 使用 Kuboard 在 Kubernetes 上部署 Spring Cloud 微服务：（正在编写文档，[准备好后，请通知我](https://www.wjx.top/jq/43409534.aspx)）
 
-* [概述](/micro-service/spring-cloud/)
-* [部署服务注册中心](/micro-service/spring-cloud/cloud-eureka)
+* [概述](/micro-service/spring-cloud/index.html)
+* [部署服务注册中心](/micro-service/spring-cloud/cloud-eureka.html)
 * [部署数据库（用于测试）]
 * [部署微服务]
 * [部署服务网关]

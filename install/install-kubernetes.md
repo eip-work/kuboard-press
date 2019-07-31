@@ -1,7 +1,7 @@
 # 安装 Kubernetes 高可用
 
 ::: tip
-推荐初学者按照 [安装Kubernetes 单Master节点](install-k8s) 文档进行 Kubernetes 集群搭建
+推荐初学者按照 [安装Kubernetes 单Master节点](install-k8s.html) 文档进行 Kubernetes 集群搭建
 :::
 
 # 介绍

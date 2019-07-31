@@ -9,11 +9,11 @@
 
 ## 创建存储资源
 
-example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide/cluster/storage?id=创建存储类) ，否则不能完成 example 的导入操作。
+example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide/cluster/storage.html?id=创建存储类) ，否则不能完成 example 的导入操作。
 
 ## 创建名称空间
 
-创建新的名称空间，用来导入 exmaple。可参考 [创建名称空间](/guide/cluster/namespace?id=创建名称空间)
+创建新的名称空间，用来导入 exmaple。可参考 [创建名称空间](/guide/cluster/namespace.html?id=创建名称空间)
 
 假设您已经进入了 Kuboard 名称空间界面，如下图所示：
 

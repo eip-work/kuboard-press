@@ -23,7 +23,7 @@ Kuboard 针对这种场景，提供了导出配置、导入配置的功能，以
 
 必须满足如下条件：
 
-* 您已经通过 kuboard 的 [创建工作负载](/guide/namespace/workload) 功能完成了微服务的部署。
+* 您已经通过 kuboard 的 [创建工作负载](/guide/namespace/workload.html) 功能完成了微服务的部署。
 
 > 部署微服务过程中，您还可能用到 kuboard 的配置编辑功能、Secrets 编辑功能 等。
 

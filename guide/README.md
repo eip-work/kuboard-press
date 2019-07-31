@@ -9,15 +9,15 @@
 
 * 创建一个最简单的工作负载
 
-  [创建 busybox](example/busybox)
+  [创建 busybox](example/busybox.html)
 
 * 导入一套最简单的 Spring Cloud 微服务工作负载
 
-  [导入 example](example/import)
+  [导入 example](example/import.html)
 
 * 根据微服务上下文查看监控结果
 
-  [在微服务上下文中监控 example](example/monitor) <Badge text="alpha" type="warn"/>
+  [在微服务上下文中监控 example](example/monitor.html) <Badge text="alpha" type="warn"/>
 
 **Kuboard 可用于**
 

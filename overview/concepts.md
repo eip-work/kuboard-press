@@ -49,7 +49,7 @@ Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 
 Kuboard 工作负载编辑器以下图的方式理解和管理 Kubernetes 对象。
 
-![image-20190722165648180](./concepts.assets/image-20190722165648180.png)
+![image-20190731134333772](./concepts.assets/image-20190731134333772.png)
 
 
 

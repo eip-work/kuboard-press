@@ -6,7 +6,7 @@
 
 
 
-请参考 [创建 busybox](/guide/example/busybox)
+请参考 [创建 busybox](/guide/example/busybox.html)
 
 
 

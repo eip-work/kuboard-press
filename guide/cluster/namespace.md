@@ -8,7 +8,7 @@
 
 * Kubernetes 集群
 * 已在集群中安装 Kuboard
-* 已进入 Kuboard 操作界面 [安装并进入 Kuboard](/install/install-dashboard)
+* 已进入 Kuboard 操作界面 [安装并进入 Kuboard](/install/install-dashboard.html)
 
 
 
