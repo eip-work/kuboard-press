@@ -6,11 +6,11 @@
 
 发布日期： 2019-07-28
 
-[查看更新日志](/support/change-log.md)
+[查看更新日志](/overview/change-log.html)
 
 ## latest 标签升级
 
-按照 [安装 Kuboard](install-dashboard) 文档完成 Kuboard 安装后，您使用的 Kuboard 镜像是 latest 标签。每次 Kuboard 版本更新后，latest 标签对应的镜像也更新为最新版本。您需要执行下述操作，以完成 latest 镜像更新：
+按照 [安装 Kuboard](install-dashboard.html) 文档完成 Kuboard 安装后，您使用的 Kuboard 镜像是 latest 标签。每次 Kuboard 版本更新后，latest 标签对应的镜像也更新为最新版本。您需要执行下述操作，以完成 latest 镜像更新：
 
 ::: tip
 
