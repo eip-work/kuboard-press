@@ -19,7 +19,7 @@
         </div> -->
       </div>
     </div>
-    <div slot="page-bottom" class="bottom-description">Copyright © 2019-present Huanqing Shao</div>
+    <div slot="page-bottom" class="bottom-description">Copyright © 2019-present Huanqing Shao | 京ICP备19008693号-2</div>
   </ParentLayout>
 </template>
 
