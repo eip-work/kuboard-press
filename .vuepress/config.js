@@ -77,9 +77,10 @@ module.exports = {
             ''
           ]
         }, {
-          title: 'Why Kuboard',
+          title: '概念',
           collapsable: false,
           children: [
+            'k8s-core-concepts',
             'why-kuboard',
             'concepts'
           ]

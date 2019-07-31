@@ -50,8 +50,8 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
   * 使用 Kuboard [创建 busybox](/guide/example/busybox) （10分钟）
   * [导入 example 微服务应用](/guide/example/import) （15分钟）
 
-* **Kubernetes 进阶** （筹备中）
-  * 深入理解 Kubernetes 核心概念
+* **Kubernetes 进阶**
+  * [十分钟带你理解Kubernetes核心概念](k8s-core-concepts)
   * 集成 DevOps
   * 安装高可用 Kubernetes 集群
 
