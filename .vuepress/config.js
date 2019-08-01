@@ -24,6 +24,9 @@ module.exports = {
     'reading-progress': {},
     'vuepress-plugin-element-tabs': {},
     'vuepress-plugin-baidu-autopush':{},
+    'sitemap': {
+      hostname: 'https://kuboard.cn'
+    },
     'seo': {
       siteTitle: (_, $site) => $site.title,
       title: $page => $page.title,
@@ -57,7 +60,7 @@ module.exports = {
     // repo: 'eip-work/kuboard-press',
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
-    // repoLabel: '查看文档源码',
+    // repoLabel: '文档仓库',
 
     // 假如你的文档仓库和项目本身不在一个仓库：
     docsRepo: 'eip-work/kuboard-press',
@@ -178,7 +181,7 @@ module.exports = {
           collapsable: false,
           children: [
             'spring-cloud/',
-            'spring-cloud/cloud-eureka'
+            // 'spring-cloud/cloud-eureka'
           ]
         },
       ],
