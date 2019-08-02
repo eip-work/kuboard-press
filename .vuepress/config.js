@@ -85,6 +85,7 @@ module.exports = {
           collapsable: false,
           children: [
             'k8s-core-concepts',
+            'quick-win',
             'why-kuboard',
             'concepts'
           ]
