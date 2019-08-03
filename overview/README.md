@@ -52,8 +52,6 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 * **Kubernetes 进阶**
   * [十分钟带你理解Kubernetes核心概念](k8s-core-concepts.html)
-  * 集成 DevOps
-  * 安装高可用 Kubernetes 集群
 
 ### Kubernetes 有经验者
 
@@ -76,7 +74,7 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 
 ### Kubernetes + Spring Cloud
 
-使用 Kuboard 在 Kubernetes 上部署 Spring Cloud 微服务：
+在 Kubernetes 上部署 Spring Cloud 微服务：
 
 * [概述](/micro-service/spring-cloud/index.html)
 * [部署服务注册中心]

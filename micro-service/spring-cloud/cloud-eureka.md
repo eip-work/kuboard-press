@@ -44,7 +44,6 @@ management:
 eureka:
   instance:
     preferIpAddress: true
-    hostname: ${HOSTNAME}
   client:
     register-with-eureka: false
     fetch-registry: false
@@ -55,11 +54,7 @@ eureka:
     enable-self-preservation: false
 ```
 
-该项目中有两个值取自环境变量：
-
-* HOSTNAME
-
-  Kubernetes 自动配置，如前所述，实际运行时取值为 cloud-eureka-0，cloud-eureka-1，cloud-eureka-2
+该项目中有一个值取自环境变量：
 
 * CLOUD_EUREKA_DEFAULT_ZONE 这个参数必须通过环境变量进行配置
 
@@ -69,7 +64,7 @@ eureka:
 
   因为各微服务也需要用到 CLOUD_EUREKA_DEFAULT_ZONE 这个参数（请参考 部署 svc-example 章节），所以建议将该参数配置在 Kubernetes 的 ConfigMap 中最为便捷。
 
-
+文件中没有配置 `eureka.instance.hostname`，该参数的默认取值通过 java.net.InetAddress 查找机器的 hostname。如前所示，当我们使用 StatefulSet 部署 eureka 时，hostname 为 cloud-eureka-0 / cloud-eureka-1 / cloud-eureka-2
 
 **容器 Command 参数**
 

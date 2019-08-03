@@ -117,6 +117,13 @@ module.exports = {
             'install-dashboard-upgrade'
           ]
         },
+        {
+          title: '常见问题',
+          collapsable: false,
+          children: [
+            'faq/timeout'
+          ]
+        }
       ],
 
       '/guide/': [

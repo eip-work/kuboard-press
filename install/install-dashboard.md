@@ -9,10 +9,6 @@
 * 初学者，  请参考 [安装 Kubernetes 单Master节点](install-k8s.html)
 * 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes.html)
 
-碰到问题？ **在线提问**
-
-![Kuboard 兴趣群二维码](./../overview/README.assets/kuboard_qq.png)
-
 ## 兼容性
 
 
@@ -173,11 +169,18 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 
 ::: tip
-需要您先完成 [从客户端电脑远程管理 Kubernetes](install-kubectl) 的配置
+需要您先完成 [从客户端电脑远程管理 Kubernetes](install-kubectl.html) 的配置
 :::
 
 ::::
 
+::: warning
+* 如果不能访问 Kuboard，请参考 [常见问题](faq/timeout.html)
+
+* 如果仍然不能解决，请到 QQ 群提问
+
+  ![qq](../overview/README.assets/kuboard_qq.png)
+:::
 
 **下一步**
 
