@@ -79,7 +79,7 @@ metadata:
     k8s.eip.work/name: cloud-eureka
 spec:
   rules:
-    - host: cloud-eureka.example.demo.eip.work
+    - host: cloud-eureka.example.demo.kuboard.cn
       http:
         paths:
           - path: /
@@ -350,7 +350,7 @@ metadata:
     k8s.eip.work/name: web-example
 spec:
   rules:
-    - host: web-example.example.demo.eip.work
+    - host: web-example.example.demo.kuboard.cn
       http:
         paths:
           - path: /

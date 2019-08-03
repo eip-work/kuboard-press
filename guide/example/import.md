@@ -78,7 +78,7 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 
 | 字段名称         | 填写内容                           | 说明                                                         |
 | ---------------- | ---------------------------------- | ------------------------------------------------------------ |
-| cloud-eureka域名 | cloud-eureka.example.demo.eip.work | 使用您自己的域名，<br />在测试环境建议使用如下域名格式：<br />workloadname.namespace-name.cluster-name.domain.com<br />该域名应该解析到您worker节点的外网地址，或者worker 节点 80/443 端口对应负载均衡服务器的外网地址。 |
+| cloud-eureka域名 | cloud-eureka.example.demo.kuboard.cn | 使用您自己的域名，<br />在测试环境建议使用如下域名格式：<br />workloadname.namespace-name.cluster-name.domain.com<br />该域名应该解析到您worker节点的外网地址，或者worker 节点 80/443 端口对应负载均衡服务器的外网地址。 |
 | web-example      | web-example.example.demo.eip       |                                                              |
 
   
@@ -119,7 +119,7 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 
 ![image-20190723121412027](./import.assets/image-20190723121412027.png)
 
-* 点击 互联网入口中的域名 ***http://web-example.example.demo.eip.work***
+* 点击 互联网入口中的域名 ***http://web-example.example.demo.kuboard.cn***
 
   **Example 部署成功**
 

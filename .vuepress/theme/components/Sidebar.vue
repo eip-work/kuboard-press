@@ -6,7 +6,7 @@
     <div style="text-align: center; margin-top: 5vh;">
       <strong>在线体验</strong>
       <div>
-        <a target="_blank" :href="`http://demo.eip.work/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+        <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
           <p>
             <img :src="demo_img" style="width: 226px; height: 127px;"></img>
           </p>

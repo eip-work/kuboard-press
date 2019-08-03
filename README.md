@@ -3,7 +3,7 @@ home: true
 # heroImage: /overview.png
 layout: HomePage
 actionText: 在线体验
-# actionLink: `http://demo.eip.work/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`
+# actionLink: `http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`
 actionText2: 开始使用 →
 actionLink2: /overview/
 features:

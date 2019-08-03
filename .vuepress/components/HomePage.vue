@@ -63,7 +63,9 @@ import NavLink from '@theme/components/NavLink.vue'
 
 export default {
   components: { NavLink },
-
+  mounted () {
+    window.document.title = 'Kuboard 官网'
+  },
   computed: {
     data () {
       return this.$page.frontmatter
@@ -71,7 +73,7 @@ export default {
 
     actionLink () {
       return {
-        link: `http://demo.eip.work/#/login?isReadOnly=true&token=${this.$site.themeConfig.kuboardToken}`,
+        link: `http://demo.kuboard.cn/#/login?isReadOnly=true&token=${this.$site.themeConfig.kuboardToken}`,
         text: this.data.actionText
       }
     },

@@ -1,6 +1,6 @@
 # 部署 cloud-eureka
 
-
+本文所使用的代码请参考 [cloud-eureka](https://github.com/eip-work/kuboard-example/tree/master/cloud-eureka)
 
 ## 检查 cloud-eureka 项目的配置
 
@@ -107,7 +107,7 @@ java -jar /eip-work/app.jar
 
 **访问方式及互联网入口**
 
-Eureka 运行在 9200 端口。Spring Cloud 的微服务通过 CLOUD_EUREKA_DEFAULT_ZONE 中的配置直接与 Eureka 服务通信。
+Eureka 运行在 9200 端口。Spring Cloud 的微服务组件通过 CLOUD_EUREKA_DEFAULT_ZONE 中的配置直接与 Eureka 容器组通信。
 
 是否配置访问方式及互联网入口？
 
