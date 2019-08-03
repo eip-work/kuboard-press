@@ -121,6 +121,8 @@ kubectl get nodes
 kubectl get pods -n kube-system
 ```
 
+:::
+
 ::: tab Windows lazy
 待完善
 :::

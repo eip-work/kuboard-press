@@ -4,7 +4,11 @@
     <SidebarLinks :depth="0" :items="items"/>
     <slot name="bottom"/>
     <div style="text-align: center; margin-top: 5vh;">
-      <strong>在线体验</strong>
+      <p>
+        <strong>
+          <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">在线体验</a>
+        </strong>
+      </p>
       <div>
         <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
           <p>
@@ -26,7 +30,8 @@
 <script>
 import SidebarLinks from '@theme/components/SidebarLinks.vue'
 import kuboard_qq from './kuboard_qq.png'
-import demo from './image-20190723104717575.png'
+// import demo from './image-20190723104717575.png'
+import demo from './1564841972085.gif'
 
 export default {
   name: 'Sidebar',

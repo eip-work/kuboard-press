@@ -25,7 +25,7 @@ Kuboard 的主要特点：
 
 <p>
   <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
-    <img src="./README.assets/image-20190728145108904.png"></img>
+    <img src="./README.assets/1564841972085.gif"></img>
   </a>
 </p>
 
