@@ -11,7 +11,7 @@ features:
   details: 快速安装、图形化界面、场景化设计
 - title: 微服务架构
   details: 经典微服务参考架构：Spring Cloud 实战案例
-- title: 上下文监控
+- title: 多层次监控
   details: 资源层监控、中间件层监控、链路层监控
 footer: Copyright © 2019-present Huanqing Shao | 京ICP备19008693号-2
 ---
