@@ -11,9 +11,7 @@
       </p>
       <div>
         <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
-          <p>
-            <img :src="demo_img" style="width: 226px; height: 127px;"></img>
-          </p>
+          <img :src="demo_img" style="width: 226px; height: 127px; border: 1px solid #d7dae2;"></img>
         </a>
       </div>
       <p>

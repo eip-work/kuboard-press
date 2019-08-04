@@ -27,18 +27,16 @@ A cool Kubernetes dashboard.
   Kuboard 在线体验
 </a>
 </p>
-为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
 
 <p>
-  <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
-    <img src="./README.assets/1564841972085.gif"></img>
-  </a>
+为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
 </p>
 
+<a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+  <img src="./README.assets/1564841972085.gif"></img>
+</a>
 
 ## 开始使用
-
-
 
 ### Kubernetes 初学者
 
