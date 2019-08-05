@@ -33,7 +33,7 @@ A cool Kubernetes dashboard.
 </p>
 
 <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
-  <img src="./README.assets/1564841972085.gif"></img>
+  <img src="./README.assets/1564841972085.gif" style="border: 1px solid #d7dae2;"></img>
 </a>
 
 ## 开始使用
