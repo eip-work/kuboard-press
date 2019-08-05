@@ -1,5 +1,19 @@
 # 安装 Kubernetes 单Master节点
 
+## 文档特点
+
+网上那么多 K8S 安装文档，为什么这篇文档更有参考价值？
+
+* 众多网友验证，并在线提出修改意见
+
+  ![image-20190806065321567](./install-k8s.assets/image-20190806065321567.png)
+
+* 持续不断地更新和完善，[更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+
+  ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
+
+## 配置要求
+
 对于 Kubernetes 初学者，推荐在阿里云采购如下配置：
 
 * 3台 2核4G 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
