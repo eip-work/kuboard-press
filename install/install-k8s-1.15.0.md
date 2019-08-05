@@ -12,10 +12,10 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 
 完成安装后，对应的软件版本为：
 
-* Kubernetes v1.15.1
+* Kubernetes v1.15.0
 * Docker 18.09.7
 
-![image-20190805230643974](install-k8s.assets/image-20190805230643974.png)
+![image-20190731135811556](./install-k8s.assets/image-20190731135811556.png)
 
 
 ## 制作标准机镜像
@@ -43,7 +43,7 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-sudo yum remove -y docker \
+sudo yum remove docker \
 docker-client \
 docker-client-latest \
 docker-common \
@@ -55,23 +55,22 @@ docker-engine-selinux \
 docker-engine
 ```
 
-**设置 yum repository**
+**下载依赖包及安装包**
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-sudo yum install -y yum-utils \
-device-mapper-persistent-data \
-lvm2
-sudo yum-config-manager \
---add-repo \
-https://download.docker.com/linux/centos/docker-ce.repo
+wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-cli-18.09.7-3.el7.x86_64.rpm
+wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.09.7-3.el7.x86_64.rpm
 ```
 
 **安装并启动 docker**
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-sudo yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
+sudo yum install -y containerd.io-1.2.6-3.3.el7.x86_64.rpm
+sudo yum install -y docker-ce-cli-18.09.7-3.el7.x86_64.rpm
+sudo yum install -y docker-ce-18.09.7-3.el7.x86_64.rpm
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
@@ -169,7 +168,7 @@ sysctl -p
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-yum install -y kubelet-1.15.1 kubeadm-1.15.1 kubectl-1.15.1
+yum install -y kubelet-1.15.0 kubeadm-1.15.0 kubectl-1.15.0
 ```
 
 
@@ -207,6 +206,8 @@ vim /usr/lib/systemd/system/docker.service
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+
+systemctl restart docker
 ```
 
 **重启 docker，并启动 kubelet**
@@ -252,7 +253,7 @@ vim ./kubeadm-config.yaml
 ``` yaml
 apiVersion: kubeadm.k8s.io/v1beta1
 kind: ClusterConfiguration
-kubernetesVersion: v1.15.1
+kubernetesVersion: v1.15.0
 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
 controlPlaneEndpoint: "apiserver.demo:6443"
 ```
