@@ -202,7 +202,7 @@ vim /usr/lib/systemd/system/docker.service
 
 执行以下命令使用 docker 国内镜像，提高 docker 镜像下载速度和稳定性
 
-> 可选，如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
+> 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
