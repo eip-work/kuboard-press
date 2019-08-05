@@ -15,7 +15,7 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 * Kubernetes v1.15.1
 * Docker 18.09.7
 
-![image-20190805230643974](install-k8s.assets/image-20190805230643974.png)
+![image-20190805230643974](./install-k8s.assets/image-20190805230643974.png)
 
 
 ## 制作标准机镜像
