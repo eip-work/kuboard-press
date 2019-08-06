@@ -2,7 +2,7 @@
 
 ## 文档特点
 
-网上那么多 K8S 安装文档，为什么这篇文档更有参考价值？
+**网上那么多 Kubernetes 安装文档，为什么这篇文档更有参考价值？**
 
 * **众多网友验证，并在线提出修改意见**
 
@@ -437,17 +437,21 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 
 将域名 *.demo.yourdomain.com 解析到 demo-worker-a-2 的 IP 地址 z.z.z.z （也可以是 demo-worker-a-1 的地址 y.y.y.y）
 
+**验证配置**
+
+在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面
+
 ::: tip
 由于需要申请域名，过程会比较繁琐，有如下两种替代方案：
 
 * 在您的客户端机器（访问部署在K8S上的 web 应用的浏览器所在的机器）设置 hosts 配置；
 * 暂时放弃域名的配置，临时使用 NodePort 或者 `kubectl port-forward` 的方式访问部署在 K8S 上的 web 应用
-* 如果您打算将您安装的 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
+
 :::
 
-**验证配置**
-
-在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面
+::: warning
+如果您打算将您安装的 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
+:::
 
 
 ## 下一步
