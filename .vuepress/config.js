@@ -65,10 +65,10 @@ module.exports = {
     },
     lastUpdated: '更新时间',
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-    // repo: 'eip-work/kuboard-press',
+    repo: 'eip-work/kuboard-press',
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
-    // repoLabel: '文档仓库',
+    repoLabel: '文档仓库',
 
     // 假如你的文档仓库和项目本身不在一个仓库：
     docsRepo: 'eip-work/kuboard-press',
