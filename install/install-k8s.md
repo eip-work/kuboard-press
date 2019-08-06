@@ -264,10 +264,7 @@ echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 
 ``` sh
 # 只在 master 节点执行
-vim ./kubeadm-config.yaml
-```
-
-``` yaml
+cat <<EOF > ./kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1beta1
 kind: ClusterConfiguration
 kubernetesVersion: v1.15.1
@@ -275,6 +272,8 @@ imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
 controlPlaneEndpoint: "apiserver.demo:6443"
 networking:
   podSubnet: "10.100.0.1/20"
+EOF
+
 ```
 
 ::: tip
