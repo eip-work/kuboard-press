@@ -4,13 +4,17 @@
 
 网上那么多 K8S 安装文档，为什么这篇文档更有参考价值？
 
-* 众多网友验证，并在线提出修改意见
+* **众多网友验证，并在线提出修改意见**
 
   ![image-20190806065321567](./install-k8s.assets/image-20190806065321567.png)
 
-* 持续不断地更新和完善，[更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+* **持续不断地更新和完善**，[更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
+
+* **在线答疑**
+  
+  ![kuboard_qq.png](../overview/README.assets/kuboard_qq.png)
 
 ## 配置要求
 
