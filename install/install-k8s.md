@@ -273,8 +273,13 @@ kind: ClusterConfiguration
 kubernetesVersion: v1.15.1
 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
 controlPlaneEndpoint: "apiserver.demo:6443"
+networking:
+  podSubnet: "10.100.0.1/20"
 ```
 
+::: tip
+podSubnet 所使用的网段不能与节点所在的网段重叠
+:::
 
 
 **初始化 apiserver**

@@ -28,7 +28,9 @@
 
 ::: tab 安装 lazy
 
-安装 Kuboard
+安装 Kuboard。
+
+> 如果您参考 https://kuboard.cn 网站上提供的 Kubernetes 安装文档，可在 master 节点上执行以下命令。
 
 ``` sh
 kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
@@ -44,6 +46,8 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 kubectl delete -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/kuboard.yaml
 ```
 :::
+
+
 
 ::::
 
