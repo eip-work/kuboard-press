@@ -12,7 +12,7 @@
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
-* **在线答疑**
+* **在线答疑** QQ 群
   
   ![kuboard_qq.png](../overview/README.assets/kuboard_qq.png)
 
@@ -284,6 +284,10 @@ controlPlaneEndpoint: "apiserver.demo:6443"
 kubeadm init --config=kubeadm-config.yaml --upload-certs
 ```
 
+::: tip
+根据您服务器网速的情况，您需要等候 1 - 10 分钟
+:::
+
 执行结果如下图所示：
 
 ![image-20190715101542756](./install-k8s.assets/image-20190715101542756.png ':size=800x388')
@@ -434,6 +438,7 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 
 * 在您的客户端机器（访问部署在K8S上的 web 应用的浏览器所在的机器）设置 hosts 配置；
 * 暂时放弃域名的配置，临时使用 NodePort 或者 `kubectl port-forward` 的方式访问部署在 K8S 上的 web 应用
+* 如果您打算将您安装的 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
 :::
 
 **验证配置**
@@ -446,4 +451,4 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[安装 Kuboard](/install/install-dashboard)
+[安装 Kuboard](/install/install-dashboard.html)
