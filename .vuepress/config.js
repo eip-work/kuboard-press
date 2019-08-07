@@ -112,7 +112,7 @@ module.exports = {
           title: '安装 Kubernetes',
           collapsable: false,
           children: [
-            'install-k8s',
+            ['install-k8s', '安装 Kubernetes 单Master节点'],
             'install-kubernetes',
             'install-kubectl'
           ]
