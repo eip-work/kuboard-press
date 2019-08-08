@@ -2,9 +2,9 @@ let dateFns = require('date-fns')
 
 module.exports = {
   title: 'Kuboard',
-  description: 'A cool Kubernetes Dashboard',
+  description: '一个非常 cool 的 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您1天落地 Kubernetes；同时提供 Spring Cloud 微服务部署教程，DevOps教程',
   head: [
-    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Linux, K8S, cluster, 分布式, 集群, 容器, 高可用'}],
+    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Linux, K8S, Spring Cloud, micro service, DevOps, Rancher, 微服务, 持续构建集成, 容器'}]
   ],
   markdown: {
     toc: { includeLevel: [2, 3] }
@@ -33,7 +33,7 @@ module.exports = {
     'vuepress-plugin-element-tabs': {},
     'vuepress-plugin-baidu-autopush':{},
     'sitemap': {
-      hostname: 'https://kuboard.cn'
+      hostname: 'https://www.kuboard.cn'
     },
     'seo': {
       siteTitle: (_, $site) => $site.title,
