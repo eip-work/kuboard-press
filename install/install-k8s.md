@@ -256,7 +256,7 @@ echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 ```
 
 ::: warning
-请替换其中的 x.x.x.x 为您的 demo-master-a-1 的实际 ip 地址
+请替换其中的 x.x.x.x 为您的 demo-master-a-1 的实际 ip 地址。（如果 demo-master-a-1 同时有内网IP和外网IP，此处请使用内网IP）
 :::
 
 
@@ -372,7 +372,7 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 ```
 
 ::: tip
-* 将 x.x.x.x 替换为 demo-master-a-1 的实际 ip
+* 将 x.x.x.x 替换为 demo-master-a-1 的实际 ip。（如果 demo-master-a-1 同时有内网IP和外网IP，此处请使用内网IP）
 * 将 kubeadm join 命令后的参数替换为上一个步骤中实际从 demo-master-a-1 节点获得的参数
 :::
 
