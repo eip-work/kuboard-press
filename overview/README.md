@@ -2,23 +2,74 @@
 
 A cool Kubernetes dashboard.
 
-* **1 天落地 Kubernetes**
+一款帮助您快速落地 **Kubernetes + 微服务** 的 K8S 管理控制台工具。
 
-  快速安装、图形化界面、场景化设计
+<div style="border-top: 1px solid #eaecef;
+    padding: 1.2rem 0;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: stretch;
+    justify-content: space-between;">
+<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
+  <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
+  1 天落地 Kubernetes
+  </h2>
+  <li style="color: #4e6e8e;">
+  快速安装
+  </li>
+  <li style="color: #4e6e8e;">
+  图形化界面
+  </li>
+  <li style="color: #4e6e8e;">
+  场景化设计
+  </li>
+</div>
 
-* **微服务架构**
+<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
+  <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
+  微服务架构
+  </h2>
+  <li style="color: #4e6e8e;">
+  经典微服务参考架构
+  </li>
+  <li style="color: #4e6e8e;">
+  Spring Cloud 实战案例
+  </li>
+</div>
 
-  经典微服务参考架构：Spring Cloud 实战案例
+<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
+  <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
+  多层次监控
+  </h2>
+  <li style="color: #4e6e8e;">
+  资源层监控
+  </li>
+  <li style="color: #4e6e8e;">
+  中间件层监控
+  </li>
+  <li style="color: #4e6e8e;">
+  链路层监控
+  </li>
+</div>
 
-* **多层次监控**
+<div style="flex-grow: 1; flex-basis: 25%; min-width: 180px;">
+  <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
+  适用范围
+  </h2>
+  <li style="color: #4e6e8e;">
+  物理机/虚拟机
+  </li>
+  <li style="color: #4e6e8e;">
+  私有云
+  </li>
+  <li style="color: #4e6e8e;">
+  阿里云、腾讯云、亚马逊云 ...
+  </li>
+</div>
 
-  资源层监控、中间件层监控、链路层监控
-
-* **适用范围**
-
-  物理机、私有云、阿里云、亚马逊云、腾讯云...
-
-
+</div>
 
 ## 在线体验
 
@@ -44,15 +95,19 @@ A cool Kubernetes dashboard.
 
 最好的学习方法是在 **实践中学习**，碰到问题时去寻求答案，**解决问题** 之后 **总结反思**。这种学习方法趣味性强，得来的知识也最为牢靠，所学知识通常也是工作中实用性最高的。
 
-<span style="color: red; font-weight: 500;">读 100 页 K8S 文档，不如把 K8S 安装一遍</span>
+<span style="color: red; font-weight: 500;">读 100 页 Kubernetes 文档，不如把 Kubernetes 安装一遍</span>
 
 Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 * **Kubernetes 入门**
   * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （1小时，初学者也许需要更多）
+    * 参照经过众多网友验证，不断优化的安装文档，迅速完成 Kubernetes 安装，拥有属于自己的 Kubernetes 集群。
   * [安装 Kuboard](/install/install-dashboard.html) （5分钟）
-  * 使用 Kuboard [创建 busybox](/guide/example/busybox.html) （10分钟）
+    * 使用 Kuboard，无需编写复杂冗长的 YAML 文件，就可以轻松管理 Kubernetes 集群。
+  * [创建 busybox](/guide/example/busybox.html) （10分钟）
+    * 快速在 Kubernetes 集群中安装一个部署，并与当中的容器组交互。
   * [导入 example 微服务应用](/guide/example/import.html) （15分钟）
+    * 导入一个完整的 example 微服务应用，体验 Spring Cloud 在 Kubernetes 上的部署过程。
 
 * **Kubernetes 进阶**
   * [十分钟带你理解Kubernetes核心概念](k8s-core-concepts.html)

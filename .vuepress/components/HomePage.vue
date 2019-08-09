@@ -7,10 +7,10 @@
         :alt="data.heroAlt || 'hero'"
       >
 
-      <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
+      <h1 id="main-title">Kuboard</h1>
 
       <p class="description">
-        A cool Kubernetes Dashboard
+        Kubernetes 安装文档/教程/实践/管理界面
       </p>
 
       <span
@@ -64,7 +64,7 @@ import NavLink from '@theme/components/NavLink.vue'
 export default {
   components: { NavLink },
   mounted () {
-    window.document.title = 'Kuboard 官网'
+    window.document.title = 'Kuboard - Kubernetes 安装文档/教程/实践/管理界面'
   },
   computed: {
     data () {

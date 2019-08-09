@@ -1,10 +1,10 @@
 let dateFns = require('date-fns')
 
 module.exports = {
-  title: 'Kuboard',
+  title: 'Kuboard - Kubernetes 安装文档/教程/实践/管理界面',
   description: '一个非常 cool 的 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您1天落地 Kubernetes；同时提供 Spring Cloud 微服务部署教程，DevOps教程',
   head: [
-    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Linux, K8S, Spring Cloud, micro service, DevOps, Rancher, 微服务, 持续构建集成, 容器'}]
+    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Linux, K8S, Spring Cloud, micro service, DevOps, Rancher, 微服务, 持续构建集成, 容器, 教程, 实践, 安装文档'}]
   ],
   markdown: {
     toc: { includeLevel: [2, 3] }
@@ -103,6 +103,16 @@ module.exports = {
           children: [
             'support',
             'change-log'
+          ]
+        }
+      ],
+
+      '/articles/': [
+        {
+          title: '文章',
+          collapsable: false,
+          children: [
+            '201908/kuboard-view-of-k8s'
           ]
         }
       ],
