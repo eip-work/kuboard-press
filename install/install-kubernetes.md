@@ -8,7 +8,8 @@
 
 kubernetes 安装有多种选择，本文档描述的集群安装具备如下特点：
 
-* 使用 kubernetes 1.15.0
+* Kubernetes 1.15.1
+* Docker 18.09.7
 * 三个 master 组成主节点集群，通过内网 loader balancer 实现负载均衡
 * 多个 worker 组成工作节点集群，通过外网 loader balancer 实现负载均衡
 * 使用 calico 作为网络插件
@@ -18,15 +19,7 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
 
 下图为 kubernetes 安装的拓扑图
 
-
-
-![image-20190713075717350](./install-kubernetes.assets/image-20190713075717350.png)
-
-* 标准机用于制作 centos 镜像，该镜像预先安装了 docker / kubelet /  kubectl / kubeadm， 并预先下载了 kubernetes 所需的 docker image
-* 跳板机用于通过 ssh 端口访问标准机、master 节点、worker 节点的 shell，如果您所使用的环境中，可以直接访问各节点的 shell，也可以无需跳板机
-* NAT y.y.y.y将 apiserver 的6443端口映射到外网，如果您始终只在 master 节点上执行 kubectl 命令，则无需做此映射
-* Load Balancer z.z.z.z 是 kubernetes 的 Ingress 外网映射，通常是必须的 
-
+![image-20190808230847411](./install-kubernetes.assets/image-20190808230847411.png)
 
 
 # 安装步骤
@@ -42,7 +35,6 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
 标准机镜像中预装了如下内容：
 
   - docker
-  - gitlab-runner
   - kubernetes images
 
 本文档描述的安装过程已基于 centos 7.6 验证

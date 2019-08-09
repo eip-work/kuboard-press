@@ -34,7 +34,7 @@ EOF
 **安装kubectl**
 
 ```bash
-yum install -y kubectl-1.15.0
+yum install -y kubectl-1.15.1
 ```
 
 **验证安装**
@@ -132,3 +132,7 @@ kubectl get pods -n kube-system
 :::
 
 ::::
+
+## kubectl 参考文档推荐
+
+[https://kubernetes.io/docs/reference/kubectl/overview/](https://kubernetes.io/docs/reference/kubectl/overview/)
