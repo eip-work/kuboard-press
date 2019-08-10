@@ -47,7 +47,21 @@
       </div>
     </div>
 
-    <Content class="theme-default-content custom"/>
+    <p>
+<a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+  Kuboard 在线体验
+</a>
+</p>
+
+<p>
+为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
+</p>
+
+<div style="width: 100%; margin-bottom: 20px;">
+  <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+    <img src="./1564841972085.gif" style="border: 1px solid #d7dae2; width: 100%;"></img>
+  </a>
+</div>
 
     <div
       class="footer"
