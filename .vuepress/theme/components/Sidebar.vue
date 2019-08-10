@@ -6,11 +6,11 @@
     <div style="text-align: center; margin-top: 5vh;">
       <p>
         <strong>
-          <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">在线体验</a>
+          <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">在线体验</a>
         </strong>
       </p>
       <div>
-        <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+        <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
           <img :src="demo_img" style="width: 226px; height: 127px; border: 1px solid #d7dae2;"></img>
         </a>
       </div>

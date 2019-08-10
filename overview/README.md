@@ -2,7 +2,7 @@
 
 A cool Kubernetes dashboard.
 
-一款帮助您快速落地 **Kubernetes + 微服务** 的 K8S 管理控制台工具。
+基于 Kubernetes 的微服务管理平台
 
 <div style="border-top: 1px solid #eaecef;
     padding: 1.2rem 0;
@@ -74,7 +74,7 @@ A cool Kubernetes dashboard.
 ## 在线体验
 
 <p>
-<a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+<a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
   Kuboard 在线体验
 </a>
 </p>
@@ -83,7 +83,7 @@ A cool Kubernetes dashboard.
 为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
 </p>
 
-<a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+<a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
   <img src="./README.assets/1564841972085.gif" style="border: 1px solid #d7dae2;"></img>
 </a>
 

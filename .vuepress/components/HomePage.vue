@@ -48,7 +48,7 @@
     </div>
 
     <p>
-<a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+<a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
   Kuboard 在线体验
 </a>
 </p>
@@ -58,16 +58,13 @@
 </p>
 
 <div style="width: 100%; margin-bottom: 20px;">
-  <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+  <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
     <img src="./1564841972085.gif" style="border: 1px solid #d7dae2; width: 100%;"></img>
   </a>
 </div>
 
-    <div
-      class="footer"
-      v-if="data.footer"
-    >
-      {{ data.footer }}
+    <div class="footer">
+      Copyright © 2019-present <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2
     </div>
   </main>
 </template>
@@ -87,7 +84,7 @@ export default {
 
     actionLink () {
       return {
-        link: `http://demo.kuboard.cn/#/login?isReadOnly=true&token=${this.$site.themeConfig.kuboardToken}`,
+        link: `http://demo.kuboard.cn/#/dashboard?k8sToken=${this.$site.themeConfig.kuboardToken}`,
         text: this.data.actionText
       }
     },

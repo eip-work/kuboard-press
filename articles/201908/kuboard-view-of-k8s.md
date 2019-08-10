@@ -169,7 +169,7 @@ Kuboard 认为，应该以微服务视角的视角快速查看到该无服务在
 
 ![image-20190809220543742](./kuboard-view-of-k8s.assets/image-20190809220543742.png)
 
-点击图中 ***Nginx 监控***、 ***容器组监控***、 ***所在节点监控*** 等按钮，可以直接打开该容器组对应的监控界面。因为篇幅的限制，此处不再展开描述，请点击 <a target="_blank" :href="`http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`">
+点击图中 ***Nginx 监控***、 ***容器组监控***、 ***所在节点监控*** 等按钮，可以直接打开该容器组对应的监控界面。因为篇幅的限制，此处不再展开描述，请点击 <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
   Kuboard 在线体验
 </a> 查看具体的监控效果。
 
@@ -184,7 +184,7 @@ Kuboard 产生于 Spring Cloud 微服务落地的实践中，并在许多的实�
 * 工作负载视图
 * 监控视图
 
-目前 Kuboard 已经可以免费供大家使用，感性的朋友可访问 www.kuboard.cn 获得详细的信息。
+Kuboard 在实际项目中经过多次历练，功能不断完善，成长为一个基于 Kubernetes 的成熟的微服务管理工具。自 www.kuboard.cn 推出以来，得到了众多网友非常多的反馈，在大家的帮助下，修正了许多不同环境下的兼容性问题。2018-8-11 终于结束了 beta 阶段，发布 [v1.0.0 正式版本](/overview/change-log.html#v1-0-0)。该版本将是一个<font color="red">**长期支持版本**</font>，碰到问题，可以通过 Kuboard 社群得到支持，如需要获得商业支持请通过微信联系作者。
 
-
+![作者微信](../../overview/change-log.assets/wechat.jpeg)
 

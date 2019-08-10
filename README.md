@@ -3,7 +3,7 @@ home: true
 # heroImage: /overview.png
 layout: HomePage
 actionText: 在线体验
-# actionLink: `http://demo.kuboard.cn/#/login?isReadOnly=true&token=${$site.themeConfig.kuboardToken}`
+# actionLink: `http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`
 actionText2: 开始使用 →
 actionLink2: /overview/
 features:
@@ -13,6 +13,5 @@ features:
   details: 经典微服务参考架构：Spring Cloud 实战案例
 - title: 多层次监控
   details: 资源层监控、中间件层监控、链路层监控
-footer: Copyright © 2019-present Huanqing Shao | 京ICP备19008693号-2
 ---
 
