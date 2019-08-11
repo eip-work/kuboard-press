@@ -8,7 +8,9 @@
 
   ![image-20190806065321567](./install-k8s.assets/image-20190806065321567.png)
 
-* **持续不断地更新和完善**，[更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+* **持续不断地更新和完善**
+  * 始终有最新的 Kubernetes 稳定版安装文档
+  * 当前已更新了 <font color="red"> 25 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -18,22 +20,22 @@
 
 ## 配置要求
 
-对于 Kubernetes 初学者，推荐在阿里云采购如下配置：
+对于 Kubernetes 初学者，推荐在阿里云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
+[领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
 * 3台 **2核4G** 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
 * **Cent OS 7.6**
   
 
-[领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
-Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了如何在完成该 demo 环境的搭建。
-
-按照本文档完成安装后，对应的软件版本为：
+安装后的软件版本为：
 * Kubernetes v1.15.2
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
 > * [安装 Kubernetes 1.15.1 单Master节点](./history-k8s/install-k8s-1.15.1.html)
+
+安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
 ![image-20190805230643974](./install-k8s.assets/image-20190805230643974.png)
 
@@ -93,15 +95,12 @@ device-mapper-persistent-data \
 lvm2
 sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
-
 # 安装并启动 docker
-
 sudo yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
 sudo systemctl enable docker
 sudo systemctl start docker
 
 # 检查 docker 版本
-
 docker version
 
 ```
@@ -181,7 +180,6 @@ yum install -y kubelet-1.15.2 kubeadm-1.15.2 kubectl-1.15.2
 # 如果不修改，在添加 worker 节点时可能会碰到如下错误
 # [WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". 
 # Please follow the guide at https://kubernetes.io/docs/setup/cri/
-
 sed -i "s#^ExecStart=/usr/bin/dockerd.*#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd#g" /usr/lib/systemd/system/docker.service
 
 # 设置 docker 镜像，提高 docker 镜像下载速度和稳定性
@@ -445,7 +443,7 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 :::
 
 ::: warning
-如果您打算将您安装的 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
+如果您打算 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
 :::
 
 
