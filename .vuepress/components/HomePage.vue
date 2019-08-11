@@ -71,11 +71,13 @@
 
 <script>
 import NavLink from '@theme/components/NavLink.vue'
+import installBaiduTongji from '../baidutongji.js'
 
 export default {
   components: { NavLink },
   mounted () {
     window.document.title = 'Kuboard - Kubernetes 安装文档/教程/实践/管理界面'
+    installBaiduTongji()
   },
   computed: {
     data () {
