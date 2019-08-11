@@ -6,15 +6,15 @@
 
 * **众多网友验证，并在线提出修改意见**
 
-  ![image-20190806065321567](./install-k8s.assets/image-20190806065321567.png)
+  ![image-20190806065321567](./install-k8s-1.15.1.assets/image-20190806065321567.png)
 
 * **持续不断地更新和完善**，[更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
-  ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
+  ![image-20190806070341727](./install-k8s-1.15.1.assets/image-20190806070341727.png)
 
 * **在线答疑** QQ 群
   
-  ![kuboard_qq.png](../overview/README.assets/kuboard_qq.png)
+  ![kuboard_qq.png](../../overview/README.assets/kuboard_qq.png)
 
 ## 配置要求
 
@@ -30,10 +30,10 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 
 完成安装后，对应的软件版本为：
 
-* Kubernetes v1.15.2
+* Kubernetes v1.15.1
 * Docker 18.09.7
 
-![image-20190805230643974](./install-k8s.assets/image-20190805230643974.png)
+![image-20190805230643974](./install-k8s-1.15.1.assets/image-20190805230643974.png)
 
 ::: tip
 **关于二进制安装**
@@ -44,9 +44,6 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 鉴于目前已经有比较方便的办法获得 kubernetes 镜像，我将回避 ***二进制*** 安装是否更好的争论。本文采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。
 
 :::
-
-Kubernetes 历史版本安装：
-* [Kubernetes 1.15.1](./history-k8s/install-k8s-1.15.1.html)
 
 
 ## 制作标准机镜像
@@ -70,12 +67,10 @@ Kubernetes 历史版本安装：
 
 ### 安装docker
 
-将下列代码行（包括 #及其后的备注）一次性拷贝到命令行终端执行
+**卸载旧版本**
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-
-# 卸载旧版本
 sudo yum remove -y docker \
 docker-client \
 docker-client-latest \
@@ -86,25 +81,34 @@ docker-logrotate \
 docker-selinux \
 docker-engine-selinux \
 docker-engine
+```
 
-# 设置 yum repository
+**设置 yum repository**
+
+``` sh
+# 在 master 节点和 worker 节点都要执行
 sudo yum install -y yum-utils \
 device-mapper-persistent-data \
 lvm2
 sudo yum-config-manager \
 --add-repo \
 https://download.docker.com/linux/centos/docker-ce.repo
+```
 
-# 安装并启动 docker
+**安装并启动 docker**
 
+``` sh
+# 在 master 节点和 worker 节点都要执行
 sudo yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
 sudo systemctl enable docker
 sudo systemctl start docker
+```
 
-# 检查 docker 版本
+**检查 docker 版本**
 
+``` sh
+# 在 master 节点和 worker 节点都要执行
 docker version
-
 ```
 
 
@@ -180,7 +184,7 @@ net.bridge.bridge-nf-call-iptables = 1
 
 如下图所示
 
-![image-20190715085036593](./install-k8s.assets/image-20190715085036593.png ':size=600x445')
+![image-20190715085036593](./install-k8s-1.15.1.assets/image-20190715085036593.png ':size=600x445')
 
 执行命令以应用
 
@@ -193,7 +197,7 @@ sysctl -p
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-yum install -y kubelet-1.15.2 kubeadm-1.15.2 kubectl-1.15.2
+yum install -y kubelet-1.15.1 kubeadm-1.15.1 kubectl-1.15.1
 ```
 
 
@@ -219,7 +223,7 @@ vim /usr/lib/systemd/system/docker.service
 
 如下图所示
 
-![屏幕快照 2019-07-15 09.01.21](./install-k8s.assets/image2019-07-15_09.01.21.png ':size=1000x326')
+![屏幕快照 2019-07-15 09.01.21](./install-k8s-1.15.1.assets/image2019-07-15_09.01.21.png ':size=1000x326')
 
 
 **设置 docker 镜像**
@@ -273,7 +277,7 @@ echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 cat <<EOF > ./kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1beta1
 kind: ClusterConfiguration
-kubernetesVersion: v1.15.2
+kubernetesVersion: v1.15.1
 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
 controlPlaneEndpoint: "apiserver.demo:6443"
 networking:
@@ -295,12 +299,12 @@ kubeadm init --config=kubeadm-config.yaml --upload-certs
 ```
 
 ::: tip
-根据您服务器网速的情况，您需要等候 3 - 10 分钟
+根据您服务器网速的情况，您需要等候 1 - 10 分钟
 :::
 
 执行结果如下图所示：
 
-![image-20190715101542756](./install-k8s.assets/image-20190715101542756.png ':size=800x388')
+![image-20190715101542756](./install-k8s-1.15.1.assets/image-20190715101542756.png ':size=800x388')
 
 
 
@@ -392,7 +396,7 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 kubectl get nodes
 ```
 
-![image-20190715193838012](./install-k8s.assets/image-20190715193838012.png)
+![image-20190715193838012](./install-k8s-1.15.1.assets/image-20190715193838012.png)
 
 
 

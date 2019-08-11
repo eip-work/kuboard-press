@@ -154,7 +154,7 @@ net.bridge.bridge-nf-call-iptables = 1
 
 如下图所示
 
-![image-20190715085036593](./install-common-vm.assets/image-20190715085036593.png ':size=600x445')
+![image-20190715085036593](./install-kubernetes.assets/image-20190715085036593.png ':size=600x445')
 
 
 
@@ -176,7 +176,7 @@ yum install -y kubelet-1.15.0 kubeadm-1.15.0 kubectl-1.15.0
 
 如下图所示
 
-![屏幕快照 2019-07-15 09.01.21](./install-common-vm.assets/image2019-07-15_09.01.21.png ':size=1000x326')
+![屏幕快照 2019-07-15 09.01.21](./install-kubernetes.assets/image2019-07-15_09.01.21.png ':size=1000x326')
 
 
 
