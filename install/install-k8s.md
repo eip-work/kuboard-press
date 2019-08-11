@@ -20,8 +20,8 @@
 
 对于 Kubernetes 初学者，推荐在阿里云采购如下配置：
 
-* 3台 2核4G 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
-* Cent OS 7.6
+* 3台 **2核4G** 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
+* **Cent OS 7.6**
   
 
 [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
@@ -29,12 +29,11 @@
 Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了如何在完成该 demo 环境的搭建。
 
 按照本文档完成安装后，对应的软件版本为：
-
 * Kubernetes v1.15.2
 * Docker 18.09.7
 
-如果要安装 Kubernetes 历史版本，请参考：
-* [安装 Kubernetes 1.15.1 单Master节点](./history-k8s/install-k8s-1.15.1.html)
+> 如果要安装 Kubernetes 历史版本，请参考：
+> * [安装 Kubernetes 1.15.1 单Master节点](./history-k8s/install-k8s-1.15.1.html)
 
 ![image-20190805230643974](./install-k8s.assets/image-20190805230643974.png)
 
@@ -61,7 +60,7 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 
   - docker
   - nfs-utils
-  - kubernetes images
+  - kubectl / kubeadm / kubelet
 
 ::: tip
 * 您也可以不制作标准机镜像，而是在三台机器上都执行 ***制作标准机镜像*** 中的所有操作步骤
@@ -71,7 +70,7 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 
 ### 安装docker
 
-将下列代码行（包括 #及其后的备注）一次性拷贝到命令行终端执行
+将以下代码框中所有内容（包括 #及其后的备注）一次性拷贝到 centos 命令行终端执行
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
@@ -92,9 +91,8 @@ docker-engine
 sudo yum install -y yum-utils \
 device-mapper-persistent-data \
 lvm2
-sudo yum-config-manager \
---add-repo \
-https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
 
 # 安装并启动 docker
 
@@ -131,12 +129,38 @@ sudo yum install -y nfs-utils
 
 
 
-### K8S基本配置
+### 安装 kubectl / kubeadm / kubelet
 
-**配置K8S的yum源**
-
+将以下代码框中所有内容（包括 #及其后的备注）一次性拷贝到 centos 命令行终端执行
 ``` sh
 # 在 master 节点和 worker 节点都要执行
+
+# 关闭 防火墙
+systemctl stop firewalld
+systemctl disable firewalld
+
+# 关闭 SeLinux
+setenforce 0
+sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+
+# 关闭 swap
+swapoff -a
+yes | cp /etc/fstab /etc/fstab_bak
+cat /etc/fstab_bak |grep -v swap > /etc/fstab
+
+# 修改 /etc/sysctl.conf
+# 如果有配置，则修改
+sed -i "s#^net.ipv4.ip_forward.*#net.ipv4.ip_forward=1#g"  /etc/sysctl.conf
+sed -i "s#^net.bridge.bridge-nf-call-ip6tables.*#net.bridge.bridge-nf-call-ip6tables=1#g"  /etc/sysctl.conf
+sed -i "s#^net.bridge.bridge-nf-call-iptables.*#net.bridge.bridge-nf-call-iptables=1#g"  /etc/sysctl.conf
+# 可能没有，追加
+echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+echo "net.bridge.bridge-nf-call-ip6tables = 1" >> /etc/sysctl.conf
+echo "net.bridge.bridge-nf-call-iptables = 1" >> /etc/sysctl.conf
+# 执行命令以应用
+sysctl -p
+
+# 配置K8S的yum源
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -147,100 +171,28 @@ repo_gpgcheck=0
 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
        http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
-```
 
-**关闭 防火墙、SeLinux、swap**
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
-systemctl stop firewalld
-systemctl disable firewalld
-
-setenforce 0
-sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
-
-swapoff -a
-yes | cp /etc/fstab /etc/fstab_bak
-cat /etc/fstab_bak |grep -v swap > /etc/fstab
-```
-
-**修改 /etc/sysctl.conf**
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
-vim /etc/sysctl.conf
-```
-
-向其中添加
-
-```
-net.ipv4.ip_forward = 1
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-```
-
-如下图所示
-
-![image-20190715085036593](./install-k8s.assets/image-20190715085036593.png ':size=600x445')
-
-执行命令以应用
-
-```sh
-# 在 master 节点和 worker 节点都要执行
-sysctl -p
-```
-
-**安装kubelet、kubeadm、kubectl**
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
+# 安装kubelet、kubeadm、kubectl
 yum install -y kubelet-1.15.2 kubeadm-1.15.2 kubectl-1.15.2
-```
 
+# 修改docker Cgroup Driver为systemd
+# # 将/usr/lib/systemd/system/docker.service文件中的这一行 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+# # 修改为 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd
+# 如果不修改，在添加 worker 节点时可能会碰到如下错误
+# [WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". 
+# Please follow the guide at https://kubernetes.io/docs/setup/cri/
 
+sed -i "s#^ExecStart=/usr/bin/dockerd.*#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd#g" /usr/lib/systemd/system/docker.service
 
-**修改docker Cgroup Driver为systemd**
-
-> 如果不修改，在添加 worker 节点时可能会碰到如下错误
-> ```
-> [WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". 
-> Please follow the guide at https://kubernetes.io/docs/setup/cri/
-> ```
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
-vim /usr/lib/systemd/system/docker.service
-```
-
-向其中添加
-
-```
---exec-opt native.cgroupdriver=systemd
-```
-
-如下图所示
-
-![屏幕快照 2019-07-15 09.01.21](./install-k8s.assets/image2019-07-15_09.01.21.png ':size=1000x326')
-
-
-**设置 docker 镜像**
-
-执行以下命令使用 docker 国内镜像，提高 docker 镜像下载速度和稳定性
-
-> 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
+# 设置 docker 镜像，提高 docker 镜像下载速度和稳定性
+# 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
-```
 
-**重启 docker，并启动 kubelet**
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
+# 重启 docker，并启动 kubelet
 systemctl daemon-reload
 systemctl restart docker
 systemctl enable kubelet && systemctl start kubelet
+
 ```
 
 
@@ -287,7 +239,7 @@ EOF
 ::: tip
 podSubnet 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠
 
-该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，只要您的网络环境里没有使用 10.100.0.1/20 这个网段，该字段无需修改
+该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
 :::
 
 
@@ -302,9 +254,36 @@ kubeadm init --config=kubeadm-config.yaml --upload-certs
 根据您服务器网速的情况，您需要等候 3 - 10 分钟
 :::
 
-执行结果如下图所示：
+执行结果如下所示：
 
-![image-20190715101542756](./install-k8s.assets/image-20190715101542756.png ':size=800x388')
+```
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of the control-plane node running the following command on each as root:
+
+  kubeadm join apiserver.demo:6443 --token scr6kj.zs3gytymi1o7m5w9 \
+    --discovery-token-ca-cert-hash sha256:5251852954b73f10afd12a9f0c6f0b379a46c6a4524d2cbcd528fe869bf88330 \
+    --control-plane --certificate-key b2dda6524c22db801c18e03b613a6ba8480f868d8187b5b6d11f57d112268368
+
+Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
+As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use 
+"kubeadm init phase upload-certs --upload-certs" to reload certs afterward.
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join apiserver.demo:6443 --token scr6kj.zs3gytymi1o7m5w9 \
+    --discovery-token-ca-cert-hash sha256:5251852954b73f10afd12a9f0c6f0b379a46c6a4524d2cbcd528fe869bf88330
+```
 
 
 
@@ -336,7 +315,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/
 
 ``` sh
 # 只在 master 节点执行
-watch kubectl get pod -n kube-system
+watch kubectl get pod -n kube-system -o wide
 ```
 
 
@@ -395,8 +374,14 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 # 只在 master 节点执行
 kubectl get nodes
 ```
-
-![image-20190715193838012](./install-k8s.assets/image-20190715193838012.png)
+输出结果如下所示：
+```sh
+[root@demo-master-a-1 ~]# kubectl get nodes
+NAME     STATUS   ROLES    AGE     VERSION
+demo-master-a-1   Ready    master   5m3s    v1.15.2
+demo-worker-a-1   Ready    <none>   2m26s   v1.15.2
+demo-worker-a-2   Ready    <none>   3m56s   v1.15.2
+```
 
 
 
