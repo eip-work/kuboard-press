@@ -252,7 +252,8 @@ systemctl enable kubelet && systemctl start kubelet
 ## 初始化 master 节点
 
 ::: tip
-以 root 身份在 demo-master-a-1 机器上执行
+* 以 root 身份在 demo-master-a-1 机器上执行
+* 初始化 master 节点时，如果因为中间某些步骤的配置出错，想要重新初始化 master 节点，请先执行 `kubeadm reset` 操作
 :::
 
 **配置 apiserver.demo 的域名**
@@ -284,7 +285,9 @@ EOF
 ```
 
 ::: tip
-podSubnet 所使用的网段不能与节点所在的网段重叠
+podSubnet 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠
+
+该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，只要您的网络环境里没有使用 10.100.0.1/20 这个网段，该字段无需修改
 :::
 
 
