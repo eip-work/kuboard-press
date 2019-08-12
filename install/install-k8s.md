@@ -443,7 +443,7 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 :::
 
 ::: warning
-如果您打算 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
+如果您打算将 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
 :::
 
 
@@ -453,3 +453,12 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
 [安装 Kuboard](/install/install-dashboard.html)
+
+安装 Kuboard 之前先
+  <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+    在线体验 Kuboard
+  </a>
+
+::: tip
+* Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/overview/)
+:::

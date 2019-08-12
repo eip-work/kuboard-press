@@ -151,9 +151,8 @@ http://任意一个Worker节点的IP地址:32567/
 输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
 
 ::: tip
-您也可以修改 Kuboard.yaml 文件，使用自己定义的 NodePort 端口号
-
-
+* 如果您使用的是阿里云、腾讯云等，请在其安全组设置里开放 worker 节点 32567 端口的入站访问，
+* 您也可以修改 Kuboard.yaml 文件，使用自己定义的 NodePort 端口号
 :::
 
 ::: tab 通过port-forward访问 lazy
