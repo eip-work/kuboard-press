@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 25 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 28 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -25,14 +25,24 @@
 
 * 3台 **2核4G** 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
 * **Cent OS 7.6**
-  
 
+**操作系统兼容性**
 
-安装后的软件版本为：
+| CentOS 版本 | 本文档是否兼容                          | 备注                                |
+| ----------- | --------------------------------------- | ----------------------------------- |
+| 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
+| 7.5         | <span style="font-size: 24px;">😄</span> | 已验证                              |
+| 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
+| 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
+| 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
+
+**安装后的软件版本为**
+
 * Kubernetes v1.15.2
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
+>
 > * [安装 Kubernetes 1.15.1 单Master节点](./history-k8s/install-k8s-1.15.1.html)
 
 安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
