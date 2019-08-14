@@ -1,13 +1,17 @@
-## v1.0.0-beta.14
+## v1.0.1-beta.1
 
 **发布日期**
 
-2019-08-03
+2019-08-15
 
 **优化**
 
-* 创建 namespace/configmap/secrets/pvc/deployment/Service/Ingress 等 K8S 对象时，对表单中的名字等字段做 trim() 操作
-* 修改日志、终端连接错误时的提示信息
+* 工作负载编辑器 - 数据卷，增加 hostPath 类型
+* 工作负载编辑器 - 服务分层，点击时跳转到微服务参考架构页面
+* 工作负载编辑器 - 资源限制，增加格式提示
+* 工作负载编辑器 - 容器，可以自定义抓取策略 imagePullPolicy
+* NFS 类型的 StorageClass 增加 mountOptions 选项
 
 **BUG 修复**
 
+* 工作负载查看页面 - 接收到容器组变化事件后，容器组详情未触发更新

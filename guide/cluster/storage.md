@@ -74,20 +74,25 @@
 
 ![image-20190717115829821](./storage-create.assets/image-20190717115829821.png)
 
-* 获取 NFS 连接参数：
+### 获取 NFS 连接参数
 
-在上图界面中，将 ***V4 Mount*** 的指令复制下来后，如下所示：
+::: tip
+您可以使用自己的 NFS 服务，或者其他云供应商的 NFS 服务，具体 NFS 连接参数请参考该 NFS 服务的产品手册。
+:::
+
+以阿里云为例，在上图界面中，将 ***V4 Mount*** 的指令复制下来后，如下所示：
 
 <div style="font-family: Monaco,Menlo,Consolas,Bitstream Vera Sans Mono,monospace; padding: 20px; background-color: rgb(244, 244, 245);border-radius: 4px;">
-sudo mount -t nfs -o vers=4,minorversion=0,noresvport <span style="color: red; background-color: rgb(254, 240, 240);">189344a39c-lex38.cn-beijing.nas.aliyuncs.com</span>:<span style="color: blue; background-color: rgb(217, 236, 255);">/</span> /mnt
+  sudo mount -t nfs -o <span style="color: blue; background-color: rgb(217, 236, 255);">vers=4,minorversion=0,noresvport</span> <span style="color: red; background-color: rgb(254, 240, 240);">189344a39c-lex38.cn-beijing.nas.aliyuncs.com</span>:<span style="color: blue; background-color: rgb(217, 236, 255);">/</span> /mnt
 </div>
 
 其中红色字体的文字为 NFS Server 的地址，蓝色字体的文字为 NFS Path。如下表所示：
 
-| 字段名称   | 字段取值                                     | 说明                           |
-| ---------- | -------------------------------------------- | ------------------------------ |
-| NFS Server | 189344a39c-lex38.cn-beijing.nas.aliyuncs.com |                                |
-| NFS Path   | /                                            | NFS Server和NFS Path以冒号分隔 |
+| 字段名称     | 字段取值                                     | 说明                           |
+| ------------ | -------------------------------------------- | ------------------------------ |
+| NFS Server   | 189344a39c-lex38.cn-beijing.nas.aliyuncs.com |                                |
+| NFS Path     | /                                            | NFS Server和NFS Path以冒号分隔 |
+| mountOptions | vers=4,minorversion=0,noresvport             | 以逗号分隔的数组               |
 
 
 ### 在 Kuboard 创建存储类
@@ -112,9 +117,7 @@ sudo mount -t nfs -o vers=4,minorversion=0,noresvport <span style="color: red; b
 | 回收策略       | 回收后删除      | 当该存储类创建的 存储卷（Persistent Volume）被删除后，之前该存储卷中的文件可以被：回收后删除 / 回收后保留 |
 | 存储卷绑定模式 | 首次使用时绑定  | 即刻绑定：当 存储卷被创建时，就在 NFS 中为其分配空间，并绑定；<br />首次使用时绑定： 在存储卷被第一次使用到时，才绑定 |
 
-  
-
-![image-20190723112143032](./storage-create.assets/image-20190723112143032.png)
+![image-20190814111245506](./storage-create.assets/image-20190814111245506.png)
 
 
 
