@@ -14,11 +14,11 @@
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
-| v1.15           | v1.0.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.14           | v1.0.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.13           | v1.0.0 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
-| v1.12           | v1.0.0 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
-| v1.11           | v1.0.0 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
+| v1.15           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.14           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.13           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                       |
+| v1.12           | v1.0.x | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
+| v1.11           | v1.0.x | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 
 
 
