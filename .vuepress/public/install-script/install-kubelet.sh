@@ -2,6 +2,11 @@
 
 # 在 master 节点和 worker 节点都要执行
 
+# 安装 docker
+# 参考文档如下
+# https://docs.docker.com/install/linux/docker-ce/centos/ 
+# https://docs.docker.com/install/linux/linux-postinstall/
+
 # 卸载旧版本
 yum remove -y docker \
 docker-client \
@@ -26,6 +31,7 @@ systemctl enable docker
 systemctl start docker
 
 # 安装 nfs-utils
+# 必须先安装 nfs-utils 才能挂载 nfs 网络存储
 yum install -y nfs-utils
 
 # 关闭 防火墙
@@ -64,6 +70,9 @@ repo_gpgcheck=0
 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
        http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
+
+# 卸载旧版本
+yum remove -y kubelet kubeadm kubectl
 
 # 安装kubelet、kubeadm、kubectl
 yum install -y kubelet-1.15.2 kubeadm-1.15.2 kubectl-1.15.2

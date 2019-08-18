@@ -12,3 +12,5 @@
 
 
 **BUG 修复**
+
+* 修复自定义 Kubernetes DNS Domain 时，无法使用监控套件的问题

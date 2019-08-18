@@ -61,157 +61,34 @@
 
 
 
-## 制作标准机镜像
+## 安装 docker / kubelet
 
-通过使用标准机镜像，可以
+使用 root 身份在所有节点执行如下代码，以安装软件：
+- docker
+- nfs-utils
+- kubectl / kubeadm / kubelet
 
-- **避免重复执行对测试机安装必要软件的过程**
-- **以一种相对标准化的过程管理测试机的维护**
+:::: tabs type:border-card
 
-标准机镜像中预装了如下内容：
+::: tab 快速安装 lazy
 
-  - docker
-  - nfs-utils
-  - kubectl / kubeadm / kubelet
+``` sh
+curl -sSL https://kuboard.cn/install-script/install-kubelet.sh | sh
+```
 
-::: tip
-* 您也可以不制作标准机镜像，而是在三台机器上都执行 ***制作标准机镜像*** 中的所有操作步骤
 :::
 
-**标准机镜像的制作过程描述如下：**
+::: tab 手动安装 lazy
 
-### 安装docker
+手动执行以下代码，效果与快速安装完全相同。
 
-将以下代码框中所有内容（包括 #及其后的备注）一次性拷贝到 centos 命令行终端执行
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
-
-# 卸载旧版本
-yum remove -y docker \
-docker-client \
-docker-client-latest \
-docker-common \
-docker-latest \
-docker-latest-logrotate \
-docker-logrotate \
-docker-selinux \
-docker-engine-selinux \
-docker-engine
-
-# 设置 yum repository
-yum install -y yum-utils \
-device-mapper-persistent-data \
-lvm2
-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-
-# 安装并启动 docker
-yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
-systemctl enable docker
-systemctl start docker
-
-# 检查 docker 版本
-docker version
-
-```
-
-
-
-> **参考文档**
-> 
-> https://docs.docker.com/install/linux/docker-ce/centos/
-> 
-> https://docs.docker.com/install/linux/linux-postinstall/
-
-
-
-### 安装 nfs-utils
-
-**执行安装命令**
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
-yum install -y nfs-utils
-```
-
-必须先安装 nfs-utils 才能挂载 nfs 网络存储
-
-
-
-### 安装 kubectl / kubeadm / kubelet
-
-将以下代码框中所有内容（包括 #及其后的备注）一次性拷贝到 centos 命令行终端执行
-``` sh
-# 在 master 节点和 worker 节点都要执行
-
-# 关闭 防火墙
-systemctl stop firewalld
-systemctl disable firewalld
-
-# 关闭 SeLinux
-setenforce 0
-sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
-
-# 关闭 swap
-swapoff -a
-yes | cp /etc/fstab /etc/fstab_bak
-cat /etc/fstab_bak |grep -v swap > /etc/fstab
-
-# 修改 /etc/sysctl.conf
-# 如果有配置，则修改
-sed -i "s#^net.ipv4.ip_forward.*#net.ipv4.ip_forward=1#g"  /etc/sysctl.conf
-sed -i "s#^net.bridge.bridge-nf-call-ip6tables.*#net.bridge.bridge-nf-call-ip6tables=1#g"  /etc/sysctl.conf
-sed -i "s#^net.bridge.bridge-nf-call-iptables.*#net.bridge.bridge-nf-call-iptables=1#g"  /etc/sysctl.conf
-# 可能没有，追加
-echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
-echo "net.bridge.bridge-nf-call-ip6tables = 1" >> /etc/sysctl.conf
-echo "net.bridge.bridge-nf-call-iptables = 1" >> /etc/sysctl.conf
-# 执行命令以应用
-sysctl -p
-
-# 配置K8S的yum源
-cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=0
-repo_gpgcheck=0
-gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
-       http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
-EOF
-
-# 安装kubelet、kubeadm、kubectl
-yum install -y kubelet-1.15.2 kubeadm-1.15.2 kubectl-1.15.2
-
-# 修改docker Cgroup Driver为systemd
-# # 将/usr/lib/systemd/system/docker.service文件中的这一行 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-# # 修改为 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd
-# 如果不修改，在添加 worker 节点时可能会碰到如下错误
-# [WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". 
-# Please follow the guide at https://kubernetes.io/docs/setup/cri/
-sed -i "s#^ExecStart=/usr/bin/dockerd.*#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd#g" /usr/lib/systemd/system/docker.service
-
-# 设置 docker 镜像，提高 docker 镜像下载速度和稳定性
-# 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
-curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
-
-# 重启 docker，并启动 kubelet
-systemctl daemon-reload
-systemctl restart docker
-systemctl enable kubelet && systemctl start kubelet
-
-```
+<<< @/.vuepress/public/install-script/install-kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
-
-**制作镜像**
-
-请参考阿里云基于ECS [制作虚拟机镜像](https://help.aliyun.com/document_detail/35109.html?spm=5176.2020520101.0.0.75fc4df5mtdFmV) 的文档
-
+::::
 
 ## 初始化 master 节点
 
