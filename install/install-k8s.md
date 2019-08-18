@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 28 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 29 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -88,7 +88,7 @@
 # 在 master 节点和 worker 节点都要执行
 
 # 卸载旧版本
-sudo yum remove -y docker \
+yum remove -y docker \
 docker-client \
 docker-client-latest \
 docker-common \
@@ -100,15 +100,15 @@ docker-engine-selinux \
 docker-engine
 
 # 设置 yum repository
-sudo yum install -y yum-utils \
+yum install -y yum-utils \
 device-mapper-persistent-data \
 lvm2
-sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 # 安装并启动 docker
-sudo yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
-sudo systemctl enable docker
-sudo systemctl start docker
+yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
+systemctl enable docker
+systemctl start docker
 
 # 检查 docker 版本
 docker version
@@ -131,7 +131,7 @@ docker version
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-sudo yum install -y nfs-utils
+yum install -y nfs-utils
 ```
 
 必须先安装 nfs-utils 才能挂载 nfs 网络存储
@@ -203,6 +203,10 @@ systemctl enable kubelet && systemctl start kubelet
 
 ```
 
+::: warning
+如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
+:::
+
 
 **制作镜像**
 
@@ -224,11 +228,14 @@ echo "x.x.x.x  apiserver.demo" >> /etc/hosts
 ```
 
 ::: warning
-请替换其中的 x.x.x.x 为您的 demo-master-a-1 的实际 ip 地址。（如果 demo-master-a-1 同时有内网IP和外网IP，此处请使用内网IP）
+* 请替换其中的 x.x.x.x 为您的 demo-master-a-1 的实际 ip 地址。（如果 demo-master-a-1 同时有内网IP和外网IP，此处请使用内网IP）
+* apiserver.demo 是 apiserver 的 dnsName，您可以将其替换成您想要的 dnsName，同时，请将本文档后面出现的所有的 apiserver.demo 替换成您自己的 dnsName
 :::
 
 
 **创建 ./kubeadm-config.yaml**
+
+在当前目录创建 ./kubeadm-config.yaml 文件即可，此文件只临时使用一次。
 
 ``` sh
 # 只在 master 节点执行
