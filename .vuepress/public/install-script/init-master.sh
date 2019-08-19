@@ -23,12 +23,7 @@ mkdir /root/.kube/
 cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
 # 安装 calico 网络插件
+# 参考文档 https://docs.projectcalico.org/v3.8/getting-started/kubernetes/
 wget https://docs.projectcalico.org/v3.8/manifests/calico.yaml
 sed -i /s"192.168.0.0/16"/"${POD_SUBNET}"/g calico.yaml
 kubectl apply -f calico.yaml
-
-# 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
-watch kubectl get pod -n kube-system -o wide
-
-# 检查 master 初始化结果
-kubectl get nodes
