@@ -116,7 +116,7 @@ export MASTER_IP=x.x.x.x
 export APISERVER_NAME=apiserver.demo
 export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl https://kuboard.cn/install-script/init-master.sh | sh
+curl -sSL https://kuboard.cn/install-script/init-master.sh | sh
 ```
 
 :::

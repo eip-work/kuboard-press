@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # 只在 master 节点执行
 
 # 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2

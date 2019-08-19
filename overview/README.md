@@ -100,7 +100,7 @@ A cool Kubernetes dashboard.
 Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 * **Kubernetes 体验**
-  * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （1小时，初学者也许需要更多）
+  * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （30分钟，初学者也许需要更多）
     * 参照经过众多网友验证，不断优化的安装文档，迅速完成 Kubernetes 安装，拥有属于自己的 Kubernetes 集群。
   * [安装 Kuboard](/install/install-dashboard.html) （5分钟）
     * 使用 Kuboard，无需编写复杂冗长的 YAML 文件，就可以轻松管理 Kubernetes 集群。
@@ -110,14 +110,13 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * 导入一个完整的 example 微服务应用，体验 Spring Cloud 在 Kubernetes 上的部署过程。
 
 * **Kubernetes 入门**
-  * [十分钟带你理解Kubernetes核心概念](k8s-core-concepts.html)
-  * [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
-    * [Using kubectl to Create a Deployment](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/)
-    * [Viewing Pods and Nodes](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
-    * [Using a Service to Expose Your App](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/)
-    * [Running Multiple Instances of Your App](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-intro/)
-    * [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/)
-> Kubernetes 官方教程质量非常高，正在翻译
+  * [十分钟带你理解Kubernetes核心概念](./k8s-core-concepts.html)
+  * [学习Kubernetes基础知识](/micro-service/prepare/k8s-basics/kubernetes-basics.html) (10分钟)
+    * [部署第一个应用程序](/micro-service/prepare/k8s-basics/deploy-app.html) (5分钟)
+    * [查看 Pods / Nodes](/micro-service/prepare/k8s-basics/explore.html) (10分钟)
+    * [公布应用程序](/micro-service/prepare/k8s-basics/expose.html) (10分钟)
+    * [伸缩应用程序](/micro-service/prepare/k8s-basics/scale.html) (10分钟)
+    * [执行滚动更新](/micro-service/prepare/k8s-basics/update.html) (10分钟)
 
 ### Kubernetes 有经验者
 

@@ -29,6 +29,7 @@ module.exports = {
         margin: 16
       }
     },
+    'code-switcher': {},
     'reading-progress': {},
     'vuepress-plugin-element-tabs': {},
     'vuepress-plugin-baidu-autopush':{},
@@ -203,6 +204,18 @@ module.exports = {
 
       '/micro-service/': [
         {
+          title: 'Kubernetes 入门',
+          collapsable: false,
+          children: [
+            'prepare/k8s-basics/kubernetes-basics',
+            'prepare/k8s-basics/deploy-app',
+            'prepare/k8s-basics/explore',
+            'prepare/k8s-basics/expose',
+            'prepare/k8s-basics/scale',
+            'prepare/k8s-basics/update'
+          ]
+        },
+        {
           title: 'Spring Cloud',
           collapsable: false,
           children: [
@@ -229,5 +242,3 @@ module.exports = {
     }
   }
 }
-
-
