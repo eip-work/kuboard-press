@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 29 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 31 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -73,7 +73,10 @@
 ::: tab 快速安装 lazy
 
 ``` sh
+# 在 master 节点和 worker 节点都要执行
+
 curl -sSL https://kuboard.cn/install-script/install-kubelet.sh | sh
+
 ```
 
 :::
@@ -97,126 +100,55 @@ curl -sSL https://kuboard.cn/install-script/install-kubelet.sh | sh
 * 初始化 master 节点时，如果因为中间某些步骤的配置出错，想要重新初始化 master 节点，请先执行 `kubeadm reset` 操作
 :::
 
-**配置 apiserver.demo 的域名**
-
-``` sh
-# 只在 master 节点执行
-echo "x.x.x.x  apiserver.demo" >> /etc/hosts
-```
-
 ::: warning
-* 请替换其中的 x.x.x.x 为您的 demo-master-a-1 的实际 ip 地址。（如果 demo-master-a-1 同时有内网IP和外网IP，此处请使用内网IP）
-* apiserver.demo 是 apiserver 的 dnsName，您可以将其替换成您想要的 dnsName，同时，请将本文档后面出现的所有的 apiserver.demo 替换成您自己的 dnsName
+* POD_SUBNET 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
 :::
 
+:::: tabs type:border-card
 
-**创建 ./kubeadm-config.yaml**
-
-在当前目录创建 ./kubeadm-config.yaml 文件即可，此文件只临时使用一次。
+::: tab 快速初始化 lazy
 
 ``` sh
 # 只在 master 节点执行
-cat <<EOF > ./kubeadm-config.yaml
-apiVersion: kubeadm.k8s.io/v1beta1
-kind: ClusterConfiguration
-kubernetesVersion: v1.15.2
-imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
-controlPlaneEndpoint: "apiserver.demo:6443"
-networking:
-  podSubnet: "10.100.0.1/20"
-EOF
-
+# 替换 x.x.x.x 为 master 节点实际 IP
+export MASTER_IP=x.x.x.x
+# 替换 apiserver.demo 为 您想要的 dnsName
+export APISERVER_NAME=apiserver.demo
+export POD_SUBNET=10.100.0.1/20
+echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+curl https://kuboard.cn/install-script/init-master.sh | sh
 ```
 
-::: tip
-podSubnet 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠
-
-该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
 :::
 
-
-**初始化 apiserver**
+::: tab 手工初始化 lazy
 
 ``` sh
 # 只在 master 节点执行
-kubeadm init --config=kubeadm-config.yaml --upload-certs
+# 替换 x.x.x.x 为 master 节点实际 IP
+export MASTER_IP=x.x.x.x
+# 替换 apiserver.demo 为 您想要的 dnsName
+export APISERVER_NAME=apiserver.demo
+export POD_SUBNET=10.100.0.1/20
+echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-::: tip
-根据您服务器网速的情况，您需要等候 3 - 10 分钟
+<<< @/.vuepress/public/install-script/init-master.sh
+
 :::
 
-执行结果如下所示：
-
-```
-Your Kubernetes control-plane has initialized successfully!
-
-To start using your cluster, you need to run the following as a regular user:
-
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-You should now deploy a pod network to the cluster.
-Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-  https://kubernetes.io/docs/concepts/cluster-administration/addons/
-
-You can now join any number of the control-plane node running the following command on each as root:
-
-  kubeadm join apiserver.demo:6443 --token scr6kj.zs3gytymi1o7m5w9 \
-    --discovery-token-ca-cert-hash sha256:5251852954b73f10afd12a9f0c6f0b379a46c6a4524d2cbcd528fe869bf88330 \
-    --control-plane --certificate-key b2dda6524c22db801c18e03b613a6ba8480f868d8187b5b6d11f57d112268368
-
-Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
-As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use 
-"kubeadm init phase upload-certs --upload-certs" to reload certs afterward.
-
-Then you can join any number of worker nodes by running the following on each as root:
-
-kubeadm join apiserver.demo:6443 --token scr6kj.zs3gytymi1o7m5w9 \
-    --discovery-token-ca-cert-hash sha256:5251852954b73f10afd12a9f0c6f0b379a46c6a4524d2cbcd528fe869bf88330
-```
-
-
-
-**初始化 root 用户的 kubectl 配置**
-
-``` sh
-# 只在 master 节点执行
-rm -rf /root/.kube/
-mkdir /root/.kube/
-cp -i /etc/kubernetes/admin.conf /root/.kube/config
-```
-
-
-
-**安装 calico**
-
-``` sh
-# 只在 master 节点执行
-kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-```
-
-> 安装calico， 请参考https://docs.projectcalico.org/v3.6/getting-started/kubernetes/
-
-
-
-**等待calico安装就绪：**
-
-执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
-
-``` sh
-# 只在 master 节点执行
-watch kubectl get pod -n kube-system -o wide
-```
+::::
 
 
 **检查 master 初始化结果**
 
-在 master 节点 demo-master-a-1 上执行
-
 ``` sh
 # 只在 master 节点执行
+
+# 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
+watch kubectl get pod -n kube-system -o wide
+
+# 查看 master 节点初始化结果
 kubectl get nodes
 ```
 
@@ -248,15 +180,13 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 ``` sh
 # 只在 worker 节点执行
-echo "x.x.x.x  apiserver.demo" >> /etc/hosts
+# 替换 ${MASTER_IP} 为 master 节点实际 IP
+# 替换 ${APISERVER_NAME} 为初始化 master 节点时所使用的 APISERVER_NAME
+echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+
+# 替换为 master 节点上 kubeadm token create 命令的输出
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
-
-::: tip
-* 将 x.x.x.x 替换为 demo-master-a-1 的实际 ip。（如果 demo-master-a-1 同时有内网IP和外网IP，此处请使用内网IP）
-* 将 kubeadm join 命令后的参数替换为上一个步骤中实际从 demo-master-a-1 节点获得的参数
-:::
-
 
 ### 检查初始化结果
 
