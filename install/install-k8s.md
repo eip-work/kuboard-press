@@ -51,12 +51,14 @@
 
 :::
 
-## 检查 centos 版本
+## 检查 centos / hostname
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-
 cat /etc/redhat-release
+
+# 此处 hostname 的输出将会是该机器在 Kubernetes 集群中的节点名字
+hostname
 ```
 
 **操作系统兼容性**
