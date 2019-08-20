@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 31 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 32 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -26,19 +26,11 @@
 * 3台 **2核4G** 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
 * **Cent OS 7.6**
 
-**操作系统兼容性**
-
-| CentOS 版本 | 本文档是否兼容                          | 备注                                |
-| ----------- | --------------------------------------- | ----------------------------------- |
-| 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
-| 7.5         | <span style="font-size: 24px;">😄</span> | 已验证                              |
-| 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
-| 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
-| 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
-
 **安装后的软件版本为**
 
 * Kubernetes v1.15.2
+  * calico 3.8
+  * nginx-ingress 1.5.3
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
@@ -59,7 +51,23 @@
 
 :::
 
+## 检查 centos 版本
 
+``` sh
+# 在 master 节点和 worker 节点都要执行
+
+cat /etc/redhat-release
+```
+
+**操作系统兼容性**
+
+| CentOS 版本 | 本文档是否兼容                          | 备注                                |
+| ----------- | --------------------------------------- | ----------------------------------- |
+| 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
+| 7.5         | <span style="font-size: 24px;">😄</span> | 已验证                              |
+| 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
+| 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
+| 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
 
 ## 安装 docker / kubelet
 
@@ -241,14 +249,30 @@ kubectl delete node demo-worker-x-x
 >
 > 本文中使用如下部署方式：https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
 >
-> kubernetes支持多种Ingress Controllers，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
+> kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
 
-**在 demo-master-a-1 上执行**
+
+:::: tabs type:border-card
+
+::: tab 快速安装 lazy
+
+**在 master 节点上执行**
 
 ``` sh
 # 只在 master 节点执行
-kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-repository/master/dashboard/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/nginx-ingress.yaml
 ```
+
+:::
+
+::: tab YAML文件 lazy
+
+<<< @/.vuepress/public/install-script/nginx-ingress.yaml
+
+:::
+
+::::
+
 
 **配置域名解析**
 
@@ -267,7 +291,7 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 :::
 
 ::: warning
-如果您打算将 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.2/docs/installation.md)，完善 Ingress 的配置
+如果您打算将 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.3/docs/installation.md)，完善 Ingress 的配置
 :::
 
 
@@ -284,5 +308,7 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
   </a>
 
 ::: tip
-* Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/overview/)
+* Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/overview/#kubernetes-%E5%88%9D%E5%AD%A6%E8%80%85)
 :::
+
+<StarGazer/>
