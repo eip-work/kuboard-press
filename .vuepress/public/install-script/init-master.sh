@@ -3,12 +3,13 @@
 # 只在 master 节点执行
 
 # 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2
+rm -rf ./kubeadm-config.yaml
 cat <<EOF > ./kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 kubernetesVersion: v1.15.2
 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
-controlPlaneEndpoint: "apiserver.demo:6443"
+controlPlaneEndpoint: "${APISERVER_NAME}:6443"
 networking:
   serviceSubnet: "10.96.0.0/12"
   podSubnet: "${POD_SUBNET}"
@@ -27,5 +28,5 @@ cp -i /etc/kubernetes/admin.conf /root/.kube/config
 # 安装 calico 网络插件
 # 参考文档 https://docs.projectcalico.org/v3.8/getting-started/kubernetes/
 wget https://docs.projectcalico.org/v3.8/manifests/calico.yaml
-sed -i /s"192.168.0.0/16"/"${POD_SUBNET}"/g calico.yaml
+sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico.yaml
 kubectl apply -f calico.yaml
