@@ -4,11 +4,12 @@
       title="感谢阅读"
       :visible.sync="dialogVisible"
       width="50%"
+      :append-to-body	="true"
       :before-close="handleClose">
       <span>如果这篇文档有帮到您，劳烦移步 github 给一个 star，谢谢！</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="waitAMoment">一会儿再说</el-button>
-        <el-button type="primary" @click="gotoStar">现在就去</el-button>
+        <el-button type="primary" @click="gotoStar">够义气，现在就去！</el-button>
       </span>
     </el-dialog>
   </div>
@@ -40,19 +41,19 @@ export default {
         .catch(_ => {});
     },
     waitAMoment() {
-      if (localStorage.getItem('stared')) {
+      if (localStorage.getItem('stared') === 'true') {
         return
       }
       this.dialogVisible = false
       let _this = this
       setTimeout(_ => {
         _this.dialogVisible = true
-      }, 60000 * 5)
+      }, 60000 * 3)
     },
     gotoStar() {
       this.dialogVisible = false
       window.open('https://github.com/eip-work/kuboard-press')
-      localStorage.setItem('stared', true)
+      localStorage.setItem('stared', 'true')
     }
   }
 }

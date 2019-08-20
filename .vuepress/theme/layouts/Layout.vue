@@ -18,6 +18,7 @@
           <a href="/support/" class="nav-link">支持</a>
         </div> -->
       </div>
+      <StarGazer/>
     </div>
     <div slot="page-bottom" class="bottom-description">Copyright © 2019-present <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
   </ParentLayout>
