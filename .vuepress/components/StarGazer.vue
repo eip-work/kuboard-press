@@ -47,7 +47,7 @@ export default {
       let _this = this
       setTimeout(_ => {
         _this.dialogVisible = true
-      }, 10000) //60000 * 5)
+      }, 60000 * 5)
     },
     gotoStar() {
       this.dialogVisible = false
