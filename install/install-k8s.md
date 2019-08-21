@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 32 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 35 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -168,7 +168,7 @@ kubectl get nodes
 
 ### 获得 join命令参数
 
-**在 master 节点 demo-master-a-1 节点执行**
+**在 master 节点上执行**
 
 ``` sh
 # 只在 master 节点执行
@@ -181,7 +181,6 @@ kubeadm token create --print-join-command
 # kubeadm token create 命令的输出
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
-
 
 
 ### 初始化worker
@@ -200,7 +199,7 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 ### 检查初始化结果
 
-在 master 节点 demo-master-a-1 上执行
+在 master 节点上执行
 
 ``` sh
 # 只在 master 节点执行
@@ -312,5 +311,3 @@ kubectl apply -f https://kuboard.cn/install-script/nginx-ingress.yaml
 ::: tip
 * Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/overview/#kubernetes-%E5%88%9D%E5%AD%A6%E8%80%85)
 :::
-
-<StarGazer/>

@@ -4,8 +4,7 @@
       title="感谢阅读"
       :visible.sync="dialogVisible"
       width="50%"
-      :append-to-body	="true"
-      :before-close="handleClose">
+      :append-to-body	="true">
       <span>如果这篇文档有帮到您，劳烦移步 github 给一个 star，谢谢！</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="waitAMoment">一会儿再说</el-button>
@@ -33,18 +32,11 @@ export default {
     this.waitAMoment()
   },
   methods: {
-    handleClose(done) {
-      this.$confirm('确认关闭？')
-        .then(_ => {
-          done();
-        })
-        .catch(_ => {});
-    },
     waitAMoment() {
+      this.dialogVisible = false
       if (localStorage.getItem('stared') === 'true') {
         return
       }
-      this.dialogVisible = false
       let _this = this
       setTimeout(_ => {
         _this.dialogVisible = true

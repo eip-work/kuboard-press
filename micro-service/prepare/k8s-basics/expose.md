@@ -91,10 +91,10 @@ kind: Service
 metadata:
   name: nginx-service	#Service 的名称
   labels:     	#Service 自己的标签
-    app:nginx	#为该 Service 设置 key 为 app，value 为 nginx 的标签
+    app: nginx	#为该 Service 设置 key 为 app，value 为 nginx 的标签
 spec:	    #这是关于该 Service 的定义，描述了 Service 如何选择 Pod，如何被访问
   selector:	    #标签选择器
-    app:nginx	#选择包含标签 app:nginx 的 Pod
+    app: nginx	#选择包含标签 app:nginx 的 Pod
   ports:
   - name: nginx-port	#端口的名字
     protocol: TCP	    #协议类型 TCP/UDP
@@ -112,10 +112,10 @@ kind: Service
 metadata:
   name: nginx-service
   labels:
-    app:nginx
+    app: nginx
 spec:
   selector:
-    app:nginx
+    app: nginx
   ports:
   - name: nginx-port
     protocol: TCP
