@@ -57,6 +57,7 @@ module.exports = {
       { text: '安装', link: '/install/install-dashboard' },
       { text: '使用', link: '/guide/' },
       { text: '微服务', link: '/micro-service/spring-cloud/' },
+      { text: '有奖征文', link: 'https://blog.kuboard.cn/compaign' }
       // { text: 'DevOps', link: '/devops/' }
     ],
     displayAllHeaders: false,
