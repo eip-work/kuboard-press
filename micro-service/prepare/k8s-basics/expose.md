@@ -65,6 +65,10 @@ Labels（标签）可以在创建 Kubernetes 对象时附加上去，也可以�
 
 ## 实战：为您的 nginx Deployment 创建一个 Service
 
+:::: tabs type:border-card
+
+::: tab 使用kubectl lazy
+
 创建nginx的Deployment中定义了Labels，如下：
 
 ``` yaml
@@ -148,6 +152,38 @@ kubectl get services -o wide
 curl <任意节点的 IP>:32600
 ```
 > 如果您的集群在云上，您可能通过云服务商的安全组开放 32600 端口的访问
+
+:::
+
+::: tab 使用Kuboard lazy
+
+* 在 default 名称空间 点击 ***展现层 --> Nginx部署***
+
+* 点击 ***编辑*** 按钮
+
+* 填写表单如下：
+
+​		访问方式 Service 选择 ***NodePort（VPC内访问）***
+
+​		填写一条记录：
+
+  | 协议 | 服务端口 | 节点端口 | 容器端口 |
+  | ---- | -------- | -------- | -------- |
+  | TCP  | 80       | 32601    | 80       |
+
+如下图所示：
+
+![image-20190822211807469](./expose.assets/image-20190822211807469.png)
+
+* 点击 **保存**
+
+* **访问服务**
+
+  在浏览器打开 `http://<任意节点的 IP>:32601`
+
+:::
+
+::::
 
 
 ~~到目前为止，我们已经成功部署好项目，并能够对其进行访问，

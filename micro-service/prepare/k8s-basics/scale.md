@@ -33,6 +33,10 @@ spec:
 
 ## 实战：将 nginx Deployment 扩容到 4 个副本
 
+:::: tabs type:border-card
+
+::: tab 使用kubectl lazy
+
 **修改 nginx-deployment.yaml 文件**
 
 将 replicas 修改为 4
@@ -72,6 +76,30 @@ kubectl apply -f nginx-deployment.yaml
 ``` sh
 watch kubectl get pods -o wide
 ```
+
+:::
+
+::: tab 使用Kuboard
+
+* 在 default 名称空间 点击 ***展现层 --> Nginx部署***
+
+* 点击 ***伸缩*** 按钮
+
+  填写表单
+
+  副本数： 4
+
+![image-20190822213532132](./scale.assets/image-20190822213532132.png)
+
+* 点击 ***确定*** 按钮
+
+  等待新增的容器组完成初始化，如下图所示：
+
+![image-20190822213709967](./scale.assets/image-20190822213709967.png)
+
+:::
+
+::::
 
 ~~一旦运行了多个应用程序实例，就可以在不停机的情况下执行滚动更新了，
 

@@ -1,10 +1,15 @@
+
+
 # 部署第一个应用程序
 
 本文翻译自 Kubernetes 官网 [Using kubectl to Create a Deployment](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/) ，并有所改写
 
 ### 前提
 
-假设您已经完成 Kubernetes 集群的安装，请参考文档 [安装 Kubernetes 单Master节点](/install/install-k8s)
+假设您已经
+
+* 完成 Kubernetes 集群的安装，请参考文档 [安装 Kubernetes 单Master节点](/install/install-k8s.html)
+* 完成 Kuboard 的安装，请参考文档 [安装 Kuboard](/install/install-dashboard.html)
 
 ### 目标
 
@@ -38,6 +43,15 @@ Deployment 处于 master 节点上，通过发布 Deployment，master 节点会�
 
 ## 实战：部署 nginx Deployment
 
+本套教程提供了两种实战方式：
+
+* 使用 kubectl
+* 使用 Kuboard
+
+:::: tabs type:border-card
+
+::: tab 使用kubectl lazy
+
 **创建 YAML 文件**
 
 创建文件 nginx-deployment.yaml，内容如下：
@@ -64,9 +78,7 @@ spec:	        #这是关于该Deployment的描述，可以理解为你期待该D
     spec:	    #期望Pod实现的功能（即在pod中部署）
       containers:	#生成container，与docker中的container是同一种
       - name: nginx	#container的名称
-        image: nginx:1.7.9	#使用镜像nginx:1.7.9创建container，并向外暴露80端口
-        ports:
-        - containerPort: 80
+        image: nginx:1.7.9	#使用镜像nginx:1.7.9创建container，该container默认80端口可访问
 ```
 
 </template>
@@ -92,8 +104,6 @@ spec:
       containers:
       - name: nginx
         image: nginx:1.7.9
-        ports:
-        - containerPort: 80
 ```
 
 </template>
@@ -115,6 +125,53 @@ kubectl get deployments
 # 查看 Pod
 kubectl get pods
 ```
+
+:::
+
+::: tab 使用Kuboard lazy
+
+**打开 Kuboard 集群概览界面**，如下图所示：
+
+![image-20190822165220992](./deploy-app.assets/image-20190822165220992.png)
+
+
+
+**点击 default 名称空间**
+
+![image-20190822165351264](./deploy-app.assets/image-20190822165351264.png)
+
+
+
+点击 **创建工作负载**
+
+​	并填写表单如下：
+
+| 字段名   | 填写内容    | 备注                                                    |
+| -------- | ----------- | ------------------------------------------------------- |
+| 服务类型 | Deployment  |                                                         |
+| 服务分层 | 展现层      | Kuboard使用这个字段确定将部署显示在微服务架构的哪个分层 |
+| 服务名称 | nginx       | 服务分层的前缀 + 服务名 组成最终的 K8S Deployment name  |
+| 服务描述 | Nginx部署   | 显示在微服务分层架构图中便于识别的名字，可以是中文      |
+| 副本数量 | 1           | replicas                                                |
+| 容器名称 | nginx       |                                                         |
+| 镜像     | nginx:1.7.9 |                                                         |
+| 抓取策略 | Always      | 每次创建 Pod 都尝试抓取镜像                             |
+
+![image-20190822171013606](./deploy-app.assets/image-20190822171013606.png)
+
+
+
+点击 ***保存***
+
+点击 ***应用***
+
+点击 ***完成***
+
+此时可查看到该应用的部署结果
+
+:::
+
+::::
 
 可分别查看到一个名为 nginx-deployment 的 Deployment 和一个名为 nginx-deployment-xxxxxxx 的 Pod
 

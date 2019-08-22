@@ -48,7 +48,11 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
 - 容器运行环境（如Docker）负责下载镜像、创建和运行容器等。
 
 
-## 实战：使用Kubectl进行故障排除
+## 实战：故障排除
+
+:::: tabs type:border-card
+
+::: tab 使用kubectl lazy
 
 在[部署第一个应用程序](./deploy-app.html) 中，我们使用了 kubectl 命令行界面部署了 nginx 并且查看了 Deployment 和 Pod。kubectl 还有如下四个常用命令，在我们排查问题时可以提供帮助：
 
@@ -98,6 +102,24 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
   ```
 
 请尝试在您的集群中执行一下上述的几个命令，了解如何通过 kubectl 操作 kubernetes 集群中的 Node、Pod、Container。
+
+:::
+
+::: tab 使用Kuboard lazy
+
+**在名称空间中查看部署**
+
+![image-20190822172329141](./explore.assets/image-20190822172329141.png)
+
+**查看部署及其容器组**
+
+![image-20190822172457417](./explore.assets/image-20190822172457417.png)
+
+
+
+:::
+
+::::
 
 ::: tip
 Worker节点是k8s中的工作计算机，可能是VM或物理计算机，具体取决于群集。多个Pod可以在一个节点上运行。

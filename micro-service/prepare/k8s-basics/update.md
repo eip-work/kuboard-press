@@ -18,21 +18,21 @@
 
 1. 原本 Service A 将流量负载均衡到 4 个旧版本的 Pod （当中的容器为 绿色）上
 
-![img](./update.assets/module_06_rollingupdates1.svg)
+<img src="./update.assets/module_06_rollingupdates1.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
 
 2. 更新完 Deployment 部署文件中的镜像版本后，master 节点选择了一个 worker 节点，并根据新的镜像版本创建 Pod（紫色容器）。新 Pod 拥有唯一的新的 IP。同时，master 节点选择一个旧版本的 Pod 将其移除。
 
     此时，Service A 将新 Pod 纳入到负载均衡中，将旧Pod移除
 
-![img](./update.assets/module_06_rollingupdates2.svg)
+<img src="./update.assets/module_06_rollingupdates2.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
 
 3. 同步骤2，再创建一个新的 Pod 替换一个原有的 Pod
 
-![img](./update.assets/module_06_rollingupdates3.svg)
+<img src="./update.assets/module_06_rollingupdates3.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
 
 1. 如此 Rolling Update 滚动更新，直到所有旧版本 Pod 均移除，新版本 Pod 也达到 Deployment 部署文件中定义的副本数，则滚动更新完成
 
-![img](./update.assets/module_06_rollingupdates4.svg)
+<img src="./update.assets/module_06_rollingupdates4.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
 
 滚动更新允许以下操作：
 
@@ -41,6 +41,10 @@
 - 持续集成和持续交付应用程序，无需停机
 
 ## 实战：更新 nginx Deployment
+
+:::: tabs type:border-card
+
+::: tab 使用kubectl lazy
 
 **修改 nginx-deployment.yaml 文件**
 
@@ -82,6 +86,36 @@ kubectl apply -f nginx-deployment.yaml
 ``` sh
 watch kubectl get pods -l app=nginx
 ```
+
+:::
+
+::: tab 使用Kuboard lazy
+
+* **进入 default 名称空间**
+
+* 点击 ***调整镜像版本***
+
+  勾选展现层，并刷新，可找到 ***Nginx部署***
+
+* 针对 ***Nginx部署*** 点击修改
+
+  填写新的 nginx 版本号： 1.8， 如下图所示：
+
+![image-20190822214324429](./update.assets/image-20190822214324429.png)
+
+* 点击 ***变更***
+
+* 点击 ***应用***
+
+* 点击 ***完成***
+
+  可观察到 Kubernetes 对 ***Nginx部署*** 执行滚动更新的过程，如下图所示
+
+![image-20190822214503847](./update.assets/image-20190822214503847.png)
+
+:::
+
+::::
 
 
 ~~哈哈，到此，您已经成入门 kubernetes，并完成了部署、扩容与滚动更新的实践，
