@@ -14,7 +14,7 @@
         <div class="side-nav-item" :style="activeLinkStyle('/micro-service/')">
           <a href="/micro-service/spring-cloud/" class="nav-link">微服务</a>
         </div>
-        <div class="side-nav-item" :style="activeLinkStyle('/micro-service/')">
+        <div class="side-nav-item" :style="activeLinkStyle('/noactive/')">
           <a href="https://blog.kuboard.cn/compaign/" target="_blank" class="nav-link">有奖征文</a>
         </div>
         <!-- <div class="side-nav-item" :style="activeLinkStyle('/support/')">
@@ -22,6 +22,7 @@
         </div> -->
       </div>
       <StarGazer/>
+      <Promotion/>
     </div>
     <div slot="page-bottom" class="bottom-description">Copyright © 2019-present <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
   </ParentLayout>
