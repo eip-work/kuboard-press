@@ -30,7 +30,7 @@
 
 <img src="./update.assets/module_06_rollingupdates3.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
 
-1. 如此 Rolling Update 滚动更新，直到所有旧版本 Pod 均移除，新版本 Pod 也达到 Deployment 部署文件中定义的副本数，则滚动更新完成
+4. 如此 Rolling Update 滚动更新，直到所有旧版本 Pod 均移除，新版本 Pod 也达到 Deployment 部署文件中定义的副本数，则滚动更新完成
 
 <img src="./update.assets/module_06_rollingupdates4.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
 
