@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 35 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 3 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -120,7 +120,7 @@ curl -sSL https://kuboard.cn/install-script/install-kubelet.sh | sh
 
 ``` sh
 # 只在 master 节点执行
-# 替换 x.x.x.x 为 master 节点实际 IP
+# 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
 export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
@@ -135,7 +135,7 @@ curl -sSL https://kuboard.cn/install-script/init-master.sh | sh
 
 ``` sh
 # 只在 master 节点执行
-# 替换 x.x.x.x 为 master 节点实际 IP
+# 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
 export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
