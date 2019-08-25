@@ -184,7 +184,6 @@ Kuboard 产生于 Spring Cloud 微服务落地的实践中，并在许多的实�
 * 工作负载视图
 * 监控视图
 
-Kuboard 在实际项目中经过多次历练，功能不断完善，成长为一个基于 Kubernetes 的成熟的微服务管理工具。自 www.kuboard.cn 推出以来，得到了众多网友非常多的反馈，在大家的帮助下，修正了许多不同环境下的兼容性问题。2018-8-11 终于结束了 beta 阶段，发布 [v1.0.0 正式版本](/overview/change-log.html#v1-0-0)。该版本将是一个<font color="red">**长期支持版本**</font>，碰到问题，可以通过 Kuboard 社群得到支持，如需要获得商业支持请通过微信联系作者。
+Kuboard 在实际项目中经过多次历练，功能不断完善，成长为一个基于 Kubernetes 的成熟的微服务管理工具。自 www.kuboard.cn 推出以来，得到了众多网友非常多的反馈，碰到问题，可以通过 Kuboard 社群得到支持，如需要获得商业支持请通过微信联系作者。
 
 ![作者微信](../../overview/change-log.assets/wechat.jpeg)
-

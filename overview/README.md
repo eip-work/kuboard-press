@@ -119,12 +119,13 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * [执行滚动更新](/micro-service/prepare/k8s-basics/update.html) (10分钟)
 
 * **Kubernetes 进阶**
+  * [从微服务视角理解 Kubernetes](/articles/201908/kuboard-view-of-k8s.html)
   * 进阶路线一
     * 在实际项目中锻炼，完成各种与微服务、容器化、Kubernetes更多高级功能的学习、理解和应用
-    * 适合人群：身边有人带路，并且技术功底比较强的人，能够自行翻阅大量 docker / kubernetes 的官网英文资料。这些人在完成上面的 Kubernetes 入门教程之后，基本上可以在项目中开始实战了。
+    * **适合人群：** 身边有人带路，并且技术功底比较强的人，能够自行翻阅大量 docker / kubernetes 的官网英文资料。这些人在完成上面的 Kubernetes 入门教程之后，基本上可以在项目中开始实战了。
   * 进阶路线二
     * 购买一套口碑比较好的视频课程，例如 [深入剖析Kubernetes](https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D)，由 Kubernetes 社区资深成员与项目维护者 张磊 创作，价钱也仅相当于三杯咖啡的样子。
-    * 适合人群：技术功底相对薄弱，想要多学习一些理论，在理解 docker /kubernetes 等官网英文资料存在一定困难的人群
+    * **适合人群：** 技术功底相对薄弱，想要多学习一些理论，在理解 docker /kubernetes 等官网英文资料存在一定困难的人群
 
 ### Kubernetes 有经验者
 
