@@ -1,4 +1,4 @@
-# 最值得参考的 Kubernetes 安装文档在这里
+# 使用 kubeadm 安装 Kubernetes v1.15.2
 
 ## 文档特点
 
@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 37 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 38 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -39,7 +39,7 @@
 
 安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
-![image-20190805230643974](./install-k8s.assets/image-20190805230643974.png)
+![image-20190826000521999](./install-k8s.assets/image-20190826000521999.png)
 
 ::: tip
 **关于二进制安装**
