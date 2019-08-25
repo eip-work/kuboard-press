@@ -10,7 +10,7 @@
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
-  * 当前已更新了 <font color="red"> 3 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 37 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -58,6 +58,7 @@
 cat /etc/redhat-release
 
 # 此处 hostname 的输出将会是该机器在 Kubernetes 集群中的节点名字
+# 不能使用 localhost 作为节点的名字
 hostname
 ```
 
