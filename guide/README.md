@@ -1,3 +1,7 @@
+---
+description: 熟悉 Kuboard on Kubernetes 的最佳途径。
+---
+
 # 使用手册
 
 **Kuboard 的设计目标**

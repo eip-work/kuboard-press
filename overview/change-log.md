@@ -1,3 +1,7 @@
+---
+description: Kuboard 更新日志的详细信息
+---
+
 # 更新日志
 
 ## v1.0.2-beta.2

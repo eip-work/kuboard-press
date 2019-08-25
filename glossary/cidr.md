@@ -1,3 +1,7 @@
+---
+description: CIDR Classless Inter-Domain Routing 概念解析
+---
+
 # CIDR
 
 CIDR（无类别域间路由，Classless Inter-Domain Routing）是一个在Internet上创建附加地址的方法，这些地址提供给服务提供商（ISP），再由ISP分配给客户。CIDR将路由集中起来，使一个IP地址代表主要骨干提供商服务的几千个IP地址，从而减轻Internet路由器的负担。

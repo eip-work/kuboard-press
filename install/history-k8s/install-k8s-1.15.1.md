@@ -1,3 +1,7 @@
+---
+description: 使用 kubeadm 安装 Kubernetes v1.15.1 的集群，单Master节点。
+---
+
 # 最值得参考的 Kubernetes 安装文档在这里
 
 ## 文档特点

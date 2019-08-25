@@ -1,3 +1,7 @@
+---
+description: Kuboard 通过图形化操作界面以及无YAML操作，帮助降低 Kubernetes 学习门槛。
+---
+
 # 如何降低 Kubernetes 学习门槛
 
 ## Kubernetes 学习门槛在哪儿
@@ -197,4 +201,3 @@ Kuborad中，定义容器的界面如下图所示：
 
 
 ![image-20190722185113938](./concepts.assets/image-20190722185113938.png)
-

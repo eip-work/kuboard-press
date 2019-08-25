@@ -1,3 +1,7 @@
+---
+description: 微服务参考架构：包含微服务运行时、构建及测试、部署及运维、监控及评估。设计和研发 Kuboard 的初心便源于此 Spring Cloud 微服务参考架构。
+---
+
 # Spring Cloud on Kubernetes
 
 下图是作者在落地 Spring Cloud 微架构的过程中，设计了如下图所示的微服务参考架构，设计和研发 Kuboard 的初心便源于此图。历时两年时间，Kuboard终于发布，也标志着该参考架构的成熟可用。该参考架构主要包括四个重要组成部分：

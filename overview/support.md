@@ -1,3 +1,7 @@
+---
+description: 如何获得 Kuboard 相关的支持和帮助？
+---
+
 # 支持
 
 

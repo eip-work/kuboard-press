@@ -1,3 +1,7 @@
+---
+description: 使用 Kuboard 配置 Kubernetes ConfigMap
+---
+
 # 配置
 
 配置： Kubernetes ConfigMap

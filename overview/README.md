@@ -1,3 +1,7 @@
+---
+description: 介绍 Kuboard - Kubernetes 微服务管理界面，并为 Kubernetes 初学者提供快速的学习路线（含 Kubernetes v1.15.2 安装文档）
+---
+
 ## Kuboard 简介
 
 A cool Kubernetes dashboard.

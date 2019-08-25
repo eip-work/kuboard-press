@@ -1,3 +1,7 @@
+---
+description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
+---
+
 # 存储空间管理
 
 ## 创建存储类

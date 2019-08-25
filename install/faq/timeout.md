@@ -1,3 +1,7 @@
+---
+description: Kuboard 相关常见问题的诊断及解决。
+---
+
 # 输入 Token 后提示 timeout
 
 ## 错误描述
@@ -63,4 +67,3 @@ sysctl -p
 
 * 在每一个节点上（包括Master、Worker）补充执行上述步骤，然后重新启动节点机器。
 * 或者按照 [安装 Kubernetes 单Master节点](install) 的描述重新安装集群
-

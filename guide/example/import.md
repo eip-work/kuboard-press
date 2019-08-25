@@ -1,3 +1,7 @@
+---
+description: 通过 Kuboard 将一个预先定义好的 Spring Cloud 微服务样例程序导入到 Kubernetes 中。
+---
+
 # 导入 example 微服务
 
 ## 前提
@@ -148,4 +152,3 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 > ```
 >
 > 
-

@@ -1,3 +1,7 @@
+---
+description: 如何基于 Kuboard API 实现自定义的 Kubernetes 监控套件
+---
+
 # 自定义监控套件 <Badge text="alpha" type="warn"/>
 
 文档建设中...

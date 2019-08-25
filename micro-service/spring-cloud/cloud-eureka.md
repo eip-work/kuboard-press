@@ -1,3 +1,7 @@
+---
+description: 使用 Kuboard 在 Kubernetes 上部署 spring cloud 服务注册发现组件 eureka。
+---
+
 # 部署 cloud-eureka
 
 本文所使用的代码请参考 [cloud-eureka](https://github.com/eip-work/kuboard-example/tree/master/cloud-eureka)
@@ -129,6 +133,3 @@ Eureka 运行在 9200 端口。Spring Cloud 的微服务组件通过 CLOUD_EUREK
 ## 检查部署结果
 
 **查看 Eureka 界面**
-
-
-

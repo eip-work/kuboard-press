@@ -1,3 +1,7 @@
+---
+description: 使用 kubeadm 安装高可用的 Kubernetes v1.15.2 集群
+---
+
 # 安装 Kubernetes 高可用
 
 ::: tip

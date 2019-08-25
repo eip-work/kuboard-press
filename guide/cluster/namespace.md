@@ -1,3 +1,7 @@
+---
+description: 使用 Kuboard 管理 Kubernetes 名称空间。
+---
+
 # 名称空间管理
 
 ## 创建名称空间

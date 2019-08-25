@@ -1,3 +1,7 @@
+---
+description: Kuboard 的安装手册，包括安装 Kuboard 的前提条件、与 Kubernetes 的版本兼容性、安装步骤、以及完成安装后如何访问 Kuboard 界面。
+---
+
 # 安装 Kuboard
 
 ## 前提
