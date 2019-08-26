@@ -17,11 +17,8 @@
         <div class="side-nav-item" :style="activeLinkStyle('/micro-service/')">
           <a href="/micro-service/spring-cloud/" class="nav-link">微服务</a>
         </div>
-        <div class="side-nav-item" :style="activeLinkStyle('/noactive/')">
+        <!-- <div class="side-nav-item" :style="activeLinkStyle('/noactive/')">
           <a href="https://blog.kuboard.cn/compaign/" target="_blank" class="nav-link">博客</a>
-        </div>
-        <!-- <div class="side-nav-item" :style="activeLinkStyle('/support/')">
-          <a href="/support/" class="nav-link">支持</a>
         </div> -->
       </div>
       <StarGazer/>
