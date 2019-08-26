@@ -20,7 +20,7 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 
 * **在线答疑** QQ 群
   
-  ![kuboard_qq.png](/overview/README.assets/kuboard_qq.png)
+  ![kuboard_qq.png](./install-k8s.assets/kuboard_qq.png)
 
 ## 配置要求
 
@@ -39,8 +39,8 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 
 > 如果要安装 Kubernetes 历史版本，请参考：
 
-> * [安装 Kubernetes v1.15.2 单Master节点](./history-k8s/install-k8s-1.15.2.html)
-> * [安装 Kubernetes v1.15.1 单Master节点](./history-k8s/install-k8s-1.15.1.html)
+> * [安装 Kubernetes v1.15.2 单Master节点](/install/history-k8s/install-k8s-1.15.2.html)
+> * [安装 Kubernetes v1.15.1 单Master节点](/install/history-k8s/install-k8s-1.15.1.html)
 
 安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
@@ -96,7 +96,7 @@ lscpu
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 
-curl -sSL https://kuboard.cn/install-script/install-kubelet.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 ```
 
@@ -106,7 +106,7 @@ curl -sSL https://kuboard.cn/install-script/install-kubelet.sh | sh
 
 手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/install-kubelet.sh
+<<< @/.vuepress/public/install-script/v1.15.3/install-kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -138,7 +138,7 @@ export MASTER_IP=x.x.x.x
 export APISERVER_NAME=apiserver.demo
 export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/init-master.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 ```
 
 :::
@@ -156,7 +156,7 @@ export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/init-master.sh
+<<< @/.vuepress/public/install-script/v1.15.3/init-master.sh
 
 :::
 
@@ -274,14 +274,14 @@ kubectl delete node demo-worker-x-x
 
 ``` sh
 # 只在 master 节点执行
-kubectl apply -f https://kuboard.cn/install-script/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 ```
 
 :::
 
 ::: tab YAML文件 lazy
 
-<<< @/.vuepress/public/install-script/nginx-ingress.yaml
+<<< @/.vuepress/public/install-script/v1.15.3/nginx-ingress.yaml
 
 :::
 
