@@ -7,8 +7,8 @@ actionText: 在线体验
 actionText2: 开始使用 →
 actionLink2: /overview/
 features:
-- title: 1 天落地 Kubernetes
-  details: 快速安装、图形化界面、场景化设计
+- title: 快速落地 Kubernetes
+  details: 快速安装Kubernetes、图形化界面、场景化设计
 - title: 微服务架构
   details: 经典微服务参考架构：Spring Cloud 实战案例
 - title: 多层次监控

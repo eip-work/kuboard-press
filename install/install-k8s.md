@@ -14,7 +14,7 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 39 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 40 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -71,6 +71,12 @@ hostname
 # CPU(s):       2         CPU 内核数量不能低于 2
 lscpu
 ```
+
+::: danger 注意
+* 请使用兼容的 centos 版本
+* hostname 不能为 localhost
+* CPU 内核数量不能低于 2
+:::
 
 **操作系统兼容性**
 
