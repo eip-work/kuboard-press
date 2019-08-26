@@ -115,12 +115,12 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 * **Kubernetes 入门**
   * [十分钟带你理解Kubernetes核心概念](./k8s-core-concepts.html)
-  * [学习Kubernetes基础知识](/micro-service/prepare/k8s-basics/kubernetes-basics.html) (10分钟)
-    * [部署第一个应用程序](/micro-service/prepare/k8s-basics/deploy-app.html) (5分钟)
-    * [查看 Pods / Nodes](/micro-service/prepare/k8s-basics/explore.html) (10分钟)
-    * [公布应用程序](/micro-service/prepare/k8s-basics/expose.html) (10分钟)
-    * [伸缩应用程序](/micro-service/prepare/k8s-basics/scale.html) (10分钟)
-    * [执行滚动更新](/micro-service/prepare/k8s-basics/update.html) (10分钟)
+  * [学习Kubernetes基础知识](/learning/k8s-basics/kubernetes-basics.html) (10分钟)
+    * [部署第一个应用程序](/learning/k8s-basics/deploy-app.html) (5分钟)
+    * [查看 Pods / Nodes](/learning/k8s-basics/explore.html) (10分钟)
+    * [公布应用程序](/learning/k8s-basics/expose.html) (10分钟)
+    * [伸缩应用程序](/learning/k8s-basics/scale.html) (10分钟)
+    * [执行滚动更新](/learning/k8s-basics/update.html) (10分钟)
 
 * **Kubernetes 进阶**
   * [从微服务视角理解 Kubernetes](/articles/201908/kuboard-view-of-k8s.html)

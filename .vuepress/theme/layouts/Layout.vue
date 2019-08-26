@@ -8,6 +8,9 @@
         <div class="side-nav-item" :style="activeLinkStyle('/install/')">
           <a href="/install/install-dashboard.html" class="nav-link router-link-exact-active router-link-active">安装</a>
         </div>
+        <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
+          <a href="/learning/k8s-basics/kubernetes-basics.html" class="nav-link router-link-exact-active router-link-active">学习</a>
+        </div>
         <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
           <a href="/guide/" class="nav-link">使用</a>
         </div>
@@ -15,7 +18,7 @@
           <a href="/micro-service/spring-cloud/" class="nav-link">微服务</a>
         </div>
         <div class="side-nav-item" :style="activeLinkStyle('/noactive/')">
-          <a href="https://blog.kuboard.cn/compaign/" target="_blank" class="nav-link">有奖征文</a>
+          <a href="https://blog.kuboard.cn/compaign/" target="_blank" class="nav-link">博客</a>
         </div>
         <!-- <div class="side-nav-item" :style="activeLinkStyle('/support/')">
           <a href="/support/" class="nav-link">支持</a>
@@ -60,7 +63,7 @@ export default {
 }
 .side-nav-item {
   margin-bottom: -2px;
-  margin-left: 15px;
+  margin-left: 10px;
   display: inline-block;
   line-height: 1.4rem;
   white-space: nowrap;
