@@ -1,4 +1,6 @@
-
+---
+description: 本文详细讲解了 Kubernetes Deployment 的概念，并描述了如何使用 kubectl / Kuboard 创建一个 Deployment
+---
 
 # 部署第一个应用程序
 
@@ -21,7 +23,7 @@
 * 您也可以尝试 [从客户端电脑远程管理 Kubernetes](/install/install-kubectl.html)
 :::
 
-### Kubernetes部署
+### Kubernetes 部署
 
 在 k8s 上进行部署前，首先需要了解一个基本概念 **Deployment** 
 

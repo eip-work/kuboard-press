@@ -1,3 +1,7 @@
+---
+description: 本文介绍了如何使用 kubectl / Kuboard 查看和浏览 Kubernetes 上的节点、容器组、部署等信息，并依据这些信息作出问题诊断。
+---
+
 # 查看 Pods / Nodes
 
 本文翻译自 Kubernetes 官网 [Viewing Pods and Nodes](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/) ，并有所改写
