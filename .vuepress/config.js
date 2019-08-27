@@ -7,7 +7,8 @@ module.exports = {
     ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, DevOps, 微服务, 持续构建集成, 容器, Kubernetes 教程, K8S 教程, 微服务实践, Kubernetes 安装'}]
   ],
   markdown: {
-    toc: { includeLevel: [2, 3] }
+    toc: { includeLevel: [2, 3] },
+    lineNumbers: true
   },
   dest: 'docs',
   plugins: {
@@ -158,6 +159,14 @@ module.exports = {
             'k8s-basics/expose',
             'k8s-basics/scale',
             'k8s-basics/update'
+          ]
+        },
+        {
+          title: 'Kubernetes 进阶',
+          collapsable: false,
+          children: [
+            'k8s-intermediate/ingress',
+            'k8s-intermediate/recommendation'
           ]
         },
       ],

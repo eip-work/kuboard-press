@@ -47,7 +47,8 @@ Service是一个抽象层，它通过 LabelSelector 选择了一组 Pod（容器
 Service A 将请求转发到 IP 为 10.10.10.1 的Pod上，
 Service B 将请求转发到 IP 为 10.10.10.2、10.10.10.3、10.10.10.4 的Pod上。
 
-![img](./expose.assets/module_04_services.svg)
+<img src="./expose.assets/module_04_services.svg" style="border: 1px solid #d7dae2; width: 600px;"></img>
+
 
 Service 将外部请求路由到一组 Pod 中，它提供了一个抽象层，使得 Kubernetes 可以在不影响服务调用者的情况下，动态调度容器组<font color="#AAAAAA">（在容器组失效后重新创建容器组，增加或者减少同一个 Deployment 对应容器组的数量等）</font>。
 
@@ -148,7 +149,7 @@ kubectl apply -f nginx-service.yaml
 kubectl get services -o wide
 ```
 
-可查看到名称为nginx-service的服务。
+可查看到名称为 nginx-service 的服务。
 
 **访问服务**
 
