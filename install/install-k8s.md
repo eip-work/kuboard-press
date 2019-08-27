@@ -14,7 +14,7 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 40 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 41 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
   ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
 
@@ -274,13 +274,26 @@ kubectl delete node demo-worker-x-x
 
 :::: tabs type:border-card
 
-::: tab 快速安装 lazy
+::: tab 安装IngressController lazy
 
 **在 master 节点上执行**
 
 ``` sh
 # 只在 master 节点执行
 kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
+```
+
+:::
+
+::: tab 卸载IngressController lazy
+
+**在 master 节点上执行**
+
+只在您想选择其他 Ingress Controller 的情况下卸载
+
+``` sh
+# 只在 master 节点执行
+kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 ```
 
 :::
