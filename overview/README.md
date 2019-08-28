@@ -141,7 +141,7 @@ export default {
       if (window.ga) {
         window.ga('send', {
           hitType: 'event',
-          eventCategory: 'Recommendation',
+          eventCategory: 'Recommend',
           eventAction: 'click',
           eventLabel: '深入剖析Kubernetes'
         });
