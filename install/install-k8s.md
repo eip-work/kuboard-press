@@ -8,15 +8,13 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 
 **网上那么多 Kubernetes 安装文档，为什么这篇文档更有参考价值？**
 
-* **众多网友验证，并在线提出修改意见**
+* **众多网友验证**
+  * 每天有超过 200 人参照此文档完成 Kubernetes 安装
+  * 不断有网友对安装文档提出改进意见
 
-  ![image-20190806065321567](./install-k8s.assets/image-20190806065321567.png)
-
-* **持续不断地更新和完善**
+* **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 41 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
-
-  ![image-20190806070341727](./install-k8s.assets/image-20190806070341727.png)
+  * 当前已更新了 <font color="red"> 42 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** QQ 群
   
@@ -38,11 +36,31 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
-
 > * [安装 Kubernetes v1.15.2 单Master节点](/install/history-k8s/install-k8s-1.15.2.html)
 > * [安装 Kubernetes v1.15.1 单Master节点](/install/history-k8s/install-k8s-1.15.1.html)
 
-安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
+安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
+
+<script>
+export default {
+  methods: {
+    downloadDiagram () {
+      console.log('尝试发送 ga event')
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: '安装K8S',
+          eventAction: 'Download',
+          eventLabel: '下载拓扑图源文件'
+        });
+        console.log('发送成功 ga event')
+      } else {
+        console.log('开发环境，不发送 ga event')
+      }
+    }
+  }
+}
+</script>
 
 ![image-20190826000521999](./install-k8s.assets/image-20190826000521999.png)
 
@@ -263,15 +281,6 @@ kubectl delete node demo-worker-x-x
 
 ## 安装 Ingress Controller
 
-> Ingress官方文档：https://kubernetes.io/docs/concepts/services-networking/ingress/
->
-> Ingress Controllers官网介绍：https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
->
-> 本文中使用如下部署方式：https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
->
-> kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
-
-
 :::: tabs type:border-card
 
 ::: tab 安装IngressController lazy
@@ -315,11 +324,9 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 
 在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面
 
-::: tip
-由于需要申请域名，过程会比较繁琐，有如下两种替代方案：
+::: tip 提示
 
-* 在您的客户端机器（访问部署在K8S上的 web 应用的浏览器所在的机器）设置 hosts 配置；
-* 暂时放弃域名的配置，临时使用 NodePort 或者 `kubectl port-forward` 的方式访问部署在 K8S 上的 web 应用
+许多初学者在安装 Ingress Controller 时会碰到问题，请不要灰心，可暂时跳过 ***安装 Ingress Controller*** 这个部分，等您学完 www.kuboard.cn 上 [Kubernetes 入门](/learning/k8s-basics/kubernetes-basics.html) 以及 [通过互联网访问您的应用程序](/learning/k8s-intermediate/ingress.html) 这两部分内容后，再来回顾 Ingress Controller 的安装。
 
 :::
 
