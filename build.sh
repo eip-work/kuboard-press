@@ -10,7 +10,7 @@ docker build -t $tag:latest .
 
 
 if test $datetime != ""; then
-  docker push $tag:latest
+  # docker push $tag:latest
   docker tag $tag:latest $tag:$datetime
   docker push $tag:$datetime
 fi
