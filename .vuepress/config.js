@@ -67,7 +67,7 @@ module.exports = {
       { text: '安装', link: '/install/install-dashboard' },
       { text: '学习', link: '/learning/' },
       { text: '使用', link: '/guide/' },
-      { text: '微服务', link: '/micro-service/spring-cloud/' },
+      { text: '微服务', link: '/micro-service/overview/kuboard-view-of-k8s.html' },
       { text: '博客', link: 'https://blog.kuboard.cn/compaign' }
       // { text: 'DevOps', link: '/devops/' }
     ],
@@ -239,6 +239,13 @@ module.exports = {
       ],
 
       '/micro-service/': [
+        {
+          title: '概述',
+          collapsable: false,
+          children: [
+            'overview/kuboard-view-of-k8s'
+          ]
+        },
         {
           title: 'Spring Cloud',
           collapsable: false,
