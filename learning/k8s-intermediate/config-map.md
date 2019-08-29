@@ -37,7 +37,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   ConfigMap 创建成功
 
-## 使用 ConfigMap 中的信息配置容器的环境变量
+## ConfigMap --> 容器的环境变量
 
 * 在名称空间页面点击 **创建工作负载**
 
@@ -82,7 +82,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   ![image-20190829112834708](./config-map.assets/image-20190829112834708.png)
 
-## 将 ConfigMap 中的所有名值对配置为容器的环境变量
+## ConfigMap --> 容器的环境变量（ConfigMap的所有名值对）
 
 * 在名称空间页面点击 **创建工作负载**
 
@@ -134,7 +134,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
   
   ![image-20190829135734710](./config-map.assets/image-20190829135734710.png)
 
-## 在 Pod 的 Command 中使用 ConfigMap 中定义的变量
+## ConfigMap --> Command 参数
 
 * 在名称空间页面点击 **创建工作负载**
 
@@ -173,7 +173,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   ![image-20190829151912714](./config-map.assets/image-20190829151912714.png)
 
-## 将 ConfigMap 中的信息挂载到数据卷
+## ConfigMap --> 数据卷
 
 * 创建 ConfigMap 如下图所示：
 
