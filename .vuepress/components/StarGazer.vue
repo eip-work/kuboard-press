@@ -5,7 +5,7 @@
       :visible.sync="dialogVisible"
       width="50%"
       :append-to-body	="true">
-      <span>如果这篇文档有帮到您，劳烦移步 github 给一个 star，谢谢！</span>
+      <span>给一个 github star，给一份鼓励！</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="waitAMoment">一会儿再说</el-button>
         <el-button type="primary" @click="gotoStar">够义气，现在就去！</el-button>

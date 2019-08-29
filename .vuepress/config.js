@@ -56,7 +56,7 @@ module.exports = {
     nav: [
       { text: '简介', link: '/overview/' },
       { text: '安装', link: '/install/install-dashboard' },
-      { text: '学习', link: '/learning/k8s-basics/kubernetes-basics.html' },
+      { text: '学习', link: '/learning/' },
       { text: '使用', link: '/guide/' },
       { text: '微服务', link: '/micro-service/spring-cloud/' },
       { text: '博客', link: 'https://blog.kuboard.cn/compaign' }
@@ -166,7 +166,8 @@ module.exports = {
           collapsable: false,
           children: [
             'k8s-intermediate/ingress',
-            'k8s-intermediate/recommendation'
+            // 'k8s-intermediate/config-map',
+            // 'k8s-intermediate/recommendation',
           ]
         },
       ],

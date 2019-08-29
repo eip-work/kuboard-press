@@ -9,7 +9,7 @@
           <a href="/install/install-dashboard.html" class="nav-link router-link-exact-active router-link-active">安装</a>
         </div>
         <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
-          <a href="/learning/k8s-basics/kubernetes-basics.html" class="nav-link router-link-exact-active router-link-active">学习</a>
+          <a href="/learning/" class="nav-link router-link-exact-active router-link-active">学习</a>
         </div>
         <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
           <a href="/guide/" class="nav-link">使用</a>
