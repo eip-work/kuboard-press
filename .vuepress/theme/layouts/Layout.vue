@@ -30,11 +30,9 @@
 
 <script>
 import ParentLayout from '@parent-theme/layouts/Layout.vue'
-import installBaiduTongji from '../../baidutongji.js'
 
 export default {
   mounted () {
-    installBaiduTongji()
   },
   components: {
     ParentLayout

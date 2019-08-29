@@ -4,7 +4,16 @@ module.exports = {
   title: 'Kuboard - Kubernetes k8s 安装文档/免费教程/实践/管理界面',
   description: '一个非常 cool 的 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；同时提供 Spring Cloud 微服务部署教程，DevOps教程',
   head: [
-    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, DevOps, 微服务, 持续构建集成, 容器, Kubernetes 教程, K8S 教程, 微服务实践, Kubernetes 安装'}]
+    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, DevOps, 微服务, 持续构建集成, 容器, Kubernetes 教程, K8S 教程, 微服务实践, Kubernetes 安装'}],
+    ['script', {}, `
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5434e5c7a3fe924c0d6c5bd6f0eae56b";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    `]
   ],
   markdown: {
     toc: { includeLevel: [2, 3] },
