@@ -96,7 +96,6 @@ module.exports = {
           title: '概念',
           collapsable: false,
           children: [
-            'k8s-core-concepts',
             'quick-win',
             'why-kuboard',
             'concepts'
@@ -158,7 +157,8 @@ module.exports = {
             'k8s-basics/explore',
             'k8s-basics/expose',
             'k8s-basics/scale',
-            'k8s-basics/update'
+            'k8s-basics/update',
+            'k8s-basics/k8s-core-concepts'
           ]
         },
         {
@@ -166,7 +166,7 @@ module.exports = {
           collapsable: false,
           children: [
             'k8s-intermediate/ingress',
-            // 'k8s-intermediate/config-map',
+            'k8s-intermediate/config-map',
             // 'k8s-intermediate/recommendation',
           ]
         },

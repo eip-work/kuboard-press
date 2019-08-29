@@ -2,7 +2,7 @@
 description: 本文详细讲解了 Kubernetes Rolling Update 的概念，并描述了如何使用 kubectl / Kuboard 对一个应用程序执行滚动更新。
 ---
 
-# 执行滚动更新
+# 5. 执行滚动更新
 
 本文翻译自 Kubernetes 官网 [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) ，并有所改写
 

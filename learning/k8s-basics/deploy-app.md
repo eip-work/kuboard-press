@@ -2,7 +2,7 @@
 description: 本文详细讲解了 Kubernetes Deployment 的概念，并描述了如何使用 kubectl / Kuboard 创建一个 Deployment
 ---
 
-# 部署第一个应用程序
+# 1. 部署第一个应用程序
 
 本文翻译自 Kubernetes 官网 [Using kubectl to Create a Deployment](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/) ，并有所改写
 

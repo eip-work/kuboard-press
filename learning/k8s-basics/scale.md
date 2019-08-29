@@ -2,7 +2,7 @@
 description: 本文详细讲解了 Kubernetes Scale 的概念，并描述了如何使用 kubectl / Kuboard 对一个应用程序进行 伸缩 操作
 ---
 
-# 伸缩应用程序
+# 4. 伸缩应用程序
 
 本文翻译自 Kubernetes 官网 [Running Multiple Instances of Your App](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-intro/) ，并有所改写
 

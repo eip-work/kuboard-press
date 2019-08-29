@@ -2,7 +2,7 @@
 description: 本文详细讲解了 Kubernetes Service 的概念，并描述了如何使用 kubectl / Kuboard 创建一个 Service，以使得部署在 Kubernetes 上的容器可以被访问。
 ---
 
-# 公布应用程序
+# 3. 公布应用程序
 
 本文翻译自 Kubernetes 官网 [Using a Service to Expose Your App](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/) ，并有所改写
 
