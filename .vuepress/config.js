@@ -13,7 +13,8 @@ module.exports = {
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
     })();
-    `]
+    `],
+    ['script', {type: 'text/javascript', src: 'http://tajs.qq.com/stats?sId=66467492', charset: 'UTF-8'}]
   ],
   markdown: {
     toc: { includeLevel: [2, 3] },
