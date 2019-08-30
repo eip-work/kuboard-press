@@ -61,7 +61,7 @@ kubectl version
 
 ## 获取 kubectl config 文件
 
-如果您参考 [安装 Kubernetes 单Master节点](install-k8s) 或 [安装 Kubernetes 高可用](install-kubernetes) 完成了 Kubernetes 安装，**请在 demo-master-a-1 节点上执行如下命令**
+如果您参考 [安装 Kubernetes 单Master节点](install-k8s.html) 或 [安装 Kubernetes 高可用](install-kubernetes.html) 完成了 Kubernetes 安装，**请在 demo-master-a-1 节点上执行如下命令**
 
 ```sh
 cat /etc/kubernetes/admin.conf

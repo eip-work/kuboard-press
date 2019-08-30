@@ -31,7 +31,7 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 **安装后的软件版本为**
 
 * Kubernetes v1.15.3
-  * calico 3.8
+  * calico 3.8.2
   * nginx-ingress 1.5.3
 * Docker 18.09.7
 
