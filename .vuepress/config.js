@@ -34,14 +34,14 @@ module.exports = {
         return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
       }
     },
-    '@vuepress/medium-zoom': {
-      selector: 'p img',
-      // medium-zoom options here
-      // See: https://github.com/francoischalifour/medium-zoom#options
-      options: {
-        margin: 16
-      }
-    },
+    // '@vuepress/medium-zoom': {
+    //   selector: 'p img',
+    //   // medium-zoom options here
+    //   // See: https://github.com/francoischalifour/medium-zoom#options
+    //   options: {
+    //     margin: 16
+    //   }
+    // },
     'code-switcher': {},
     'reading-progress': {},
     'vuepress-plugin-element-tabs': {},

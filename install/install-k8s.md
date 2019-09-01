@@ -30,7 +30,6 @@ storyBook:
 export default {
   data () {
     let validateEnv = (rule, value, callback) => {
-      console.log('validate', value)
       if (value.length < 3) {
         callback(new Error('请确认您的环境符合上述条件'));
       } else {
@@ -45,6 +44,8 @@ export default {
         checked: [{validator: validateEnv, trigger: 'change'}]
       }
     }
+  },
+  mounted () {
   },
   watch: {
     'form.checked' () {

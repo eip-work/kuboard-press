@@ -3,13 +3,12 @@
     <el-dialog
       :title="$page.frontmatter.storyBook.title"
       :visible.sync="dialogVisible"
+      :append-to-body="true"
       custom-class="storybook-dialog"
       :fullscreen="true">
       <div slot="title" class="storybook-title">
         {{$page.frontmatter.storyBook.title}} --- 
-        <!-- <el-tag type="danger"> -->
           <span>{{slides[activeIndex] ? slides[activeIndex].title : ''}}</span>
-        <!-- </el-tag> -->
         <el-button style="float: right; margin-right: 20px; virtical-align: top;" size="mini" type="text" @click="dialogVisible = false">全文阅读</el-button>
       </div>
 
@@ -21,8 +20,8 @@
                 :style="activeIndex === index ? '' : 'cursor: pointer; opacity: 0.5;'">
               <div class="slide"
                 @click.capture="clickNeighbour(index)">
-                <!-- <div>{{step.title}}</div> -->
                 <div :id="`dialog_${step.name}`">
+                  <div></div>
                   <!-- <div :id="step.name">
                     <slot :name="step.name">
                       {{step.title}}
@@ -36,8 +35,6 @@
           </div>
         </div>
         <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-custom swiper-no-swiping noselect" slot="pagination"></div>
-        <!-- <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div> -->
       </div>
     </el-dialog>
     <el-button @click="dialogVisible = true" type="text" style="position: fixed; right: 20px; top: 60px; z-index: 10;">分步阅读</el-button>
@@ -67,6 +64,8 @@ export default {
       slides: []
     }
   },
+  created () {
+  },
   mounted () {
     this.$nextTick(_ => {
       for (let item of this.$page.frontmatter.storyBook.pages) {
@@ -86,6 +85,7 @@ export default {
       if (this.dialogVisible) {
         setTimeout(_ => {
           if (_this.mySwiper === undefined) {
+            console.log('new swiper')
             _this.mySwiper = new Swiper ('.swiper-container', {
               hashNavigation: {
                 watchState: true,
@@ -104,26 +104,24 @@ export default {
               effect: 'coverflow',
               on:{
                 slideChange: function(a){
-                  console.log('slideChange')
                   _this.$nextTick(_ => {
                     _this.activeIndex = _this.mySwiper.activeIndex
                   })
                 },
               },
-              observer:true,
+              // observer:true,
               // navigation: {
               //   nextEl: '.swiper-button-next',
               //   prevEl: '.swiper-button-prev',
               // }
             })
           }
-          for (let item of this.slides) {
-            // console.log(`dialog_${item.name}`, document.getElementById(`dialog_${item.name}`))
-            document.getElementById(`dialog_${item.name}`).appendChild(document.getElementById(item.name))
-          }
-          for (let item of this.slides) {
-            document.getElementById(`dialog_${item.name}`).scrollTop = 0
-          }
+          setTimeout(_ => {
+            for (let item of this.slides) {
+              // console.log(`dialog_${item.name}`, document.getElementById(`dialog_${item.name}`))
+              document.getElementById(`dialog_${item.name}`).appendChild(document.getElementById(item.name))
+            }
+          }, 100)
         }, 100)
       } else {
         setTimeout(_ => {
@@ -166,9 +164,6 @@ export default {
         event.preventDefault()
         this.mySwiper.slidePrev()
       }
-    },
-    next() {
-      if (this.active++ >= this.$page.frontmatter.storyBook.pages.length) this.active = 0;
     }
   }
 }
