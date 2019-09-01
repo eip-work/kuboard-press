@@ -159,18 +159,6 @@ hostname
 lscpu
 ```
 
-::: warning 必须符合下述条件
-<el-form :model="form" ref="envForm" :rules="rules">
-<el-form-item prop="checked">
-<el-checkbox-group v-model="form.checked">
-*  <el-checkbox label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> 
-*  <el-checkbox label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> 
-*  <el-checkbox label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> 
-</el-checkbox-group>
-</el-form-item>
-</el-form>
-:::
-
 **操作系统兼容性**
 
 | CentOS 版本 | 本文档是否兼容                          | 备注                                |
@@ -180,6 +168,19 @@ lscpu
 | 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
+
+<div style="display: inline-block; width: calc(100% - 400px);"></div>
+<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px;">
+<el-form :model="form" ref="envForm" :rules="rules" style="text-align: right;">
+<el-form-item prop="checked" class="env-form-item">
+<el-checkbox-group v-model="form.checked" style="height: 120px;">
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
+</el-checkbox-group>
+</el-form-item>
+</el-form>
+</div>
 
 </div>
 

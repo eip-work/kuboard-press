@@ -14,6 +14,8 @@ module.exports = {
       s.parentNode.insertBefore(hm, s);
     })();
     `],
+    ['link', {rel: "stylesheet", href: "/java-script-dist/swiper-4.5.0/css/swiper.min.css"}],    
+    ['script', {src: '/java-script-dist/swiper-4.5.0/js/swiper.min.js'}],
     // ['script', {type: 'text/javascript', src: 'https://tajs.qq.com/stats?sId=66467492', charset: 'UTF-8'}]
   ],
   markdown: {

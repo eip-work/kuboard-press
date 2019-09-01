@@ -6,34 +6,37 @@
       custom-class="storybook-dialog"
       :fullscreen="true">
       <div slot="title" class="storybook-title">
-        {{$page.frontmatter.storyBook.title}} - 
-        <el-tag type="danger">
-          <span style="font-size: 14px;">{{slides[activeIndex] ? slides[activeIndex].title : ''}}</span>
-        </el-tag>
+        {{$page.frontmatter.storyBook.title}} --- 
+        <!-- <el-tag type="danger"> -->
+          <span>{{slides[activeIndex] ? slides[activeIndex].title : ''}}</span>
+        <!-- </el-tag> -->
         <el-button style="float: right; margin-right: 20px; virtical-align: top;" size="mini" type="text" @click="dialogVisible = false">全文阅读</el-button>
       </div>
-      <swiper :options="swiperOption" ref="mySwiper" class="swiper-no-swiping">
-        <swiper-slide v-for="(step, index) in slides" :key="step.name" class="swipe-slide-width swiper-no-swiping" :data-hash="step.name">
-          <div :class="activeIndex === index ? 'slide-wrapper' : 'slide-wrapper noselect'"
-              :disabled="activeIndex !== index"
-              :style="activeIndex === index ? '' : 'cursor: pointer; opacity: 0.5;'">
-            <div class="slide"
-              @click.capture="clickNeighbour(index)"
-              :id="`dialog_${step.name}`">
-              <!-- <div :id="step.name">
-                <slot :name="step.name">
-                  {{step.title}}
-                </slot>
-              </div> -->
+
+      <div class="swiper-container swiper-no-swiping">
+        <div class="swiper-wrapper swiper-no-swiping">
+          <div v-for="(step, index) in slides" :key="step.name" class="swiper-slide swipe-slide-width swiper-no-swiping" :data-hash="step.name">
+            <div :class="activeIndex === index ? 'slide-wrapper' : 'slide-wrapper noselect'"
+                :disabled="activeIndex !== index"
+                :style="activeIndex === index ? '' : 'cursor: pointer; opacity: 0.5;'">
+              <div class="slide"
+                @click.capture="clickNeighbour(index)"
+                :id="`dialog_${step.name}`">
+                <!-- <div :id="step.name">
+                  <slot :name="step.name">
+                    {{step.title}}
+                  </slot>
+                </div> -->
+              </div>
+              <el-button v-if="activeIndex === index" style="float: left; z-index: 100; margin-top: 5px;" size="mini" type="primary" @click="clickNeighbour(index - 1)">上一步</el-button>
+              <el-button v-if="activeIndex === index" style="float: right; z-index: 100; margin-top: 5px;" size="mini" type="primary" @click="clickNeighbour(index + 1)">下一步</el-button>
             </div>
-            <el-button v-if="activeIndex === index" style="float: left; z-index: 100; margin-top: 5px;" size="mini" type="primary" @click="clickNeighbour(index - 1)">上一步</el-button>
-            <el-button v-if="activeIndex === index" style="float: right; z-index: 100; margin-top: 5px;" size="mini" type="primary" @click="clickNeighbour(index + 1)">下一步</el-button>
           </div>
-        </swiper-slide>
+        </div>
         <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-custom swiper-no-swiping noselect" slot="pagination"></div>
         <!-- <div class="swiper-button-prev" slot="button-prev"></div>
         <div class="swiper-button-next" slot="button-next"></div> -->
-      </swiper>
+      </div>
     </el-dialog>
     <el-button @click="dialogVisible = true" type="text" style="position: fixed; right: 20px; top: 60px;">分步阅读</el-button>
     <template v-for="(step, index) in slides">
@@ -51,45 +54,13 @@
 </template>
 
 <script>
-import 'swiper/dist/css/swiper.css'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-
 export default {
   data () {
     let _this = this
     return {
       dialogVisible: false,
       activeIndex: 0,
-      swiperOption: {
-        hashNavigation: {
-          watchState: true,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          // type: 'progressbar'
-          renderBullet(index, className) {
-              return `<span class="${className} swiper-pagination-bullet-custom">${index + 1}</span>`
-            }
-        },
-        speed: 300,
-        freeMode: false,
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        spaceBetween: 20,
-        on:{
-          slideChange: function(a){
-            console.log('slideChange')
-            _this.$nextTick(_ => {
-              _this.activeIndex = _this.$refs.mySwiper.swiper.activeIndex
-            })
-          },
-        },
-        // observer:true,
-        // navigation: {
-        //   nextEl: '.swiper-button-next',
-        //   prevEl: '.swiper-button-prev',
-        // }
-      },
+      mySwiper: undefined,
       canSlideNext: true,
       slides: []
     }
@@ -114,12 +85,44 @@ export default {
     })
   },
   components: {
-    swiper, swiperSlide
+    // swiper, swiperSlide
   },
   watch: {
     dialogVisible () {
+      let _this = this
       if (this.dialogVisible) {
         setTimeout(_ => {
+          if (_this.mySwiper === undefined) {
+            _this.mySwiper = new Swiper ('.swiper-container', {
+              hashNavigation: {
+                watchState: true,
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                renderBullet(index, className) {
+                    return `<span class="${className} swiper-pagination-bullet-custom">${index + 1}</span>`
+                  }
+              },
+              speed: 300,
+              freeMode: false,
+              slidesPerView: 'auto',
+              centeredSlides: true,
+              spaceBetween: 20,
+              on:{
+                slideChange: function(a){
+                  console.log('slideChange')
+                  _this.$nextTick(_ => {
+                    _this.activeIndex = _this.mySwiper.activeIndex
+                  })
+                },
+              },
+              // observer:true,
+              // navigation: {
+              //   nextEl: '.swiper-button-next',
+              //   prevEl: '.swiper-button-prev',
+              // }
+            })
+          }
           for (let item of this.slides) {
             // console.log(`dialog_${item.name}`, document.getElementById(`dialog_${item.name}`))
             document.getElementById(`dialog_${item.name}`).appendChild(document.getElementById(item.name))
@@ -154,7 +157,7 @@ export default {
             this.$message.error(result.message)
             return
           } else {
-            this.$refs.mySwiper.swiper.slideNext()
+            this.mySwiper.slideNext()
           }
         }
       } else if (index === this.activeIndex) {
@@ -162,7 +165,7 @@ export default {
       } else if (index < this.activeIndex) {
         event.stopPropagation()
         event.preventDefault()
-        this.$refs.mySwiper.swiper.slidePrev()
+        this.mySwiper.slidePrev()
       }
     },
     next() {
@@ -188,9 +191,11 @@ export default {
   
 }
 .swiper-pagination-custom {
+  text-align: center;
   bottom: 10px !important;
-  left: 300px !important;
-  width: calc(100% - 600px) !important;
+  display: inline-block;
+  left: 20vw !important;
+  width: 60vw !important;
 }
 
 .swiper-pagination-bullet-custom {
@@ -209,7 +214,7 @@ export default {
 }
 
 .swipe-slide-width {
-  width: calc(100vw - 200px);
+  width: 70vw;
 }
 
 .slide-wrapper {
