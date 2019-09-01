@@ -73,7 +73,7 @@ export default {
         this.$refs.envForm.validate(valid => {
           
         })
-        return { flag: false, message: '请确认您的环境符合要求的条件' }
+        return { flag: false, message: '请翻到本页最下方，并确认您的环境符合要求的条件' }
       }
       return { flag: true, message: 'can slide next' }
     }
@@ -94,7 +94,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 42 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 45 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** QQ 群
   
@@ -170,7 +170,7 @@ lscpu
 | 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
 
 <div style="display: inline-block; width: calc(100% - 400px);"></div>
-<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px;">
+<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
 <el-form :model="form" ref="envForm" :rules="rules" style="text-align: right;">
 <el-form-item prop="checked" class="env-form-item">
 <el-checkbox-group v-model="form.checked" style="height: 120px;">
