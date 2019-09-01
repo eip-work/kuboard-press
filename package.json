@@ -19,6 +19,7 @@
     "vuepress-plugin-sitemap": "^2.1.2"
   },
   "dependencies": {
-    "element-ui": "^2.11.1"
+    "element-ui": "^2.11.1",
+    "vue-awesome-swiper": "^3.1.3"
   }
 }

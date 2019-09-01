@@ -9,8 +9,8 @@ description: 详细介绍如何将 Kuboard 升级到最新版本。
 稳定版： latest, v1.0.1
 发布日期： 2019-08-20
 
-测试版： v1.0.2-beta.2
-发布日期： 2019-08-24
+测试版： v1.0.2-beta.5
+发布日期： 2019-08-29
 
 [查看更新日志](/overview/change-log.html)
 

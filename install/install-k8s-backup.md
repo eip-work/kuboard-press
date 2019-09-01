@@ -1,88 +1,8 @@
 ---
-# layout: StepLayout
 description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
-storyBook:
-  title: '使用 kubeadm 安装 kubernetes v1.15.3'
-  initial: StoryBook
-  pages:
-    - name: introduction
-      title: 文档特点
-    - name: overview
-      title: 配置要求
-    - name: step1
-      title: 检查环境
-    - name: step2
-      title: 安装 docker/kubelet
-    - name: step3
-      title: 初始化 master 节点
-    - name: step4
-      title: 初始化 worker 节点
-    - name: step5
-      title: 安装 Ingress Controller
-    - name: step6
-      title: 总结
 ---
 
 # 使用 kubeadm 安装 kubernetes v1.15.3
-
-<script>
-
-export default {
-  data () {
-    let validateEnv = (rule, value, callback) => {
-      console.log('validate', value)
-      if (value.length < 3) {
-        callback(new Error('请确认您的环境符合上述条件'));
-      } else {
-        callback();
-      }
-    };
-    return {
-      form: {
-        checked: []
-      },
-      rules: {
-        checked: [{validator: validateEnv, trigger: 'change'}]
-      }
-    }
-  },
-  watch: {
-    'form.checked' () {
-      if (this.form.checked.length === 3) {
-        
-      }
-    }
-  },
-  methods: {
-    downloadDiagram () {
-      console.log('尝试发送 ga event')
-      if (window.ga) {
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: '安装K8S',
-          eventAction: 'Download',
-          eventLabel: '下载拓扑图源文件'
-        });
-        console.log('发送成功 ga event')
-      } else {
-        console.log('开发环境，不发送 ga event')
-      }
-    },
-    canSlideNext (currentName) {
-      if (currentName === 'step1' && this.form.checked.length < 3) {
-        this.$refs.envForm.validate(valid => {
-          
-        })
-        return { flag: false, message: '请确认您的环境符合要求的条件' }
-      }
-      return { flag: true, message: 'can slide next' }
-    }
-  }
-}
-</script>
-
-<StoryBook>
-<div slot="introduction">
 
 ## 文档特点
 
@@ -99,9 +19,6 @@ export default {
 * **在线答疑** QQ 群
   
   ![kuboard_qq.png](./install-k8s.assets/kuboard_qq.png)
-
-</div>
-<div slot="overview" style="min-height: 800px;">
 
 ## 配置要求
 
@@ -124,11 +41,28 @@ export default {
 
 安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
+<script>
+export default {
+  methods: {
+    downloadDiagram () {
+      console.log('尝试发送 ga event')
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: '安装K8S',
+          eventAction: 'Download',
+          eventLabel: '下载拓扑图源文件'
+        });
+        console.log('发送成功 ga event')
+      } else {
+        console.log('开发环境，不发送 ga event')
+      }
+    }
+  }
+}
+</script>
+
 ![image-20190826000521999](./install-k8s.assets/image-20190826000521999.png)
-
-
-<!-- <img src="./install-k8s.assets/image-20190826000521999.png" style="width: 958px; height: 533px"></img> -->
-
 
 ::: tip
 **关于二进制安装**
@@ -139,9 +73,6 @@ export default {
 鉴于目前已经有比较方便的办法获得 kubernetes 镜像，我将回避 ***二进制*** 安装是否更好的争论。本文采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。
 
 :::
-
-</div>
-<div slot="step1">
 
 ## 检查 centos / hostname
 
@@ -159,16 +90,10 @@ hostname
 lscpu
 ```
 
-::: warning 必须符合下述条件
-<el-form :model="form" ref="envForm" :rules="rules">
-<el-form-item prop="checked">
-<el-checkbox-group v-model="form.checked">
-*  <el-checkbox label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> 
-*  <el-checkbox label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> 
-*  <el-checkbox label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> 
-</el-checkbox-group>
-</el-form-item>
-</el-form>
+::: danger 注意
+* 请使用兼容的 centos 版本
+* hostname 不能为 localhost
+* CPU 内核数量不能低于 2
 :::
 
 **操作系统兼容性**
@@ -180,10 +105,6 @@ lscpu
 | 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
-
-</div>
-
-<div slot="step2">
 
 ## 安装 docker / kubelet
 
@@ -216,10 +137,6 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 :::
 
 ::::
-
-</div>
-
-<div slot="step3">
 
 ## 初始化 master 节点
 
@@ -282,9 +199,7 @@ watch kubectl get pod -n kube-system -o wide
 kubectl get nodes
 ```
 
-</div>
 
-<div slot="step4">
 
 ## 初始化 worker节点
 
@@ -363,9 +278,6 @@ kubectl delete node demo-worker-x-x
 * worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
 :::
 
-</div>
-
-<div slot="step5">
 
 ## 安装 Ingress Controller
 
@@ -423,11 +335,6 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 :::
 
 
-</div>
-
-<div slot="step6">
-
-
 ## 下一步
 :tada: :tada: :tada: 
 
@@ -443,7 +350,3 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 ::: tip
 * Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/overview/#kubernetes-%E5%88%9D%E5%AD%A6%E8%80%85)
 :::
-
-
-</div>
-</StoryBook>
