@@ -20,13 +20,15 @@
                 :disabled="activeIndex !== index"
                 :style="activeIndex === index ? '' : 'cursor: pointer; opacity: 0.5;'">
               <div class="slide"
-                @click.capture="clickNeighbour(index)"
-                :id="`dialog_${step.name}`">
-                <!-- <div :id="step.name">
-                  <slot :name="step.name">
-                    {{step.title}}
-                  </slot>
-                </div> -->
+                @click.capture="clickNeighbour(index)">
+                <!-- <div>{{step.title}}</div> -->
+                <div :id="`dialog_${step.name}`">
+                  <!-- <div :id="step.name">
+                    <slot :name="step.name">
+                      {{step.title}}
+                    </slot>
+                  </div> -->
+                </div>
               </div>
               <el-button v-if="activeIndex === index" style="float: left; z-index: 100; margin-top: 5px;" size="mini" type="primary" @click="clickNeighbour(index - 1)">上一步</el-button>
               <el-button v-if="activeIndex === index" style="float: right; z-index: 100; margin-top: 5px;" size="mini" type="primary" @click="clickNeighbour(index + 1)">下一步</el-button>
@@ -38,7 +40,7 @@
         <div class="swiper-button-next" slot="button-next"></div> -->
       </div>
     </el-dialog>
-    <el-button @click="dialogVisible = true" type="text" style="position: fixed; right: 20px; top: 60px;">分步阅读</el-button>
+    <el-button @click="dialogVisible = true" type="text" style="position: fixed; right: 20px; top: 60px; z-index: 10;">分步阅读</el-button>
     <template v-for="(step, index) in slides">
       <div :key="step.name">
         <div :id="`full_${step.name}`">
@@ -64,15 +66,6 @@ export default {
       canSlideNext: true,
       slides: []
     }
-  },
-  computed: {
-    // swiper() {
-    //   // if (this.$refs.mySwiper) {
-    //   return this.$refs.mySwiper.swiper
-    //   // } else {
-    //   //   return { activeIndex: 0 }
-    //   // }
-    // }
   },
   mounted () {
     this.$nextTick(_ => {
@@ -108,6 +101,7 @@ export default {
               slidesPerView: 'auto',
               centeredSlides: true,
               spaceBetween: 20,
+              effect: 'coverflow',
               on:{
                 slideChange: function(a){
                   console.log('slideChange')
@@ -116,7 +110,7 @@ export default {
                   })
                 },
               },
-              // observer:true,
+              observer:true,
               // navigation: {
               //   nextEl: '.swiper-button-next',
               //   prevEl: '.swiper-button-prev',
@@ -126,6 +120,9 @@ export default {
           for (let item of this.slides) {
             // console.log(`dialog_${item.name}`, document.getElementById(`dialog_${item.name}`))
             document.getElementById(`dialog_${item.name}`).appendChild(document.getElementById(item.name))
+          }
+          for (let item of this.slides) {
+            document.getElementById(`dialog_${item.name}`).scrollTop = 0
           }
         }, 100)
       } else {
@@ -159,9 +156,11 @@ export default {
           } else {
             this.mySwiper.slideNext()
           }
+        } else {
+          this.mySwiper.slideNext()
         }
       } else if (index === this.activeIndex) {
-
+        // do nonething
       } else if (index < this.activeIndex) {
         event.stopPropagation()
         event.preventDefault()

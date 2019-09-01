@@ -1,8 +1,26 @@
 ---
 description: Kuboard 的安装手册，包括安装 Kuboard 的前提条件、与 Kubernetes 的版本兼容性、安装步骤、以及完成安装后如何访问 Kuboard 界面。
+storyBook:
+  title: '安装 Kuboard'
+  initial: StoryBook
+  pages:
+    - name: overview
+      title: 前提条件
+    - name: install
+      title: 安装/卸载
+    - name: token
+      title: 获取 Token
+    - name: access
+      title: 访问 Kuboard
+    - name: next
+      title: 下一步
 ---
 
 # 安装 Kuboard
+
+<StoryBook>
+
+<div slot="overview">
 
 ## 前提
 
@@ -24,13 +42,15 @@ description: Kuboard 的安装手册，包括安装 Kuboard 的前提条件、�
 | v1.12           | v1.0.x | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
 | v1.11           | v1.0.x | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 
+</div>
 
+<div slot="install">
 
 ## 安装
 
 :::: tabs 安装 type:border-card
 
-::: tab 安装 lazy
+::: tab 安装
 
 安装 Kuboard。
 
@@ -42,7 +62,7 @@ kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 
 :::
 
-::: tab 卸载 lazy
+::: tab 卸载
 
 卸载 Kuboard
 
@@ -53,13 +73,17 @@ kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 
 ::::
 
+</div>
+
+<div slot="token">
+
 ## 获取 Token
 
 您可以获得管理员用户、只读用户的Token
 
 :::: tabs type:border-card
 
-::: tab 管理员用户 lazy
+::: tab 管理员用户
 
 **拥有的权限**
 
@@ -93,7 +117,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 :::
 
 
-::: tab 只读用户 lazy
+::: tab 只读用户
 
 **拥有的权限**
 
@@ -116,7 +140,7 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 **输出**
 
 取输出信息中 token 字段
-```{13}
+``` {13}
 Name: admin-user-token-g8hxb
 Namespace: kube-system
 Labels: <none>
@@ -133,8 +157,12 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 ```
 
 :::
+
 ::::
 
+</div>
+
+<div slot="access">
 
 ## 访问 Kuboard
 
@@ -179,6 +207,10 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 ::::
 
+</div>
+
+<div slot="next">
+
 ::: warning
 * 如果不能访问 Kuboard，请参考 [常见问题](faq/timeout.html)
 
@@ -192,3 +224,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 - 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox.html) （10分钟）
 
 - 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
+
+</div>
+
+</StoryBook>
