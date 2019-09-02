@@ -4,6 +4,12 @@ description: 通过Kuboard 配置 Kubernetes，使用私有 registry 中的 dock
 
 # 使用私有 registry 中的 docker 镜像
 
+企业通常会因为如下几个原因，需要搭建自己的私有 docker registry：
+* 限制 docker 镜像的分发范围，例如：只允许在内网分发，或者只允许被授权的用户获取 docker 镜像
+* 提高推送 docker 镜像以及抓取 docker 镜像时的网络传输速度
+
+在这种情况下，您需要在 Kubernetes 中使用私有 docker registry 中的 docker 镜像。本文描述了如何通过 Kuboard 完成这个配置任务。
+
 ## 前提假设
 
 假设您已经搭建了自己的私有 docker registry，并成功向其中推送了一个 docker 镜像，其主要参数如下：
