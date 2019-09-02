@@ -180,6 +180,7 @@ module.exports = {
           children: [
             'k8s-intermediate/ingress',
             'k8s-intermediate/config-map',
+            'k8s-intermediate/private-registry',
             // 'k8s-intermediate/recommendation',
           ]
         },
