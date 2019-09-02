@@ -34,7 +34,7 @@ export default {
   },
   mounted () {
     // this.waitAMoment()
-    this.dialogVisible = this.$page.path.indexOf('micro-service') > 0 && localStorage.getItem('promotion') !== 'compaign'
+    this.dialogVisible = (this.$page.path.indexOf('micro-service') > 0 || this.$page.path.indexOf('learning') > 0) && localStorage.getItem('promotion') !== 'compaign'
   },
   methods: {
     waitAMoment() {

@@ -2,7 +2,7 @@
 # layout: StepLayout
 description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
 storyBook:
-  title: '使用 kubeadm 安装 kubernetes v1.15.3'
+  title: '使用 kubeadm 安装 kubernetes v1.15.3（单Master节点）'
   initial: StoryBook
   pages:
     - name: introduction

@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     # replace username/repo:tag with your name and image details
-    image: eipwork/kuboard-press:20190901-210235
+    image: eipwork/kuboard-press:latest
     deploy:
       replicas: 1
       resources:
