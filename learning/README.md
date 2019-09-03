@@ -16,7 +16,7 @@ description: Kubernetes 学习路径推荐
 ## **Kubernetes 进阶**
   * [通过互联网访问您的应用](/learning/k8s-intermediate/ingress.html)
   * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html)
-
+  * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.md)
 
 ## **课程推荐**
 

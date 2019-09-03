@@ -139,7 +139,7 @@ module.exports = {
           children: [
             ['install-k8s', '安装 Kubernetes 单Master节点'],
             'install-kubernetes',
-            'install-k8s-upgrade',
+            ['install-k8s-upgrade', '升级 Kubernetes 集群'],
             'install-kubectl'
           ]
         },
