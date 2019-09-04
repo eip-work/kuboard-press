@@ -181,7 +181,16 @@ module.exports = {
             'k8s-intermediate/ingress',
             'k8s-intermediate/config-map',
             'k8s-intermediate/private-registry',
-            // 'k8s-intermediate/recommendation',
+            {
+              title: '持久化数据',
+              collapsable: false,
+              children: [
+                'k8s-intermediate/persistent/volume',
+                // 'k8s-intermediate/persistent/nfs',
+                // 'k8s-intermediate/persistent/pvc',
+                // 'k8s-intermediate/persistent/storage-class',
+              ]
+            }
           ]
         },
       ],
