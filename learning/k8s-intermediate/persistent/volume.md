@@ -1,8 +1,8 @@
 ---
-description: 数据卷
+description: 本文介绍 Kubernetes 中 Volume（数据卷）的基本概念、用法以及支持的数据卷类型
 ---
 
-# 数据卷
+# 数据卷 Volume
 
 参考文档： Kubernetes 官网文档 [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 
@@ -24,7 +24,7 @@ Docker 里同样也存在一个 volume（数据卷）的概念，但是 docker �
 
 * 一个容器组可以包含多个数据卷、多个容器
 * 一个容器通过挂载点决定某一个数据卷被挂载到容器中的什么路径
-* 不同类型的数据卷对应不同的存储媒介（图中列出了 nfs、PVC、ConfigMap 三种存储媒介，接下来将介绍更多）
+* 不同类型的数据卷对应不同的存储介质（图中列出了 nfs、PVC、ConfigMap 三种存储介质，接下来将介绍更多）
 
 <img src="./volume.assets/image-20190904201849792.png" style="max-width: 450px;"/>
 
@@ -57,7 +57,7 @@ Docker 里同样也存在一个 volume（数据卷）的概念，但是 docker �
 
 ## 数据卷的类型
 
-Kubernetes 目前支持多达 28 种数据卷类型，如需查阅所有的数据卷类型，请查阅 Kubernetes 官方文档 [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
+Kubernetes 目前支持多达 28 种数据卷类型（其中大部分特定于具体的云环境如 GCE/AWS/Azure 等），如需查阅所有的数据卷类型，请查阅 Kubernetes 官方文档 [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 
 本文针对自建 Kubernetes 时，经常使用的数据卷的类型描述如下：
 
@@ -93,6 +93,16 @@ Kubernetes 目前支持多达 28 种数据卷类型，如需查阅所有的数�
   * 存储日志文件
   * MySQL的data目录（建议只在测试环境中）
   * 用户上传的临时文件
+
+### cephfs <Badge text="Kuboard正在计划中" type="warn"/>
+
+* **描述**
+
+  cephfs 数据卷使得您可以挂载一个外部 CephFS 卷到您的容器组中。对于 kubernetes 而言，cephfs 与 nfs 的管理方式和行为完全相似，适用场景也相同。不同的仅仅是背后的存储介质。
+
+* **适用场景**
+
+  同 nfs 数据卷
 
 ### hostPath <Badge text="Kuboard已支持" type="success"/>
 
@@ -143,9 +153,7 @@ Kubernetes 目前支持多达 28 种数据卷类型，如需查阅所有的数�
   具体使用方法请参考 [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html#configmap-数据卷)
 
   ::: tip
-
   将 ConfigMap 数据卷挂载到容器时，如果该挂载点指定了 ***数据卷内子路径*** （subPath），则该 ConfigMap 被改变后，该容器挂载的内容仍然不变。
-
   :::
 
 * **适用场景**
@@ -156,16 +164,20 @@ Kubernetes 目前支持多达 28 种数据卷类型，如需查阅所有的数�
 
 * **描述**
 
+  secret 数据卷可以用来注入敏感信息（例如密码）到容器组。您可以将敏感信息存入 kubernetes secret 对象，并通过 Volume（数据卷）以文件的形式挂载到容器组（或容器）。secret 数据卷使用 tmpfs（基于 RAM 的文件系统）挂载。
+
+  ::: tip
+  将 Secret 数据卷挂载到容器时，如果该挂载点指定了 ***数据卷内子路径*** （subPath），则该 Secret 被改变后，该容器挂载的内容仍然不变。
+  :::
+  
 * **适用场景**
 
-### cephfs <Badge text="Kuboard正在计划中" type="warn"/>
-
-* **描述**
-
-* **适用场景**
+  * 将 HTTPS 证书存入 kubernets secret，并挂载到 /etc/nginx/conf.d/myhost.crt、/etc/nginx/conf.d/myhost.pem 路径，用来配置 nginx 的 HTTPS 证书
 
 ### persistentVolumeClaim <Badge text="Kuboard已支持" type="success"/>
 
 * **描述**
 
-* **适用场景**
+  persistentVolumeClaim 数据卷用来挂载 PersistentVolume 存储卷。PersistentVolume 存储卷为用户提供了一种在无需关心具体所在云环境的情况下”声明“ 所需持久化存储的方式。
+
+  请参考 [存储卷](./pv.html)

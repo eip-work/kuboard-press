@@ -18,7 +18,9 @@ description: Kubernetes 学习路径推荐
   * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html)
   * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.html)
   * 持久化数据
-    * [数据卷](/learning/k8s-intermediate/persistent/volume.html)
+    * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
+    * [存储卷 PV 和存储卷声明 PVC](/learning/k8s-intermediate/persistent/pv.html)
+    * [存储类 StorageClass](/learning/k8s-intermediate/persistent/storage-class.md)
 
 ## **课程推荐**
 

@@ -186,9 +186,9 @@ module.exports = {
               collapsable: false,
               children: [
                 'k8s-intermediate/persistent/volume',
+                'k8s-intermediate/persistent/pv',
+                'k8s-intermediate/persistent/storage-class',
                 // 'k8s-intermediate/persistent/nfs',
-                // 'k8s-intermediate/persistent/pvc',
-                // 'k8s-intermediate/persistent/storage-class',
               ]
             }
           ]
