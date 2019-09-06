@@ -71,7 +71,7 @@ module.exports = {
       { text: '学习', link: '/learning/' },
       { text: '使用', link: '/guide/' },
       { text: '微服务', link: '/micro-service/overview/kuboard-view-of-k8s.html' },
-      { text: '博客', link: 'https://blog.kuboard.cn/compaign' }
+      // { text: '博客', link: 'https://blog.kuboard.cn/compaign' }
       // { text: 'DevOps', link: '/devops/' }
     ],
     displayAllHeaders: false,
@@ -179,6 +179,14 @@ module.exports = {
           collapsable: false,
           children: [
             'k8s-intermediate/ingress',
+            {
+              title: '工作负载',
+              collapsable: false,
+              children: [
+                'k8s-intermediate/workload/pod',
+                'k8s-intermediate/workload/pod-lifecycle',
+              ]
+            },
             'k8s-intermediate/config-map',
             'k8s-intermediate/private-registry',
             {
