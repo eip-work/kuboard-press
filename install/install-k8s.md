@@ -95,7 +95,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 45 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 46 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** QQ 群
   
