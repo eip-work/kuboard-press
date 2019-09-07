@@ -185,6 +185,7 @@ module.exports = {
               children: [
                 'k8s-intermediate/workload/pod',
                 'k8s-intermediate/workload/pod-lifecycle',
+                'k8s-intermediate/workload/init-container',
               ]
             },
             'k8s-intermediate/config-map',

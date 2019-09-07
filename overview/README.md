@@ -126,40 +126,14 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
   * [通过互联网访问您的应用](/learning/k8s-intermediate/ingress.html)
   * 工作负载
     * [Pod 容器组](/learning/k8s-intermediate/workload/pod.html)
+    * [Pod 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
+    * [Pod 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
   * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html)
   * [使用私有 Registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.md)
   * 持久化数据
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
     * [存储卷 PV 和存储卷声明 PVC](/learning/k8s-intermediate/persistent/pv.html)
     * [存储类 StorageClass](/learning/k8s-intermediate/persistent/storage-class.html)
-  * 进阶路线一
-    * 在实际项目中锻炼，完成各种与微服务、容器化、Kubernetes更多高级功能的学习、理解和应用
-    * **适合人群：** 身边有人带路，并且技术功底比较强的人，能够自行翻阅大量 docker / kubernetes 的官网英文资料。这些人在完成上面的 Kubernetes 入门教程之后，基本上可以在项目中开始实战了。
-  * 进阶路线二
-    * 购买一套口碑比较好的视频课程，例如 <span v-on:click="openRecommendation" style="cursor: pointer;"><a>深入剖析Kubernetes</a></span> ，由 Kubernetes 社区资深成员与项目维护者 张磊 创作，价钱也仅相当于两杯咖啡的样子。
-    * **适合人群：** 技术功底相对薄弱，想要多学习一些理论，在理解 docker / kubernetes 等官网英文资料存在一定困难的人群
-
-<script>
-export default {
-  methods: {
-    openRecommendation () {
-      window.open('https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D', '_blank');
-      console.log('尝试发送 ga event')
-      if (window.ga) {
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: 'Recommend',
-          eventAction: 'click',
-          eventLabel: '深入剖析Kubernetes'
-        });
-        console.log('发送成功 ga event')
-      } else {
-        console.log('开发环境，不发送 ga event')
-      }
-    }
-  }
-}
-</script>
 
 ### Kubernetes 有经验者
 
