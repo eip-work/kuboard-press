@@ -170,6 +170,16 @@ lscpu
 | 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
 
+::: tip 修改 hostname
+如果您需要修改 hostname，可执行如下指令：
+``` sh
+# 修改 hostname
+hostnamectl set-hostname your-new-host-name
+# 查看修改结果
+hostnamectl status
+```
+:::
+
 <div style="display: inline-block; width: calc(100% - 400px);"></div>
 <div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
 <el-form :model="form" ref="envForm" :rules="rules" style="text-align: right;">
