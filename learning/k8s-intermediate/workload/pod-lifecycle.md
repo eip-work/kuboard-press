@@ -1,8 +1,9 @@
 ---
+layout: LearningLayout
 description: 本文描述了 Kubernetes 中 Pod 容器组的生命周期
 ---
 
-# Pod 生命周期
+# 容器组 - 生命周期
 
 参考文档： Kubernetes 官网文档 [Pod Lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
 
@@ -40,9 +41,9 @@ phase 的可能取值有：
 | lastProbeTime <Badge text="Kuboard 暂不显示" type="warn"/> | 上一次针对 Pod 做健康检查/就绪检查的时间戳                   |
 
 
-## Container probes
+## 容器的检查
 
-Probe 是指 kubelet 周期性地探测容器的状况。有三种类型的 Probe：
+Probe 是指 kubelet 周期性地检查容器的状况。有三种类型的 Probe：
 
 * <font color="#007af5">**ExecAction：**</font> 在容器内执行一个指定的命令。如果该命令的退出状态码为 0，则成功
 * <font color="#007af5">**TCPSocketAction：**</font> 探测容器的指定 TCP 端口，如果该端口处于 open 状态，则成功
@@ -84,7 +85,7 @@ Kuboard 可以在工作负载编辑器中配置健康检查/就绪检查，界�
 $$ Pod and Container status
 -->
 
-## Container States
+## 容器的状态
 
 一旦 Pod 被调度到节点上，kubelet 便开始使用容器引擎（通常是 docker）创建容器。容器有三种可能的状态：Waiting / Running / Terminated：
 
@@ -99,7 +100,7 @@ $$ Pod and Container status
 <!-- $$ Pod readiness gate
 Kuboard 暂不支持 -->
 
-## Restart policy
+## 重启策略
 
 定义 Pod 或工作负载时，可以指定 restartPolicy，可选的值有：
 
@@ -110,7 +111,7 @@ Kuboard 暂不支持 -->
 restartPolicy 将作用于 Pod 中的所有容器。kubelete 将在五分钟内，按照递延的时间间隔（10s, 20s, 40s ......）尝试重启已退出的容器，并在十分钟后再次启动这个循环，直到容器成功启动，或者 Pod 被删除。
 
 
-## Pod lifetime
+## 容器组的存活期
 
 通常，如果没有人或者控制器删除 Pod，Pod 不会自己消失。只有一种例外，那就是 Pod 处于 Scucceeded 或 Failed 的 phase，并超过了垃圾回收的时长（在 kubernetes master 中通过 terminated-pod-gc-threshold 参数指定），kubelet 自动将其删除。
 

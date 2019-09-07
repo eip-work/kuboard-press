@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文详细讲解了 Kubernetes Scale 的概念，并描述了如何使用 kubectl / Kuboard 对一个应用程序进行 伸缩 操作
 ---
 

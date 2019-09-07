@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 通过Kuboard 配置 Kubernetes，使用私有 registry 中的 docker 镜像
 ---
 

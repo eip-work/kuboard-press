@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文详细讲解了 Kubernetes Deployment 的概念，并描述了如何使用 kubectl / Kuboard 创建一个 Deployment
 ---
 

@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文详细讲解了 Kubernetes Rolling Update 的概念，并描述了如何使用 kubectl / Kuboard 对一个应用程序执行滚动更新。
 ---
 

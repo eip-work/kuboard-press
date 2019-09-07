@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文介绍 Kubernetes Ingress 的概念，包括Ingress 基本概念、如何配置 Ingress Controller、如何使用 kubectl/Kuboard 操作 Ingress 信息
 ---
 

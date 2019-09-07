@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文介绍了存储卷 PersistentVolume，存储卷声明 PersistentVolumeClaim 的概念，他们的关系，以及如何使用
 ---
 

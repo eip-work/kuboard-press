@@ -1,8 +1,9 @@
 ---
+layout: LearningLayout
 description: 本文介绍 Kubernetes 中的最小可调度单元 Pod 容器组的概念，以及如何使用容器组
 ---
 
-# Pod 容器组
+# 容器组 - 概述
 
 参考文档：Kubernetes 官方文档 [Pod Overview](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) [Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/)
 
@@ -87,7 +88,7 @@ Pod 为其成员容器提供了两种类型的共享资源：网络和存储
 Pod 本身并不会运行，Pod 仅仅是容器运行的一个环境
 :::
 
-Pod 本身并不能自愈（self-heal）。如果一个 Pod 所在的 Node （节点）出现故障，或者调度程序自身出现故障，Pod 将被删除；同理，当因为节点资源不够或节点维护而驱逐 Pod 时，Pod 也将被删除。Kubernetes 通过引入 Controller（控制器）的概念来管理 Pod 实例。在 Kubernetes 中，更为推荐的做法是使用 Controller 来管理 Pod，而不是直接创建 Pod。
+Pod 本身并不能自愈（self-healing）。如果一个 Pod 所在的 Node （节点）出现故障，或者调度程序自身出现故障，Pod 将被删除；同理，当因为节点资源不够或节点维护而驱逐 Pod 时，Pod 也将被删除。Kubernetes 通过引入 Controller（控制器）的概念来管理 Pod 实例。在 Kubernetes 中，更为推荐的做法是使用 Controller 来管理 Pod，而不是直接创建 Pod。
 
 ## 容器组和控制器
 
@@ -95,8 +96,8 @@ Pod 本身并不能自愈（self-heal）。如果一个 Pod 所在的 Node （�
 * 水平扩展（运行 Pod 的多个副本）
 * rollout（版本更新）
 * self-healing（故障恢复）
-
-例如：当一个节点出现故障，控制器可以自动地在另一个节点调度一个配置完全一样的 Pod，以替换故障节点上的 Pod。
+  
+  例如：当一个节点出现故障，控制器可以自动地在另一个节点调度一个配置完全一样的 Pod，以替换故障节点上的 Pod。
 
 在 Kubernetes 中，广泛使用的控制器有：
 

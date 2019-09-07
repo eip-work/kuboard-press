@@ -179,25 +179,37 @@ module.exports = {
           collapsable: false,
           children: [
             'k8s-intermediate/ingress',
+            'k8s-intermediate/private-registry',
             {
               title: '工作负载',
-              collapsable: false,
+              collapsable: true,
               children: [
                 'k8s-intermediate/workload/pod',
                 'k8s-intermediate/workload/pod-lifecycle',
                 'k8s-intermediate/workload/init-container',
+                'k8s-intermediate/workload/workload',
+                'k8s-intermediate/workload/wl-deployment',
+                'k8s-intermediate/workload/wl-statefulset',
+                'k8s-intermediate/workload/wl-daemonset',
+                'k8s-intermediate/workload/wl-job',
+                'k8s-intermediate/workload/wl-cronjob',
               ]
             },
-            'k8s-intermediate/config-map',
-            'k8s-intermediate/private-registry',
             {
-              title: '持久化数据',
-              collapsable: false,
+              title: '存储',
+              collapsable: true,
               children: [
                 'k8s-intermediate/persistent/volume',
                 'k8s-intermediate/persistent/pv',
                 'k8s-intermediate/persistent/storage-class',
                 // 'k8s-intermediate/persistent/nfs',
+              ]
+            },
+            {
+              title: '配置',
+              collapsable: true,
+              children: [
+                'k8s-intermediate/config/config-map',
               ]
             }
           ]

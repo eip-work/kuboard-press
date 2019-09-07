@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文介绍了存储类的概念及其使用
 ---
 

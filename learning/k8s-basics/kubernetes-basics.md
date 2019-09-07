@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文为初学者介绍了一套最合适的 Kubernetes 入门教程，该教程源自于 Kubernetes 官方网站，作者对其进行了翻译，并根据初学者的理解情况做了适当的改写。
 ---
 

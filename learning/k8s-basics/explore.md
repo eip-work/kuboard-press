@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文介绍了如何使用 kubectl / Kuboard 查看和浏览 Kubernetes 上的节点、容器组、部署等信息，并依据这些信息作出问题诊断。
 ---
 

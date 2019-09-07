@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: Kubernetes 学习路径推荐
 ---
 

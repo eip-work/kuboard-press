@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文详细讲解了 Kubernetes Service 的概念，并描述了如何使用 kubectl / Kuboard 创建一个 Service，以使得部署在 Kubernetes 上的容器可以被访问。
 ---
 
