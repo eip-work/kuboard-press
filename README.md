@@ -62,11 +62,11 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
     * [存储类 StorageClass](www.kuboard.cn/learning/k8s-intermediate/persistent/storage-class.html)
     * [自建 NFS 服务](www.kuboard.cn/learning/k8s-intermediate/persistent/nfs.html) 
   * 配置
-    * [使用 ConfigMap 配置您的应用程序](www.kuboard.cn/learning/k8s-intermediate/config-map.html)
-    * [管理容器的计算资源](www.kuboard.cn/learning/k8s-intermediate/computing-resource.html) 
-    * [将容器调度到指定的节点](www.kuboard.cn/learning/k8s-intermediate/assign-pod-node.html) 
-    * [污点和容忍 taints and toleration](www.kuboard.cn/learning/k8s-intermediate/taints-and-toleration.html) 
-    * [Secrets](www.kuboard.cn/learning/k8s-intermediate/secret.html) 
+    * [使用 ConfigMap 配置您的应用程序](www.kuboard.cn/learning/k8s-intermediate/config/config-map.html)
+    * [管理容器的计算资源](www.kuboard.cn/learning/k8s-intermediate/config/computing-resource.html) 
+    * [将容器调度到指定的节点](www.kuboard.cn/learning/k8s-intermediate/config/assign-pod-node.html) 
+    * [污点和容忍 taints and toleration](www.kuboard.cn/learning/k8s-intermediate/config/taints-and-toleration.html) 
+    * [Secrets](www.kuboard.cn/learning/k8s-intermediate/config/secret.html) 
 
 
 ## **Kubernetes 实战**

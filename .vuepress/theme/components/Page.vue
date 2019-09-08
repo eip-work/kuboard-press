@@ -3,8 +3,8 @@
     <slot name="top"/>
 
     <Content class="theme-default-content"/>
-    <div style="text-align: center; margin-bottom: 10px;">
-      <a href="https://github.com/eip-work/kuboard-press" target="_blank">如果您觉得这篇文档有帮到您，请给个 Github Star，谢谢！</a>
+    <div style="text-align: center; margin-bottom: 10px; margin-bottom: -80px;">
+      <a href="https://github.com/eip-work/kuboard-press" target="_blank">如果您觉得这篇文档有帮到您，点击此处，给个 Github Star，谢谢！</a>
     </div>
     <Valine></Valine>
     <footer class="page-edit">

@@ -1,5 +1,13 @@
 <template>
-  <div id="vcomments" class="theme-default-content content__default"></div>
+  <div class="theme-default-content content__default">
+    <div style="padding: 10px;">
+      <span :id="$page.path" class="leancloud_visitors" :data-flag-title="$page.title">
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">1000000</i>
+      </span>
+    </div>
+    <div id="vcomments"></div>
+  </div>
 </template>
 
 <script>
@@ -20,7 +28,8 @@ export default {
       appKey: 'jVhBid22mLeLr3ilPIcfWBBw', // your appKey
       notify:false, 
       verify:false, 
-      avatar:'mm', 
+      avatar:'identicon', 
+      visitor: window === undefined,
       placeholder: 'just go go' 
     });
   },

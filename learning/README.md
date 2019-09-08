@@ -45,17 +45,18 @@ description: Kubernetes 免费教程
     * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html) <Badge text="正在撰写" type="warn"/>
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html) <Badge text="正在撰写" type="warn"/>
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
+    * [如何选择网络插件](/learning/k8s-intermediate/service/cni.html)
   * 存储
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
     * [存储卷 PV 和存储卷声明 PVC](/learning/k8s-intermediate/persistent/pv.html)
     * [存储类 StorageClass](/learning/k8s-intermediate/persistent/storage-class.html)
     * [自建 NFS 服务](/learning/k8s-intermediate/persistent/nfs.html) <Badge text="正在撰写" type="warn"/>
   * 配置
-    * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html)
-    * [管理容器的计算资源](/learning/k8s-intermediate/computing-resource.html) <Badge text="正在撰写" type="warn"/>
-    * [将容器调度到指定的节点](/learning/k8s-intermediate/assign-pod-node.html) <Badge text="正在撰写" type="warn"/>
-    * [污点和容忍 taints and toleration](/learning/k8s-intermediate/taints-and-toleration.html) <Badge text="正在撰写" type="warn"/>
-    * [Secrets](/learning/k8s-intermediate/secret.html) <Badge text="正在撰写" type="warn"/>
+    * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html)
+    * [管理容器的计算资源](/learning/k8s-intermediate/config/computing-resource.html)
+    * [将容器调度到指定的节点](/learning/k8s-intermediate/config/assign-pod-node.html)
+    * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-and-toleration.html) <Badge text="正在撰写" type="warn"/>
+    * [Secrets](/learning/k8s-intermediate/config/secret.html) <Badge text="正在撰写" type="warn"/>
 
 
 ## **Kubernetes 实战**

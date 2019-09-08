@@ -202,6 +202,7 @@ module.exports = {
                 // 'k8s-intermediate/service/dns',
                 // 'k8s-intermediate/service/connecting',
                 'k8s-intermediate/service/ingress',
+                'k8s-intermediate/service/cni',
               ]
             },
             {
@@ -219,8 +220,8 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-intermediate/config/config-map',
-                // 'k8s-intermediate/config/computing-resource',
-                // 'k8s-intermediate/config/assign-pod-node',
+                'k8s-intermediate/config/computing-resource',
+                'k8s-intermediate/config/assign-pod-node',
                 // 'k8s-intermediate/config/taints-and-toleration',
                 // 'k8s-intermediate/config/secret',
               ]
