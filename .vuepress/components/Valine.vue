@@ -30,7 +30,7 @@ export default {
       verify:false, 
       avatar:'identicon', 
       visitor: true,
-      placeholder: 'just go go' 
+      placeholder: '说说我对这篇文档的看法' 
     });
   },
 }

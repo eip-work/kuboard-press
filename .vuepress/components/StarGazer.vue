@@ -8,7 +8,6 @@
       <div style="text-align: center;">
         <div style="margin-top: 10px;">本站所有内容<span style="color: red;">全部免费</span>！</div>
         <div style="margin-top: 10px;">给一个 github star，<span style="color: red;">给一份鼓励</span>！</div>
-        <div style="margin-top: 10px;">如果有个微信打赏，就可以帮助站长分摊一点儿服务器费用了：）</div>
         <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
         <p>
           <img src="../theme/layouts/dz.png" style="width: 150px;"></img>
