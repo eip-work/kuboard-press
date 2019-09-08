@@ -29,7 +29,7 @@ export default {
       notify:false, 
       verify:false, 
       avatar:'identicon', 
-      visitor: window === undefined,
+      visitor: true,
       placeholder: 'just go go' 
     });
   },

@@ -1,9 +1,10 @@
 <template>
   <ParentLayout>
     <div slot="sidebar-top">
-      <div style="text-align: center; margin-top: 20px;">
+      <div style="text-align: center; margin-top: 10px;">
         <div>
-          <p>
+          <span style="font-size: 13px;">打赏用户可进微信群聊</span>
+          <p style="margin-top: 10px;">
             <img src="./dz.png" style="width: 120px;"></img>
           </p>
         </div>
@@ -27,7 +28,6 @@
         </div> -->
       </div>
       <StarGazer/>
-      <Promotion/>
     </div>
     <div slot="page-bottom" class="bottom-description">Copyright © 2019-present 邵欢庆 <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
   </ParentLayout>

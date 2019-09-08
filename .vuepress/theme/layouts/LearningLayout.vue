@@ -1,9 +1,10 @@
 <template>
   <ParentLayout>
     <div slot="sidebar-top">
-      <div style="text-align: center; margin-top: 20px;">
+      <div style="text-align: center; margin-top: 10px;">
         <div>
-          <p>
+          <span style="font-size: 13px;">打赏用户可进微信群聊</span>
+          <p style="margin-top: 10px;">
             <img src="./dz.png" style="width: 120px;"></img>
           </p>
         </div>
@@ -27,12 +28,11 @@
         </div> -->
       </div>
       <StarGazer/>
-      <Promotion/>
     </div>
     <div slot="page-top" class="theme-default-content content__default page-top">
       <div class="tip custom-block" style="padding: 20px;">
         <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
-        <li>QQ 群 <span style="color: red; font-weight: 500;">在线答疑</span>，加群请扫描左侧导航下方的二维码</li>
+        <li>QQ 群 <span style="color: red; font-weight: 500;">在线答疑</span>，加群请扫描左侧导航<span style="color: red; font-weight: 500;">下方</span>的二维码</li>
         <li>根据答疑情况，<span style="color: red; font-weight: 500;">不断完善</span> 教程</li>
       </div>
     </div>

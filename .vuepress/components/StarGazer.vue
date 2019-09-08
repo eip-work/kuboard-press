@@ -5,7 +5,16 @@
       :visible.sync="dialogVisible"
       width="50%"
       :append-to-body	="true">
-      <span>给一个 github star，给一份鼓励！</span>
+      <div style="text-align: center;">
+        <div style="margin-top: 10px;">本站所有内容<span style="color: red;">全部免费</span>！</div>
+        <div style="margin-top: 10px;">给一个 github star，<span style="color: red;">给一份鼓励</span>！</div>
+        <div style="margin-top: 10px;">如果有个微信打赏，就可以帮助站长分摊一点儿服务器费用了：）</div>
+        <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
+        <p>
+          <img src="../theme/layouts/dz.png" style="width: 150px;"></img>
+        </p>
+        <span>点击 “够义气，现在就去！” 后，此窗口将不再弹出。请在 github Star本项目</span>
+      </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="waitAMoment">一会儿再说</el-button>
         <el-button type="primary" @click="gotoStar">够义气，现在就去！</el-button>
@@ -40,6 +49,7 @@ export default {
       let _this = this
       setTimeout(_ => {
         _this.dialogVisible = true
+      // }, 10000) 
       }, 60000 * 3)
     },
     gotoStar() {

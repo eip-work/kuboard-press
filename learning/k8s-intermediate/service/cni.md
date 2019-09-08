@@ -1,3 +1,8 @@
+---
+layout: LearningLayout
+description: 在 Kubernetes 中，通过 Service 连接应用程序
+---
+
 # 如何选择网络插件
 
 本文转载自： https://www.toutiao.com/a6708893686517727748/
