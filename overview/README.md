@@ -123,17 +123,46 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
   * [6. 复习Kubernetes核心概念](/learning/k8s-basics/k8s-core-concepts.html) (10分钟)
 
 * **Kubernetes 进阶**
-  * [通过互联网访问您的应用](/learning/k8s-intermediate/ingress.html)
+  * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.html)
   * 工作负载
-    * [Pod 容器组](/learning/k8s-intermediate/workload/pod.html)
-    * [Pod 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
-    * [Pod 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
-  * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html)
-  * [使用私有 Registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.md)
-  * 持久化数据
+    * [容器组 - 概述](/learning/k8s-intermediate/workload/pod.html)
+    * [容器组 - 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
+    * [容器组 - 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
+    * [控制器 - 概述](/learning/k8s-intermediate/workload/workload.html)
+    * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment.html) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset.html) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset.html) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job.html) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob.html) <Badge text="正在撰写" type="warn"/>
+  * 服务发现、负载均衡、网络
+    * [Service](/learning/k8s-intermediate/service/service.html) <Badge text="正在撰写" type="warn"/>
+    * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html) <Badge text="正在撰写" type="warn"/>
+    * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html) <Badge text="正在撰写" type="warn"/>
+    * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
+  * 存储
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
     * [存储卷 PV 和存储卷声明 PVC](/learning/k8s-intermediate/persistent/pv.html)
     * [存储类 StorageClass](/learning/k8s-intermediate/persistent/storage-class.html)
+    * [自建 NFS 服务](/learning/k8s-intermediate/persistent/nfs.html) <Badge text="正在撰写" type="warn"/>
+  * 配置
+    * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html)
+    * [管理容器的计算资源](/learning/k8s-intermediate/computing-resource.html) <Badge text="正在撰写" type="warn"/>
+    * [将容器调度到指定的节点](/learning/k8s-intermediate/assign-pod-node.html) <Badge text="正在撰写" type="warn"/>
+    * [污点和容忍 taints and toleration](/learning/k8s-intermediate/taints-and-toleration.html) <Badge text="正在撰写" type="warn"/>
+    * [Secrets](/learning/k8s-intermediate/secret.html) <Badge text="正在撰写" type="warn"/>
+
+
+* **Kubernetes 实战**
+
+  在 Kubernetes 上部署 Spring Cloud 微服务：
+
+  * [概述](/micro-service/spring-cloud/index.html)
+  * [部署服务注册中心]
+  * [部署数据库]
+  * [部署微服务]
+  * [部署服务网关]
+  * [部署Web前端]
+  * [管理多环境]
 
 ### Kubernetes 有经验者
 
@@ -153,18 +182,6 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 * 使用 Kuboard [创建 busybox](/guide/example/busybox.html) （10分钟）
 * [导入 example 微服务应用](/guide/example/import.html)  （15分钟）
 * [在微服务上下文中监控 example](/guide/example/monitor.html) （15分钟）
-
-### Kubernetes + Spring Cloud
-
-在 Kubernetes 上部署 Spring Cloud 微服务：
-
-* [概述](/micro-service/spring-cloud/index.html)
-* [部署服务注册中心]
-* [部署数据库]
-* [部署微服务]
-* [部署服务网关]
-* [部署Web前端]
-* [复制一套部署环境]
 
 ### Kubernetes + Devops
 

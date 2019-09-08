@@ -178,7 +178,6 @@ module.exports = {
           title: 'Kubernetes 进阶',
           collapsable: false,
           children: [
-            'k8s-intermediate/ingress',
             'k8s-intermediate/private-registry',
             {
               title: '工作负载',
@@ -188,11 +187,21 @@ module.exports = {
                 'k8s-intermediate/workload/pod-lifecycle',
                 'k8s-intermediate/workload/init-container',
                 'k8s-intermediate/workload/workload',
-                'k8s-intermediate/workload/wl-deployment',
-                'k8s-intermediate/workload/wl-statefulset',
-                'k8s-intermediate/workload/wl-daemonset',
-                'k8s-intermediate/workload/wl-job',
-                'k8s-intermediate/workload/wl-cronjob',
+                // 'k8s-intermediate/workload/wl-deployment',
+                // 'k8s-intermediate/workload/wl-statefulset',
+                // 'k8s-intermediate/workload/wl-daemonset',
+                // 'k8s-intermediate/workload/wl-job',
+                // 'k8s-intermediate/workload/wl-cronjob',
+              ]
+            },
+            {
+              title: '服务发现、负载均衡、网络',
+              collapsable: true,
+              children: [
+                // 'k8s-intermediate/service/service',
+                // 'k8s-intermediate/service/dns',
+                // 'k8s-intermediate/service/connecting',
+                'k8s-intermediate/service/ingress',
               ]
             },
             {
@@ -210,6 +219,10 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-intermediate/config/config-map',
+                // 'k8s-intermediate/config/computing-resource',
+                // 'k8s-intermediate/config/assign-pod-node',
+                // 'k8s-intermediate/config/taints-and-toleration',
+                // 'k8s-intermediate/config/secret',
               ]
             }
           ]

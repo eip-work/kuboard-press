@@ -2,6 +2,11 @@
   <ParentLayout>
     <div slot="sidebar-top">
       <div style="text-align: center; margin-top: 20px;">
+        <div>
+          <p>
+            <img src="./dz.png" style="width: 120px;"></img>
+          </p>
+        </div>
         <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
           <a href="/overview/" class="nav-link">简介</a>
         </div>
@@ -24,7 +29,7 @@
       <StarGazer/>
       <Promotion/>
     </div>
-    <div slot="page-bottom" class="bottom-description">Copyright © 2019-present <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
+    <div slot="page-bottom" class="bottom-description">Copyright © 2019-present 邵欢庆 <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
   </ParentLayout>
 </template>
 

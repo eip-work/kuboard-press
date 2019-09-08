@@ -2,6 +2,11 @@
   <ParentLayout>
     <div slot="sidebar-top">
       <div style="text-align: center; margin-top: 20px;">
+        <div>
+          <p>
+            <img src="./dz.png" style="width: 120px;"></img>
+          </p>
+        </div>
         <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
           <a href="/overview/" class="nav-link">简介</a>
         </div>
@@ -24,11 +29,11 @@
       <StarGazer/>
       <Promotion/>
     </div>
-    <div slot="page-top" class="page-top">
-      <div style="display: inline-block; width: 400px;">
-        <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝对不降低品质</li>
-        <li>QQ 群 <span style="color: red; font-weight: 500;">在线答疑</span>，加群请扫描侧边栏下方的二维码</li>
-        <li>根据 QQ 群答疑情况，<span style="color: red; font-weight: 500;">不断完善</span> 教程</li>
+    <div slot="page-top" class="theme-default-content content__default page-top">
+      <div class="tip custom-block" style="padding: 20px;">
+        <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
+        <li>QQ 群 <span style="color: red; font-weight: 500;">在线答疑</span>，加群请扫描左侧导航下方的二维码</li>
+        <li>根据答疑情况，<span style="color: red; font-weight: 500;">不断完善</span> 教程</li>
       </div>
     </div>
     <div slot="page-bottom" class="bottom-description">Copyright © 2019-present 邵欢庆 <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
@@ -58,9 +63,7 @@ export default {
 
 <style scoped>
 .page-top {
-  margin-top: 5em;
-  margin-bottom: -50px;
-  padding: 0 40px;
+  margin-bottom: -80px;
 }
 .bottom-description {
   text-align: center;

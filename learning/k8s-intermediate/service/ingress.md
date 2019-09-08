@@ -3,7 +3,7 @@ layout: LearningLayout
 description: 本文介绍 Kubernetes Ingress 的概念，包括Ingress 基本概念、如何配置 Ingress Controller、如何使用 kubectl/Kuboard 操作 Ingress 信息
 ---
 
-# 通过互联网访问您的应用
+# Ingress 通过互联网访问您的应用
 
 参考文档：
 * Kubernetes 官网 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
@@ -100,7 +100,7 @@ spec:
 
 > 文档 [安装 Kubernetes 单Master节点](/install/install-k8s.html) 中使用的就是这种拓扑结构。这种方式下，Ingress Controller 存在单点故障的可能性。
 
-![单IngressController节点](../../install/install-k8s.assets/image-20190826000521999.png)
+![单IngressController节点](../../../install/install-k8s.assets/image-20190826000521999.png)
 
 ### 使用外部负载均衡器
 
@@ -112,7 +112,7 @@ spec:
 
 > 文档 [安装 Kubernetes 高可用](/install/install-kubernetes.html) 中使用的就是这种拓扑结构。
 
-![LoadBalancer](../../install/install-kubernetes.assets/image-20190826000403193.png)
+![LoadBalancer](../../../install/install-kubernetes.assets/image-20190826000403193.png)
 
 ## 实战：通过 Ingress 使您的应用程序在互联网可用
 
