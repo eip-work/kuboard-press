@@ -19,6 +19,8 @@
     "vuepress-plugin-sitemap": "^2.1.2"
   },
   "dependencies": {
-    "element-ui": "^2.11.1"
+    "element-ui": "^2.11.1",
+    "leancloud-storage": "^3.15.0",
+    "valine": "^1.3.10"
   }
 }
