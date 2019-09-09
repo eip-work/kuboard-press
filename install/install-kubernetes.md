@@ -45,9 +45,18 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
 
 ![image-20190826000403193](./install-kubernetes.assets/image-20190826000403193.png)
 
-* **在线答疑** QQ 群
+* **在线答疑**
   
-  ![kuboard_qq.png](../overview/README.assets/kuboard_qq.png)
+  <div>
+    <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
+    <div style="margin-top: 10px;">
+       <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span> <span style="color: #CCC">QQ 群聊二维码在左侧导航栏下方。</span>
+      <p style="margin-top: 10px;">
+        <img src="/dz.png" style="width: 150px; margin-right: 150px;"></img>
+        <img src="/dz2.jpeg" style="width: 150px;"></img>
+      </p>
+    </div>
+  </div>
 
 </div>
 

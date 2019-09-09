@@ -6,13 +6,12 @@
       width="50%"
       :append-to-body	="true">
       <div style="text-align: center;">
-        <div style="margin-top: 10px;">本站所有内容 <span style="color: red;">全部免费</span>！</div>
         <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
         <div style="margin-top: 10px;">
           <span style="font-size: 13px;">扫第一个二维码完成打赏，扫第二个进微信群聊</span>
           <p style="margin-top: 10px;">
-            <img src="../theme/layouts/dz.png" style="width: 150px; margin-right: 150px;"></img>
-            <img src="../theme/layouts/dz2.jpeg" style="width: 150px;"></img>
+            <img src="/dz.png" style="width: 150px; margin-right: 150px;"></img>
+            <img src="/dz2.jpeg" style="width: 150px;"></img>
           </p>
         </div>
         <div style="margin-bottom: 10px;">不方便给打赏的话，那就 <span style="color: red;">给一个 github star</span> 吧！</div>
@@ -46,14 +45,14 @@ export default {
   methods: {
     waitAMoment() {
       this.dialogVisible = false
-      if (localStorage.getItem('stared') === 'true1') {
+      if (localStorage.getItem('stared') === 'true') {
         return
       }
       let _this = this
       setTimeout(_ => {
         _this.dialogVisible = true
       // }, 10000) 
-      }, 60000 * 3)
+      }, 60000 * 1)
     },
     gotoStar() {
       this.dialogVisible = false

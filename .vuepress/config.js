@@ -187,7 +187,7 @@ module.exports = {
                 'k8s-intermediate/workload/pod-lifecycle',
                 'k8s-intermediate/workload/init-container',
                 'k8s-intermediate/workload/workload',
-                // 'k8s-intermediate/workload/wl-deployment',
+                'k8s-intermediate/workload/wl-deployment',
                 // 'k8s-intermediate/workload/wl-statefulset',
                 // 'k8s-intermediate/workload/wl-daemonset',
                 // 'k8s-intermediate/workload/wl-job',

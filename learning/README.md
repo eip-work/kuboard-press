@@ -35,7 +35,7 @@ description: Kubernetes 免费教程
     * [容器组 - 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
     * [容器组 - 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
     * [控制器 - 概述](/learning/k8s-intermediate/workload/workload.html)
-    * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment.html) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment.html)
     * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset.html) <Badge text="正在撰写" type="warn"/>
     * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset.html) <Badge text="正在撰写" type="warn"/>
     * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job.html) <Badge text="正在撰写" type="warn"/>

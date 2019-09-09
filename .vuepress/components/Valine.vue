@@ -1,11 +1,11 @@
 <template>
   <div class="theme-default-content content__default">
-    <div style="padding: 10px;">
+    <!-- <div style="padding: 10px;">
       <span :id="$page.path" class="leancloud_visitors" :data-flag-title="$page.title">
           <em class="post-meta-item-text">阅读量 </em>
           <i class="leancloud-visitors-count">1000000</i>
       </span>
-    </div>
+    </div> -->
     <div id="vcomments"></div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
       notify:false, 
       verify:false, 
       avatar:'identicon', 
-      visitor: true,
+      visitor: false,
       placeholder: '说说我对这篇文档的看法' 
     });
   },

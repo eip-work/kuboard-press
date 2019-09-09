@@ -129,7 +129,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * [容器组 - 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
     * [容器组 - 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
     * [控制器 - 概述](/learning/k8s-intermediate/workload/workload.html)
-    * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment.html) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment.html)
     * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset.html) <Badge text="正在撰写" type="warn"/>
     * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset.html) <Badge text="正在撰写" type="warn"/>
     * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job.html) <Badge text="正在撰写" type="warn"/>
@@ -188,6 +188,15 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 
 正在编写文档，[准备好后，请通知我](https://www.wjx.top/jq/43453748.aspx)
 
-## 在线提问
+## 在线答疑
 
-![Kuboard 兴趣群二维码](./README.assets/kuboard_qq.png)
+<div>
+  <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
+  <div style="margin-top: 10px;">
+      <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span> <span style="color: #CCC">QQ 群聊二维码在左侧导航栏下方。</span>
+    <p style="margin-top: 10px;">
+      <img src="/dz.png" style="width: 200px; margin-right: 150px;"></img>
+      <img src="/dz2.jpeg" style="width: 200px;"></img>
+    </p>
+  </div>
+</div>

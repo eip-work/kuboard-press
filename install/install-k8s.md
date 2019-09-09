@@ -97,9 +97,18 @@ export default {
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
   * 当前已更新了 <font color="red"> 46 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
-* **在线答疑** QQ 群
+* **在线答疑**
   
-  ![kuboard_qq.png](./install-k8s.assets/kuboard_qq.png)
+  <div>
+    <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
+    <div style="margin-top: 10px;">
+       <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span> <span style="color: #CCC">QQ 群聊二维码在左侧导航栏下方。</span>
+      <p style="margin-top: 10px;">
+        <img src="/dz.png" style="width: 150px; margin-right: 150px;"></img>
+        <img src="/dz2.jpeg" style="width: 150px;"></img>
+      </p>
+    </div>
+  </div>
 
 </div>
 <div slot="overview" style="min-height: 800px;">

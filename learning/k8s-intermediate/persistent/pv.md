@@ -101,7 +101,32 @@ PersistentVolumeClaim 将始终停留在 ***未绑定 unbound*** 状态，直到
 
 ## 存储卷类型
 
-Kubernetes 支持 20 种存储卷类型（Types of Persistent Volumes），但是大多数都特定于具体的云环境，如 GCEPersistentDisk / AWSElasticBlockStore / AzureFile / AzureDisk 等，具体请参考 [Types of Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes)
+Kubernetes 支持 20 种存储卷类型（可参考 [Types of Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes)），如下所示：
+
+* 非持久性存储
+  * emptyDir
+  * HostPath (只在单节点集群上用做测试目的)
+* 网络连接性存储
+  * SAN：iSCSI、ScaleIO Volumes、FC (Fibre Channel)
+  * NFS：nfs，cfs
+* 分布式存储
+  * Glusterfs
+  * RBD (Ceph Block Device)
+  * CephFS
+  * Portworx Volumes
+  * Quobyte Volumes
+* 云端存储
+  * GCEPersistentDisk
+  * AWSElasticBlockStore
+  * AzureFile
+  * AzureDisk
+  * Cinder (OpenStack block storage)
+  * VsphereVolume
+  * StorageOS
+* 自定义存储
+  * FlexVolume
+* 不推荐
+  * Flocker (最近更新2016年 https://github.com/ClusterHQ/flocker/)
 
 针对自建 Kubernetes 集群的情况，Kuboard 支持如下几种存储卷类型：
   * NFS <Badge text="Kuboard 已支持" type="success"/>
