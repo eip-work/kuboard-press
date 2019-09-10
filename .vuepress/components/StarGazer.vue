@@ -15,7 +15,6 @@
           </p>
         </div>
         <div style="margin-bottom: 10px;">不方便给打赏的话，那就 <span style="color: red;">给一个 github star</span> 吧！</div>
-        <span>点击 “够义气，现在就去！” 后，此窗口将不再弹出。请在 github Star本项目</span>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="waitAMoment">一会儿再说</el-button>

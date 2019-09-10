@@ -2,13 +2,13 @@
   <ParentLayout>
     <div slot="sidebar-top">
       <div style="text-align: center; margin-top: 10px;">
-        <div>
+        <!-- <div>
           <span style="font-size: 13px;">扫第一个二维码完成打赏，扫第二个进微信群聊</span>
           <p style="margin-top: 10px;">
             <img src="/dz.png" style="width: 120px; margin-right: 20px;"></img>
             <img src="/dz2.jpeg" style="width: 120px;"></img>
           </p>
-        </div>
+        </div> -->
         <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
           <a href="/overview/" class="nav-link">简介</a>
         </div>
@@ -39,8 +39,8 @@
           <li>根据答疑情况，<span style="color: red; font-weight: 500;">不断完善</span> 教程</li>
         </div>
         <div style="display: inline-block; margin-left: 10px;">
-          <img src="/dz.png" style="width: 100px; margin-right: 100px;"></img>
-          <img src="/dz2.jpeg" style="width: 100px;"></img>
+          <img src="/images/dz.png" style="width: 100px; margin-right: 100px;"></img>
+          <img src="/images/dz2.jpeg" style="width: 100px;"></img>
         </div>
       </div>
     </div>
