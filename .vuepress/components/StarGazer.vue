@@ -10,11 +10,12 @@
         <div style="margin-top: 10px;">
           <span style="font-size: 13px;">扫第一个二维码完成打赏，扫第二个进微信群聊</span>
           <p style="margin-top: 10px;">
-            <img src="/dz.png" style="width: 150px; margin-right: 150px;"></img>
-            <img src="/dz2.jpeg" style="width: 150px;"></img>
+            <img src="/images/dz.png" style="width: 150px; margin-right: 150px;"></img>
+            <img src="/images/dz2.jpeg" style="width: 150px;"></img>
           </p>
         </div>
         <div style="margin-bottom: 10px;">不方便给打赏的话，那就 <span style="color: red;">给一个 github star</span> 吧！</div>
+        <div style="margin-bottom: 10px;">github star 后，本窗口将不再弹出</div>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="waitAMoment">一会儿再说</el-button>

@@ -5,7 +5,7 @@ description: 在 Kubernetes 中，通过 Service 连接应用程序
 
 # 如何选择网络插件
 
-本文转载自： https://www.toutiao.com/a6708893686517727748/
+本文转载自： [kubernetes网络插件对比分析（flannel、calico、weave）](https://www.toutiao.com/a6708893686517727748/)
 
 原文作者：残花花败柳柳
 
@@ -38,9 +38,9 @@ Docker还可以让用户通过其他驱动程序和插件，来配置更高级�
 
 CNI的初衷是创建一个框架，用于在配置或销毁容器时动态配置适当的网络配置和资源。下面链接中的CNI规范概括了用于配制网络的插件接口，这个接口可以让容器运行时与插件进行协调：
 
-```
-https://github.com/containernetworking/cni/blob/master/SPEC.md
-```
+
+[CND SPEC](https://github.com/containernetworking/cni/blob/master/SPEC.md)
+
 
 插件负责为接口配置和管理IP地址，并且通常提供与IP管理、每个容器的IP分配、以及多主机连接相关的功能。容器运行时会调用网络插件，从而在容器启动时分配IP地址并配置网络，并在删除容器时再次调用它以清理这些资源。
 
@@ -68,13 +68,13 @@ https://github.com/containernetworking/cni/blob/master/SPEC.md
 
 **Flannel**
 
-![kubernetes网络插件对比分析（flannel、calico、weave）](cni.assets/04c2db500e1b4b5dae3be817bfe6d673.jpeg)
+![kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/04c2db500e1b4b5dae3be817bfe6d673.jpeg)
 
 
 
-```
-链接：https://github.com/coreos/flannel
-```
+
+[flannel github 仓库](https://github.com/coreos/flannel)
+
 
 由CoreOS开发的项目Flannel，可能是最直接和最受欢迎的CNI插件。它是容器编排系统中最成熟的网络结构示例之一，旨在实现更好的容器间和主机间网络。随着CNI概念的兴起，Flannel CNI插件算是早期的入门。
 
@@ -88,13 +88,12 @@ Flannel有几种不同类型的后端可用于封装和路由。默认和推荐�
 
 **Calico**
 
-![kubernetes网络插件对比分析（flannel、calico、weave）](cni.assets/79fa00ed4bcb4d9b94aee1d02b3c5c8c.jpeg)
+![kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/79fa00ed4bcb4d9b94aee1d02b3c5c8c.jpeg)
 
 
 
-```
-链接：https://github.com/projectcalico/cni-plugin
-```
+[Calico github 仓库](https://github.com/projectcalico/cni-plugin)
+
 
 Calico是Kubernetes生态系统中另一种流行的网络选择。虽然Flannel被公认为是最简单的选择，但Calico以其性能、灵活性而闻名。Calico的功能更为全面，不仅提供主机和pod之间的网络连接，还涉及网络安全和管理。Calico CNI插件在CNI框架内封装了Calico的功能。
 
@@ -110,13 +109,12 @@ Calico是Kubernetes生态系统中另一种流行的网络选择。虽然Flannel
 
 **Weave**
 
-![kubernetes网络插件对比分析（flannel、calico、weave）](cni.assets/67b4097c58df478cb348ad50ea752f12.jpeg)
+![kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/67b4097c58df478cb348ad50ea752f12.jpeg)
 
 
 
-```
-链接：https://www.weave.works/oss/net/
-```
+[weave 官网](https://www.weave.works/oss/net/)
+
 
 Weave是由Weaveworks提供的一种Kubernetes CNI网络选项，它提供的模式和我们目前为止讨论的所有网络方案都不同。Weave在集群中的每个节点之间创建网状Overlay网络，参与者之间可以灵活路由。这一特性再结合其他一些独特的功能，在某些可能导致问题的情况下，Weave可以智能地路由。
 

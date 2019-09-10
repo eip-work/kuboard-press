@@ -17,17 +17,18 @@ Ingress 是 Kubernetes 的一种 API 对象，将集群内部的 Service 通过 
 
 Ingress Controller （通常需要负载均衡器配合）负责实现 Ingress API 对象所声明的能力。如下图所示：
 
-* Ingress Controller 监听所有 worker 节点上的 80/443 端口
-* Ingress Controller 将所有对域名为 a.kuboard.cn 的 HTTP/HTTPS 请求路由到 Service B 的 9080 端口
-* Service B 将请求进一步转发到其标签所选择的 Pod 容器组（通过 targetPort 指定容器组上的端口号）
+1. Ingress Controller 监听所有 worker 节点上的 80/443 端口
+2. Ingress Controller 将所有对域名为 a.kuboard.cn 的 HTTP/HTTPS 请求路由到 Service B 的 9080 端口
+3. Service B 将请求进一步转发到其标签所选择的 Pod 容器组（通过 targetPort 指定容器组上的端口号）
 
-在下图的 Ingress B 及 Service B 被正确配置的情况下，您将获得如下效果：
-* 将 a.kuboard.cn 解析到任意一个 worker 节点的外网 IP 地址（也可以是内网 IP 地址，但此时您的客户端机器也必须在内网）
-* 从客户端机器执行命令 `curl http://a.kuboard.cn` 您将获得如下容器组当中一个的返回结果： 10.10.10.2、10.10.10.4、10.10.10.3 
+该图中，**请求被转发的过程为：**
 
-<img src="./ingress.assets/image-20190827183054487.png" style="border: 1px solid #d7dae2; max-width: 720px;"></img>
+0. 假设您将 a.kuboard.cn 的 DNS 解析到了集群中的一个 worker 节点的 IP 地址 `192.168.2.69`。（如果您的 worker 节点有外网地址，请使用外网地址，这样可以使的您从外网访问您的服务）
+1. 从客户端机器执行命令 `curl http://a.kuboard.cn/abc/`，该请求您将被转发到 `192.168.2.69` 这个地址的 80 端口，并被 Ingress Controller 接收
+2. Ingress Controller 根据请求的域名 `a.kuboard.cn` 和路径 `abc` 匹配集群中所有的 Ingress 信息，并最终找到 `Ingress B` 中有这个配置，其对应的 Service 为 `Service B` 的 `9080` 端口
+3. Ingress Controller 通过 kube-proxy 将请求转发到 `Service B` 对应的任意一个 Pod 上 与 `Service B` 的 `9080` 端口对应的容器端口上。（从 Ingress Controller 到 Pod 的负载均衡由 kube-proxy + Service 实现）
 
-
+<img src="./ingress.assets/image-20190910222649193.png" style="border: 1px solid #d7dae2; max-width: 720px;"></img>
 
 ## Ingress Controller
 
@@ -44,7 +45,6 @@ Ingress Controller 有多种实现可供选择，请参考 Kubernetes 官方文�
 如果您参考 https://kuboard.cn 网站上提供的文档安装了 Kubernetes，您应该已经完成了 [Nginx Ingress Controller for Kubernetes](https://www.nginx.com/products/nginx/kubernetes-ingress-controller) 在您 Kubernetes 集群中的安装。该 Ingress Controller 以 DaemonSet 的类型部署到 Kubernetes，且监听了 hostPort 80/443，YAML 片段如下所示：
 
 > 如果您打算使用其他 Ingress Controller，您可以 [卸载 Nginx Ingress Controller](/install/install-k8s.html#安装-ingress-controller)；如果您尚未安装任何 Ingress Controller，请参考 [安装 Nginx Ingress Controller](/install/install-k8s.html#安装-ingress-controller)，以便可以完成本教程的后续内容。
-
 
 ``` yaml {2,23,26}
 apiVersion: extensions/v1beta1
@@ -125,15 +125,67 @@ spec:
 
 ::: tab 使用kubectl lazy
 
+**创建文件 nginx-deployment.yaml**
+``` sh
+vim nginx-deployment.yaml
+```
+
+**文件内容如下**
+
+``` yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+```
+
+**创建文件 nginx-service.yaml**
+``` sh
+vim nginx-service.yaml
+```
+
+**文件内容如下**
+
+``` yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+  - name: nginx-port
+    protocol: TCP
+    port: 80
+    nodePort: 32600
+    targetPort: 80
+  type: NodePort
+```
+
 **创建文件 nginx-ingress.yaml**
 ``` sh
 vim nginx-ingress.yaml
 ```
 
 **文件内容如下**
-
-<CodeSwitcher :languages="{comment:'有注释',nocomment:'无注释'}" :isolated="true">
-<template v-slot:comment>
 
 ``` yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -150,31 +202,13 @@ spec:
           serviceName: nginx-service  # 指定后端的 Service 为之前创建的 nginx-service
           servicePort: 80
 ```
-</template>
-<template v-slot:nocomment>
 
-``` yaml
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: my-ingress-for-nginx
-spec:
-  rules:
-  - host: a.demo.kuboard.cn
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: nginx-service
-          servicePort: 80
-```
-
-</template>
-</CodeSwitcher>
 
 **执行命令**
 
 ``` sh
+kubectl apply -f nginx-deployment.yaml
+kubectl apply -f nginx-service.yaml
 kubectl apply -f nginx-ingress.yaml
 ```
 
@@ -196,23 +230,30 @@ curl a.demo.kuboard.cn
 
 ::: tab 使用Kuboard lazy
 
-* 在 default 名称空间 点击 ***展现层 --> Nginx部署***
+* 在 default 名称空间 点击 ***创建工作负载***
 
-* 点击 ***编辑*** 按钮
+    填写表单如下：
 
-* 填写表单如下：
-  * 开启 **互联网入口 Ingress**
-  * 填写一条记录：
+    | 字段名称   | 填写内容                                                     | 备注                                                         |
+    | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | 服务类型   | Deployment                                                   |                                                              |
+    | 服务分层   | 展现层                                                       |                                                              |
+    | 服务名称   | web-nginx                                                    |                                                              |
+    | 服务描述   | nginx部署                                                    |                                                              |
+    | 副本数量   | 1                                                            | 可以填写其他正整数                                           |
+    | 工作容器   | 容器名称：nginx<br />镜像：nginx:1.7.9<br />抓取策略：Always |                                                              |
+    | 访问方式   | NodePort（VPC内访问）<br />协议: TCP，服务端口: 80，节点端口: 32601，容器端口: 80 | 访问方式对应 Kubernetes Service对象，<br />工作负载编辑器为其使用与 Deployment 相同的名字 web-nginx |
+    | 互联网入口 | 域名: a.demo.kuboard.cn<br />映射URL： /<br />服务端口：80   | 互联网入口对应 Kubernetes Ingress对象，<br />工作负载编辑器为其使用与 Deployment 相同的名字 web-nginx |
 
-    | 协议              | 服务端口          | 节点端口 |
-    | ----------------- | ----------------- | -------- |
-    | 域名              | a.demo.kuboard.cn | 32601    |
-    | 路由配置/映射URL  | /                 |          |
-    | 路由配置/服务端口 | 80                |          |
+    
 
-    **如下图所示：**
+* **如下图所示：**
 
-    ![image-20190827221314997](./ingress.assets/image-20190827221314997.png)
+![image-20190910225225179](./ingress.assets/image-20190910225225179.png)
+
+::: tip
+Kuboard 工作负载编辑器将 kubernetes 中三个主要对象 Deployment/Service/Ingress 放在同一个编辑器界面中处理。
+:::
 
 * 点击 **保存**
 
