@@ -4,9 +4,7 @@ description: 介绍 Kuboard - Kubernetes 微服务管理界面，并为 Kubernet
 
 ## Kuboard 简介
 
-A cool Kubernetes dashboard.
-
-基于 Kubernetes 的微服务管理平台
+<img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 420px;" />
 
 <div style="border-top: 1px solid #eaecef;
     padding: 1.2rem 0;

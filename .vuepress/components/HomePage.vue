@@ -10,7 +10,7 @@
       <h1 id="main-title">Kuboard</h1>
 
       <p class="description">
-        Kubernetes 安装文档/教程/实践/管理界面
+        快速在 Kubernetes 上落地微服务
       </p>
 
       <span
