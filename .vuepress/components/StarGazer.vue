@@ -6,7 +6,8 @@
       width="50%"
       :append-to-body	="true">
       <div style="text-align: center;">
-        <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
+        <span style="font-size: 18px; weight: 500;">英雄，请给个 github star 吧！</span>
+        <!-- <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
         <div style="margin-top: 10px;">
           <span style="font-size: 13px;">扫第一个二维码完成打赏，扫第二个进微信群聊</span>
           <p style="margin-top: 10px;">
@@ -15,7 +16,7 @@
           </p>
         </div>
         <div style="margin-bottom: 10px;">不方便给打赏的话，那就 <span style="color: red;">给一个 github star</span> 吧！</div>
-        <div style="margin-bottom: 10px;">github star 后，本窗口将不再弹出</div>
+        <div style="margin-bottom: 10px;">github star 后，本窗口将不再弹出</div> -->
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="waitAMoment">一会儿再说</el-button>
@@ -52,7 +53,7 @@ export default {
       setTimeout(_ => {
         _this.dialogVisible = true
       // }, 10000) 
-      }, 60000 * 1)
+      }, 60000 * 2)
     },
     gotoStar() {
       this.dialogVisible = false

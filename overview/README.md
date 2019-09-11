@@ -190,7 +190,9 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 
 ## 在线答疑
 
-<div>
+  <img src="/images/kuboard_qq.png" />
+
+<!-- <div>
   <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
   <div style="margin-top: 10px;">
       <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span> <span style="color: #CCC">QQ 群聊二维码在左侧导航栏下方。</span>
@@ -199,4 +201,4 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
       <img src="/dz2.jpeg" style="width: 200px;"></img>
     </p>
   </div>
-</div>
+</div> -->
