@@ -18,12 +18,12 @@ Kubernetes 通过引入 Controller（控制器）的概念来管理 Pod 实例�
 
 **在 Kubernetes 支持的控制器有如下几种：**
 
-* [Deployment](./wl-deployment.html) <Badge text="Kuboard 已支持" type="success"/>
-* [StatefulSet](./wl-statefulset.html) <Badge text="Kuboard 已支持" type="success"/>
-* [DaemonSet](./wl-daemonset.html) <Badge text="Kuboard 已支持" type="success"/>
+* [Deployment](./wl-deployment/) <Badge text="Kuboard 已支持" type="success"/>
+* [StatefulSet](./wl-statefulset/) <Badge text="Kuboard 已支持" type="success"/>
+* [DaemonSet](./wl-daemonset/) <Badge text="Kuboard 已支持" type="success"/>
 
-* [CronJob](./wl-cronjob.html) <Badge text="Kuboard 正在计划中" type="warn"/>
-* [Jobs - Run to Completion](./wl-job.html) <Badge text="Kuboard 正在计划中" type="warn"/>
+* [CronJob](./wl-cronjob/) <Badge text="Kuboard 正在计划中" type="warn"/>
+* [Jobs - Run to Completion](./wl-job/) <Badge text="Kuboard 正在计划中" type="warn"/>
 
 * [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)<Badge text="使用 Deployment" type="error"/> 
   

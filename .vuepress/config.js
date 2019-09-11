@@ -164,6 +164,7 @@ module.exports = {
         {
           title: 'Kubernetes 入门',
           collapsable: false,
+          sidebarDepth: 3,
           children: [
             'k8s-basics/kubernetes-basics',
             'k8s-basics/deploy-app',
@@ -181,13 +182,27 @@ module.exports = {
             'k8s-intermediate/private-registry',
             {
               title: '工作负载',
-              collapsable: true,
+              collapsable: false,
               children: [
                 'k8s-intermediate/workload/pod',
                 'k8s-intermediate/workload/pod-lifecycle',
                 'k8s-intermediate/workload/init-container',
                 'k8s-intermediate/workload/workload',
-                'k8s-intermediate/workload/wl-deployment',
+                {
+                  title: '控制器 - Deployment',
+                  collapsable: true,
+                  children: [
+                    'k8s-intermediate/workload/wl-deployment/',
+                    'k8s-intermediate/workload/wl-deployment/create',
+                    'k8s-intermediate/workload/wl-deployment/update',
+                    'k8s-intermediate/workload/wl-deployment/rollback',
+                    'k8s-intermediate/workload/wl-deployment/scale',
+                    'k8s-intermediate/workload/wl-deployment/pause',
+                    'k8s-intermediate/workload/wl-deployment/status',
+                    'k8s-intermediate/workload/wl-deployment/cleanup',
+                    'k8s-intermediate/workload/wl-deployment/canary',
+                  ]
+                }
                 // 'k8s-intermediate/workload/wl-statefulset',
                 // 'k8s-intermediate/workload/wl-daemonset',
                 // 'k8s-intermediate/workload/wl-job',

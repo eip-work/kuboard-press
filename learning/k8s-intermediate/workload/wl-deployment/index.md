@@ -5,7 +5,7 @@ description: 本文介绍了 Kubernetes Deployment 的概念、行为及使用�
 
 # 控制器 - Deployment
 
-参考文档： Kubernetes 官网 [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+参考文档： Kubernetes 官网 [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)、 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
 
 术语表
 
@@ -77,29 +77,11 @@ Deployment 是最常用的用于部署无状态服务的方式。Deployment 控�
 
 以“声明”的方式管理 Pod 和 ReplicaSet，其本质是将一些特定场景的一系列运维步骤固化下来，以便快速准确无误的执行。Deployment 为我们确定了如下几种运维场景：
 
-* [创建Deployment](#创建deployment) 创建 Deployment 后，Deployment 控制器将立刻创建一个 ReplicaSet 副本集，并由 ReplicaSet 创建所需要的 Pod。
-* [更新Deployment](#更新deployment) 更新 Deployment 中 Pod 的定义（例如，发布新版本的容器镜像）。此时 Deployment 控制器将为该 Deployment 创建一个新的 ReplicaSet 副本集，并且逐步在新的副本集中创建 Pod，在旧的副本集中删除 Pod，以达到滚动更新的效果。
-* [回滚Deployment](#回滚deployment) 回滚到一个早期 Deployment 版本。
-* [伸缩Deployment](#伸缩deployment) 水平扩展 Deployment，以便支持更大的负载，或者水平收缩 Deployment，以便节省服务器资源。
-* [暂停和继续Deployment](#暂停和继续deployment) 暂停正在进行的滚动更新，继续正在进行的滚动更新。
-* [查看Deployment状态](#查看deployment状态)
-* [清理旧的ReplicaSet](#清理旧的replicaset)
-* [金丝雀发布](#金丝雀发布)
-
-## 创建Deployment
-
-未完待续，最后更新时间：2019年9月9日 22:50
-
-## 更新Deployment
-
-## 回滚Deployment
-
-## 伸缩Deployment
-
-## 暂停和继续Deployment
-
-## 查看Deployment状态
-
-## 清理旧的ReplicaSet
-
-## 金丝雀发布
+* [创建Deployment](./create.html) 创建 Deployment 后，Deployment 控制器将立刻创建一个 ReplicaSet 副本集，并由 ReplicaSet 创建所需要的 Pod。
+* [更新Deployment](./update.html) 更新 Deployment 中 Pod 的定义（例如，发布新版本的容器镜像）。此时 Deployment 控制器将为该 Deployment 创建一个新的 ReplicaSet 副本集，并且逐步在新的副本集中创建 Pod，在旧的副本集中删除 Pod，以达到滚动更新的效果。
+* [回滚Deployment](./rollback.html) 回滚到一个早期 Deployment 版本。
+* [伸缩Deployment](./scale.html) 水平扩展 Deployment，以便支持更大的负载，或者水平收缩 Deployment，以便节省服务器资源。
+* [暂停和继续Deployment](./pause.html) 暂停正在进行的滚动更新，继续正在进行的滚动更新。
+* [查看Deployment状态](./status.html)
+* [清理旧的ReplicaSet](./cleanup.html)
+* [金丝雀发布](./canary.html)

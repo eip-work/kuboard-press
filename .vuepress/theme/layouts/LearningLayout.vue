@@ -30,7 +30,7 @@
       </div>
       <StarGazer/>
     </div>
-    <div slot="page-top" class="theme-default-content content__default page-top">
+    <!-- <div slot="page-top" class="theme-default-content content__default page-top">
       <div class="tip custom-block" style="padding: 10px 20px;">
         <div style="display: inline-block; vertical-align: top;">
           <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
@@ -43,7 +43,7 @@
           <img src="/images/dz2.jpeg" style="width: 100px;"></img>
         </div>
       </div>
-    </div>
+    </div> -->
     <div slot="page-bottom" class="bottom-description">Copyright © 2019-present 邵欢庆 <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
   </ParentLayout>
 </template>

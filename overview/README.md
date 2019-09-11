@@ -127,11 +127,11 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * [容器组 - 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
     * [容器组 - 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
     * [控制器 - 概述](/learning/k8s-intermediate/workload/workload.html)
-    * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment.html)
-    * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset.html) <Badge text="正在撰写" type="warn"/>
-    * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset.html) <Badge text="正在撰写" type="warn"/>
-    * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job.html) <Badge text="正在撰写" type="warn"/>
-    * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob.html) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment/)
+    * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset/) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset/) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/) <Badge text="正在撰写" type="warn"/>
   * 服务发现、负载均衡、网络
     * [Service](/learning/k8s-intermediate/service/service.html) <Badge text="正在撰写" type="warn"/>
     * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html) <Badge text="正在撰写" type="warn"/>
@@ -155,7 +155,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
   在 Kubernetes 上部署 Spring Cloud 微服务：
 
-  * [概述](/micro-service/spring-cloud/index.html)
+  * [概述](/micro-service/spring-cloud/)
   * [部署服务注册中心]
   * [部署数据库]
   * [部署微服务]

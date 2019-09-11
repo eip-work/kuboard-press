@@ -46,11 +46,11 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
     * [容器组 - 生命周期](https://www.kuboard.cn/learning/k8s-intermediate/workload/pod-lifecycle.html)
     * [容器组 - 初始化容器](https://www.kuboard.cn/learning/k8s-intermediate/workload/init-container.html)
     * [控制器 - 概述](https://www.kuboard.cn/learning/k8s-intermediate/workload/workload.html)
-    * [控制器 - Deployment](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-deployment.html) 
-    * [控制器 - StatefulSet](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-statefulset.html) 
-    * [控制器 - DaemonSet](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-daemonset.html) 
-    * [控制器 - Job](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-job.html) 
-    * [控制器 - CronJob](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-cronjob.html) 
+    * [控制器 - Deployment](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-deployment/) 
+    * [控制器 - StatefulSet](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-statefulset/) 
+    * [控制器 - DaemonSet](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-daemonset/) 
+    * [控制器 - Job](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-job/) 
+    * [控制器 - CronJob](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-cronjob/) 
   * 服务发现、负载均衡、网络
     * [Service](https://www.kuboard.cn/learning/k8s-intermediate/service/service.html) 
     * [Service/Pod 的 DNS](https://www.kuboard.cn/learning/k8s-intermediate/service/dns.html) 
@@ -73,7 +73,7 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 
 在 Kubernetes 上部署 Spring Cloud 微服务：
 
-* [概述](/micro-service/spring-cloud/index.html)
+* [概述](/micro-service/spring-cloud/)
 * [部署服务注册中心]
 * [部署数据库]
 * [部署微服务]
