@@ -5,6 +5,8 @@ description: 本文介绍了 Kubernetes Controller（控制器）的概念，以
 
 # 控制器 - 概述
 
+## 概述
+
 Pod（容器组）是 Kubernetes 中最小的调度单元，您可以通过 kubectl 直接创建一个 Pod。Pod 本身并不能自愈（self-healing）。如果一个 Pod 所在的 Node （节点）出现故障，或者调度程序自身出现故障，Pod 将被删除；同理，当因为节点资源不够或节点维护而驱逐 Pod 时，Pod 也将被删除。
 
 Kubernetes 通过引入 Controller（控制器）的概念来管理 Pod 实例。在 Kubernetes 中，<font color="red">您应该始终通过创建 Controller 来创建 Pod，而不是直接创建 Pod</font>。**控制器可以提供如下特性：**
@@ -42,3 +44,16 @@ Kubernetes 通过引入 Controller（控制器）的概念来管理 Pod 实例�
 ::: tip
 常规的部署任务中所需要的控制器类型，Kuboard 都已经支持。以典型的 Spring Cloud 等微服务框架而言，Kuboard 已经可以非常好地对其进行运维和管理。
 :::
+
+
+
+## 在 Kuboard 中的体现
+
+在 Kuboard 工作负载编辑器中，控制器的概念如下图所示：
+
+<img src="./workload.assets/image-20190910232615991.png" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
+
+
+**界面如下图所示：**
+
+![image-20190910232736012](./workload.assets/image-20190910232736012.png)
