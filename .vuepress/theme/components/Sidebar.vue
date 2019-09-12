@@ -17,7 +17,10 @@
       <p>
         <strong><a href="https://github.com/shaohq/kuboard-issues/issues" target="_blank">提交 BUG</a></strong>
       </p>
-      <strong>在线提问</strong>
+      <strong>在线答疑</strong>
+      <p>
+        <Qq/>
+      </p>
       <p>
         <img :src="kuboard_qq_img"/>
       </p>

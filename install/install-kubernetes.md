@@ -45,8 +45,9 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
 
 ![image-20190826000403193](./install-kubernetes.assets/image-20190826000403193.png)
 
-* **在线答疑** QQ 群
+* **在线答疑** 
 
+  <Qq></Qq> 也可以扫描二维码加群
   <p>
     <img src="/images/kuboard_qq.png" />
   </p>

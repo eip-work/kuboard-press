@@ -30,20 +30,21 @@
       </div>
       <StarGazer/>
     </div>
-    <!-- <div slot="page-top" class="theme-default-content content__default page-top">
+    <div slot="page-top" class="theme-default-content content__default page-top">
       <div class="tip custom-block" style="padding: 10px 20px;">
         <div style="display: inline-block; vertical-align: top;">
           <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
-          <li><span style="color: red; font-weight: 500;">在线答疑</span> 扫第一个二维码完成打赏，扫第二个进微信群聊</li>
-          <li>未打赏用户可加 QQ 群，请扫描左侧导航<span style="color: red; font-weight: 500;">下方</span>的二维码</li>
-          <li>根据答疑情况，<span style="color: red; font-weight: 500;">不断完善</span> 教程</li>
+          <!-- <li><span style="color: red; font-weight: 500;">在线答疑</span> 扫第一个二维码完成打赏，扫第二个进微信群聊</li> -->
+          <li><Qq></Qq> <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描左侧导航<span style="color: red; font-weight: 500;">下方</span>的二维码加群</li>
+          
+          <!-- <li>根据答疑反馈，<span style="color: red; font-weight: 500;">不断完善</span> 教程</li> -->
         </div>
-        <div style="display: inline-block; margin-left: 10px;">
+        <!-- <div style="display: inline-block; margin-left: 10px;">
           <img src="/images/dz.png" style="width: 100px; margin-right: 100px;"></img>
           <img src="/images/dz2.jpeg" style="width: 100px;"></img>
-        </div>
+        </div> -->
       </div>
-    </div> -->
+    </div>
     <div slot="page-bottom" class="bottom-description">Copyright © 2019-present 邵欢庆 <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2</div>
   </ParentLayout>
 </template>

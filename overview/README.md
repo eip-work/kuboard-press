@@ -188,8 +188,12 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
 
 ## 在线答疑
 
-  <img src="/images/kuboard_qq.png" />
-
+  <p>
+    <Qq/>
+  </p>
+  <p>
+    <img src="/images/kuboard_qq.png" />
+  </p>
 <!-- <div>
   <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
   <div style="margin-top: 10px;">

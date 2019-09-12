@@ -97,8 +97,9 @@ export default {
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
   * 当前已更新了 <font color="red"> 46 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
-* **在线答疑** QQ 群
-
+* **在线答疑** 
+  
+  <Qq></Qq> 也可以扫描二维码加群
   <p>
     <img src="/images/kuboard_qq.png" />
   </p>
