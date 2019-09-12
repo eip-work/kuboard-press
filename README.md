@@ -1,9 +1,7 @@
 ---
 home: true
-# heroImage: /images/logo.png
 layout: HomePage
 actionText: 在线体验
-# actionLink: `http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`
 actionText2: 开始使用 →
 actionLink2: /overview/
 features:
