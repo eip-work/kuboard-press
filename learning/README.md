@@ -36,7 +36,7 @@ description: Kubernetes 免费教程
     * [容器组 - 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
     * [控制器 - 概述](/learning/k8s-intermediate/workload/workload.html)
     * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment/)
-    * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset/) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset/)
     * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset/) <Badge text="正在撰写" type="warn"/>
     * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/) <Badge text="正在撰写" type="warn"/>
     * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/) <Badge text="正在撰写" type="warn"/>

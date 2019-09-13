@@ -3,7 +3,7 @@ layout: LearningLayout
 description: 本文介绍了 Kubernetes Deployment 的概念、行为及使用方法
 ---
 
-# 控制器 - Deployment
+# 介绍 Deployment
 
 参考文档： Kubernetes 官网 [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)、 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
 
@@ -81,7 +81,7 @@ Deployment 是最常用的用于部署无状态服务的方式。Deployment 控�
 * [更新Deployment](./update.html) 更新 Deployment 中 Pod 的定义（例如，发布新版本的容器镜像）。此时 Deployment 控制器将为该 Deployment 创建一个新的 ReplicaSet 副本集，并且逐步在新的副本集中创建 Pod，在旧的副本集中删除 Pod，以达到滚动更新的效果。
 * [回滚Deployment](./rollback.html) 回滚到一个早期 Deployment 版本。
 * [伸缩Deployment](./scale.html) 水平扩展 Deployment，以便支持更大的负载，或者水平收缩 Deployment，以便节省服务器资源。
-* [暂停和继续Deployment](./pause.html) 暂停正在进行的滚动更新，继续正在进行的滚动更新。
+* [暂停和继续Deployment](./pause.html) 
 * [查看Deployment状态](./status.html)
-* [清理旧的ReplicaSet](./cleanup.html)
+* [清理策略](./cleanup.html)
 * [金丝雀发布](./canary.html)

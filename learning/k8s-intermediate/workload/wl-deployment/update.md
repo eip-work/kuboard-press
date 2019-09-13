@@ -3,7 +3,7 @@ layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中更新 Deployment
 ---
 
-# 更新Deployment
+# 更新 Deployment
 
 [返回 Deployment](./#deployment-概述)
 
@@ -156,3 +156,6 @@ description: 本文描述了如何在 Kubernetes 中更新 Deployment
 * 假设您创建了一个 Deployment 有 5 个 nginx:1.7.9 的副本；
 * 您立刻更新该 Deployment 使得其 `.spec.replicas` 为 5，容器镜像为 `nginx:1.9.1`，而此时只有 3 个 nginx:1.7.9 的副本已创建；
 * 此时，Deployment Controller 将立刻开始 kill 已经创建的 3 个 nginx:1.7.9 的 Pod，并开始创建 nginx:1.9.1 的 Pod。Deployment Controller 不会等到 5 个 nginx:1.7.9 的 Pod 都创建完之后在开始新的更新
+
+
+[返回 Deployment](./#deployment-概述)

@@ -3,7 +3,7 @@ layout: LearningLayout
 description: 本文描述了如何创建一个 Deployment，如何理解 Deployment 各个字段，以及如何查看 Deployment 的创建结果
 ---
 
-# 创建Deployment
+# 创建 Deployment
 
 [返回 Deployment](./#deployment-概述)
 
@@ -11,7 +11,7 @@ description: 本文描述了如何创建一个 Deployment，如何理解 Deploym
 
 <el-tabs type="border-card">
 
-<el-tab-pane label="使用kubectl创建Deployment">
+<el-tab-pane label="使用 kubectl 创建 Deployment">
 
 下面的 yaml 文件定义了一个 Deployment，该 Deployment 将创建一个有 3 个 nginx Pod 副本的 ReplicaSet（副本集）：
 
@@ -127,7 +127,7 @@ pod-template-hash 标签时 Deployment 创建 ReplicaSet 时添加到 ReplicaSet
 
 </el-tab-pane>
 
-<el-tab-pane label="使用Kuboard创建Deployment">
+<el-tab-pane label="使用 Kuboard 创建 Deployment">
 
 正在撰写
 
