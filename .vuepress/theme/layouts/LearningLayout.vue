@@ -21,8 +21,8 @@
         <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
           <a href="/guide/" class="nav-link">使用</a>
         </div>
-        <div class="side-nav-item" :style="activeLinkStyle('/micro-service/')">
-          <a href="/micro-service/overview/kuboard-view-of-k8s.html" class="nav-link">微服务</a>
+        <div class="side-nav-item" :style="activeLinkStyle('/support/')">
+          <a href="/support/" class="nav-link">支持</a>
         </div>
         <!-- <div class="side-nav-item" :style="activeLinkStyle('/noactive/')">
           <a href="https://blog.kuboard.cn/compaign/" target="_blank" class="nav-link">博客</a>

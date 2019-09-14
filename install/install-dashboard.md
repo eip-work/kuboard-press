@@ -28,7 +28,9 @@ storyBook:
 
 如果没有 Kubernetes 集群：
 
-* 初学者，  请参考 [安装 Kubernetes 单Master节点](install-k8s.html)
+* 初学者，  请参考 
+  * [在 Windows/Mac 安装 Kubernetes 测试集群](install-docker-desktop.html) 
+  * [安装 Kubernetes 单Master节点](install-k8s.html)
 * 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes.html)
 
 ## 兼容性

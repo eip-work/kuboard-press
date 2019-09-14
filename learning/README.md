@@ -37,7 +37,7 @@ description: Kubernetes 免费教程
     * [控制器 - 概述](/learning/k8s-intermediate/workload/workload.html)
     * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment/)
     * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset/)
-    * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset/) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset/)
     * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/) <Badge text="正在撰写" type="warn"/>
     * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/) <Badge text="正在撰写" type="warn"/>
   * 服务发现、负载均衡、网络
@@ -58,12 +58,19 @@ description: Kubernetes 免费教程
     * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-and-toleration.html) <Badge text="正在撰写" type="warn"/>
     * [Secrets](/learning/k8s-intermediate/config/secret.html) <Badge text="正在撰写" type="warn"/>
 
+## **Kubernetes 高级**
+
+  * Kubernetes 日志可视化
+  * Kubernetes 监控
+  * Kubernetes 联邦
 
 ## **Kubernetes 实战**
 
+[从微服务视角理解 Kubernetes](/learning/k8s-practice/micro-service/kuboard-view-of-k8s.html)
+
 在 Kubernetes 上部署 Spring Cloud 微服务：
 
-* [概述](/micro-service/spring-cloud/)
+* [概述](/learning/k8s-practice/spring-cloud/)
 * [部署服务注册中心]
 * [部署数据库]
 * [部署微服务]

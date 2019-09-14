@@ -1,4 +1,5 @@
 ---
+layout: LearningLayout
 description: 本文描述了一个经典微服务参考架构，并且通过三个视图（集群概览、名称空间、工作负载）理解微服务与 Kubernetes 的映射关系。
 ---
 
@@ -188,6 +189,4 @@ Kuboard 产生于 Spring Cloud 微服务落地的实践中，并在许多的实�
 * 工作负载视图
 * 监控视图
 
-Kuboard 在实际项目中经过多次历练，功能不断完善，成长为一个基于 Kubernetes 的成熟的微服务管理工具。自 www.kuboard.cn 推出以来，得到了众多网友非常多的反馈，碰到问题，可以通过 Kuboard 社群得到支持，如需要获得商业支持请通过微信联系作者。
-
-![作者微信](../../overview/change-log.assets/wechat.jpeg)
+Kuboard 在实际项目中经过多次历练，功能不断完善，成长为一个基于 Kubernetes 的成熟的微服务管理工具。自 www.kuboard.cn 推出以来，得到了众多网友非常多的反馈，碰到问题，可以通过 Kuboard 社群得到支持。

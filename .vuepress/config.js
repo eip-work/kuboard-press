@@ -70,7 +70,7 @@ module.exports = {
       { text: '安装', link: '/install/install-dashboard' },
       { text: '学习', link: '/learning/' },
       { text: '使用', link: '/guide/' },
-      { text: '微服务', link: '/micro-service/overview/kuboard-view-of-k8s.html' },
+      { text: '支持', link: '/support/' },
       // { text: '博客', link: 'https://blog.kuboard.cn/compaign' }
       // { text: 'DevOps', link: '/devops/' }
     ],
@@ -112,14 +112,15 @@ module.exports = {
             'why-kuboard',
             'concepts'
           ]
-        }, {
-          title: '技术支持',
-          collapsable: false,
-          children: [
-            'support',
-            'change-log'
-          ]
-        }
+        }, 
+        // {
+        //   title: '技术支持',
+        //   collapsable: false,
+        //   children: [
+        //     'support',
+        //     'change-log'
+        //   ]
+        // }
       ],
 
       '/articles/': [
@@ -137,6 +138,7 @@ module.exports = {
           title: '安装 Kubernetes',
           collapsable: false,
           children: [
+            'install-docker-desktop',
             ['install-k8s', '安装 Kubernetes 单Master节点'],
             'install-kubernetes',
             ['install-k8s-upgrade', '升级 Kubernetes 集群'],
@@ -212,6 +214,18 @@ module.exports = {
                     'k8s-intermediate/workload/wl-statefulset/scaling.html',
                     'k8s-intermediate/workload/wl-statefulset/update.html',
                   ]
+                },
+                {
+                  title: '控制器 - DaemonSet',
+                  collapsable: true,
+                  children: [
+                    'k8s-intermediate/workload/wl-daemonset/',
+                    'k8s-intermediate/workload/wl-daemonset/create',
+                    'k8s-intermediate/workload/wl-daemonset/schedule',
+                    'k8s-intermediate/workload/wl-daemonset/communicate',
+                    'k8s-intermediate/workload/wl-daemonset/update',
+                    'k8s-intermediate/workload/wl-daemonset/alternative',
+                  ]
                 }
                 // 'k8s-intermediate/workload/wl-daemonset',
                 // 'k8s-intermediate/workload/wl-job',
@@ -252,6 +266,27 @@ module.exports = {
             }
           ]
         },
+        {
+          title: 'Kubernetes 实战',
+          collapsable: false,
+          children: [
+            {
+              title: '概述',
+              collapsable: false,
+              children: [
+                'k8s-practice/micro-service/kuboard-view-of-k8s'
+              ]
+            },
+            {
+              title: 'Spring Cloud',
+              collapsable: false,
+              children: [
+                'k8s-practice/spring-cloud/',
+                // 'spring-cloud/cloud-eureka'
+              ]
+            },
+          ]
+        }
       ],
 
       '/guide/': [
@@ -310,23 +345,22 @@ module.exports = {
           ]
         },
       ],
-
-      '/micro-service/': [
+      
+      '/support/': [
         {
-          title: '概述',
+          title: '授权/支持',
           collapsable: false,
           children: [
-            'overview/kuboard-view-of-k8s'
+            '',
           ]
         },
         {
-          title: 'Spring Cloud',
+          title: '更新说明',
           collapsable: false,
           children: [
-            'spring-cloud/',
-            // 'spring-cloud/cloud-eureka'
+            'change-log/v1.0.x',
           ]
-        },
+        }
       ],
 
       '/devops/': [
@@ -339,10 +373,6 @@ module.exports = {
         }
       ],
 
-      '/support/': [
-        '',
-        'change-log'
-      ],
     }
   }
 }

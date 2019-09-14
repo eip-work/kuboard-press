@@ -5,6 +5,8 @@ description: 本文描述了 Kubernetes StatefulSet 的概念、行为及用法
 
 # StatefulSet 的使用场景
 
+> 参考文档： Kubernetes 官网文档 [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+
 ## StatefulSet 概述
 
 StatefulSet 顾名思义，用于管理 Stateful（有状态）的应用程序。
