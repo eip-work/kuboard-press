@@ -220,7 +220,7 @@ module.exports = {
             },
             {
               title: '服务发现、负载均衡、网络',
-              collapsable: true,
+              collapsable: false,
               children: [
                 // 'k8s-intermediate/service/service',
                 // 'k8s-intermediate/service/dns',
@@ -231,7 +231,7 @@ module.exports = {
             },
             {
               title: '存储',
-              collapsable: true,
+              collapsable: false,
               children: [
                 'k8s-intermediate/persistent/volume',
                 'k8s-intermediate/persistent/pv',
@@ -241,7 +241,7 @@ module.exports = {
             },
             {
               title: '配置',
-              collapsable: true,
+              collapsable: false,
               children: [
                 'k8s-intermediate/config/config-map',
                 'k8s-intermediate/config/computing-resource',
