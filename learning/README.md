@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: Kubernetes 免费教程
+description: Kubernetes 免费中文教程
 ---
 
-# Kubernetes 免费教程
+# Kubernetes 免费中文教程
 
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
 * Kubernetes 初学者

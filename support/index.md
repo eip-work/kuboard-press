@@ -7,13 +7,13 @@ description: 本文描述了如何获得 Kuboard 授权
 ## Kuboard 授权声明
 
 * 使用 Kuboard 是免费的，无论您是用于学习还是用于生产
-* 将来可能会推出 Kuboard Plus，当前所有的功能，将来仍然免费。Kuboard Plus 侧重点：
+* 将来会推出 Kuboard Plus，当前所有的功能，将来仍然免费。Kuboard Plus 侧重点：
   * 更完善的权限管理（当前只区分集群管理员权限和只读权限）
   * 审计日志
 
 ## Kuboard 支持
 
-### 免费支持
+### QQ社群支持
 
   <p>
     <Qq/>
@@ -22,11 +22,11 @@ description: 本文描述了如何获得 Kuboard 授权
     <img src="/images/kuboard_qq.png" />
   </p>
 
-### 承诺24小时内答复
+### 微信即时答复
 
+* 微信群聊里的问题，通常可立刻答复，并承诺2小时内给出解答
+* 可提供 TeamViewer 远程协助
 <div>
-  <div style="margin-top: 10px;">微信群聊里的问题，承诺 24 小时答复</div>
-  <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
   <div style="margin-top: 10px;">
       <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span>
     <p style="margin-top: 10px;">
@@ -37,6 +37,13 @@ description: 本文描述了如何获得 Kuboard 授权
 </div>
 
 ### 微服务落地咨询
+
+Kuboard 团队提供微服务实施落地的全过程咨询和实施，服务范围：
+<p>
+  <img src="./consulting.png">
+</p>
+
+如有需要请加微信：
 
 <p>
   <img src="/images/dz2.jpeg" style="width: 200px;"></img>

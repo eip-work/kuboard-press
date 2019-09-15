@@ -2,23 +2,34 @@
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
 
-    <router-link
-      :to="$localePath"
-      class="home-link"
-    >
-      <img
-        class="logo"
-        v-if="$site.themeConfig.logo"
-        :src="$withBase($site.themeConfig.logo)"
-        :alt="$siteTitle"
+    <div style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: calc(100vw - 120px);">
+      <router-link
+        :to="$localePath"
+        class="home-link noselect"
       >
-      <span
-        ref="siteName"
-        class="site-name"
-        v-if="$siteTitle"
-        :class="{ 'can-hide': $site.themeConfig.logo }"
-      >Kuboard</span>
-    </router-link>
+        <img
+          class="logo"
+          v-if="$site.themeConfig.logo"
+          :src="$withBase($site.themeConfig.logo)"
+          :alt="$siteTitle"
+        >
+        <span
+          ref="siteName"
+          class="site-name"
+          v-if="$siteTitle"
+          :class="{ 'can-hide': $site.themeConfig.logo }"
+        >Kuboard - </span>
+      </router-link>
+      <span class="home-link noselect" style="line-height: 2.2em; font-size: 1em; font-weight: 400;">
+        <a href="/learning/">
+          <span style="color: #42b983;">提供K8S免费教程</span>
+        </a>
+        <span style="color: #2c3e50;">|</span>
+        <a href="/support/#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%90%BD%E5%9C%B0%E5%92%A8%E8%AF%A2">
+          <span style="color: #007af5;">微服务落地咨询</span>
+        </a>
+      </span>
+    </div>
 
     <div
       class="links"

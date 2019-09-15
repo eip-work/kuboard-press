@@ -1,10 +1,10 @@
 let dateFns = require('date-fns')
 
 module.exports = {
-  title: 'Kuboard - Kubernetes k8s 安装/部署/入门/免费教程/实践/微服务管理界面',
-  description: '一个非常 cool 的 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；同时提供 Spring Cloud 微服务部署教程，DevOps教程',
+  title: 'Kuboard - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面',
+  description: '一个非常 cool 的 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；提供 Kubernetes 免费中文教程、国内安装文档',
   head: [
-    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, DevOps, 微服务, 持续构建集成, 容器, Kubernetes 教程, Kubernetes 入门, K8S 教程, K8S 入门, 微服务实践, Kubernetes 安装, K8S 安装, Kubernetes 安装, Kubernetes 部署'}],
+    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, DevOps, 微服务, 持续构建集成, Kubernetes 中文教程, Kubernetes 入门, K8S 教程, K8S 入门, 微服务实践, Kubernetes 国内安装, K8S 安装, Kubernetes 安装, Kubernetes 部署'}],
     ['script', {}, `
     var _hmt = _hmt || [];
     (function() {

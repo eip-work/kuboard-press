@@ -19,7 +19,7 @@
         <div style="margin-bottom: 10px;">github star 后，本窗口将不再弹出</div> -->
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="waitAMoment">一会儿再说</el-button>
+        <el-button @click="reset">一会儿再说</el-button>
         <el-button type="primary" @click="gotoStar">够义气，现在就去！</el-button>
       </span>
     </el-dialog>
@@ -28,8 +28,9 @@
 
 <script>
 import Vue from 'vue'
-import 'element-ui/lib/theme-chalk/index.css';
-import { Dialog, Button } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css'
+import { Dialog, Button } from 'element-ui'
+import { differenceInMinutes } from 'date-fns'
 
 Vue.component(Dialog.name, Dialog)
 Vue.component(Button.name, Button)
@@ -41,24 +42,63 @@ export default {
     };
   },
   mounted () {
-    this.waitAMoment()
+    if (localStorage.getItem('stared') === 'true') {
+      console.log('已经去过 GITHUB')
+      return
+    }
+    setInterval(this.checkDuration, 10000)
   },
   methods: {
-    waitAMoment() {
-      this.dialogVisible = false
+    checkDuration() {
+      let firstAccess = localStorage.getItem('FIRST_ACCESS')
+      // console.log(new Date(), new Date(firstAccess))
+      if (!firstAccess) {
+        console.log('FIRST_ACCESS', new Date())
+        localStorage.setItem('FIRST_ACCESS', new Date())
+      } else {
+        // console.log('differenceInMinutes', differenceInMinutes(new Date(), new Date(firstAccess)))
+        if (differenceInMinutes(new Date(), new Date(firstAccess)) >= 10 && !this.dialogVisible) {
+          this.show()
+        }
+      }
+    },
+    show () {
+      this.dialogVisible = true
       if (localStorage.getItem('stared') === 'true') {
+        console.log('已经去过 GITHUB')
         return
       }
-      let _this = this
-      setTimeout(_ => {
-        _this.dialogVisible = true
-      // }, 10000) 
-      }, 60000 * 2)
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: 'StarGazer',
+          eventAction: 'Show',
+          eventLabel: '显示 StarGazer'
+        });
+        console.log('发送成功 ga event')
+      } else {
+        console.log('开发环境，不发送 ga event')
+      }
+    },
+    reset () {
+      localStorage.removeItem('FIRST_ACCESS')
+      this.dialogVisible = false
     },
     gotoStar() {
       this.dialogVisible = false
       window.open('https://github.com/eip-work/kuboard-press')
       localStorage.setItem('stared', 'true')
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: 'StarGazer',
+          eventAction: 'Click',
+          eventLabel: '前往 github'
+        });
+        console.log('发送成功 ga event')
+      } else {
+        console.log('开发环境，不发送 ga event')
+      }
     }
   }
 }
