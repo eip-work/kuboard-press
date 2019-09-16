@@ -4,9 +4,10 @@
       title="感谢阅读"
       :visible.sync="dialogVisible"
       width="50%"
+      :before-close="handleClose"
       :append-to-body	="true">
       <div style="text-align: center;">
-        <span style="font-size: 18px; weight: 500;">英雄，请给个 github star 吧！</span>
+        <span style="font-size: 18px; weight: 500;">英雄，Kuboard 恭候多时啦，请给个 github star 吧！</span>
         <!-- <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
         <div style="margin-top: 10px;">
           <span style="font-size: 13px;">扫第一个二维码完成打赏，扫第二个进微信群聊</span>
@@ -57,22 +58,22 @@ export default {
         localStorage.setItem('FIRST_ACCESS', new Date())
       } else {
         // console.log('differenceInMinutes', differenceInMinutes(new Date(), new Date(firstAccess)))
-        if (differenceInMinutes(new Date(), new Date(firstAccess)) >= 10 && !this.dialogVisible) {
+        if (differenceInMinutes(new Date(), new Date(firstAccess)) >= 12 && !this.dialogVisible) {
           this.show()
         }
       }
     },
     show () {
-      this.dialogVisible = true
       if (localStorage.getItem('stared') === 'true') {
         console.log('已经去过 GITHUB')
         return
       }
+      this.dialogVisible = true
       if (window.ga) {
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'StarGazer',
-          eventAction: 'Show',
+          eventAction: 'ShowStarGazer',
           eventLabel: '显示 StarGazer'
         });
         console.log('发送成功 ga event')
@@ -83,17 +84,42 @@ export default {
     reset () {
       localStorage.removeItem('FIRST_ACCESS')
       this.dialogVisible = false
-    },
-    gotoStar() {
-      this.dialogVisible = false
-      window.open('https://github.com/eip-work/kuboard-press')
-      localStorage.setItem('stared', 'true')
       if (window.ga) {
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'StarGazer',
-          eventAction: 'Click',
+          eventAction: 'WaitWait',
+          eventLabel: '一会儿再说'
+        });
+        console.log('发送成功 ga event')
+      } else {
+        console.log('开发环境，不发送 ga event')
+      }
+    },
+    gotoStar() {
+      this.dialogVisible = false
+      localStorage.setItem('stared', 'true')
+      window.open('https://github.com/eip-work/kuboard-press')
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: 'StarGazer',
+          eventAction: 'GotoGithub',
           eventLabel: '前往 github'
+        });
+        console.log('发送成功 ga event')
+      } else {
+        console.log('开发环境，不发送 ga event')
+      }
+    },
+    handleClose (done) {
+      this.$message.success('赠人玫瑰，手有余香')
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: 'StarGazer',
+          eventAction: 'BeforeClose',
+          eventLabel: '赠人玫瑰，手有余香'
         });
         console.log('发送成功 ga event')
       } else {
