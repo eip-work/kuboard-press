@@ -133,7 +133,8 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/) <Badge text="正在撰写" type="warn"/>
     * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/) <Badge text="正在撰写" type="warn"/>
   * 服务发现、负载均衡、网络
-    * [Service](/learning/k8s-intermediate/service/service.html) <Badge text="正在撰写" type="warn"/>
+    * [Service 概述](/learning/k8s-intermediate/service/service.html)
+    * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)
     * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html) <Badge text="正在撰写" type="warn"/>
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html) <Badge text="正在撰写" type="warn"/>
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)

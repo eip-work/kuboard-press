@@ -236,7 +236,8 @@ module.exports = {
               title: '服务发现、负载均衡、网络',
               collapsable: false,
               children: [
-                // 'k8s-intermediate/service/service',
+                'k8s-intermediate/service/service',
+                'k8s-intermediate/service/service-details',
                 // 'k8s-intermediate/service/dns',
                 // 'k8s-intermediate/service/connecting',
                 'k8s-intermediate/service/ingress',
