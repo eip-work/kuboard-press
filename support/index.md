@@ -36,7 +36,7 @@ description: 本文描述了如何获得 Kuboard 授权
   </div>
 </div>
 
-### 微服务落地咨询
+<!-- ### 微服务落地咨询
 
 Kuboard 团队提供微服务实施落地的全过程咨询和实施，服务范围：
 <p>
@@ -47,4 +47,4 @@ Kuboard 团队提供微服务实施落地的全过程咨询和实施，服务范
 
 <p>
   <img src="/images/dz2.jpeg" style="width: 200px;"></img>
-</p>
+</p> -->
