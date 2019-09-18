@@ -1,5 +1,6 @@
 ---
 home: true
+title: Kuboard - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面
 layout: HomePage
 actionText: 在线体验
 actionText2: 开始使用 →
@@ -53,6 +54,8 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
     * [控制器 - CronJob](https://www.kuboard.cn/learning/k8s-intermediate/workload/wl-cronjob/) 
   * 服务发现、负载均衡、网络
     * [Service](https://www.kuboard.cn/learning/k8s-intermediate/service/service.html) 
+    * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)
+    * [Service 类型](/learning/k8s-intermediate/service/service-types.html)
     * [Service/Pod 的 DNS](https://www.kuboard.cn/learning/k8s-intermediate/service/dns.html) 
     * [Service 连接应用程序](https://www.kuboard.cn/learning/k8s-intermediate/service/connecting.html) 
     * [Ingress 通过互联网访问您的应用](https://www.kuboard.cn/learning/k8s-intermediate/service/ingress.html)

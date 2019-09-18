@@ -246,16 +246,6 @@ watch kubectl get pod -n kube-system -o wide
 kubectl get nodes
 ```
 
-**重新设置 /etc/hosts**
-
-部分 Load Balancer 不能在较短的时间内发现已经就绪的后端服务（apiserver），因此，初始化第一个 master 节点时，先指定 ${APISERVER_NAME} 为 127.0.0.1，完成第一个 master 节点初始化后，再初始化第二个、第三个时，就直接使用 Load Balancer 的地址即可。
-
-``` sh
-# 只在第一个 master 节点执行
-# 将 x.x.x.x 替换为 ApiServer Load Balancer 的 IP 地址
-echo "x.x.x.x    ${APISERVER_NAME}" >> /etc/hosts
-```
-
 ### 初始化第二、三个master节点
 
 **获得 master 节点的 join 命令**

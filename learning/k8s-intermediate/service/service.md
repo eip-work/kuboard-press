@@ -16,7 +16,7 @@ Kubernetes 中 Pod 是随时可以消亡的（节点故障、容器内应用程�
 
 Service 存在的意义，就是为了解决这个问题。
 
-## Service
+## Kubernetes Service
 
 Kubernetes 中 Service 是一个 API 对象，通过 kubectl + YAML 或者 Kuboard，定义一个 Service，可以将符合 Service 指定条件的 Pod 作为可通过网络访问的服务提供给服务调用者。
 

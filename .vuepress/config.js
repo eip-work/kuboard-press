@@ -1,7 +1,7 @@
 let dateFns = require('date-fns')
 
 module.exports = {
-  title: 'Kuboard - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面',
+  title: 'Kuboard - Kubernetes 微服务管理界面',
   description: '一个非常 cool 的 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；提供 Kubernetes 免费中文教程、国内安装文档',
   head: [
     ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, DevOps, 微服务, 持续构建集成, Kubernetes 中文教程, Kubernetes 入门, K8S 教程, K8S 入门, 微服务实践, Kubernetes 国内安装, K8S 安装, Kubernetes 安装, Kubernetes 部署'}],
@@ -45,9 +45,9 @@ module.exports = {
     'code-switcher': {},
     'reading-progress': {},
     'vuepress-plugin-element-tabs': {},
-    'vuepress-plugin-baidu-autopush':{},
+    // 'vuepress-plugin-baidu-autopush':{},
     'sitemap': {
-      hostname: 'https://www.kuboard.cn'
+      hostname: 'https://kuboard.cn'
     },
     'seo': {
       siteTitle: (_, $site) => $site.title,
@@ -238,6 +238,7 @@ module.exports = {
               children: [
                 'k8s-intermediate/service/service',
                 'k8s-intermediate/service/service-details',
+                'k8s-intermediate/service/service-types',
                 // 'k8s-intermediate/service/dns',
                 // 'k8s-intermediate/service/connecting',
                 'k8s-intermediate/service/ingress',
