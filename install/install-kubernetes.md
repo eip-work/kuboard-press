@@ -139,7 +139,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 ## 初始化API Server
 
-### 创建 ApiServer 的 ELB（私网）
+### 创建 ApiServer 的 Load Balancer（私网）
 
 监听端口：6443 / TCP
 
@@ -149,7 +149,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 开启 按源地址保持会话
 
-假设完成创建以后，ELB的 ip 地址为 x.x.x.x
+假设完成创建以后，Load Balancer的 ip 地址为 x.x.x.x
 
 ### 初始化第一个master节点
 
@@ -171,13 +171,11 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 ``` sh
 # 只在 master 节点执行
-# 替换 x.x.x.x 为 ApiServer LoadBalancer 的 IP 地址
-export APISERVER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
-echo "${APISERVER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 ```
 
@@ -187,13 +185,11 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 
 ``` sh
 # 只在 master 节点执行
-# 替换 x.x.x.x 为 ApiServer LoadBalancer 的 IP 地址
-export APISERVER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
-echo "${APISERVER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
 <<< @/.vuepress/public/install-script/v1.15.3/init-master.sh
@@ -241,13 +237,23 @@ kubeadm join apiserver.k8s:6443 --token 4z3r2v.2p43g28ons3b475v \
 **检查 master 初始化结果**
 
 ``` sh
-# 只在 master 节点执行
+# 只在第一个 master 节点执行
 
 # 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
 watch kubectl get pod -n kube-system -o wide
 
 # 查看 master 节点初始化结果
 kubectl get nodes
+```
+
+**重新设置 /etc/hosts**
+
+部分 Load Balancer 不能在较短的时间内发现已经就绪的后端服务（apiserver），因此，初始化第一个 master 节点时，先指定 ${APISERVER_NAME} 为 127.0.0.1，完成第一个 master 节点初始化后，再初始化第二个、第三个时，就直接使用 Load Balancer 的地址即可。
+
+``` sh
+# 只在第一个 master 节点执行
+# 将 x.x.x.x 替换为 ApiServer Load Balancer 的 IP 地址
+echo "x.x.x.x    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
 ### 初始化第二、三个master节点
@@ -468,9 +474,9 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 如果您打算将 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.3/docs/installation.md)，完善 Ingress 的配置
 :::
 
-### 在 IaaS 层完成如下配置（**公网ELB**）
+### 在 IaaS 层完成如下配置（**公网Load Balancer**）
 
-创建负载均衡 ELB：
+创建负载均衡 Load Balancer：
 
 ​    监听器 1：80 / TCP， SOURCE_ADDRESS 会话保持
 
@@ -480,7 +486,7 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 
 ​    服务器资源池 2： demo-worker-x-x 的所有节点的443端口
 
-假设刚创建的负载均衡 ELB 的 IP 地址为： z.z.z.z
+假设刚创建的负载均衡 Load Balancer 的 IP 地址为： z.z.z.z
 
 
 
