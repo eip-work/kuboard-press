@@ -147,9 +147,6 @@ export default {
 ::: tip
 **关于二进制安装**
 
-网上一直流传着一种 ***“二进制”*** 安装 Kubernetes 的方法，查了许久，未曾在 kubernetes.io 官方网站上看到任何关于此安装方法的介绍，也并没有看到任何关于 ***“二进制”*** 安装的优势，唯一的解释是：
-> 由于众所周知的原因，在国内无法直接访问Google的服务。二进制包由于其下载方便、灵活定制而深受广大kubernetes使用者喜爱，成为企业部署生产环境比较流行的方式之一
-
 鉴于目前已经有比较方便的办法获得 kubernetes 镜像，我将回避 ***二进制*** 安装是否更好的争论。本文采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。
 
 :::
@@ -190,6 +187,8 @@ lscpu
 hostnamectl set-hostname your-new-host-name
 # 查看修改结果
 hostnamectl status
+# 设置 hostname 解析
+echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ```
 :::
 
