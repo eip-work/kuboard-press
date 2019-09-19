@@ -43,7 +43,7 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
 
 安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
-![image-20190826000403193](./install-kubernetes.assets/image-20190826000403193.png)
+![image-20190826000403193](/images/topology/kubernetes.png)
 
 * **在线答疑** 
 

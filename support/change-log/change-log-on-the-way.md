@@ -1,26 +1,28 @@
 Kuboard v1.0.x 的更新说明
 
-## v1.0.3-beta.5
+## v1.0.3-beta.6
 
 **发布日期**
 
-2019年9月16日
-
-**新特性**
-
-
-**优化**
-
+2019年9月19日
 
 **BUG 修复**
 
 
+
+
+
+
+
+
+* 预览的 YAML 不能第二次 apply 的问题（YAML 中存在空 MAP）
 * terminationGracePeriodSeconds
 * Service --> SessionAffinity
               --> clientIP.timeoutSeconds
 * Service --> .spec.clusterIP
 * Firefox 浏览器，从名称空间 后退到集群概览，布局出错
-* 编辑 ConfigMap 时，标签应该可以为空
+* --privileged
+* mountPropagation
 
 * 创建工作负载时，不追加前缀
 * 存储卷声明去掉分配模式的字段

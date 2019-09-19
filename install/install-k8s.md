@@ -95,7 +95,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 48 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 49 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
   
@@ -133,12 +133,13 @@ export default {
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
+<!-- > * [安装 Kubernetes v1.15.3 单Master节点](/install/history-k8s/install-k8s-1.15.3.html) -->
 > * [安装 Kubernetes v1.15.2 单Master节点](/install/history-k8s/install-k8s-1.15.2.html)
 > * [安装 Kubernetes v1.15.1 单Master节点](/install/history-k8s/install-k8s-1.15.1.html)
 
 安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
-![image-20190826000521999](./install-k8s.assets/image-20190826000521999.png)
+![image-20190826000521999](/images/topology/k8s.png)
 
 
 <!-- <img src="./install-k8s.assets/image-20190826000521999.png" style="width: 958px; height: 533px"></img> -->

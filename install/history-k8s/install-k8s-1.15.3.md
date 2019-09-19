@@ -1,8 +1,89 @@
 ---
+# layout: StepLayout
 description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
+storyBook:
+  title: '使用 kubeadm 安装 kubernetes v1.15.3（单Master节点）'
+  initial: StoryBook
+  pages:
+    - name: introduction
+      title: 文档特点
+    - name: overview
+      title: 配置要求
+    - name: step1
+      title: 检查环境
+    - name: step2
+      title: 安装 docker/kubelet
+    - name: step3
+      title: 初始化 master 节点
+    - name: step4
+      title: 初始化 worker 节点
+    - name: step5
+      title: 安装 Ingress Controller
+    - name: step6
+      title: 总结
 ---
 
 # 使用 kubeadm 安装 kubernetes v1.15.3
+
+<script>
+
+export default {
+  data () {
+    let validateEnv = (rule, value, callback) => {
+      if (value.length < 3) {
+        callback(new Error('请确认您的环境符合上述条件'));
+      } else {
+        callback();
+      }
+    };
+    return {
+      form: {
+        checked: []
+      },
+      rules: {
+        checked: [{validator: validateEnv, trigger: 'change'}]
+      }
+    }
+  },
+  mounted () {
+  },
+  watch: {
+    'form.checked' () {
+      if (this.form.checked.length === 3) {
+        
+      }
+    }
+  },
+  methods: {
+    downloadDiagram () {
+      console.log('尝试发送 ga event')
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: '安装K8S',
+          eventAction: 'Download',
+          eventLabel: '下载拓扑图源文件'
+        });
+        console.log('发送成功 ga event')
+      } else {
+        console.log('开发环境，不发送 ga event')
+      }
+    },
+    canSlideNext (currentName) {
+      if (currentName === 'step1' && this.form.checked.length < 3) {
+        this.$refs.envForm.validate(valid => {
+          
+        })
+        return { flag: false, message: '请翻到本页最下方，并确认您的环境符合要求的条件' }
+      }
+      return { flag: true, message: 'can slide next' }
+    }
+  }
+}
+</script>
+
+<StoryBook>
+<div slot="introduction">
 
 ## 文档特点
 
@@ -14,11 +95,27 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 42 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 48 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
-* **在线答疑** QQ 群
+* **在线答疑** 
   
-  ![kuboard_qq.png](./install-k8s.assets/kuboard_qq.png)
+  <Qq></Qq> 也可以扫描二维码加群
+  <p>
+    <img src="/images/kuboard_qq.png" />
+  </p>
+  <!-- <div>
+    <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
+    <div style="margin-top: 10px;">
+       <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span> <span style="color: #CCC">QQ 群聊二维码在左侧导航栏下方。</span>
+      <p style="margin-top: 10px;">
+        <img src="/images/dz.png" style="width: 150px; margin-right: 150px;"></img>
+        <img src="/images/dz2.jpeg" style="width: 150px;"></img>
+      </p>
+    </div>
+  </div> -->
+
+</div>
+<div slot="overview" style="min-height: 800px;">
 
 ## 配置要求
 
@@ -41,38 +138,21 @@ description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文�
 
 安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
-<script>
-export default {
-  methods: {
-    downloadDiagram () {
-      console.log('尝试发送 ga event')
-      if (window.ga) {
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: '安装K8S',
-          eventAction: 'Download',
-          eventLabel: '下载拓扑图源文件'
-        });
-        console.log('发送成功 ga event')
-      } else {
-        console.log('开发环境，不发送 ga event')
-      }
-    }
-  }
-}
-</script>
+![image-20190826000521999](./install-k8s-1.15.3.assets/image-20190826000521999.png)
 
-![image-20190826000521999](./install-k8s.assets/image-20190826000521999.png)
+
+<!-- <img src="./install-k8s.assets/image-20190826000521999.png" style="width: 958px; height: 533px"></img> -->
+
 
 ::: tip
 **关于二进制安装**
 
-网上一直流传着一种 ***“二进制”*** 安装 Kubernetes 的方法，查了许久，未曾在 kubernetes.io 官方网站上看到任何关于此安装方法的介绍，也并没有看到任何关于 ***“二进制”*** 安装的优势，唯一的解释是：
-> 由于众所周知的原因，在国内无法直接访问Google的服务。二进制包由于其下载方便、灵活定制而深受广大kubernetes使用者喜爱，成为企业部署生产环境比较流行的方式之一
-
 鉴于目前已经有比较方便的办法获得 kubernetes 镜像，我将回避 ***二进制*** 安装是否更好的争论。本文采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。
 
 :::
+
+</div>
+<div slot="step1">
 
 ## 检查 centos / hostname
 
@@ -90,12 +170,6 @@ hostname
 lscpu
 ```
 
-::: danger 注意
-* 请使用兼容的 centos 版本
-* hostname 不能为 localhost
-* CPU 内核数量不能低于 2
-:::
-
 **操作系统兼容性**
 
 | CentOS 版本 | 本文档是否兼容                          | 备注                                |
@@ -105,6 +179,35 @@ lscpu
 | 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
+
+::: tip 修改 hostname
+如果您需要修改 hostname，可执行如下指令：
+``` sh
+# 修改 hostname
+hostnamectl set-hostname your-new-host-name
+# 查看修改结果
+hostnamectl status
+# 设置 hostname 解析
+echo "127.0.0.1   $(hostname)" >> /etc/hosts
+```
+:::
+
+<div style="display: inline-block; width: calc(100% - 400px);"></div>
+<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
+<el-form :model="form" ref="envForm" :rules="rules" style="text-align: right;">
+<el-form-item prop="checked" class="env-form-item">
+<el-checkbox-group v-model="form.checked" style="height: 120px;">
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
+</el-checkbox-group>
+</el-form-item>
+</el-form>
+</div>
+
+</div>
+
+<div slot="step2">
 
 ## 安装 docker / kubelet
 
@@ -138,6 +241,10 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 ::::
 
+</div>
+
+<div slot="step3">
+
 ## 初始化 master 节点
 
 ::: tip
@@ -160,6 +267,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName (不建议使用 master 的 hostname 作为 APISERVER_NAME)
 export APISERVER_NAME=apiserver.demo
+# Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
@@ -176,6 +284,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName (不建议使用 master 的 hostname 作为 APISERVER_NAME)
 export APISERVER_NAME=apiserver.demo
+# Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
@@ -199,7 +308,9 @@ watch kubectl get pod -n kube-system -o wide
 kubectl get nodes
 ```
 
+</div>
 
+<div slot="step4">
 
 ## 初始化 worker节点
 
@@ -278,6 +389,9 @@ kubectl delete node demo-worker-x-x
 * worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
 :::
 
+</div>
+
+<div slot="step5">
 
 ## 安装 Ingress Controller
 
@@ -335,6 +449,11 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 :::
 
 
+</div>
+
+<div slot="step6">
+
+
 ## 下一步
 :tada: :tada: :tada: 
 
@@ -350,3 +469,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 ::: tip
 * Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/overview/#kubernetes-%E5%88%9D%E5%AD%A6%E8%80%85)
 :::
+
+
+</div>
+</StoryBook>

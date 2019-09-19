@@ -24,6 +24,7 @@ module.exports = {
   },
   dest: 'docs',
   plugins: {
+    '@vuepress/active-header-links': {},
     '@vuepress/google-analytics':
         {
           ga: 'UA-144196556-1',
