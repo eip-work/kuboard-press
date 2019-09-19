@@ -307,6 +307,73 @@ DNS 的配置方式取决于该 Service 是否配置了 selector：
   * 对 ExternalName 类型的 Service，返回 CNAME 记录
   * 对于其他类型的 Service，返回与 Service 同名的 `Endpoints` 的 A 记录
 
+## 虚拟 IP 的实现
+
+如果只是想要正确使用 Service，不急于理解 Service 的实现细节，您无需阅读本章节。
+
+### 避免冲突
+
+Kubernetes 的一个设计哲学是：尽量避免非人为错误产生的可能性。就设计 Service 而言，Kubernetes 应该将您选择的端口号与其他人选择的端口号隔离开。为此，Kubernetes 为每一个 Service 分配一个该 Service 专属的 IP 地址。
+
+为了确保每个 Service 都有一个唯一的 IP 地址，kubernetes 在创建 Service 之前，先更新 etcd 中的一个全局分配表，如果更新失败（例如 IP 地址已被其他 Service 占用），则 Service 不能成功创建。
+
+Kubernetes 使用一个后台控制器检查该全局分配表中的 IP 地址的分配是否仍然有效，并且自动清理不再被 Service 使用的 IP 地址。
+
+### Service 的 IP 地址
+
+Pod 的 IP 地址路由到一个确定的目标，然而 Service 的 IP 地址则不同，通常背后并不对应一个唯一的目标。 kube-proxy 使用 iptables （Linux 中的报文处理逻辑）来定义虚拟 IP 地址。当客户端连接到该虚拟 IP 地址时，它们的网络请求将自动发送到一个合适的 Endpoint。Service 对应的环境变量和 DNS 实际上反应的是 Service 的虚拟 IP 地址（和端口）。
+
+#### Userspace
+
+以上面提到的图像处理程序为例。当后端 Service 被创建时，Kubernetes master 为其分配一个虚拟 IP 地址（假设是 10.0.0.1），并假设 Service 的端口是 1234。集群中所有的 kube-proxy 都实时监听者 Service 的创建和删除。Service 创建后，kube-proxy 将打开一个新的随机端口，并设定 iptables 的转发规则（以便将该 Service 虚拟 IP 的网络请求全都转发到这个新的随机端口上），并且 kube-proxy 将开始接受该端口上的连接。
+
+当一个客户端连接到该 Service 的虚拟 IP 地址时，iptables 的规则被触发，并且将网络报文重定向到 kube-proxy 自己的随机端口上。kube-proxy 接收到请求后，选择一个后端 Pod，再将请求以代理的形式转发到该后端 Pod。
+
+这意味着 Service 可以选择任意端口号，而无需担心端口冲突。客户端可以直接连接到一个 IP:port，无需关心最终在使用哪个 Pod 提供服务。
+
+#### iptables
+
+仍然以上面提到的图像处理程序为例。当后端 Service 被创建时，Kubernetes master 为其分配一个虚拟 IP 地址（假设是 10.0.0.1），并假设 Service 的端口是 1234。集群中所有的 kube-proxy 都实时监听者 Service 的创建和删除。Service 创建后，kube-proxy 设定了一系列的 iptables 规则（这些规则可将虚拟 IP 地址映射到 per-Service 的规则）。per-Service 规则进一步链接到 per-Endpoint 规则，并最终将网络请求重定向（使用 destination-NAT）到后端 Pod。
+
+当一个客户端连接到该 Service 的虚拟 IP 地址时，iptables 的规则被触发。一个后端 Pod 将被选中（基于 session affinity 或者随机选择），且网络报文被重定向到该后端 Pod。与 userspace proxy 不同，网络报文不再被复制到 userspace，kube-proxy 也无需处理这些报文，且报文被直接转发到后端 Pod。
+
+在使用 node-port 或 load-balancer 类型的 Service 时，以上的代理处理过程是相同的。
+
+#### IPVS <Badge text="Kuboard 已支持" type="success"/>
+
+在一个大型集群中（例如，存在 10000 个 Service）iptables 的操作将显著变慢。IPVS 的设计是基于 in-kernel hash table 执行负载均衡。因此，使用 IPVS 的 kube-proxy 在 Service 数量较多的情况下仍然能够保持好的性能。同时，基于 IPVS 的 kube-proxy 可以使用更复杂的负载均衡算法（最少连接数、基于地址的、基于权重的等）
+
 ## 支持的传输协议
 
-未完，待续，【2019年9月18日 22:33】
+#### TCP <Badge text="Kuboard 已支持" type="success"/>
+
+默认值。任何类型的 Service 都支持 TCP 协议。
+
+#### UDP
+
+大多数 Service 都支持 UDP 协议。对于 LoadBalancer 类型的 Service，是否支持 UDP 取决于云供应商是否支持该特性。
+
+#### HTTP <Badge text="Kuboard 不支持" type="error"/>
+
+如果您的云服务商支持，您可以使用 LoadBalancer 类型的 Service 设定一个 Kubernetes 外部的 HTTP/HTTPS 反向代理，将请求转发到 Service 的 Endpoints。
+
+::: tip
+使用 Ingress
+:::
+
+#### Proxy Protocol <Badge text="Kuboard 不支持" type="error"/>
+
+如果您的云服务上支持（例如 AWS），您可以使用 LoadBalancer 类型的 Service 设定一个 Kubernetes 外部的负载均衡器，并将连接已 PROXY 协议转发到 Service 的 Endpoints。
+
+负载均衡器将先发送描述该 incoming 连接的字节串，如下所示：
+
+```
+PROXY TCP4 192.0.2.202 10.0.42.7 12345 7\r\n
+
+```
+
+然后在发送来自于客户端的数据
+
+#### SCTP <Badge text="Kuboard 不支持" type="error"/>
+
+尚处于 `alpha` 阶段，暂不推荐使用。如需了解，请参考 [SCTP](https://kubernetes.io/docs/concepts/services-networking/service/#sctp)
