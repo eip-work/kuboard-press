@@ -1,8 +1,8 @@
 ---
 # layout: StepLayout
-description: Kubernetes 最新稳定版 v1.15.3 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
+description: Kubernetes 最新稳定版 v1.15.4 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
 storyBook:
-  title: '使用 kubeadm 安装 kubernetes v1.15.3（单Master节点）'
+  title: '使用 kubeadm 安装 kubernetes v1.15.4（单Master节点）'
   initial: StoryBook
   pages:
     - name: introduction
@@ -23,7 +23,7 @@ storyBook:
       title: 总结
 ---
 
-# 使用 kubeadm 安装 kubernetes v1.15.3
+# 使用 kubeadm 安装 kubernetes v1.15.4
 
 <script>
 
@@ -94,8 +94,8 @@ export default {
   * 不断有网友对安装文档提出改进意见
 
 * **持续更新和完善**
-  * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.3
-  * 当前已更新了 <font color="red"> 49 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.4
+  * 当前已更新了 <font color="red"> 50 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
   
@@ -127,13 +127,13 @@ export default {
 
 **安装后的软件版本为**
 
-* Kubernetes v1.15.3
+* Kubernetes v1.15.4
   * calico 3.8.2
   * nginx-ingress 1.5.3
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
-<!-- > * [安装 Kubernetes v1.15.3 单Master节点](/install/history-k8s/install-k8s-1.15.3.html) -->
+> * [安装 Kubernetes v1.15.3 单Master节点](/install/history-k8s/install-k8s-1.15.3.html)
 > * [安装 Kubernetes v1.15.2 单Master节点](/install/history-k8s/install-k8s-1.15.2.html)
 > * [安装 Kubernetes v1.15.1 单Master节点](/install/history-k8s/install-k8s-1.15.1.html)
 
@@ -224,7 +224,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 
-curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.4/install-kubelet.sh | sh
 
 ```
 
@@ -234,7 +234,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/v1.15.3/install-kubelet.sh
+<<< @/.vuepress/public/install-script/v1.15.4/install-kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -271,7 +271,7 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.4/init-master.sh | sh
 ```
 
 :::
@@ -290,7 +290,7 @@ export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.15.3/init-master.sh
+<<< @/.vuepress/public/install-script/v1.15.4/init-master.sh
 
 :::
 
@@ -306,7 +306,7 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 watch kubectl get pod -n kube-system -o wide
 
 # 查看 master 节点初始化结果
-kubectl get nodes
+kubectl get nodes -o wide
 ```
 
 </div>
@@ -358,9 +358,9 @@ kubectl get nodes
 ```sh
 [root@demo-master-a-1 ~]# kubectl get nodes
 NAME     STATUS   ROLES    AGE     VERSION
-demo-master-a-1   Ready    master   5m3s    v1.15.3
-demo-worker-a-1   Ready    <none>   2m26s   v1.15.3
-demo-worker-a-2   Ready    <none>   3m56s   v1.15.3
+demo-master-a-1   Ready    master   5m3s    v1.15.4
+demo-worker-a-1   Ready    <none>   2m26s   v1.15.4
+demo-worker-a-2   Ready    <none>   3m56s   v1.15.4
 ```
 
 
@@ -404,7 +404,7 @@ kubectl delete node demo-worker-x-x
 
 ``` sh
 # 只在 master 节点执行
-kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/v1.15.4/nginx-ingress.yaml
 ```
 
 :::
@@ -417,14 +417,14 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 
 ``` sh
 # 只在 master 节点执行
-kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
+kubectl delete -f https://kuboard.cn/install-script/v1.15.4/nginx-ingress.yaml
 ```
 
 :::
 
 ::: tab YAML文件 lazy
 
-<<< @/.vuepress/public/install-script/v1.15.3/nginx-ingress.yaml
+<<< @/.vuepress/public/install-script/v1.15.4/nginx-ingress.yaml
 
 :::
 
