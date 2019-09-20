@@ -1,26 +1,26 @@
 ---
 # layout: StepLayout
 description: Kubernetes 最新稳定版 v1.16.0 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
-storyBook:
-  title: '使用 kubeadm 安装 kubernetes v1.16.0（单Master节点）'
-  initial: StoryBook
-  pages:
-    - name: introduction
-      title: 文档特点
-    - name: overview
-      title: 配置要求
-    - name: step1
-      title: 检查环境
-    - name: step2
-      title: 安装 docker/kubelet
-    - name: step3
-      title: 初始化 master 节点
-    - name: step4
-      title: 初始化 worker 节点
-    - name: step5
-      title: 安装 Ingress Controller
-    - name: step6
-      title: 总结
+# storyBook:
+#   title: '使用 kubeadm 安装 kubernetes v1.16.0（单Master节点）'
+#   initial: FullPage
+#   pages:
+#     - name: introduction
+#       title: 文档特点
+#     - name: overview
+#       title: 配置要求
+#     - name: step1
+#       title: 检查环境
+#     - name: step2
+#       title: 安装 docker/kubelet
+#     - name: step3
+#       title: 初始化 master 节点
+#     - name: step4
+#       title: 初始化 worker 节点
+#     - name: step5
+#       title: 安装 Ingress Controller
+#     - name: step6
+#       title: 总结
 ---
 
 # 使用 kubeadm 安装 kubernetes v1.16.0
@@ -82,8 +82,8 @@ export default {
 }
 </script>
 
-<StoryBook>
-<div slot="introduction">
+<!-- <StoryBook>
+<div slot="introduction"> -->
 
 ## 文档特点
 
@@ -114,8 +114,8 @@ export default {
     </div>
   </div> -->
 
-</div>
-<div slot="overview" style="min-height: 800px;">
+<!-- </div>
+<div slot="overview" style="min-height: 800px;"> -->
 
 ## 配置要求
 
@@ -151,8 +151,8 @@ export default {
 
 :::
 
-</div>
-<div slot="step1">
+<!-- </div>
+<div slot="step1"> -->
 
 ## 检查 centos / hostname
 
@@ -205,9 +205,9 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 </el-form>
 </div>
 
-</div>
+<!-- </div>
 
-<div slot="step2">
+<div slot="step2"> -->
 
 ## 安装 docker / kubelet
 
@@ -241,9 +241,9 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install-kubelet.sh | sh
 
 ::::
 
-</div>
+<!-- </div>
 
-<div slot="step3">
+<div slot="step3"> -->
 
 ## 初始化 master 节点
 
@@ -308,9 +308,9 @@ watch kubectl get pod -n kube-system -o wide
 kubectl get nodes -o wide
 ```
 
-</div>
+<!-- </div>
 
-<div slot="step4">
+<div slot="step4"> -->
 
 ## 初始化 worker节点
 
@@ -389,9 +389,9 @@ kubectl delete node demo-worker-x-x
 * worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
 :::
 
-</div>
+<!-- </div>
 
-<div slot="step5">
+<div slot="step5"> -->
 
 ## 安装 Ingress Controller
 
@@ -449,9 +449,9 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 :::
 
 
-</div>
+<!-- </div>
 
-<div slot="step6">
+<div slot="step6"> -->
 
 
 ## 下一步
@@ -471,5 +471,5 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 :::
 
 
-</div>
-</StoryBook>
+<!-- </div>
+</StoryBook> -->

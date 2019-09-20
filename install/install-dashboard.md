@@ -1,26 +1,26 @@
 ---
 description: Kuboard 的安装手册，包括安装 Kuboard 的前提条件、与 Kubernetes 的版本兼容性、安装步骤、以及完成安装后如何访问 Kuboard 界面。
-storyBook:
-  title: '安装 Kuboard'
-  initial: StoryBook
-  pages:
-    - name: overview
-      title: 前提条件
-    - name: install
-      title: 安装/卸载
-    - name: token
-      title: 获取 Token
-    - name: access
-      title: 访问 Kuboard
-    - name: next
-      title: 下一步
+# storyBook:
+#   title: '安装 Kuboard'
+#   initial: FullPage
+#   pages:
+#     - name: overview
+#       title: 前提条件
+#     - name: install
+#       title: 安装/卸载
+#     - name: 获取token
+#       title: 获取 Token
+#     - name: access
+#       title: 访问 Kuboard
+#     - name: next
+#       title: 下一步
 ---
 
 # 安装 Kuboard
 
-<StoryBook>
+<!-- <StoryBook>
 
-<div slot="overview">
+<div slot="overview"> -->
 
 ## 前提
 
@@ -45,9 +45,9 @@ storyBook:
 | v1.12           | v1.0 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
 | v1.11           | v1.0 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 
-</div>
+<!-- </div>
 
-<div slot="install">
+<div slot="install"> -->
 
 ## 安装
 
@@ -76,11 +76,11 @@ kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 
 ::::
 
-</div>
+<!-- </div>
 
-<div slot="token">
+<div slot="获取token"> -->
 
-## 获取 Token
+## 获取Token
 
 您可以获得管理员用户、只读用户的Token
 
@@ -163,9 +163,9 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 ::::
 
-</div>
+<!-- </div>
 
-<div slot="access">
+<div slot="access"> -->
 
 ## 访问 Kuboard
 
@@ -210,9 +210,9 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 ::::
 
-</div>
+<!-- </div>
 
-<div slot="next">
+<div slot="next"> -->
 
 ::: warning
 * 如果不能访问 Kuboard，请参考 [常见问题](faq/timeout.html)
@@ -228,6 +228,6 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 - 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
 
-</div>
+<!-- </div>
 
-</StoryBook>
+</!-->

@@ -1,30 +1,30 @@
 ---
 description: 使用 kubeadm 安装高可用的 Kubernetes v1.15.3 集群
-storyBook:
-  title: '使用 kubeadm 安装 kubernetes v1.15.3（高可用）'
-  initial: StoryBook
-  pages:
-    - name: overview
-      title: 配置要求
-    - name: step1
-      title: 检查环境
-    - name: step2
-      title: 安装 docker/kubelet
-    - name: step3
-      title: 初始化 apiserver 集群
-    - name: step4
-      title: 初始化 worker 节点
-    - name: step5
-      title: 安装 Ingress Controller
-    - name: step6
-      title: 总结
+# storyBook:
+#   title: '使用 kubeadm 安装 kubernetes v1.15.3（高可用）'
+#   initial: FullPage
+#   pages:
+#     - name: overview
+#       title: 配置要求
+#     - name: step1
+#       title: 检查环境
+#     - name: step2
+#       title: 安装 docker/kubelet
+#     - name: step3
+#       title: 初始化 apiserver 集群
+#     - name: step4
+#       title: 初始化 worker 节点
+#     - name: step5
+#       title: 安装 Ingress Controller
+#     - name: step6
+#       title: 总结
 ---
 
 # 安装 Kubernetes 高可用
 
-<StoryBook>
+<!-- <StoryBook>
 
-<div slot="overview">
+<div slot="overview"> -->
 
 ::: tip
 推荐初学者按照 [安装Kubernetes 单Master节点](install-k8s.html) 文档进行 Kubernetes 集群搭建
@@ -63,9 +63,9 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
     </div>
   </div> -->
 
-</div>
+<!-- </div>
 
-<div slot="step1">
+<div slot="step1"> -->
 
 ## 检查 centos / hostname
 
@@ -97,9 +97,9 @@ hostnamectl status
 ```
 :::
 
-</div>
+<!-- </div>
 
-<div slot="step2">
+<div slot="step2"> -->
 
 ## 安装 docker / kubelet
 
@@ -133,9 +133,9 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 ::::
 
-</div>
+<!-- </div>
 
-<div slot="step3">
+<div slot="step3"> -->
 
 ## 初始化API Server
 
@@ -338,9 +338,9 @@ kubeadm join apiserver.demo:6443 --token ejwx62.vqwog6il5p83uk7y \
 kubectl get nodes
 ```
 
-</div>
+<!-- </div>
 
-<div slot="step4">
+<div slot="step4"> -->
 
 ## 初始化 worker节点
 
@@ -424,9 +424,9 @@ kubectl delete node demo-worker-x-x
 > * 将 demo-worker-x-x 替换为要移除的 worker 节点的名字
 > * worker 节点的名字可以通过在第一个 master 节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
 
-</div>
+<!-- </div>
 
-<div slot="step5">
+<div slot="step5"> -->
 
 ## 安装 Ingress Controller
 
@@ -468,13 +468,10 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 
 创建负载均衡 Load Balancer：
 
-​    监听器 1：80 / TCP， SOURCE_ADDRESS 会话保持
-
-​    服务器资源池 1： demo-worker-x-x 的所有节点的 80端口
-
-​    监听器 2：443 / TCP， SOURCE_ADDRESS 会话保持
-
-​    服务器资源池 2： demo-worker-x-x 的所有节点的443端口
+* 监听器 1：80 / TCP， SOURCE_ADDRESS 会话保持
+* 服务器资源池 1： demo-worker-x-x 的所有节点的 80端口
+* 监听器 2：443 / TCP， SOURCE_ADDRESS 会话保持
+* 服务器资源池 2： demo-worker-x-x 的所有节点的443端口
 
 假设刚创建的负载均衡 Load Balancer 的 IP 地址为： z.z.z.z
 
@@ -491,9 +488,9 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面
 
 
-</div>
+<!-- </div>
 
-<div slot="step6">
+<div slot="step6"> -->
 
 ## 下一步
 :tada: :tada: :tada: 
@@ -507,6 +504,6 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
     在线体验 Kuboard
   </a>
 
-</div>
+<!-- </div>
 
-</StoryBook>
+</StoryBook> -->
