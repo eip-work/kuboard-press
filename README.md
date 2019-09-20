@@ -1,6 +1,5 @@
 ---
 home: true
-title: Kuboard - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面
 layout: HomePage
 actionText: 在线体验
 actionText2: 开始使用 →
@@ -71,6 +70,11 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
     * [污点和容忍 taints and toleration](https://www.kuboard.cn/learning/k8s-intermediate/config/taints-and-toleration.html) 
     * [Secrets](https://www.kuboard.cn/learning/k8s-intermediate/config/secret.html) 
 
+## **Kubernetes 高级**
+
+  * Kubernetes 日志可视化
+  * Kubernetes 监控
+  * Kubernetes 联邦
 
 ## **Kubernetes 实战**
 

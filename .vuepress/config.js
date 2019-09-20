@@ -2,9 +2,9 @@ let dateFns = require('date-fns')
 
 module.exports = {
   title: 'Kuboard - Kubernetes 微服务管理界面',
-  description: '一个非常 cool 的 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；提供 Kubernetes 免费中文教程、国内安装文档',
+  description: '一款 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；提供 Kubernetes 免费中文教程、国内安装文档',
   head: [
-    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, DevOps, 微服务, 持续构建集成, Kubernetes 中文教程, Kubernetes 入门, K8S 教程, K8S 入门, 微服务实践, Kubernetes 国内安装, K8S 安装, Kubernetes 安装, Kubernetes 部署'}],
+    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, 微服务, Kubernetes 中文教程, Kubernetes 入门, K8S 教程, K8S 入门, 微服务实践, Kubernetes 国内安装, K8S 安装, Kubernetes 安装, Kubernetes 部署'}],
     ['script', {}, `
     var _hmt = _hmt || [];
     (function() {
@@ -35,13 +35,19 @@ module.exports = {
         return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
       }
     },
-    // '@vuepress/medium-zoom': {
-    //   selector: 'p img',
-    //   // medium-zoom options here
-    //   // See: https://github.com/francoischalifour/medium-zoom#options
+    // 'vuepress-plugin-zooming': {
+    //   // 支持点击缩放的图片元素的选择器
+    //   // 默认值： '.theme-default-content img'
+    //   selector: '.theme-default-content img',
+    //   // 进入一个页面后，经过一定延迟后使页面中的图片支持缩放
+    //   // 默认值： 500
+    //   delay: 1000,
+    //   // zooming 的 options
+    //   // 默认值： {}
     //   options: {
-    //     margin: 16
-    //   }
+    //     bgColor: 'black',
+    //     zIndex: 10000,
+    //   },
     // },
     'code-switcher': {},
     'reading-progress': {},

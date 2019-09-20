@@ -53,15 +53,17 @@
 </a>
 </p>
 
-<p>
-为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
-</p>
+<Content></Content>
 
-<div style="width: 100%; margin-bottom: 20px;">
+<!-- <p>
+为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
+</!-->
+
+<!-- <div style="width: 100%; margin-bottom: 20px;">
   <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
     <img src="./1564841972085.gif" style="border: 1px solid #d7dae2; width: 100%;"></img>
   </a>
-</div>
+</!-->
 
     <div class="footer">
       Copyright © 2019-present <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2
@@ -75,7 +77,7 @@ import NavLink from '@theme/components/NavLink.vue'
 export default {
   components: { NavLink },
   mounted () {
-    window.document.title = 'Kuboard - Kubernetes 安装文档/教程/实践/管理界面'
+    window.document.title = 'Kuboard 官网 - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面'
   },
   computed: {
     data () {

@@ -8,6 +8,7 @@ Kuboard v1.0.x 的更新说明
 
 **BUG 修复**
 
+* 预览的 YAML 不能第二次使用 kubectl apply 的问题（YAML 中存在空 MAP）
 
 
 
@@ -15,12 +16,10 @@ Kuboard v1.0.x 的更新说明
 
 
 
-* 预览的 YAML 不能第二次 apply 的问题（YAML 中存在空 MAP）
 * terminationGracePeriodSeconds
 * Service --> SessionAffinity
               --> clientIP.timeoutSeconds
 * Service --> .spec.clusterIP
-* Firefox 浏览器，从名称空间 后退到集群概览，布局出错
 * --privileged
 * mountPropagation
 
