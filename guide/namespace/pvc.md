@@ -12,13 +12,13 @@ description: 使用 Kuboard 配置 Kubernetes 的存储卷声明 Persistent Volu
 
 假设您已进入名称空间界面，如下图所示：
 
-![image-20190721110355464](./secrets.assets/image-20190721110355464.png)
+![Kubernetes教程：在Kuboard中编辑存储卷声明-进入名称空间页](./secrets.assets/image-20190721110355464.png)
 
 存储卷声明列表位于图中左下角，点击 ***放大*** 按钮，可以将列表显示到更大的区域，如下图所示：
 
 > 点击 **存储卷声明** 可以刷新该列表
 
-![image-20190721113708689](./pvc.assets/image-20190721113708689.png)
+![Kubernetes教程：在Kuboard中编辑存储卷声明-刷新存储卷声明列表](./pvc.assets/image-20190721113708689.png)
 
 
 
@@ -36,19 +36,19 @@ description: 使用 Kuboard 配置 Kubernetes 的存储卷声明 Persistent Volu
 | 读写模式   | 可被多节点读写  |                                                              |
 | 总量       | 2Gi             |                                                              |
 
-![image-20190721113810235](./pvc.assets/image-20190721113810235.png)
+![Kubernetes教程：在Kuboard中编辑存储卷声明-创建存储卷声明](./pvc.assets/image-20190721113810235.png)
 
 * 点击 ***保存***
 
   存储卷声明创建成功
 
-![image-20190721114112644](./pvc.assets/image-20190721114112644.png)
+![Kubernetes教程：在Kuboard中编辑存储卷声明-创建成功](./pvc.assets/image-20190721114112644.png)
 
 # 查看/编辑/删除 存储卷声明
 
 * 点击 ***my-pvc***
 
-![image-20190721114211751](./pvc.assets/image-20190721114211751.png)
+![Kubernetes教程：在Kuboard中编辑存储卷声明-编辑](./pvc.assets/image-20190721114211751.png)
 
 
 

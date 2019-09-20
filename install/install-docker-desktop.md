@@ -25,7 +25,7 @@ description: 本文介绍了如何在 Windows/Mac 电脑安装 Kubernetes 测试
 * **打开 docker-desktop 的 preference 面板**
 
   <p>
-    <img src="./install-docker-desktop.assets/image-20190914223622217.png" style="max-width: 600px;"/>
+    <img src="./install-docker-desktop.assets/image-20190914223622217.png" style="max-width: 600px;" alt="Kubernetes教程：DockerDesktop/>
   </p>
 
 * **切换到 Kubernetes 标签页**
@@ -33,7 +33,7 @@ description: 本文介绍了如何在 Windows/Mac 电脑安装 Kubernetes 测试
   并勾选启动 **Enable Kubernetes**，点击 **Apply**
 
   <p>
-    <img src="./install-docker-desktop.assets/image-20190914223501758.png" style="max-width: 600px;"/>
+    <img src="./install-docker-desktop.assets/image-20190914223501758.png" style="max-width: 600px;" alt="Kubernetes教程：DockerDesktop"/>
   </p>
 
 :::

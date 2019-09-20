@@ -101,7 +101,7 @@ export default {
   
   <Qq></Qq> 也可以扫描二维码加群
   <p>
-    <img src="/images/kuboard_qq.png" />
+    <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
   </p>
   <!-- <div>
     <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>

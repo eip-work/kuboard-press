@@ -19,7 +19,7 @@ description: 本文介绍了如何使用 kubectl / Kuboard 查看和浏览 Kuber
 
 ## Pods概述
 
-<img src="./explore.assets/module_03_pods.svg" style="border: 1px solid #d7dae2; max-width: 800px;"></img>
+<img src="./explore.assets/module_03_pods.svg" style="border: 1px solid #d7dae2; max-width: 800px;" alt="Kubernetes教程：Pod概念"></img>
 
 
 **Pod 容器组** 是一个k8s中一个抽象的概念，用于存放一组 container（可包含一个或多个 container 容器，即图上正方体)，以及这些 container （容器）的一些共享资源。这些资源包括：
@@ -43,7 +43,7 @@ Pod（容器组）是 k8s 集群上的最基本的单元。当我们在 k8s 上�
 
 下图显示一个 Node（节点）上含有4个 Pod（容器组）
 
-<img src="./explore.assets/module_03_nodes.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
+<img src="./explore.assets/module_03_nodes.svg" style="border: 1px solid #d7dae2; max-width: 600px;" alt="Kubernetes教程：Node概念"></img>
 
 Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是 kubernetes 集群中的计算机，可以是虚拟机或物理机。每个 Node（节点）都由 master 管理。一个 Node（节点）可以有多个Pod（容器组），kubernetes master 会根据每个 Node（节点）上可用资源的情况，自动调度 Pod（容器组）到最佳的 Node（节点）上。
 
@@ -114,11 +114,11 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
 
 **在名称空间中查看部署**
 
-![image-20190822172329141](./explore.assets/image-20190822172329141.png)
+![Kubernetes教程：查看 Pods/Nodes](./explore.assets/image-20190822172329141.png)
 
 **查看部署及其容器组**
 
-![image-20190822172457417](./explore.assets/image-20190822172457417.png)
+![Kubernetes教程：查看 Pods/Nodes](./explore.assets/image-20190822172457417.png)
 
 
 

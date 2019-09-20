@@ -26,11 +26,11 @@ spec:
 
 下图中，Service A 只将访问流量转发到 IP 为 10.0.0.5 的Pod上
 
-<img src="./scale.assets/module_05_scaling1.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
+<img src="./scale.assets/module_05_scaling1.svg" style="border: 1px solid #d7dae2; max-width: 600px;" alt="Kubernetes教程：伸缩"></img>
 
 修改了 Deployment 的 replicas 为 4 后，Kubernetes 又为该 Deployment 创建了 3 新的 Pod，这 4 个 Pod 有相同的标签。因此Service A通过标签选择器与新的 Pod建立了对应关系，将访问流量通过负载均衡在 4 个 Pod 之间进行转发。
 
-<img src="./scale.assets/module_05_scaling2.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
+<img src="./scale.assets/module_05_scaling2.svg" style="border: 1px solid #d7dae2; max-width: 600px;" alt="Kubernetes教程：伸缩"></img>
 
 ::: tip
 通过更改部署中的 replicas（副本数）来完成扩展
@@ -94,13 +94,13 @@ watch kubectl get pods -o wide
 
   副本数： 4
 
-![image-20190822213532132](./scale.assets/image-20190822213532132.png)
+![Kubernetes教程：伸缩应用-Scaling](./scale.assets/image-20190822213532132.png)
 
 * 点击 ***确定*** 按钮
 
   等待新增的容器组完成初始化，如下图所示：
 
-![image-20190822213709967](./scale.assets/image-20190822213709967.png)
+![Kubernetes教程：伸缩应用-Scaling](./scale.assets/image-20190822213709967.png)
 
 :::
 

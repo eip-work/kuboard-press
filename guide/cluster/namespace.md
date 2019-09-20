@@ -18,7 +18,7 @@ description: 使用 Kuboard 管理 Kubernetes 名称空间。
 
 假设您已经进入了 Kuboard 界面，如下图所示：
 
-![image-20190723105606081](./namespace-create.assets/image-20190723105606081.png)
+![Kubernetes教程：Kuboard界面](./namespace-create.assets/image-20190723105606081.png)
 
 
 
@@ -32,24 +32,24 @@ description: 使用 Kuboard 管理 Kubernetes 名称空间。
 | -------- | -------- | ---------------------------- |
 | 名称     | example  | Kubernetes 的 namespace 名称 |
 
-![image-20190723105644937](./namespace-create.assets/image-20190723105644937.png)
+![Kubernetes教程：Kuboard创建名称空间](./namespace-create.assets/image-20190723105644937.png)
 
 * 点击 ***保存*** 
 
-![image-20190723105722999](./namespace-create.assets/image-20190723105722999.png)
+![Kubernetes教程：Kuboard保存名称空间](./namespace-create.assets/image-20190723105722999.png)
 
 * 点击 ***应用***
 
-![image-20190723105748435](./namespace-create.assets/image-20190723105748435.png)
+![Kubernetes教程：Kuboard保存名称空间-应用](./namespace-create.assets/image-20190723105748435.png)
 
 * 点击 ***完成***
 
   此时可在名称空间列表中查看到刚刚创建好的名称空间 *example*
 
-![image-20190723105809872](./namespace-create.assets/image-20190723105809872.png)
+![Kubernetes教程：Kuboard创建名称空间完成](./namespace-create.assets/image-20190723105809872.png)
 
 * 点击 *example* 名称空间
 
   点击 *example* 名称空间后，可进入该名称空间的页面。刚刚初始化的名称空间的界面布局如下图所示：
 
-![image-20190723105830318](./namespace-create.assets/image-20190723105830318.png)
+![Kubernetes教程：Kuboard进入名称空间页](./namespace-create.assets/image-20190723105830318.png)

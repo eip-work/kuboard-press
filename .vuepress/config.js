@@ -1,10 +1,10 @@
 let dateFns = require('date-fns')
 
 module.exports = {
-  title: 'Kuboard - Kubernetes 微服务管理界面',
+  title: 'Kuboard - 快速在 Kubernetes 上落地微服务',
   description: '一款 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；提供 Kubernetes 免费中文教程、国内安装文档',
   head: [
-    ['meta', {name: 'keywords', content: 'Kubernetes, Docker, Dashboard, Kuboard, Spring Cloud, micro service, 微服务, Kubernetes 中文教程, Kubernetes 入门, K8S 教程, K8S 入门, 微服务实践, Kubernetes 国内安装, K8S 安装, Kubernetes 安装, Kubernetes 部署'}],
+    ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,Kubernetes入门,K8S教程,K8S入门,K8S安装'}],
     ['script', {}, `
     var _hmt = _hmt || [];
     (function() {
@@ -234,9 +234,6 @@ module.exports = {
                     'k8s-intermediate/workload/wl-daemonset/alternative',
                   ]
                 }
-                // 'k8s-intermediate/workload/wl-daemonset',
-                // 'k8s-intermediate/workload/wl-job',
-                // 'k8s-intermediate/workload/wl-cronjob',
               ]
             },
             {
@@ -246,7 +243,7 @@ module.exports = {
                 'k8s-intermediate/service/service',
                 'k8s-intermediate/service/service-details',
                 'k8s-intermediate/service/service-types',
-                // 'k8s-intermediate/service/dns',
+                'k8s-intermediate/service/dns',
                 // 'k8s-intermediate/service/connecting',
                 'k8s-intermediate/service/ingress',
                 'k8s-intermediate/service/cni',

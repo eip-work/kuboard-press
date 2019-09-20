@@ -4,7 +4,7 @@ description: 介绍 Kuboard - Kubernetes 微服务管理界面，并为 Kubernet
 
 ## Kuboard 简介
 
-<img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 420px;" />
+<img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 420px;" alt="Kubernetes教程：Kuboard Logo"/>
 
 <div style="border-top: 1px solid #eaecef;
     padding: 1.2rem 0;
@@ -86,7 +86,7 @@ description: 介绍 Kuboard - Kubernetes 微服务管理界面，并为 Kubernet
 </p>
 
 <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-  <img src="./README.assets/1564841972085.gif" style="border: 1px solid #d7dae2;"></img>
+  <img src="./README.assets/1564841972085.gif" style="border: 1px solid #d7dae2;" alt="Kubernetes教程：Kuboard 在线Demo"></img>
 </a>
 
 ## 开始使用
@@ -135,7 +135,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
   * 服务发现、负载均衡、网络
     * [Service 概述](/learning/k8s-intermediate/service/service.html)
     * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)
-    * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html) <Badge text="正在撰写" type="warn"/>
+    * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html)
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html) <Badge text="正在撰写" type="warn"/>
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
     * [如何选择网络插件](/learning/k8s-intermediate/service/cni.html)
@@ -201,7 +201,7 @@ Kuboard 为您的这些痛苦提供了极佳的解决方案，请立刻开始：
     <Qq/>
   </p>
   <p>
-    <img src="/images/kuboard_qq.png" />
+    <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
   </p>
 <!-- <div>
   <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>

@@ -51,9 +51,9 @@ Kubernetes 通过引入 Controller（控制器）的概念来管理 Pod 实例�
 
 在 Kuboard 工作负载编辑器中，控制器的概念如下图所示：
 
-<img src="./workload.assets/image-20190910232615991.png" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
+<img src="./workload.assets/image-20190910232615991.png" style="border: 1px solid #d7dae2; max-width: 600px;" alt="Kubernetes教程：控制器概念结构"></img>
 
 
 **界面如下图所示：**
 
-![image-20190910232736012](./workload.assets/image-20190910232736012.png)
+![Kubernetes教程：控制器概念结构](./workload.assets/image-20190910232736012.png)

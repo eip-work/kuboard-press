@@ -62,7 +62,7 @@ docker pull my-registry.example.com:5000/example/web-example:v1.0.1
 
   如下图所示
 
-  ![image-20190902223052044](./private-registry.assets/image-20190902223052044.png)
+  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190902223052044.png)
 
 * 点击 **保存** 按钮
 
@@ -88,7 +88,7 @@ docker pull my-registry.example.com:5000/example/web-example:v1.0.1
     * 红色部分：image 名字
     * 棕色部分：image 标签
 
-![image-20190902223708740](./private-registry.assets/image-20190902223708740.png)
+![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190902223708740.png)
 
 
 

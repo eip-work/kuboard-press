@@ -28,7 +28,7 @@ Ingress Controller （通常需要负载均衡器配合）负责实现 Ingress A
 2. Ingress Controller 根据请求的域名 `a.kuboard.cn` 和路径 `abc` 匹配集群中所有的 Ingress 信息，并最终找到 `Ingress B` 中有这个配置，其对应的 Service 为 `Service B` 的 `9080` 端口
 3. Ingress Controller 通过 kube-proxy 将请求转发到 `Service B` 对应的任意一个 Pod 上 与 `Service B` 的 `9080` 端口对应的容器端口上。（从 Ingress Controller 到 Pod 的负载均衡由 kube-proxy + Service 实现）
 
-<img src="./ingress.assets/image-20190910222649193.png" style="border: 1px solid #d7dae2; max-width: 720px;"></img>
+<img src="./ingress.assets/image-20190910222649193.png" style="border: 1px solid #d7dae2; max-width: 720px;" alt="Kubernetes教程：Ingress及其Controller"></img>
 
 ## Ingress Controller
 
@@ -100,7 +100,7 @@ spec:
 
 > 文档 [安装 Kubernetes 单Master节点](/install/install-k8s.html) 中使用的就是这种拓扑结构。这种方式下，Ingress Controller 存在单点故障的可能性。
 
-![单IngressController节点](/images/topology/k8s.png)
+![Kubernetes教程：单IngressController节点](/images/topology/k8s.png)
 
 ### 使用外部负载均衡器
 
@@ -112,7 +112,7 @@ spec:
 
 > 文档 [安装 Kubernetes 高可用](/install/install-kubernetes.html) 中使用的就是这种拓扑结构。
 
-![LoadBalancer](/images/topology/kubernetes.png)
+![Kubernetes教程：LoadBalancer](/images/topology/kubernetes.png)
 
 ## 实战：通过 Ingress 使您的应用程序在互联网可用
 
@@ -249,7 +249,7 @@ curl a.demo.kuboard.cn
 
 * **如下图所示：**
 
-![image-20190910225225179](./ingress.assets/image-20190910225225179.png)
+![Kubernetes教程：创建工作负载并配置Ingress](./ingress.assets/image-20190910225225179.png)
 
 ::: tip
 Kuboard 工作负载编辑器将 kubernetes 中三个主要对象 Deployment/Service/Ingress 放在同一个编辑器界面中处理。

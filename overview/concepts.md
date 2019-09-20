@@ -53,13 +53,13 @@ Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 
 Kuboard 工作负载编辑器以下图的方式理解和管理 Kubernetes 对象。
 
-![image-20190731221630097](./concepts.assets/image-20190731221630097.png)
+![Kubernetes教程：Kuboard工作负载编辑器-概念](./concepts.assets/image-20190731221630097.png)
 
 
 
 上图中各概念与 Kuboard 工作负载编辑器界面的映射关系如下：
 
-![image-20190722162249531](./concepts.assets/image-20190722162249531.png)
+![Kubernetes教程：Kuboard工作负载编辑器](./concepts.assets/image-20190722162249531.png)
 
 
 
@@ -91,7 +91,7 @@ Kubernetes Workload Controller 主要用于：
 
 基本信息编辑器的界面如下图所示：
 
-![image-20190722172356943](./concepts.assets/image-20190722172356943.png)
+![Kubernetes教程：Kuboard工作负载编辑器-基本信息](./concepts.assets/image-20190722172356943.png)
 
 | 字段名称 | 字段描述                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -125,7 +125,7 @@ Kubernetes Workload Controller 主要用于：
 
 ​		容器组中的不同容器都可以通过挂载点引用该容器组加载的数据卷。Kuboard 工作负载编辑中，使用如下界面定义数据卷：
 
-![image-20190722182005060](./concepts.assets/image-20190722182005060.png)
+![Kubernetes教程：Kuboard工作负载编辑器-数据卷](./concepts.assets/image-20190722182005060.png)
 
 | 字段名称       | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
@@ -146,7 +146,7 @@ Kubernetes Workload Controller 主要用于：
 
 Kuboard 工作负载编辑器中关于身份信息的编辑界面如下所示：
 
-![image-20190722183329825](./concepts.assets/image-20190722183329825.png)
+![Kubernetes教程：Kuboard工作负载编辑器-身份信息](./concepts.assets/image-20190722183329825.png)
 
 ### 4. 容器
 
@@ -163,9 +163,9 @@ Kuboard 工作负载编辑器中关于身份信息的编辑界面如下所示：
 
 Kuborad中，定义容器的界面如下图所示：
 
-![image-20190722183750444](./concepts.assets/image-20190722183750444.png)
+![Kubernetes教程：Kuboard工作负载编辑器-容器信息](./concepts.assets/image-20190722183750444.png)
 
-![image-20190722184516447](./concepts.assets/image-20190722184516447.png)
+![Kubernetes教程：Kuboard工作负载编辑器-容器信息](./concepts.assets/image-20190722184516447.png)
 
 
 
@@ -177,7 +177,7 @@ Kuborad中，定义容器的界面如下图所示：
 
 ​		Kuboard 中，支持 ClusterIP（集群内访问） 以及 NodePort（VPC 内访问） 两种 Service 访问方式，您也可以不为该工作负载定义 Service 访问方式。访问方式的界面如下所示：
 
-![image-20190722184943431](./concepts.assets/image-20190722184943431.png)
+![Kubernetes教程：Kuboard工作负载编辑器-访问方式-Service](./concepts.assets/image-20190722184943431.png)
 
 
 
@@ -200,4 +200,4 @@ Kuborad中，定义容器的界面如下图所示：
 
 
 
-![image-20190722185113938](./concepts.assets/image-20190722185113938.png)
+![Kubernetes教程：Kuboard工作负载编辑器-互联网入口-Ingress](./concepts.assets/image-20190722185113938.png)

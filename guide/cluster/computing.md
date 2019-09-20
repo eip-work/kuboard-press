@@ -21,13 +21,13 @@ description: 使用 Kuboard 管理 Kubernetes 计算节点
 
 登录 Kuboard 之后，即可看到集群中的计算资源列表，在左下角，如下图所示：
 
-![image-20190720224950653](./computing.assets/image-20190720224950653.png)
+![Kubernetes教程：Kuboard集群概览页](./computing.assets/image-20190720224950653.png)
 
 
 
 * 点击 ***demo-worker002*** 可查看该节点的详细信息，如下图所示：
 
-![image-20190720225123111](./computing.assets/image-20190720225123111.png)
+![Kubernetes教程：Kuboard节点详情页](./computing.assets/image-20190720225123111.png)
 
 
 
@@ -37,7 +37,7 @@ description: 使用 Kuboard 管理 Kubernetes 计算节点
 
   并确认要删除的节点的名称后，即可删除该节点
 
-![image-20190720225222622](./computing.assets/image-20190720225222622.png)
+![Kubernetes教程：Kuboard移除节点](./computing.assets/image-20190720225222622.png)
 
 
 

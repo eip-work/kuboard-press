@@ -35,7 +35,7 @@ Kubernetes 通过引入 Service 的概念，将前端与后端解耦。
 从 Kuboard 工作负载编辑器的视角来看，Service 与其他重要的 Kubernetes 对象之间的关系如下图所示：
 
 <p>
-  <img src="./service.assets/image-20190917210501081.png" style="max-width: 600px;"/>
+  <img src="./service.assets/image-20190917210501081.png" style="max-width: 600px;" alt="Kubernetes教程：Service概念结构"/>
 </p>
 
 图中，Service 先连线到 Controller，Controller 在连线到容器组，这种表示方式只是概念上的，期望用户在使用 Kubernetes 的时候总是通过 Controller 创建 Pod，然后再通过 Service 暴露为网络服务，通过 Ingress 对集群外提供互联网访问。
@@ -52,6 +52,6 @@ Kubernetes 通过引入 Service 的概念，将前端与后端解耦。
 
 在 Kuboard 工作负载编辑器中，Service 如下图所示：
 
-![image-20190917213132221](./service.assets/image-20190917213132221.png)
+![Kubernetes教程：Service概述](./service.assets/image-20190917213132221.png)
 ...
-![image-20190917213206652](./service.assets/image-20190917213206652.png)
+![Kubernetes教程：Service概述](./service.assets/image-20190917213206652.png)

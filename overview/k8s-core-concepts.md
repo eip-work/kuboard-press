@@ -27,7 +27,7 @@ Kubernetes（k8s）是自动化容器操作的开源平台，这些操作包括�
 
 集群是一组节点，这些节点可以是物理服务器或者虚拟机，之上安装了Kubernetes平台。下图展示这样的集群。注意该图为了强调核心概念有所简化。这里可以看到一个典型的Kubernetes架构图。
 
-![1.png](./k8s-core-concepts.assets/d7ce07842371eab180725bab5164ec17.png)
+![Kubernetes教程：Kubernetes架构图](./k8s-core-concepts.assets/d7ce07842371eab180725bab5164ec17.png)
 
 上图可以看到如下组件，使用特别的图标表示Service和Label：
 
@@ -62,7 +62,7 @@ Kubernetes（k8s）是自动化容器操作的开源平台，这些操作包括�
 
 Replication Controller确保任意时间都有指定数量的Pod“副本”在运行。如果为某个Pod创建了Replication Controller并且指定3个副本，它会创建3个Pod，并且持续监控它们。如果某个Pod不响应，那么Replication Controller会替换它，保持总数为3.如下面的动画所示：
 
-![2.gif](./k8s-core-concepts.assets/03d07039d9fc80c0f692d6176f65936e.gif)
+![Kubernetes教程：Replication Controller](./k8s-core-concepts.assets/03d07039d9fc80c0f692d6176f65936e.gif)
 
 如果之前不响应的Pod恢复了，现在就有4个Pod了，那么Replication Controller会将其中一个终止保持总数为3。如果在运行中将副本总数改为5，Replication Controller会立刻启动2个新Pod，保证总数为5。还可以按照这样的方式缩小Pod，这个特性在执行滚动 [升级](https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#rolling_updates) 时很有用。
 
@@ -92,7 +92,7 @@ Replication Controller确保任意时间都有指定数量的Pod“副本”在�
 
 下述动画展示了Service的功能。注意该图作了很多简化。如果不进入网络配置，那么达到透明的负载均衡目标所涉及的底层网络和路由相对先进。如果有兴趣，有更深入的介绍。
 
-![3.gif](./k8s-core-concepts.assets/e7a273fcdc03d2417b354b60c253552f.gif)
+![Kubernetes教程：Service](./k8s-core-concepts.assets/e7a273fcdc03d2417b354b60c253552f.gif)
 
 每个节点都运行如下Kubernetes关键组件：
 

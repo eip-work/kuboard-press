@@ -10,7 +10,7 @@ description: Kuboard 相关常见问题的诊断及解决。
 
 > Token校验失败：Error: timeout of 10000ms exceeded
 
-![image-20190803165814924](./timeout.assets/image-20190803165814924.png)
+![Kubernetes教程：Kuboard中常见问题，Token校验超时](./timeout.assets/image-20190803165814924.png)
 
 
 

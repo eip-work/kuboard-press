@@ -36,7 +36,7 @@ description: 详细介绍如何将 Kuboard 升级到最新版本。
 
   选择 kuboard-xxxxxxxxxx-xxxxx 容器组，如下图所示：
 
-![image-20190729071443225](./install-dashboard-upgrade.assets/image-20190729071443225.png)
+![Kubernetes安装：升级Kuboard-进入容器组列表](./install-dashboard-upgrade.assets/image-20190729071443225.png)
 
 * 点击 ***删除*** 按钮
 
@@ -52,7 +52,7 @@ description: 详细介绍如何将 Kuboard 升级到最新版本。
 
   如下图所示
 
-![image-20190729071954323](./install-dashboard-upgrade.assets/image-20190729071954323.png)
+![Kubernetes安装：升级Kuboard-删除容器组](./install-dashboard-upgrade.assets/image-20190729071954323.png)
 
 
 ## 指定版本升级
@@ -64,7 +64,7 @@ description: 详细介绍如何将 Kuboard 升级到最新版本。
 
   并修改 Deployment / Kuboard 的镜像版本为您要升级到的目标版本，如下图所示
 
-![image-20190728220831126](./install-dashboard-upgrade.assets/image-20190728220831126.png)
+![Kubernetes安装：升级Kuboard-指定Kuboard版本](./install-dashboard-upgrade.assets/image-20190728220831126.png)
 
 * 点击 ***执行变更***
 
@@ -80,4 +80,4 @@ description: 详细介绍如何将 Kuboard 升级到最新版本。
 
   如下图所示
 
-![image-20190729071954323](./install-dashboard-upgrade.assets/image-20190729071954323.png)
+![Kubernetes安装：升级Kuboard-查看升级结果](./install-dashboard-upgrade.assets/image-20190729071954323.png)

@@ -44,7 +44,7 @@ description: Kubernetes 免费中文教程
     * [Service 概述](/learning/k8s-intermediate/service/service.html)
     * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)
     * [Service 类型](/learning/k8s-intermediate/service/service-types.html)
-    * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html) <Badge text="正在撰写" type="warn"/>
+    * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html)
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html) <Badge text="正在撰写" type="warn"/>
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
     * [如何选择网络插件](/learning/k8s-intermediate/service/cni.html)

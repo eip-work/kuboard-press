@@ -28,7 +28,7 @@ Kuboard 支持的存储类的种类如下：
 
 在 Kuboard 中查看存储类，如下图所示：
 
-![image-20190906080746368](./storage-class.assets/image-20190906080746368.png)
+![Kubernetes教程：在Kuboard中查看存储类](./storage-class.assets/image-20190906080746368.png)
 
 
 

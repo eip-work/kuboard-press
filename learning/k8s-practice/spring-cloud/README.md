@@ -32,7 +32,7 @@ description: 微服务参考架构：包含微服务运行时、构建及测试�
 
 展现层、网关层、服务层、中间件层以及监控层，都运行于 Kubernetes 之上，由 Kuboard 管理。
 
-![image-20190731230110206](./README.assets/image-20190731230110206.png)
+![Kubernetes教程：微服务参考架构](./README.assets/image-20190731230110206.png)
 
 
 
@@ -40,7 +40,7 @@ Spring Cloud on Kubernetes 并不对 Spring Cloud 架构、组件等做过多解
 
 为了更好地阐述此主题，作者准备了一个最简单的微服务 example 作为例子，该 example 只实现了对一张简单数据库表执行 CRUD 操作的功能，该 example 的部署架构如下图所示，源代码请参考 [kuboard-example](https://github.com/eip-work/kuboard-example)，您也可以直接通过 Kuboard [导入 example 微服务](/guide/example/import.html)
 
-![image-20190801063223432](./README.assets/image-20190801063223432.png)
+![Kubernetes教程：SpringCloud Example](./README.assets/image-20190801063223432.png)
 
 
 

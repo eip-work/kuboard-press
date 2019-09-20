@@ -77,7 +77,7 @@ import NavLink from '@theme/components/NavLink.vue'
 export default {
   components: { NavLink },
   mounted () {
-    window.document.title = 'Kuboard 官网 - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面'
+    // window.document.title = 'Kuboard 官网 - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面'
   },
   computed: {
     data () {

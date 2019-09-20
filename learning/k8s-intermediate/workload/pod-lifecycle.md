@@ -27,7 +27,7 @@ phase 的可能取值有：
 
 每一个 Pod 都有一个数组描述其是否达到某些指定的条件。Pod condition 数组在 Kuboard 中的显示如下图所示：
 
-![image-20190907122721669](./pod-lifecycle.assets/image-20190907122721669.png)
+![Kubernetes教程：容器组的生命周期](./pod-lifecycle.assets/image-20190907122721669.png)
 
 该数组的每一行可能有六个字段：
 
@@ -79,7 +79,7 @@ Kubelet 可以在两种情况下对运行中的容器执行 Probe：
 
 Kuboard 可以在工作负载编辑器中配置健康检查/就绪检查，界面如下所示：
 
-![image-20190907141952059](./pod-lifecycle.assets/image-20190907141952059.png)
+![Kubernetes教程：在Kuboard中配置容器的健康检查/就绪检查](./pod-lifecycle.assets/image-20190907141952059.png)
 
 <!-- 
 $$ Pod and Container status
@@ -95,7 +95,7 @@ $$ Pod and Container status
 
 在 Kuboard 的工作负载查看界面中可查看到容器的状态如下图所示：
 
-![image-20190907143026772](./pod-lifecycle.assets/image-20190907143026772.png)
+![Kubernetes教程：在Kuboard中查看容器的状态](./pod-lifecycle.assets/image-20190907143026772.png)
 
 <!-- $$ Pod readiness gate
 Kuboard 暂不支持 -->

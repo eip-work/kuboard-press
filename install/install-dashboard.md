@@ -219,7 +219,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 * 如果仍然不能解决，请到 QQ 群提问
 
-  ![qq](../overview/README.assets/kuboard_qq.png)
+  ![Kubernetes安装：QQ群在线答疑](../overview/README.assets/kuboard_qq.png)
 :::
 
 **下一步**

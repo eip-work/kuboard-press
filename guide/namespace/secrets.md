@@ -10,13 +10,13 @@ description: 使用 Kuboard 配置 Kubernetes Secrets
 
 假设您已进入名称空间界面，如下图所示：
 
-![image-20190721110355464](./secrets.assets/image-20190721110355464.png)
+![Kubernetes教程：在Kuboard中编辑Secrets-进入名称空间页](./secrets.assets/image-20190721110355464.png)
 
 Secrets 列表位于图中左上角，点击 ***放大*** 按钮，可以将列表显示到更大的区域，如下图所示：
 
 > 点击 **Secrets** 可以刷新该列表
 
-![image-20190721110543437](./secrets.assets/image-20190721110543437.png)
+![Kubernetes教程：在Kuboard中编辑Secrets-刷新列表](./secrets.assets/image-20190721110543437.png)
 
 # 创建 Secrets
 
@@ -32,7 +32,7 @@ Secrets 列表位于图中左上角，点击 ***放大*** 按钮，可以将列�
 | docker username | my-docker-user                   |                            |
 | docker password | mypassword                       |                            |
 
-![image-20190721111011798](./secrets.assets/image-20190721111011798.png)
+![Kubernetes教程：在Kuboard中编辑Secrets-创建](./secrets.assets/image-20190721111011798.png)
 
 >当前 Kuboard 支持如下类型 Secrets 的创建：
 >
@@ -47,13 +47,13 @@ Secrets 列表位于图中左上角，点击 ***放大*** 按钮，可以将列�
 
   Secrets 创建成功，如下图所示：
 
-![image-20190721111540512](./secrets.assets/image-20190721111540512.png)
+![Kubernetes教程：在Kuboard中编辑Secrets-保存](./secrets.assets/image-20190721111540512.png)
 
 # 查看/编辑/删除 Secrets
 
 * 点击 my-docker-repository
 
-![image-20190721111642221](./secrets.assets/image-20190721111642221.png)
+![Kubernetes教程：在Kuboard中编辑Secrets-编辑](./secrets.assets/image-20190721111642221.png)
 
 
 

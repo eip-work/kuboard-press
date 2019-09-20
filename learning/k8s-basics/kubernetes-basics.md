@@ -34,11 +34,11 @@ description: 本文为初学者介绍了一套最合适的 Kubernetes 入门教�
 
 本篇中我们先从第一部分入手，对k8s集群有个整体上的把握。
 
-<img src="./kubernetes-basics.assets/module_01.svg" style="border: 1px solid #d7dae2; max-width: 600px;"></img>
+<img src="./kubernetes-basics.assets/module_01.svg" style="border: 1px solid #d7dae2; max-width: 600px;" alt="Kubernetes教程：Kubernetes集群"></img>
 
 上图描述的是拥有一个Master(主)节点和六个Worker(工作)节点的k8s集群
 
-![img](./kubernetes-basics.assets/module_01_cluster.svg)
+![Kubernetes教程：学习Kubernetes基础知识](./kubernetes-basics.assets/module_01_cluster.svg)
 
 **Master 负责管理集群** 负责协调集群中的所有活动，例如调度应用程序，维护应用程序的状态，扩展和更新应用程序。
 

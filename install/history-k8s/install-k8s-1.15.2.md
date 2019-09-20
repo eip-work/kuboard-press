@@ -10,17 +10,17 @@ description: Kubernetes 最新稳定版 v1.15.2 的快速安装文档。该文�
 
 * **众多网友验证，并在线提出修改意见**
 
-  ![image-20190806065321567](./install-k8s-1.15.2.assets/image-20190806065321567.png)
+  ![Kubernetes安装：网友意见](./install-k8s-1.15.2.assets/image-20190806065321567.png)
 
 * **持续不断地更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.15.2
   * 当前已更新了 <font color="red"> 39 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
-  ![image-20190806070341727](./install-k8s-1.15.2.assets/image-20190806070341727.png)
+  ![Kubernetes安装：更新历史](./install-k8s-1.15.2.assets/image-20190806070341727.png)
 
 * **在线答疑** QQ 群
   
-  ![kuboard_qq.png](/overview/README.assets/kuboard_qq.png)
+  ![Kubernetes安装：QQ群在线答疑](/overview/README.assets/kuboard_qq.png)
 
 ## 配置要求
 
@@ -43,7 +43,7 @@ description: Kubernetes 最新稳定版 v1.15.2 的快速安装文档。该文�
 
 安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
-![image-20190826000521999](./install-k8s-1.15.2.assets/image-20190826000521999.png)
+![Kubernetes安装：拓扑结构](./install-k8s-1.15.2.assets/image-20190826000521999.png)
 
 ::: tip
 **关于二进制安装**

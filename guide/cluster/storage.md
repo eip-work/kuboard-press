@@ -23,11 +23,11 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 
 如下图所示
 
-![image-20190717113807552](./storage-create.assets/image-20190717113807552.png)
+![Kubernetes教程：在阿里云创建NAS](./storage-create.assets/image-20190717113807552.png)
 
 * 在 ***文件存储 NAS*** 控制台中点击 ***创建文件系统*** 
 
-![image-20190717114304953](./storage-create.assets/image-20190717114304953.png)
+![Kubernetes教程：在阿里云NAS创建文件系统](./storage-create.assets/image-20190717114304953.png)
 
 
 
@@ -41,7 +41,7 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 | 可用区   | 请选择您的 Kubernetes 集群所在的可用区 | 文件系统所在可用区                 |
 | 存储包   | 如果当下没有存储包，可以后续绑定       | 不绑定存储包，将无法使用该文件系统 |
 
-![image-20190717114354610](./storage-create.assets/image-20190717114354610.png)
+![Kubernetes教程：在阿里云创建NAS](./storage-create.assets/image-20190717114354610.png)
 
 
 
@@ -49,7 +49,7 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 
 点击确定后，可查看到该文件系统已创建成功
 
-![image-20190717115020848](./storage-create.assets/image-20190717115020848.png)
+![Kubernetes教程：在阿里云创建NAS成功](./storage-create.assets/image-20190717115020848.png)
 
 * 绑定存储包
 
@@ -57,7 +57,7 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 
 * 点击刚创建文件系统的 ***管理*** 按钮
 
-![image-20190717115403374](./storage-create.assets/image-20190717115403374.png)
+![Kubernetes教程：在阿里云为NAS绑定存储包](./storage-create.assets/image-20190717115403374.png)
 
 * 点击 ***添加挂载点***
 
@@ -70,13 +70,13 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 | 交换机     | 请选择您的 Kubernetes 集群所在的交换机 |                |
 | 权限组     | VPC默认权限组（全部允许）              | 请选择全部允许 |
 
-![image-20190717115457614](./storage-create.assets/image-20190717115457614.png)
+![Kubernetes教程：在阿里云为NAS添加挂载点](./storage-create.assets/image-20190717115457614.png)
 
 * 点击 ***确定***
 
 点击确定后，将完成挂载点创建，如下图所示：
 
-![image-20190717115829821](./storage-create.assets/image-20190717115829821.png)
+![Kubernetes教程：在阿里云完成NAS挂载点添加](./storage-create.assets/image-20190717115829821.png)
 
 ### 获取 NFS 连接参数
 
@@ -107,7 +107,7 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 
   如下图所示：
 
-![image-20190723112105018](./storage-create.assets/image-20190723112105018.png)
+![Kubernetes教程：访问Kuboard集群概览页](./storage-create.assets/image-20190723112105018.png)
 
 * 点击 ***创建存储类***
 
@@ -121,19 +121,19 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 | 回收策略       | 回收后删除      | 当该存储类创建的 存储卷（Persistent Volume）被删除后，之前该存储卷中的文件可以被：回收后删除 / 回收后保留 |
 | 存储卷绑定模式 | 首次使用时绑定  | 即刻绑定：当 存储卷被创建时，就在 NFS 中为其分配空间，并绑定；<br />首次使用时绑定： 在存储卷被第一次使用到时，才绑定 |
 
-![image-20190814111245506](./storage-create.assets/image-20190814111245506.png)
+![Kubernetes教程：在Kuboard创建存储类](./storage-create.assets/image-20190814111245506.png)
 
 
 
 * 点击 ***保存***
 
-![image-20190723112204681](./storage-create.assets/image-20190723112204681.png)
+![Kubernetes教程：在Kuboard保存存储类](./storage-create.assets/image-20190723112204681.png)
 
 
 
 * 点击 ***应用***
 
-![image-20190723113250521](./storage-create.assets/image-20190723113250521.png)
+![Kubernetes教程：在Kuboard保存存储类](./storage-create.assets/image-20190723113250521.png)
 
 
 
@@ -141,4 +141,4 @@ description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
 
   此时可在存储资源列表中查看到刚创建的存储类
 
-![image-20190723113312360](./storage-create.assets/image-20190723113312360.png)
+![Kubernetes教程：在Kuboard查看已创建的存储类](./storage-create.assets/image-20190723113312360.png)

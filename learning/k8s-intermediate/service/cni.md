@@ -68,7 +68,7 @@ CNI的初衷是创建一个框架，用于在配置或销毁容器时动态配�
 
 **Flannel**
 
-![kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/04c2db500e1b4b5dae3be817bfe6d673.jpeg)
+![Kubernetes教程：kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/04c2db500e1b4b5dae3be817bfe6d673.jpeg)
 
 
 
@@ -88,7 +88,7 @@ Flannel有几种不同类型的后端可用于封装和路由。默认和推荐�
 
 **Calico**
 
-![kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/79fa00ed4bcb4d9b94aee1d02b3c5c8c.jpeg)
+![Kubernetes教程：kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/79fa00ed4bcb4d9b94aee1d02b3c5c8c.jpeg)
 
 
 
@@ -109,7 +109,7 @@ Calico是Kubernetes生态系统中另一种流行的网络选择。虽然Flannel
 
 **Weave**
 
-![kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/67b4097c58df478cb348ad50ea752f12.jpeg)
+![Kubernetes教程：kubernetes网络插件对比分析（flannel、calico、weave）](./cni.assets/67b4097c58df478cb348ad50ea752f12.jpeg)
 
 
 

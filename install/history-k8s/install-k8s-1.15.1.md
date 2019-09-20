@@ -10,15 +10,15 @@ description: 使用 kubeadm 安装 Kubernetes v1.15.1 的集群，单Master节�
 
 * **众多网友验证，并在线提出修改意见**
 
-  ![image-20190806065321567](./install-k8s-1.15.1.assets/image-20190806065321567.png)
+  ![Kubernetes安装：网友意见](./install-k8s-1.15.1.assets/image-20190806065321567.png)
 
 * **持续不断地更新和完善**，[更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
-  ![image-20190806070341727](./install-k8s-1.15.1.assets/image-20190806070341727.png)
+  ![Kubernetes安装：更新历史](./install-k8s-1.15.1.assets/image-20190806070341727.png)
 
 * **在线答疑** QQ 群
   
-  ![kuboard_qq.png](../../overview/README.assets/kuboard_qq.png)
+  ![Kubernetes安装：在线答疑QQ群](../../overview/README.assets/kuboard_qq.png)
 
 ## 配置要求
 
@@ -37,7 +37,7 @@ Kuboard 的 Live Demo 环境使用的是如下拓扑结构，本文档描述了�
 * Kubernetes v1.15.1
 * Docker 18.09.7
 
-![image-20190805230643974](./install-k8s-1.15.1.assets/image-20190805230643974.png)
+![Kubernetes安装：拓扑结构](./install-k8s-1.15.1.assets/image-20190805230643974.png)
 
 ::: tip
 **关于二进制安装**
@@ -188,7 +188,7 @@ net.bridge.bridge-nf-call-iptables = 1
 
 如下图所示
 
-![image-20190715085036593](./install-k8s-1.15.1.assets/image-20190715085036593.png ':size=600x445')
+![Kubernetes安装：net](./install-k8s-1.15.1.assets/image-20190715085036593.png ':size=600x445')
 
 执行命令以应用
 
@@ -227,7 +227,7 @@ vim /usr/lib/systemd/system/docker.service
 
 如下图所示
 
-![屏幕快照 2019-07-15 09.01.21](./install-k8s-1.15.1.assets/image2019-07-15_09.01.21.png ':size=1000x326')
+![Kubernetes安装：systemd](./install-k8s-1.15.1.assets/image2019-07-15_09.01.21.png ':size=1000x326')
 
 
 **设置 docker 镜像**
@@ -308,7 +308,7 @@ kubeadm init --config=kubeadm-config.yaml --upload-certs
 
 执行结果如下图所示：
 
-![image-20190715101542756](./install-k8s-1.15.1.assets/image-20190715101542756.png ':size=800x388')
+![Kubernetes安装：初始化APIServer](./install-k8s-1.15.1.assets/image-20190715101542756.png ':size=800x388')
 
 
 
@@ -400,7 +400,7 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 kubectl get nodes
 ```
 
-![image-20190715193838012](./install-k8s-1.15.1.assets/image-20190715193838012.png)
+![Kubernetes安装：检查初始化结果](./install-k8s-1.15.1.assets/image-20190715193838012.png)
 
 
 

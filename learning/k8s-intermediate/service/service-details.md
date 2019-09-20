@@ -126,7 +126,7 @@ Kubernetes 支持三种 proxy mode（代理模式），他们的版本兼容性�
 如下图所示：
 
 <p>
-  <img src="./service-details.assets/services-userspace-overview.svg" style="max-width: 420px;"/>
+  <img src="./service-details.assets/services-userspace-overview.svg" style="max-width: 420px;" alt="Kubernetes教程：Service user space"/>
 </p>
 
 ### Iptables 代理模式 <Badge text="默认模式" type="success"/>
@@ -141,7 +141,7 @@ Kubernetes 支持三种 proxy mode（代理模式），他们的版本兼容性�
 
 如下图所示：
 <p>
-  <img src="./service-details.assets/services-iptables-overview.svg" style="max-width: 420px;"/>
+  <img src="./service-details.assets/services-iptables-overview.svg" style="max-width: 420px;" alt="Kubernetes教程：Service iptables proxy"/>
 </p>
 
 **iptables proxy mode 的优点：**
@@ -165,7 +165,7 @@ Kubernetes 支持三种 proxy mode（代理模式），他们的版本兼容性�
 * 当访问一个 Service 时，IPVS 将请求重定向到后端 Pod
 
 <p>
-  <img src="./service-details.assets/services-ipvs-overview.svg" style="max-width: 420px;"/>
+  <img src="./service-details.assets/services-ipvs-overview.svg" style="max-width: 420px;" alt="Kubernetes教程：Service IPVS proxy"/>
 </p>
 
 **IPVS 模式的优点**

@@ -10,4 +10,4 @@
 
 **在线提问**
 
-![Kuboard 兴趣群二维码](./../overview/README.assets/kuboard_qq.png)
+![Kubernetes安装：QQ群在线答疑](./../overview/README.assets/kuboard_qq.png)

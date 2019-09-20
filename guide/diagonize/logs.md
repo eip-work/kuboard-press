@@ -12,13 +12,13 @@ description: 使用 Kuboard 打开并跟踪容器组的最新日志，以便对 
 
 假设您已经进入 ***工作负载*** 详情页，如下图所示：
 
-![image-20190721104348908](./logs.assets/image-20190721104348908.png)
+![Kubernetes教程：在Kuboard查看工作负载](./logs.assets/image-20190721104348908.png)
 
 * 点击容器信息中的 ***日志*** 按钮
 
   可进入日志追踪界面，如下图所示：
 
-![image-20190721104415732](./logs.assets/image-20190721104415732.png)
+![Kubernetes教程：在Kuboard查看日志追踪](./logs.assets/image-20190721104415732.png)
 
 
 
@@ -35,4 +35,4 @@ description: 使用 Kuboard 打开并跟踪容器组的最新日志，以便对 
   >   * ping, curl 命令检查容器内与集群内其他服务，集群外服务的网络连通性
   >   * vi 命令，临时修改容器内应用程序的配置，并在容器内重启应用程序，以临时性的尝试修复问题，如果有效再将修改更新到应用程序代码或者 Dockerfile
 
-![image-20190721104522870](./logs.assets/image-20190721104522870.png)
+![Kubernetes教程：在Kuboard进入容器的终端界面](./logs.assets/image-20190721104522870.png)

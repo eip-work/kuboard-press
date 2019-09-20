@@ -38,7 +38,7 @@ description: 本文详细讲解了 Kubernetes Deployment 的概念，并描述�
 
 ## 在 Kubernetes 上部署第一个应用程序
 
-![img](./deploy-app.assets/module_02_first_app.svg)
+![Kubernetes教程：部署第一个应用程序](./deploy-app.assets/module_02_first_app.svg)
 
 上图是在第一篇文章的基础上，添加上了Deployment、Pod和Container。
 
@@ -135,13 +135,13 @@ kubectl get pods
 
 **打开 Kuboard 集群概览界面**，如下图所示：
 
-![image-20190822165220992](./deploy-app.assets/image-20190822165220992.png)
+![Kubernetes教程：部署第一个应用程序-Kuboard集群概览页](./deploy-app.assets/image-20190822165220992.png)
 
 
 
 **点击 default 名称空间**
 
-![image-20190822165351264](./deploy-app.assets/image-20190822165351264.png)
+![Kubernetes教程：部署第一个应用程序-Kuboard名称空间页](./deploy-app.assets/image-20190822165351264.png)
 
 
 
@@ -160,7 +160,7 @@ kubectl get pods
 | 镜像     | nginx:1.7.9 |                                                         |
 | 抓取策略 | Always      | 每次创建 Pod 都尝试抓取镜像                             |
 
-![image-20190822171013606](./deploy-app.assets/image-20190822171013606.png)
+![Kubernetes教程：部署第一个应用程序-在Kuboard中创建工作负载](./deploy-app.assets/image-20190822171013606.png)
 
 
 

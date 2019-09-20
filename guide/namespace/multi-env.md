@@ -33,7 +33,7 @@ Kuboard 针对这种场景，提供了导出配置、导入配置的功能，以
 
 假设您已完成微服务部署，并已进入 namespace 界面，如下图所示：
 
-![image-20190721085144545](./multi-env.assets/image-20190721085144545.png)
+![Kubernetes教程：在Kuboard中导出工作负载-进入名称空间](./multi-env.assets/image-20190721085144545.png)
 
 ### 操作步骤
 
@@ -42,27 +42,27 @@ Kuboard 针对这种场景，提供了导出配置、导入配置的功能，以
   * 点击 ***刷新***
   * 选择要导出的工作负载
 
-![image-20190721090118542](./multi-env.assets/image-20190721090118542.png)
+![Kubernetes教程：在Kuboard中导出工作负载-选择要导出的工作负载](./multi-env.assets/image-20190721090118542.png)
 
 * 点击 ***下一步***
 
   选择要导出的配置（configMap）信息
 
-![image-20190721090753742](./multi-env.assets/image-20190721090753742.png)
+![Kubernetes教程：在Kuboard中导出工作负载-选择要导出的ConfigMap](./multi-env.assets/image-20190721090753742.png)
 
 * 点击 ***下一步***
 
   选择要导出的 Secrets
 
-![image-20190721090840925](./multi-env.assets/image-20190721090840925.png)
+![Kubernetes教程：在Kuboard中导出工作负载-选择要导出的Secrets](./multi-env.assets/image-20190721090840925.png)
 
 * 点击 ***下一步***
 
-![image-20190721090935511](./multi-env.assets/image-20190721090935511.png)
+![Kubernetes教程：在Kuboard中导出工作负载-下一步](./multi-env.assets/image-20190721090935511.png)
 
 * 点击 ***确定***
 
-![image-20190721091005130](./multi-env.assets/image-20190721091005130.png)
+![Kubernetes教程：在Kuboard中导出工作负载-确认结果](./multi-env.assets/image-20190721091005130.png)
 
 * 查看已导出文件
 

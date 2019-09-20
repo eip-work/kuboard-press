@@ -22,7 +22,7 @@ description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文
 
 * 假设您已进入工作负载查看界面，如下图所示：
 
-![image-20190722223454676](./workload.assets/image-20190722223454676.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-进入工作负载查看页](./workload.assets/image-20190722223454676.png)
 
 
 
@@ -32,7 +32,7 @@ description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文
 
   副本数： 目标容器组数量
 
-![image-20190722223551308](./workload.assets/image-20190722223551308.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-伸缩](./workload.assets/image-20190722223551308.png)
 
 
 
@@ -40,7 +40,7 @@ description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文
 
   等待，知道伸缩操作执行完毕。
 
-![image-20190722223605920](./workload.assets/image-20190722223605920.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-完成伸缩](./workload.assets/image-20190722223605920.png)
 
 
 
@@ -54,7 +54,7 @@ description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文
 
   * Kuboard 的工作负载编辑器，默认将容器组的 imagePullPolicy 设置为 Alwarys，因此，每次在容器组启动的时候，Kubenetes 都会尝试从镜像仓库中抓取最新镜像；
 
-![image-20190722231246540](./workload.assets/image-20190722231246540.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-删除容器组](./workload.assets/image-20190722231246540.png)
 
 
 
@@ -82,7 +82,7 @@ description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文
 
 通过 Kubernetes 事件所指示出来的问题，通常是集群本身配置的问题，或者是创建工作负载时的参数填写问题，解决这样的问题需要的是 Kubernetes 集群相关的知识和背景，**通常运维人员可以独立解决此类问题**。
 
-![image-20190722224029397](./workload.assets/image-20190722224029397.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-查看事件](./workload.assets/image-20190722224029397.png)
 
 
 
@@ -90,13 +90,13 @@ description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文
 
 如下图所示，假设您已进入工作负载查看界面：
 
-![image-20190722225347491](./workload.assets/image-20190722225347491.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-查看日志](./workload.assets/image-20190722225347491.png)
 
 * 点击其中的 ***日志*** 按钮
 
 可查看该容器的运行时日志，如下图所示：
 
-![image-20190722225454029](./workload.assets/image-20190722225454029.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-查看日志](./workload.assets/image-20190722225454029.png)
 
 
 
@@ -117,7 +117,7 @@ description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文
 
   可进入该容器的交互式命令界面
 
-![image-20190722230511430](./workload.assets/image-20190722230511430.png)
+![Kubernetes教程：在Kuboard中编辑工作负载-进入终端](./workload.assets/image-20190722230511430.png)
 
 
 

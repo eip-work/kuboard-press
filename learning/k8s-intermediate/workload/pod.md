@@ -49,7 +49,7 @@ Pod 的设计目的是用来支持多个互相协同的容器，是的他们形�
 ::: tip 提示
 将多个容器运行于同一个容器组中是一种相对高级复杂的使用方法。只有在您的容器相互之间紧密耦合是，您才应该使用这种方式。例如：您可能有一个容器是 web server，用来将共享数据卷中的文件作为网站发布出去，同时您有另一个 "sidecar" 容器从远程抓取并更新这些文件。如下图所示：
 
-<img src="./pod.assets/pod.svg" style="max-width: 360px;"></img>
+<img src="./pod.assets/pod.svg" style="max-width: 360px;" alt="Kubernetes教程：Pod中的多个容器"></img>
 
 :::
 

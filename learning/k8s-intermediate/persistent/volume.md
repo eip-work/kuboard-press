@@ -27,7 +27,7 @@ Docker 里同样也存在一个 volume（数据卷）的概念，但是 docker �
 * 一个容器通过挂载点决定某一个数据卷被挂载到容器中的什么路径
 * 不同类型的数据卷对应不同的存储介质（图中列出了 nfs、PVC、ConfigMap 三种存储介质，接下来将介绍更多）
 
-<img src="./volume.assets/image-20190904201849792.png" style="max-width: 450px;"/>
+<img src="./volume.assets/image-20190904201849792.png" style="max-width: 450px;" alt="Kubernetes教程：数据卷"/>
 
 ## 在 Kuboard 中使用数据卷
 
@@ -54,7 +54,7 @@ Docker 里同样也存在一个 volume（数据卷）的概念，但是 docker �
 
 :::
 
-![image-20190904194501941](./volume.assets/image-20190904194501941.png)
+![Kubernetes教程：数据卷Volume-概念结构](./volume.assets/image-20190904194501941.png)
 
 ## 数据卷的类型
 

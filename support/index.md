@@ -19,7 +19,7 @@ description: 本文描述了如何获得 Kuboard 授权
     <Qq/>
   </p>
   <p>
-    <img src="/images/kuboard_qq.png" />
+    <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
   </p>
 
 ### 微信即时答复

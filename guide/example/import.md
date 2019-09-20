@@ -21,7 +21,7 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 
 假设您已经进入了 Kuboard 名称空间界面，如下图所示：
 
-![image-20190723115721514](./pre-condition.assets/image-20190723115721514.png)
+![Kubernetes教程：在Kuboard中进入名称空间页](./pre-condition.assets/image-20190723115721514.png)
 
 ## 导入 example
 
@@ -35,31 +35,31 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 
 * 点击 ***导入工作负载*** 按钮
 
-![image-20190723120730196](./import.assets/image-20190723120730196.png)
+![Kubernetes教程：在Kuboard中导入工作负载](./import.assets/image-20190723120730196.png)
 
 * 点击 ***上传文件*** 按钮
 
   并选择刚才下载的 export_example.yaml 文件
 
-![image-20190723120753533](./import.assets/image-20190723120753533.png)
+![Kubernetes教程：在Kuboard中导入工作负载-上传文件](./import.assets/image-20190723120753533.png)
 
 * 点击 ***下一步*** 
 
   默认选择所有的工作负载
 
-![image-20190723120832778](./import.assets/image-20190723120832778.png)
+![Kubernetes教程：在Kuboard中导入工作负载-选择所有工作负载](./import.assets/image-20190723120832778.png)
 
 * 点击 ***下一步***
 
   默认选择所有要导入的配置，example中没有使用到配置信息
 
-![image-20190723120912377](./import.assets/image-20190723120912377.png)
+![Kubernetes教程：在Kuboard中导入工作负载-选择要导入的配置](./import.assets/image-20190723120912377.png)
 
 * 点击 ***下一步***
 
   默认选择所有 Secrets
 
-![image-20190723120926747](./import.assets/image-20190723120926747.png)
+![Kubernetes教程：在Kuboard中导入工作负载-选择所有Secrets](./import.assets/image-20190723120926747.png)
 
 * 点击 ***下一步***
 
@@ -74,7 +74,7 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 | 总量               | 2Gi                | 2Gi代表 2G空间                                               |
 
 
-![image-20190723120956821](./import.assets/image-20190723120956821.png)
+![Kubernetes教程：在Kuboard中导入工作负载-填写存储卷声明参数](./import.assets/image-20190723120956821.png)
 
 * 点击 ***下一步***
 
@@ -87,31 +87,31 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 
   
 
-![image-20190723121019167](./import.assets/image-20190723121019167.png)
+![Kubernetes教程：在Kuboard中导入工作负载-填写域名](./import.assets/image-20190723121019167.png)
 
 * 点击 ***下一步***
 
-![image-20190723121035917](./import.assets/image-20190723121035917.png)
+![Kubernetes教程：在Kuboard中导入工作负载-核对信息](./import.assets/image-20190723121035917.png)
 
 
 
 * 点击 ***确定***
 
-![image-20190723121055648](./import.assets/image-20190723121055648.png)
+![Kubernetes教程：在Kuboard中导入工作负载-确定](./import.assets/image-20190723121055648.png)
 
 * 点击 ***应用***
 
-![image-20190723121117514](./import.assets/image-20190723121117514.png)
+![Kubernetes教程：在Kuboard中导入工作负载-应用](./import.assets/image-20190723121117514.png)
 
 * 点击 ***完成***
 
-![image-20190723121132991](./import.assets/image-20190723121132991.png)
+![Kubernetes教程：在Kuboard中导入工作负载-导入完成](./import.assets/image-20190723121132991.png)
 
 * 点击 ***已完成***
 
   可再名称空间中查看到刚才导入的 example 的所有工作负载及存储卷声明
 
-![image-20190723121433809](./import.assets/image-20190723121433809.png)
+![Kubernetes教程：在Kuboard中导入工作负载-查看导入结果](./import.assets/image-20190723121433809.png)
 
 
 
@@ -121,13 +121,13 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 
 * 点击工作负载 ***web-example***
 
-![image-20190723121412027](./import.assets/image-20190723121412027.png)
+![Kubernetes教程：在Kuboard中导入工作负载-查看导入的web-example](./import.assets/image-20190723121412027.png)
 
 * 点击 互联网入口中的域名 ***http://web-example.example.demo.kuboard.cn***
 
   **Example 部署成功**
 
-![image-20190717193548703](./import.assets/image-20190717193548703.png)
+![Kubernetes教程：在Kuboard中导入工作负载-查看日志](./import.assets/image-20190717193548703.png)
 
 > web-example容器的日志中会出现如下异常，错误原因是，example使用了一个监控套件，该监控套件要求将容器注册到monitor-eureka中，当下我们并没有安装该监控套件。此错误并不影响 example 程序的使用。暂时忽略该异常。
 >

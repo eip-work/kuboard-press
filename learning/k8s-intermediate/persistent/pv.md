@@ -38,7 +38,7 @@ PersistentVolumeClaim（PVC 存储卷声明）代表用户使用存储的请求�
 * PersistentVolumeClaim 是使用该资源的请求，通常由应用程序提出请求，并指定对应的 StorageClass 和需求的空间大小
 * PersistentVolumeClaim 可以做为数据卷的一种，被挂载到容器组/容器中使用
 
-<img src="./pv.assets/image-20190906074512760.png" style="max-width: 450px;"/>
+<img src="./pv.assets/image-20190906074512760.png" style="max-width: 450px;" alt="Kubernetes教程：存储卷PersistentVolume"/>
 
 PersistantVolume 和 PersistantVolumeClaim 的管理过程描述如下：
 
@@ -136,7 +136,7 @@ Kubernetes 支持 20 种存储卷类型（可参考 [Types of Persistent Volumes
 
 在 Kuboard 中查看 PersistentVolume 的界面如下图所示：
 
-![image-20190905221422172](./pv.assets/image-20190905221422172.png)
+![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看](./pv.assets/image-20190905221422172.png)
 
 
 PersistentVolume 字段描述如下表所示：
@@ -156,7 +156,7 @@ PersistentVolume 字段描述如下表所示：
 
 在 Kuboard 中查看存储卷声明的界面如下图所示：
 
-![image-20190906070246134](./pv.assets/image-20190906070246134.png)
+![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看存储卷声明PersistentVolumeClaims](./pv.assets/image-20190906070246134.png)
 
 | 字段名称              | 可选项/备注                                                  |
 | --------------------- | ------------------------------------------------------------ |
@@ -171,4 +171,4 @@ PersistentVolume 字段描述如下表所示：
 
 在您完成存储卷声明的定义后，您可以在 Kuboard 工作复杂编辑器的 ***数据卷 Volume*** 区域引用该存储卷声明，如下图所示：
 
-![image-20190906072544024](./pv.assets/image-20190906072544024.png)
+![Kubernetes教程：存储卷PersistentVolume-使用存储卷声明](./pv.assets/image-20190906072544024.png)

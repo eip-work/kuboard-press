@@ -26,13 +26,13 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   如下图所示：
 
-  ![image-20190829060842558](./config-map.assets/image-20190829060842558.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-进入名称空间](./config-map.assets/image-20190829060842558.png)
 
 * 点击 **配置** --> **创建** 按钮
 
   并填写表单，如下图所示：
 
-  ![image-20190829110253001](./config-map.assets/image-20190829110253001.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-创建ConfigMap](./config-map.assets/image-20190829110253001.png)
 
 * 点击 **保存**
 
@@ -59,9 +59,9 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   如下图所示：
 
-  ![image-20190829112358038](./config-map.assets/image-20190829112358038.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-创建工作负载](./config-map.assets/image-20190829112358038.png)
 
-  ![image-20190829112451057](./config-map.assets/image-20190829112451057.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-创建工作负载](./config-map.assets/image-20190829112451057.png)
 
 * 点击 **保存**
 
@@ -81,7 +81,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   可查看到 ENV_KEY_1='value-1' 已经注入到该容器的环境变量中，如下图所示：
 
-  ![image-20190829112834708](./config-map.assets/image-20190829112834708.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-进入终端界面](./config-map.assets/image-20190829112834708.png)
 
 ## ConfigMap --> 容器的环境变量（ConfigMap的所有名值对）
 
@@ -104,7 +104,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   如下图所示：
   
-  ![image-20190829135425998](./config-map.assets/image-20190829135425998.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-创建工作负载](./config-map.assets/image-20190829135425998.png)
 
 
 * 点击 **保存**
@@ -133,7 +133,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
   
   可查看到 `KEY_1` `KEY_2` `KEY_3` 已经注入到该容器的环境变量中，如下图所示：
   
-  ![image-20190829135734710](./config-map.assets/image-20190829135734710.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-执行export命令](./config-map.assets/image-20190829135734710.png)
 
 ## ConfigMap --> Command 参数
 
@@ -155,7 +155,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
   | 环境变量 | ENV_KEY_1 / ENV_KEY_3      | 选择 ConfigMap<br/> ConfigMap 填写 ***my-nginx-config*** <br/> Key 填写 ***KEY_1*** <br/> <br/> 同样的方法添加 ENV_KEY_3 |
   如下图所示：
   
-  ![image-20190829141424670](./config-map.assets/image-20190829141424670.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-Command参数](./config-map.assets/image-20190829141424670.png)
 
 
 * 点击 **保存**
@@ -172,7 +172,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   如下图所示
 
-  ![image-20190829151912714](./config-map.assets/image-20190829151912714.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-查看日志界面](./config-map.assets/image-20190829151912714.png)
 
 ## ConfigMap --> 数据卷
 
@@ -207,7 +207,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
 
   
 
-  ![image-20190829144149253](./config-map.assets/image-20190829144149253.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-数据卷配置](./config-map.assets/image-20190829144149253.png)
 
 * 创建 nginx Deployment 如下图所示：
 
@@ -233,7 +233,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
   | 挂载点：数据卷         | default-conf                     | 选择上面已经定义的数据卷                                     |
   | 挂载点：数据卷内子路径 | default.conf                     | 将数据卷内的 default.conf 映射到容器的 /etc/nginx/conf.d/default.conf |
 
-  ![image-20190829143229693](./config-map.assets/image-20190829143229693.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-数据卷配置](./config-map.assets/image-20190829143229693.png)
 
 * 点击 **保存**
 
@@ -254,7 +254,7 @@ Kubernetes 官网描述了多种 ConfigMap 的创建方法，本文不再复述�
   cat /default.conf
   ```
 
-  ![image-20190829151744331](./config-map.assets/image-20190829151744331.png)
+  ![Kubernetes教程：使用ConfigMap配置应用-查看结果](./config-map.assets/image-20190829151744331.png)
 
 ::: tip
 
