@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文详细讲解了 Kubernetes Service 的概念，并描述了如何使用 kubectl / Kuboard 创建一个 Service，以使得部署在 Kubernetes 上的容器可以被访问。
+description: Kubernete教程_本文详细讲解了Kubernetes_Service的概念_并描述了如何使用kubectl_Kuboard创建一个Service_以使得部署在Kubernetes上的容器可以被访问
 ---
 
-# 3. 公布应用程序
+# 3.公布应用程序
 
 本文翻译自 Kubernetes 官网 [Using a Service to Expose Your App](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/) ，并有所改写
 

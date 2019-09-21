@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 打开并跟踪容器组的最新日志，以便对 Kubernetes 上容器组的最新运行情况进行了解和诊断问题。
+description: 使用Kuboard打开并跟踪容器组的最新日志，以便对Kubernetes上容器组的最新运行情况进行了解和诊断问题。
 ---
 
 # 日志及终端

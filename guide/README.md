@@ -1,5 +1,5 @@
 ---
-description: 熟悉 Kuboard on Kubernetes 的最佳途径。
+description: 熟悉Kuboard_on_Kubernetes_的最佳途径。
 ---
 
 # 使用手册

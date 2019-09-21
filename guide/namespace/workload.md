@@ -1,5 +1,5 @@
 ---
-description: Kuboard on Kubernetes 工作负载编辑器，无需编写 YAML 文件即可完成 Kubernetes 配置和管理。
+description: Kuboard_on_Kubernetes_工作负载编辑器_无需编写YAML文件即可完成Kubernetes配置和管理。
 ---
 
 # 工作负载

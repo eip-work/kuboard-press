@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 配置 Kubernetes Secrets
+description: 使用Kuboard配置Kubernetes_Secrets
 ---
 
 # Secrets

@@ -1,8 +1,8 @@
 ---
-description: Kuboard 提供 Kubernetes 图形化管理界面、Kubernetes最新版本安装手册、Spring Cloud 微服务部署实战案例、免费自助无需商务谈判，帮助用户快速落地 Kubernetes。
+description: Kuboard提供Kubernetes图形化管理界面_Kubernetes最新版本安装手册_SpringCloud微服务部署实战案例_免费自助无需商务谈判_帮助用户快速落地Kubernetes
 ---
 
-# 最快速的 Kubernetes+微服务 落地方案
+# 最快速的Kubernetes+微服务落地方案
 
 ## Kubernetes 落地难
 

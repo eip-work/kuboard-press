@@ -1,8 +1,8 @@
 ---
-description: 日常工作中，您可能需要在自己的笔记本电脑上执行 kubectl 命令以管理远程 Linux 服务器上的 Kubernetes 集群。本文档介绍了如何在您的笔记本电脑上安装和配置 kubectl 工具。
+description: Kubernete安装文档_日常工作中您可能需要在自己的笔记本电脑上执行kubectl命令以管理远程Linux服务器上的Kubernetes集群_本文档介绍了如何在您的笔记本电脑上安装和配置kubectl工具
 ---
 
-# 从客户端电脑远程管理 Kubernetes
+# 从客户端电脑远程管理Kubernetes
 
 日常工作中，您可能需要在自己的笔记本电脑上执行 kubectl 命令以管理远程 Linux 服务器上的 Kubernetes 集群。
 

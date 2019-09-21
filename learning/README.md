@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: Kubernetes 免费中文教程
+description: Kubernetes免费中文教程目录
 ---
 
-# Kubernetes 免费中文教程
+# Kubernetes免费中文教程
 
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
 * Kubernetes 初学者
@@ -45,7 +45,7 @@ description: Kubernetes 免费中文教程
     * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)
     * [Service 类型](/learning/k8s-intermediate/service/service-types.html)
     * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html)
-    * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html) <Badge text="正在撰写" type="warn"/>
+    * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html)
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
     * [如何选择网络插件](/learning/k8s-intermediate/service/cni.html)
   * 存储

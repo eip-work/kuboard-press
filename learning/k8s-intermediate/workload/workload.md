@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文介绍了 Kubernetes Controller（控制器）的概念，以及控制器的种类
+description: Kubernete教程_本文介绍了Kubernetes_Controller控制器的概念以及控制器的种类
 ---
 
-# 控制器 - 概述
+# 控制器_概述
 
 ## 概述
 

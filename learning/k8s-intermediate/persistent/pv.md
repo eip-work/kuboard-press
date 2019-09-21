@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文介绍了存储卷 PersistentVolume，存储卷声明 PersistentVolumeClaim 的概念，他们的关系，以及如何使用
+description: Kubernete教程_本文介绍了存储卷PersistentVolume_存储卷声明PersistentVolumeClaim的概念_他们的关系_以及如何使用
 ---
 
-# 存储卷 PersistentVolume
+# 存储卷PersistentVolume
 
 参考文档： Kubernetes 官方文档 [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 

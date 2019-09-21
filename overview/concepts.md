@@ -1,8 +1,8 @@
 ---
-description: Kuboard 通过图形化操作界面以及无YAML操作，帮助降低 Kubernetes 学习门槛。
+description: Kuboard通过图形化操作界面以及无YAML操作_帮助降低_Kubernetes_学习门槛。
 ---
 
-# 如何降低 Kubernetes 学习门槛
+# 如何降低Kubernetes学习门槛
 
 ## Kubernetes 学习门槛在哪儿
 

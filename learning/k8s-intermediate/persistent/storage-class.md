@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文介绍了存储类的概念及其使用
+description: Kubernete教程_本文介绍了存储类的概念及其使用
 ---
 
-# 存储类 StorageClass
+# 存储类StorageClass
 
 参考文档： Kubernetes 官网 [Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
 

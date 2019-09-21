@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 对 Kubernetes 进行日常调整，包括：批量删除容器组、批量调整镜像版本、批量调整工作负载数
+description: 使用Kuboard对Kubernetes 行日常调整_包括_批量删除容器组、批量调整镜像版本、批量调整工作负载数
 ---
 
 # 日常调整

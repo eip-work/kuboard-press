@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文描述了 Kubernetes Pod 中的初始化容器的概念、使用场景和使用方法。初始化容器是容器组中 app 容器启动之前执行的容器。可能包含 setup 脚本，或其他工具进程
+description: Kubernete教程_本文描述了Kubernetes_Pod中的初始化容器的概念_使用场景和使用方法_初始化容器是容器组中app容器启动之前执行的容器_可能包含setup脚本或其他工具进程
 ---
 
-# 容器组 - 初始化容器
+# 容器组_初始化容器
 
 参考文档： Kubernetes 官网 [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
 

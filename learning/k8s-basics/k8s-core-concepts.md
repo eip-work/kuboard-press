@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 以 gif 动图的形式形象的描述 Kubernetes 核心概念。本文将会简单介绍Kubernetes的核心概念。因为这些定义可以在Kubernetes的文档中找到，所以文章也会避免用大段的枯燥的文字介绍。相反，我们会使用一些图表（其中一些是动画）和示例来解释这些概念。我们发现一些概念（比如Service）如果没有图表的辅助就很难全面地理解。在合适的地方我们也会提供Kubernetes文档的链接以便读者深入学习。
+description: Kubernete教程_以gif动图的形式形象的描述Kubernetes核心概念_本文将会简单介绍Kubernetes的核心概念_因为这些定义可以在Kubernetes的文档中找到_所以文章也会避免用大段的枯燥的文字介绍_相反_我们会使用一些图表（其中一些是动画）和示例来解释这些概念_我们发现一些概念（比如Service）如果没有图表的辅助就很难全面地理解_在合适的地方我们也会提供Kubernetes文档的链接以便读者深入学习
 ---
 
-# 6. 复习Kubernetes核心概念
+# 6.复习Kubernetes核心概念
 
 > 转载信息：
 >

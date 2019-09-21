@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: 在 Kubernetes 中，通过 Service 连接应用程序
+description: Kubernete教程_在Kubernetes中_如何选择合适的网络插件CNI
 ---
 
 # 如何选择网络插件

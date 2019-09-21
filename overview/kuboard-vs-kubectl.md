@@ -1,8 +1,8 @@
 ---
-description: 为什么要使用 kuboard，而不是直接使用 kubectl？
+description: Kubernete教程_为什么要使用kuboard_而不是直接使用kubectl？
 ---
 
-# 为什么要使用 Kuboard，而不是直接用 kubectl
+# 为什么要使用Kuboard_而不是直接用kubectl
 
 ## Kuboard v.s. kubectl
 

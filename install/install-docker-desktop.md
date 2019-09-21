@@ -1,8 +1,8 @@
 ---
-description: 本文介绍了如何在 Windows/Mac 电脑安装 Kubernetes 测试集群
+description: Kubernete安装文档_本文介绍了如何在Windows_Mac电脑安装Kubernetes测试集群
 ---
 
-# 安装 Kubernetes 测试集群 Win/Mac
+# 安装Kubernetes测试集群Win_Mac
 
 只需要一台笔记本/台式机，就可以拥有一台用于学习的 Kubernetes 集群。单台机器可以用于学习 Kubernetes，但是，单台机器始终玩不出集群的感觉...
 

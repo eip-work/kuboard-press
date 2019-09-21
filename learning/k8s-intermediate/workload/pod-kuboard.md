@@ -1,8 +1,8 @@
 ---
-description: 本文描述了 Kuboard 如何处理 Kubernetes 容器组
+description: Kubernete教程_本文描述了Kuboard如何处理Kubernetes容器组
 ---
 
-# 容器组 - Kuboard
+# 容器组_Kuboard
 
 ## 通过 Kuboard 创建容器组
 

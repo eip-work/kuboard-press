@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文介绍 Kubernetes 中 Volume（数据卷）的基本概念、用法以及支持的数据卷类型
+description: Kubernete教程_本文介绍Kubernetes中Volume（数据卷）的基本概念_用法以及支持的数据卷类型
 ---
 
-# 数据卷 Volume
+# 数据卷Volume
 
 参考文档： Kubernetes 官网文档 [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 

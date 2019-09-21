@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 管理 Kubernetes 计算节点
+description: 使用Kuboard管理Kubernetes计算节点
 ---
 
 # 计算资源管理

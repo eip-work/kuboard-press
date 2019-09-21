@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 监听 Kubernetes 集群的最新事件，并通过这些事件对 Kubernetes 运行时的问题进行诊断。
+description: 使用Kuboard监听Kubernetes集群的最新事件_并通过这些事件对Kubernetes运行时的问题进行诊断。
 ---
 
 # 集群事件

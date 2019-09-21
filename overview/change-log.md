@@ -1,5 +1,5 @@
 ---
-description: Kuboard 更新日志的详细信息
+description: Kuboard更新日志的详细信息
 ---
 
 # 更新日志

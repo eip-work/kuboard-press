@@ -1,6 +1,7 @@
 ---
+title: Kubernetes日志_Kubernetes教程
 layout: LearningLayout
-description: 本文描述了如何配置 Kubernetes 日志
+description: Kubernete教程_本文描述了如何配置Kubernetes日志
 ---
 
-# Kubernetes 日志
+# Kubernetes日志

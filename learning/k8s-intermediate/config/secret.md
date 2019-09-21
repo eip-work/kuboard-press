@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: 在 Kubernetes 中，配置和使用 Secrets
+description: Kubernete教程_在Kubernetes中_配置和使用_Secrets
 ---
 
 # Secrets

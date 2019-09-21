@@ -1,5 +1,5 @@
 ---
-description: Kubernetes 监控套件
+description: Kuboard中的Kubernetes监控套件
 ---
 
 # 监控套件 <Badge text="alpha" type="warn"/>

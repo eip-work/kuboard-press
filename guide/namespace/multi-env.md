@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 将 Kubernetes 名称空间中安装的应用程序配置导出成 YAML 文件，并在一个新的环境中导入。
+description: 使用Kuboard将Kubernetes名称空间中安装的应用程序配置导出成YAML文件_并在一个新的环境中导入
 ---
 
 # 多环境

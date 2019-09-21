@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文描述了 Kubernetes 中 Pod 容器组的生命周期
+description: Kubernete教程_本文描述了Kubernetes中Pod容器组的生命周期
 ---
 
-# 容器组 - 生命周期
+# 容器组_生命周期
 
 参考文档： Kubernetes 官网文档 [Pod Lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
 

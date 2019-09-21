@@ -1,5 +1,5 @@
 ---
-description: 本文描述了如何获得 Kuboard 授权
+description: Kubernete教程_本文描述了如何获得Kuboard授权
 ---
 
 # Kuboard

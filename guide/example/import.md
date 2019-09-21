@@ -1,5 +1,5 @@
 ---
-description: 通过 Kuboard 将一个预先定义好的 Spring Cloud 微服务样例程序导入到 Kubernetes 中。
+description: 通过Kuboard将一个预先定义好的SpringCloud微服务样例程序导入到Kubernetes中。
 ---
 
 # 导入 example 微服务

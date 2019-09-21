@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 通过Kuboard 配置 Kubernetes，使用私有 registry 中的 docker 镜像
+description: Kubernete教程_通过Kuboard配置Kubernetes_使用私有registry中的docker镜像
 ---
 
-# 使用私有仓库中的 docker 镜像
+# 使用私有仓库中的docker镜像
 
 企业通常会因为如下几个原因，需要搭建自己的私有 docker registry：
 * 限制 docker 镜像的分发范围，例如：只允许在内网分发，或者只允许被授权的用户获取 docker 镜像

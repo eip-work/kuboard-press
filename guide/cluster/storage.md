@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 管理 Kubernetes 存储类 Storage Class
+description: 使用Kuboard管理Kubernetes存储类StorageClass
 ---
 
 # 存储空间管理

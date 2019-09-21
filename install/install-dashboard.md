@@ -1,5 +1,5 @@
 ---
-description: Kuboard 的安装手册，包括安装 Kuboard 的前提条件、与 Kubernetes 的版本兼容性、安装步骤、以及完成安装后如何访问 Kuboard 界面。
+description: Kubernete安装文档_Kuboard的安装手册_包括安装Kuboard的前提条件_与Kubernetes的版本兼容性_安装步骤_以及完成安装后如何访问Kuboard界面。
 # storyBook:
 #   title: '安装 Kuboard'
 #   initial: FullPage
@@ -16,7 +16,7 @@ description: Kuboard 的安装手册，包括安装 Kuboard 的前提条件、�
 #       title: 下一步
 ---
 
-# 安装 Kuboard
+# 安装Kuboard
 
 <!-- <StoryBook>
 
@@ -167,7 +167,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 <div slot="access"> -->
 
-## 访问 Kuboard
+## 访问Kuboard
 
 您可以通过NodePort、port-forward 两种方式当中的任意一种访问 Kuboard
 

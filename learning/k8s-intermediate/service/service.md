@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文介绍了 Kubernetes 中服务发现的机制，以及如何使用服务发现
+description: Kubernete教程_本文介绍了Kubernetes中服务发现的机制以及如何使用服务发现
 ---
 
-# Service 概述
+# Service概述
 
 参考文档：Kubernetes 官网文档：[Service](https://kubernetes.io/docs/concepts/services-networking/service/)
 

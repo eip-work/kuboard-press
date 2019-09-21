@@ -1,5 +1,5 @@
 ---
-description: 使用 kubeadm 安装高可用的 Kubernetes v1.15.3 集群
+description: Kubernete安装文档_使用kubeadm安装高可用的Kubernetes_v1.15.3集群
 # storyBook:
 #   title: '使用 kubeadm 安装 kubernetes v1.15.3（高可用）'
 #   initial: FullPage
@@ -20,7 +20,7 @@ description: 使用 kubeadm 安装高可用的 Kubernetes v1.15.3 集群
 #       title: 总结
 ---
 
-# 安装 Kubernetes 高可用
+# 安装Kubernetes高可用
 
 <!-- <StoryBook>
 

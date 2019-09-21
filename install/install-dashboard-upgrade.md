@@ -1,8 +1,8 @@
 ---
-description: 详细介绍如何将 Kuboard 升级到最新版本。
+description: Kubernete安装文档_详细介绍如何将Kuboard升级到最新版本。
 ---
 
-# 升级 Kuboard
+# 升级Kuboard
 
 ## 最新版本
 

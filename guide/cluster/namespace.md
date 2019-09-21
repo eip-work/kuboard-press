@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 管理 Kubernetes 名称空间。
+description: 使用Kuboard管理Kubernetes名称空间。
 ---
 
 # 名称空间管理

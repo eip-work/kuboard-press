@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: 本文描述了如何配置 Kubernetes 监控
+description: Kubernete教程_本文描述了如何配置Kubernetes监控
 ---
 
-# Kubernetes 监控
+# Kubernetes监控

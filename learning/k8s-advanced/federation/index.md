@@ -1,6 +1,7 @@
 ---
+title: Kubernetes联邦_Kubernetes教程
 layout: LearningLayout
-description: 本文描述了如何配置 Kubernetes 联邦
+description: Kubernete教程_本文描述了如何配置Kubernetes联邦
 ---
 
-# Kubernetes 联邦
+# Kubernetes联邦

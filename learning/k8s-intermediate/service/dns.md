@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文介绍了 Kubernetes 中 Service 和 Pod 的 DNS 分配规则
+description: Kubernete教程_本文介绍了Kubernetes中Service和Pod的DNS分配规则
 ---
 
-# Service/Pod 的 DNS
+# Service/Pod的DNS
 
 参考文档： Kubernetes 官网文档 [DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 
@@ -115,7 +115,92 @@ spec:
 
 * **ClusterFirstWithHostNet**： 对于运行在节点网络上的 Pod，其 dnsPolicy 必须指定为 `ClusterFirstWithHostNet`
 
-* 
+* **None**： 允许 Pod 忽略 Kubernetes 环境中的 DNS 设置。此时，该 Pod 的 DNS 的所有设置必须通过 `spce.dnsConfig` 指定。 参考 [Pod 的 DNS 配置](#pod-的-dns-配置)
 
-“ClusterFirstWithHostNet“: For Pods running with hostNetwork, you should explicitly set its DNS policy “ClusterFirstWithHostNet”.
-“None“: It allows a Pod to ignore DNS settings from the Kubernetes environment. All DNS settings are supposed to be provided using the dnsConfig field in the Pod Spec. See Pod’s DNS config subsection below.
+::: warning dnsPolicy的默认值
+**“Default”** 并非是默认的 DNS Policy。如果 `spec.dnsPolicy` 字段未指定，则 **“ClusterFirst”** 将被默认使用
+:::
+
+下面的例子中的 Pod，其 DNS Policy 必须设置为 **“ClusterFirstWithHostNet”**，因为它的 `hostNetwork` 字段为 `true`
+
+``` yaml {15,16}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: default
+spec:
+  containers:
+  - image: busybox:1.28
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+  restartPolicy: Always
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+```
+
+### Pod 的 DNS 配置 <Badge text="Kuboard 暂不支持" type="warn"/>
+
+在 Kubernetes 中，您可以直接配置 Pod 的 DNS 设置。
+
+Pod 定义中的 `spec.dnsConfig` 是可选字段，且可以与任何类型的 `spec.dnsPolicy` 配合使用。如果 `spec.dnsPolicy` 被设置为 **“None”**，则 `spec.dnsConfig` 必须被指定。
+
+`spec.dnsConfig` 中有如下字段可以配置：
+
+* **nameservers**： Pod 的 DNS Server IP 地址列表。最多可以执行 3 个 IP 地址。当 `spec.dnsPolicy` 为 **“None”**，至少需要指定一个 IP 地址，其他情况下该字段是可选的。DNS Server 的 IP 地址列表将会与 DNS Policy 所产生的 DNS Server 地址列表合并（重复的条目被去除）。
+
+* **searches**：Pod 中执行域名查询时搜索域的列表。该字段是可选的。如果指定了该字段，则指定的搜索域列表将与 DNS Policy 所产生的搜索域列表合并（重复的条目被去除）。合并后的列表最多不超过 6 个域。
+
+* **options**：可选数组，其中每个元素由 **name** 字段（必填）和 **value** 字段（选填）组成。该列表中的内容将与 DNS Policy 所产生的 DNS 选项合并（重复的条目被去除）
+
+``` yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: default
+  name: dns-example
+spec:
+  containers:
+    - name: test
+      image: nginx
+  dnsPolicy: "None"
+  dnsConfig:
+    nameservers:
+      - 1.2.3.4
+    searches:
+      - ns1.svc.cluster-domain.example
+      - my.dns.search.suffix
+    options:
+      - name: ndots
+        value: "2"
+      - name: edns0
+```
+
+上述 Pod 创建后，容器 `test` 的 `etc/resolv.conf` 文件如下所示（从 `spec.dnsConfig` 的配置产生），执行命令 `kubectl exec -it dns-example -- cat /etc/resolv.conf` 可查看该文件内容：
+
+```
+nameserver 1.2.3.4
+search ns1.svc.cluster-domain.example my.dns.search.suffix
+options ndots:2 edns0
+```
+
+如果集群使用的是 IPv6，执行命令 `kubectl exec -it dns-example -- cat /etc/resolv.conf` 的输出结果如下所示：
+
+```
+nameserver fd00:79:30::a
+search default.svc.cluster-domain.example svc.cluster-domain.example cluster-domain.example
+options ndots:5
+```
+
+### 版本兼容性
+
+Pod 定义中的 `spec.dnsConfig` 和 `spec.dnsPolicy=None` 的兼容性如下：
+
+| Kubernetes 版本号 | 支持情况         |
+| ----------------- | ---------------- |
+| 1.14              | Stable           |
+| 1.10              | Beta（默认启用） |
+| 1.9               | Alpha            |

@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 在 Kubernetes 上安装监控套件，并对 example 微服务实现资源层监控、中间件层监控、链路追踪和 APM 监控
+description: 使用Kuboard在Kubernetes上安装监控套件，并对example微服务实现资源层监控、中间件层监控、链路追踪和APM监控
 ---
 
 # 监控 example <Badge text="alpha" type="warn"/>

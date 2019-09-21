@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: Kubernetes 中发布 Service 的方式，ServiceType
+description: Kubernete教程_Kubernetes中发布Service的方式_ServiceType
 ---
 
-# 发布 Service
+# 发布Service
 
 Kubernetes Service 支持的不同访问方式。
 

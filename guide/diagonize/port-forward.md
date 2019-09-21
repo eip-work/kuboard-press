@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 对 Kubernetes 上容器组的端口进行转发。
+description: 使用Kuboard对Kubernetes上容器组的端口进行转发。
 ---
 
 # 端口转发

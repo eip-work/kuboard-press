@@ -1,8 +1,8 @@
 ---
-description: 在 Kubernetes 上部署测试数据库 mysql 的详细介绍。
+description: 在Kubernetes上部署测试数据库mysql的详细介绍。
 ---
 
-# 部署 db-example
+# 部署db-example
 
 本文所使用的代码请参考 [db-example](https://github.com/eip-work/kuboard-example/tree/master/db-example)
 

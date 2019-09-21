@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: Kubernetes ConfigMap 可以将配置信息和容器镜像解耦，以使得容器化的应用程序可移植。本文提供了一系列的实例，解释如何通过 Kuboard 创建 ConfigMap 以及如何使用 ConfigMap 中的数据配置 Pod（容器组）。
+description: Kubernete教程_Kubernetes_ConfigMap可以将配置信息和容器镜像解耦_以使得容器化的应用程序可移植_本文提供了一系列的实例_解释如何通过Kuboard创建ConfigMap以及如何使用ConfigMap中的数据配置Pod（容器组）。
 ---
 
-# 使用 ConfigMap 配置您的应用程序
+# 使用ConfigMap配置您的应用程序
 
 本文参考了 Kubernetes 官网 [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap)，并有所改写
 

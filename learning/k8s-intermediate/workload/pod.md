@@ -1,9 +1,9 @@
 ---
 layout: LearningLayout
-description: 本文介绍 Kubernetes 中的最小可调度单元 Pod 容器组的概念，以及如何使用容器组
+description: Kubernete教程_本文介绍Kubernetes中的最小可调度单元Pod容器组的概念以及如何使用容器组
 ---
 
-# 容器组 - 概述
+# 容器组_概述
 
 参考文档：Kubernetes 官方文档 [Pod Overview](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) [Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/)
 

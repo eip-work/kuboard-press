@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 配置 Kubernetes 的存储卷声明 Persistent Volume Claim
+description: 使用Kuboard配置Kubernetes的存储卷声明Persistent_Volume_Claim
 ---
 
 # 存储卷声明

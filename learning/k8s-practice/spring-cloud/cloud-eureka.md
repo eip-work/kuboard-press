@@ -1,8 +1,8 @@
 ---
-description: 使用 Kuboard 在 Kubernetes 上部署 spring cloud 服务注册发现组件 eureka。
+description: Kubernete教程_使用Kuboard在Kubernetes上部署spring_cloud服务注册发现组件eureka
 ---
 
-# 部署 cloud-eureka
+# 部署cloud-eureka
 
 本文所使用的代码请参考 [cloud-eureka](https://github.com/eip-work/kuboard-example/tree/master/cloud-eureka)
 

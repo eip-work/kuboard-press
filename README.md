@@ -1,7 +1,8 @@
 ---
 home: false
 layout: HomePage
-title: Kuboard 官网 - Kubernetes k8s 国内安装/部署/入门/免费中文教程/实践/微服务管理界面
+title: Kuboard官网_Kubernetes_k8s_国内安装_部署_入门_免费中文教程_实践_微服务管理界面
+description: Kuboard官网首页_Kubernetes_k8s_国内安装_部署_入门_免费中文教程_实践_微服务管理界面
 actionText: 在线体验
 actionText2: 开始使用 →
 actionLink2: /overview/

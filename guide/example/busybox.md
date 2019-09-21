@@ -1,5 +1,5 @@
 ---
-description: 使用 Kuboard 向 Kubernetes 部署一个最简单的 Deployment
+description: 使用Kuboard向Kubernetes部署一个最简单的Deployment
 ---
 
 # 部署 busybox

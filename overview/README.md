@@ -1,8 +1,8 @@
 ---
-description: 介绍 Kuboard - Kubernetes 微服务管理界面，并为 Kubernetes 初学者提供快速的学习路线（含 Kubernetes v1.15.2 安装文档）
+description: Kubernete教程_介绍Kuboard_Kubernetes微服务管理界面_并为Kubernetes初学者提供快速的学习路线_含Kubernetes最新版国内安装文档）
 ---
 
-## Kuboard 简介
+## Kuboard简介
 
 <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 420px;" alt="Kubernetes教程：Kuboard Logo"/>
 
@@ -136,7 +136,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * [Service 概述](/learning/k8s-intermediate/service/service.html)
     * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)
     * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html)
-    * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html) <Badge text="正在撰写" type="warn"/>
+    * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html)
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
     * [如何选择网络插件](/learning/k8s-intermediate/service/cni.html)
   * 存储

@@ -1,5 +1,5 @@
 ---
-description: CIDR Classless Inter-Domain Routing 概念解析
+description: CIDR_Classless_Inter-Domain_Routing_概念解析
 ---
 
 # CIDR

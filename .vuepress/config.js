@@ -1,8 +1,8 @@
 let dateFns = require('date-fns')
 
 module.exports = {
-  title: 'Kuboard - 快速在 Kubernetes 上落地微服务',
-  description: '一款 Kubernetes Dashboard，简化 Kubernetes 的学习和使用，帮助您快速落地 Kubernetes；提供 Kubernetes 免费中文教程、国内安装文档',
+  title: 'Kuboard官网',
+  description: '一款Kubernetes_Dashboard_简化Kubernetes的学习和使用_帮助您快速落地Kubernetes_提供_Kubernetes_免费中文教程_国内安装文档',
   head: [
     ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,Kubernetes入门,K8S教程,K8S入门,K8S安装'}],
     ['script', {}, `
@@ -244,7 +244,7 @@ module.exports = {
                 'k8s-intermediate/service/service-details',
                 'k8s-intermediate/service/service-types',
                 'k8s-intermediate/service/dns',
-                // 'k8s-intermediate/service/connecting',
+                'k8s-intermediate/service/connecting',
                 'k8s-intermediate/service/ingress',
                 'k8s-intermediate/service/cni',
               ]
