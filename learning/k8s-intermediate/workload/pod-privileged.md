@@ -1,5 +1,5 @@
 ---
-description: Kubernete教程_在Kubernetes中为Pod中的容器开启privileged 模式
+description: Kubernetes教程_在Kubernetes中为Pod中的容器开启privileged 模式
 ---
 
 # 容器组_Privileged 模式

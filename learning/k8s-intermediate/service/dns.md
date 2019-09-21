@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_本文介绍了Kubernetes中Service和Pod的DNS分配规则
+description: Kubernetes教程_本文介绍了Kubernetes中Service和Pod的DNS分配规则
 ---
 
 # Service/Pod的DNS

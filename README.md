@@ -70,7 +70,7 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
     * [管理容器的计算资源](https://kuboard.cn/learning/k8s-intermediate/config/computing-resource.html) 
     * [将容器调度到指定的节点](https://kuboard.cn/learning/k8s-intermediate/config/assign-pod-node.html) 
     * [污点和容忍 taints and toleration](https://kuboard.cn/learning/k8s-intermediate/config/taints-and-toleration.html) 
-    * [Secrets](https://kuboard.cn/learning/k8s-intermediate/config/secret.html) 
+    * [Secrets](https://kuboard.cn/learning/k8s-intermediate/config/secrets/) 
 
 ## **Kubernetes 高级**
 

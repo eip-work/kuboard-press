@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_在Kubernetes中_配置污点和容忍taints_and_toleration
+description: Kubernetes教程_在Kubernetes中_配置污点和容忍taints_and_toleration
 ---
 
 # 污点和容忍 taints and toleration

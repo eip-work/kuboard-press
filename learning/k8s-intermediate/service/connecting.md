@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_在Kubernetes中_通过Service连接应用程序
+description: Kubernetes教程_在Kubernetes中_通过Service连接应用程序
 ---
 
 # Service连接应用程序

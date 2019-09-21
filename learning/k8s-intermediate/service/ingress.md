@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_本文介绍Kubernetes_Ingress的概念_包括Ingress基本概念_如何配置Ingress_Controller_如何使用kubectl_Kuboard操作Ingress信息
+description: Kubernetes教程_本文介绍Kubernetes_Ingress的概念_包括Ingress基本概念_如何配置Ingress_Controller_如何使用kubectl_Kuboard操作Ingress信息
 ---
 
 # Ingress通过互联网访问您的应用

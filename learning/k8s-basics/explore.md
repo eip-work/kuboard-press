@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_本文介绍了如何使用kubectl_Kuboard查看和浏览Kubernetes上的节点_容器组_部署等信息_并依据这些信息作出问题诊断
+description: Kubernetes教程_本文介绍了如何使用kubectl_Kuboard查看和浏览Kubernetes上的节点_容器组_部署等信息_并依据这些信息作出问题诊断
 ---
 
 # 2.查看Pods/Nodes

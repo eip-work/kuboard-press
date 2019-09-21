@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_在Kubernetes中_如何选择合适的网络插件CNI
+description: Kubernetes教程_在Kubernetes中_如何选择合适的网络插件CNI
 ---
 
 # 如何选择网络插件

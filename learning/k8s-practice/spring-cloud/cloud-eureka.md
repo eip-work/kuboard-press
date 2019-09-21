@@ -1,5 +1,5 @@
 ---
-description: Kubernete教程_使用Kuboard在Kubernetes上部署spring_cloud服务注册发现组件eureka
+description: Kubernetes教程_使用Kuboard在Kubernetes上部署spring_cloud服务注册发现组件eureka
 ---
 
 # 部署cloud-eureka

@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_本文详细讲解了Kubernetes_Deployment的概念_并描述了如何使用kubectl_Kuboard创建一个Deployment
+description: Kubernetes教程_本文详细讲解了Kubernetes_Deployment的概念_并描述了如何使用kubectl_Kuboard创建一个Deployment
 ---
 
 # 1.部署第一个应用程序

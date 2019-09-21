@@ -1,5 +1,5 @@
 ---
-description: Kubernete教程_介绍Kuboard_Kubernetes微服务管理界面_并为Kubernetes初学者提供快速的学习路线_含Kubernetes最新版国内安装文档）
+description: Kubernetes教程_介绍Kuboard_Kubernetes微服务管理界面_并为Kubernetes初学者提供快速的学习路线_含Kubernetes最新版国内安装文档）
 ---
 
 ## Kuboard简介
@@ -149,7 +149,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * [管理容器的计算资源](/learning/k8s-intermediate/config/computing-resource.html)
     * [将容器调度到指定的节点](/learning/k8s-intermediate/config/assign-pod-node.html)
     * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-and-toleration.html) <Badge text="正在撰写" type="warn"/>
-    * [Secrets](/learning/k8s-intermediate/config/secret.html) <Badge text="正在撰写" type="warn"/>
+    * [Secrets](/learning/k8s-intermediate/config/secrets/)
 
 **Kubernetes 高级**
 

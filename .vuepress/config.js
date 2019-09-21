@@ -267,7 +267,24 @@ module.exports = {
                 'k8s-intermediate/config/computing-resource',
                 'k8s-intermediate/config/assign-pod-node',
                 // 'k8s-intermediate/config/taints-and-toleration',
-                // 'k8s-intermediate/config/secret',
+                {
+                  title: 'Secrets',
+                  collapsable: true,
+                  children: [
+                    'k8s-intermediate/config/secrets/',
+                    // 'k8s-intermediate/config/secrets/create_kubectl',
+                    // 'k8s-intermediate/config/secrets/create_manually',
+                    // 'k8s-intermediate/config/secrets/create_generator',
+                    // 'k8s-intermediate/config/secrets/decode_edit',
+                    // 'k8s-intermediate/config/secrets/use_scenarios',
+                    // 'k8s-intermediate/config/secrets/use_as_file',
+                    // 'k8s-intermediate/config/secrets/use_as_env',
+                    // 'k8s-intermediate/config/secrets/use_image_pull_secrets',
+                    // 'k8s-intermediate/config/secrets/details',
+                    // 'k8s-intermediate/config/secrets/use_cases',
+                    // 'k8s-intermediate/config/secrets/best_practices',
+                  ]
+                }
               ]
             }
           ]

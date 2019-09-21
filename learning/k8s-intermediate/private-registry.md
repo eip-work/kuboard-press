@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_通过Kuboard配置Kubernetes_使用私有registry中的docker镜像
+description: Kubernetes教程_通过Kuboard配置Kubernetes_使用私有registry中的docker镜像
 ---
 
 # 使用私有仓库中的docker镜像

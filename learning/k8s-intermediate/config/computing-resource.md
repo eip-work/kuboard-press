@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_在Kubernetes中管理和分配容器的计算资源
+description: Kubernetes教程_在Kubernetes中管理和分配容器的计算资源
 ---
 
 # 管理容器的计算资源

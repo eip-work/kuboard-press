@@ -1,6 +1,6 @@
 ---
 layout: LearningLayout
-description: Kubernete教程_本文详细讲解了Kubernetes_Scale的概念_并描述了如何使用_kubectl_Kuboard_对一个应用程序进行伸缩操作
+description: Kubernetes教程_本文详细讲解了Kubernetes_Scale的概念_并描述了如何使用_kubectl_Kuboard_对一个应用程序进行伸缩操作
 ---
 
 # 4.伸缩应用程序
