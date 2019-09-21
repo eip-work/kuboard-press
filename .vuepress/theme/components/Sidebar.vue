@@ -11,7 +11,7 @@
       </p>
       <div>
         <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-          <img :src="demo_img" style="width: 226px; height: 127px; border: 1px solid #d7dae2;"></img>
+          <img :src="demo_img" style="width: 226px; height: 127px; border: 1px solid #d7dae2;" alt="Kubernetes教程：Kuboard在线体验"></img>
         </a>
       </div>
       <p>
@@ -22,7 +22,7 @@
         <Qq/>
       </p>
       <p>
-        <img :src="kuboard_qq_img"/>
+        <img :src="kuboard_qq_img" alt="Kubernetes教程：QQ群在线答疑"/>
       </p>
     </div>
   </aside>

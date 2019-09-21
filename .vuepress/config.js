@@ -146,9 +146,9 @@ module.exports = {
           collapsable: false,
           children: [
             'install-docker-desktop',
-            ['install-k8s', '安装 Kubernetes 单Master节点'],
+            ['install-k8s', '安装Kubernetes单Master节点'],
             'install-kubernetes',
-            ['install-k8s-upgrade', '升级 Kubernetes 集群'],
+            ['install-k8s-upgrade', '升级Kubernetes集群'],
             'install-kubectl'
           ]
         },
