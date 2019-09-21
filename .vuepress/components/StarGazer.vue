@@ -58,7 +58,7 @@ export default {
         localStorage.setItem('FIRST_ACCESS', new Date())
       } else {
         // console.log('differenceInMinutes', differenceInMinutes(new Date(), new Date(firstAccess)))
-        if (differenceInMinutes(new Date(), new Date(firstAccess)) >= 20 && !this.dialogVisible) {
+        if (differenceInMinutes(new Date(), new Date(firstAccess)) >= 10 && !this.dialogVisible) {
           this.show()
         }
       }

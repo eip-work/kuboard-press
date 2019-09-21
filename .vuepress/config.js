@@ -191,7 +191,7 @@ module.exports = {
             'k8s-intermediate/private-registry',
             {
               title: '工作负载',
-              collapsable: false,
+              collapsable: true,
               children: [
                 'k8s-intermediate/workload/pod',
                 'k8s-intermediate/workload/pod-lifecycle',
@@ -238,7 +238,7 @@ module.exports = {
             },
             {
               title: '服务发现、负载均衡、网络',
-              collapsable: false,
+              collapsable: true,
               children: [
                 'k8s-intermediate/service/service',
                 'k8s-intermediate/service/service-details',
@@ -251,7 +251,7 @@ module.exports = {
             },
             {
               title: '存储',
-              collapsable: false,
+              collapsable: true,
               children: [
                 'k8s-intermediate/persistent/volume',
                 'k8s-intermediate/persistent/pv',
@@ -261,7 +261,7 @@ module.exports = {
             },
             {
               title: '配置',
-              collapsable: false,
+              collapsable: true,
               children: [
                 'k8s-intermediate/config/config-map',
                 'k8s-intermediate/config/computing-resource',
@@ -290,6 +290,14 @@ module.exports = {
           ]
         },
         {
+          title: 'Kubernetes 高级',
+          collapsable: false,
+          path: 'k8s-advanced/',
+          children: [
+            
+          ]
+        },
+        {
           title: 'Kubernetes 实战',
           collapsable: false,
           children: [
@@ -305,6 +313,14 @@ module.exports = {
               collapsable: false,
               children: [
                 'k8s-practice/spring-cloud/',
+                // 'spring-cloud/cloud-eureka'
+              ]
+            },
+            {
+              title: 'Open Capacity Platform',
+              collapsable: false,
+              children: [
+                'k8s-practice/ocp/',
                 // 'spring-cloud/cloud-eureka'
               ]
             },

@@ -4,10 +4,10 @@
     "docs:build": "vuepress build ."
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.0.4",
-    "@vuepress/plugin-google-analytics": "^1.0.4",
-    "@vuepress/plugin-medium-zoom": "^1.0.4",
-    "@vuepress/plugin-nprogress": "^1.0.4",
+    "@vuepress/plugin-back-to-top": "^1.1.0",
+    "@vuepress/plugin-google-analytics": "^1.1.0",
+    "@vuepress/plugin-medium-zoom": "^1.1.0",
+    "@vuepress/plugin-nprogress": "^1.1.0",
     "babel-plugin-component": "^1.1.1",
     "date-fns": "^1.30.1",
     "vuepress": "^1.0.4",
@@ -22,6 +22,7 @@
     "@vuepress/plugin-active-header-links": "^1.0.0-rc.1",
     "element-ui": "^2.12.0",
     "esm": "^3.2.25",
+    "github3": "^1.2.0",
     "leancloud-storage": "^3.15.0",
     "npm": "^6.11.3",
     "valine": "^1.3.10"
