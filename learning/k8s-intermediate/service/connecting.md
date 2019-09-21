@@ -203,8 +203,252 @@ Kubernetes 支持两种方式发现服务：
 
 ### DNS
 
-Kubernetes 提供了一个 DNS cluster addon Service，可自动为 Service 分配
+Kubernetes 提供了一个 DNS cluster addon，可自动为 Service 分配 DNS name。如果您参考 www.kuboard.cn 上的文档安装 Kubernetes 集群，则该 addon 已经默认安装。
+
+执行命令 `kubectl get services kube-dns --namespace=kube-system` 查看该 addon 在您的集群上是否可用，输出结果如下所示：
+
+```
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
+kube-dns   ClusterIP   10.0.0.10    <none>        53/UDP,53/TCP   8m
+```
+
+本章节假设：
+* 您已经按照本文前面的章节创建了 Service（my-nginx）
+* 您已经安装了 DNS Server（CoreDNS cluster addon）
+
+此时，您可以从集群中任何 Pod 中按 Service 的名称访问该 Service。
+
+* 执行命令 `kubectl run curl --image=radial/busyboxplus:curl -i --tty` 获得 busyboxplus 容器的命令行终端，该命令输出结果如下所示：
+
+```
+Waiting for pod default/curl-131556218-9fnch to be running, status is Pending, pod ready: false
+Hit enter for command prompt
+```
+
+* 然后，单击回车键，并执行命令 `nslookup my-nginx`，输出结果如下所示：
+
+  ```
+  [ root@curl-131556218-9fnch:/ ]$ nslookup my-nginx
+  Server:    10.0.0.10
+  Address 1: 10.0.0.10
+
+  Name:      my-nginx
+  Address 1: 10.0.162.149
+  ```
+
+* 执行命令 `curl my-nginx:80`，可获得 Nginx 的响应。
+
+* 执行命令 `exit` 可推出该容器的命令行
+
+* 执行命令 `kubectl delete deployment curl` 可删除刚才创建的 `curl` 测试容器
+
 
 ## 保护 Service 的安全
 
+到目前为止，我们只是从集群内部访问了 nginx server。在将该 Service 公布到互联网时，您可能需要确保该通信渠道是安全的。为此，您必须：
+
+* 准备 https 证书（购买，或者自签名）
+* 将该 nginx 服务配置好，并使用该 https 证书
+* 配置 Secret，以使得其他 Pod 可以使用该证书
+
+您可按照如下步骤配置 nginx 使用自签名证书：
+
+* 创建密钥对
+  ``` sh
+  openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /d/tmp/nginx.key -out /d/tmp/nginx.crt -subj "/CN=my-nginx/O=my-nginx"
+  ```
+* 将密钥对转换为 base64 编码
+  ``` sh
+  cat /d/tmp/nginx.crt | base64
+  cat /d/tmp/nginx.key | base64
+  ```
+* 创建一个如下格式的 nginxsecrets.yaml 文件，使用前面命令输出的 base64 编码替换其中的内容（base64编码内容不能换行）
+  ```yaml
+  apiVersion: "v1"
+  kind: "Secret"
+  metadata:
+    name: "nginxsecret"
+    namespace: "default"
+  data:
+    nginx.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIekNDQWdlZ0F3SUJBZ0lKQUp5M3lQK0pzMlpJTUEwR0NTcUdTSWIzRFFFQkJRVUFNQ1l4RVRBUEJnTlYKQkFNVENHNW5hVzU0YzNaak1SRXdEd1lEVlFRS0V3aHVaMmx1ZUhOMll6QWVGdzB4TnpFd01qWXdOekEzTVRKYQpGdzB4T0RFd01qWXdOekEzTVRKYU1DWXhFVEFQQmdOVkJBTVRDRzVuYVc1NGMzWmpNUkV3RHdZRFZRUUtFd2h1CloybHVlSE4yWXpDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBSjFxSU1SOVdWM0IKMlZIQlRMRmtobDRONXljMEJxYUhIQktMSnJMcy8vdzZhU3hRS29GbHlJSU94NGUrMlN5ajBFcndCLzlYTnBwbQppeW1CL3JkRldkOXg5UWhBQUxCZkVaTmNiV3NsTVFVcnhBZW50VWt1dk1vLzgvMHRpbGhjc3paenJEYVJ4NEo5Ci82UVRtVVI3a0ZTWUpOWTVQZkR3cGc3dlVvaDZmZ1Voam92VG42eHNVR0M2QURVODBpNXFlZWhNeVI1N2lmU2YKNHZpaXdIY3hnL3lZR1JBRS9mRTRqakxCdmdONjc2SU90S01rZXV3R0ljNDFhd05tNnNTSzRqYUNGeGpYSnZaZQp2by9kTlEybHhHWCtKT2l3SEhXbXNhdGp4WTRaNVk3R1ZoK0QrWnYvcW1mMFgvbVY0Rmo1NzV3ajFMWVBocWtsCmdhSXZYRyt4U1FVQ0F3RUFBYU5RTUU0d0hRWURWUjBPQkJZRUZPNG9OWkI3YXc1OUlsYkROMzhIYkduYnhFVjcKTUI4R0ExVWRJd1FZTUJhQUZPNG9OWkI3YXc1OUlsYkROMzhIYkduYnhFVjdNQXdHQTFVZEV3UUZNQU1CQWY4dwpEUVlKS29aSWh2Y05BUUVGQlFBRGdnRUJBRVhTMW9FU0lFaXdyMDhWcVA0K2NwTHI3TW5FMTducDBvMm14alFvCjRGb0RvRjdRZnZqeE04Tzd2TjB0clcxb2pGSW0vWDE4ZnZaL3k4ZzVaWG40Vm8zc3hKVmRBcStNZC9jTStzUGEKNmJjTkNUekZqeFpUV0UrKzE5NS9zb2dmOUZ3VDVDK3U2Q3B5N0M3MTZvUXRUakViV05VdEt4cXI0Nk1OZWNCMApwRFhWZmdWQTRadkR4NFo3S2RiZDY5eXM3OVFHYmg5ZW1PZ05NZFlsSUswSGt0ejF5WU4vbVpmK3FqTkJqbWZjCkNnMnlwbGQ0Wi8rUUNQZjl3SkoybFIrY2FnT0R4elBWcGxNSEcybzgvTHFDdnh6elZPUDUxeXdLZEtxaUMwSVEKQ0I5T2wwWW5scE9UNEh1b2hSUzBPOStlMm9KdFZsNUIyczRpbDlhZ3RTVXFxUlU9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+    nginx.key: "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRQ2RhaURFZlZsZHdkbFIKd1V5eFpJWmVEZWNuTkFhbWh4d1NpeWF5N1AvOE9ta3NVQ3FCWmNpQ0RzZUh2dGtzbzlCSzhBZi9WemFhWm9zcApnZjYzUlZuZmNmVUlRQUN3WHhHVFhHMXJKVEVGSzhRSHA3VkpMcnpLUC9QOUxZcFlYTE0yYzZ3MmtjZUNmZitrCkU1bEVlNUJVbUNUV09UM3c4S1lPNzFLSWVuNEZJWTZMMDUrc2JGQmd1Z0ExUE5JdWFubm9UTWtlZTRuMG4rTDQKb3NCM01ZUDhtQmtRQlAzeE9JNHl3YjREZXUraURyU2pKSHJzQmlIT05Xc0RadXJFaXVJMmdoY1kxeWIyWHI2UAozVFVOcGNSbC9pVG9zQngxcHJHclk4V09HZVdPeGxZZmcvbWIvNnBuOUYvNWxlQlkrZStjSTlTMkQ0YXBKWUdpCkwxeHZzVWtGQWdNQkFBRUNnZ0VBZFhCK0xkbk8ySElOTGo5bWRsb25IUGlHWWVzZ294RGQwci9hQ1Zkank4dlEKTjIwL3FQWkUxek1yall6Ry9kVGhTMmMwc0QxaTBXSjdwR1lGb0xtdXlWTjltY0FXUTM5SjM0VHZaU2FFSWZWNgo5TE1jUHhNTmFsNjRLMFRVbUFQZytGam9QSFlhUUxLOERLOUtnNXNrSE5pOWNzMlY5ckd6VWlVZWtBL0RBUlBTClI3L2ZjUFBacDRuRWVBZmI3WTk1R1llb1p5V21SU3VKdlNyblBESGtUdW1vVlVWdkxMRHRzaG9reUxiTWVtN3oKMmJzVmpwSW1GTHJqbGtmQXlpNHg0WjJrV3YyMFRrdWtsZU1jaVlMbjk4QWxiRi9DSmRLM3QraTRoMTVlR2ZQegpoTnh3bk9QdlVTaDR2Q0o3c2Q5TmtEUGJvS2JneVVHOXBYamZhRGR2UVFLQmdRRFFLM01nUkhkQ1pKNVFqZWFKClFGdXF4cHdnNzhZTjQyL1NwenlUYmtGcVFoQWtyczJxWGx1MDZBRzhrZzIzQkswaHkzaE9zSGgxcXRVK3NHZVAKOWRERHBsUWV0ODZsY2FlR3hoc0V0L1R6cEdtNGFKSm5oNzVVaTVGZk9QTDhPTm1FZ3MxMVRhUldhNzZxelRyMgphRlpjQ2pWV1g0YnRSTHVwSkgrMjZnY0FhUUtCZ1FEQmxVSUUzTnNVOFBBZEYvL25sQVB5VWs1T3lDdWc3dmVyClUycXlrdXFzYnBkSi9hODViT1JhM05IVmpVM25uRGpHVHBWaE9JeXg5TEFrc2RwZEFjVmxvcG9HODhXYk9lMTAKMUdqbnkySmdDK3JVWUZiRGtpUGx1K09IYnRnOXFYcGJMSHBzUVpsMGhucDBYSFNYVm9CMUliQndnMGEyOFVadApCbFBtWmc2d1BRS0JnRHVIUVV2SDZHYTNDVUsxNFdmOFhIcFFnMU16M2VvWTBPQm5iSDRvZUZKZmcraEppSXlnCm9RN3hqWldVR3BIc3AyblRtcHErQWlSNzdyRVhsdlhtOElVU2FsbkNiRGlKY01Pc29RdFBZNS9NczJMRm5LQTQKaENmL0pWb2FtZm1nZEN0ZGtFMXNINE9MR2lJVHdEbTRpb0dWZGIwMllnbzFyb2htNUpLMUI3MkpBb0dBUW01UQpHNDhXOTVhL0w1eSt5dCsyZ3YvUHM2VnBvMjZlTzRNQ3lJazJVem9ZWE9IYnNkODJkaC8xT2sybGdHZlI2K3VuCnc1YytZUXRSTHlhQmd3MUtpbGhFZDBKTWU3cGpUSVpnQWJ0LzVPbnlDak9OVXN2aDJjS2lrQ1Z2dTZsZlBjNkQKckliT2ZIaHhxV0RZK2Q1TGN1YSt2NzJ0RkxhenJsSlBsRzlOZHhrQ2dZRUF5elIzT3UyMDNRVVV6bUlCRkwzZAp4Wm5XZ0JLSEo3TnNxcGFWb2RjL0d5aGVycjFDZzE2MmJaSjJDV2RsZkI0VEdtUjZZdmxTZEFOOFRwUWhFbUtKCnFBLzVzdHdxNWd0WGVLOVJmMWxXK29xNThRNTBxMmk1NVdUTThoSDZhTjlaMTltZ0FGdE5VdGNqQUx2dFYxdEYKWSs4WFJkSHJaRnBIWll2NWkwVW1VbGc9Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K"
+  ```
+* 使用该文件创建 Secrets
+  ``` sh
+  # 创建 Secrets
+  kubectl apply -f nginxsecrets.yaml
+  # 查看 Secrets
+  kubectl get secrets
+  ```
+  输出结果为：
+  ```
+  NAME                  TYPE                                  DATA      AGE
+  default-token-il9rc   kubernetes.io/service-account-token   1         1d
+  nginxsecret           Opaque                                2         1m
+  ```
+* 修改 nginx 部署，使 nginx 使用 Secrets 中的 https 证书，修改 Service，使其暴露 80 端口和 44额端口。nginx-secure-app.yaml 文件如下所示：
+
+  ``` yaml {10,11,14,37,45,46}
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: my-nginx
+    labels:
+      run: my-nginx
+  spec:
+    type: NodePort
+    ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+      name: http
+    - port: 443
+      protocol: TCP
+      name: https
+    selector:
+      run: my-nginx
+  ---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: my-nginx
+  spec:
+    selector:
+      matchLabels:
+        run: my-nginx
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          run: my-nginx
+      spec:
+        volumes:
+        - name: secret-volume
+          secret:
+            secretName: nginxsecret
+        containers:
+        - name: nginxhttps
+          image: bprashanth/nginxhttps:1.0
+          ports:
+          - containerPort: 443
+          - containerPort: 80
+          volumeMounts:
+          - mountPath: /etc/nginx/ssl
+            name: secret-volume
+  ```
+  ::: tip 关于 nginx-secure-app.yaml
+  * 该文件同时包含了 Deployment 和 Service 的定义
+  * nginx server 监听 HTTP 80 端口和 HTTPS 443 端口的请求， nginx Service 同时暴露了这两个端口
+  * nginx 容器可以通过 `/etc/nginx/ssl` 访问到 https 证书，https 证书存放在 Secrets 中，且必须在 Pod 创建之前配置好。
+  :::
+
+* 执行命令使该文件生效：
+  ``` sh
+  kubectl delete deployments,svc my-nginx
+  kubectl create -f ./nginx-secure-app.yaml
+  ```
+* 此时，您可以从任何节点访问该 nginx server
+  ``` sh
+  kubectl get pods -o yaml | grep -i podip
+      podIP: 10.244.3.5
+  node $ curl -k https://10.244.3.5
+  ...
+  <h1>Welcome to nginx!</h1>
+  ```
+  ::: tip curl -k
+  * 在 curl 命令中指定 —k 参数，是因为我们在生成 https 证书时，并不知道 Pod 的 IP 地址，因此，在执行 curl 命令时必须忽略 CName 不匹配的错误。
+  * 通过创建 Service，我们将 https 证书的 CName 和 Service 的实际 DNS Name 联系起来，因此，我们可以尝试在另一个 Pod 中使用 https 证书的公钥访问 nginx Service。此时，curl 指令不在需要 -k 参数
+  :::
+
+* 创建 curlpod.yaml 文件，内容如下：
+
+  ``` yaml
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: curl-deployment
+  spec:
+    selector:
+      matchLabels:
+        app: curlpod
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: curlpod
+      spec:
+        volumes:
+        - name: secret-volume
+          secret:
+            secretName: nginxsecret
+        containers:
+        - name: curlpod
+          command:
+          - sh
+          - -c
+          - while true; do sleep 1; done
+          image: radial/busyboxplus:curl
+          volumeMounts:
+          - mountPath: /etc/nginx/ssl
+            name: secret-volume
+  ```
+
+* 执行命令，完成 curlpod 的部署
+
+  ``` sh
+  kubectl apply -f ./curlpod.yaml
+  kubectl get pods -l app=curlpod
+  ```
+  输出结果如下：
+  ```
+  NAME                               READY     STATUS    RESTARTS   AGE
+  curl-deployment-1515033274-1410r   1/1       Running   0          1m
+  ```
+* 执行 curl，访问 nginx 的 https 端口（请使用您自己的 Pod 名称）
+  ```sh
+  kubectl exec curl-deployment-1515033274-1410r -- curl https://my-nginx --cacert /etc/nginx/ssl/nginx.crt
+  ...
+  <title>Welcome to nginx!</title>
+  ...
+  ```
+
 ## 暴露 Service
+
+在您的应用程序中，可能有一部分功能需要通过 Service 发布到一个外部的 IP 地址上。Kubernetes 支持如下两种方式：
+* [NodePort](./service-types.html#nodeport)
+* [LoadBalancer](./service-types.html#loadbalancer)
+  * 需要云环境支持，本文不做过多阐述，如需了解，请参考 [Exposing the Service](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service)
+
+在上一个章节 [保护 Service 的安全](#保护-service-的安全)  中创建的 Service 已经是 NodePort 类型的了，此时，如果您的节点有公网地址，则 nginx HTTPS 部署已经可以接受来自于互联网的请求了。
+
+执行命令 `kubectl get svc my-nginx -o yaml | grep nodePort -C 5`，输出结果如下：
+> 结果中的 `nodePort` 将被标记为红色字体
+``` {5,10}
+spec:
+  clusterIP: 10.0.162.149
+  ports:
+  - name: http
+    nodePort: 31704
+    port: 8080
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 32453
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  selector:
+    run: my-nginx
+```
+
+假设您的某一节点的公网 IP 地址为 23.251.152.56，则您可以使用任意一台可上网的机器执行命令 `curl https://23.251.152.56:32453 -k`。输出结果为：
+
+```
+...
+<h1>Welcome to nginx!</h1>
+```
+
+::: tip Ingress
+* 对于 HTTP、HTTPS 形式的访问推荐使用 Ingress 替代这种用法，参考 [Ingress通过互联网访问您的应用](./ingress.html)
+* 对于 TCP、UDP 等形式的访问，您仍然应该使用 Service NodePort
+:::
