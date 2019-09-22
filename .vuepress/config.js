@@ -20,7 +20,8 @@ module.exports = {
   ],
   markdown: {
     toc: { includeLevel: [2, 3] },
-    lineNumbers: true
+    lineNumbers: true,
+    externalLinks: { target: '_blank', rel: 'noopener noreferrer', onclick: 'openOutboundLink(this)' }
   },
   dest: 'docs',
   plugins: {
@@ -172,7 +173,7 @@ module.exports = {
       '/learning/': [
         {
           title: 'Kubernetes 入门',
-          collapsable: false,
+          collapsable: true,
           sidebarDepth: 3,
           children: [
             'k8s-basics/kubernetes-basics',
@@ -186,7 +187,7 @@ module.exports = {
         },
         {
           title: 'Kubernetes 进阶',
-          collapsable: false,
+          collapsable: true,
           children: [
             'k8s-intermediate/private-registry',
             {
@@ -299,7 +300,7 @@ module.exports = {
         },
         {
           title: 'Kubernetes 实战',
-          collapsable: false,
+          collapsable: true,
           children: [
             {
               title: '概述',
@@ -316,14 +317,13 @@ module.exports = {
                 // 'spring-cloud/cloud-eureka'
               ]
             },
-            {
-              title: 'Open Capacity Platform',
-              collapsable: false,
-              children: [
-                'k8s-practice/ocp/',
-                // 'spring-cloud/cloud-eureka'
-              ]
-            },
+            // {
+            //   title: 'Open Capacity Platform',
+            //   collapsable: false,
+            //   children: [
+            //     'k8s-practice/ocp/',
+            //   ]
+            // },
           ]
         }
       ],

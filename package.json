@@ -10,7 +10,7 @@
     "@vuepress/plugin-nprogress": "^1.1.0",
     "babel-plugin-component": "^1.1.1",
     "date-fns": "^1.30.1",
-    "vuepress": "^1.0.4",
+    "vuepress": "^v1.1.0",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-code-switcher": "^1.0.0",
     "vuepress-plugin-element-tabs": "^0.1.8",

@@ -30,7 +30,7 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 
 # Kubernetes 免费教程
 
-本教程的主要依据是：Kubernetes 官网文档，以及使用 Kuboard 落地 Spring Cloud 微服务的实战经验
+Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kuboard 落地 Spring Cloud 微服务的实战经验
 
 ## **Kubernetes 入门**
   * [0. 学习Kubernetes基础知识](https://kuboard.cn/learning/k8s-basics/kubernetes-basics.html) (10分钟)
@@ -89,3 +89,5 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 * [部署服务网关]
 * [部署Web前端]
 * [管理多环境]
+
+Kuboard官网免费提供 Kubernetes教程，Kubernetes安装文档，学习过程中如有疑问，请加QQ群在线答疑。

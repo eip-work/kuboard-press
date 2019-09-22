@@ -133,6 +133,24 @@ export default {
     }
   },
 
+  mounted () {
+    window.openOutboundLink = function (event) {
+      // console.log('openOutboundLink', event.text, new URL(event.href))
+      let e = {
+        hitType: 'event',
+        eventCategory: 'OL:' + new URL(event.href).host,
+        eventAction: 'OL:' + event.href,
+        eventLabel: 'OL:' + event.text
+      }
+      if (window.ga) {
+        window.ga('send', e);
+        // console.log('openOutboundLink Event', e)
+      } else {
+        console.log('开发环境，不发送 ga event', e)
+      }
+    }
+  },
+
   methods: {
     createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
       const bitbucket = /bitbucket.org/
