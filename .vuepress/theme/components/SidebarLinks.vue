@@ -24,7 +24,7 @@
 <script>
 import SidebarGroup from '@theme/components/SidebarGroup.vue'
 import SidebarLink from '@theme/components/SidebarLink.vue'
-import { isActive } from '../util'
+import { isActive } from '@theme/util'
 export default {
   name: 'SidebarLinks',
   components: { SidebarGroup, SidebarLink },
@@ -52,6 +52,7 @@ export default {
         this.$route,
         this.items
       )
+      // console.log('refreshIndex', index)
       if (index > -1) {
         this.openGroupIndex = index
       }
@@ -65,6 +66,7 @@ export default {
   }
 }
 function resolveOpenGroupIndex (route, items) {
+  // console.log(route, items)
   for (let i = 0; i < items.length; i++) {
     const item = items[i]
     if (descendantIsActive(route, item)) {
@@ -74,6 +76,7 @@ function resolveOpenGroupIndex (route, items) {
   return -1
 }
 function descendantIsActive (route, item) {
+  // console.log('descendantIsActive', route, item)
   if (item.type === 'group') {
     return item.children.some(child => {
       if (child.type === 'group') {
