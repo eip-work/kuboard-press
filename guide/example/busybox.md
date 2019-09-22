@@ -1,4 +1,5 @@
 ---
+vssueId: 73
 description: 使用Kuboard向Kubernetes部署一个最简单的Deployment
 ---
 

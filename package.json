@@ -4,6 +4,8 @@
     "docs:build": "vuepress build ."
   },
   "devDependencies": {
+    "@vssue/api-github-v3": "^1.0.3",
+    "@vssue/vuepress-plugin-vssue": "^1.0.3",
     "@vuepress/plugin-back-to-top": "^1.1.0",
     "@vuepress/plugin-google-analytics": "^1.1.0",
     "@vuepress/plugin-medium-zoom": "^1.1.0",

@@ -1,4 +1,5 @@
 ---
+vssueId: 48
 layout: LearningLayout
 description: 本文描述了 Kubernetes DaemonSet 如何调度 Pod
 ---
@@ -51,4 +52,3 @@ nodeAffinity:
 | node.kubernetes.io/memory-pressure     | NoSchedule | 1.8+    |                                                              |
 | node.kubernetes.io/unschedulable       | NoSchedule | 1.12+   | 默认调度器针对 DaemonSet 容器组，容忍节点的 `unschedulable `属性 |
 | node.kubernetes.io/network-unavailable | NoSchedule | 1.12+   | 默认调度器针对 DaemonSet 容器组，在其使用 host network 时，容忍节点的 `network-unavailable` 属性 |
-

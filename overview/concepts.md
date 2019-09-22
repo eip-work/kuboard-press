@@ -1,4 +1,5 @@
 ---
+vssueId: 12
 description: Kuboard通过图形化操作界面以及无YAML操作_帮助降低_Kubernetes_学习门槛。
 ---
 

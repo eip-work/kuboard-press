@@ -1,4 +1,5 @@
 ---
+vssueId: 40
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中清理 Deployment 中旧的 ReplicaSet
 ---

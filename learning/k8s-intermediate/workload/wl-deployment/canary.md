@@ -1,4 +1,5 @@
 ---
+vssueId: 41
 layout: LearningLayout
 description: 本文描述了如何通过 Deployment 执行灰度发布（金丝雀发布）
 ---

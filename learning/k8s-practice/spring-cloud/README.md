@@ -1,4 +1,5 @@
 ---
+vssueId: 68
 layout: LearningLayout
 description: Kubernetes教程_微服务参考架构_包含微服务运行时_构建及测试_部署及运维_监控及评估__设计和研发Kuboard的初心便源于此SpringCloud微服务参考架构。
 ---

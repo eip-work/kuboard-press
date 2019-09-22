@@ -1,4 +1,5 @@
 ---
+vssueId: 27
 layout: LearningLayout
 description: Kubernetes教程_本文为初学者介绍了一套最合适的Kubernetes入门教程_该教程源自于Kubernetes官方网站_作者对其进行了翻译_并根据初学者的理解情况做了适当的改写
 ---

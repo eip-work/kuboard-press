@@ -1,4 +1,5 @@
 ---
+vssueId: 38
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中暂停 Deployment 的更新，和继续 Deployment 的更新
 ---

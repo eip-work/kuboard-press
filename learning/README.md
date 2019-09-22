@@ -1,4 +1,5 @@
 ---
+vssueId: 9
 layout: LearningLayout
 description: Kubernetes免费中文教程目录
 ---

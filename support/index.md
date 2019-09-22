@@ -1,4 +1,5 @@
 ---
+vssueId: 71
 description: Kubernetes教程_本文描述了如何获得Kuboard授权
 ---
 

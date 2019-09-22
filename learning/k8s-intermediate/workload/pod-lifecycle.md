@@ -1,4 +1,5 @@
 ---
+vssueId: 30
 layout: LearningLayout
 description: Kubernetes教程_本文描述了Kubernetes中Pod容器组的生命周期
 ---

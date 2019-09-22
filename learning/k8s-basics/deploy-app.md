@@ -1,4 +1,5 @@
 ---
+vssueId: 21
 layout: LearningLayout
 description: Kubernetes教程_本文详细讲解了Kubernetes_Deployment的概念_并描述了如何使用kubectl_Kuboard创建一个Deployment
 ---

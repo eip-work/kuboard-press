@@ -36,6 +36,18 @@ module.exports = {
         return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
       }
     },
+    '@vssue/vuepress-plugin-vssue': {
+      // set `platform` rather than `api`
+      platform: 'github',
+      locale: 'zh-CN',
+      autoCreateIssue: true,
+      admins: ['shaohq'],
+      // all other options of Vssue are allowed
+      owner: 'eip-work',
+      repo: 'kuboard-press',
+      // clientId: 'f96af83d4bff4e2b9e3e',
+      // clientSecret: 'cf5686d68d4aab6d3bfa256da9a714049b239c1f',
+    },
     // 'vuepress-plugin-zooming': {
     //   // 支持点击缩放的图片元素的选择器
     //   // 默认值： '.theme-default-content img'
@@ -55,7 +67,8 @@ module.exports = {
     'vuepress-plugin-element-tabs': {},
     // 'vuepress-plugin-baidu-autopush':{},
     'sitemap': {
-      hostname: 'https://kuboard.cn'
+      hostname: 'https://kuboard.cn',
+      outFile: '3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRl.xml'
     },
     'seo': {
       siteTitle: (_, $site) => $site.title,
@@ -317,13 +330,13 @@ module.exports = {
                 // 'spring-cloud/cloud-eureka'
               ]
             },
-            // {
-            //   title: 'Open Capacity Platform',
-            //   collapsable: false,
-            //   children: [
-            //     'k8s-practice/ocp/',
-            //   ]
-            // },
+            {
+              title: 'Open Capacity Platform',
+              collapsable: false,
+              children: [
+                'k8s-practice/ocp/',
+              ]
+            },
           ]
         }
       ],
@@ -398,16 +411,6 @@ module.exports = {
           collapsable: false,
           children: [
             'change-log/v1.0.x',
-          ]
-        }
-      ],
-
-      '/devops/': [
-        {
-          title: 'Devops',
-          collapsable: false,
-          children: [
-            ''
           ]
         }
       ],

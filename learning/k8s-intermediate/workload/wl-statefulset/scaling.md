@@ -1,4 +1,5 @@
 ---
+vssueId: 44
 layout: LearningLayout
 description: 本文描述了 Kubernetes StatefulSet 的部署和伸缩
 ---

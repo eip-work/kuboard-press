@@ -1,4 +1,5 @@
 ---
+vssueId: 8
 description: Kubernetes教程_介绍Kuboard_Kubernetes微服务管理界面_并为Kubernetes初学者提供快速的学习路线_含Kubernetes最新版国内安装文档）
 ---
 

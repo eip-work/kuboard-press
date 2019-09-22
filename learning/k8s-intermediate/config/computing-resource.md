@@ -1,4 +1,5 @@
 ---
+vssueId: 63
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中管理和分配容器的计算资源
 ---

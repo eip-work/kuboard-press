@@ -1,4 +1,5 @@
 ---
+vssueId: 19
 description: Kubernete安装文档_详细介绍如何将Kuboard升级到最新版本。
 ---
 

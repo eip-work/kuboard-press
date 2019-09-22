@@ -1,4 +1,5 @@
 ---
+vssueId: 39
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中查看 Deployment 的状态
 ---

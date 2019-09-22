@@ -1,4 +1,5 @@
 ---
+vssueId: 55
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了Kubernetes中Service和Pod的DNS分配规则
 ---

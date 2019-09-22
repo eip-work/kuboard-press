@@ -1,4 +1,5 @@
 ---
+vssueId: 43
 layout: LearningLayout
 description: 本文描述了 Kubernetes StatefulSet 的基本信息：Components、Pod Selector、Pod Identity
 ---

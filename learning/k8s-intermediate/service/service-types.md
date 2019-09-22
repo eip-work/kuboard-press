@@ -1,4 +1,5 @@
 ---
+vssueId: 54
 layout: LearningLayout
 description: Kubernetes教程_Kubernetes中发布Service的方式_ServiceType
 ---

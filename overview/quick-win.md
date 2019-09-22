@@ -1,4 +1,5 @@
 ---
+vssueId: 10
 description: Kuboard提供Kubernetes图形化管理界面_Kubernetes最新版本安装手册_SpringCloud微服务部署实战案例_免费自助无需商务谈判_帮助用户快速落地Kubernetes
 ---
 

@@ -1,4 +1,5 @@
 ---
+vssueId: 65
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_配置和使用_Secret
 ---

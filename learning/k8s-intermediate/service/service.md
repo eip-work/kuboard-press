@@ -1,4 +1,5 @@
 ---
+vssueId: 52
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了Kubernetes中服务发现的机制以及如何使用服务发现
 ---

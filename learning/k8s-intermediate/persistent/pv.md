@@ -1,4 +1,5 @@
 ---
+vssueId: 60
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了存储卷PersistentVolume_存储卷声明PersistentVolumeClaim的概念_他们的关系_以及如何使用
 ---

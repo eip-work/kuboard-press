@@ -1,4 +1,5 @@
 ---
+vssueId: 36
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中回滚 Deployment
 ---

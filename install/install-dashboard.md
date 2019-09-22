@@ -1,4 +1,5 @@
 ---
+vssueId: 13
 description: Kubernete安装文档_Kuboard的安装手册_包括安装Kuboard的前提条件_与Kubernetes的版本兼容性_安装步骤_以及完成安装后如何访问Kuboard界面。
 # storyBook:
 #   title: '安装 Kuboard'

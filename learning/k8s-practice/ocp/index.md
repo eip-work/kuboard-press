@@ -1,4 +1,5 @@
 ---
+vssueId: 69
 layout: LearningLayout
 description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微服务平台OCP_open_capacity_platform微服务能力开放平台
 ---
@@ -8,7 +9,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
 ## 使用 Kuboard 在 K8S 上部署 OCP
 
-Kuboard网站将陆续连载如何使用 Kuboard 部署 OCP 的如下组件：
+Kuboard 网站将陆续 **连载** 如何使用 Kuboard 部署 OCP 的如下组件：
 * eureka-server
 * auth-server
 * user-center
@@ -17,9 +18,13 @@ Kuboard网站将陆续连载如何使用 Kuboard 部署 OCP 的如下组件：
 
 与 OCP 相关的问题，请加 OCP 的 QQ群 483725710
 
+[进入 OCP 首页](https://gitee.com/owenwangwen/open-capacity-platform)
+
 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=8d8ae84021c97e31010fd8e44f518e1129ebd3be9ee0c004ec2cf68e8860b6c2" onclick="openOutboundLink(this)">一键加入OCP社群 <img style="vertical-align: top;" border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ocp&amp;cp微服务" title="ocp&amp;cp微服务"></a>
 
-[进入 OCP 首页](https://gitee.com/owenwangwen/open-capacity-platform)
+<p>
+	<img src="./index.assets/143151_36a5c07e_869801.png" style="max-width: 160px;" alt="Kubernetes教程_OCP_QQ群"></img>
+</p>
 
 ## OCP 介绍
 
@@ -74,6 +79,40 @@ Kuboard网站将陆续连载如何使用 Kuboard 部署 OCP 的如下组件：
 	- 基于rancher的容器化部署
 	- 基于docker的elk日志监控
 	- 基于docker的服务动态扩容 
+
+## 代码结构
+
+<p>
+	<img src="./index.assets/214757_e3408bdc_869801.png" style="max-width: 720px;" alt="Kubernetes教程_OCP_代码结构"></img>
+</p>
+
+## 能力开放管理平台
+
+![Kubernetes教程_OCP_能力开放管理平台](./index.assets/image-20190922181901564.png)
+
+
+
+## APM 监控
+
+![Kubernetes教程_OCP_APM监控](./index.assets/image-20190922181953050.png)
+
+
+
+## 系统监控
+
+![Kubernetes教程_OCP_系统监控](./index.assets/image-20190922182043859.png)
+
+## 灰度发布
+
+![Kubernetes教程_OCP_灰度发布](./index.assets/image-20190922182129758.png)
+
+
+
+## 阿波罗配置中心
+
+![Kubernetes教程_OCP_阿波罗配置中心](./index.assets/185527_3e2e61a9_1441068.jpeg)
+
+
 
 
 ## 用户权益

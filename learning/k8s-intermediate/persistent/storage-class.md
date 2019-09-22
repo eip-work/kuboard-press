@@ -1,4 +1,5 @@
 ---
+vssueId: 61
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了存储类的概念及其使用
 ---

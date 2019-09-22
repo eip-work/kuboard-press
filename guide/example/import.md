@@ -1,4 +1,5 @@
 ---
+vssueId: 76
 description: 通过Kuboard将一个预先定义好的SpringCloud微服务样例程序导入到Kubernetes中。
 ---
 

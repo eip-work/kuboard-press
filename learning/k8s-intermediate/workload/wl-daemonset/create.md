@@ -1,4 +1,5 @@
 ---
+vssueId: 47
 layout: LearningLayout
 description: 本文描述了 Kubernetes 中如何创建 DaemonSet
 ---

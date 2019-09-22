@@ -1,4 +1,5 @@
 ---
+vssueId: 67
 layout: LearningLayout
 description: Kubernetes教程_本文描述了一个经典微服务参考架构_并且通过三个视图（集群概览、名称空间、工作负载）理解微服务与Kubernetes的映射关系。
 ---

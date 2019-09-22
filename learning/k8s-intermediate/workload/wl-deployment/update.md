@@ -1,4 +1,5 @@
 ---
+vssueId: 35
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中更新 Deployment
 ---

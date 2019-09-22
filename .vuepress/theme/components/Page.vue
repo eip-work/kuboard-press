@@ -3,11 +3,14 @@
     <slot name="top"/>
 
     <Content class="theme-default-content"/>
-    <div style="text-align: center; margin-bottom: 10px;">
+    <div style="text-align: center; margin-bottom: 10px;" v-if="$page.path.indexOf('/learning/') === 0">
+      <a href="https://github.com/eip-work/kuboard-press" target="_blank">如果您觉得 Kubernetes教程 有帮到您，点击此处，给个 Github Star，谢谢！</a>
+    </div>
+    <div style="text-align: center; margin-bottom: 10px;" v-else>
       <a href="https://github.com/eip-work/kuboard-press" target="_blank">如果您觉得这篇文档有帮到您，点击此处，给个 Github Star，谢谢！</a>
     </div>
     <!-- <Valine></Valine> -->
-    <footer class="page-edit">
+    <footer class="page-edit" style="max-width: 1000px;">
       <div
         class="edit-link"
         v-if="editLink"
@@ -29,7 +32,7 @@
       </div>
     </footer>
 
-    <div class="page-nav" v-if="prev || next">
+    <div class="page-nav" style="max-width: 1000px;" v-if="prev || next">
       <p class="inner">
         <span
           v-if="prev"
@@ -59,17 +62,18 @@
         </span>
       </p>
     </div>
-
+    <PageVssue class="theme-default-content" style="max-width: 1000px; margin-top: -1.6rem; padding-top: 0;"></PageVssue>
     <slot name="bottom"/>
   </main>
 </template>
 
 <script>
 import { resolvePage, outboundRE, endingSlashRE } from '../util'
+import PageVssue from './PageVssue'
 
 export default {
   props: ['sidebarItems'],
-
+  components: { PageVssue },
   computed: {
     lastUpdated () {
       return this.$page.lastUpdated

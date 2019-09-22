@@ -1,4 +1,5 @@
 ---
+vssueId: 70
 description: 熟悉Kuboard_on_Kubernetes_的最佳途径。
 ---
 

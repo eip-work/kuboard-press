@@ -1,4 +1,5 @@
 ---
+vssueId: 14
 description: Kubernete安装文档_本文介绍了如何在Windows_Mac电脑安装Kubernetes测试集群
 ---
 

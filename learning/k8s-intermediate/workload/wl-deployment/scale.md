@@ -1,4 +1,5 @@
 ---
+vssueId: 37
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中水平伸缩 Deployment （scaling up / scaling down）
 ---

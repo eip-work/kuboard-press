@@ -41,7 +41,7 @@
         else {
             bp.src = 'http://push.zhanzhang.baidu.com/push.js';
         }
-        var s = document.getElementsByTagName("script")[0];
+        var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(bp, s);
     })();
     </script>

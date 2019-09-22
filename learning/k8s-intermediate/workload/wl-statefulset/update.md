@@ -1,4 +1,5 @@
 ---
+vssueId: 45
 layout: LearningLayout
 description: 本文描述了 Kubernetes StatefulSet 的更新
 ---

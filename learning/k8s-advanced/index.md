@@ -1,4 +1,5 @@
 ---
+vssueId: 66
 layout: LearningLayout
 description: Kubernetes教程_高级篇_主要涉及日志采集_安全_监控_联邦等内容
 ---

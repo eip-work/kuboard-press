@@ -1,4 +1,5 @@
 ---
+vssueId: 75
 description: 使用Kuboard管理Kubernetes存储类StorageClass
 ---
 

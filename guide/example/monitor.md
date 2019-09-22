@@ -1,4 +1,5 @@
 ---
+vssueId: 77
 description: 使用Kuboard在Kubernetes上安装监控套件，并对example微服务实现资源层监控、中间件层监控、链路追踪和APM监控
 ---
 

@@ -1,4 +1,5 @@
 ---
+vssueId: 23
 layout: LearningLayout
 description: Kubernetes教程_本文详细讲解了Kubernetes_Service的概念_并描述了如何使用kubectl_Kuboard创建一个Service_以使得部署在Kubernetes上的容器可以被访问
 ---

@@ -1,4 +1,5 @@
 ---
+vssueId: 17
 description: Kubernete安装文档_使用kubeadm升级kubernetes集群
 ---
 

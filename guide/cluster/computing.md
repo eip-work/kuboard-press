@@ -1,4 +1,5 @@
 ---
+vssueId: 74
 description: 使用Kuboard管理Kubernetes计算节点
 ---
 

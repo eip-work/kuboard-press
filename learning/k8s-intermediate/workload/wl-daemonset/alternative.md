@@ -1,4 +1,5 @@
 ---
+vssueId: 51
 layout: LearningLayout
 description: 本文描述了 Kubernetes DaemonSet 的概念、行为及用法
 ---

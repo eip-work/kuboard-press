@@ -1,4 +1,5 @@
 ---
+vssueId: 42
 layout: LearningLayout
 description: 本文描述了 Kubernetes StatefulSet 的概念、行为及用法
 ---

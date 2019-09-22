@@ -1,4 +1,5 @@
 ---
+vssueId: 58
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_如何选择合适的网络插件CNI
 ---
