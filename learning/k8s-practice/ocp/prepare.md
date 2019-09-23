@@ -36,9 +36,9 @@ Open Capacity Platform 是基于 Java Spring Cloud 的微服务架构，为了�
 
 ::: tip 关于构建环境
 您可以根据自己的情况将构建环境与部署环境分开，例如：
-* 学习时，参考本教程，使用 kubernetes 的 master 节点完成 构建和镜像推送
-* 开发时，在自己的笔记本上完成 构建和镜像推送
-* 工作中，使用 Jenkins Pipeline 或者 gitlab-runner Pipeline 来完成 构建和镜像推送
+* 学习时，参考本教程，使用 kubernetes 的 master 节点完成 ***构建和镜像推送***
+* 开发时，在自己的笔记本上完成 ***构建和镜像推送***
+* 工作中，使用 Jenkins Pipeline 或者 gitlab-runner Pipeline 来完成 ***构建和镜像推送***
 :::
 
 **构建环境和部署环境分开**
@@ -47,7 +47,7 @@ Open Capacity Platform 是基于 Java Spring Cloud 的微服务架构，为了�
     <img src="./prepare.assets/image-20190923161110141.png" alt="kubernetes教程_OCP实战：准备OCP构建和部署环境-将构建环境和部署环境分开" style="max-width: 600px;"/>
   </p>
 
-本文假设您已经完成了 Kubernetes 集群的安装，假设您准备在 Kubernetes master 节点上执行构建过程，并将使用简短的篇幅介绍在 master 节点上做好构建准备
+本文假设您已经完成了 Kubernetes 集群的安装，假设您准备在 Kubernetes master 节点上执行构建过程，并将使用简短的篇幅介绍如何在 master 节点上做好构建环境准备
 * 安装 JDK 1.8
 * 安装 maven 3.6.2
 * 安装 git

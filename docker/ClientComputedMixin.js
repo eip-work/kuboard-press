@@ -78,9 +78,12 @@ module.exports = siteData => {
         || page.title // inferred title
       )
       if (page.path.indexOf('/learning/') === 0) {
-        return 'Kubernetes教程_' + selfTitle
+        return selfTitle + '_Kubernetes教程_学习K8S'
       }
-      if (selfTitle === 'Kuboard官网_Kubernetes_k8s_安装_教程') {
+      if (page.path.indexOf('/install/') === 0) {
+        return selfTitle + '_K8S安装部署'
+      }
+      if (selfTitle === 'Kuboard官网_Kubernetes教程_k8s国内安装_部署_入门_学习_实践_中文文档_微服务管理界面') {
         return selfTitle
       }
       return siteTitle

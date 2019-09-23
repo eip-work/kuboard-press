@@ -5,7 +5,9 @@ description: Kubernetes教程_介绍Kuboard_Kubernetes微服务管理界面_并�
 
 ## Kuboard简介
 
-<img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 420px;" alt="Kubernetes教程：Kuboard Logo"/>
+<p style="max-width: 420px;">
+  <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes教程：Kuboard Logo"/>
+</p>
 
 <div style="border-top: 1px solid #eaecef;
     padding: 1.2rem 0;
