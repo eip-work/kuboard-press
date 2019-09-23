@@ -96,7 +96,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.0
-  * 当前已更新了 <font color="red"> 51 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 52 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
   
@@ -253,37 +253,36 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install-kubelet.sh | sh
 * 初始化 master 节点时，如果因为中间某些步骤的配置出错，想要重新初始化 master 节点，请先执行 `kubeadm reset` 操作
 :::
 
-::: warning
-* POD_SUBNET 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
+::: danger 关于初始化时用到的环境变量
+* **APISERVER_NAME** 不能是 master 的 hostname
+* **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
+* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
 :::
 
-:::: tabs type:border-card
-
-::: tab 快速初始化 lazy
+<el-tabs type="border-card">
+<el-tab-pane label="快速初始化">
 
 ``` sh
 # 只在 master 节点执行
 # 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
 # export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
 export MASTER_IP=x.x.x.x
-# 替换 apiserver.demo 为 您想要的 dnsName (不建议使用 master 的 hostname 作为 APISERVER_NAME)
+# 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.16.0/init-master.sh | sh
 ```
-
-:::
-
-::: tab 手工初始化 lazy
+</el-tab-pane>
+<el-tab-pane label="手工初始化">
 
 ``` sh
 # 只在 master 节点执行
 # 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
 # export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
 export MASTER_IP=x.x.x.x
-# 替换 apiserver.demo 为 您想要的 dnsName (不建议使用 master 的 hostname 作为 APISERVER_NAME)
+# 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
@@ -292,10 +291,8 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 <<< @/.vuepress/public/install-script/v1.16.0/init-master.sh
 
-:::
-
-::::
-
+</el-tab-pane>
+</el-tabs>
 
 **检查 master 初始化结果**
 

@@ -160,13 +160,14 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 * 初始化 master 节点时，如果因为中间某些步骤的配置出错，想要重新初始化 master 节点，请先执行 `kubeadm reset` 操作
 :::
 
-::: warning
-* POD_SUBNET 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
+::: danger 关于初始化时用到的环境变量
+* **APISERVER_NAME** 不能是 master 的 hostname
+* **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
+* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
 :::
 
-:::: tabs type:border-card
-
-::: tab 快速初始化 lazy
+<el-tabs type="border-card">
+<el-tab-pane label="快速初始化">
 
 在第一个 master 节点 demo-master-a-1 上执行
 
@@ -180,9 +181,8 @@ echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 ```
 
-:::
-
-::: tab 手工初始化 lazy
+</el-tab-pane>
+<el-tab-pane label="手工初始化">
 
 ``` sh
 # 只在 master 节点执行
@@ -195,9 +195,8 @@ echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 
 <<< @/.vuepress/public/install-script/v1.15.3/init-master.sh
 
-:::
-
-::::
+</el-tab-pane>
+</el-tabs>
 
 ***执行结果***
 
