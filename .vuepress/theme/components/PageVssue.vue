@@ -38,7 +38,8 @@ export default {
         repo: 'kuboard-press',
         clientId: this.isLocalHost ? 'f96af83d4bff4e2b9e3e' : '8141f5c205ad2f6d90d5',
         clientSecret: this.isLocalHost ? 'cf5686d68d4aab6d3bfa256da9a714049b239c1f' : 'b3e238508a2e8da9f2b355662b4cb3e62ecaa1d4',
-        issueContent: (options, url) => { return 'https://kuboard.cn' + _this.$route.path }
+        issueContent: (options, url) => { return 'https://kuboard.cn' + _this.$route.path },
+        perPage: 50
       }
       return result
     },

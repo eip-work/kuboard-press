@@ -286,17 +286,17 @@ module.exports = {
                   collapsable: true,
                   children: [
                     'k8s-intermediate/config/secrets/',
-                    // 'k8s-intermediate/config/secrets/create_kubectl',
-                    // 'k8s-intermediate/config/secrets/create_manually',
-                    // 'k8s-intermediate/config/secrets/create_generator',
-                    // 'k8s-intermediate/config/secrets/decode_edit',
-                    // 'k8s-intermediate/config/secrets/use_scenarios',
-                    // 'k8s-intermediate/config/secrets/use_as_file',
-                    // 'k8s-intermediate/config/secrets/use_as_env',
-                    // 'k8s-intermediate/config/secrets/use_image_pull_secrets',
+                    'k8s-intermediate/config/secrets/create-kubectl',
+                    // 'k8s-intermediate/config/secrets/create-manually',
+                    // 'k8s-intermediate/config/secrets/create-generator',
+                    'k8s-intermediate/config/secrets/decode-edit',
+                    // 'k8s-intermediate/config/secrets/use-scenarios',
+                    // 'k8s-intermediate/config/secrets/use-as_file',
+                    // 'k8s-intermediate/config/secrets/use-as_env',
+                    // 'k8s-intermediate/config/secrets/use-image-pull-secrets',
                     // 'k8s-intermediate/config/secrets/details',
-                    // 'k8s-intermediate/config/secrets/use_cases',
-                    // 'k8s-intermediate/config/secrets/best_practices',
+                    // 'k8s-intermediate/config/secrets/use-cases',
+                    // 'k8s-intermediate/config/secrets/best-practices',
                   ]
                 }
               ]
