@@ -18,7 +18,7 @@ description: 使用 kubeadm 安装 Kubernetes v1.15.1 的集群，单Master节�
 
 * **在线答疑** QQ 群
   
-  ![Kubernetes安装：在线答疑QQ群](../../overview/README.assets/kuboard_qq.png)
+  ![Kubernetes安装：在线答疑QQ群](/images/kuboard_qq.png)
 
 ## 配置要求
 

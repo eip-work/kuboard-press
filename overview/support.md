@@ -13,4 +13,4 @@ description: Kubernetes教程_如何获得Kuboard相关的支持和帮助？
 
 QQ 群
 
-![Kubernetes教程：QQ群在线答疑](./support.assets/kuboard_qq.png)
+![Kubernetes教程：QQ群在线答疑](/images/kuboard_qq.png)

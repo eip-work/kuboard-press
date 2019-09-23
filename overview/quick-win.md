@@ -53,7 +53,7 @@ Kuboard 提供 Spring Cloud 在 Kubernetes 上部署的实战案例分析，手�
 
 使用 https://kuboard.cn 网站上提供的任何文档、资源、方案、软件 **完全免费**，已经有许多技术团队参考这些资料，结合其已有经验，顺利地完成 Kubernetes + 微服务的落地交付。碰到问题时，您也可以通过 Kuboard 社群获得支持。
 
-![Kubernetes教程：QQ群在线答疑](./README.assets/kuboard_qq.png)
+![Kubernetes教程：QQ群在线答疑](/images/kuboard_qq.png)
 
 Kuboard 团队的盈利方式是为企业提供业务、IT咨询和定制化开发的服务。主要服务内容包括：
 * 业务架构设计及领域建模

@@ -98,4 +98,4 @@ Kuboard 官网  http://kuboard.cn
 
 Kuboard QQ 群
 
-![Kubernetes教程：QQ群在线答疑](./README.assets/kuboard_qq.png)
+![Kubernetes教程：QQ群在线答疑](/images/kuboard_qq.png)

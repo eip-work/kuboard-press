@@ -22,7 +22,7 @@
         <Qq/>
       </p>
       <p>
-        <img :src="kuboard_qq_img" alt="Kubernetes教程：QQ群在线答疑"/>
+        <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
       </p>
     </div>
   </aside>
@@ -30,7 +30,6 @@
 
 <script>
 import SidebarLinks from '@theme/components/SidebarLinks.vue'
-import kuboard_qq from './kuboard_qq.png'
 // import demo from './image-20190723104717575.png'
 import demo from './1564841972085.gif'
 
@@ -41,7 +40,6 @@ export default {
   components: { SidebarLinks },
   data () {
     return {
-      kuboard_qq_img: kuboard_qq,
       demo_img: demo
     }
   }

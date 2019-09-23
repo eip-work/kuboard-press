@@ -20,7 +20,7 @@ description: Kubernetes 最新稳定版 v1.15.2 的快速安装文档。该文�
 
 * **在线答疑** QQ 群
   
-  ![Kubernetes安装：QQ群在线答疑](/overview/README.assets/kuboard_qq.png)
+  ![Kubernetes安装：QQ群在线答疑](/images/kuboard_qq.png)
 
 ## 配置要求
 
