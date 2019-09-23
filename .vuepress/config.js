@@ -287,7 +287,7 @@ module.exports = {
                   children: [
                     'k8s-intermediate/config/secrets/',
                     'k8s-intermediate/config/secrets/create-kubectl',
-                    // 'k8s-intermediate/config/secrets/create-manually',
+                    'k8s-intermediate/config/secrets/create-manually',
                     // 'k8s-intermediate/config/secrets/create-generator',
                     'k8s-intermediate/config/secrets/decode-edit',
                     // 'k8s-intermediate/config/secrets/use-scenarios',
