@@ -18,6 +18,10 @@ Kuboard 网站将陆续 **连载** 如何使用 Kuboard 部署 OCP 的如下组�
 
 需要跟进连载教程的同学，请提前 [安装Kubernetes单Master节点](/install/install-k8s.html)
 
+该系列连载文章的目录如下：
+* [准备OCP的构建环境和部署环境](./prepare.html)
+
+
 与 OCP 相关的问题，请加 OCP 的 QQ群 483725710
 
 [进入 OCP 首页](https://gitee.com/owenwangwen/open-capacity-platform)

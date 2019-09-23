@@ -335,6 +335,7 @@ module.exports = {
               collapsable: false,
               children: [
                 'k8s-practice/ocp/',
+                'k8s-practice/ocp/prepare.html',
               ]
             },
           ]
