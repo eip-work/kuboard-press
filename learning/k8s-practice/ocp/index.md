@@ -9,19 +9,25 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
 ## 使用 Kuboard 在 K8S 上部署 OCP
 
-Kuboard 网站将陆续 **连载** 如何使用 Kuboard 部署 OCP 的如下组件：
+Kuboard 网站将陆续 **连载** 如何使用 Kuboard 在 Kubernetes 上部署 OCP 的如下组件：
 * eureka-server
 * auth-server
 * user-center
 * api-gateway
 * back-center
 
-需要跟进连载教程的同学，请提前 [安装Kubernetes单Master节点](/install/install-k8s.html)
-
 该系列连载文章的目录如下：
 * [准备OCP的构建环境和部署环境](./prepare.html)
+* [构建OCP并推送到 docker registry]
+* [部署 eureka-server]
+* [部署 auth-server]
+* [部署 user-center]
+* [部署 api-gateway]
+* [部署 back-center]
+* [导出部署配置]
+* [在新的名称空间导入部署配置]
 
-
+::: tip OCP答疑
 与 OCP 相关的问题，请加 OCP 的 QQ群 483725710
 
 [进入 OCP 首页](https://gitee.com/owenwangwen/open-capacity-platform)
@@ -31,6 +37,7 @@ Kuboard 网站将陆续 **连载** 如何使用 Kuboard 部署 OCP 的如下组�
 <p>
 	<img src="./index.assets/143151_36a5c07e_869801.png" style="max-width: 160px;" alt="Kubernetes教程_OCP_QQ群"></img>
 </p>
+:::
 
 ## OCP 介绍
 
