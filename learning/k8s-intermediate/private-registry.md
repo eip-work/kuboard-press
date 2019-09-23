@@ -18,7 +18,7 @@ description: Kubernetes教程_通过Kuboard配置Kubernetes_使用私有registry
 
 | 参数名称       | 参数值                  | 备注           |
 | -------------- | ----------------------- | -------------- |
-| registry地址   | my-registry.example.com |                |
+| registry地址   | my-registry.example.com | 推荐使用域名，也可以是 ip 地址       |
 | registry端口   | 5000                    | 必须支持 HTTPS |
 | registry用户名 | myusername              |                |
 | registry密码   | mypassowrd              |                |
@@ -55,7 +55,7 @@ docker pull my-registry.example.com:5000/example/web-example:v1.0.1
 
   | 字段名称        | 填写内容                     | 备注                         |
   | --------------- | ---------------------------- | ---------------------------- |
-  | 名称            | my-registry.example.com      | 可以使用便于您自己记忆的名字 |
+  | 名称            | my-registry-secret      | 可以使用便于您自己记忆的名字 |
   | 类型            | docker仓库密码               |                              |
   | docker server   | my-registry.example.com:5000 |                              |
   | docker username | myusername                   |                              |
@@ -63,7 +63,8 @@ docker pull my-registry.example.com:5000/example/web-example:v1.0.1
 
   如下图所示
 
-  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190902223052044.png)
+  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190923164105388.png)
+
 
 * 点击 **保存** 按钮
 
@@ -75,9 +76,9 @@ docker pull my-registry.example.com:5000/example/web-example:v1.0.1
 
 * 如果要使用私有 registry 中的 docker 镜像，请正确填写如下两个字段：
 
-  * Docker仓库的用户名密码，请选择刚才创建的 `my-registry.example.com`
+  * **Docker仓库的用户名密码**：请选择刚才创建的 `my-registry-secret`
 
-  * 镜像，请填写 `my-registry.example.com:5000/example/web-example:v1.0.1`
+  * **镜像**：请填写 `my-registry.example.com:5000/example/web-example:v1.0.1`
 
     该字段由如下几个部分组成：
 
@@ -89,8 +90,7 @@ docker pull my-registry.example.com:5000/example/web-example:v1.0.1
     * 红色部分：image 名字
     * 棕色部分：image 标签
 
-![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190902223708740.png)
-
+![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190923164229519.png)
 
 
 ::: tip
