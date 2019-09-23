@@ -26,7 +26,7 @@ description: Kubernete安装文档_本文介绍了如何在Windows_Mac电脑安�
 * **打开 docker-desktop 的 preference 面板**
 
   <p>
-    <img src="./install-docker-desktop.assets/image-20190914223622217.png" style="max-width: 600px;" alt="Kubernetes教程：DockerDesktop/>
+    <img src="./install-docker-desktop.assets/image-20190914223622217.png" style="max-width: 600px;" alt="Kubernetes教程：DockerDesktop"/>
   </p>
 
 * **切换到 Kubernetes 标签页**

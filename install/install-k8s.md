@@ -102,7 +102,7 @@ export default {
   
   <Qq></Qq> 也可以扫描二维码加群
   <p>
-    <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+    <img src="/images/kuboard_qq.png" alt="Kubernetes安装：QQ群在线答疑"/>
   </p>
   <!-- <div>
     <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
@@ -142,7 +142,7 @@ export default {
 安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
 <p>
-<img src="/images/topology/k8s.png" style="max-width: 720px;">
+<img src="/images/topology/k8s.png" style="max-width: 720px;" alt="Kubernetes安装：Kubernetes安装拓扑图">
 </p>
 
 ::: tip
