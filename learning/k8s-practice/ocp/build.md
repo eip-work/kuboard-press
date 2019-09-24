@@ -69,8 +69,8 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
   [INFO] ------------------------------------------------------------------------
   ```
 ::: tip
-* **构建时间**：在首次执行时 `mvn clean package -DskipTests` 时，由于需要从 maven 中央仓库拉取 OCP 所依赖的 jar 包以及 maven 所需要的 plugin 等资源，耗时比较长，作者第一次执行该命令时等候了 32 分钟。
-  
+* **构建时间**：
+  * 在首次执行时 `mvn clean package -DskipTests` 时，由于需要从 maven 中央仓库拉取 OCP 所依赖的 jar 包以及 maven 所需要的 plugin 等资源，耗时比较长，作者第一次执行该命令时等候了 32 分钟。
   * 在第二次以及以后的执行中，只需要 1 分钟左右的时间即可完成构建
 * **构建结果**：完成构建后，jar包存在于 java 模块的 `./target/` 目录下，例如 eureka-server 子模块的jar包位于路径 `/root/open-capacity-platform/register-center/eureka-server/target/eureka-server.jar`
   * jar文件所在目录是 java 项目的一种约定
@@ -156,7 +156,7 @@ Login Succeeded
 
 ### auth-server
 
-过程与 eureka 相同，因此只写命令，不再写过程
+过程与 eureka-server 相同，因此只写命令，不再写过程
 
 ``` sh
 # 切换到目录
@@ -205,7 +205,7 @@ docker push ocpsample/back-center:latest
 使用 ocpsample 的用户名和密码登录 [https://hub.docker.com](https://hub.docker.com) 的 `Repositories` 菜单下可查看推送上去的镜像，如下图所示：
 
 ::: tip
-* 其使用您自己在 hub.docker.com 的用户名和密码
+* 请使用您自己在 hub.docker.com 的用户名和密码
 :::
 
 ![image-20190924201906038](./build.assets/image-20190924201906038.png)
@@ -245,7 +245,7 @@ Open Capacity Platform 中，使用一个三层结构在组织java项目：
 **这种代码结构的优点：**
 
 * 可以按照模块进行权限控制
-* 可以将 CI/CD 的 pipeline 文件直接存在 项目的根路径，并按模块控制 pipline
+* 可以将 DevOps 的 pipeline 文件直接存在 项目的根路径，并按模块控制 pipeline
 
 **缺点**
 
