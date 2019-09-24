@@ -46,6 +46,14 @@ export default {
       }
     }
   },
+  computed: {
+    envOk () {
+      if (this.form.checked.length === 3) {
+        return true
+      }
+      return false
+    }
+  },
   mounted () {
   },
   watch: {
@@ -212,6 +220,18 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ## 安装 docker / kubelet
 
+<!-- <transition-group name="el-zoom-in-top"> -->
+<div v-show="!envOk" key="not">
+
+::: danger 请确认您的环境
+* 必须核对上面三个选项 **显示安装 docker/kubelet 的文档**
+* 当前步骤不能跳过
+:::
+
+</div>
+<el-collapse-transition>
+<div v-show="envOk" key="ok">
+
 使用 root 身份在所有节点执行如下代码，以安装软件：
 - docker
 - nfs-utils
@@ -242,6 +262,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install-kubelet.sh | sh
 
 ::::
 
+</div>
+</el-collapse-transition>
 <!-- </div>
 
 <div slot="step3"> -->
