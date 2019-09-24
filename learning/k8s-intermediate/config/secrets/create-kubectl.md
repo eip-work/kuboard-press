@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_使用kubectl创建Secret
 ---
 
-# 使用 kubectl 创建 Secrets
+# 创建Secrets（使用kubectl）
 
 假设某个 Pod 需要访问数据库。在您执行 kubectl 命令所在机器的当前目录，创建文件 `./username.txt` 文件和 `./password.txt` 暂存数据库的用户名和密码，后续我们根据这两个文件配置 kubernetes secrets。
 

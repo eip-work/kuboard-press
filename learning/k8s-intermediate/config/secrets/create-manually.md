@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_使用kubectl创建Secret
 ---
 
-# 手动创建 Secrets
+# 创建Secrets（手动）
 
 和创建其他类型的 API 对象（Pod、Deployment、StatefulSet、ConfigMap 等）一样，您也可以先在 yaml 文件中定义好 Secret，然后通过 `kubectl apply -f` 命令创建。此时，您可以通过如下两种方式在 yaml 文件中定义 Secret：
 * **data**：使用 data 字段时，取值的内容必须是 base64 编码的
