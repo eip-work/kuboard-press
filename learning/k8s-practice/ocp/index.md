@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微服务平台OCP_open_capacity_platform微服务能力开放平台
 ---
 
-# Open_Capacity_Platform介绍
+# 在Kubernetes上部署SpringCloud
 
 
 ## 使用 Kuboard 在 K8S 上部署 OCP
