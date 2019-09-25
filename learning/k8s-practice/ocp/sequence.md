@@ -6,7 +6,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
 # 部署顺序
 
-## 部署顺序及其原因
+## 部署顺序的确定
 
 本教程将在 KUbernet是上部署 Spring Cloud - Open Capacity Platform 微服务架构的如下模块：
 
@@ -18,7 +18,9 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
 他们之间的依赖关系如下图所示：
 
-![image-20190925213741256](./sequence.assets/image-20190925213741256.png)
+<p>
+  <img src="./sequence.assets/image-20190926064754936.png" style="max-width: 720px;" alt="Kubernetes教程：Spring Cloud 组件部署顺序">
+</p>
 
 本教程将按照如下顺序部署这些微服务模块：
 
@@ -28,7 +30,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 4. 服务网关 api-gateway
 5. 后台中心 back-center
 
-在决定按照什么顺序部署这些微服务组件时，需要考虑的因素有：
+在决定按照什么顺序部署这些微服务组件时，主要考虑的因素有：
 
 * **依赖关系**
   * 0 依赖（不依赖任何其他模块）的最先部署
@@ -46,7 +48,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
     * 服务提供者先于服务调用者存在，遵循了依赖关系
     * 服务调用者可以先于服务提供者存在并正常启动，此时，如果服务提供者完成启动并向注册中心注册，服务调用者后续才发现提供者的存在，并进一步向服务提供者发送接口调用请求。此时服务注册中心使得我们可以向一个已经运行多时（api-server已存在）的情况下添加新的微服务（比方说 product-center）
   ::: tip
-  按照解耦关系这几个微服务模块的部署顺序也可以调成为：
+  按照解耦关系这几个微服务模块的部署顺序也可以调整为：
   1. 服务注册中心 eureka-server
   2. 服务网关 api-gateway
   3. 用户中心 user-center

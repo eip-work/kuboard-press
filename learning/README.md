@@ -84,6 +84,15 @@ description: Kubernetes免费中文教程目录
 
 在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
 
-* [OCP介绍](/leanring/k8s-practice/ocp/)
+* [OCP介绍](/learning/k8s-practice/ocp/)
 * [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
-* [构建Docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)
+* [构建docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)
+* [部署顺序](/learning/k8s-practice/ocp/sequence.html)
+* [在K8S上部署eureka-server](/learning/k8s-practice/ocp/eureka-server.html)
+* [在K8S上部署auth-server]
+* [在K8S上部署user-center]
+* [在K8S上部署api-gateway]
+* [在K8S上部署back-center]
+* [重新审视配置信息]
+* [导出部署配置]
+* [在新的名称空间导入部署配置]

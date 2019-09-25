@@ -15,10 +15,10 @@ description: Kubernetes教程_在Kubernetes中将Pod容器组调度到指定的�
 * 将相互通信频繁的两个 Pod 分配到同一个高可用区的节点
 
 Kubernetes 一共提供了四种方法，可以将 Pod 调度到指定的节点上，这些方法从简便到复杂的顺序如下：
-* 指定节点 nodeName <Badge text="Kuboard 已支持" type="success"/>
-* 节点选择器 nodeSelector <Badge text="Kuboard 已支持" type="success"/> <Badge text="Kubernetes 推荐用法" type="error"/>
-* Node isolation/restriction <Badge text="Kuboard 暂不支持" type="warn"/>
-* Affinity and anti-affinity <Badge text="Kuboard 暂不支持" type="warn"/>
+* 指定节点 nodeName
+* 节点选择器 nodeSelector <Badge text="Kubernetes 推荐用法" type="error"/>
+* Node isolation/restriction
+* Affinity and anti-affinity
 
 本文后续章节逐个描述了他们的用法
 
