@@ -38,7 +38,7 @@ Kubernetes 自动创建包含访问 Kubernetes APIServer 身份信息的 Secret�
 * [使用 kubectl 创建 Secret](./create-kubectl.html)
 * [手动创建 Secret](./create-manually.html)
 * [使用 Generator 创建 Secret](./create-generator.html)
-* 使用 Kuboard 创建 Secret
+* [使用 Kuboard 创建 Secret](./create-kuboard.html)
 
 ## 解码和编辑
 

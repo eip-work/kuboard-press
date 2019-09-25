@@ -289,7 +289,7 @@ module.exports = {
                     'k8s-intermediate/config/secrets/create-kubectl',
                     'k8s-intermediate/config/secrets/create-manually',
                     'k8s-intermediate/config/secrets/create-generator',
-                    // 'k8s-intermediate/config/secrets/create-kuboard',
+                    'k8s-intermediate/config/secrets/create-kuboard',
                     'k8s-intermediate/config/secrets/decode-edit',
                     // 'k8s-intermediate/config/secrets/use-scenarios',
                     // 'k8s-intermediate/config/secrets/use-as_file',
@@ -338,6 +338,8 @@ module.exports = {
                 ['k8s-practice/ocp/', 'OCP介绍'],
                 'k8s-practice/ocp/prepare',
                 'k8s-practice/ocp/build',
+                'k8s-practice/ocp/sequence',
+                'k8s-practice/ocp/eureka-server',
               ]
             },
           ]
