@@ -201,9 +201,9 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ```
 :::
 
-<div style="display: inline-block; width: calc(100% - 400px);"></div>
+<!-- <div style="display: inline-block; width: calc(100% - 400px);"></div> -->
 <div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
-<el-form :model="form" ref="envForm" :rules="rules" style="text-align: right;">
+<el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
 <el-form-item prop="checked" class="env-form-item">
 <el-checkbox-group v-model="form.checked" style="height: 120px;">
   <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
@@ -244,7 +244,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 
-curl -sSL https://kuboard.cn/install-script/v1.16.0/install-kubelet.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.16.0/install_kubelet.sh | sh
 
 ```
 
@@ -254,7 +254,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install-kubelet.sh | sh
 
 手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/v1.16.0/install-kubelet.sh
+<<< @/.vuepress/public/install-script/v1.16.0/install_kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -294,7 +294,7 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.16.0/init-master.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.16.0/init_master.sh | sh
 ```
 </el-tab-pane>
 <el-tab-pane label="手工初始化">
@@ -311,7 +311,7 @@ export POD_SUBNET=10.100.0.1/20
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.16.0/init-master.sh
+<<< @/.vuepress/public/install-script/v1.16.0/init_master.sh
 
 </el-tab-pane>
 </el-tabs>

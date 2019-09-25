@@ -6,6 +6,7 @@ description: Kubernetes免费中文教程目录
 
 # Kubernetes免费中文教程
 
+
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
 * Kubernetes 初学者
 * 学习过 Kubernetes，但未能将其投产的技术爱好者
@@ -80,3 +81,9 @@ description: Kubernetes免费中文教程目录
 * [部署服务网关]
 * [部署Web前端]
 * [管理多环境]
+
+在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
+
+* [OCP介绍](/leanring/k8s-practice/ocp/)
+* [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
+* [构建Docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)

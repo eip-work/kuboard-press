@@ -174,6 +174,11 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 * [部署Web前端]
 * [管理多环境]
 
+在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
+
+* [OCP介绍](/leanring/k8s-practice/ocp/)
+* [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
+* [构建Docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)
 
 ### Kubernetes 有经验者
 

@@ -90,4 +90,10 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 * [部署Web前端]
 * [管理多环境]
 
+在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
+
+* [OCP介绍](https://kuboard.cn/leanring/k8s-practice/ocp/)
+* [准备OCP的构建环境和部署环境](https://kuboard.cn/learning/k8s-practice/ocp/prepare.html)
+* [构建Docker镜像并推送到仓库](https://kuboard.cn/learning/k8s-practice/ocp/build.html)
+
 Kuboard官网免费提供 K8S教程，K8S安装文档，学习过程中如有疑问，请加QQ群在线答疑。
