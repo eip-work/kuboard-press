@@ -18,12 +18,13 @@ Kuboard 网站将陆续 **连载** 如何使用 Kuboard 在 Kubernetes 上部署
 
 该系列连载文章的目录如下：
 * [准备OCP的构建环境和部署环境](./prepare.html)
-* [构建OCP并推送到 docker registry]
-* [部署 eureka-server]
-* [部署 auth-server]
-* [部署 user-center]
-* [部署 api-gateway]
-* [部署 back-center]
+* [构建docker镜像并推送到仓库](./build.html)
+* [部署顺序](./sequence.html)
+* [在K8S上部署eureka-server](eureka-server.html)
+* [在K8S上部署auth-server]
+* [在K8S上部署user-center]
+* [在K8S上部署api-gateway]
+* [在K8S上部署back-center]
 * [导出部署配置]
 * [在新的名称空间导入部署配置]
 
