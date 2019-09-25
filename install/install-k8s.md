@@ -61,6 +61,21 @@ export default {
       if (this.form.checked.length === 3) {
         
       }
+    },
+    envOk () {
+      if (envOk) {
+        let e = {
+          hitType: 'event',
+          eventCategory: 'install-k8s',
+          eventAction: 'envOK',
+          eventLabel: '安装k8s-已确认环境符合条件'
+        }
+        if (window.ga) {
+          window.ga('send', e);
+        } else {
+          console.log('开发环境，不发送 ga event', e)
+        }
+      }
     }
   },
   methods: {
@@ -224,8 +239,8 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 <div v-show="!envOk" key="not">
 
 ::: danger 请确认您的环境
-* 必须核对上面三个选项 **显示安装 docker/kubelet 的文档**
-* 当前步骤不能跳过
+* 必须核对上一个步骤中的三个勾选框才能 **显示安装 docker/kubelet 的文档**
+* 否则不能继续
 :::
 
 </div>
@@ -278,7 +293,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install_kubelet.sh | sh
 ::: danger 关于初始化时用到的环境变量
 * **APISERVER_NAME** 不能是 master 的 hostname
 * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
-* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
+* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/20 命令，不做修改
 :::
 
 <el-tabs type="border-card">
@@ -479,7 +494,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[安装 Kuboard](/install/install-dashboard.html)
+[安装 Kuboard - 微服务管理界面](/install/install-dashboard.html)
 
 安装 Kuboard 之前先
   <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
