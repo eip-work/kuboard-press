@@ -25,7 +25,7 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
 
 ### 微信即时答复
 
-* 非常能够理解大家学习 Kubernetes 的热情，QQ群人数有了一个快速的增长
+* 由于大家学习 Kubernetes 的热情，QQ群人数有了一个快速的增长
 * 为了给真正需要的人分配更多提问机会，设置了微信群聊
 * 必要时可提供 TeamViewer 远程协助
 <div>
