@@ -14,7 +14,7 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
 
 ## Kuboard 支持
 
-### QQ社群支持
+### QQ群在线答疑
 
   <p>
     <Qq/>
@@ -25,12 +25,12 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
 
 ### 微信即时答复
 
-* QQ群里的人数越来越多，热心的网友也越来越多，作者每天只能抽出一部分时间回答QQ群里的问题
-* 微信群聊里的问题，通常可立刻答复，并承诺2小时内给出解答
+* 非常能够理解大家学习 Kubernetes 的热情，QQ群人数有了一个快速的增长
+* 为了给真正需要的人分配更多提问机会，设置了微信群聊
 * 必要时可提供 TeamViewer 远程协助
 <div>
   <div style="margin-top: 10px;">
-      <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span>
+      <span>扫第一个二维码完成打赏，扫第二个加微信进群聊（请发送打赏截图）</span>
     <p style="margin-top: 10px;">
       <img src="/images/dz.png" style="width: 200px; margin-right: 150px;"></img>
       <img src="/images/dz2.jpeg" style="width: 200px;"></img>

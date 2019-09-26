@@ -18,9 +18,8 @@
         <strong><a href="https://github.com/shaohq/kuboard-issues/issues" target="_blank">提交 BUG</a></strong>
       </p>
       <strong>在线答疑</strong>
-      <p>
-        <Qq/>
-      </p>
+      <Qq/>
+
       <p>
         <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
       </p>
