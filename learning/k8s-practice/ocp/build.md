@@ -21,6 +21,16 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
   *  `project --> properties --> docker.host` 修改为 `unix:///var/run/docker.sock`
   *  `project --> properties --> docker.image.prefix` 修改为 `ocpsample` （此处使用你在 https://hub.docker.com 的账号）
 
+      ::: tip
+
+      如果您使用自己的 docker 镜像仓库，您的 `docker.image.prefix` 要复杂一些，请参考 [使用私有仓库中的docker镜像](/learning/k8s-intermediate/private-registry.html)。具体而言，前缀应该由您的docker镜像仓库的多个参数组成，例如：
+      <font color="blue" weight="500">my-registry.example.com</font>:<font color="green" weight="500">5000</font>/<font color="purple" weight="500">example</font>
+      * 蓝色部分：registry 地址
+      * 绿色部分：registry 端口
+      * 紫色部分：repository 名字
+
+      :::
+
 ``` xml {11,12}
   <properties>
     <java.version>1.8</java.version>

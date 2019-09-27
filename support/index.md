@@ -7,6 +7,7 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
 
 ## Kuboard 授权声明
 
+* 许多网友在问，Kuboard收费么？
 * 使用 Kuboard 是 <font color="red">免费</font> 的，无论您是用于学习还是用于生产
 * 将来会推出 Kuboard Plus，当前所有的功能，将来仍然免费。Kuboard Plus 侧重点：
   * 更完善的权限管理（当前只区分集群管理员权限和只读权限）

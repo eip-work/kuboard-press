@@ -10,7 +10,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 * [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
 
 * [构建docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)
-    
+  
     > 也可以使用 `ocpsample/eureka-server:latest` 镜像
 * 理解 Spring Cloud Eureka 组件，请参考 [Eureka服务注册与发现](https://www.jianshu.com/p/c18d140ad9f6)
 
@@ -57,7 +57,11 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
 * 使用 StatefulSet 部署 eureka-server，副本数量为 3
 * 使用 OCP eureka-server 的 application-slave0.yml 这个 profile
-* 使用环境变量覆盖 `eureka.client.service-url.defaultZone` 取值，将其设置为： `http://cloud-eureka-0.cloud-eureka:1111/eureka,http://cloud-eureka-1.cloud-eureka:1111/eureka,http://cloud-eureka-2.cloud-eureka:1111/eureka`
+* 使用环境变量覆盖 `eureka.client.service-url.defaultZone` 取值，将其设置为： `http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka`
+  ::: tip
+  通过 cloud-eureka-0.cloud-eureka 也可以访问到对应的 POD，但是此处必须使用完整域名，否则 eureka-server 将不被认为是 available
+  :::
+* 使用环境变量覆盖 `eureka.instance.prefer-ip-address` 取值，将其设置为：`false`
 * 为 eureka-server 创建 Ingress，并分配域名 `cloud-eureka.ocp.demo.kuboard.cn`
   * 请参考 [Ingress通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html#ingress)
   * 该域名由 `工作负载名`.`名称空间`.`集群名字`.`一级域名` 组成，这种命名规则下，只需要将 `*.demo.kuboard.cn` 的域名解析指向集群 Ingress Controller 的地址就可以，在测试环境中配置新的模块时非常方便。
@@ -81,14 +85,17 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
   | 容器名称 | eureka-server                                                |      |
   | 镜像     | ocpsample/eureka-server:latest                               |  也可以使用自己构建的镜像    |
   | 抓取策略 | Always                                                       |      |
-  | 环境变量 | <div style="max-width: 600px;">eureka.client.service-url.defaultZone=http://cloud-eureka-0.cloud-eureka:1111/eureka,http://cloud-eureka-1.cloud-eureka:1111/eureka,http://cloud-eureka-2.cloud-eureka:1111/eureka</div> |      |
+  | 环境变量 | <div style="max-width: 600px;"><span style="color: blue;">eureka.client.service-url.defaultZone=</span>http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka</div> <div style="max-width: 600px;"><span style="color: blue;">eureka.instance.prefer-ip-address=</span>false</div> |      |
   | Service  | NodePort：<br />协议 `TCP` 服务端口 `1111`节点端口 `31111` 容器端口 `1111` |   可从节点端口访问   |
-  | Ingress  | 域名：1cloud-eureka.ocp.demo.kuboard.cn1<br />路由配置： 映射URL `/` 服务端口 `1111` |  可通过域名访问    |
+  | Ingress  | 域名：cloud-eureka.ocp.demo.kuboard.cn<br />路由配置： 映射URL `/` 服务端口 `1111` |  可通过域名访问    |
 
-  ![Kubernetes教程：在K8S中部署SpringCloud](./eureka-server.assets/image-20190926205118309.png)
+  ![Kubernetes教程：在K8S中部署SpringCloud](./eureka-server.assets/image-20190927104441574.png)
+
 
 * 点击 **保存** 按钮
+
 * 点击 **应用** 按钮
+
 * 点击 **完成** 按钮
   * 等待 eureka-server 完成部署
   * 根据您服务器到 hub.docker.com 的网速不同，等候的时间约 1-5 分钟
@@ -106,4 +113,4 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
 eureka-server 界面如下图所示：
 
-![image-20190926205939831](./eureka-server.assets/image-20190926205939831.png)
+![Kubernetes教程：在K8S部署SpringCloud服务注册中心Eureka-Server](./eureka-server.assets/image-20190927140934092.png)
