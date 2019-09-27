@@ -1,10 +1,10 @@
 let dateFns = require('date-fns')
 
 module.exports = {
-  title: 'Kuboard官网',
+  title: 'Kuboard官网_Kubernetes管理界面',
   description: '一款Kubernetes_Dashboard_简化Kubernetes的学习和使用_帮助您快速落地Kubernetes_提供_Kubernetes_免费中文教程_国内安装文档',
   head: [
-    ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,Kubernetes入门,K8S教程,K8S入门,K8S安装,学习Kubernetes'}],
+    ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,Kubernetes入门,K8S教程,K8S入门,K8S安装,学习Kubernetes,Kubernetes管理界面,Kuberntees Dashboard'}],
     ['script', {}, `
     var _hmt = _hmt || [];
     (function() {
@@ -340,6 +340,7 @@ module.exports = {
                 'k8s-practice/ocp/build',
                 'k8s-practice/ocp/sequence',
                 'k8s-practice/ocp/eureka-server',
+                'k8s-practice/ocp/mysql',
               ]
             },
           ]

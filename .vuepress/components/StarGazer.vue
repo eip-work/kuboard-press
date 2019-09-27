@@ -7,7 +7,7 @@
       :before-close="handleClose"
       :append-to-body	="true">
       <div style="text-align: center;">
-        <span style="font-size: 18px; weight: 500;">英雄，Kuboard 恭候多时啦，请给个 github star 吧！</span>
+        <span style="font-size: 18px; weight: 500;">英雄，Kuboard 恭候多时啦，请给一个 github star 吧！</span>
         <!-- <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
         <div style="margin-top: 10px;">
           <span style="font-size: 13px;">扫第一个二维码完成打赏，扫第二个进微信群聊</span>
@@ -20,7 +20,7 @@
         <div style="margin-bottom: 10px;">github star 后，本窗口将不再弹出</div> -->
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="reset">一会儿再说</el-button>
+        <el-button @click="reset">残忍拒绝</el-button>
         <el-button type="primary" @click="gotoStar">够义气，现在就去！</el-button>
       </span>
     </el-dialog>
@@ -73,8 +73,8 @@ export default {
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'StarGazer',
-          eventAction: 'ShowStarGazer',
-          eventLabel: '显示 StarGazer'
+          eventAction: 'SG:ShowStarGazer',
+          eventLabel: 'SG:显示StarGazer'
         });
         console.log('发送成功 ga event')
       } else {
@@ -88,8 +88,8 @@ export default {
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'StarGazer',
-          eventAction: 'WaitWait',
-          eventLabel: '一会儿再说'
+          eventAction: 'SG:RefuseGivingStar',
+          eventLabel: 'SG:残忍拒绝'
         });
         console.log('发送成功 ga event')
       } else {
@@ -104,8 +104,8 @@ export default {
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'StarGazer',
-          eventAction: 'GotoGithub',
-          eventLabel: '前往 github'
+          eventAction: 'SG:GotoGithub',
+          eventLabel: 'SG:前往github'
         });
         console.log('发送成功 ga event')
       } else {
@@ -118,8 +118,8 @@ export default {
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'StarGazer',
-          eventAction: 'BeforeClose',
-          eventLabel: '赠人玫瑰，手有余香'
+          eventAction: 'SG:BeforeClose',
+          eventLabel: 'SG:赠人玫瑰，手有余香'
         });
         console.log('发送成功 ga event')
       } else {
