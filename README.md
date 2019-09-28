@@ -69,7 +69,7 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * [使用 ConfigMap 配置您的应用程序](https://kuboard.cn/learning/k8s-intermediate/config/config-map.html)
     * [管理容器的计算资源](https://kuboard.cn/learning/k8s-intermediate/config/computing-resource.html) 
     * [将容器调度到指定的节点](https://kuboard.cn/learning/k8s-intermediate/config/assign-pod-node.html) 
-    * [污点和容忍 taints and toleration](https://kuboard.cn/learning/k8s-intermediate/config/taints-and-toleration.html) 
+    * [污点和容忍 taints and toleration](https://kuboard.cn/learning/k8s-intermediate/config/taints-toleration/) 
     * [Secrets](https://kuboard.cn/learning/k8s-intermediate/config/secrets/) 
 
 ## **Kubernetes高级**

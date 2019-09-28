@@ -73,10 +73,13 @@ module.exports = siteData => {
       }
 
       const siteTitle = this.$siteTitle
-      const selfTitle = page.frontmatter.home ? null : (
+      let selfTitle = page.frontmatter.home ? null : (
         page.frontmatter.title // explicit title
         || page.title // inferred title
       )
+      if (page.frontmatter.titlePrefix !== undefined) {
+        selfTitle = page.frontmatter.titlePrefix + '_' + selfTitle
+      }
       if (page.path.indexOf('/learning/') === 0) {
         return selfTitle + '_Kubernetes教程_学习K8S'
       }

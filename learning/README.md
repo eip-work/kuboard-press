@@ -59,7 +59,7 @@ description: Kubernetes免费中文教程目录
     * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html)
     * [管理容器的计算资源](/learning/k8s-intermediate/config/computing-resource.html)
     * [将容器调度到指定的节点](/learning/k8s-intermediate/config/assign-pod-node.html)
-    * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-and-toleration.html) <Badge text="正在撰写" type="warn"/>
+    * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-toleration/)
     * [Secrets](/learning/k8s-intermediate/config/secrets/)
 
 ## **Kubernetes 高级**

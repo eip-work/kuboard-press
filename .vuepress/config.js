@@ -280,7 +280,13 @@ module.exports = {
                 'k8s-intermediate/config/config-map',
                 'k8s-intermediate/config/computing-resource',
                 'k8s-intermediate/config/assign-pod-node',
-                // 'k8s-intermediate/config/taints-and-toleration',
+                {
+                  title: '污点和容忍',
+                  collapsable: true,
+                  children: [
+                    'k8s-intermediate/config/taints-toleration/',
+                  ]
+                },
                 {
                   title: 'Secrets',
                   collapsable: true,
@@ -341,6 +347,7 @@ module.exports = {
                 'k8s-practice/ocp/sequence',
                 'k8s-practice/ocp/eureka-server',
                 'k8s-practice/ocp/mysql',
+                'k8s-practice/ocp/redis',
               ]
             },
           ]

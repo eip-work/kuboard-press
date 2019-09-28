@@ -151,7 +151,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
     * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html)
     * [管理容器的计算资源](/learning/k8s-intermediate/config/computing-resource.html)
     * [将容器调度到指定的节点](/learning/k8s-intermediate/config/assign-pod-node.html)
-    * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-and-toleration.html) <Badge text="正在撰写" type="warn"/>
+    * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-toleration/)
     * [Secrets](/learning/k8s-intermediate/config/secrets/)
 
 **Kubernetes 高级**
@@ -176,7 +176,7 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 
 在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
 
-* [OCP介绍](/leanring/k8s-practice/ocp/)
+* [OCP介绍](/learning/k8s-practice/ocp/)
 * [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
 * [构建docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)
 * [部署顺序](/learning/k8s-practice/ocp/sequence.html)
