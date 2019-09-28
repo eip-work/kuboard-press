@@ -72,6 +72,13 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
   ADD 01.user-center.sql /docker-entrypoint-initdb.d/01.user-center.sql
   EXPOSE 3306
   ```
+
+  ::: warning SQL脚本问题
+  01.user-center.sql 脚本中包含一些 create FUNCTION 的语句，已经确认这些 FUNCTION 并不被用到。在执行 coker build 之前，请确保这些 create FUNCTION 的语句被删除，否则您将在 mysql 初始化时碰到如下错误：
+  ```
+  ERROR 1064 (42000) at line 246: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+  ```
+  :::
   
 * 执行命令 `docker build -f dockerfile_user-center -t ocpsample/user-center-mysql:latest .`
 
