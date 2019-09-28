@@ -7,16 +7,16 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud_op
 
 # 在K8S上部署mysql
 
-OCP 的 auth-center 和 user-center 都有自己的数据库，同时 auth-center、user-center 和 api-gateway 又都依赖于 redis 缓存服务。这使得我们的部署结构演变成下图所示：
+OCP 的 auth-center 和 user-center 都有自己的数据库，同时 auth-center、user-center 和 api-gateway 又都依赖于 redis 缓存服务 和 log-center 数据库。这使得我们的部署结构演变成下图所示：
 
-我们必须先完成 db-auth-center、db-user-center 和 redis 的部署，才能继续部署 auth-center 和 user-center。本文描述了如何部署 db-auth-center、db-user-center。
+我们必须先完成 db-auth-center、db-user-center、db-log-center 和 redis 的部署，才能继续部署 auth-center 和 user-center。本文描述了如何部署 db-auth-center、db-user-center、db-log-center。
 
 ::: danger
 将 mysql 部署到 K8S 中，可以非常便捷地搭建一套测试环境，但是，在生产环境里，并不建议直接将 mysql 部署到 K8S 上。
 :::
 
 <p style="max-width: 720px;">
-  <img src="./mysql.assets/image-20190927140239925.png" alt="Kubernetes教程：在K8s上部署MySQL/Redis">
+  <img src="./mysql.assets/image-20190928183401521.png" alt="Kubernetes教程：在K8s上部署MySQL/Redis">
 </p>
 
 ## 构建并推送mysql镜像
@@ -83,6 +83,24 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
 * 执行命令 `docker build -f dockerfile_user-center -t ocpsample/user-center-mysql:latest .`
 
 * 执行命令 `docker push ocpsample/user-center-mysql:latest`
+  
+  大约 20 秒，可完成镜像推送
+
+### log-center-mysql
+
+* 在 master 节点上，执行命令 `cd /root/open-capacity-platform/sql` 切换当前目录。（与上一个步骤目录相同）
+
+* 执行命令 `vim dockerfile_log-center` 以创建文件，其内容如下：
+  
+  ```
+  FROM mysql:5.7.26
+  ADD 05.log-center.sql /docker-entrypoint-initdb.d/05.log-center.sql
+  EXPOSE 3306
+  ```
+
+* 执行命令 `docker build -f dockerfile_log-center -t ocpsample/log-center-mysql:latest .`
+
+* 执行命令 `docker push ocpsample/log-center-mysql:latest`
   
   大约 20 秒，可完成镜像推送
 
@@ -179,5 +197,41 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
   mysql -uroot -proot
   > show databases;
   > use user-center;
+  > show tables;
+  ```
+
+### 部署log-center-mysql
+
+按照同样的方式部署 log-center-mysql，因此，本章节不在截图，只将必要的步骤和参数进行罗列：
+
+* 点击 **创建工作负载** 按钮
+
+* 填写表单，如下表所示：
+
+| 字段名称 | 填写内容                                                     | 说明                                                 |
+| -------- | ------------------------------------------------------------ | ---------------------------------------------------- |
+| 服务类型 | StatefulSet                                                  |                                                      |
+| 服务分层 | 持久层                                                       |                                                      |
+| 服务名称 | log-center                                                  |                                                      |
+| 服务描述 | 用户中心数据库                                               |                                                      |
+| 副本数量 | 1                                                            | 请填写1                                              |
+| 容器名称 | log-center-mysql                                            |                                                      |
+| 镜像     | ocpsample/log-center-mysql:latest                           |                                                      |
+| 抓取策略 | Always                                                       |                                                      |
+| 环境变量 | <span style="color: blue;">MYSQL_ROOT_PASSWORD=</span>root   | 参考 [mysql官方镜像](https://hub.docker.com/_/mysql) |
+| Service  | ClusterIP（集群内访问）<br />协议：`TCP` 服务端口： `3306` 容器端口： `3306` |                                                      |
+
+- 点击 **保存**
+- 点击 **应用**
+- 点击 **完成**
+
+### 验证log-center-mysql
+
+* 在 Kuboard 中进入 `log-center-mysql` 的终端界面，执行如下命令：
+
+  ```sh
+  mysql -uroot -proot
+  > show databases;
+  > use log-center;
   > show tables;
   ```

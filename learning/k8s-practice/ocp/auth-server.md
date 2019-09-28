@@ -99,7 +99,7 @@ auth-server 为无状态服务，使用 Deployment 部署，并通过环境变�
 * eureka.client.serviceUrl.defaultZone
   http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka
 * spring.datasource.druid.core.url
-  
+  jdbc:mysql://db-auth-center:3306/oauth-center?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
 * spring.datasource.druid.core.username
 * spring.datasource.druid.core.password
 * spring.datasource.druid.log.url
