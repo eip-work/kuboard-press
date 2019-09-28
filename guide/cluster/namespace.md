@@ -1,4 +1,5 @@
 ---
+vssueId: 87
 description: 使用Kuboard管理Kubernetes名称空间。
 ---
 

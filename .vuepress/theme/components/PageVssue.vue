@@ -31,7 +31,7 @@ export default {
       let result = {
         platform: 'github',
         locale: 'zh-CN',
-        autoCreateIssue: true,
+        autoCreateIssue: false,
         admins: ['shaohq'],
         // all other options of Vssue are allowed
         owner: 'eip-work',

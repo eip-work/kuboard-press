@@ -1,4 +1,5 @@
 ---
+vssueId: 93
 # layout: StepLayout
 description: Kubernetes 最新稳定版 v1.15.4 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
 storyBook:
