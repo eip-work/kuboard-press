@@ -183,8 +183,8 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 * [在K8S上部署eureka-server](/learning/k8s-practice/ocp/eureka-server.html)
 * [在K8S上部署mysql](/learning/k8s-practice/ocp/mysql.html)
 * [在K8S上部署redis](/learning/k8s-practice/ocp/redis.html)
-* [在K8S上部署auth-server]
-* [在K8S上部署user-center]
+* [在K8S上部署auth-server](/learning/k8s-practice/ocp/auth-server.html)
+* [在K8S上部署user-center](/learning/k8s-practice/ocp/user-center.html)
 * [在K8S上部署api-gateway]
 * [在K8S上部署back-center]
 * [重新审视配置信息]

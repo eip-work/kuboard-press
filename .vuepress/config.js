@@ -356,6 +356,7 @@ module.exports = {
                 'k8s-practice/ocp/mysql',
                 'k8s-practice/ocp/redis',
                 'k8s-practice/ocp/auth-server',
+                'k8s-practice/ocp/user-center',
               ]
             },
           ]

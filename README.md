@@ -93,8 +93,8 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 * [在K8S上部署eureka-server](https://kuboard.cn/learning/k8s-practice/ocp/eureka-server.html)
 * [在K8S上部署mysql](https://kuboard.cn/learning/k8s-practice/ocp/mysql.html)
 * [在K8S上部署redis](https://kuboard.cn/learning/k8s-practice/ocp/redis.html)
-* [在K8S上部署auth-server]
-* [在K8S上部署user-center]
+* [在K8S上部署auth-server](https://kuboard.cn/learning/k8s-practice/ocp/auth-server.html)
+* [在K8S上部署user-center](https://kuboard.cn/learning/k8s-practice/ocp/user-center.html)
 * [在K8S上部署api-gateway]
 * [在K8S上部署back-center]
 * [重新审视配置信息]
