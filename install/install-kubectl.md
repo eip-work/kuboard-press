@@ -39,7 +39,7 @@ EOF
 **安装kubectl**
 
 ```bash
-yum install -y kubectl-1.15.1
+yum install -y kubectl
 ```
 
 **验证安装**
