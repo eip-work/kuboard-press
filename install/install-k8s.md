@@ -119,11 +119,11 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.0
-  * 当前已更新了 <font color="red"> 52 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 53 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
   
-  <Qq></Qq> 也可以扫描二维码加群
+  <Qq></Qq> QQ群号为：808894550，也可以扫描二维码加群
   <p>
     <img src="/images/kuboard_qq.png" alt="Kubernetes安装：QQ群在线答疑"/>
   </p>
@@ -490,6 +490,11 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 
 
 ## 下一步
+
+::: danger 关于重启
+已经默认开启了 kubelet、docker 的开机启动，但是仍然有网友在重启虚拟机之后抱怨 kubernetes 不能正常使用。这种情况大多数是因为 **重启后，你的内网IP地址发生了变化**
+:::
+
 :tada: :tada: :tada: 
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
