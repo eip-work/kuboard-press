@@ -57,7 +57,10 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
 * 使用 StatefulSet 部署 eureka-server，副本数量为 3
 * 使用 OCP eureka-server 的 application-slave0.yml 这个 profile
-* 使用环境变量覆盖 `eureka.client.service-url.defaultZone` 取值，将其设置为： `http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka`
+* 使用环境变量覆盖 `eureka.client.service-url.defaultZone` 取值，将其设置为： 
+  ```
+  http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka
+  ```
   ::: tip
   通过 cloud-eureka-0.cloud-eureka 也可以访问到对应的 POD，但是此处必须使用完整域名，否则 eureka-server 将不被认为是 available
   :::
