@@ -91,6 +91,8 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 * [构建Docker镜像并推送到仓库](https://kuboard.cn/learning/k8s-practice/ocp/build.html)
 * [部署顺序](https://kuboard.cn/learning/k8s-practice/ocp/sequence.html)
 * [在K8S上部署eureka-server](https://kuboard.cn/learning/k8s-practice/ocp/eureka-server.html)
+* [在K8S上部署mysql](https://kuboard.cn/learning/k8s-practice/ocp/mysql.html)
+* [在K8S上部署redis](https://kuboard.cn/learning/k8s-practice/ocp/redis.html)
 * [在K8S上部署auth-server]
 * [在K8S上部署user-center]
 * [在K8S上部署api-gateway]

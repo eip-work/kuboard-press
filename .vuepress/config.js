@@ -40,7 +40,7 @@ module.exports = {
       // set `platform` rather than `api`
       platform: 'github',
       locale: 'zh-CN',
-      autoCreateIssue: true,
+      autoCreateIssue: false,
       admins: ['shaohq'],
       // all other options of Vssue are allowed
       owner: 'eip-work',
@@ -162,8 +162,15 @@ module.exports = {
             'install-docker-desktop',
             ['install-k8s', '安装Kubernetes单Master节点'],
             'install-kubernetes',
-            ['install-k8s-upgrade', '升级Kubernetes集群'],
             'install-kubectl'
+          ]
+        },
+        {
+          title: '升级 Kubernetes',
+          collapsable: false,
+          children: [
+            // ['install-k8s-upgrade', '升级Kubernetes集群'],
+            'upgrade-k8s/1.15.x-1.15.4',
           ]
         },
         {
@@ -348,6 +355,7 @@ module.exports = {
                 'k8s-practice/ocp/eureka-server',
                 'k8s-practice/ocp/mysql',
                 'k8s-practice/ocp/redis',
+                'k8s-practice/ocp/auth-server',
               ]
             },
           ]

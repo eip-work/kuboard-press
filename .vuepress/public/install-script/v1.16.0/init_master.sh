@@ -2,6 +2,9 @@
 
 # 只在 master 节点执行
 
+# 脚本出错时终止执行
+set -e
+
 # 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2
 rm -f ./kubeadm-config.yaml
 cat <<EOF > ./kubeadm-config.yaml

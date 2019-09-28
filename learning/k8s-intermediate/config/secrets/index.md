@@ -42,4 +42,4 @@ Kubernetes 自动创建包含访问 Kubernetes APIServer 身份信息的 Secret�
 
 ## 解码和编辑
 
-Kubenetes 中，Secret 使用 base64 编码存储，您可以将其 [解码](./decode-edit.html) 获得对饮信息的原文，创建 Secret 之后，您也可以再次 [编辑](./decode-edit.html) Secret
+Kubenetes 中，Secret 使用 base64 编码存储，您可以将其 [解码](./decode-edit.html) 获得对应信息的原文，创建 Secret 之后，您也可以再次 [编辑](./decode-edit.html) Secret

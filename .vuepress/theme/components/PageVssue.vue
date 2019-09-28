@@ -3,8 +3,11 @@
     <div v-for="(item, key) in vssues" :key="key">
       <Vssue v-if="item" v-show="key === $route.path" :issueId="item" :options="options"/>
       <div v-if="item === undefined && isLocalHost" v-show="key === $route.path" :key="key">
-        <div style="color: red; background-color: yellow;">请创建 VssueId</div>
-        <Vssue :title="$page.path" :options="options"/>
+        <el-button type="danger" @click="vssues[key] = ''">请创建 VssueId</el-button>
+      </div>
+      <div v-if="item === ''">
+        <el-button type="warning" @click="refreshId = $refs.vssue[0].vssue.issue.id">请填写 vusseId <span v-if="refreshId"> - {{refreshId}}</span></el-button>
+        <Vssue ref="vssue" :title="$page.path" :options="options"/>
       </div>
     </div>
   </div>
@@ -14,7 +17,8 @@
 export default {
   data() {
     return {
-      vssues: {}
+      vssues: {},
+      refreshId: undefined
     }
   },
   computed: {
@@ -31,7 +35,7 @@ export default {
       let result = {
         platform: 'github',
         locale: 'zh-CN',
-        autoCreateIssue: false,
+        autoCreateIssue: true,
         admins: ['shaohq'],
         // all other options of Vssue are allowed
         owner: 'eip-work',
