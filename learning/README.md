@@ -9,7 +9,7 @@ description: Kubernetes免费中文教程目录
 
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
 * Kubernetes 初学者
-* 学习过 Kubernetes，但未能将其投产的技术爱好者
+* 学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 
 ## **Kubernetes 体验**
   * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （30分钟，初学者也许需要更多）

@@ -55,6 +55,19 @@ export default {
     }
   },
   mounted () {
+    let _this = this
+    // set(_ => {
+      console.log('dd')
+      _this.$alert('自 2019年9月28日起 google 官方yum镜像源https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/Packages中的镜像消失，本文档使用阿里云yum镜像源https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ 当中镜像也一并消失。截止到 2019年9月29日 7:27 未见恢复。在您安装前，请自行检查一下镜像是否可用', '镜像问题', {
+            confirmButtonText: '确定',
+            callback: action => {
+              this.$message({
+                type: 'error',
+                message: `好的，我知道镜像问题了`
+              });
+            }
+          });
+    // }, 1000)
   },
   watch: {
     'form.checked' () {
@@ -119,7 +132,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.0
-  * 当前已更新了 <font color="red"> 53 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 54 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
   
