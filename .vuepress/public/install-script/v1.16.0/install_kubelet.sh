@@ -2,9 +2,6 @@
 
 # 在 master 节点和 worker 节点都要执行
 
-# 脚本出错时终止执行
-set -e
-
 # 安装 docker
 # 参考文档如下
 # https://docs.docker.com/install/linux/docker-ce/centos/ 

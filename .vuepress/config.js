@@ -292,6 +292,9 @@ module.exports = {
                   collapsable: true,
                   children: [
                     'k8s-intermediate/config/taints-toleration/',
+                    'k8s-intermediate/config/taints-toleration/use-case',
+                    'k8s-intermediate/config/taints-toleration/taint-based-evictions',
+                    'k8s-intermediate/config/taints-toleration/taint-nodes-by-condition',
                   ]
                 },
                 {
