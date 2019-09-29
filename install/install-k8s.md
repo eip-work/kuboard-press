@@ -56,9 +56,8 @@ export default {
   },
   mounted () {
     let _this = this
-    // set(_ => {
-      console.log('dd')
-      _this.$alert('自 2019年9月28日起 google 官方yum镜像源https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/Packages中的镜像消失，本文档使用阿里云yum镜像源https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ 当中镜像也一并消失。截止到 2019年9月29日 7:27 未见恢复。在您安装前，请自行检查一下镜像是否可用', '镜像问题', {
+    setTimeout(_ => {
+      _this.$alert('自 2019年9月28日起 google 官方yum镜像源https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/Packages中的镜像消失，本文档使用阿里云yum镜像源https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ 当中镜像也一并消失。截止到 2019年9月29日 14:05 未见恢复。在您安装前，请自行检查一下镜像是否可用。加群可获得最新信息 808894550', '镜像问题', {
             confirmButtonText: '确定',
             callback: action => {
               this.$message({
@@ -67,7 +66,7 @@ export default {
               });
             }
           });
-    // }, 1000)
+    }, 10000)
   },
   watch: {
     'form.checked' () {
@@ -488,7 +487,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 
 ::: tip 提示
 
-许多初学者在安装 Ingress Controller 时会碰到问题，请不要灰心，可暂时跳过 ***安装 Ingress Controller*** 这个部分，等您学完 www.kuboard.cn 上 [Kubernetes 入门](/learning/k8s-basics/kubernetes-basics.html) 以及 [通过互联网访问您的应用程序](/learning/k8s-intermediate/ingress.html) 这两部分内容后，再来回顾 Ingress Controller 的安装。
+许多初学者在安装 Ingress Controller 时会碰到问题，请不要灰心，可暂时跳过 ***安装 Ingress Controller*** 这个部分，等您学完 www.kuboard.cn 上 [Kubernetes 入门](/learning/k8s-basics/kubernetes-basics.html) 以及 [通过互联网访问您的应用程序](/learning/k8s-intermediate/service/ingress.html) 这两部分内容后，再来回顾 Ingress Controller 的安装。
 
 :::
 

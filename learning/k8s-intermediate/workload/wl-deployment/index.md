@@ -23,7 +23,7 @@ description: 本文介绍了 Kubernetes Deployment 的概念、行为及使用�
 
 ### Pod 容器组
 
-Pod 容器组是 Kubernetes 中最小的调度单元，更多信息请参考 [容器组 - 概述](./pod.html)
+Pod 容器组是 Kubernetes 中最小的调度单元，更多信息请参考 [容器组 - 概述](/learning/k8s-intermediate/workload/pod.html)
 
 ### ReplicaSet 副本集
 

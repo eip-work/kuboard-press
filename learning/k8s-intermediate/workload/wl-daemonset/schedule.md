@@ -38,11 +38,11 @@ nodeAffinity:
         - target-host-name
 ```
 
-此外， `node.kubernetes.io/unschedulable:NoSchedule` 容忍（[toleration](/learning/k8s-intermediate/config/taints-and-toleration.html)）将被自动添加到 DaemonSet 的 Pod 中。由此，默认调度器在调度 DaemonSet 的 Pod 时可以忽略节点的 **unschedulable** 属性
+此外， `node.kubernetes.io/unschedulable:NoSchedule` 容忍（[toleration](/learning/k8s-intermediate/config/taints-toleration/)）将被自动添加到 DaemonSet 的 Pod 中。由此，默认调度器在调度 DaemonSet 的 Pod 时可以忽略节点的 **unschedulable** 属性
 
 ## 污点和容忍
 
-在调度 DaemonSet 的 Pod 时，污点和容忍（[taints and tolerations](/learning/k8s-intermediate/config/taints-and-toleration.html)）会被考量到，同时，以下容忍（toleration）将被自动添加到 DaemonSet 的 Pod 中：
+在调度 DaemonSet 的 Pod 时，污点和容忍（[taints and tolerations](/learning/k8s-intermediate/config/taints-toleration/)）会被考量到，同时，以下容忍（toleration）将被自动添加到 DaemonSet 的 Pod 中：
 
 | Toleration Key                         | Effect     | Version | 描述                                                         |
 | -------------------------------------- | ---------- | ------- | ------------------------------------------------------------ |

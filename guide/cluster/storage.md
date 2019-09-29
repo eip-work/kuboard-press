@@ -104,7 +104,7 @@ description: 使用Kuboard管理Kubernetes存储类StorageClass
 
 * 进入 Kuboard ***集群概览页***
 
-  参考 [访问 Kuboard](install/install-dashboard?id=访问)
+  参考 [访问 Kuboard](/install/install-dashboard.html?id=访问)
 
   如下图所示：
 

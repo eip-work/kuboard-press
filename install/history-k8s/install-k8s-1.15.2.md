@@ -39,7 +39,7 @@ description: Kubernetes 最新稳定版 v1.15.2 的快速安装文档。该文�
 
 > 如果要安装 Kubernetes 历史版本，请参考：
 >
-> * [安装 Kubernetes 1.15.1 单Master节点](./history-k8s/install-k8s-1.15.1.html)
+> * [安装 Kubernetes 1.15.1 单Master节点](/install/history-k8s/install-k8s-1.15.1.html)
 
 安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 

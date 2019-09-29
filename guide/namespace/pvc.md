@@ -31,7 +31,7 @@ description: 使用Kuboard配置Kubernetes的存储卷声明Persistent_Volume_Cl
 | 字段名称   | 填写内容        | 说明                                                         |
 | ---------- | --------------- | ------------------------------------------------------------ |
 | 存储卷声明 | my-pvc          |                                                              |
-| 存储类     | cluster-storage | 如果不存在，则需要提前 [创建存储类](./guide/cluster/storage?id=创建存储类) |
+| 存储类     | cluster-storage | 如果不存在，则需要提前 [创建存储类](/guide/cluster/storage.html?id=创建存储类) |
 | 分配模式   | 动态分配        |                                                              |
 | 读写模式   | 可被多节点读写  |                                                              |
 | 总量       | 2Gi             |                                                              |

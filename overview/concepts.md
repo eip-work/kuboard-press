@@ -188,7 +188,7 @@ Kuborad中，定义容器的界面如下图所示：
 
 > 请参考： https://kubernetes.io/docs/concepts/services-networking/ingress/
 
-​		Kuboard 并不限定您使用何种类型的 [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)， 但是 [安装 Kubernetes 用于测试](/install/install-k8s) 文档中，推荐使用的 Ingress Controller 是 [Nginx-Ingress](https://github.com/nginxinc/kubernetes-ingress)。
+​		Kuboard 并不限定您使用何种类型的 [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)， 但是 [安装 Kubernetes 用于测试](/install/install-k8s.html) 文档中，推荐使用的 Ingress Controller 是 [Nginx-Ingress](https://github.com/nginxinc/kubernetes-ingress)。
 
 ​		在您使用 Nginx-Ingress 的情况下，要想确保您能按照互联网入口中定义的域名访问您的服务，请确保以下两点：
 

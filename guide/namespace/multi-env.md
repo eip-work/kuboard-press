@@ -111,4 +111,4 @@ Kuboard 针对这种场景，提供了导出配置、导入配置的功能，以
 
 ### 操作步骤
 
-请参考 [导入 example 微服务](/guide/example/import)
+请参考 [导入 example 微服务](/guide/example/import.html)

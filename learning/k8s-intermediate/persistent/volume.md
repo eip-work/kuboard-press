@@ -152,7 +152,7 @@ Kubernetes 目前支持多达 28 种数据卷类型（其中大部分特定于�
   * 您可以直接引用整个 ConfigMap 到数据卷，此时 ConfigMap 中的每一个 key 对应一个文件名，value 对应该文件的内容
   * 您也可以只引用 ConfigMap 中的某一个名值对，此时可以将 key 映射成一个新的文件名
 
-  具体使用方法请参考 [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html#configmap-数据卷)
+  具体使用方法请参考 [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html#configmap-数据卷)
 
   ::: tip
   将 ConfigMap 数据卷挂载到容器时，如果该挂载点指定了 ***数据卷内子路径*** （subPath），则该 ConfigMap 被改变后，该容器挂载的内容仍然不变。
@@ -160,7 +160,7 @@ Kubernetes 目前支持多达 28 种数据卷类型（其中大部分特定于�
 
 * **适用场景**
 
-  * 使用 ConfigMap 中的某一 key 作为文件名，对应 value 作为文件内容，替换 nginx 容器中的 /etc/nginx/conf.d/default.conf 配置文件。请参考  [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config-map.html#configmap-数据卷)
+  * 使用 ConfigMap 中的某一 key 作为文件名，对应 value 作为文件内容，替换 nginx 容器中的 /etc/nginx/conf.d/default.conf 配置文件。请参考  [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html#configmap-数据卷)
 
 ### secret <Badge text="Kuboard正在计划中" type="warn"/>
 
