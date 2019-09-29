@@ -90,7 +90,7 @@ user-center 为无状态服务，使用 Deployment 部署。
   | <div style="min-width:70px;">服务类型</div> | Deployment                                                   |                                             |
   | 服务分层 | 服务层                                                       |                                             |
   | 服务名称 | user-center                                                 |                                             |
-  | 服务描述 | 认证中心                                                     |                                             |
+  | 服务描述 | 用户中心                                                     |                                             |
   | 副本数   | 1                                                            |                                             |
   | 容器名称 | user-center                                                 |                                             |
   | 镜像     | ocpsample/user-center:latest                                 |                                             |

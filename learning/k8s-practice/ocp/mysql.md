@@ -213,7 +213,7 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
 | 服务类型 | StatefulSet                                                  |                                                      |
 | 服务分层 | 持久层                                                       |                                                      |
 | 服务名称 | log-center                                                  |                                                      |
-| 服务描述 | 用户中心数据库                                               |                                                      |
+| 服务描述 | 日志中心数据库                                               |                                                      |
 | 副本数量 | 1                                                            | 请填写1                                              |
 | 容器名称 | log-center-mysql                                            |                                                      |
 | 镜像     | ocpsample/log-center-mysql:latest                           |                                                      |

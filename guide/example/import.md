@@ -30,7 +30,7 @@ example中用到了存储卷声明，请在 Kuboard 中 [创建存储类](/guide
 
 ::: tip
 在 Kuboard 中，您无需手写 yaml 文件，此 yaml 文件的内容生成步骤如下：
-* 通过 [创建工作负载](busybox) 完成微服务应用的部署
+* 通过 [创建工作负载](busybox.html) 完成微服务应用的部署
 * 通过 [导出工作负载](/guide/namespace/multi-env.html#导出配置) 将名称空间中的微服务配置导出到一个 yaml 文件中
 :::
 

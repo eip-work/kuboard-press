@@ -43,7 +43,7 @@ Kuboard 从以下几方面解决 Kubernetes 落地的难题：
 
 ### Spring Cloud 微服务部署实战案例
 
-Kuboard 提供 Spring Cloud 在 Kubernetes 上部署的实战案例分析，手把手帮助技术团队完成 Spring Cloud 微服务在 Kubernetes 上的部署和维护。请参考 [Spring Cloud on Kubernetes](/learning/k8s-practice/spring-cloud)
+Kuboard 提供 Spring Cloud 在 Kubernetes 上部署的实战案例分析，手把手帮助技术团队完成 Spring Cloud 微服务在 Kubernetes 上的部署和维护。请参考 [Spring Cloud on Kubernetes](/learning/k8s-practice/spring-cloud/)
 
 ![Kubernetes教程：SpringCloud参考架构](./why-kuboard.assets/image-20190721154650916.jpg)
 
