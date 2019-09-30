@@ -82,6 +82,7 @@ hostname
 
 | CentOS 版本 | 本文档是否兼容                          | 备注                                |
 | ----------- | --------------------------------------- | ----------------------------------- |
+| 7.7         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.5         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
