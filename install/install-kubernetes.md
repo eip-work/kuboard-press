@@ -164,7 +164,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 ::: danger 关于初始化时用到的环境变量
 * **APISERVER_NAME** 不能是 master 的 hostname
 * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
-* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
+* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/16
 :::
 
 <el-tabs type="border-card">
@@ -177,7 +177,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
-export POD_SUBNET=10.100.0.1/20
+export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 ```
@@ -190,7 +190,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
-export POD_SUBNET=10.100.0.1/20
+export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 ```
 

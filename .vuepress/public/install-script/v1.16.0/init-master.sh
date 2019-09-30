@@ -11,7 +11,7 @@ kubernetesVersion: v1.16.0
 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
 controlPlaneEndpoint: "${APISERVER_NAME}:6443"
 networking:
-  serviceSubnet: "10.96.0.0/12"
+  serviceSubnet: "10.96.0.0/16"
   podSubnet: "${POD_SUBNET}"
   dnsDomain: "cluster.local"
 EOF
