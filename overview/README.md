@@ -5,7 +5,7 @@ description: Kubernetes教程_介绍Kuboard_Kubernetes微服务管理界面_并�
 
 ## Kuboard简介
 
-<p style="max-width: 420px;">
+<p style="max-width: 450px; text-align: middle;">
   <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes教程：Kuboard Logo"/>
 </p>
 
@@ -183,10 +183,10 @@ Kuboard 为 Kubernetes 初学者设计了如下学习路径：
 * [在K8S上部署eureka-server](/learning/k8s-practice/ocp/eureka-server.html)
 * [在K8S上部署mysql](/learning/k8s-practice/ocp/mysql.html)
 * [在K8S上部署redis](/learning/k8s-practice/ocp/redis.html)
-* [在K8S上部署auth-server](/learning/k8s-practice/ocp/auth-server.html)
+* [在K8S上部署auth-center](/learning/k8s-practice/ocp/auth-server.html)
 * [在K8S上部署user-center](/learning/k8s-practice/ocp/user-center.html)
-* [在K8S上部署api-gateway]
-* [在K8S上部署back-center]
+* [在K8S上部署api-gateway](/learning/k8s-practice/ocp/api-gateway.html)
+* [在K8S上部署back-center](/learning/k8s-practice/ocp/back-center.html)
 * [重新审视配置信息]
 * [导出部署配置]
 * [在新的名称空间导入部署配置]

@@ -47,11 +47,15 @@
       </div>
     </div>
 
+    <p style="max-width: 450px;">
+      <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Slogon:Kuboard_快速在Kubernetes上落地微服务"/>
+    </p>
+
     <p>
-<a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-  Kuboard 在线体验
-</a>
-</p>
+      <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+        Kuboard 在线体验
+      </a>
+    </p>
 
 <Content></Content>
 
