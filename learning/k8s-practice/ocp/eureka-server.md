@@ -80,7 +80,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
 
   | 字段名称 | 填写内容                                                     | 备注 |
   | -------- | ------------------------------------------------------------ | ---- |
-  | 服务类型 | StatefulSet                                                  |      |
+  | <div style="min-width:70px;">服务类型</div> | StatefulSet                                                  |      |
   | 服务分层 | 中间件                                                       |      |
   | 服务名称 | eureka                                                       |      |
   | 服务描述 | 服务注册中心                                                 |      |
@@ -88,7 +88,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
   | 容器名称 | eureka-server                                                |      |
   | 镜像     | ocpsample/eureka-server:latest                               |  也可以使用自己构建的镜像    |
   | 抓取策略 | Always                                                       |      |
-  | 环境变量 | <div style="max-width: 600px;"><span style="color: blue;">eureka.client.service-url.defaultZone=</span>http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka</div> <div style="max-width: 600px;"><span style="color: blue;">eureka.instance.prefer-ip-address=</span>false</div> |      |
+  | 环境变量 | <div style="max-width: 600px;"><span style="color: blue;">eureka.client.service-url.defaultZone=</span>http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka</div> <div style="max-width: 600px;"><span style="color: blue;">eureka.instance.prefer-ip-address=</span>false</div> |  填入 kuboard 时<br/>环境变量名后面不带 `=`    |
   | Service  | NodePort：<br />协议 `TCP` 服务端口 `1111`节点端口 `31111` 容器端口 `1111` |   可从节点端口访问   |
   | Ingress  | 域名：cloud-eureka.ocp.demo.kuboard.cn<br />路由配置： 映射URL `/` 服务端口 `1111` |  可通过域名访问    |
 

@@ -1,7 +1,7 @@
 ---
 home: false
 layout: HomePage
-title: Kuboard官网_Kubernetes教程_k8s国内安装_部署_入门_学习_实践_中文文档_微服务管理界面
+title: Kuboard官网_Kubernetes教程_K8S安装_管理界面
 description: Kuboard官网首页_Kubernetes_k8s_国内安装_部署_入门_免费中文教程_实践_微服务管理界面
 actionText: 在线体验
 actionText2: 开始使用 →
@@ -15,7 +15,7 @@ features:
   details: 资源层监控、中间件层监控、链路层监控
 ---
 
-# 简介
+## 简介
 
 Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 
@@ -28,11 +28,11 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 ![Kubernetes教程：Kuboard在线演示](./overview/README.assets/1564841972085.gif)
 
 
-# Kubernetes免费教程
+## Kubernetes免费教程
 
 Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kuboard 落地 Spring Cloud 微服务的实战经验
 
-## **Kubernetes入门**
+### Kubernetes入门
   * [0. 学习Kubernetes基础知识](https://kuboard.cn/learning/k8s-basics/kubernetes-basics.html) (10分钟)
     * [1. 部署第一个应用程序](https://kuboard.cn/learning/k8s-basics/deploy-app.html) (5分钟)
     * [2. 查看 Pods / Nodes](https://kuboard.cn/learning/k8s-basics/explore.html) (10分钟)
@@ -41,7 +41,7 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * [5. 执行滚动更新](https://kuboard.cn/learning/k8s-basics/update.html) (10分钟)
   * [6. 复习Kubernetes核心概念](https://kuboard.cn/learning/k8s-basics/k8s-core-concepts.html) (10分钟)
 
-## **Kubernetes进阶**
+### Kubernetes进阶
   * [使用私有 registry 中的 docker 镜像](https://kuboard.cn/learning/k8s-intermediate/private-registry.html)
   * 工作负载
     * [容器组 - 概述](https://kuboard.cn/learning/k8s-intermediate/workload/pod.html)
@@ -72,13 +72,13 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * [污点和容忍 taints and toleration](https://kuboard.cn/learning/k8s-intermediate/config/taints-toleration/) 
     * [Secrets](https://kuboard.cn/learning/k8s-intermediate/config/secrets/) 
 
-## **Kubernetes高级**
+### Kubernetes高级
 
   * Kubernetes 日志可视化
   * Kubernetes 监控
   * Kubernetes 联邦
 
-## **Kubernetes实战**
+### Kubernetes实战
 
 在 Kubernetes 上部署 Spring Cloud 微服务：
 
