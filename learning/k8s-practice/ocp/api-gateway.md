@@ -100,8 +100,7 @@ api-gateway 为无状态服务，使用 Deployment 部署。
 
   ::: tip 域名
   * 该域名由 `工作负载名`.`名称空间`.`集群名字`.`一级域名` 组成，这种命名规则下，只需要将 `*.demo.kuboard.cn` 的域名解析指向集群 Ingress Controller 的地址就可以
-  * 接口网关直接
-  * 服务层的服务通过 eureka-server 进行服务发现，因此，原则上不需要为 Spring Cloud 在服务层的 Pod 配置 Kubernetes Service，此处是为了配置 Ingress 才启用 Kubernetes Service
+  * 关于 Ingress，请参考 [Ingress通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
   :::
 
   ![Kubernetes教程_部署SpringCloud微服务_OCP_api-gateway](./api-gateway.assets/image-20190930100229660.png)

@@ -66,7 +66,7 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微
   :::
 * 使用环境变量覆盖 `eureka.instance.prefer-ip-address` 取值，将其设置为：`false`
 * 为 eureka-server 创建 Ingress，并分配域名 `cloud-eureka.ocp.demo.kuboard.cn`
-  * 请参考 [Ingress通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html#ingress)
+  * 关于 Ingress，请参考 [Ingress通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
   * 该域名由 `工作负载名`.`名称空间`.`集群名字`.`一级域名` 组成，这种命名规则下，只需要将 `*.demo.kuboard.cn` 的域名解析指向集群 Ingress Controller 的地址就可以，在测试环境中配置新的模块时非常方便。
 
 
