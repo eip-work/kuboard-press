@@ -2,6 +2,9 @@
 vssueId: 39
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中查看 Deployment 的状态
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Deployment,Kubernetes部署
 ---
 
 # 查看 Deployment 的状态
