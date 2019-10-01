@@ -95,9 +95,9 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 * [在K8S上部署redis](https://kuboard.cn/learning/k8s-practice/ocp/redis.html)
 * [在K8S上部署auth-server](https://kuboard.cn/learning/k8s-practice/ocp/auth-server.html)
 * [在K8S上部署user-center](https://kuboard.cn/learning/k8s-practice/ocp/user-center.html)
-* [在K8S上部署api-gateway]
-* [在K8S上部署back-center]
-* [重新审视配置信息]
+* [在K8S上部署api-gateway](https://kuboard.cn/learning/k8s-practice/ocp/api-gateway.html)
+* [在K8S上部署back-center](https://kuboard.cn/learning/k8s-practice/ocp/back-center.html)
+* [重新审视配置信息](https://kuboard.cn/learning/k8s-practice/ocp/review.html)
 * [导出部署配置]
 * [在新的名称空间导入部署配置]
 

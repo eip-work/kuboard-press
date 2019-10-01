@@ -362,6 +362,8 @@ module.exports = {
                 'k8s-practice/ocp/user-center',
                 'k8s-practice/ocp/api-gateway',
                 'k8s-practice/ocp/back-center',
+                'k8s-practice/ocp/review',
+                'k8s-practice/ocp/export',
               ]
             },
           ]

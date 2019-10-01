@@ -24,11 +24,11 @@ Kuboard 网站将陆续 **连载** 如何使用 Kuboard 在 Kubernetes 上部署
 * [在K8S上部署mysql](/learning/k8s-practice/ocp/mysql.html)
 * [在K8S上部署redis](/learning/k8s-practice/ocp/redis.html)
 * [在K8S上部署auth-server](/learning/k8s-practice/ocp/auth-server.html)
-* [在K8S上部署user-center]
-* [在K8S上部署api-gateway]
-* [在K8S上部署back-center]
-* [重新审视配置信息]
-* [导出部署配置]
+* [在K8S上部署user-center](/learning/k8s-practice/ocp/user-server.html)
+* [在K8S上部署api-gateway](/learning/k8s-practice/ocp/api-gateway.html)
+* [在K8S上部署back-center](/learning/k8s-practice/ocp/back-center.html)
+* [重新审视配置信息](/learning/k8s-practice/ocp/review.html)
+* [导出部署配置](/learning/k8s-practice/ocp/export.html)
 * [在新的名称空间导入部署配置]
 
 ::: tip OCP答疑

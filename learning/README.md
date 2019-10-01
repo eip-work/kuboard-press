@@ -93,8 +93,8 @@ description: Kubernetes免费中文教程目录
 * [在K8S上部署redis](/learning/k8s-practice/ocp/redis.html)
 * [在K8S上部署auth-center](/learning/k8s-practice/ocp/auth-server.html)
 * [在K8S上部署user-center](/learning/k8s-practice/ocp/user-center.html)
-* [在K8S上部署api-gateway]
-* [在K8S上部署back-center]
-* [重新审视配置信息]
+* [在K8S上部署api-gateway](/learning/k8s-practice/ocp/api-gateway.html)
+* [在K8S上部署back-center](/learning/k8s-practice/ocp/back-center.html)
+* [重新审视配置信息](/learning/k8s-practice/ocp/review.html)
 * [导出部署配置]
 * [在新的名称空间导入部署配置]
