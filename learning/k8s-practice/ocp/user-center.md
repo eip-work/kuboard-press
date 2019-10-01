@@ -13,7 +13,7 @@ meta:
 
 ## 理解user-center
 
-user-server 是一个 Spring Boot 项目，其配置文件位于路径 `business-center/user-center/src/main/resources`，该目录内容如下所示：
+user-center 是一个 Spring Boot 项目，其配置文件位于路径 `business-center/user-center/src/main/resources`，该目录内容如下所示：
 
 ``` sh
 ├── application.yml
@@ -34,7 +34,7 @@ server:
 
 ### 依赖项
 
-user-server 的部署依赖有：
+user-center 的部署依赖有：
 * eureka-server
 * mysql
 * redis

@@ -10,7 +10,7 @@ meta:
 
 # 在K8S上部署redis
 
-如 [在K8S上部署mysql](./mysql.html) 所述，auth-center、user-center、api-gateway 都需要使用 redis 服务，本文描述如何使用 Kuboard 在 Kubernetes 上部署 redis。
+如 [在K8S上部署mysql](./mysql.html) 所述，auth-server、user-center、api-gateway 都需要使用 redis 服务，本文描述如何使用 Kuboard 在 Kubernetes 上部署 redis。
 
 本文将使用 [redis官方镜像](https://hub.docker.com/_/redis) 进行部署。
 

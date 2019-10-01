@@ -10,9 +10,9 @@ meta:
 
 # 在K8S上部署mysql
 
-OCP 的 auth-center 和 user-center 都有自己的数据库，同时 auth-center、user-center 和 api-gateway 又都依赖于 redis 缓存服务 和 log-center 数据库。这使得我们的部署结构演变成下图所示：
+OCP 的 auth-server 和 user-center 都有自己的数据库，同时 auth-server、user-center 和 api-gateway 又都依赖于 redis 缓存服务 和 log-center 数据库。这使得我们的部署结构演变成下图所示：
 
-我们必须先完成 db-auth-center、db-user-center、db-log-center 和 redis 的部署，才能继续部署 auth-center 和 user-center。本文描述了如何部署 db-auth-center、db-user-center、db-log-center。
+我们必须先完成 db-auth-center、db-user-center、db-log-center 和 redis 的部署，才能继续部署 auth-server 和 user-center。本文描述了如何部署 db-auth-center、db-user-center、db-log-center。
 
 ::: danger
 将 mysql 部署到 K8S 中，可以非常便捷地搭建一套测试环境，但是，在生产环境里，并不建议直接将 mysql 部署到 K8S 上。

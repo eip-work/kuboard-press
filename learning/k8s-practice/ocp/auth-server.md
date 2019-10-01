@@ -1,13 +1,13 @@
 ---
 vssueId: 94
 layout: LearningLayout
-description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud_open_capacity_platform微服务能力开放平台_部署auth-center
+description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud_open_capacity_platform微服务能力开放平台_部署auth-server
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,Kubernetes微服务,Kubernetes Spring Cloud
 ---
 
-# 在K8S上部署auth-center
+# 在K8S上部署auth-server
 
 本文假设您已经完成了 [在Kubernetes 上部署 Spring Cloud - OCP](./) 系列教程的前面部分，并已经完成了 eureka-server、auth-center-mysql、redis 在 K8S 上的部署。
 
