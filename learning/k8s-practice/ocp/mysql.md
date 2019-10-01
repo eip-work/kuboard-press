@@ -24,7 +24,7 @@ OCP 的 auth-center 和 user-center 都有自己的数据库，同时 auth-cente
 OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将选择 [mysql 官方镜像](https://hub.docker.com/_/mysql) 并基于此镜像，构建自己的 mysql 镜像，以便：
 * 把数据库初始化脚本打包到镜像中
   * 这样每次部署一个新的 mysql 实例时，可以自动初始化 OCP 所需要的表结构
-* 把自定义的数据库配置文件 my.cnf 打包到镜像中 <Badge type="warning">本文档不涉及</Badge>
+* 把自定义的数据库配置文件 my.cnf 打包到镜像中
 * 设置环境变量 <Badge type="warning">本文档不涉及</Badge>
 
 ### auth-center-mysql
@@ -35,6 +35,7 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
 
 * 执行命令 `vim auth-center-my.cnf` 以创建文件，其内容如下：
 
+  此配置用于解决 mysql 使用时的乱码问题。
   ```
   [mysqld]
 
