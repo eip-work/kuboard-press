@@ -33,10 +33,23 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
   
 > 假设您已经完成了 [准备OCP的构建环境和部署环境](./prepare.html)
 
+* 执行命令 `vim auth-center-my.cnf` 以创建文件，其内容如下：
+
+  ```
+  [mysqld]
+
+  init_connect='SET collation_connection = utf8_unicode_ci'
+  init_connect='SET NAMES utf8'
+  character-set-server=utf8
+  collation-server=utf8_unicode_ci
+  skip-character-set-client-handshake
+  ```
+
 * 执行命令 `vim dockerfile_auth-center` 以创建文件，其内容如下：
   
   ```
   FROM mysql:5.7.26
+  ADD auth-center-my.cnf /etc/mysql/conf.d/my.cnf
   ADD 02.oauth-center.sql /docker-entrypoint-initdb.d/02.oauth-center.sql
   EXPOSE 3306
   ```
@@ -65,10 +78,23 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
 
 * 在 master 节点上，执行命令 `cd /root/open-capacity-platform/sql` 切换当前目录。（与上一个步骤目录相同）
 
+* 执行命令 `vim user-center-my.cnf` 以创建文件，其内容如下：
+
+  ```
+  [mysqld]
+
+  init_connect='SET collation_connection = utf8_unicode_ci'
+  init_connect='SET NAMES utf8'
+  character-set-server=utf8
+  collation-server=utf8_unicode_ci
+  skip-character-set-client-handshake
+  ```
+
 * 执行命令 `vim dockerfile_user-center` 以创建文件，其内容如下：
   
   ```
   FROM mysql:5.7.26
+  ADD user-center-my.cnf /etc/mysql/conf.d/my.cnf
   ADD 01.user-center.sql /docker-entrypoint-initdb.d/01.user-center.sql
   EXPOSE 3306
   ```
@@ -90,10 +116,22 @@ OCP 要求 mysql 版本 5.7 以上，当我们在 K8S 上部署 mysql 时，将�
 
 * 在 master 节点上，执行命令 `cd /root/open-capacity-platform/sql` 切换当前目录。（与上一个步骤目录相同）
 
+* 执行命令 `vim log-center-my.cnf` 以创建文件，其内容如下：
+  ```
+  [mysqld]
+
+  init_connect='SET collation_connection = utf8_unicode_ci'
+  init_connect='SET NAMES utf8'
+  character-set-server=utf8
+  collation-server=utf8_unicode_ci
+  skip-character-set-client-handshake
+  ```
+
 * 执行命令 `vim dockerfile_log-center` 以创建文件，其内容如下：
   
   ```
   FROM mysql:5.7.26
+  ADD log-center-my.cnf /etc/mysql/conf.d/my.cnf
   ADD 05.log-center.sql /docker-entrypoint-initdb.d/05.log-center.sql
   EXPOSE 3306
   ```

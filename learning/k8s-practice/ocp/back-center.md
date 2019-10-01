@@ -116,11 +116,11 @@ back-center 为无状态服务，使用 Deployment 部署。
 
 ## 检查部署结果
 
-* 在浏览器访问 [http://back-center.ocp.demo.kuboard.cn/swagger-ui.html](http://back-center.ocp.demo.kuboard.cn/swagger-ui.html)
+* 在浏览器访问 [http://back-center.ocp.demo.kuboard.cn/](http://back-center.ocp.demo.kuboard.cn/)
   > 此处请使用您自己的 url
 
-  待修复乱码问题
+  使用默认用户名密码 admin/admin 登录系统，可查看到登录后的结果如下所示：
 
-  <!-- ![Kubernetes教程_部署SpringCloud微服务_OCP_user-center_检查部署结果](./user-center.assets/image-20190928213830175.png) -->
+  ![Kubernetes教程_部署SpringCloud微服务_OCP_back-center_检查部署结果](./back-center.assets/image-20191001085338024.png)
 
-* :tada: :tada: :tada: 您已在 K8S 上完成了 user-center的部署
+* :tada: :tada: :tada: 您已在 K8S 上完成了 back-center的部署
