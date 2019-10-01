@@ -3,6 +3,9 @@ vssueId: 99
 titlePrefix: 污点和容忍
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_根据条件为节点添加污点
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes taints,Kubernetes 污点
 ---
 
 # 条件化的污点（TaintNodesByCondition）

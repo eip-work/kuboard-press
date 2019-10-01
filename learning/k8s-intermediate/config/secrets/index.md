@@ -2,6 +2,9 @@
 vssueId: 65
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_配置和使用_Secret
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,使用Secret
 ---
 
 # Secret概述

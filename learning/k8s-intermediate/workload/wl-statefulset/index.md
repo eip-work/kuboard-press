@@ -1,7 +1,10 @@
 ---
 vssueId: 42
 layout: LearningLayout
-description: 本文描述了 Kubernetes StatefulSet 的概念、行为及用法
+description: 与Deployment相似，StatefulSet 基于一个 Pod 模板管理其 Pod。与 Deployment 最大的不同在于 StatefulSet 始终将一系列不变的名字分配给其 Pod。这些 Pod 从同一个模板创建，但是并不能相互替换：每个 Pod 都对应一个特有的持久化存储标识。
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,StatefulSet
 ---
 
 # StatefulSet 的使用场景

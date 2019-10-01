@@ -1,6 +1,9 @@
 ---
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了如何选择Kubernetes存储卷类型/数据卷类型
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes存储卷类型选择
 ---
 
 # 数据卷类型如何选择

@@ -1,7 +1,10 @@
 ---
 vssueId: 63
 layout: LearningLayout
-description: Kubernetes教程_在Kubernetes中管理和分配容器的计算资源
+description: Kubernetes教程_在 Kubernetes 中创建工作负载时，您可以为 Pod 中的每一个容器指定其所需要的内存（RAM）大小和 CPU 数量。如果这些信息被指定了，Kubernetes 调度器可以更好的决定将 Pod 调度到哪一个节点。对于容器来说，其所需要的资源也将依据其指定的数值得到保证。
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,Kubernetes计算资源
 ---
 
 # 管理容器的计算资源

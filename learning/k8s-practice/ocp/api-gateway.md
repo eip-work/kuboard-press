@@ -2,6 +2,9 @@
 vssueId: 100
 layout: LearningLayout
 description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud微服务平台OCP_open_capacity_platform微服务能力开放平台_部署api-gateway
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes微服务,Kubernetes Spring Cloud,Kubernetes服务网关
 ---
 
 # 在K8S上部署api-gateway

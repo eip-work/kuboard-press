@@ -2,6 +2,9 @@
 vssueId: 45
 layout: LearningLayout
 description: 本文描述了 Kubernetes StatefulSet 的更新
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,StatefulSet
 ---
 
 # StatefulSet 的更新策略

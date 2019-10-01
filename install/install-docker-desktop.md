@@ -1,6 +1,9 @@
 ---
 vssueId: 14
-description: Kubernete安装文档_本文介绍了如何在Windows_Mac电脑安装Kubernetes测试集群
+description: Kuboard_是一款Kubernetes_Dashboard_快速在K8S上落地微服务_本文介绍了如何在Windows_Mac电脑本地安装Kubernetes测试集群
+meta:
+  - name: keywords
+    content: Kubernetes本地版,Kubernetes单机,K8S单机
 ---
 
 # 安装Kubernetes测试集群Win_Mac

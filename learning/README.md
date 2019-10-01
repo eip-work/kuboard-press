@@ -1,7 +1,10 @@
 ---
 vssueId: 9
 layout: LearningLayout
-description: Kubernetes免费中文教程目录
+description: 本教程的主要依据是：Kubernetes官网文档，以及使用Kubernetes落地SpringCloud微服务并投产的实战经验，在线答疑。适用人群_ Kubernetes 初学者_学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,kubernetes视频
 ---
 
 # Kubernetes免费中文教程
@@ -23,7 +26,7 @@ description: Kubernetes免费中文教程目录
 
 ## **Kubernetes 入门**
   * [0. 学习Kubernetes基础知识](/learning/k8s-basics/kubernetes-basics.html) (10分钟)
-    * [1. 部署第一个应用程序](/learning/k8s-basics/deploy-app.html) (5分钟)
+    * [1. 部署一个应用程序](/learning/k8s-basics/deploy-app.html) (5分钟)
     * [2. 查看 Pods / Nodes](/learning/k8s-basics/explore.html) (10分钟)
     * [3. 公布应用程序](/learning/k8s-basics/expose.html) (10分钟)
     * [4. 伸缩应用程序](/learning/k8s-basics/scale.html) (10分钟)

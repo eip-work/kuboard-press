@@ -2,6 +2,9 @@
 vssueId: 61
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了存储类的概念及其使用
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,存储类,StorageClass
 ---
 
 # 存储类StorageClass

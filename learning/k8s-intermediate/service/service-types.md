@@ -2,6 +2,9 @@
 vssueId: 54
 layout: LearningLayout
 description: Kubernetes教程_Kubernetes中发布Service的方式_ServiceType
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes服务类型
 ---
 
 # 发布Service

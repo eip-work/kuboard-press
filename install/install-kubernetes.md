@@ -1,6 +1,9 @@
 ---
 vssueId: 16
-description: Kubernete安装文档_使用kubeadm安装高可用的Kubernetes_v1.15.3集群
+description: Kubernete安装文档_使用kubeadm安装高可用的Kubernetes_v1.15.3集群_可用于生产环境
+meta:
+  - name: keywords
+    content: Kubernetes集群,Kubernetes高可用,Kubernetes生产环境
 # storyBook:
 #   title: '使用 kubeadm 安装 kubernetes v1.15.3（高可用）'
 #   initial: FullPage

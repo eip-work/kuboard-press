@@ -1,6 +1,9 @@
 ---
 vssueId: 12
-description: Kuboard通过图形化操作界面以及无YAML操作_帮助降低_Kubernetes_学习门槛。
+description: Kuboard是一款免费的Kubernetes管理界面_无需编写YAML即可完成微服务在Kubernetes上的部署和维护_可帮助用户降低Kubernetes学习门槛_提高使用过程中的便利性
+meta:
+  - name: keywords
+    content: Kubernetes管理界面,K8S管理界面,Kubernetes学习门槛,K8S学习门槛
 ---
 
 # 如何降低Kubernetes学习门槛

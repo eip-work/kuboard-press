@@ -1,7 +1,10 @@
 ---
 vssueId: 83
 layout: LearningLayout
-description: Kubernetes教程_在Kubernetes中_使用kubectl创建Secret
+description: Kubernetes教程_在Kubernetes中_使用kubectl创建Secret_Generator
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes Secret,Kubernetes Generator
 ---
 
 # 创建Secrets（使用Generator）

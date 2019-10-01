@@ -2,6 +2,9 @@
 vssueId: 48
 layout: LearningLayout
 description: 本文描述了 Kubernetes DaemonSet 如何调度 Pod
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,DaemonSet
 ---
 
 # DaemonSet 是如何调度的

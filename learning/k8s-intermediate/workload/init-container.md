@@ -2,6 +2,9 @@
 vssueId: 31
 layout: LearningLayout
 description: Kubernetes教程_本文描述了Kubernetes_Pod中的初始化容器的概念_使用场景和使用方法_初始化容器是容器组中app容器启动之前执行的容器_可能包含setup脚本或其他工具进程
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,init container,初始化容器,initialize container
 ---
 
 # 容器组_初始化容器

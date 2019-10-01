@@ -2,7 +2,10 @@
 home: false
 layout: HomePage
 title: Kuboard官网_Kubernetes教程_K8S安装_管理界面
-description: Kuboard官网首页_Kubernetes_k8s_国内安装_部署_入门_免费中文教程_实践_微服务管理界面
+description: Kuboard是一款免费的Kubernetes管理界面_同时该网站还提供Kubernetes安装文档_在线答疑_K8S_部署_入门_免费中文Kubernetes教程_以及在Kubernetes上部署SpringCloud的详细文档
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes安装,K8S安装
 actionText: 在线体验
 actionText2: 开始使用 →
 actionLink2: /overview/
@@ -19,7 +22,7 @@ features:
 
 Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 
-提供最新版本的 [Kubernetes (K8S) 安装手册](https://kuboard.cn/install/install-k8s.html)，协同创作，在线答疑，持续更新。
+提供v1.16版本的 [Kubernetes (K8S) 安装手册](https://kuboard.cn/install/install-k8s.html)，协同创作，在线答疑，持续更新。
 
 点击此处，查看 [Kuboard 安装文档](https://kuboard.cn/install/install-dashboard.html)
 
@@ -34,7 +37,7 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 
 ### Kubernetes入门
   * [0. 学习Kubernetes基础知识](https://kuboard.cn/learning/k8s-basics/kubernetes-basics.html) (10分钟)
-    * [1. 部署第一个应用程序](https://kuboard.cn/learning/k8s-basics/deploy-app.html) (5分钟)
+    * [1. 部署一个应用程序](https://kuboard.cn/learning/k8s-basics/deploy-app.html) (5分钟)
     * [2. 查看 Pods / Nodes](https://kuboard.cn/learning/k8s-basics/explore.html) (10分钟)
     * [3. 公布应用程序](https://kuboard.cn/learning/k8s-basics/expose.html) (10分钟)
     * [4. 伸缩应用程序](https://kuboard.cn/learning/k8s-basics/scale.html) (10分钟)

@@ -2,6 +2,9 @@
 vssueId: 62
 layout: LearningLayout
 description: Kubernetes教程_Kubernetes_ConfigMap可以将配置信息和容器镜像解耦_以使得容器化的应用程序可移植_本文提供了一系列的实例_解释如何通过Kuboard创建ConfigMap以及如何使用ConfigMap中的数据配置Pod（容器组）。
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes ConfigMap,Kubernetes 配置
 ---
 
 # 使用ConfigMap配置您的应用程序

@@ -2,6 +2,9 @@
 vssueId: 79
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_使用kubectl解码和编辑Secret
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,Secret编码解码
 ---
 
 # 解码和编辑Secret

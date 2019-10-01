@@ -1,6 +1,9 @@
 ---
 vssueId: 11
-description: Kubernetes教程_Kubernetes已然是当下容器编排领域事实上的标准_各大云服务商都急于推出Kubernetes服务_互联网公司也纷纷跟进_将自己的应用容器化_并使用Kubernetes编排_在Kubernetes图形化工具方面_我们已经获得了极大的可选择空间_什么场景下更适合选择Kuboard呢
+description: Kuboard是一款免费的Kubernetes管理界面_同时该网站还提供Kubernetes安装文档_在线答疑_K8S_部署_入门_免费中文Kubernetes教程_以及在Kubernetes上部署SpringCloud的详细文档
+meta:
+  - name: keywords
+    content: Kubernetes管理界面,K8S教程,Kubernetes教程,K8S管理界面
 ---
 
 ## 为什么选择Kuboard

@@ -3,6 +3,9 @@ vssueId: 98
 titlePrefix: 污点和容忍
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_配置污点和容忍taints_and_toleration的基于污点的驱逐
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes Eviction
 ---
 
 # 基于污点的驱逐（TaintBasedEviction）

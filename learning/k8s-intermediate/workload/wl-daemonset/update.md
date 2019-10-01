@@ -2,6 +2,9 @@
 vssueId: 50
 layout: LearningLayout
 description: 本文描述了 Kubernetes DaemonSet 的概念、行为及用法
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,DaemonSet
 ---
 
 # 更新 DaemonSet

@@ -2,6 +2,9 @@
 vssueId: 64
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中将Pod容器组调度到指定的节点
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,容器组,Pod
 ---
 
 # 将容器组调度到指定的节点

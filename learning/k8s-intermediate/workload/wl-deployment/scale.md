@@ -2,6 +2,9 @@
 vssueId: 37
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中水平伸缩 Deployment （scaling up / scaling down）
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S负载,Deployment,Kubernetes部署,伸缩
 ---
 
 # 伸缩 Deployment

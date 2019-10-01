@@ -2,6 +2,9 @@
 vssueId: 29
 layout: LearningLayout
 description: Kubernetes教程_本文介绍Kubernetes中的最小可调度单元Pod容器组的概念以及如何使用容器组
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Pod,容器组
 ---
 
 # 容器组_概述

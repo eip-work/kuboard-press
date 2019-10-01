@@ -2,6 +2,9 @@
 vssueId: 32
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了Kubernetes_Controller控制器的概念以及控制器的种类
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes 控制器
 ---
 
 # 控制器_概述

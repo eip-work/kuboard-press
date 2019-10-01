@@ -2,6 +2,9 @@
 vssueId: 38
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中暂停 Deployment 的更新，和继续 Deployment 的更新
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Deployment,Kubernetes部署
 ---
 
 # 暂停和继续 Deployment

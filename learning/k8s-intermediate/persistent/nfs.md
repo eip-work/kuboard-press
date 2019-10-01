@@ -2,6 +2,9 @@
 vssueId: 91
 layout: LearningLayout
 description: Kubernetes教程_本文描述如何搭建NFS服务_并在Kubernetes中配置StorageClass使用该NFS服务作为存储
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,StorageClass
 ---
 
 # 搭建NFS服务

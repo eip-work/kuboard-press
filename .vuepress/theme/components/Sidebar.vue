@@ -5,23 +5,26 @@
     <slot name="bottom"/>
     <div style="text-align: center; margin-top: 5vh;">
       <p>
+        <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+        <img src="/images/logo-main.png" alt="Kuboard_快速在Kubernetes上落地微服务"/>
+        </a>
+      </p>
+      <p>
         <strong>
           <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">在线体验</a>
         </strong>
       </p>
       <div>
         <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-          <img :src="demo_img" style="width: 226px; height: 127px; border: 1px solid #d7dae2;" alt="Kubernetes教程：Kuboard在线体验"></img>
+          <img :src="demo_img" style="width: 215px; height: 127px; border: 1px solid #d7dae2;" alt="Kubernetes教程：Kuboard在线体验"></img>
         </a>
       </div>
       <p>
-        <strong><a href="https://github.com/shaohq/kuboard-issues/issues" target="_blank">提交 BUG</a></strong>
       </p>
       <strong>在线答疑</strong>
       <Qq/>
-
       <p>
-        <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+        <img src="/images/kuboard_qq.png" style="width: 120px;" alt="Kubernetes教程：QQ群在线答疑"/>
       </p>
     </div>
   </aside>

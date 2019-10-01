@@ -1,6 +1,9 @@
 ---
 vssueId: 17
-description: Kubernete安装文档_使用kubeadm升级kubernetes集群
+description: Kubernetes升级_使用kubeadm升级K8S集群_到Kubernetes_v1.15.3
+meta:
+  - name: keywords
+    content: Kubernetes升级,K8S升级,Kubernetes1.15.3
 ---
 
 # Kubernetes爆发严重漏洞_可能影响所有开源版本_请尽快升级

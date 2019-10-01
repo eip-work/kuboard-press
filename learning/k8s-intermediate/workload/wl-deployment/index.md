@@ -2,6 +2,9 @@
 vssueId: 33
 layout: LearningLayout
 description: 本文介绍了 Kubernetes Deployment 的概念、行为及使用方法
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Deployment,Kubernetes部署
 ---
 
 # 介绍 Deployment

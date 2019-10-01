@@ -6,7 +6,7 @@ description: Kubernetes教程_以gif动图的形式形象的描述Kubernetes核�
 
 > 转载信息：
 >
-> [译文链接](http://www.dockone.io/article/932) 译者：崔婧雯
+> 译者：崔婧雯
 >
 > [原文链接](http://omerio.com/2015/12/18/learn-the-kubernetes-key-concepts-in-10-minutes/) 作者：Omer Dawelbeit
 

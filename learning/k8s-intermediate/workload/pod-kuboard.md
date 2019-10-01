@@ -1,5 +1,8 @@
 ---
 description: Kubernetes教程_本文描述了Kuboard如何处理Kubernetes容器组
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,容器组
 ---
 
 # 容器组_Kuboard

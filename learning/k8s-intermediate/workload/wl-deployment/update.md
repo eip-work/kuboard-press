@@ -2,6 +2,9 @@
 vssueId: 35
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中更新 Deployment
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Deployment,Kubernetes部署
 ---
 
 # 更新 Deployment

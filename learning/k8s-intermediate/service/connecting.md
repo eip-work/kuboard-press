@@ -2,6 +2,9 @@
 vssueId: 56
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_通过Service连接应用程序
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes Service,Kubernetes服务发现
 ---
 
 # Service连接应用程序

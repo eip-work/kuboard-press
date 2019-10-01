@@ -3,6 +3,9 @@ vssueId: 97
 titlePrefix: 污点和容忍
 layout: LearningLayout
 description: Kubernetes教程_在Kubernetes中_配置污点和容忍taints_and_toleration的使用案例
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes污点使用
 ---
 
 # 使用案例

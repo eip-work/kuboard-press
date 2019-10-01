@@ -1,6 +1,9 @@
 ---
 vssueId: 19
-description: Kubernete安装文档_详细介绍如何将Kuboard升级到最新版本。
+description: Kuboard_快速在Kubernetes上落地微服务_本文详细介绍如何将Kuboard升级到最新版本
+meta:
+  - name: keywords
+    content: Kuboard升级
 ---
 
 # 升级Kuboard

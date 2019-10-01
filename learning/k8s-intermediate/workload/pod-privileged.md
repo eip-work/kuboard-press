@@ -1,5 +1,8 @@
 ---
 description: Kubernetes教程_在Kubernetes中为Pod中的容器开启privileged 模式
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,init container,初始化容器,initialize container
 ---
 
 # 容器组_Privileged 模式

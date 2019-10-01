@@ -18,7 +18,7 @@ description: 在Kubernetes上部署测试数据库mysql的详细介绍。
 * 在开发环境、测试环境使用 Kuboard 部署一个副本数为 1 的 Deployment，以便可以快速复制 开发环境、测试环境
 * 在准上线环境和生产环境，使用 IaaS 服务商提供的 RDS 服务，或者自建 MySQL 主从集群，原因是：
   * 直接将 MySQL 部署到 Kubernetes 虽然简便，但是数据库的运维仍然有大量的事情需要考虑，例如数据的备份、恢复、迁移等
-  * Kubernetes 管理无状态服务已经非常成熟，在管理有状态的容器例如 MySQL 时，仍然需要等待更好的解决方案。目前这方面最新的进展是 [Kubernetes Operator](http://dockone.io/article/8769)
+  * Kubernetes 管理无状态服务已经非常成熟，在管理有状态的容器例如 MySQL 时，仍然需要等待更好的解决方案。目前这方面最新的进展是 <a rel="nofollow" href="http://dockone.io/article/8769" target="_blank">Kubernetes Operator</a>
 * 如果您想尝试部署 MySQL 集群，目前还可以参考 [Run a Replicated Stateful Application](https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application/)
 
 

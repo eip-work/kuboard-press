@@ -2,6 +2,9 @@
 vssueId: 55
 layout: LearningLayout
 description: Kubernetes教程_本文介绍了Kubernetes中Service和Pod的DNS分配规则
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,Kubernetes DNS
 ---
 
 # Service/Pod的DNS

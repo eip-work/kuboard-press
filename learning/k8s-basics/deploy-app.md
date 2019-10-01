@@ -2,9 +2,12 @@
 vssueId: 21
 layout: LearningLayout
 description: Kubernetes教程_本文详细讲解了Kubernetes_Deployment的概念_并描述了如何使用kubectl_Kuboard创建一个Deployment
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Deployment,Kubernetes入门,K8S入门
 ---
 
-# 1.部署第一个应用程序
+# 1.部署一个应用程序
 
 本文翻译自 Kubernetes 官网 [Using kubectl to Create a Deployment](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/) ，并有所改写
 

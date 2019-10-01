@@ -2,6 +2,9 @@
 vssueId: 88
 layout: LearningLayout
 description: Kubernetes教程_使用Kuboard在Kubernetes上部署Spring_Cloud_open_capacity_platform微服务能力开放平台_部署mysql
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes微服务,Kubernetes MySQL
 ---
 
 

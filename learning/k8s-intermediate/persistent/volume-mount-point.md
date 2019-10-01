@@ -1,6 +1,9 @@
 ---
 layout: LearningLayout
 description: Kubernetes教程_本文介绍Kubernetes中Volume（数据卷）的挂载以及挂载传播MountPropagation的概念
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,挂载点
 ---
 
 # 数据卷-挂载

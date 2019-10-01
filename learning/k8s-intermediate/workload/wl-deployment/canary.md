@@ -2,6 +2,9 @@
 vssueId: 41
 layout: LearningLayout
 description: 本文描述了如何通过 Deployment 执行灰度发布（金丝雀发布）
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,金丝雀发布,灰度发布
 ---
 
 # 金丝雀发布

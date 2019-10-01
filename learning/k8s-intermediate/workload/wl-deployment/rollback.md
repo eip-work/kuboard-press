@@ -2,6 +2,9 @@
 vssueId: 36
 layout: LearningLayout
 description: 本文描述了如何在 Kubernetes 中回滚 Deployment
+meta:
+  - name: keywords
+    content: Kubernetes教程,K8S教程,Deployment,Kubernetes部署,回滚
 ---
 
 # 回滚 Deployment
