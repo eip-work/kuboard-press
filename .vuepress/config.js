@@ -349,21 +349,43 @@ module.exports = {
             },
             {
               title: 'Open Capacity Platform',
-              collapsable: false,
+              collapsable: true,
               children: [
-                ['k8s-practice/ocp/', 'OCP介绍'],
-                'k8s-practice/ocp/prepare',
-                'k8s-practice/ocp/build',
-                'k8s-practice/ocp/sequence',
-                'k8s-practice/ocp/eureka-server',
-                'k8s-practice/ocp/mysql',
-                'k8s-practice/ocp/redis',
-                'k8s-practice/ocp/auth-server',
-                'k8s-practice/ocp/user-center',
-                'k8s-practice/ocp/api-gateway',
-                'k8s-practice/ocp/back-center',
-                'k8s-practice/ocp/review',
-                'k8s-practice/ocp/export',
+                {
+                  title: '准备',
+                  collapsable: false,
+                  path: '/learning/k8s-practice/ocp/',
+                  children: [
+                    ['k8s-practice/ocp/', 'OCP介绍'],
+                    'k8s-practice/ocp/prepare',
+                    'k8s-practice/ocp/build',
+                  ]
+                },
+                {
+                  title: '部署',
+                  collapsable: false,
+                  path: '/learning/k8s-practice/ocp/sequence.html',
+                  children: [
+                    'k8s-practice/ocp/sequence',
+                    'k8s-practice/ocp/eureka-server',
+                    'k8s-practice/ocp/mysql',
+                    'k8s-practice/ocp/redis',
+                    'k8s-practice/ocp/auth-server',
+                    'k8s-practice/ocp/user-center',
+                    'k8s-practice/ocp/api-gateway',
+                    'k8s-practice/ocp/back-center',
+                    'k8s-practice/ocp/review',
+                  ]
+                },
+                {
+                  title: '多环境',
+                  collapsable: false,
+                  path: '/learning/k8s-practice/ocp/export.html',
+                  children: [
+                    'k8s-practice/ocp/export',
+                    'k8s-practice/ocp/import',
+                  ]
+                },
               ]
             },
           ]

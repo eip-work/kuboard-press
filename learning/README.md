@@ -84,17 +84,19 @@ description: Kubernetes免费中文教程目录
 
 在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
 
-* [OCP介绍](/learning/k8s-practice/ocp/)
-* [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
-* [构建docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)
-* [部署顺序](/learning/k8s-practice/ocp/sequence.html)
-* [在K8S上部署eureka-server](/learning/k8s-practice/ocp/eureka-server.html)
-* [在K8S上部署mysql](/learning/k8s-practice/ocp/mysql.html)
-* [在K8S上部署redis](/learning/k8s-practice/ocp/redis.html)
-* [在K8S上部署auth-center](/learning/k8s-practice/ocp/auth-server.html)
-* [在K8S上部署user-center](/learning/k8s-practice/ocp/user-center.html)
-* [在K8S上部署api-gateway](/learning/k8s-practice/ocp/api-gateway.html)
-* [在K8S上部署back-center](/learning/k8s-practice/ocp/back-center.html)
-* [重新审视配置信息](/learning/k8s-practice/ocp/review.html)
-* [导出部署配置]
-* [在新的名称空间导入部署配置]
+* 准备
+  * [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
+  * [构建docker镜像并推送到仓库](/learning/k8s-practice/ocp/build.html)
+* 部署
+  * [部署顺序](/learning/k8s-practice/ocp/sequence.html)
+  * [在K8S上部署eureka-server](/learning/k8s-practice/ocp/eureka-server.html)
+  * [在K8S上部署mysql](/learning/k8s-practice/ocp/mysql.html)
+  * [在K8S上部署redis](/learning/k8s-practice/ocp/redis.html)
+  * [在K8S上部署auth-server](/learning/k8s-practice/ocp/auth-server.html)
+  * [在K8S上部署user-center](/learning/k8s-practice/ocp/user-server.html)
+  * [在K8S上部署api-gateway](/learning/k8s-practice/ocp/api-gateway.html)
+  * [在K8S上部署back-center](/learning/k8s-practice/ocp/back-center.html)
+  * [重新审视配置信息](/learning/k8s-practice/ocp/review.html)
+* 多环境
+  * [导出部署配置](/learning/k8s-practice/ocp/export.html)
+  * [导入部署配置](/learning/k8s-practice/ocp/import.html)

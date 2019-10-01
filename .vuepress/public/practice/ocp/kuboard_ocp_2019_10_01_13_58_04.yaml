@@ -1,0 +1,733 @@
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: ocp
+  name: cloud-eureka
+  annotations:
+    k8s.eip.work/workload: cloud-eureka
+    k8s.eip.work/displayName: 服务注册中心
+    k8s.eip.work/service: NodePort
+    k8s.eip.work/ingress: 'true'
+  labels:
+    k8s.eip.work/layer: cloud
+    k8s.eip.work/name: cloud-eureka
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: cloud
+      k8s.eip.work/name: cloud-eureka
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: cloud
+        k8s.eip.work/name: cloud-eureka
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/eureka-server:latest'
+          imagePullPolicy: Always
+          name: eureka-server
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: eureka.instance.prefer-ip-address
+              value: 'false'
+          envFrom:
+            - configMapRef:
+                name: ocp-config
+      volumes: []
+  replicas: 3
+  volumeClaimTemplates: []
+  serviceName: cloud-eureka
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: cloud-eureka
+  annotations:
+    k8s.eip.work/workload: cloud-eureka
+    k8s.eip.work/displayName: 服务注册中心
+  labels:
+    k8s.eip.work/layer: cloud
+    k8s.eip.work/name: cloud-eureka
+spec:
+  selector:
+    k8s.eip.work/layer: cloud
+    k8s.eip.work/name: cloud-eureka
+  type: NodePort
+  ports:
+    - port: 1111
+      targetPort: 1111
+      protocol: TCP
+      name: mpqzwr
+      nodePort: 31111
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: ocp
+  name: cloud-eureka
+  annotations:
+    k8s.eip.work/workload: cloud-eureka
+    k8s.eip.work/displayName: 服务注册中心
+  labels:
+    k8s.eip.work/layer: cloud
+    k8s.eip.work/name: cloud-eureka
+spec:
+  rules:
+    - host: cloud-eureka.ocp.demo.kuboard.cn
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: cloud-eureka
+              servicePort: mpqzwr
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: ocp
+  name: cloud-redis
+  annotations:
+    k8s.eip.work/workload: cloud-redis
+    k8s.eip.work/displayName: Redis缓存
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'false'
+  labels:
+    k8s.eip.work/layer: cloud
+    k8s.eip.work/name: cloud-redis
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: cloud
+      k8s.eip.work/name: cloud-redis
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: cloud
+        k8s.eip.work/name: cloud-redis
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'redis:4.0.14'
+          imagePullPolicy: Always
+          name: redis
+          volumeMounts: []
+          resources: {}
+          env: []
+      volumes: []
+  replicas: 1
+  volumeClaimTemplates: []
+  serviceName: cloud-redis
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: cloud-redis
+  annotations:
+    k8s.eip.work/workload: cloud-redis
+    k8s.eip.work/displayName: Redis缓存
+  labels:
+    k8s.eip.work/layer: cloud
+    k8s.eip.work/name: cloud-redis
+spec:
+  selector:
+    k8s.eip.work/layer: cloud
+    k8s.eip.work/name: cloud-redis
+  type: ClusterIP
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+      name: xcndrj
+      nodePort: 0
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: ocp
+  name: db-auth-center
+  annotations:
+    k8s.eip.work/workload: db-auth-center
+    k8s.eip.work/displayName: 认证中心数据库
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'false'
+  labels:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-auth-center
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: db
+      k8s.eip.work/name: db-auth-center
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: db
+        k8s.eip.work/name: db-auth-center
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/auth-center-mysql:latest'
+          imagePullPolicy: Always
+          name: auth-center-mysql
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+      volumes: []
+  replicas: 1
+  volumeClaimTemplates: []
+  serviceName: db-auth-center
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: db-auth-center
+  annotations:
+    k8s.eip.work/workload: db-auth-center
+    k8s.eip.work/displayName: 认证中心数据库
+  labels:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-auth-center
+spec:
+  selector:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-auth-center
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+      name: hzib57
+      nodePort: 0
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: ocp
+  name: db-log-center
+  annotations:
+    k8s.eip.work/workload: db-log-center
+    k8s.eip.work/displayName: 日志中心数据库
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'false'
+  labels:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-log-center
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: db
+      k8s.eip.work/name: db-log-center
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: db
+        k8s.eip.work/name: db-log-center
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/log-center-mysql:latest'
+          imagePullPolicy: Always
+          name: log-center-mysql
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+      volumes: []
+  replicas: 1
+  volumeClaimTemplates: []
+  serviceName: db-log-center
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: db-log-center
+  annotations:
+    k8s.eip.work/workload: db-log-center
+    k8s.eip.work/displayName: 日志中心数据库
+  labels:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-log-center
+spec:
+  selector:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-log-center
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+      name: 4zep27
+      nodePort: 0
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: ocp
+  name: db-user-center
+  annotations:
+    k8s.eip.work/workload: db-user-center
+    k8s.eip.work/displayName: 用户中心数据库
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'false'
+  labels:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-user-center
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: db
+      k8s.eip.work/name: db-user-center
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: db
+        k8s.eip.work/name: db-user-center
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/user-center-mysql:latest'
+          imagePullPolicy: Always
+          name: user-center-mysql
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+      volumes: []
+  replicas: 1
+  volumeClaimTemplates: []
+  serviceName: db-user-center
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: db-user-center
+  annotations:
+    k8s.eip.work/workload: db-user-center
+    k8s.eip.work/displayName: 用户中心数据库
+  labels:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-user-center
+spec:
+  selector:
+    k8s.eip.work/layer: db
+    k8s.eip.work/name: db-user-center
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+      name: 2m2tyy
+      nodePort: 0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ocp
+  name: gateway-api
+  annotations:
+    k8s.eip.work/workload: gateway-api
+    k8s.eip.work/displayName: 接口网关
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'true'
+  labels:
+    k8s.eip.work/layer: gateway
+    k8s.eip.work/name: gateway-api
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: gateway
+      k8s.eip.work/name: gateway-api
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: gateway
+        k8s.eip.work/name: gateway-api
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/api-gateway:latest'
+          imagePullPolicy: Always
+          name: api-gateway
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: spring.datasource.druid.core.url
+              value: >-
+                jdbc:mysql://db-auth-center:3306/oauth-center?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+          envFrom:
+            - configMapRef:
+                name: ocp-config
+      volumes: []
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: gateway-api
+  annotations:
+    k8s.eip.work/workload: gateway-api
+    k8s.eip.work/displayName: 接口网关
+  labels:
+    k8s.eip.work/layer: gateway
+    k8s.eip.work/name: gateway-api
+spec:
+  selector:
+    k8s.eip.work/layer: gateway
+    k8s.eip.work/name: gateway-api
+  type: ClusterIP
+  ports:
+    - port: 9200
+      targetPort: 9200
+      protocol: TCP
+      name: zmcdbh
+      nodePort: 0
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: ocp
+  name: gateway-api
+  annotations:
+    k8s.eip.work/workload: gateway-api
+    k8s.eip.work/displayName: 接口网关
+  labels:
+    k8s.eip.work/layer: gateway
+    k8s.eip.work/name: gateway-api
+spec:
+  rules:
+    - host: api-gateway.ocp.demo.kuboard.cn
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: gateway-api
+              servicePort: zmcdbh
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ocp
+  name: svc-auth-server
+  annotations:
+    k8s.eip.work/workload: svc-auth-server
+    k8s.eip.work/displayName: 认证中心
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'true'
+  labels:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-auth-server
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: svc
+      k8s.eip.work/name: svc-auth-server
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: svc
+        k8s.eip.work/name: svc-auth-server
+    spec:
+      imagePullSecrets: []
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/auth-server:latest'
+          imagePullPolicy: Always
+          name: auth-server
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: spring.datasource.druid.core.url
+              value: >-
+                jdbc:mysql://db-auth-center:3306/oauth-center?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+          envFrom:
+            - configMapRef:
+                name: ocp-config
+      volumes: []
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: svc-auth-server
+  annotations:
+    k8s.eip.work/workload: svc-auth-server
+    k8s.eip.work/displayName: 认证中心
+  labels:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-auth-server
+spec:
+  selector:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-auth-server
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: dzprby
+      nodePort: 0
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: ocp
+  name: svc-auth-server
+  annotations:
+    k8s.eip.work/workload: svc-auth-server
+    k8s.eip.work/displayName: 认证中心
+  labels:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-auth-server
+spec:
+  rules:
+    - host: svc-auth-server.ocp.demo.kuboard.cn
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: svc-auth-server
+              servicePort: dzprby
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ocp
+  name: svc-user-center
+  annotations:
+    k8s.eip.work/workload: svc-user-center
+    k8s.eip.work/displayName: 用户中心
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'true'
+  labels:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-user-center
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: svc
+      k8s.eip.work/name: svc-user-center
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: svc
+        k8s.eip.work/name: svc-user-center
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/user-center:latest'
+          imagePullPolicy: Always
+          name: user-center
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: spring.datasource.druid.core.url
+              value: >-
+                jdbc:mysql://db-user-center:3306/user-center?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+          envFrom:
+            - configMapRef:
+                name: ocp-config
+      volumes: []
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: svc-user-center
+  annotations:
+    k8s.eip.work/workload: svc-user-center
+    k8s.eip.work/displayName: 用户中心
+  labels:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-user-center
+spec:
+  selector:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-user-center
+  type: ClusterIP
+  ports:
+    - port: 7000
+      targetPort: 7000
+      protocol: TCP
+      name: jhaxwk
+      nodePort: 0
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: ocp
+  name: svc-user-center
+  annotations:
+    k8s.eip.work/workload: svc-user-center
+    k8s.eip.work/displayName: 用户中心
+  labels:
+    k8s.eip.work/layer: svc
+    k8s.eip.work/name: svc-user-center
+spec:
+  rules:
+    - host: svc-user-center.ocp.demo.kuboard.cn
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: svc-user-center
+              servicePort: jhaxwk
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ocp
+  name: web-back-center
+  annotations:
+    k8s.eip.work/workload: web-back-center
+    k8s.eip.work/displayName: 后台中心
+    k8s.eip.work/service: ClusterIP
+    k8s.eip.work/ingress: 'true'
+  labels:
+    k8s.eip.work/layer: web
+    k8s.eip.work/name: web-back-center
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: web
+      k8s.eip.work/name: web-back-center
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: web
+        k8s.eip.work/name: web-back-center
+    spec:
+      imagePullSecrets:
+        - {}
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'ocpsample/back-center:latest'
+          imagePullPolicy: Always
+          name: back-center
+          volumeMounts: []
+          resources: {}
+          env: []
+          envFrom:
+            - configMapRef:
+                name: ocp-config
+      volumes: []
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ocp
+  name: web-back-center
+  annotations:
+    k8s.eip.work/workload: web-back-center
+    k8s.eip.work/displayName: 后台中心
+  labels:
+    k8s.eip.work/layer: web
+    k8s.eip.work/name: web-back-center
+spec:
+  selector:
+    k8s.eip.work/layer: web
+    k8s.eip.work/name: web-back-center
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rxcrxf
+      nodePort: 0
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: ocp
+  name: web-back-center
+  annotations:
+    k8s.eip.work/workload: web-back-center
+    k8s.eip.work/displayName: 后台中心
+  labels:
+    k8s.eip.work/layer: web
+    k8s.eip.work/name: web-back-center
+spec:
+  rules:
+    - host: back-center.ocp.demo.kuboard.cn
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web-back-center
+              servicePort: rxcrxf
+
+---
+metadata:
+  name: ocp-config
+  namespace: ocp
+data:
+  CLOUD_EUREKA_URL: 'http://cloud-eureka.ocp.demo.kuboard.cn/'
+  GATEWAY_API_URL: 'http://api-gateway.ocp.demo.kuboard.cn/'
+  eureka.client.serviceUrl.defaultZone: >-
+    http://cloud-eureka-0.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-1.cloud-eureka.ocp.svc.cluster.local:1111/eureka,http://cloud-eureka-2.cloud-eureka.ocp.svc.cluster.local:1111/eureka
+  spring.datasource.druid.log.url: >-
+    jdbc:mysql://db-log-center:3306/log-center?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+  spring.redis.host: cloud-redis
+kind: ConfigMap
+
