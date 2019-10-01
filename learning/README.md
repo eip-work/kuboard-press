@@ -14,6 +14,10 @@ meta:
 * Kubernetes 初学者
 * 学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 
+<p style="max-width: 450px; text-align: middle;">
+  <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
+</p>
+
 ## **Kubernetes 体验**
   * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （30分钟，初学者也许需要更多）
     * 参照经过众多网友验证，不断优化的安装文档，迅速完成 Kubernetes 安装，拥有属于自己的 Kubernetes 集群。
@@ -78,12 +82,6 @@ meta:
 在 Kubernetes 上部署 Spring Cloud 微服务：
 
 * [概述](/learning/k8s-practice/spring-cloud/)
-* [部署服务注册中心]
-* [部署数据库]
-* [部署微服务]
-* [部署服务网关]
-* [部署Web前端]
-* [管理多环境]
 
 在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
 
