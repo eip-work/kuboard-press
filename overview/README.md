@@ -22,58 +22,37 @@ meta:
     justify-content: space-between;">
 <div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
-  快速落地 Kubernetes
+  Kubernetes安装文档
   </h2>
   <li style="color: #4e6e8e;">
-  快速安装
+  快速安装Kubernetes
   </li>
   <li style="color: #4e6e8e;">
-  图形化界面
+  每天有超过200个用户参考此文档完成Kubernetes安装
   </li>
   <li style="color: #4e6e8e;">
-  场景化设计
+  碰到问题可QQ在线答疑
   </li>
 </div>
 
 <div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
-  微服务架构
+  Kubernetes免费教程
   </h2>
   <li style="color: #4e6e8e;">
-  经典微服务参考架构
+  免费但绝不降低品质
   </li>
   <li style="color: #4e6e8e;">
-  Spring Cloud 实战案例
+  活跃的QQ社群，与网友共同学习进步
   </li>
 </div>
 
 <div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
-  多层次监控
+  Kubernetes+SpringCloud实战
   </h2>
   <li style="color: #4e6e8e;">
-  资源层监控
-  </li>
-  <li style="color: #4e6e8e;">
-  中间件层监控
-  </li>
-  <li style="color: #4e6e8e;">
-  链路层监控
-  </li>
-</div>
-
-<div style="flex-grow: 1; flex-basis: 25%; min-width: 180px;">
-  <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
-  适用范围
-  </h2>
-  <li style="color: #4e6e8e;">
-  物理机/虚拟机
-  </li>
-  <li style="color: #4e6e8e;">
-  私有云
-  </li>
-  <li style="color: #4e6e8e;">
-  阿里云、腾讯云、亚马逊云 ...
+  参考文档，一步一步完成Spring Cloud微服务架构在Kubernetes上的部署和管理
   </li>
 </div>
 

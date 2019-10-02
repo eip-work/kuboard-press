@@ -41,9 +41,16 @@
         class="feature"
         v-for="(feature, index) in data.features"
         :key="index"
+        @click="$router.push({ path: feature.link })"
       >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
+        <div class="feature-content">
+          <h2>{{ feature.title }}</h2>
+          <p>{{ feature.details }}</p>
+        </div>
+        <div class="feature-mask">
+          <h2>{{ feature.title }}</h2>
+          <p style="color: #007af5; font-weight: 500;">点击查看</p>
+        </div>
       </div>
     </div>
 
@@ -151,7 +158,7 @@ export default {
       border 1px solid $accentColor
   .features
     border-top 1px solid $borderColor
-    padding 1.2rem 0
+    padding 2rem 0
     margin-top 2.5rem
     display flex
     flex-wrap wrap
@@ -161,7 +168,9 @@ export default {
   .feature
     flex-grow 1
     flex-basis 30%
-    max-width 30%
+    max-width 32%
+    height calc(240px + 2rem)
+    cursor pointer
     h2
       font-size 1.4rem
       font-weight 500
@@ -170,6 +179,28 @@ export default {
       color lighten($textColor, 10%)
     p
       color lighten($textColor, 25%)
+    .feature-mask
+      padding: 1rem
+      height 240px
+      border solid 1px rgb(212, 212, 213)
+      border-radius 3px
+      position relative
+      top calc(-242px - 2rem)
+      opacity 0
+      transition background-color .5s linear
+      z-index 10
+      &:hover
+        background #F9F9F9
+        box-shadow: 0 0 15px #999
+        color white
+        opacity 1
+        z-index 10
+        transition all .3s
+    .feature-content
+      border solid 1px rgb(212, 212, 213)
+      border-radius 3px
+      height 240px
+      padding: 1rem
   .footer
     padding 2.5rem
     border-top 1px solid $borderColor
