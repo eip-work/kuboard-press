@@ -167,8 +167,7 @@ export default {
     justify-content space-between
   .feature
     flex-grow 1
-    flex-basis 30%
-    max-width 32%
+    width 32%
     height calc(240px + 2rem)
     cursor pointer
     h2
@@ -212,8 +211,10 @@ export default {
     .features
       flex-direction column
     .feature
-      max-width 100%
-      padding 0 2.5rem
+      width calc(100%)
+      height calc(240px + 2rem)
+      margin-bottom 2rem
+
 
 @media (max-width: $MQMobileNarrow)
   .home

@@ -165,7 +165,7 @@ Kubernetes 目前支持多达 28 种数据卷类型（其中大部分特定于�
 
   * 使用 ConfigMap 中的某一 key 作为文件名，对应 value 作为文件内容，替换 nginx 容器中的 /etc/nginx/conf.d/default.conf 配置文件。请参考  [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html#configmap-数据卷)
 
-### secret <Badge text="Kuboard正在计划中" type="warn"/>
+### secret <Badge text="Kuboard已支持" type="success"/>
 
 * **描述**
 

@@ -1,21 +1,5 @@
 Kuboard v1.0.x 的更新说明
 
-## v1.0.4-beta.1
-
-**发布日期**
-
-2019年9月2x日
-
-**新特性**
-
-* 工作负载编辑器 --> 容器组 --> terminationGracePeriodSeconds
-* 工作负载编辑器 --> 容器组 --> 容器 --> 挂载点 --> 增加 mountPropagation 选项
-
-**优化**
-
-
-**BUG 修复**
-* Secret 表单验证
 
 
 

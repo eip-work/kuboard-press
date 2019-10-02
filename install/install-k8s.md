@@ -167,8 +167,8 @@ export default {
 
 安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
-<p>
-<img src="/images/topology/k8s.png" style="max-width: 720px;" alt="Kubernetes安装：Kubernetes安装拓扑图">
+<p style="max-width: 720px;">
+<img src="/images/topology/k8s.png" style="max-width: 100%;" alt="Kubernetes安装：Kubernetes安装拓扑图">
 </p>
 
 ::: tip

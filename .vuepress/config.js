@@ -171,6 +171,7 @@ module.exports = {
           children: [
             // ['install-k8s-upgrade', '升级Kubernetes集群'],
             'upgrade-k8s/1.15.x-1.15.4',
+            'upgrade-k8s/1.15.x-1.16.x',
           ]
         },
         {

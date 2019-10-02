@@ -20,7 +20,7 @@ meta:
     align-items: flex-start;
     align-content: stretch;
     justify-content: space-between;">
-<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
+<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px; cursor: pointer;" @click="$router.push({path: '/install/install-k8s.html'})">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes安装文档
   </h2>
@@ -35,7 +35,7 @@ meta:
   </li>
 </div>
 
-<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
+<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px; cursor: pointer;" @click="$router.push({path: '/learning/'})">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes免费教程
   </h2>
@@ -47,7 +47,7 @@ meta:
   </li>
 </div>
 
-<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px;">
+<div style="flex-grow: 1; flex-basis: 25%; min-width: 200px; cursor: pointer;" @click="$router.push({path: '/learning/k8s-practice/ocp/'})">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes+SpringCloud实战
   </h2>
