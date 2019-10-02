@@ -7,7 +7,7 @@ meta:
     content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,创建Secret
 ---
 
-# 创建Secrets（使用Kuboard）
+# 创建Secret（使用Kuboard）
 
 本文简要描述如何在 Kuboard 中创建 Kubernetes Secret。
 
@@ -18,12 +18,12 @@ Kubernetes Secret 必须从属于某一个名称空间，进入 Kuboard 名称�
 
 
 
-  ![image-20190925232823416](./create-kuboard.assets/image-20190925232823416.png)
+  ![Kubernetes教程_使用Kuboard创建Secret](./create-kuboard.assets/image-20190925232823416.png)
 
 
 * 点击 **创建** 按钮，可显示 Secret 的创建界面，如下图所示：
 
-  ![image-20190925232914884](./create-kuboard.assets/image-20190925232914884.png)
+  ![Kubernetes教程_使用Kuboard创建Secret](./create-kuboard.assets/image-20190925232914884.png)
 
   * 可以创建的 Secret 类型有：
     * docker 仓库密码

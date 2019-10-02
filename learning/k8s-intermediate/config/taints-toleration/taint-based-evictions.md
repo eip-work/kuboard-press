@@ -15,6 +15,12 @@ meta:
 * 容忍该污点的 Pod 在未指定 `tolerationSeconds` 的情况下，将继续在该节点上运行
 * 容忍该污点的 Pod 在指定了 `tolerationSeconds` 的情况下，将在指定时间超过时从节点上驱逐
 
+::: tip
+`tolerationSeconds` 字段可以理解为 Pod 容忍该污点的 `耐心`：
+* 超过指定的时间，则达到 Pod 忍耐的极限，Pod 离开所在节点
+* 不指定 `tolerationSeconds`，则认为 Pod 对该污点的容忍是无期限的
+:::
+
 此外，自 kubernetes 1.6 以来，kubernetes 的节点控制器在碰到某些特定的条件时，将自动为节点添加污点。这类污点有：
 * `node.kubernetes.io/not-ready`： 节点未就绪。对应着 NodeCondition `Ready` 为 `False` 的情况
 * `node.kubernetes.io/unreachable`： 节点不可触达。对应着 NodeCondition `Ready` 为 `Unknown` 的情况

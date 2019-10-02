@@ -14,7 +14,7 @@ meta:
 * Kubernetes 初学者
 * 学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 
-<p style="max-width: 450px; text-align: middle;">
+<p style="max-width: 450px; margin: auto;">
   <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
 </p>
 

@@ -8,7 +8,7 @@ meta:
 
 ## Kuboard简介
 
-<p style="max-width: 450px; text-align: middle;">
+<p style="max-width: 450px; margin: auto;">
   <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
 </p>
 

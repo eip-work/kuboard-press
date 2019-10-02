@@ -298,7 +298,7 @@ module.exports = {
                   ]
                 },
                 {
-                  title: 'Secrets',
+                  title: 'Secret',
                   collapsable: true,
                   children: [
                     'k8s-intermediate/config/secrets/',
@@ -307,7 +307,7 @@ module.exports = {
                     'k8s-intermediate/config/secrets/create-generator',
                     'k8s-intermediate/config/secrets/create-kuboard',
                     'k8s-intermediate/config/secrets/decode-edit',
-                    // 'k8s-intermediate/config/secrets/use-scenarios',
+                    'k8s-intermediate/config/secrets/use-case-ingress-tls',
                     // 'k8s-intermediate/config/secrets/use-as_file',
                     // 'k8s-intermediate/config/secrets/use-as_env',
                     // 'k8s-intermediate/config/secrets/use-image-pull-secrets',
