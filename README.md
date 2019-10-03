@@ -16,6 +16,9 @@ features:
 - title: Kubernetes免费教程
   details: 免费但绝不降低品质，活跃的QQ社群，与网友共同学习进步
   link: /learning/
+- title: Kubernetes管理界面
+  details: Kubernetes图形化管理界面，无需编写 yaml 文件即可完成应用程序在 Kubernetes 上的部署和维护
+  link: /install/install-dashboard.html
 - title: Kubernetes + Spring Cloud实战
   details: 参考文档，一步一步完成Spring Cloud微服务架构在Kubernetes上的部署和管理
   link: /learning/k8s-practice/ocp

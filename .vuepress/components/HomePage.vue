@@ -42,6 +42,7 @@
         v-for="(feature, index) in data.features"
         :key="index"
         @click="$router.push({ path: feature.link })"
+        :style="index === data.features.length - 1 ? 'margin-right: 0' : ''"
       >
         <div class="feature-content">
           <h2>{{ feature.title }}</h2>
@@ -167,11 +168,12 @@ export default {
     justify-content space-between
   .feature
     flex-grow 1
-    width 32%
+    flex-basis 22%
+    margin-right 1rem
     height calc(240px + 2rem)
     cursor pointer
     h2
-      font-size 1.4rem
+      font-size 1.2rem
       font-weight 500
       border-bottom none
       padding-bottom 0

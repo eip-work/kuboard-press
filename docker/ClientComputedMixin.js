@@ -86,7 +86,7 @@ module.exports = siteData => {
       if (page.path.indexOf('/install/') === 0) {
         return selfTitle + '_K8S安装部署'
       }
-      if (selfTitle === 'Kuboard官网_Kubernetes教程_k8s国内安装_部署_入门_学习_实践_中文文档_微服务管理界面') {
+      if (page.path === '/') {
         return selfTitle
       }
       return siteTitle
