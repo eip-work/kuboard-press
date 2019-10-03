@@ -70,6 +70,7 @@
           <li>Kubernetes 管理界面</li>
           <li>微服务参考架构</li>
           <li>无需手写 YAML</li>
+          <li><a href="/install/install-dashboard.html">安装Kuboard</a></li>
         </p>
       </el-card>
       <div class="intro_picture">

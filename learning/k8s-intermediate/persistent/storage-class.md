@@ -28,6 +28,18 @@ Kuboard 支持的存储类的种类如下：
 * NFS <Badge text="Kuboard 已支持" type="success"/>
 * CephFS <Badge text="Kuboard 正在计划中" type="warn"/>
 
+::: tip 使用Kuboard “不支持”的存储类
+对于那些目前Kuboard不支持的存储类：
+* 使用yaml文件在kubectl中创建存储类
+* 在Kuboard中创建存储卷声明时，仍然可以引用这些存储类
+
+这里所说的Kuboard不支持的存储类，仅仅是说，Kuboard中不能直接创建和编辑这种类型的存储类。
+:::
+
+::: tip NFS权限问题
+许多网友自己搭建 NFS 测试环境，再创建 NFS存储类，经常碰到 `access denied` 这类权限问题。为了帮助大家更快地完成 NFS 测试环境搭建，Kuboard提供了一篇NFS相关的简明文档，请参考 [搭建NFS Server](/learning/k8s-intermediate/persistent/nfs.html)
+:::
+
 ## 存储类
 
 在 Kuboard 中查看存储类，如下图所示：
