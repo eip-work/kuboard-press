@@ -114,4 +114,4 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
   * [导出部署配置](https://kuboard.cn/learning/k8s-practice/ocp/export.html)
   * [导入部署配置](https://kuboard.cn/learning/k8s-practice/ocp/import.html)
 
-Kuboard官网免费提供 K8S教程，K8S安装文档，学习过程中如有疑问，请加QQ群在线答疑。
+Kuboard官网免费提供Kubernetes教程、K8S教程、K8S安装文档、Kubernetes+SpringCloud实战文档，学习过程中如有疑问，请加QQ群在线答疑。

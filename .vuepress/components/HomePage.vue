@@ -34,28 +34,29 @@
     </header>
 
     <div
-      class="features"
+      class="features-c"
       v-if="data.features && data.features.length"
+      style="padding: 0"
     >
       <div
-        class="feature"
+        class="feature-c"
         v-for="(feature, index) in data.features"
         :key="index"
         @click="$router.push({ path: feature.link })"
         :style="index === data.features.length - 1 ? 'margin-right: 0' : ''"
       >
-        <div class="feature-content">
+        <div class="feature-c-content">
           <h2>{{ feature.title }}</h2>
           <p>{{ feature.details }}</p>
         </div>
-        <div class="feature-mask">
+        <div class="feature-c-mask">
           <h2>{{ feature.title }}</h2>
           <p style="color: #007af5; font-weight: 500;">点击查看</p>
         </div>
       </div>
     </div>
 
-    <div style="background-color: #0063dc;">
+    <div style="background-color: #0063dc; margin-top: 1rem;">
       <div style="max-width: 450px; margin: auto; ">
         <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Slogon:Kuboard_快速在Kubernetes上落地微服务"/>
       </div>
@@ -162,7 +163,7 @@ export default {
       color $accentColor
       background-color #ffffff
       border 1px solid $accentColor
-  .features
+  .features-c
     border-top 1px solid $borderColor
     padding 2rem 0
     margin-top 2.5rem
@@ -171,12 +172,14 @@ export default {
     align-items flex-start
     align-content stretch
     justify-content space-between
-  .feature
+  .feature-c
     flex-grow 1
     flex-basis 22%
     margin-right 1rem
+    margin-top 1rem
     height calc(240px + 2rem)
     cursor pointer
+    padding 0
     h2
       font-size 1.2rem
       font-weight 500
@@ -185,7 +188,7 @@ export default {
       color lighten($textColor, 10%)
     p
       color lighten($textColor, 25%)
-    .feature-mask
+    .feature-c-mask
       padding: 1rem
       height 240px
       border solid 1px $borderColor
@@ -202,7 +205,7 @@ export default {
         opacity 1
         z-index 10
         transition all .3s
-    .feature-content
+    .feature-c-content
       border solid 1px $borderColor
       border-radius 3px
       height 240px
@@ -230,21 +233,23 @@ export default {
 
 @media (max-width: $MQMobile)
   .home
-    .features
+    .features-c
+      margin-bottom: 1rem
       flex-direction column
-    .feature
-      width calc(100%)
-      height calc(160px + 2rem)
-      margin-bottom -160px
-      overflow hidden
-      .feature-mask
-        height 160px
-      .feature-content
-        height 160px
+      .feature-c
+        width calc(100%)
+        height calc(160px + 2rem)
+        margin-top 1rem
+        overflow hidden
+        padding 0
+        .feature-c-mask
+          display none
+        .feature-c-content
+          height 160px
     .intro
       .intro_text
         width calc(100% - 2rem)
-        height 12rem
+        height 15rem
         margin-bottom 1rem
 
 
@@ -265,7 +270,8 @@ export default {
       .action-button
         font-size 1rem
         padding 0.6rem 1.2rem
-    .feature
+    .feature-c
+      padding 0
       h2
         font-size 1.25rem
 </style>
