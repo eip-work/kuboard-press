@@ -28,14 +28,16 @@ features:
 
 Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 
-提供v1.16版本的 [Kubernetes (K8S) 安装手册](https://kuboard.cn/install/install-k8s.html)，协同创作，在线答疑，持续更新。
-
 点击此处，查看 [Kuboard 安装文档](https://kuboard.cn/install/install-dashboard.html)
 
-[点击查看在线文档](https://kuboard.cn/#from_github)
 
-![Kubernetes教程：Kuboard在线演示](./overview/README.assets/1564841972085.gif)
+## Kubernetes安装文档
 
+* [Kubernetes (K8S)v1.16.1 安装文档](https://kuboard.cn/install/install-k8s.html)
+  * 每天超过200名网友参考此文档完成Kubernetes安装
+  * QQ群在线答疑
+* [Kubernetes 高可用安装文档](https://kuboard.cn/install/install-kubernetes.html)
+* [Kubernetes升级到1.16.x](https://kuboard.cn/install/upgrade-k8s/1.15.x-1.16.x.html)
 
 ## Kubernetes免费教程
 

@@ -55,27 +55,31 @@
       </div>
     </div>
 
-    <div style="max-width: 450px; margin: auto;">
-      <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Slogon:Kuboard_快速在Kubernetes上落地微服务"/>
+    <div style="background-color: #0063dc;">
+      <div style="max-width: 450px; margin: auto; ">
+        <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Slogon:Kuboard_快速在Kubernetes上落地微服务"/>
+      </div>
+    </div>
+    <div class="intro">
+      <el-card class="intro_text" shadow="hover">
+        <p>
+          <h2>Kuboard</h2>
+          <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+            Kuboard 在线体验
+          </a>
+          <li>Kubernetes 管理界面</li>
+          <li>微服务参考架构</li>
+          <li>无需手写 YAML</li>
+        </p>
+      </el-card>
+      <div class="intro_picture">
+        <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+          <img src="./1564841972085.gif" style="max-width: 100%;" alt="Kubernetes教程：Kuboard在线演示"/>
+        </a>
+      </div>
     </div>
 
-    <p>
-      <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-        Kuboard 在线体验
-      </a>
-    </p>
-
-<Content></Content>
-
-<!-- <p>
-为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
-</!-->
-
-<!-- <div style="width: 100%; margin-bottom: 20px;">
-  <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-    <img src="./1564841972085.gif" style="border: 1px solid #d7dae2; width: 100%;"></img>
-  </a>
-</!-->
+    <Content></Content>
 
     <div class="footer">
       Copyright © 2019-present <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2
@@ -183,7 +187,7 @@ export default {
     .feature-mask
       padding: 1rem
       height 240px
-      border solid 1px rgb(212, 212, 213)
+      border solid 1px $borderColor
       border-radius 3px
       position relative
       top calc(-242px - 2rem)
@@ -198,10 +202,25 @@ export default {
         z-index 10
         transition all .3s
     .feature-content
-      border solid 1px rgb(212, 212, 213)
+      border solid 1px $borderColor
       border-radius 3px
       height 240px
       padding: 1rem
+  .intro
+    margin-top 1rem
+    .intro_text
+      margin-right 1rem
+      height calc(339px - 2rem)
+      border solid 1px $borderColor
+      vertical-align middle
+      width calc(100% - 610px - 3rem)
+      display inline-block
+      padding 1rem
+    .intro_picture
+      border solid 1px $borderColor
+      max-width 600px
+      vertical-align middle
+      display inline-block
   .footer
     padding 2.5rem
     border-top 1px solid $borderColor
@@ -214,8 +233,18 @@ export default {
       flex-direction column
     .feature
       width calc(100%)
-      height calc(240px + 2rem)
-      margin-bottom 2rem
+      height calc(160px + 2rem)
+      margin-bottom -160px
+      overflow hidden
+      .feature-mask
+        height 160px
+      .feature-content
+        height 160px
+    .intro
+      .intro_text
+        width calc(100% - 2rem)
+        height 12rem
+        margin-bottom 1rem
 
 
 @media (max-width: $MQMobileNarrow)
