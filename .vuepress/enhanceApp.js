@@ -2,8 +2,20 @@
 import 'element-ui/lib/theme-chalk/index.css'
 
 import Element from 'element-ui'
-import VueFractionGrid from 'vue-fraction-grid'
 
+import Container from './grid/Container'
+import Grid from './grid/Grid'
+import GridItem from './grid/GridItem'
+import defaults from './grid/utils/defaults'
+
+const VueFractionGrid = {
+  install (Vue, options) {
+    const config = Object.assign(defaults, options)
+    Vue.component(Container.name, { extends: Container, config })
+    Vue.component(Grid.name, { extends: Grid, config })
+    Vue.component(GridItem.name, { extends: GridItem, config })
+  }
+}
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
