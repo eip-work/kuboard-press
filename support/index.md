@@ -13,31 +13,73 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
   * 更完善的权限管理（当前只区分集群管理员权限和只读权限）
   * 审计日志
 
+## Kuboard 采纳情况
+
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+    <el-card style="height: 100%">
+      <img src="./index.assets/image-20191003231005043.png" alt="Kubernetes教程_Kuboard_Github_Star">
+    </el-card>
+  </grid-item>
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+      <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;">
+        <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经经历了许多个实际项目的考验</li>
+        <li>Kuboard 一经发布，就获得了广泛的关注</li>
+        <li>Kuboard 公开发布不到两个月时间，就已经获得了 422 Github Star（如图所示）</li>
+        <li>Kuboard 社群中，已有许多的用户将Kuboard用于自己的生产环境</li>
+      </el-card>
+  </grid-item>
+</grid>
+
 ## Kuboard 支持
 
-### QQ群在线答疑
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+    <el-card style="height: 100%">
+      <h3>QQ群（免费）</h3>
+      <p>
+        <Qq/> 808894550
+      </p>
+      <p>
+        <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+      </p>
+    </el-card>
+  </grid-item>
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+      <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;">
+        <h3>微信群</h3>
+        <div>
+          <div style="margin-top: 10px;">
+            <span>扫第一个二维码完成打赏，扫第二个加微信进群聊（请发送打赏截图）</span>
+            <p style="margin-top: 10px;">
+              <img src="/images/dz.png" style="width: 200px; margin-right: 150px;"></img>
+              <img src="/images/dz2.jpeg" style="float: right; width: 200px;"></img>
+            </p>
+          </div>
+        </div>
+      </el-card>
+  </grid-item>
+</grid>
 
-  <p>
-    <Qq/>
-  </p>
-  <p>
-    <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
-  </p>
+## Kuboard 商业支持
 
-### 微信即时答复
-
-* 由于大家学习 Kubernetes 的热情，QQ群人数有了一个快速的增长
-* 为了给真正需要的人分配更多提问机会，设置了微信群聊
-* 必要时可提供 TeamViewer 远程协助
-<div>
-  <div style="margin-top: 10px;">
-      <span>扫第一个二维码完成打赏，扫第二个加微信进群聊（请发送打赏截图）</span>
-    <p style="margin-top: 10px;">
-      <img src="/images/dz.png" style="width: 200px; margin-right: 150px;"></img>
-      <img src="/images/dz2.jpeg" style="width: 200px;"></img>
-    </p>
-  </div>
-</div>
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+    <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;">
+      <h3>服务范围</h3>
+      <li>Kubernetes企业培训</li>
+      <li>DevOps环境搭建及培训</li>
+      <li>SpringCloud微服务架构咨询</li>
+      <li>Kubernetes投产支持及问题解决</li>
+    </el-card>
+  </grid-item>
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+      <el-card style="height: 100%;">
+        <h3>联系方式</h3>
+        <img src="/images/dz2.jpeg" style="width: 200px; margin: auto;"></img>
+      </el-card>
+  </grid-item>
+</grid>
 
 <!-- ### 微服务落地咨询
 

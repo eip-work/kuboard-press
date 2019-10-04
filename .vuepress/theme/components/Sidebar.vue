@@ -26,6 +26,8 @@
         <img src="/images/kuboard_qq.png" style="width: 120px;" alt="Kubernetes教程：QQ群在线答疑"/>
       </p>
     </div>
+    <el-divider >Kuboard</el-divider>
+    <div style="height: 2rem;"></div>
   </aside>
 </template>
 

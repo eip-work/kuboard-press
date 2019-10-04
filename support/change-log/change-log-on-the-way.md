@@ -3,8 +3,7 @@ Kuboard v1.0.x 的更新说明
 
 
 
-* kubeadm 1.15升级到1.16
-* kuboard 使用 nfs
+* kubernetes 1.16.1
 
 
 * Service --> SessionAffinity

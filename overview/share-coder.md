@@ -25,6 +25,10 @@ Kubernetes 容器编排已越来越被大家关注，然而学习 Kubernetes 的
 
 Kuboard 官网地址：[https://kuboard.cn](https://kuboard.cn/#from_coder_toutiao)
 
+Kuboard 发布不到两个月时间，github star 已经迅速增长到 422，获得了许多用户的喜爱。
+
+![./image-20191003230417140](share-coder.assets/image-20191003230417140.png)
+
 
 
 ## 安装Kuboard
