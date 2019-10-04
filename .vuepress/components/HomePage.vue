@@ -1,5 +1,12 @@
 <template>
   <main class="home" aria-labelledby="main-title">
+
+    <div style="background-color: #0063dc; margin-bottom: 2.5rem;">
+      <div style="max-width: 450px; margin: auto; ">
+        <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Slogon:Kuboard_快速在Kubernetes上落地微服务"/>
+      </div>
+    </div>
+
     <header class="hero">
       <img
         v-if="data.heroImage"
@@ -7,11 +14,11 @@
         :alt="data.heroAlt || 'hero'"
       >
 
-      <h1 id="main-title">Kuboard</h1>
+      <!-- <h1 id="main-title">Kuboard</h1>
 
       <p class="description">
         快速在 Kubernetes 上落地微服务
-      </p>
+      </p> -->
 
       <span
         class="action"
@@ -56,11 +63,6 @@
       </div>
     </div>
 
-    <div style="background-color: #0063dc; margin-top: 1rem;">
-      <div style="max-width: 450px; margin: auto; ">
-        <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Slogon:Kuboard_快速在Kubernetes上落地微服务"/>
-      </div>
-    </div>
     <div class="intro">
       <el-card class="intro_text" shadow="hover">
         <p>
@@ -191,7 +193,7 @@ export default {
     .feature-c-mask
       padding: 1rem
       height 240px
-      border solid 1px $borderColor
+      border solid 1px $accentColor
       border-radius 3px
       position relative
       top calc(-242px - 2rem)
@@ -199,14 +201,14 @@ export default {
       transition background-color .5s linear
       z-index 10
       &:hover
-        background #F9F9F9
+        background lighten($accentColor, 80%)
         box-shadow: 0 0 15px #999
         color white
         opacity 1
         z-index 10
         transition all .3s
     .feature-c-content
-      border solid 1px $borderColor
+      border solid 1px $accentColor
       border-radius 3px
       height 240px
       padding: 1rem
