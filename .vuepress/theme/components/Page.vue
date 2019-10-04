@@ -3,6 +3,18 @@
     <slot name="top"/>
 
     <Content class="theme-default-content"/>
+
+    <!-- <el-divider>加入 Kuboard 社群</el-divider> -->
+
+    <div style="margin: auto; width: 182px;">
+      <p>
+        <Qq/> 在线答疑
+      </p>
+      <p>
+        <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+      </p>
+    </div>
+
     <div style="text-align: center; margin-bottom: 10px;" v-if="$page.path.indexOf('/learning/') === 0">
       <a href="https://github.com/eip-work/kuboard-press" target="_blank">如果您觉得 Kubernetes教程 有帮到您，点击此处，给个 Github Star，谢谢！</a>
     </div>
