@@ -4,7 +4,7 @@ vssueId: 15
 description: Kubernete安装文档_Kubernetes最新稳定版v1.16.0的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords
-    content: Kubernetes安装,K8S安装,kubeadm
+    content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装
 # storyBook:
 #   title: '使用 kubeadm 安装 kubernetes v1.16.0（单Master节点）'
 #   initial: FullPage
