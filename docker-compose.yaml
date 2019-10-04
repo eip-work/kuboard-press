@@ -12,7 +12,7 @@ services:
       restart_policy:
         condition: on-failure
     ports:
-      - "9080:80"
+      - "8081:80"
     volumes:
       - ./docs:/usr/share/nginx/html
     networks:

@@ -322,10 +322,11 @@ module.exports = {
                   collapsable: true,
                   children: [
                     'k8s-intermediate/config/sec-ctx/',
-                    // 'k8s-intermediate/config/sec-ctx/pod',
-                    // 'k8s-intermediate/config/sec-ctx/con',
-                    // 'k8s-intermediate/config/sec-ctx/con-cap',
-                    // 'k8s-intermediate/config/sec-ctx/con-sel',
+                    'k8s-intermediate/config/sec-ctx/pod',
+                    'k8s-intermediate/config/sec-ctx/con',
+                    'k8s-intermediate/config/sec-ctx/con-cap',
+                    'k8s-intermediate/config/sec-ctx/con-sel',
+                    'k8s-intermediate/config/sec-ctx/volumes',
                   ]
                 },
               ]
