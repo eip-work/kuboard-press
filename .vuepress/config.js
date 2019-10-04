@@ -316,7 +316,18 @@ module.exports = {
                     // 'k8s-intermediate/config/secrets/use-cases',
                     // 'k8s-intermediate/config/secrets/best-practices',
                   ]
-                }
+                },
+                {
+                  title: 'Security Context',
+                  collapsable: true,
+                  children: [
+                    'k8s-intermediate/config/sec-ctx/',
+                    // 'k8s-intermediate/config/sec-ctx/pod',
+                    // 'k8s-intermediate/config/sec-ctx/con',
+                    // 'k8s-intermediate/config/sec-ctx/con-cap',
+                    // 'k8s-intermediate/config/sec-ctx/con-sel',
+                  ]
+                },
               ]
             }
           ]

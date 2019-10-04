@@ -14,9 +14,11 @@ meta:
 * Kubernetes 初学者
 * 学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 
-<p style="max-width: 450px; margin: auto;">
-  <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
-</p>
+<div style="background-color: #0063dc;">
+  <div style="max-width: 363px; margin: auto;">
+    <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
+  </div>
+</div>
 
 ## **Kubernetes 体验**
   * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （30分钟，初学者也许需要更多）
@@ -61,13 +63,14 @@ meta:
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
     * [存储卷 PV 和存储卷声明 PVC](/learning/k8s-intermediate/persistent/pv.html)
     * [存储类 StorageClass](/learning/k8s-intermediate/persistent/storage-class.html)
-    * [自建 NFS 服务](/learning/k8s-intermediate/persistent/nfs.html) <Badge text="正在撰写" type="warn"/>
+    * [自建 NFS 服务](/learning/k8s-intermediate/persistent/nfs.html)
   * 配置
     * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html)
     * [管理容器的计算资源](/learning/k8s-intermediate/config/computing-resource.html)
     * [将容器调度到指定的节点](/learning/k8s-intermediate/config/assign-pod-node.html)
     * [污点和容忍 taints and toleration](/learning/k8s-intermediate/config/taints-toleration/)
     * [Secrets](/learning/k8s-intermediate/config/secrets/)
+    * [Security Context](/learning/k8s-intermediate/config/sec-ctx/)
 
 ## **Kubernetes 高级**
 
