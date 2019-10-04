@@ -327,6 +327,7 @@ module.exports = {
                     'k8s-intermediate/config/sec-ctx/con-cap',
                     'k8s-intermediate/config/sec-ctx/con-sel',
                     'k8s-intermediate/config/sec-ctx/volumes',
+                    'k8s-intermediate/config/sec-ctx/pod-kuboard',
                   ]
                 },
               ]

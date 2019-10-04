@@ -9,7 +9,7 @@ meta:
 
 # 为Pod设置Security Context
 
-在 Pod 的定义中增加 `securityContext` 字段，即可为 Pod 指定 Security 相关的设定。 `securityContext` 字段是一个 [PodSecurityContext](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#podsecuritycontext-v1-core) 对象。通过该字段指定的内容将对该 Pod 中所有的容器生效。
+在 Pod 的定义中增加 `securityContext` 字段，即可为 Pod 指定 Security 相关的设定。 `securityContext` 字段是一个 [PodSecurityContext](./pod-kuboard.html) 对象。通过该字段指定的内容将对该 Pod 中所有的容器生效。
 
 ## Pod示例
 
