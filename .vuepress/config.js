@@ -162,7 +162,6 @@ module.exports = {
             'install-docker-desktop',
             ['install-k8s', '安装Kubernetes单Master节点'],
             'install-kubernetes',
-            'install-kubectl'
           ]
         },
         {
@@ -175,9 +174,11 @@ module.exports = {
           ]
         },
         {
-          title: '安装 Kuboard',
+          title: '管理 Kubernetes',
           collapsable: false,
           children: [
+            'install-kubectl',
+            // 'config-kubectl',
             'install-dashboard',
             'install-dashboard-upgrade'
           ]
@@ -192,6 +193,15 @@ module.exports = {
       ],
 
       '/learning/': [
+        '',
+        {
+          title: 'Kubernetes 介绍',
+          collapsable: true,
+          sidebarDepth: 3,
+          children: [
+            'k8s-bg/what-is-k8s',
+          ]
+        },
         {
           title: 'Kubernetes 入门',
           collapsable: true,

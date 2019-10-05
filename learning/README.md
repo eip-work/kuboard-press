@@ -1,6 +1,7 @@
 ---
 vssueId: 9
 layout: LearningLayout
+sidebarDepth: 0
 description: 本教程的主要依据是：Kubernetes官网文档，以及使用Kubernetes落地SpringCloud微服务并投产的实战经验，在线答疑。适用人群_ Kubernetes 初学者_学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 meta:
   - name: keywords
@@ -19,6 +20,10 @@ meta:
     <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
   </div>
 </div>
+
+## **Kubernetes 介绍**
+
+  * [什么是Kubernetes](/learning/k8s-bg/what-is-k8s.html)
 
 ## **Kubernetes 体验**
   * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （30分钟，初学者也许需要更多）
