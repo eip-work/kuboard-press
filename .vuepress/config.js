@@ -200,6 +200,7 @@ module.exports = {
           sidebarDepth: 3,
           children: [
             'k8s-bg/what-is-k8s',
+            'k8s-bg/component',
           ]
         },
         {

@@ -1,6 +1,6 @@
 ---
 vssueId: 116
-description: Kubernete教程_Kubernetes介绍
+description: Kubernete教程_Kubernetes介绍_Kubernetes是一个可以移植、可扩展的开源平台，使用声明式的配置，并依据配置信息自动地执行容器化应用程序的管理。
 meta:
   - name: keywords
     content: Kubernetes 教程,Kubernetes介绍,什么是Kubernetes,K8S简介,K8S介绍
