@@ -5,6 +5,8 @@ module.exports = {
   description: '一款Kubernetes_Dashboard_简化Kubernetes的学习和使用_帮助您快速落地Kubernetes_提供_Kubernetes_免费中文教程_国内安装文档',
   head: [
     // ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,K8S教程,K8S安装,Kubernetes管理界面'}],
+    ['link', { rel: 'icon', href: '/favicon.png' }],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['script', {}, `
     var _hmt = _hmt || [];
     (function() {
@@ -34,6 +36,16 @@ module.exports = {
     '@vuepress/last-updated': {
       transformer: (timestamp, lang) => {
         return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
+      }
+    },
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      // popupComponent: 'KbSWUpdatePopup',
+      updatePopup: {
+        '/': {
+          message: "Kuboard官网已更新",
+          buttonText: "点击刷新"
+        }
       }
     },
     '@vssue/vuepress-plugin-vssue': {
