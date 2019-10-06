@@ -24,7 +24,7 @@ meta:
 ## **Kubernetes 介绍**
 
   * [什么是Kubernetes](/learning/k8s-bg/what-is-k8s.html)
-
+  * [Kubernetes组件](/learning/k8s-bg/component.html)
 ## **Kubernetes 体验**
   * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （30分钟，初学者也许需要更多）
     * 参照经过众多网友验证，不断优化的安装文档，迅速完成 Kubernetes 安装，拥有属于自己的 Kubernetes 集群。
@@ -45,7 +45,9 @@ meta:
   * [6. 复习Kubernetes核心概念](/learning/k8s-basics/k8s-core-concepts.html) (10分钟)
 
 ## **Kubernetes 进阶**
-  * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.html)
+  * 架构
+    * [节点](/learning/k8s-bg/architecture/nodes.html)
+    * [集群内通信](/learning/k8s-bg/architecture/com.html)
   * 工作负载
     * [容器组 - 概述](/learning/k8s-intermediate/workload/pod.html)
     * [容器组 - 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
@@ -70,6 +72,7 @@ meta:
     * [存储类 StorageClass](/learning/k8s-intermediate/persistent/storage-class.html)
     * [自建 NFS 服务](/learning/k8s-intermediate/persistent/nfs.html)
   * 配置
+    * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.html)
     * [使用 ConfigMap 配置您的应用程序](/learning/k8s-intermediate/config/config-map.html)
     * [管理容器的计算资源](/learning/k8s-intermediate/config/computing-resource.html)
     * [将容器调度到指定的节点](/learning/k8s-intermediate/config/assign-pod-node.html)

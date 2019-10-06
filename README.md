@@ -43,6 +43,11 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 
 Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kuboard 落地 Spring Cloud 微服务的实战经验
 
+### **Kubernetes 介绍**
+
+  * [什么是Kubernetes](https://kuboard.cn/learning/k8s-bg/what-is-k8s.html)
+  * [Kubernetes组件](https://kuboard.cn/learning/k8s-bg/component.html)
+
 ### Kubernetes入门
   * [0. 学习Kubernetes基础知识](https://kuboard.cn/learning/k8s-basics/kubernetes-basics.html) (10分钟)
     * [1. 部署一个应用程序](https://kuboard.cn/learning/k8s-basics/deploy-app.html) (5分钟)
@@ -53,7 +58,9 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
   * [6. 复习Kubernetes核心概念](https://kuboard.cn/learning/k8s-basics/k8s-core-concepts.html) (10分钟)
 
 ### Kubernetes进阶
-  * [使用私有 registry 中的 docker 镜像](https://kuboard.cn/learning/k8s-intermediate/private-registry.html)
+  * 架构
+    * [节点](https://kuboard.cn/learning/k8s-bg/architecture/nodes.html)
+    * [集群内通信](https://kuboard.cn/learning/k8s-bg/architecture/com.html)
   * 工作负载
     * [容器组 - 概述](https://kuboard.cn/learning/k8s-intermediate/workload/pod.html)
     * [容器组 - 生命周期](https://kuboard.cn/learning/k8s-intermediate/workload/pod-lifecycle.html)
@@ -77,6 +84,7 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * [存储类 StorageClass](https://kuboard.cn/learning/k8s-intermediate/persistent/storage-class.html)
     * [自建 NFS 服务](https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html) 
   * 配置
+    * [使用私有 registry 中的 docker 镜像](https://kuboard.cn/learning/k8s-intermediate/private-registry.html)
     * [使用 ConfigMap 配置您的应用程序](https://kuboard.cn/learning/k8s-intermediate/config/config-map.html)
     * [管理容器的计算资源](https://kuboard.cn/learning/k8s-intermediate/config/computing-resource.html) 
     * [将容器调度到指定的节点](https://kuboard.cn/learning/k8s-intermediate/config/assign-pod-node.html) 
