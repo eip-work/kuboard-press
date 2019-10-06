@@ -1,6 +1,7 @@
 ---
 vssueId: 117
-description: Kubernete教程_Kubernetes组件
+layout: LearningLayout
+description: Kubernete教程_Kubernetes组件_Master组件可以运行于集群中的任何机器上。但是，为了简洁性，通常在同一台机器上运行所有的 master 组件，且不在此机器上运行用户的容器
 meta:
   - name: keywords
     content: Kubernetes 教程,Kubernetes 组件
@@ -115,7 +116,7 @@ Kubernetes 启动容器时，自动将该 DNS 服务器加入到容器的 DNS �
 
 ### Kuboard
 
-[Kuboard](/install/install-dashboard.html) 也是一款Kubernetes集群的Web管理界面，相较于 Dashboard，Kuboard 强调：
+[Kuboard](/install/install-dashboard.html) 是一款基于Kubernetes的微服务管理界面，相较于 Dashboard，Kuboard 强调：
 * 无需手工编写 YAML 文件
 * 微服务参考架构
 * 上下文相关的监控
@@ -125,7 +126,7 @@ Kubernetes 启动容器时，自动将该 DNS 服务器加入到容器的 DNS �
 
 ### ContainerResource Monitoring
 
-[Container Resource Monitoring](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/) 将容器的度量指标记录在时间序列数据库中，并提供了 UI 界面查看这些数据
+[Container Resource Monitoring](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/) 将容器的度量指标（metrics）记录在时间序列数据库中，并提供了 UI 界面查看这些数据
 
 <!-- FIXME -->
 

@@ -213,7 +213,7 @@ export default {
       height 240px
       padding: 1rem
   .intro
-    margin-top 1rem
+    margin-top 2rem
     .intro_text
       margin-right 1rem
       height calc(339px - 2rem)

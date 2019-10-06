@@ -10,7 +10,7 @@ meta:
 
 # 基于污点的驱逐（TaintBasedEviction）
 
-在前面的章节中，我们描述了 [NoExecute](http://localhost:8080/learning/k8s-intermediate/config/taints-toleration/#%E6%B1%A1%E7%82%B9%E4%B8%8E%E5%AE%B9%E5%BF%8D%E7%9A%84%E5%8C%B9%E9%85%8D) 的污点效果，该效果将对已经运行在节点上的 Pod 施加如下影响：
+在前面的章节中，我们描述了 [NoExecute](/learning/k8s-intermediate/config/taints-toleration/#污点与容忍的匹配) 的污点效果，该效果将对已经运行在节点上的 Pod 施加如下影响：
 * 不容忍该污点的 Pod 将立刻被驱逐
 * 容忍该污点的 Pod 在未指定 `tolerationSeconds` 的情况下，将继续在该节点上运行
 * 容忍该污点的 Pod 在指定了 `tolerationSeconds` 的情况下，将在指定时间超过时从节点上驱逐

@@ -25,6 +25,7 @@
     "esm": "^3.2.25",
     "npm": "^6.11.3",
     "reduce-css-calc": "^2.1.6",
-    "vuepress": "^1.1.0"
+    "vuepress": "^1.1.0",
+    "vuepress-plugin-smooth-scroll": "0.0.4"
   }
 }

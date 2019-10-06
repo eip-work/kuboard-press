@@ -21,7 +21,7 @@ module.exports = {
   markdown: {
     toc: { includeLevel: [2, 3] },
     lineNumbers: true,
-    externalLinks: { target: '_blank', rel: 'noopener noreferrer', onclick: 'openOutboundLink(this)' }
+    externalLinks: { target: '_blank', rel: 'nofollow', onclick: 'openOutboundLink(this)' }
   },
   dest: 'docs',
   plugins: {
@@ -62,6 +62,7 @@ module.exports = {
     //     zIndex: 10000,
     //   },
     // },
+    'vuepress-plugin-smooth-scroll': {},
     'code-switcher': {},
     'reading-progress': {},
     'vuepress-plugin-element-tabs': {},
@@ -193,14 +194,15 @@ module.exports = {
       ],
 
       '/learning/': [
-        '',
         {
           title: 'Kubernetes 介绍',
           collapsable: true,
           sidebarDepth: 3,
           children: [
+            '',
             'k8s-bg/what-is-k8s',
             'k8s-bg/component',
+            
           ]
         },
         {
@@ -221,7 +223,31 @@ module.exports = {
           title: 'Kubernetes 进阶',
           collapsable: true,
           children: [
-            'k8s-intermediate/private-registry',
+            {
+              title: '架构',
+              collapsable: true,
+              children: [
+                {
+                  title: '节点',
+                  collapsable: true,
+                  path: '/learning/k8s-bg/architecture/nodes',
+                  children: [
+                    'k8s-bg/architecture/nodes',
+                    'k8s-bg/architecture/nodes-mgmt',
+                  ]
+                },
+                {
+                  title: '集群内的通信',
+                  collapsable: true,
+                  path: '/learning/k8s-bg/architecture/com',
+                  children: [
+                    'k8s-bg/architecture/com',
+                    'k8s-bg/architecture/com-n-m',
+                    'k8s-bg/architecture/com-m-n',
+                  ]
+                },
+              ]
+            },
             {
               title: '工作负载',
               collapsable: true,
@@ -296,6 +322,7 @@ module.exports = {
               title: '配置',
               collapsable: true,
               children: [
+                'k8s-intermediate/private-registry',
                 'k8s-intermediate/config/config-map',
                 'k8s-intermediate/config/computing-resource',
                 'k8s-intermediate/config/assign-pod-node',
@@ -339,6 +366,7 @@ module.exports = {
                     'k8s-intermediate/config/sec-ctx/con-sel',
                     'k8s-intermediate/config/sec-ctx/volumes',
                     'k8s-intermediate/config/sec-ctx/pod-kuboard',
+                    'k8s-intermediate/config/sec-ctx/con-kuboard',
                   ]
                 },
               ]
