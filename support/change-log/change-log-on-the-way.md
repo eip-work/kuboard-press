@@ -3,13 +3,17 @@ Kuboard v1.0.x 的更新说明
 
 
 
+**BUG 修复**
+
+
+
+* 工作负载编辑器 --> 容器组 --> 容忍 -- 正在开发
 * kubernetes 1.16.1
 
 
 * Service --> SessionAffinity
               --> clientIP.timeoutSeconds
 * Service --> .spec.clusterIP
-* --privileged
 
 * 创建工作负载时，不追加前缀
 * 存储卷声明去掉分配模式的字段
