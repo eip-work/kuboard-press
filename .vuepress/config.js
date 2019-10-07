@@ -6,7 +6,7 @@ module.exports = {
   head: [
     // ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,K8S教程,K8S安装,Kubernetes管理界面'}],
     ['link', { rel: 'icon', href: '/favicon.png' }],
-    // ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['script', {}, `
     var _hmt = _hmt || [];
     (function() {
@@ -48,6 +48,10 @@ module.exports = {
     //     }
     //   }
     // },
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: true
+    },
     '@vssue/vuepress-plugin-vssue': {
       // set `platform` rather than `api`
       platform: 'github',
@@ -59,6 +63,10 @@ module.exports = {
       repo: 'kuboard-press',
       // clientId: 'f96af83d4bff4e2b9e3e',
       // clientSecret: 'cf5686d68d4aab6d3bfa256da9a714049b239c1f',
+    },
+    'named-chunks': {
+      pageChunkName: page => 'page' + page.key.slice(1),
+      layoutChunkName: layout => 'layout-' + layout.componentName,
     },
     // 'vuepress-plugin-zooming': {
     //   // 支持点击缩放的图片元素的选择器
@@ -77,7 +85,6 @@ module.exports = {
     'vuepress-plugin-smooth-scroll': {},
     'code-switcher': {},
     'reading-progress': {},
-    'vuepress-plugin-element-tabs': {},
     // 'vuepress-plugin-baidu-autopush':{},
     'sitemap': {
       hostname: 'https://kuboard.cn',

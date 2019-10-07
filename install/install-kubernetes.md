@@ -113,9 +113,8 @@ hostnamectl status
 - nfs-utils
 - kubectl / kubeadm / kubelet
 
-:::: tabs type:border-card
-
-::: tab 快速安装 lazy
+<el-tabs type="border-card">
+<el-tab-pane label="快速安装">
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
@@ -124,9 +123,8 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 ```
 
-:::
-
-::: tab 手动安装 lazy
+</el-tab-pane>
+<el-tab-pane label="手动安装">
 
 手动执行以下代码，效果与快速安装完全相同。
 
@@ -136,7 +134,8 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
-::::
+</el-tab-pane>
+</el-tabs>
 
 <!-- </div>
 
@@ -254,9 +253,9 @@ kubectl get nodes
 
 **获得 master 节点的 join 命令**
 
-:::: tabs type:border-card
 
-::: tab 和第一个Master节点一起初始化
+<el-tabs type="border-card">
+<el-tab-pane label="和第一个Master节点一起初始化">
 
 初始化第一个 master 节点时的输出内容中，第15、16、17行就是用来初始化第二、三个 master 节点的命令，如下所示：<font color="red">此时请不要执行该命令</font>
 
@@ -266,9 +265,8 @@ kubectl get nodes
     --control-plane --certificate-key 41a741533a038a936759aff43b5680f0e8c41375614a873ea49fde8944614dd6
 ```
 
-:::
-
-::: tab 第一个Master节点初始化2个小时后再初始化
+</el-tab-pane>
+<el-tab-pane label="第一个Master节点初始化2个小时后再初始化">
 
 **获得 certificate key**
 
@@ -313,9 +311,9 @@ kubeadm join apiserver.demo:6443 --token bl80xo.hfewon9l5jlpmjft     --discovery
 --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303 </font>\<br/>
 --control-plane --certificate-key <font color="red">70eb87e62f052d2d5de759969d5b42f372d0ad798f98df38f7fe73efdf63a13c</font>
 </div>
-:::
 
-::::
+</el-tab-pane>
+</el-tabs>
 
 **初始化第二、三个 master 节点**
 
@@ -350,9 +348,8 @@ kubectl get nodes
 
 ### 获得 join命令参数
 
-:::: tabs type:border-card
-
-::: tab 和第一个Master节点一起初始化
+<el-tabs type="border-card">
+<el-tab-pane label="和第一个Master节点一起初始化">
 
 初始化第一个 master 节点时的输出内容中，第25、26行就是用来初始化 worker 节点的命令，如下所示：<font color="red">此时请不要执行该命令</font>
 
@@ -361,9 +358,8 @@ kubectl get nodes
     --discovery-token-ca-cert-hash sha256:959569cbaaf0cf3fad744f8bd8b798ea9e11eb1e568c15825355879cf4cdc5d6
 ```
 
-:::
-
-::: tab 第一个Master节点初始化2个小时后再初始化
+</el-tab-pane>
+<el-tab-pane label="第一个Master节点初始化2个小时后再初始化">
 
 **在第一个 master 节点 demo-master-a-1 节点执行**
 
@@ -378,9 +374,8 @@ kubeadm token create --print-join-command
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
 
-:::
-
-::::
+</el-tab-pane>
+</el-tabs>
 
 ### 初始化worker
 
@@ -443,9 +438,8 @@ kubectl delete node demo-worker-x-x
 > kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
 
 
-:::: tabs type:border-card
-
-::: tab 快速安装 lazy
+<el-tabs type="border-card">
+<el-tab-pane label="快速安装">
 
 **在 master 节点上执行**
 
@@ -454,15 +448,13 @@ kubectl delete node demo-worker-x-x
 kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 ```
 
-:::
-
-::: tab YAML文件 lazy
+</el-tab-pane>
+<el-tab-pane label="YAML文件">
 
 <<< @/.vuepress/public/install-script/v1.15.3/nginx-ingress.yaml
 
-:::
-
-::::
+</el-tab-pane>
+</el-tabs>
 
 ::: warning
 如果您打算将 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.3/docs/installation.md)，完善 Ingress 的配置

@@ -35,7 +35,7 @@ Kubernetes中，默认的镜像抓取策略是 `IfNotPresent`，使用此策略�
 
 在 Kuboard 中，可以在界面中直接指定 container 的 imagePullPolicy，如下图所示：
 
-![Kubernetes教程_指定镜像抓取策略](./images.assets/image-20191007194641973.png)
+![Kubernetes教程_镜像抓取策略](./images.assets/image-20191007194641973.png)
 
 imagePullPolicy 字段和 image tag的可能取值将影响到 kubelet 如何抓取镜像：
 * `imagePullPolicy: IfNotPresent` 仅在节点上没有该镜像时，从镜像仓库抓取

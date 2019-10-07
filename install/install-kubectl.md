@@ -21,9 +21,9 @@ Kubernetes 官网文档参照 [安装 kubectl](https://kubernetes.io/docs/tasks/
 
 请参考下述内容，完成 kubectl 的安装
 
-:::: tabs type:border-card
 
-::: tab Linux lazy
+<el-tabs type="border-card">
+<el-tab-pane label="Linux">
 
 **配置K8S的yum源**
 
@@ -52,17 +52,19 @@ yum install -y kubectl
 kubectl version
 ```
 
-:::
 
-::: tab Windows lazy
+</el-tab-pane>
+<el-tab-pane label="Windows">
+
 待完善
-:::
 
-::: tab Mac lazy
+</el-tab-pane>
+<el-tab-pane label="MAC">
+
 待完善
-:::
 
-::::
+</el-tab-pane>
+</el-tabs>
 
 ## 获取 kubectl config 文件
 
@@ -100,9 +102,8 @@ users:
 
 在客户端电脑完成如下配置，即可远程管理 Kubernetes 集群
 
-:::: tabs type:border-card
-
-::: tab Linux lazy
+<el-tabs type="border-card">
+<el-tab-pane label="Linux">
 
 **执行命令**
 
@@ -130,17 +131,20 @@ kubectl get nodes
 kubectl get pods -n kube-system
 ```
 
-:::
 
-::: tab Windows lazy
+</el-tab-pane>
+<el-tab-pane label="Windows">
+
 待完善
-:::
 
-::: tab Mac lazy
+</el-tab-pane>
+<el-tab-pane label="MAC">
+
 待完善
-:::
 
-::::
+</el-tab-pane>
+</el-tabs>
+
 
 ## kubectl 参考文档推荐
 

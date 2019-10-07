@@ -51,9 +51,8 @@ meta:
 
 ## 实战：更新 nginx Deployment
 
-:::: tabs type:border-card
-
-::: tab 使用kubectl lazy
+<el-tabs type="border-card">
+<el-tab-pane label="使用kubectl">
 
 **修改 nginx-deployment.yaml 文件**
 
@@ -96,9 +95,8 @@ kubectl apply -f nginx-deployment.yaml
 watch kubectl get pods -l app=nginx
 ```
 
-:::
-
-::: tab 使用Kuboard lazy
+</el-tab-pane>
+<el-tab-pane label="使用Kuboard">
 
 * **进入 default 名称空间**
 
@@ -122,9 +120,8 @@ watch kubectl get pods -l app=nginx
 
 ![Kubernetes教程：执行滚动更新-过程](./update.assets/image-20190822214503847.png)
 
-:::
-
-::::
+</el-tab-pane>
+</el-tabs>
 
 
 ~~呱唧呱唧，恭喜您，即将成为k8s的大神的您，已经迈进了您k8s的最重要的一步了--入门，那么接下来请再接再厉，继续征服k8s的高峰！！！

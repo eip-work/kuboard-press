@@ -42,9 +42,8 @@ spec:
 
 ## 实战：将 nginx Deployment 扩容到 4 个副本
 
-:::: tabs type:border-card
-
-::: tab 使用kubectl lazy
+<el-tabs type="border-card">
+<el-tab-pane label="使用kubectl">
 
 **修改 nginx-deployment.yaml 文件**
 
@@ -86,9 +85,8 @@ kubectl apply -f nginx-deployment.yaml
 watch kubectl get pods -o wide
 ```
 
-:::
-
-::: tab 使用Kuboard
+</el-tab-pane>
+<el-tab-pane label="使用Kuboard">
 
 * 在 default 名称空间 点击 ***展现层 --> Nginx部署***
 
@@ -106,9 +104,8 @@ watch kubectl get pods -o wide
 
 ![Kubernetes教程：伸缩应用-Scaling](./scale.assets/image-20190822213709967.png)
 
-:::
-
-::::
+</el-tab-pane>
+</el-tabs>
 
 ~~一旦运行了多个应用程序实例，就可以在不停机的情况下执行滚动更新了，
 

@@ -122,7 +122,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.0
-  * 当前已更新了 <font color="red"> 55 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 56 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
   
@@ -256,9 +256,9 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 - nfs-utils
 - kubectl / kubeadm / kubelet
 
-:::: tabs type:border-card
 
-::: tab 快速安装 lazy
+<el-tabs type="border-card">
+<el-tab-pane label="快速安装">
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
@@ -267,9 +267,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install_kubelet.sh | sh
 
 ```
 
-:::
-
-::: tab 手动安装 lazy
+</el-tab-pane>
+<el-tab-pane label="手动安装">
 
 手动执行以下代码，效果与快速安装完全相同。
 
@@ -279,7 +278,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install_kubelet.sh | sh
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
-::::
+</el-tab-pane>
+</el-tabs>
 
 </div>
 </el-collapse-transition>
@@ -436,9 +436,9 @@ kubectl delete node demo-worker-x-x
 
 ## 安装 Ingress Controller
 
-:::: tabs type:border-card
 
-::: tab 安装IngressController lazy
+<el-tabs type="border-card">
+<el-tab-pane label="安装IngressController">
 
 **在 master 节点上执行**
 
@@ -447,9 +447,8 @@ kubectl delete node demo-worker-x-x
 kubectl apply -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 ```
 
-:::
-
-::: tab 卸载IngressController lazy
+</el-tab-pane>
+<el-tab-pane label="卸载IngressController">
 
 **在 master 节点上执行**
 
@@ -460,16 +459,14 @@ kubectl apply -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 kubectl delete -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 ```
 
-:::
-
-::: tab YAML文件 lazy
+</el-tab-pane>
+<el-tab-pane label="YAML文件">
 
 <<< @/.vuepress/public/install-script/v1.16.0/nginx-ingress.yaml
 
-:::
 
-::::
-
+</el-tab-pane>
+</el-tabs>
 
 **配置域名解析**
 

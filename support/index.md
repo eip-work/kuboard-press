@@ -73,10 +73,11 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
     <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;">
       <h3>服务范围</h3>
-      <li>Kubernetes企业培训</li>
-      <li>DevOps环境搭建及培训</li>
-      <li>SpringCloud微服务架构咨询</li>
-      <li>Kubernetes投产支持及问题解决</li>
+      <li>Kubernetes 企业培训</li>
+      <li>DevOps 环境搭建及培训</li>
+      <li>SpringCloud 微服务架构咨询</li>
+      <li>Kubernetes 投产支持及问题解决</li>
+      <li>Kuboard 定制化</li>
     </el-card>
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
