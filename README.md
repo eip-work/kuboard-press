@@ -61,6 +61,7 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
   * 架构
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/nodes.html">节点</a>
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/com.html">集群内通信</a>
+    * <a href="https://kuboard.cn/learning/k8s-bg/architecture/controller.html">控制器</a>
   * 工作负载
     * <a href="https://kuboard.cn/learning/k8s-intermediate/workload/pod.html">容器组 - 概述</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/workload/pod-lifecycle.html">容器组 - 生命周期</a>

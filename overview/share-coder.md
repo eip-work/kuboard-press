@@ -27,8 +27,9 @@ Kuboard 官网地址：[https://kuboard.cn](https://kuboard.cn/#from_coder_touti
 
 Kuboard 发布不到两个月时间，github star 已经迅速增长到 422，获得了许多用户的喜爱。
 
-![./image-20191003230417140](share-coder.assets/image-20191003230417140.png)
-
+<p style="max-width: 720px;">
+  <img src="./share-coder.assets/image-20191003230417140.png" alt="Kubernetes 教程" style="max-width: 100%"></img>
+</p>
 
 
 ## 安装Kuboard
@@ -51,7 +52,7 @@ Kuboard 通过三层界面来管理 Kubernetes 以及部署在其上的微服务
 
    Kuboard 中查看集群概览的界面如下图所示，下层由 Kubernetes 的计算资源和存储资源组成，上层则是应用的名称空间。
 
-   ![image-20191002073039330](./share-coder.assets/image-20191002073039330.png)
+   ![Kubernetes 教程](./share-coder.assets/image-20191002073039330.png)
 
 2. 名称空间层
 
@@ -59,7 +60,7 @@ Kuboard 通过三层界面来管理 Kubernetes 以及部署在其上的微服务
 
    这里比较特殊的一点是，Kuboard 以分层的方式展现微服务架构的经典分层，包括展现层、API网关层、微服务层、持久层、中间件层和监控层。
 
-   ![image-20191002073210761](./share-coder.assets/image-20191002073210761.png)
+   ![Kubernetes 教程](./share-coder.assets/image-20191002073210761.png)
 
 3. 工作负载层
 
@@ -67,7 +68,7 @@ Kuboard 通过三层界面来管理 Kubernetes 以及部署在其上的微服务
 
    在 Kuboard 工作负载编辑器里，可以通过图形界面完成应用的部署和管理、伸缩、卸载等操作，而无需编写复杂的 yaml 文件。
 
-   ![image-20191002073245932](./share-coder.assets/image-20191002073245932.png)
+   ![Kubernetes 教程](./share-coder.assets/image-20191002073245932.png)
 
 
 

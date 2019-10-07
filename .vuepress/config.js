@@ -242,7 +242,7 @@ module.exports = {
                 {
                   title: '节点',
                   collapsable: true,
-                  path: '/learning/k8s-bg/architecture/nodes',
+                  // path: '/learning/k8s-bg/architecture/nodes',
                   children: [
                     'k8s-bg/architecture/nodes',
                     'k8s-bg/architecture/nodes-mgmt',
@@ -251,13 +251,14 @@ module.exports = {
                 {
                   title: '集群内的通信',
                   collapsable: true,
-                  path: '/learning/k8s-bg/architecture/com',
+                  // path: '/learning/k8s-bg/architecture/com',
                   children: [
                     'k8s-bg/architecture/com',
                     'k8s-bg/architecture/com-n-m',
                     'k8s-bg/architecture/com-m-n',
                   ]
                 },
+                'k8s-bg/architecture/controller',
               ]
             },
             {
