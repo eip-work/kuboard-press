@@ -5,7 +5,7 @@ title: Kuboard官网_Kubernetes教程_K8S安装_管理界面
 description: Kuboard是一款免费的Kubernetes管理界面_同时该网站还提供Kubernetes安装文档_K8S_部署_入门_免费中文Kubernetes教程_以及在Kubernetes上部署SpringCloud的详细文档
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Kubernetes安装,K8S安装
+    content: Kubernetes教程,K8S教程,Kubernetes安装,K8S安装,Kubernetes
 actionText: 在线体验
 actionText2: 开始使用 →
 actionLink2: /overview/
@@ -62,6 +62,9 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/nodes.html">节点</a>
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/com.html">集群内通信</a>
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/controller.html">控制器</a>
+  * 容器
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/container/images.html">容器镜像</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/container/env.html">容器的环境变量</a>
   * 工作负载
     * <a href="https://kuboard.cn/learning/k8s-intermediate/workload/pod.html">容器组 - 概述</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/workload/pod-lifecycle.html">容器组 - 生命周期</a>

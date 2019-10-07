@@ -49,6 +49,9 @@ meta:
     * [节点](/learning/k8s-bg/architecture/nodes.html)
     * [集群内通信](/learning/k8s-bg/architecture/com.html)
     * [控制器](/learning/k8s-bg/architecture/controller.html)
+  * 容器
+    * [容器镜像](/learning/k8s-intermediate/container/images.html)
+    * [容器的环境变量](/learning/k8s-intermediate/container/env.html)
   * 工作负载
     * [容器组 - 概述](/learning/k8s-intermediate/workload/pod.html)
     * [容器组 - 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
