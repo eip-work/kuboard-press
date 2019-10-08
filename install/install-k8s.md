@@ -221,17 +221,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 :::
 
 <!-- <div style="display: inline-block; width: calc(100% - 400px);"></div> -->
-<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
-<el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
-<el-form-item prop="checked" class="env-form-item">
-<el-checkbox-group v-model="form.checked" style="height: 120px;">
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
-</el-checkbox-group>
-</el-form-item>
-</el-form>
-</div>
+
 
 <!-- </div>
 
@@ -243,8 +233,19 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 <div v-show="!envOk" key="not">
 
 ::: danger 请确认您的环境
-* 必须核对上一个步骤中的三个勾选框才能 **显示安装 docker/kubelet 的文档**
-* 否则不能继续
+* 必须选中下面的三个勾选框才能 **显示安装 docker/kubelet 的文档**
+
+<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
+<el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
+<el-form-item prop="checked" class="env-form-item">
+<el-checkbox-group v-model="form.checked" style="height: 120px;">
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
+</el-checkbox-group>
+</el-form-item>
+</el-form>
+</div>
 :::
 
 </div>

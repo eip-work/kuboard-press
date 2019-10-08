@@ -33,4 +33,4 @@ FOO_SERVICE_HOST=<Service的ClusterIP>
 FOO_SERVICE_PORT=<Service的端口>
 ```
 
-详细信息请参考 [Service-服务发现]](/learning/k8s-intermediate/service/service-details.html#服务发现)
+详细信息请参考 [Service-服务发现](/learning/k8s-intermediate/service/service-details.html#服务发现)
