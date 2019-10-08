@@ -143,7 +143,8 @@ module.exports = {
           title: '简介',
           collapsable: false,
           children: [
-            ''
+            '',
+            'share-coder'
           ]
         }, {
           title: '概念',
@@ -199,6 +200,7 @@ module.exports = {
           children: [
             'install-kubectl',
             // 'config-kubectl',
+            'install-k8s-dashboard',
             'install-dashboard',
             'install-dashboard-upgrade'
           ]
@@ -406,10 +408,18 @@ module.exports = {
         },
         {
           title: 'Kubernetes 高级',
-          collapsable: false,
-          path: 'k8s-advanced/',
+          collapsable: true,
           children: [
-            
+            {
+              title: 'Kubernetes 日志',
+              collapsable: true,
+              children: [
+                'k8s-advanced/logs/',
+                'k8s-advanced/logs/basic',
+                'k8s-advanced/logs/node',
+                'k8s-advanced/logs/cluster',
+              ]
+            }
           ]
         },
         {

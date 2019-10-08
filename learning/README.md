@@ -86,9 +86,10 @@ meta:
 
 ## **Kubernetes 高级**
 
-  * Kubernetes 日志可视化
+  * [Kubernetes 日志](/learning/k8s-advanced/logs/)
   * Kubernetes 监控
   * Kubernetes 联邦
+  * 扩展 Kubernetes
 
 ## **Kubernetes 实战**
 

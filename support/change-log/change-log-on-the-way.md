@@ -9,7 +9,9 @@ Kuboard v1.0.x 的更新说明
 
 * 工作负载编辑器 --> 容器组 --> 容忍 -- 正在开发
 * kubernetes 1.16.1
+* HostAliases
 
+* https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
 
 * Service --> SessionAffinity
               --> clientIP.timeoutSeconds

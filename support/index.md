@@ -24,14 +24,14 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
     <el-card style="height: 100%">
-      <img src="./index.assets/image-20191003231005043.png" alt="Kubernetes教程_Kuboard_Github_Star">
+      <img src="./index.assets/image-20191008204458253.f742de59.png" alt="Kubernetes教程_Kuboard_Github_Star">
     </el-card>
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
       <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;">
         <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经在许多个实际项目中经受住了考验</li>
         <li>Kuboard 一经发布，就获得了广泛的关注</li>
-        <li>Kuboard 公开发布不到两个月时间，就已经获得了 422 Github Star（如图所示）</li>
+        <li>Kuboard 公开发布不到两个月时间，就已经获得了 461 Github Star（如图所示）</li>
         <li>Kuboard 社群中，已有许多的用户将 Kuboard 用于自己的生产环境</li>
       </el-card>
   </grid-item>
