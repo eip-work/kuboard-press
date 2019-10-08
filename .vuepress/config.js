@@ -48,10 +48,10 @@ module.exports = {
     //     }
     //   }
     // },
-    '@vuepress/pwa': {
-      serviceWorker: true,
-      updatePopup: true
-    },
+    // '@vuepress/pwa': {
+    //   serviceWorker: true,
+    //   updatePopup: true
+    // },
     '@vssue/vuepress-plugin-vssue': {
       // set `platform` rather than `api`
       platform: 'github',
@@ -82,7 +82,7 @@ module.exports = {
     //     zIndex: 10000,
     //   },
     // },
-    'vuepress-plugin-smooth-scroll': {},
+    // 'vuepress-plugin-smooth-scroll': {},
     'code-switcher': {},
     'reading-progress': {},
     // 'vuepress-plugin-baidu-autopush':{},
@@ -274,6 +274,9 @@ module.exports = {
               children: [
                 'k8s-intermediate/container/images',
                 'k8s-intermediate/container/env',
+                'k8s-intermediate/container/runtime',
+                'k8s-intermediate/container/lifecycle',
+                'k8s-intermediate/container/lifecycle-p',
               ]
             },
             {

@@ -9,6 +9,8 @@ meta:
 
 # 容器的环境变量
 
+> 参考文档： [Container Environment Variables](https://kubernetes.io/docs/concepts/containers/container-environment-variables/)
+
 Kubernetes为容器提供了一系列重要的资源：
 * 由镜像、一个或多个数据卷合并组成的文件系统
 * 容器自身的信息

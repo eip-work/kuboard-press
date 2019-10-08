@@ -48,7 +48,7 @@ Service是一个抽象层，它通过 LabelSelector 选择了一组 Pod（容器
 
 ## 服务和标签
 
-下图中有两个服务Service A(蓝色虚线)和Service B(黄色虚线)
+下图中有两个服务Service A(黄色虚线)和Service B(蓝色虚线)
 Service A 将请求转发到 IP 为 10.10.10.1 的Pod上，
 Service B 将请求转发到 IP 为 10.10.10.2、10.10.10.3、10.10.10.4 的Pod上。
 
