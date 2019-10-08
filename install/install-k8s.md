@@ -122,7 +122,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.0
-  * 当前已更新了 <font color="red"> 56 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 57 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
   
@@ -240,7 +240,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 <el-form-item prop="checked" class="env-form-item">
 <el-checkbox-group v-model="form.checked" style="height: 120px;">
   <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线</el-checkbox> </li>
   <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
 </el-checkbox-group>
 </el-form-item>
