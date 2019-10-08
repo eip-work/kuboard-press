@@ -28,7 +28,7 @@ Kubernetes Dashboard 是 Kubernetes 的官方 Web UI。使用 Kubernetes Dashboa
 
 为了帮助大家选择适合自己的工具，本文将详细描述如何在 Kubernetes 集群中安装 Kubernetes Dashboard。
 
-## 安装 Kubernetes Dashboard
+## 安装
 
 执行如下命令，以安装 Kubernetes Dashboard
 
@@ -36,7 +36,7 @@ Kubernetes Dashboard 是 Kubernetes 的官方 Web UI。使用 Kubernetes Dashboa
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml
 ```
 
-## 访问 Kubernetes Dashboard UI
+## 访问
 
 Kubernetes Dashboard 默认部署时，只配置了最低权限的 RBAC。当前，只支持使用 Bearer Token登录。
 

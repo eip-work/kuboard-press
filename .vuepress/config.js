@@ -409,6 +409,7 @@ module.exports = {
         {
           title: 'Kubernetes 高级',
           collapsable: true,
+          path: '/learning/k8s-advanced/index',
           children: [
             {
               title: 'Kubernetes 日志',
