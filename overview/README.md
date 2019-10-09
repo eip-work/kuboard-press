@@ -6,7 +6,7 @@ meta:
     content: Kubernetes管理界面,K8S管理界面,Kubernetes Dashboard
 ---
 
-## Kuboard简介
+# Kuboard简介
 
 <div style="background-color: #0063dc;">
 <div style="max-width: 363px; margin: auto;">

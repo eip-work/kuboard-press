@@ -6,7 +6,7 @@ meta:
     content: Kubernetes管理界面,K8S教程,Kubernetes教程,K8S管理界面
 ---
 
-## 为什么选择Kuboard
+# 为什么选择Kuboard
 
 Kubernetes 已然是当下容器编排领域事实上的标准，各大云服务商都急于推出 Kubernetes 服务，互联网公司也纷纷跟进，将自己的应用容器化，并使用 Kubernetes 编排。
 

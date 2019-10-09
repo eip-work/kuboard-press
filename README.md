@@ -24,7 +24,7 @@ features:
   link: /learning/k8s-practice/ocp
 ---
 
-## 简介
+# Kuboard简介
 
 Kuboard 是一款基于 Kubernetes 的微服务管理界面。
 
