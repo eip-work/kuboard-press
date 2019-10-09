@@ -26,7 +26,6 @@
     "npm": "^6.11.3",
     "reduce-css-calc": "^2.1.6",
     "vuepress": "^1.1.0",
-    "vuepress-plugin-named-chunks": "^1.0.2",
-    "vuepress-plugin-smooth-scroll": "0.0.4"
+    "vuepress-plugin-named-chunks": "^1.0.2"
   }
 }
