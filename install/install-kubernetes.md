@@ -34,7 +34,7 @@ meta:
 推荐初学者按照 [安装Kubernetes 单Master节点](install-k8s.html) 文档进行 Kubernetes 集群搭建
 :::
 
-# 介绍
+## 介绍
 
 kubernetes 安装有多种选择，本文档描述的集群安装具备如下特点：
 
