@@ -31,7 +31,7 @@
       <StarGazer/>
     </div>
     <div slot="page-top" class="theme-default-content content__default page-top">
-      <div class="tip custom-block" style="padding: 10px 20px;">
+      <div class="tip custom-block" style="padding: 10px 20px; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top;">
           <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
           <!-- <li><span style="color: red; font-weight: 500;">在线答疑</span> 扫第一个二维码完成打赏，扫第二个进微信群聊</li> -->
@@ -73,6 +73,7 @@ export default {
 
 <style scoped>
 .page-top {
+  margin-top: 0 !important;
   margin-bottom: -80px !important;
 }
 .bottom-description {

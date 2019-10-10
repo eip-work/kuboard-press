@@ -10,13 +10,7 @@ meta:
 
 ## 最新版本
 
-稳定版： v1.0.2
-发布日期： 2019-09-01
-
-测试版： v1.0.3-beta.5
-发布日期： 2019-09-19
-
-[查看更新日志](/overview/change-log.html)
+[查看最新版本及更新日志](/support/change-log/v1.0.x.html)
 
 ## latest 标签升级
 

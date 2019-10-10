@@ -63,6 +63,10 @@
       </div>
     </div>
 
+    <div style="margin-top: 2rem;">
+      <AdSenseParagraph></AdSenseParagraph>
+    </div>
+
     <div class="intro">
       <el-card class="intro_text" shadow="hover">
         <p>
@@ -88,6 +92,7 @@
     <div class="footer">
       Copyright © 2019-present <a href="http://www.eigpay.com" target="_blank">仁聚汇通</a> | 京ICP备19008693号-2
     </div>
+    <AdSenseRightSide/>
   </main>
 </template>
 

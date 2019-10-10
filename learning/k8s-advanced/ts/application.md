@@ -1,7 +1,7 @@
 ---
 vssueId: 127
 layout: LearningLayout
-description: Kubernetes教程_本章节中，您将了解到如何在 Kubernetes 中使用最基本的日志，此时，日志信息将输出到标准输出流（standard output stream）。
+description: Kubernetes教程_本文档可帮助您诊断部署到Kubernetes中的应用程序所出现的问题。如果仍然解决不了，请加本文末尾的QQ群答疑。
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,诊断应用程序,问题诊断
@@ -11,7 +11,7 @@ meta:
 
 > 参考文档： [Troubleshoot Applications](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/)
 
-本文档可帮助您诊断部署到Kubernetes中的应用程序所出现的问题。
+本文档可帮助您诊断部署到Kubernetes中的应用程序所出现的问题。如果仍然解决不了，请加本文末尾的QQ群答疑。也可以了解 [更多支持方式](/support/)
 
 诊断问题的第一步是对问题做个分类，该问题是Pod的问题、Deployment（StatefulSet/DaemonSet）控制器的问题，还是Service的问题？
 

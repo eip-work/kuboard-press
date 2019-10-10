@@ -114,6 +114,12 @@ export default {
 
 ## 文档特点
 
+
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+
+<div>
+
 **网上那么多 Kubernetes 安装文档，为什么这篇文档更有参考价值？**
 
 * **众多网友验证**
@@ -125,21 +131,19 @@ export default {
   * 当前已更新了 <font color="red"> 57 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
-  
+
   <Qq></Qq> QQ群号为：808894550，也可以扫描二维码加群
   <p>
     <img src="/images/kuboard_qq.png" alt="Kubernetes安装：QQ群在线答疑"/>
   </p>
-  <!-- <div>
-    <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
-    <div style="margin-top: 10px;">
-       <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span> <span style="color: #CCC">QQ 群聊二维码在左侧导航栏下方。</span>
-      <p style="margin-top: 10px;">
-        <img src="/images/dz.png" style="width: 150px; margin-right: 150px;"></img>
-        <img src="/images/dz2.jpeg" style="width: 150px;"></img>
-      </p>
-    </div>
-  </div> -->
+
+</div>
+
+  </grid-item>
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 1rem 1rem 1rem 1rem;">
+    <AdSenseVertical/>
+  </grid-item>
+</grid>
 
 <!-- </div>
 <div slot="overview" style="min-height: 800px;"> -->
@@ -151,6 +155,12 @@ export default {
 
 * 3台 **2核4G** 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
 * **Cent OS 7.6**
+
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+
+<div>
+
 
 **安装后的软件版本为**
 
@@ -164,6 +174,14 @@ export default {
 > * [安装 Kubernetes v1.15.3 单Master节点](/install/history-k8s/install-k8s-1.15.3.html)
 > * [安装 Kubernetes v1.15.2 单Master节点](/install/history-k8s/install-k8s-1.15.2.html)
 > * [安装 Kubernetes v1.15.1 单Master节点](/install/history-k8s/install-k8s-1.15.1.html)
+
+</div>
+
+  </grid-item>
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 1rem 1rem 1rem 1rem;">
+    <AdSenseVertical/>
+  </grid-item>
+</grid>
 
 安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
@@ -199,6 +217,11 @@ lscpu
 
 **操作系统兼容性**
 
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+
+<div>
+
 | CentOS 版本 | 本文档是否兼容                          | 备注                                |
 | ----------- | --------------------------------------- | ----------------------------------- |
 | 7.7         | <span style="font-size: 24px;">😄</span> | 已验证                              |
@@ -207,6 +230,14 @@ lscpu
 | 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
+
+</div>
+
+  </grid-item>
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 1rem 1rem 1rem 1rem;">
+    <AdSenseVertical/>
+  </grid-item>
+</grid>
 
 ::: tip 修改 hostname
 如果您需要修改 hostname，可执行如下指令：
@@ -232,10 +263,15 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 <!-- <transition-group name="el-zoom-in-top"> -->
 <div v-show="!envOk" key="not">
 
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+
+<div>
+
 ::: danger 请确认您的环境
 * 必须选中下面的三个勾选框才能 **显示安装 docker/kubelet 的文档**
 
-<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
+<div style="display: inline-block; width: 420px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
 <el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
 <el-form-item prop="checked" class="env-form-item">
 <el-checkbox-group v-model="form.checked" style="height: 120px;">
@@ -247,6 +283,14 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 </el-form>
 </div>
 :::
+
+</div>
+
+  </grid-item>
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
+    <AdSenseSquare/>
+  </grid-item>
+</grid>
 
 </div>
 <el-collapse-transition>
