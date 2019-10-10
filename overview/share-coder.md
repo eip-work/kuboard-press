@@ -22,9 +22,6 @@ Kubernetes 容器编排已越来越被大家关注，然而学习 Kubernetes 的
 * Kuboard 官网提供 Spring Cloud 等微服务参考架构在 K8S 上的详细部署文档和步骤，是 Spring Cloud 用户将自己的应用迁移到 K8S 部署环境的非常好的参考资料。
 
 
-
-Kuboard 官网地址：[https://kuboard.cn](https://kuboard.cn/#from_coder_toutiao)
-
 Kuboard 发布不到两个月时间，github star 已经迅速增长到 461，获得了许多用户的喜爱。
 
 <p style="max-width: 720px;">

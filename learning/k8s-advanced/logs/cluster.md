@@ -1,7 +1,7 @@
 ---
 vssueId: 125
 layout: LearningLayout
-description: Kubernetes教程_本文介绍了如何使用kubectl_Kuboard查看和浏览Kubernetes上的节点_容器组_部署等信息_并依据这些信息作出问题诊断
+description: Kubernetes教程_Kubernetes 中并不默认提供集群级别的日志，不过，有许多种途径可以和集群级别的日志整合。例如：在每个节点上配置日志代理_在应用程序的Pod中包含一个专门用于收集日志的sidecar容器_从应用程序中直接推送日志到日志存储端
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,日志,Logging

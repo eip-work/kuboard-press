@@ -8,6 +8,7 @@ description: Kubernetes教程_高级篇_主要涉及日志采集_安全_监控_�
 
 Kubernetes教程的深入篇部分，主要涉及的内容有如下几个方面：
 
+* [问题诊断](./ts/application.html)
 * [Kubernetes 日志](./logs/)
 * Kubernetes 安全
 * Kubernetes 监控

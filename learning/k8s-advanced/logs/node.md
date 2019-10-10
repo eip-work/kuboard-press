@@ -1,7 +1,7 @@
 ---
 vssueId: 125
 layout: LearningLayout
-description: Kubernetes教程_本文介绍了如何使用kubectl_Kuboard查看和浏览Kubernetes上的节点_容器组_部署等信息_并依据这些信息作出问题诊断
+description: Kubernetes教程_容器化应用程序写入到stdout和stderr中的任何信息，都将被容器引擎重定向到某个地方。例如Docker容器引擎将 `stdout` 和stderr这两个输出流重定向到logging-driver
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,日志,Logging

@@ -97,6 +97,8 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 
 ### Kubernetes高级
 
+  * <a href="https://kuboard.cn/learning/k8s-advanced/ts/application.html">问题诊断</a>
+  * <a href="https://kuboard.cn/learning/k8s-advanced/logs/">日志</a>
   * Kubernetes 日志可视化
   * Kubernetes 监控
   * Kubernetes 联邦

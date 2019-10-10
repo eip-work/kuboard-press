@@ -414,7 +414,14 @@ module.exports = {
           path: '/learning/k8s-advanced/index',
           children: [
             {
-              title: 'Kubernetes 日志',
+              title: '问题诊断',
+              collapsable: true,
+              children: [
+                'k8s-advanced/ts/application',
+              ]
+            },
+            {
+              title: '日志',
               collapsable: true,
               children: [
                 'k8s-advanced/logs/',
@@ -422,7 +429,7 @@ module.exports = {
                 'k8s-advanced/logs/node',
                 'k8s-advanced/logs/cluster',
               ]
-            }
+            },
           ]
         },
         {
