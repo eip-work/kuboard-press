@@ -418,6 +418,7 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-advanced/ts/application',
+                'k8s-advanced/ts/cluster',
               ]
             },
             {

@@ -140,7 +140,7 @@ export default {
 </div>
 
   </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 1rem 1rem 1rem 1rem;">
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
     <AdSenseVertical/>
   </grid-item>
 </grid>
@@ -178,7 +178,7 @@ export default {
 </div>
 
   </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 1rem 1rem 1rem 1rem;">
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
     <AdSenseVertical/>
   </grid-item>
 </grid>
@@ -234,7 +234,7 @@ lscpu
 </div>
 
   </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 1rem 1rem 1rem 1rem;">
+  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
     <AdSenseVertical/>
   </grid-item>
 </grid>
