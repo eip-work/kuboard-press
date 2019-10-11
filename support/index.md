@@ -58,7 +58,7 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
           <div style="margin-top: 10px;">
             <span>扫第一个二维码完成打赏，扫第二个加微信进群聊（请发送打赏截图）</span>
             <p style="margin-top: 10px;">
-              <img src="/images/dz.png" style="width: 200px; margin-right: 150px;"></img>
+              <img src="/images/dz.png" style="width: 200px; margin-right: 120px;"></img>
               <img src="/images/dz2.jpeg" style="float: right; width: 200px;"></img>
             </p>
           </div>

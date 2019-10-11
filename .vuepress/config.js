@@ -17,8 +17,15 @@ module.exports = {
     })();
     `],
     ['link', {rel: "stylesheet", href: "/java-script-dist/swiper-4.5.0/css/swiper.min.css"}],    
-    ['script', {src: '/java-script-dist/swiper-4.5.0/js/swiper.min.js'}],
-    // ['script', {type: 'text/javascript', src: 'https://tajs.qq.com/stats?sId=66467492', charset: 'UTF-8'}]
+    ['script', {src: '/java-script-dist/swiper-4.5.0/js/swiper.min.js', async: true}],
+    // ['script', {src: "https://www.googletagmanager.com/gtag/js?id=UA-144196556-1", async: true}],
+    // ['script', {}, `
+    // window.dataLayer = window.dataLayer || [];
+    // function gtag(){dataLayer.push(arguments);}
+    // gtag('js', new Date());
+
+    // gtag('config', 'UA-144196556-1');
+    // `],
     ['script', { 'data-ad-client': "ca-pub-3313149841665250", async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}],
     // <script data-ad-client="ca-pub-3313149841665250" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   ],
@@ -429,6 +436,13 @@ module.exports = {
                 'k8s-advanced/logs/basic',
                 'k8s-advanced/logs/node',
                 'k8s-advanced/logs/cluster',
+              ]
+            },
+            {
+              title: '调度',
+              collapsable: true,
+              children: [
+                'k8s-advanced/schedule/',
               ]
             },
           ]
