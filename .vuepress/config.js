@@ -201,7 +201,7 @@ module.exports = {
           collapsable: false,
           children: [
             'install-kubectl',
-            // 'config-kubectl',
+            'config-kubectl',
             'install-k8s-dashboard',
             'install-dashboard',
             'install-dashboard-upgrade'

@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文档可帮助您诊断部署到Kubernetes中的应用程序所出现的问题。如果仍然解决不了，请加本文末尾的QQ群答疑。
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,诊断应用程序,问题诊断
+    content: Kubernetes教程,K8S教程,集群故障,问题诊断
 ---
 
 # 诊断集群问题
