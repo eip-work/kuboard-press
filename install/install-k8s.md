@@ -150,17 +150,34 @@ export default {
 
 ## 配置要求
 
-对于 Kubernetes 初学者，推荐在阿里云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
-[领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
+对于 Kubernetes 初学者，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
 
 * 3台 **2核4G** 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
 * **Cent OS 7.6**
 
 <grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+  <grid-item size="1/2" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
 
 <div>
 
+[领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
+
+[阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg)
+
+</div>
+
+  </grid-item>
+  <grid-item size="1/2" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 2rem 1rem 1rem 1rem;">
+    <a href="https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console">
+      <img src="/images/pr/tencent-345x200-.jpg" alt="Kubernetes安装_服务器选择" style="width: 270px;">
+    </a>
+  </grid-item>
+</grid>
+
+<grid :rwd="{compact: 'stack'}">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+
+<div>
 
 **安装后的软件版本为**
 
