@@ -8,6 +8,8 @@ meta:
 
 # 如何降低Kubernetes学习门槛
 
+<AdSenseTitle/>
+
 ## Kubernetes 学习门槛在哪儿
 
 学习 Kubernetes 之前，必须具备的知识储备：

@@ -1,12 +1,11 @@
 <template>
-  <div class="adsense-paragraph" @click="$sendGaEvent('AdSense', 'AdSenseParagraph', 'AdSenseParagraph')">
+  <div class="adsense-page-bottom-inline">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- PageBottomInline -->
     <ins class="adsbygoogle"
-        style="display:block; text-align:center;"
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
+        style="display:inline-block;min-width:200px;max-width:1000px;width:100%;height:160px"
         data-ad-client="ca-pub-3313149841665250"
-        data-ad-slot="1006020799"></ins>
+        data-ad-slot="8977269331"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
@@ -20,9 +19,9 @@ export default {
 </script>
 
 <style scoped>
-.adsense-paragraph {
-  /* background-color: grey; */
-  padding-right: 2px;
+.adsense-page-bottom-inline {
   border: 1px solid #d7dae2;
+  height: 160px;
+  overflow: hidden;
 }
 </style>

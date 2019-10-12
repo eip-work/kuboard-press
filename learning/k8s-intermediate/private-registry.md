@@ -9,6 +9,8 @@ meta:
 
 # 使用私有仓库中的docker镜像
 
+<AdSenseTitle/>
+
 企业通常会因为如下几个原因，需要搭建自己的私有 docker registry：
 * 限制 docker 镜像的分发范围，例如：只允许在内网分发，或者只允许被授权的用户获取 docker 镜像
 * 提高推送 docker 镜像以及抓取 docker 镜像时的网络传输速度

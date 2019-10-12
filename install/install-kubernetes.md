@@ -26,6 +26,8 @@ meta:
 
 # 安装Kubernetes高可用
 
+<AdSenseTitle/>
+
 <!-- <StoryBook>
 
 <div slot="overview"> -->

@@ -4,6 +4,8 @@ description: Kubernetes教程_使用Kuboard在Kubernetes上部署spring_cloud服
 
 # 部署cloud-eureka
 
+<AdSenseTitle/>
+
 本文所使用的代码请参考 [cloud-eureka](https://github.com/eip-work/kuboard-example/tree/master/cloud-eureka)
 
 ## 检查 cloud-eureka 项目的配置

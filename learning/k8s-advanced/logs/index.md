@@ -9,6 +9,8 @@ meta:
 
 # 日志架构
 
+<AdSenseTitle/>
+
 > 参考文档： [Logging Architecture](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
 
 当集群中出现任何问题时，应用程序日志和系统日志是非常有效的定位问题的手段，可以让我们知道集群中正在发生的事情。绝大多数的应用程序都有日志机制，主流的容器引擎也都支持某种形式的日志。对容器化应用程序来说，最简单也是被采纳得最多的一种日志方式是，将日志写入到标准输出流（例如，Java中的 `System.out.println` 语句，或 log4j 中的 Console Appender）和标准错误流里（例如，Java中的 `System.error.println` 语句）

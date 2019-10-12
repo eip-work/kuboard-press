@@ -8,6 +8,8 @@ meta:
 
 # 升级Kuboard
 
+<AdSenseTitle/>
+
 ## 最新版本
 
 [查看最新版本及更新日志](/support/change-log/v1.0.x.html)

@@ -11,6 +11,8 @@ meta:
 
 参考文档：Kubernetes 官方文档 [Pod Overview](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) [Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/)
 
+<AdSenseTitle/>
+
 术语中英文对照：
 
 | 英文全称  | 英文缩写  | 中文翻译 |

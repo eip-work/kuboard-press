@@ -11,6 +11,8 @@ meta:
 
 参考文档： Kubernetes 官网 [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
 
+<AdSenseTitle/>
+
 ## 初始化容器介绍
 
 Pod 可以包含多个工作容器，也可以包含一个或多个初始化容器，初始化容器在工作容器启动之前执行。

@@ -9,6 +9,8 @@ meta:
 
 # 准备OCP的构建环境和部署环境
 
+<AdSenseTitle/>
+
 ## 环境要求
 
 Open Capacity Platform 是基于 Java Spring Cloud 的微服务架构，为了将其部署到 Kubernetes 上，我们需要准备如下环境：

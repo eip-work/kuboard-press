@@ -9,6 +9,8 @@ meta:
 
 # Runtime Class
 
+<AdSenseTitle/>
+
 > 参考文档： [Runtime Class](https://kubernetes.io/docs/concepts/containers/runtime-class/)
 
 特性状态：Kubernetes v1.14 <Badge type="warning">beta</Badge>

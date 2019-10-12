@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-page-top">
+  <div class="adsense-page-top" @click.capture="$sendGaEvent('AdSense', 'AdSensePageTop', 'AdSensePageTop')">
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <ins class="adsbygoogle"
         style="display:block; text-align:center;"
@@ -32,6 +32,10 @@ export default {
 <style scoped>
 .adsense-page-top {
   /* background-color: green; */
-  opacity: 0.2;
+  cursor: pointer;
+  padding-right: 2px;
+  border: 1px solid #d7dae2;
+  height: 124px !important;
+  overflow: hidden;
 }
 </style>

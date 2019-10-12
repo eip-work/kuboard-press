@@ -9,6 +9,8 @@ meta:
 
 # Kubernetes组件
 
+<AdSenseTitle/>
+
 > 参考文档： [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)
 
 本文档描述了 Kubernetes 的主要组件。

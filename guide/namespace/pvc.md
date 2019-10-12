@@ -4,6 +4,8 @@ description: 使用Kuboard配置Kubernetes的存储卷声明Persistent_Volume_Cl
 
 # 存储卷声明
 
+<AdSenseTitle/>
+
 存储卷声明： Kubernetes Persistent Volume Claim
 
 

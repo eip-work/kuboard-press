@@ -11,6 +11,8 @@ meta:
 
 > 参考文档： Kubernetes 官网文档 [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 
+<AdSenseTitle/>
+
 ## StatefulSet 概述
 
 StatefulSet 顾名思义，用于管理 Stateful（有状态）的应用程序。

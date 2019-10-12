@@ -4,6 +4,8 @@ description: Kubernetes教程_以gif动图的形式形象的描述Kubernetes核�
 
 # 十分钟带你理解Kubernetes核心概念
 
+<AdSenseTitle/>
+
 > 转载信息：
 >
 > 译者：崔婧雯

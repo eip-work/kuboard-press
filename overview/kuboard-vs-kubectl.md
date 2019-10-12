@@ -4,6 +4,8 @@ description: Kubernetes教程_为什么要使用kuboard_而不是直接使用kub
 
 # 为什么要使用Kuboard_而不是直接用kubectl
 
+<AdSenseTitle/>
+
 ## Kuboard v.s. kubectl
 
 Kuboard 有如下优势：

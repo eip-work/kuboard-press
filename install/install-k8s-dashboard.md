@@ -8,6 +8,8 @@ meta:
 
 # 安装Kubernetes Dashboard
 
+<AdSenseTitle/>
+
 > 参考文档： [Web UI (Dashboard)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 
 Kubernetes Dashboard 是 Kubernetes 的官方 Web UI。使用 Kubernetes Dashboard，您可以：

@@ -9,6 +9,8 @@ meta:
 
 # Kuboard中容器的Security Context
 
+<AdSenseTitle/>
+
 通过 Kuboard，可以直接设定 Deployment、StatefulSet、DaemonSet 等中容器的 securityContext 的内容。在 Kuboard 工作负载编辑器界面中点击 **容器组的更多设定** 按钮，可查看到容器的 Security Context 设置界面，如下图所示：
 
 ![Kubernetes教程_Kuboard中设置容器的SecurityContext](./con-kuboard.assets/image-20191005230605496.png)
@@ -28,4 +30,3 @@ meta:
 | procMount                                    | string                                                      | procMount 代表了容器的 proc mount 的类型。默认值是 `DefaultProcMount`（使用容器引擎的默认值）。该字段需要激活 Kubernetes 的ProcMountType 特性 |
 | capabilities                                 | <div style="width: 80px;">add: array<br />drop: array</div> | 为容器进程 add/drop Linux capabilities。默认使用容器引擎的设定。更多内容请参考 [为容器设置Linux Capabilities](./con-cap.html) |
 | seLinuxOptions                               |                                                             | 此字段设定的 SELinux 上下文将被应用到 Pod 中所有容器。如果不指定，容器引擎将为每个容器分配一个随机的 SELinux 上下文。<font color="grey">也可以在Pod的SecurityContext中设定，如果 Pod 和容器的 securityContext 中都设定了这个字段，则对该容器来说以容器中的设置为准。</font> |
-

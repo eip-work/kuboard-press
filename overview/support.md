@@ -4,6 +4,7 @@ description: Kubernetes教程_如何获得Kuboard相关的支持和帮助？
 
 # 支持
 
+<AdSenseTitle/>
 
 ## 提交 BUG
 

@@ -11,6 +11,8 @@ meta:
 
 > 参考文档 Kubernetes 官网文档 [How Daemon Pods are Scheduled](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#how-daemon-pods-are-scheduled)
 
+<AdSenseTitle/>
+
 ## 由 DaemonSet 控制器调度
 
 **v1.12以后默认禁用**

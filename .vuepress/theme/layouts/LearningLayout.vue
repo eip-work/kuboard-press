@@ -35,7 +35,7 @@
         <div style="display: inline-block; vertical-align: top;">
           <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
           <!-- <li><span style="color: red; font-weight: 500;">在线答疑</span> 扫第一个二维码完成打赏，扫第二个进微信群聊</li> -->
-          <li><Qq></Qq> <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描左侧导航<span style="color: red; font-weight: 500;">下方</span>的二维码加群</li>
+          <li><Qq></Qq> <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描本文末尾的二维码加群</li>
           
           <!-- <li>根据答疑反馈，<span style="color: red; font-weight: 500;">不断完善</span> 教程</li> -->
         </div>

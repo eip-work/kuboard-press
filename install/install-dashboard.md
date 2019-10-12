@@ -22,6 +22,8 @@ meta:
 
 # 安装Kuboard
 
+<AdSenseTitle/>
+
 <!-- <StoryBook>
 
 <div slot="overview"> -->

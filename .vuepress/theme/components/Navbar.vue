@@ -24,6 +24,7 @@
         <a href="/learning/">
           <span style="color: #42b983;">提供K8S免费教程</span>
         </a>
+        <a href="https://webscan.qianxin.com/safe/detail/?query=kuboard.cn"><img border="0" src="https://webscan.qianxin.com/api/authcode?code=ab3ebe0592248d28477251ecaf72154f" style="display: none;"/></a>
         <!-- <span style="color: #2c3e50;">|</span>
         <a href="/support/#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%90%BD%E5%9C%B0%E5%92%A8%E8%AF%A2">
           <span style="color: #007af5;">微服务落地咨询</span>

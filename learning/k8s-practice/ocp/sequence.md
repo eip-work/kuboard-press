@@ -9,6 +9,8 @@ meta:
 
 # 部署顺序
 
+<AdSenseTitle/>
+
 ## 部署顺序的确定
 
 本教程将在 KUbernet是上部署 Spring Cloud - Open Capacity Platform 微服务架构的如下模块：

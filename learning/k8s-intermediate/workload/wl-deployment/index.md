@@ -11,6 +11,8 @@ meta:
 
 参考文档： Kubernetes 官网 [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)、 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
 
+<AdSenseTitle/>
+
 术语表
 
 | 英文       | 英文简称   | 中文   |

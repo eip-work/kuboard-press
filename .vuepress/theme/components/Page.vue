@@ -1,13 +1,16 @@
 <template>
   <main class="page">
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
-      <AdSensePageTop></AdSensePageTop>
+      <!-- <AdSensePageTop></AdSensePageTop> -->
     </div>
     <!-- <AdsenseParagraph></AdsenseParagraph> -->
     <slot name="top"/>
 
-    <Content class="theme-default-content" style="padding-top: 0; margin-top: 0;"/>
+    <Content class="theme-default-content" style="padding-top: 0; margin-top: 0; padding-bottom: 1rem;"/>
 
+    <div class="page-nav" style="max-width: 1000px; padding-top:0;">
+      <AdSensePageBottomInline/>
+    </div>
     <!-- <el-divider>加入 Kuboard 社群</el-divider> -->
 
     <div style="margin: auto; width: 182px;">
@@ -77,7 +80,6 @@
           →
         </span>
       </p>
-      <AdSenseParagraph></AdSenseParagraph>
     </div>
     <div>
     </div>

@@ -9,6 +9,8 @@ meta:
 
 # StatefulSet 的基本信息
 
+<AdSenseTitle/>
+
 [返回 StatefulSet](./)
 
 ## 创建 StatefulSet

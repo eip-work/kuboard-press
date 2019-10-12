@@ -9,6 +9,8 @@ meta:
 
 # 2.查看Pods/Nodes
 
+<AdSenseTitle/>
+
 本文翻译自 Kubernetes 官网 [Viewing Pods and Nodes](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/) ，并有所改写
 
 ## 目标

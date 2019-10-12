@@ -9,6 +9,8 @@ meta:
 
 # 暂停和继续 Deployment
 
+<AdSenseTitle/>
+
 [返回 Deployment](./#deployment-概述)
 
 您可以先暂停 Deployment，然后再触发一个或多个更新，最后再继续（resume）该 Deployment。这种做法使得您可以在暂停和继续中间对 Deployment 做多次更新，而无需触发不必要的滚动更新。

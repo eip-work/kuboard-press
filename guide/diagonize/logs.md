@@ -4,7 +4,7 @@ description: 使用Kuboard打开并跟踪容器组的最新日志，以便对Kub
 
 # 日志及终端
 
-
+<AdSenseTitle/>
 
 # 日志
 

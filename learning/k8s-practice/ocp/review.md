@@ -10,6 +10,8 @@ meta:
 
 # 重新审视配置信息
 
+<AdSenseTitle/>
+
 在本系列文章的前面部分，我们已经完成了在 Kubernetes 上部署 Spring Cloud OCP 的主要组件：eureka-server、auth-server、user-cetner、api-gateway、back-center。
 
 ## 提取相同的参数

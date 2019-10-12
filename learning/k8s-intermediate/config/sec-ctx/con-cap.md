@@ -9,6 +9,8 @@ meta:
 
 # 为容器设置Linux Capabilities
 
+<AdSenseTitle/>
+
 使用 [Linux Capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html) 可以为容器内的进程授予某些特定的权限（而不是 root 用户的所有权限）。在容器定义的 `securityContext` 中添加 `capabilities` 字段，可以向容器添加或删除 Linux Capability。
 
 本文后续章节中，先运行一个不包含 `capabilities` 字段的容器，观察容器内进程的 linux capabilities 位图的情况；然后在运行一个包含 `capabilities` 字段的容器，比较其 linux capabilities 位图与前者的不同。

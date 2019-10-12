@@ -7,6 +7,8 @@ meta:
 
 # 容器组_Kuboard
 
+<AdSenseTitle/>
+
 ## 通过 Kuboard 创建容器组
 
 由于在 Kubernetes 中，任何时候都是不推荐用户直接创建容器组，而是应该通过控制器创建容器组，Kuboard 管理工具并不提供直接创建容器组的界面，而是通过 **工作负载编辑器** 创建 Deployment、StatefulSet、DaemonSet 等方式来创建容器组。

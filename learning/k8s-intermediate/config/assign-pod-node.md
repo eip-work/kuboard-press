@@ -9,6 +9,8 @@ meta:
 
 # 将容器组调度到指定的节点
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官网 [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
 
 ## 概述

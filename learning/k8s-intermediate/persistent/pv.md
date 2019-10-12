@@ -9,6 +9,8 @@ meta:
 
 # 存储卷PersistentVolume
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官方文档 [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 
 ## 概述

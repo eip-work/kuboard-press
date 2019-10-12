@@ -25,6 +25,8 @@ storyBook:
 
 # 使用 kubeadm 安装 kubernetes v1.15.3
 
+<AdSenseTitle/>
+
 <script>
 
 export default {

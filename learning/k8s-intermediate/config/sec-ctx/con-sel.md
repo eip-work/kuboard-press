@@ -9,6 +9,8 @@ meta:
 
 # 为容器设置SELinux标签
 
+<AdSenseTitle/>
+
 Pod 或容器定义的 `securityContext` 中 `seLinuxOptions` 字段是一个 [SELinuxOptions](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#selinuxoptions-v1-core) 对象，该字段可用于为容器指定 SELinux 标签。如下所示：
 
 ``` yaml

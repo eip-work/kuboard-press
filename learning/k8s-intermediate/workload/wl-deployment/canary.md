@@ -9,6 +9,8 @@ meta:
 
 # 金丝雀发布
 
+<AdSenseTitle/>
+
 [返回 Deployment](./#deployment-概述)
 
 <el-tabs type="border-card">

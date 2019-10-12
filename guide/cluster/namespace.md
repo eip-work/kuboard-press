@@ -5,6 +5,8 @@ description: 使用Kuboard管理Kubernetes名称空间。
 
 # 名称空间管理
 
+<AdSenseTitle/>
+
 ## 创建名称空间
 
 ### 前提

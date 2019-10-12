@@ -9,6 +9,8 @@ meta:
 
 # 创建Secret（使用Generator）
 
+<AdSenseTitle/>
+
 从 kubernetes v1.14 开始，kubectl 集成了 [Kustomize](https://kustomize.io/)。通过 Kustomize，您可以使用 generator（Kustomize 的概念）创建 Secret，并保存到 API Server。Generator 必须在 `kustomization.yaml` 文件中指定。
 
 ::: tip

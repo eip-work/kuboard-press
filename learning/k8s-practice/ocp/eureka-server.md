@@ -9,6 +9,8 @@ meta:
 
 # 在K8S上部署eureka-server
 
+<AdSenseTitle/>
+
 本文假设您已经完成了 [在Kubernetes上部署SpringCloud-OCP](/learning/k8s-practice/ocp/) 教程的前序步骤：
 * [准备OCP的构建环境和部署环境](/learning/k8s-practice/ocp/prepare.html)
 

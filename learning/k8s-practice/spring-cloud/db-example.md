@@ -4,6 +4,8 @@ description: 在Kubernetes上部署测试数据库mysql的详细介绍。
 
 # 部署db-example
 
+<AdSenseTitle/>
+
 本文所使用的代码请参考 [db-example](https://github.com/eip-work/kuboard-example/tree/master/db-example)
 
 ## 检查 db-example 项目的配置

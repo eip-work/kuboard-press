@@ -9,6 +9,8 @@ meta:
 
 # 容器的环境变量
 
+<AdSenseTitle/>
+
 > 参考文档： [Container Environment Variables](https://kubernetes.io/docs/concepts/containers/container-environment-variables/)
 
 Kubernetes为容器提供了一系列重要的资源：

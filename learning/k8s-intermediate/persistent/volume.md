@@ -9,6 +9,8 @@ meta:
 
 # 数据卷Volume
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官网文档 [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 
 ## 数据卷概述

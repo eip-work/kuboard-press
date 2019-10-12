@@ -9,6 +9,8 @@ meta:
 
 # 节点级别的日志
 
+<AdSenseTitle/>
+
 ## 日志存储
 
 ![Kubernetes_教程_节点级别的日志](./node.assets/logging-node-level.png)

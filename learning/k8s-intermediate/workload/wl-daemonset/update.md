@@ -11,6 +11,8 @@ meta:
 
 > 参考文档 Kubernetes 官网文档 [Updating a DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#updating-a-daemonset)
 
+<AdSenseTitle/>
+
 ## 更新信息
 
 * 在改变节点的标签时：

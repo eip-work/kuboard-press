@@ -8,6 +8,8 @@ meta:
 
 # Kuboard简介
 
+<AdSenseTitle/>
+
 <div style="background-color: #0063dc;">
 <div style="max-width: 363px; margin: auto;">
   <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%; vertical-align: bottom;" alt="Kubernetes管理界面：Kuboard Logo"/>

@@ -9,6 +9,8 @@ meta:
 
 # 容器镜像
 
+<AdSenseTitle/>
+
 在 Kubernetes 的 Pod 中使用容器镜像之前，您必须将其推送到一个镜像仓库（或者使用仓库中已经有的容器镜像）。在 Kubernetes 的 Pod 定义中定义容器时，必须指定容器所使用的镜像，容器中的 `image` 字段支持与 `docker` 命令一样的语法，包括私有镜像仓库和标签。
 
 例如：`my-registry.example.com:5000/example/web-example:v1.0.1` 由如下几个部分组成：

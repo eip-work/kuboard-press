@@ -5,6 +5,8 @@ description: 熟悉Kuboard_on_Kubernetes_的最佳途径。
 
 # 使用手册
 
+<AdSenseTitle/>
+
 **Kuboard 的设计目标**
 
 * 降低 Kubernetes 学习门槛，让初学者先把 Kubernetes 用起来，再逐步理解 Kubernetes 中的各种概念

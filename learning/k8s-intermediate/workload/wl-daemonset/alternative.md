@@ -11,6 +11,8 @@ meta:
 
 > 参考文档： Kubernetes 官网文档 [Alternatives to DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#alternatives-to-daemonset)
 
+<AdSenseTitle/>
+
 DaemonSet 有如下替代选项可以选择
 
 ## Init Scripts

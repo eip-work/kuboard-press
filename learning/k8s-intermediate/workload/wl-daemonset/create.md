@@ -9,6 +9,8 @@ meta:
 
 # 创建 DaemonSet
 
+<AdSenseTitle/>
+
 ## YAML 示例
 
 下面是 DaemonSet 的 YAML 文件示例 daemonset.yaml。该例子中的 DaemonSet 运行了一个 fluentd-elasticsearch 的 docker 镜像：

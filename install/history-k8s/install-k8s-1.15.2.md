@@ -4,6 +4,8 @@ description: Kubernetes 最新稳定版 v1.15.2 的快速安装文档。该文�
 
 # 最值得参考的 Kubernetes 安装文档在这里
 
+<AdSenseTitle/>
+
 ## 文档特点
 
 **网上那么多 Kubernetes 安装文档，为什么这篇文档更有参考价值？**

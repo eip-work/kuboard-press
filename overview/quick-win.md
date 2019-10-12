@@ -5,6 +5,8 @@ description: Kuboard提供Kubernetes图形化管理界面_Kubernetes最新版本
 
 # 在Kubernetes上快速落地微服务
 
+<AdSenseTitle/>
+
 ## Kubernetes 落地难
 
 **Kubernetes 是趋势**

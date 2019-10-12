@@ -9,6 +9,8 @@ meta:
 
 # 容器生命周期事件处理
 
+<AdSenseTitle/>
+
 > 参考文档： [Attach Handlers to Container Lifecycle Events](https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/)
 
 Kubernetes 中支持容器的 postStart 和 preStop 事件，本文阐述了如何向容器添加生命周期事件处理程序（handler）。

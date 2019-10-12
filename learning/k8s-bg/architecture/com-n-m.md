@@ -9,6 +9,8 @@ meta:
 
 # Cluster to Master
 
+<AdSenseTitle/>
+
 所有从集群访问 Master 节点的通信，都是针对 apiserver 的（没有任何其他 master 组件发布远程调用接口）。通常安装 Kubernetes 时，apiserver 监听 HTTPS 端口（443），并且配置了一种或多种 [客户端认证方式 authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)。至少需要配置一种形式的 [授权方式 authorization](https://kubernetes.io/docs/reference/access-authn-authz/authorization/)，尤其是 [匿名访问 anonymous requests](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#anonymous-requests) 或 [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) 被启用的情况下。
 
 节点上必须配置集群（apiserver）的公钥根证书（public root certificate），此时，在提供有效的客户端身份认证的情况下，节点可以安全地访问 APIServer。例如，在 Google Kubernetes Engine 的一个默认 Kubernetes 安装里，通过客户端证书为 kubelet 提供客户端身份认证。请参考 [kubelet TLS bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/)，了解如何自动为 kubelet 提供客户端证书。

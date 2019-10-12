@@ -9,6 +9,8 @@ meta:
 
 # 创建Secret（使用Kuboard）
 
+<AdSenseTitle/>
+
 本文简要描述如何在 Kuboard 中创建 Kubernetes Secret。
 
 Kubernetes Secret 必须从属于某一个名称空间，进入 Kuboard 名称空间界面，Secret 列表在名称空间的左上角。如下图所示：

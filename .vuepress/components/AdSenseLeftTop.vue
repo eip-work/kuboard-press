@@ -1,12 +1,11 @@
 <template>
-  <div class="adsense-paragraph" @click="$sendGaEvent('AdSense', 'AdSenseParagraph', 'AdSenseParagraph')">
+  <div class="adsense-left-top" @click="$sendGaEvent('AdSense', 'AdSenseLeftTop', 'AdSenseLeftTop')">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- AdsenseLeftTop -->
     <ins class="adsbygoogle"
-        style="display:block; text-align:center;"
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
+        style="display:block;min-width:100px;max-width:500px;width:100%;height:80px"
         data-ad-client="ca-pub-3313149841665250"
-        data-ad-slot="1006020799"></ins>
+        data-ad-slot="4275606991"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
@@ -20,9 +19,8 @@ export default {
 </script>
 
 <style scoped>
-.adsense-paragraph {
+.adsense-left-top {
+  width: 100%;
   /* background-color: grey; */
-  padding-right: 2px;
-  border: 1px solid #d7dae2;
 }
 </style>

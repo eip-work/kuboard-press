@@ -9,6 +9,8 @@ meta:
 
 # 6.复习Kubernetes核心概念
 
+<AdSenseTitle/>
+
 > 转载信息：
 >
 > 译者：崔婧雯

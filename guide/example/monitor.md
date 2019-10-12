@@ -5,6 +5,8 @@ description: 使用Kuboard在Kubernetes上安装监控套件，并对example微�
 
 # 监控 example <Badge text="alpha" type="warn"/>
 
+<AdSenseTitle/>
+
 ## 前提
 
 必须具备如下条件：

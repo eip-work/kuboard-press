@@ -9,6 +9,8 @@ meta:
 
 # 基本的日志
 
+<AdSenseTitle/>
+
 本章节中，您将了解到如何在 Kubernetes 中使用最基本的日志，此时，日志信息将输出到标准输出流（standard output stream）。请参考下面的例子，该例子中的 Pod 包含一个容器，该容器每秒钟向标准输出写入一些文本内容：
 
 <<< @/.vuepress/public/statics/learning/logs/counter-pod.yaml

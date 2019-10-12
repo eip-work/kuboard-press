@@ -5,6 +5,8 @@ description: 通过Kuboard将一个预先定义好的SpringCloud微服务样例�
 
 # 导入 example 微服务
 
+<AdSenseTitle/>
+
 ## 前提
 
 必须具备如下条件：

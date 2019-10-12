@@ -9,6 +9,8 @@ meta:
 
 # 安装Kubectl
 
+<AdSenseTitle/>
+
 日常工作中，您可能需要在自己的笔记本电脑上执行 kubectl 命令以管理远程 Linux 服务器上的 Kubernetes 集群。
 
 ::: tip

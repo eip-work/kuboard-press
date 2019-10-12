@@ -9,6 +9,8 @@ meta:
 
 # 诊断集群问题
 
+<AdSenseTitle/>
+
 > 参考文档：[Troubleshoot Clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
 
 本文主要是关于如何诊断集群出现的问题，此时，假设您已经经过排查，确认当前碰到问题的 root cause（问题的根源）不是应用程序的问题。参考 [诊断应用程序](./application.html)。

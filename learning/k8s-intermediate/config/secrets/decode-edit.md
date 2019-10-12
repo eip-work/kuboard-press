@@ -9,6 +9,8 @@ meta:
 
 # 解码和编辑Secret
 
+<AdSenseTitle/>
+
 ## 解码Secret
 
 Secret 中的信息可以通过 `kubectl get secret` 命令获取。例如，执行命令 `kubectl get secret mysecret -o yaml

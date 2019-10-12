@@ -4,7 +4,7 @@ description: 使用Kuboard配置Kubernetes_Secrets
 
 # Secrets
 
-
+<AdSenseTitle/>
 
 # 查看 Secrets 列表
 

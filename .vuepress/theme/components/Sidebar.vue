@@ -1,12 +1,13 @@
 <template>
   <aside class="sidebar">
+    <AdSenseLeftTop />
     <slot name="top"/>
     <SidebarLinks :depth="0" :items="items"/>
     <slot name="bottom"/>
     <div style="text-align: center; margin-top: 5vh;">
-      <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+      <!-- <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
         <img style="width: 242px; border: 1px solid #d7dae2;" src="/images/logo-main.png" alt="Kuboard_快速在Kubernetes上落地微服务"/>
-      </a>
+      </a> -->
 
       <p>
         <strong>
@@ -20,11 +21,11 @@
       </div>
       <p>
       </p>
-      <strong>在线答疑</strong>
+      <!-- <strong>在线答疑</strong>
       <Qq/>
       <p>
         <img src="/images/kuboard_qq.png" style="width: 120px;" alt="Kubernetes教程：QQ群在线答疑"/>
-      </p>
+      </p> -->
     </div>
     <el-divider >Kuboard</el-divider>
     <div style="height: 2rem;"></div>

@@ -9,6 +9,8 @@ meta:
 
 # 使用ConfigMap配置您的应用程序
 
+<AdSenseTitle/>
+
 本文参考了 Kubernetes 官网 [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap)，并有所改写
 
 Kubernetes ConfigMap 可以将配置信息和容器镜像解耦，以使得容器化的应用程序可移植。本文提供了一系列的实例，解释如何通过 Kuboard 创建 ConfigMap 以及如何使用 ConfigMap 中的数据配置 Pod（容器组）。

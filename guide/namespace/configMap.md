@@ -4,6 +4,8 @@ description: 使用Kuboard配置Kubernetes_ConfigMap
 
 # 配置ConfigMap
 
+<AdSenseTitle/>
+
 配置： Kubernetes ConfigMap
 
 # 查看配置列表

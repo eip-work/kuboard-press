@@ -8,6 +8,8 @@ meta:
 
 # Kubernetes爆发严重漏洞_可能影响所有开源版本_请尽快升级
 
+<AdSenseTitle/>
+
 参考文档：Info Q 文章 [Kubernetes 爆发严重漏洞：可能影响所有开源版本](https://www.infoq.cn/article/2lxylPOCU4cf9MR2S5fp)
 参考文档：51CTO 安全频道 [Kubernetes的严重漏洞将所有服务器暴露在DoS攻击面前!](http://netsecurity.51cto.com/art/201908/601671.htm)
 

@@ -31,4 +31,18 @@ export default ({
       tablet: '719px 959px'
     }
   })
+  Vue.prototype.$sendGaEvent = function (category, action, label) {
+    let e = {
+      hitType: 'event',
+      eventCategory: category,
+      eventAction: action,
+      eventLabel: label
+    }
+    if (window.ga) {
+      window.ga('send', e);
+      // console.log('openOutboundLink Event', e)
+    } else {
+      console.log('开发环境，不发送 ga event', e)
+    }
+  }
 }

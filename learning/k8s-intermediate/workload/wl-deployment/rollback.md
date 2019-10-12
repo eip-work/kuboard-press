@@ -9,6 +9,8 @@ meta:
 
 # 回滚 Deployment
 
+<AdSenseTitle/>
+
 [返回 Deployment](./#deployment-概述)
 
 某些情况下，您可能想要回滚（rollback）Deployment，例如：Deployment 不稳定（可能是不断地崩溃）。默认情况下，kubernetes 将保存 Deployment 的所有更新（rollout）历史。您可以设定 revision history limit 来确定保存的历史版本数量。

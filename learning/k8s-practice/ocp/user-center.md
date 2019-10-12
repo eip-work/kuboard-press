@@ -9,6 +9,8 @@ meta:
 
 # 在K8S上部署user-center
 
+<AdSenseTitle/>
+
 本文假设您已经完成了 [在Kubernetes 上部署 Spring Cloud - OCP](./) 系列教程的前面部分，并已经完成了 eureka-server、user-center-mysql、log-center-mysql、redis 在 K8S 上的部署。
 
 ## 理解user-center

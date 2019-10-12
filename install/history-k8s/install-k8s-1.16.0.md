@@ -29,6 +29,8 @@ meta:
 
 # 使用kubeadm安装kubernetes_v1.16.0
 
+<AdSenseTitle/>
+
 <script>
 
 export default {

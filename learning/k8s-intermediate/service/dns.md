@@ -9,6 +9,8 @@ meta:
 
 # Service/Pod的DNS
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官网文档 [DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 
 本文介绍了 Kubernetes 中的 DNS 分配方式

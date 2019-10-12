@@ -11,6 +11,8 @@ meta:
 
 > 参考文档 Kubernetes 官网文档 [Communicating with Daemon Pods](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods)
 
+<AdSenseTitle/>
+
 与 DaemonSet 容器组通信的模式有：
 
 * **Push：** DaemonSet 容器组用来向另一个服务推送信息，例如数据库的统计信息。这种情况下 DaemonSet 容器组没有客户端

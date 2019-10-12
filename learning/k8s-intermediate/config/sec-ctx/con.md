@@ -9,6 +9,8 @@ meta:
 
 # 为容器设置Security Context
 
+<AdSenseTitle/>
+
 容器的定义中包含 `securityContext` 字段，该字段接受 [SecurityContext](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#securitycontext-v1-core) 对象。通过指定该字段，可以为容器设定安全相关的配置，当该字段的配置与 Pod 级别的 `securityContext` 配置相冲突时，容器级别的配置将覆盖 Pod 级别的配置。容器级别的 `securityContext` 不影响 Pod 中的数据卷。
 
 下面的示例中的 Pod 包含一个 Container，且 Pod 和 Container 都有定义 `securityContext` 字段：

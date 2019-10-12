@@ -9,6 +9,8 @@ meta:
 
 # 存储类StorageClass
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官网 [Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
 
 ## 存储类概述

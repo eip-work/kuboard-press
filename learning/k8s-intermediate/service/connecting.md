@@ -9,6 +9,8 @@ meta:
 
 # Service连接应用程序
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官网文档 [Connecting Applications with Services](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
 
 ## Kubernetes 的网络模型

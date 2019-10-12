@@ -9,6 +9,8 @@ meta:
 
 # StatefulSet 的更新策略
 
+<AdSenseTitle/>
+
 [返回 StatefulSet](./)
 
 ## StatefulSet 的更新策略 <Badge text="Kuboard 暂不支持" type="warn"/>

@@ -4,6 +4,8 @@ description: Kuboard中的Kubernetes监控套件
 
 # 监控套件 <Badge text="alpha" type="warn"/>
 
+<AdSenseTitle/>
+
 作者已经在自己的多个项目中使用了监控套件，但是由于在使用时，需要针对具体的项目做少量的定制，因此，监控套件目前还处于 alpha 状态。
 
 监控套件分全局监控套件和局部监控套件两种类型：

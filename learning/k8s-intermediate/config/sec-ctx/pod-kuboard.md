@@ -9,6 +9,8 @@ meta:
 
 # Kuboard中Pod的Security Context
 
+<AdSenseTitle/>
+
 通过 Kuboard，可以直接设定 Deployment、StatefulSet、DaemonSet 等中 Pod 模板的 securityContext 的内容。在 Kuboard 工作负载编辑器界面中点击 **容器组的更多设定** 按钮，可查看到 Pod 的 Security Context 设置界面，如下图所示：
 
 ![Kubernetes教程_Kuboard中Pod的SecurityContext](./pod-kuboard.assets/image-20191004221427371.png)

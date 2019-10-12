@@ -9,6 +9,8 @@ meta:
 
 # 清理策略
 
+<AdSenseTitle/>
+
 [返回 Deployment](./#deployment-概述)
 
 通过 Deployment 中 `.spec.revisionHistoryLimit` 字段，可指定为该 Deployment 保留多少个旧的 ReplicaSet。超出该数字的将被在后台进行垃圾回收。该字段的默认值是 10。

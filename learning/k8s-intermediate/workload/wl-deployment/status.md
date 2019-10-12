@@ -9,6 +9,8 @@ meta:
 
 # 查看 Deployment 的状态
 
+<AdSenseTitle/>
+
 [返回 Deployment](./#deployment-概述)
 
 Deployment 的生命周期中，将会进入不同的状态，这些状态可能是：

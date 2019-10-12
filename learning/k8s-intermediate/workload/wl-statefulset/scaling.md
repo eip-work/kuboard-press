@@ -9,6 +9,8 @@ meta:
 
 # StatefulSet 的部署和伸缩
 
+<AdSenseTitle/>
+
 [返回 StatefulSet](./)
 
 ## 部署和伸缩 StatefulSet 时的执行顺序

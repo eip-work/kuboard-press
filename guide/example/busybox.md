@@ -5,6 +5,8 @@ description: 使用Kuboard向Kubernetes部署一个最简单的Deployment
 
 # 部署 busybox
 
+<AdSenseTitle/>
+
 ## 前提
 
 必须具备如下条件：

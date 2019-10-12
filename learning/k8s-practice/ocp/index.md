@@ -9,6 +9,7 @@ meta:
 
 # 在Kubernetes上部署SpringCloud
 
+<AdSenseTitle/>
 
 ## 使用 Kuboard 在 K8S 上部署 OCP
 

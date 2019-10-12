@@ -9,6 +9,8 @@ meta:
 
 # Ingress通过互联网访问您的应用
 
+<AdSenseTitle/>
+
 参考文档：
 * Kubernetes 官网 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 * Kubernetes 官网 [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)

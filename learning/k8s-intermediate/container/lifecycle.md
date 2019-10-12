@@ -9,6 +9,8 @@ meta:
 
 # 容器生命周期
 
+<AdSenseTitle/>
+
 > 参考文档： [Container Lifecycle Hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/)
 
 本文描述了 kubelet 管理的容器如何使用容器生命周期钩子执行指定的代码。

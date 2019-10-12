@@ -4,6 +4,8 @@ description: Kuboard更新日志的详细信息
 
 # 更新日志
 
+<AdSenseTitle/>
+
 ::: danger 页面已迁移
 本页面已迁移到 [Kuboard 更新日志](/support/change-log/v1.0.x.html)
 :::

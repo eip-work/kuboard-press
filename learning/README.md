@@ -10,6 +10,8 @@ meta:
 
 # Kubernetes免费中文教程
 
+<AdSenseTitle/>
+
 
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
 * Kubernetes 初学者

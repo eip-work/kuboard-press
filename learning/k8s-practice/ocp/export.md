@@ -10,6 +10,8 @@ meta:
 
 # 导出部署配置
 
+<AdSenseTitle/>
+
 通过本系列文章前面的部分，我们终于完整了 Spring Cloud OCP 的核心组件在 Kubernetes 上的部署。此时，Kuboard 的名称空间 `ocp` 界面的截图如下所示：
 
 ![Kubernetes教程_部署SpringCloud_OCP_导出部署配置_配置内容](./export.assets/image-20191001123231022.png)

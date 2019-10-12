@@ -9,6 +9,8 @@ meta:
 
 # 管理容器的计算资源
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官网 [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
 
 ## 概述

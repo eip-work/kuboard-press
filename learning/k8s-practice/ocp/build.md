@@ -9,6 +9,8 @@ meta:
 
 # 构建docker镜像并推送到仓库
 
+<AdSenseTitle/>
+
 本文假设您已经完成了 [准备OCP的构建环境和部署环境](./prepare.html)，在该文档的最后，我们将 Open Capacity Platform 的代码仓库克隆到了 master 节点的 /root/open-capacity-platform。
 
 ::: tip

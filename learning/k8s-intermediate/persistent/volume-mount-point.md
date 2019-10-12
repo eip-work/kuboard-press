@@ -8,6 +8,8 @@ meta:
 
 # 数据卷-挂载
 
+<AdSenseTitle/>
+
 参考文档： Kubernetes 官网文档 [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 
 ## 容器内路径

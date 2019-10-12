@@ -5,11 +5,7 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
 
 # Kuboard
 
-<div style="background-color: #0063dc;">
-  <div style="max-width: 363px; margin: auto;">
-    <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
-  </div>
-</div>
+<AdSenseTitle/>
 
 ## Kuboard 授权声明
 

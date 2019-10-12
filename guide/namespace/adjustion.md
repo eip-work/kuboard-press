@@ -4,7 +4,7 @@ description: 使用Kuboard对Kubernetes 行日常调整_包括_批量删除容�
 
 # 日常调整
 
-
+<AdSenseTitle/>
 
 ## 前提
 

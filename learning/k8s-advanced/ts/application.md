@@ -9,6 +9,8 @@ meta:
 
 # 诊断应用程序
 
+<AdSenseTitle/>
+
 > 参考文档： [Troubleshoot Applications](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/)
 
 本文档可帮助您诊断部署到Kubernetes中的应用程序所出现的问题。如果仍然解决不了，请加本文末尾的QQ群答疑。也可以了解 [更多支持方式](/support/)

@@ -5,6 +5,8 @@ description: 使用Kuboard管理Kubernetes存储类StorageClass
 
 # 存储空间管理
 
+<AdSenseTitle/>
+
 ## 创建存储类
 
 前提

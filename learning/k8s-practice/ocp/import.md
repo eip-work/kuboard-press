@@ -10,6 +10,8 @@ meta:
 
 # 导入部署配置
 
+<AdSenseTitle/>
+
 <script>
 
 export default {

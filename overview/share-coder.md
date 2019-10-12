@@ -1,6 +1,6 @@
 # Kuboard介绍
 
-
+<AdSenseTitle/>
 
 Kubernetes 容器编排已越来越被大家关注，然而学习 Kubernetes 的门槛却依然很高，主要体现在这几个方面：
 

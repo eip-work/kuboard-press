@@ -4,6 +4,8 @@ description: 使用Kuboard将Kubernetes名称空间中安装的应用程序配�
 
 # 多环境
 
+<AdSenseTitle/>
+
 在实际开发项目的过程中，我们必然会碰到如下场景：
 
 1. 创建一个开发环境，并在其中完成应用部署

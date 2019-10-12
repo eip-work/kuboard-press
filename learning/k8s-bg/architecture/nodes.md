@@ -9,6 +9,8 @@ meta:
 
 # 节点
 
+<AdSenseTitle/>
+
 Kubernetes中节点（node）指的是一个工作机器，曾经叫做 `minion`。不同的集群中，节点可能是虚拟机也可能是物理机。每个节点都由 master 组件管理，并包含了运行 Pod（容器组）所需的服务。这些服务包括：
 * [容器引擎](/learning/k8s-bg/component.html#容器引擎)
 * kubelet

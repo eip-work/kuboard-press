@@ -8,6 +8,8 @@ meta:
 
 # 为什么选择Kuboard
 
+<AdSenseTitle/>
+
 Kubernetes 已然是当下容器编排领域事实上的标准，各大云服务商都急于推出 Kubernetes 服务，互联网公司也纷纷跟进，将自己的应用容器化，并使用 Kubernetes 编排。
 
 在 Kubernetes 图形化工具方面，我们已经获得了极大的可选择空间：

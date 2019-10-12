@@ -10,6 +10,8 @@ meta:
 
 # Master to Cluster
 
+<AdSenseTitle/>
+
 从 master（apiserver）到Cluster存在着两条主要的通信路径：
 * apiserver 访问集群中每个节点上的 kubelet 进程
 * 使用 apiserver 的 proxy 功能，从 apiserver 访问集群中的任意节点、Pod、Service

@@ -11,6 +11,7 @@ meta:
 
 > 参考文档： Kubernetes 官网文档 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
+<AdSenseTitle/>
 
 DaemonSet 控制器确保所有（或一部分）的节点都运行了一个指定的 Pod 副本。
 * 每当向集群中添加一个节点时，指定的 Pod 副本也将添加到该节点上

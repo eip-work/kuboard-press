@@ -9,7 +9,7 @@ meta:
 
 # 使用Secret存储Ingress TLS证书
 
-
+<AdSenseTitle/>
 
 可以直接在 Ingress 中配置 HTTPS 证书，使得你的网站支持 HTTPS 协议。
 

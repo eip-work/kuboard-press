@@ -9,6 +9,8 @@ meta:
 
 # 伸缩 Deployment
 
+<AdSenseTitle/>
+
 [返回 Deployment](./#deployment-概述)
 
 伸缩（Scaling） Deployment，是指改变 Deployment 中 Pod 的副本数量，以应对实际业务流量的变化。

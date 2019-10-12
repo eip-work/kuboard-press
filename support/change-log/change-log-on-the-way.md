@@ -11,11 +11,18 @@ Kuboard v1.0.x 的更新说明
 * kubernetes 1.16.1
 * HostAliases
 
+* 容器组列表，筛选结果为空时，提示筛选 “其他”
+* 存储类列表为空时，提示当前无内容，请创建
+
 * https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+
+* https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/  专题：ETCD 集群是如何setup起来的
 
 * Service --> SessionAffinity
               --> clientIP.timeoutSeconds
 * Service --> .spec.clusterIP
+
+* PV 中支持 hostPath
 
 * 创建工作负载时，不追加前缀
 * 存储卷声明去掉分配模式的字段
