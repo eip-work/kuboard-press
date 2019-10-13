@@ -443,6 +443,8 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-advanced/schedule/',
+                'k8s-advanced/schedule/tuning',
+                'k8s-advanced/schedule/framework',
               ]
             },
           ]

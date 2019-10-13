@@ -10,18 +10,21 @@ meta:
 
 # Kubernetes免费中文教程
 
-<AdSenseTitle/>
-
+<AdSenseTitle>
 
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
 * Kubernetes 初学者
 * 学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 
-<div style="background-color: #0063dc;">
+</AdSenseTitle>
+
+
+
+<!-- <div style="background-color: #0063dc;">
   <div style="max-width: 363px; margin: auto;">
     <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
   </div>
-</div>
+</div> -->
 
 ## **Kubernetes 介绍**
 
@@ -88,10 +91,12 @@ meta:
 
 ## **Kubernetes 高级**
 
-  * [Kubernetes 日志](/learning/k8s-advanced/logs/)
-  * Kubernetes 监控
-  * Kubernetes 联邦
-  * 扩展 Kubernetes
+  * [问题诊断](/learning/k8s-advanced/ts/application.html)
+  * [日志](/learning/k8s-advanced/logs/)
+  * [调度](/learning/k8s-advanced/schedule)
+  * 安全
+  * 监控
+  * 联邦
 
 ## **Kubernetes 实战**
 

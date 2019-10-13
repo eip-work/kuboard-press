@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-left-top" @click="$sendGaEvent('AdSense', 'AdSenseLeftTop', 'AdSenseLeftTop')">
+  <div class="adsense-left-top">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- AdsenseLeftTop -->
     <ins class="adsbygoogle"

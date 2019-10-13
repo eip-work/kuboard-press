@@ -1,12 +1,11 @@
 <template>
-  <div class="adsense-page-top">
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-        style="display:block; text-align:center;"
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
+  <div class="adsense-under-title">
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+    <!-- PageTopUnderTitle -->
+    <!-- <ins class="adsbygoogle"
+        style="display:inline-block;min-width:200px;max-width:1000px;width:100%;height:50px"
         data-ad-client="ca-pub-3313149841665250"
-        data-ad-slot="6968314981"></ins>
+        data-ad-slot="1677363818"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script> -->
@@ -14,9 +13,9 @@
     <ins class="adsbygoogle"
         style="display:block"
         data-ad-format="fluid"
-        data-ad-layout-key="-h2+d+5c-9-3e"
+        data-ad-layout-key="-i0-3+1f-3d+2z"
         data-ad-client="ca-pub-3313149841665250"
-        data-ad-slot="4299889232"></ins>
+        data-ad-slot="3534684042"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
@@ -30,12 +29,7 @@ export default {
 </script>
 
 <style scoped>
-.adsense-page-top {
-  /* background-color: green; */
-  cursor: pointer;
-  padding-right: 2px;
+.adsense-under-title {
   border: 1px solid #d7dae2;
-  height: 124px !important;
-  overflow: hidden;
 }
 </style>

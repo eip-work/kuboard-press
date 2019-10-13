@@ -21,7 +21,7 @@ export default {
 <style scoped>
 .adsense-page-bottom-inline {
   border: 1px solid #d7dae2;
-  height: 160px;
+  max-height: 160px;
   overflow: hidden;
 }
 </style>

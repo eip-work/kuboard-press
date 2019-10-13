@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-page-bottom" @click="$sendGaEvent('AdSense', 'AdSensePageBottom', 'AdSensePageBottom')">
+  <div class="adsense-page-bottom">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- AdSensePageBottom -->
     <ins class="adsbygoogle"

@@ -1,5 +1,5 @@
 <template>
-  <div @click="$sendGaEvent('AdSense', 'AdSenseSquare', 'AdSenseSquare')">
+  <div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- 正方形-正文 -->
     <ins class="adsbygoogle"

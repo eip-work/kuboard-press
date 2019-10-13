@@ -1,5 +1,5 @@
 ---
-# vssueId: 117
+vssueId: 129
 layout: LearningLayout
 description: Kubernete教程_在Kubernetes中，调度（Scheduling），指的是为 Pod 找到一个合适的节点，并由该节点上的 kubelet 运行 Pod。
 meta:

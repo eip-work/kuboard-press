@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-banner" @click="$sendGaEvent('AdSense', 'AdSenseBanner', 'AdSenseBanner')">
+  <div class="adsense-banner">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- 正文-横幅 -->
     <ins class="adsbygoogle"

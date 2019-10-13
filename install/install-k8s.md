@@ -29,7 +29,7 @@ meta:
 
 # 使用kubeadm安装kubernetes_v1.16.1
 
-<AdSenseTitle/>
+<!-- <AdSenseTitle/> -->
 
 <script>
 
@@ -158,28 +158,17 @@ export default {
 * **Cent OS 7.6**
 
 <grid :rwd="{compact: 'stack'}">
-  <grid-item size="1/2" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
 
 <div>
+
+[领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+
+[腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
 [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
 [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg)
-
-</div>
-
-  </grid-item>
-  <grid-item size="1/2" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 2rem 1rem 1rem 1rem;">
-    <a href="https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console">
-      <img src="/images/pr/tencent-345x200-.jpg" alt="Kubernetes安装_服务器选择" style="width: 270px;">
-    </a>
-  </grid-item>
-</grid>
-
-<grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-
-<div>
 
 **安装后的软件版本为**
 
