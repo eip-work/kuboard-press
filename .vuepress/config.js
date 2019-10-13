@@ -345,6 +345,7 @@ module.exports = {
                 'k8s-intermediate/service/service-details',
                 'k8s-intermediate/service/service-types',
                 'k8s-intermediate/service/dns',
+                'k8s-intermediate/service/host-alias',
                 'k8s-intermediate/service/connecting',
                 'k8s-intermediate/service/ingress',
                 'k8s-intermediate/service/cni',
@@ -418,7 +419,6 @@ module.exports = {
         {
           title: 'Kubernetes 高级',
           collapsable: true,
-          path: '/learning/k8s-advanced/index',
           children: [
             {
               title: '问题诊断',

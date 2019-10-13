@@ -1,13 +1,13 @@
 ---
 vssueId: 41
 layout: LearningLayout
-description: 本文描述了如何通过 Deployment 执行灰度发布（金丝雀发布）
+description: 本文描述了如何通过 Deployment 执行灰度发布（金丝雀发布）如果您想使用 Deployment 将最新的应用程序版本发布给一部分用户（或服务器），您可以为每个版本创建一个 Deployment，此时，应用程序的新旧两个版本都可以同时获得生产上的流量。
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,金丝雀发布,灰度发布
 ---
 
-# 金丝雀发布
+# 金丝雀发布（灰度发布）
 
 <AdSenseTitle/>
 

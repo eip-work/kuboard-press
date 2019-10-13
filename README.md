@@ -80,6 +80,7 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * <a href="https://kuboard.cn/learning/k8s-intermediate/service/service-details.html">Service 详细描述</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/service/service-types.html">Service 类型</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/service/dns.html">Service/Pod 的 DNS</a> 
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/service/host-alias.html">配置Pod的 /etc/hosts</a> 
     * <a href="https://kuboard.cn/learning/k8s-intermediate/service/connecting.html">Service 连接应用程序</a> 
     * <a href="https://kuboard.cn/learning/k8s-intermediate/service/ingress.html">Ingress 通过互联网访问您的应用</a>
   * 存储
@@ -97,11 +98,18 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 
 ### Kubernetes高级
 
-  * <a href="https://kuboard.cn/learning/k8s-advanced/ts/application.html">问题诊断</a>
-  * <a href="https://kuboard.cn/learning/k8s-advanced/logs/">日志</a>
-  * Kubernetes 日志可视化
-  * Kubernetes 监控
-  * Kubernetes 联邦
+  * 问题诊断
+    * <a href="https://kuboard.cn/learning/k8s-advanced/ts/application.html">诊断应用程序</a>
+    * <a href="https://kuboard.cn/learning/k8s-advanced/ts/cluster.html">诊断集群问题</a>
+  * 日志
+    * <a href="https://kuboard.cn/learning/k8s-advanced/logs/">日志</a>
+  * 调度
+    * <a href="https://kuboard.cn/learning/k8s-advanced/schedule/">调度</a>
+    * <a href="https://kuboard.cn/learning/k8s-advanced/schedule/tuning.html">调度调优</a>
+    * <a href="https://kuboard.cn/learning/k8s-advanced/schedule/framework.html">调度框架</a>
+  * 安全
+  * 监控
+  * 联邦
 
 ### Kubernetes实战
 

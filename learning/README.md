@@ -72,6 +72,7 @@ meta:
     * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)
     * [Service 类型](/learning/k8s-intermediate/service/service-types.html)
     * [Service/Pod 的 DNS](/learning/k8s-intermediate/service/dns.html)
+    * [配置Pod的 /etc/hosts](/learning/k8s-intermediate/service/host-alias.html)
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html)
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
     * [如何选择网络插件](/learning/k8s-intermediate/service/cni.html)
@@ -91,9 +92,15 @@ meta:
 
 ## **Kubernetes 高级**
 
-  * [问题诊断](/learning/k8s-advanced/ts/application.html)
-  * [日志](/learning/k8s-advanced/logs/)
-  * [调度](/learning/k8s-advanced/schedule)
+  * 问题诊断
+    * [诊断应用程序](/learning/k8s-advanced/ts/application.html)
+    * [诊断集群问题](/learning/k8s-advanced/ts/cluster.html)
+  * 日志
+    * [日志](/learning/k8s-advanced/logs/)
+  * 调度
+    * [调度](/learning/k8s-advanced/schedule/)
+    * [调度调优](/learning/k8s-advanced/schedule/tuning.html)
+    * [调度框架](/learning/k8s-advanced/schedule/framework.html)
   * 安全
   * 监控
   * 联邦
