@@ -33,7 +33,7 @@ export default {
   position: fixed;
   bottom: 80px;
   right: 10px;
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 </style>

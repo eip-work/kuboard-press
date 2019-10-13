@@ -1,7 +1,19 @@
 Kuboard v1.0.x 的更新说明
 
 
+## v1.0.4-beta.3
 
+**发布日期**
+
+2019年10月13日
+
+**新特性**
+
+**优化**
+
+* 工作负载的名称前缀为可选添加
+* 存储类列表为空时，提示当前没有存储类
+* 集群中事件过多时，名称空间页面渲染时间过长
 
 **BUG 修复**
 
@@ -12,7 +24,6 @@ Kuboard v1.0.x 的更新说明
 * HostAliases
 
 * 容器组列表，筛选结果为空时，提示筛选 “其他”
-* 存储类列表为空时，提示当前无内容，请创建
 
 * https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
 

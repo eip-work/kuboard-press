@@ -8,9 +8,7 @@
 
     <Content class="theme-default-content" style="padding-top: 0; margin-top: 0; padding-bottom: 1rem;"/>
 
-    <div class="page-nav" style="max-width: 1000px; padding-top:0;">
-      <AdSensePageBottomInline/>
-    </div>
+    
     <!-- <el-divider>加入 Kuboard 社群</el-divider> -->
 
     <div style="margin: auto; width: 182px;">
@@ -22,12 +20,15 @@
       </p>
     </div>
 
-    <div style="text-align: center; margin-bottom: 10px;" v-if="$page.path.indexOf('/learning/') === 0">
+    <div class="page-nav" style="max-width: 1000px; padding-top:0;">
+      <AdSensePageBottomInline/>
+    </div>
+    <!-- <div style="text-align: center; margin-bottom: 10px;" v-if="$page.path.indexOf('/learning/') === 0">
       <a href="https://github.com/eip-work/kuboard-press" target="_blank">如果您觉得 Kubernetes教程 有帮到您，点击此处，给个 Github Star，谢谢！</a>
     </div>
     <div style="text-align: center; margin-bottom: 10px;" v-else>
       <a href="https://github.com/eip-work/kuboard-press" target="_blank">如果您觉得这篇文档有帮到您，点击此处，给个 Github Star，谢谢！</a>
-    </div>
+    </div> -->
     <!-- <Valine></Valine> -->
     <footer class="page-edit" style="max-width: 1000px;">
       <div
