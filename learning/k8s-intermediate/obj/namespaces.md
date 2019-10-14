@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_Kubernetes通过名称空间（namespace）在同一个物理集群上支持多个虚拟集群。
 meta:
   - name: keywords
-    content: Kubernetes Ingress,Ingress
+    content: Kubernetes 名称空间,Kubernetes namespace,Kubernetes共享集群
 ---
 
 # 名称空间

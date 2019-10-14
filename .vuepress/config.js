@@ -287,6 +287,7 @@ module.exports = {
                 'k8s-intermediate/obj/manage',
                 'k8s-intermediate/obj/names',
                 'k8s-intermediate/obj/namespaces',
+                'k8s-intermediate/obj/namespace-op',
               ]
             },
             {
