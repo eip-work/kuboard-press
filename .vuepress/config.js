@@ -280,6 +280,16 @@ module.exports = {
               ]
             },
             {
+              title: '操作Kubernetes',
+              collapsable: true,
+              children: [
+                'k8s-intermediate/obj/k8s-object',
+                'k8s-intermediate/obj/manage',
+                'k8s-intermediate/obj/names',
+                'k8s-intermediate/obj/namespaces',
+              ]
+            },
+            {
               title: '容器',
               collapsable: true,
               children: [

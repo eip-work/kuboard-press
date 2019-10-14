@@ -1,7 +1,7 @@
 <template>
   <main class="page">
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
-      <!-- <AdSensePageTop></AdSensePageTop> -->
+      <AdSensePageTop></AdSensePageTop>
     </div>
     <!-- <AdsenseParagraph></AdsenseParagraph> -->
     <slot name="top"/>

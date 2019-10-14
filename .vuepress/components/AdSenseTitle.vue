@@ -4,7 +4,7 @@
       <Qq></Qq> 群号: 808894550 <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描本文末尾的二维码加群
     </p>
     <slot></slot>
-    <div class="adsense-page-top">
+    <!-- <div class="adsense-page-top">
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <ins class="adsbygoogle"
           style="display:block;"
@@ -15,15 +15,7 @@
       <script>
           (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-      <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:320px;height:50px"
-          data-ad-client="ca-pub-3313149841665250"
-          data-ad-slot="7680268021"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script> -->
-    </div>
+    </div> -->
   </div>
 </template>
 
