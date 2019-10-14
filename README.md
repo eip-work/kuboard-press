@@ -62,6 +62,11 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/nodes.html">节点</a>
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/com.html">集群内通信</a>
     * <a href="https://kuboard.cn/learning/k8s-bg/architecture/controller.html">控制器</a>
+  * 操作Kubernetes
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/k8s-object.html">什么是Kubernetes对象</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/manage.html">管理Kubernetes对象</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/names.html">名称</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/namespaces.html">名称空间</a>
   * 容器
     * <a href="https://kuboard.cn/learning/k8s-intermediate/container/images.html">容器镜像</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/container/env.html">容器的环境变量</a>

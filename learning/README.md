@@ -54,6 +54,11 @@ meta:
     * [节点](/learning/k8s-bg/architecture/nodes.html)
     * [集群内通信](/learning/k8s-bg/architecture/com.html)
     * [控制器](/learning/k8s-bg/architecture/controller.html)
+  * 操作Kubernetes
+    * [什么是Kubernetes对象](/learning/k8s-intermediate/obj/k8s-object.html)
+    * [管理Kubernetes对象](/learning/k8s-intermediate/obj/manage.html)
+    * [名称](/learning/k8s-intermediate/obj/names.html)
+    * [名称空间](/learning/k8s-intermediate/obj/namespaces.html)
   * 容器
     * [容器镜像](/learning/k8s-intermediate/container/images.html)
     * [容器的环境变量](/learning/k8s-intermediate/container/env.html)
