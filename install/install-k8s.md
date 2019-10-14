@@ -68,18 +68,8 @@ export default {
       }
     },
     envOk () {
-      if (envOk) {
-        let e = {
-          hitType: 'event',
-          eventCategory: 'install-k8s',
-          eventAction: 'envOK',
-          eventLabel: '安装k8s-已确认环境符合条件'
-        }
-        if (window.ga) {
-          window.ga('send', e);
-        } else {
-          console.log('开发环境，不发送 ga event', e)
-        }
+      if (this.envOk) {
+        this.$sendGaEvent('install-k8s', 'envOk', '安装k8s-已确认环境符合条件')
       }
     }
   },
