@@ -3,6 +3,7 @@ let dateFns = require('date-fns')
 module.exports = {
   title: 'Kuboard官网',
   description: '一款Kubernetes_Dashboard_简化Kubernetes的学习和使用_帮助您快速落地Kubernetes_提供_Kubernetes_免费中文教程_国内安装文档',
+  showMoreAds: false,
   head: [
     // ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,K8S教程,K8S安装,Kubernetes管理界面'}],
     ['link', { rel: 'icon', href: '/favicon.png' }],
@@ -288,6 +289,7 @@ module.exports = {
                 'k8s-intermediate/obj/names',
                 'k8s-intermediate/obj/namespaces',
                 'k8s-intermediate/obj/namespace-op',
+                'k8s-intermediate/obj/labels',
               ]
             },
             {

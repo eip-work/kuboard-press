@@ -40,7 +40,10 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-b
 
 ## 访问
 
-Kubernetes Dashboard 默认部署时，只配置了最低权限的 RBAC。当前，只支持使用 Bearer Token登录。
+Kubernetes Dashboard 当前，只支持使用 Bearer Token登录。
+由于 Kubernetes Dashboard 默认部署时，只配置了最低权限的 RBAC。因此，我们要创建一个名为 `admin-user` 的 ServiceAccount，再创建一个 ClusterRolebinding，将其绑定到 Kubernetes 集群中默认初始化的 `cluster-admin` 这个 ClusterRole。
+
+> 更多关于权限管理的信息，请参考 [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
 * 创建 Service Account
 

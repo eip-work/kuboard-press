@@ -38,6 +38,9 @@
           :item="actionLink2"
         />
       </span>
+      <p>
+        <StarCount></StarCount>
+      </p>
     </header>
 
     <div

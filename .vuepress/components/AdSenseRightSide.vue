@@ -29,11 +29,11 @@ export default {
 .adsense-right {
   width: calc(50vw - 700px);
   max-width: 450px;
-  height: 50vh;
+  max-height: 30vh;
   position: fixed;
   bottom: 80px;
   right: 10px;
-  /* background-color: grey; */
+  background-color: grey;
 }
 
 </style>

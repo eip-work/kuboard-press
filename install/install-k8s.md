@@ -122,7 +122,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.1
-  * 当前已更新了 <font color="red"> 59 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 60 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
 
@@ -272,15 +272,15 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ::: danger 必须选中下面的四个勾选框才能继续
 * 选中后显示 **安装 docker/kubelet 的文档**
 
-<div style="display: inline-block; width: 480px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
+<div style="display: inline-block; width: 480px; max-width: calc(100vw - 100px); overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
 <el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
 <el-form-item prop="checked" class="env-form-item">
 <el-checkbox-group v-model="form.checked">
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="networkcard">我的任意节点只有一块网卡（可以在完成K8S安装后再添加网卡）</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="networkcard">我的任意节点只有一块网卡（可以在完成K8S安装后再添加网卡）</el-checkbox> </li>
 </el-checkbox-group>
 </el-form-item>
 </el-form>
@@ -558,7 +558,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.1/nginx-ingress.yaml
   </a>
 
 ::: tip
-* Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/overview/#kubernetes-%E5%88%9D%E5%AD%A6%E8%80%85)
+* Kubernetes 初学者，[点击这里获取 Kubernetes 学习路径](/learning/)
 :::
 
 

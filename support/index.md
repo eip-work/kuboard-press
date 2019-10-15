@@ -28,7 +28,7 @@ description: Kubernetes教程_本文描述了如何获得Kuboard授权
       <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;">
         <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经在许多个实际项目中经受住了考验</li>
         <li>Kuboard 一经发布，就获得了广泛的关注</li>
-        <li>Kuboard 公开发布不到两个月时间，就已经获得了 461 Github Star（如图所示）</li>
+        <li>Kuboard 公开发布不到两个月时间，就已经获得了 461 Github Star（如图所示），当前 <StarCount></StarCount></li>
         <li>Kuboard 社群中，已有许多的用户将 Kuboard 用于自己的生产环境</li>
       </el-card>
   </grid-item>

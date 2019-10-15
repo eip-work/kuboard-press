@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-page-top" v-if="!$frontmatter.lessAds">
+  <div class="adsense-page-top" v-if="!$frontmatter.lessAds && $site.showMoreAds">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- AdSensePageTop-Display -->
     <ins class="adsbygoogle"
