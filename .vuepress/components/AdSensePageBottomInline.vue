@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-page-bottom-inline">
+  <div class="adsense-page-bottom-inline" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- PageBottomInline -->
     <ins class="adsbygoogle"

@@ -26,6 +26,7 @@ export default ({
   Vue.use(Element)  
   Vue.use(VueFractionGrid, {
     approach: 'desktop-first',
+    gutter: '1rem',
     breakpoints: {
       compact: '719px',
       tablet: '719px 959px'
@@ -43,6 +44,11 @@ export default ({
       // console.log('openOutboundLink Event', e)
     } else {
       console.log('开发环境，不发送 ga event', e)
+    }
+  }
+  if (typeof window !== 'undefined') {
+    if (window.location.hostname === 'localhost') {
+      Vue.prototype.$isDev = true
     }
   }
 }

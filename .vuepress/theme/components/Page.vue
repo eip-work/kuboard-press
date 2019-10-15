@@ -8,19 +8,50 @@
 
     <Content class="theme-default-content" style="padding-top: 0; margin-top: 0; padding-bottom: 1rem;"/>
 
-    
-    <!-- <el-divider>加入 Kuboard 社群</el-divider> -->
+    <div>
+    </div>
 
-    <div style="margin: auto; width: 182px;">
+    <!-- <div style="margin: auto; width: 182px;">
       <p>
         <Qq/> 在线答疑
       </p>
       <p>
         <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
       </p>
-    </div>
+    </div> -->
+<div class="page-nav" style="max-width: 1000px; padding: 1rem;">
+      <el-divider>在线答疑</el-divider>
+  <grid :rwd="{compact: 'stack'}">
+    <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
+      <el-card style="height: 100%; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
+        <h3>QQ群（免费）</h3>
+        <div>
+          <Qq/> 808894550
+        </div>
+        <p style="margin-bottom: 0;">
+          <img style="margin: auto; padding: 7px;" src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+        </p>
+      </el-card>
+    </grid-item>
+    <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
+        <el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
+          <h3>微信群</h3>
+          <div>
+            <div style="margin-top: 10px;">
+              <span>扫第一个二维码完成打赏，扫第二个加微信进群聊（请发送打赏截图）</span>
+              <p style="margin-top: 10px; margin-bottom: 0;">
+                <img src="/images/dz.png" style="width: 200px; margin-right: 120px;"></img>
+                <img src="/images/dz2.jpeg" style="float: right; width: 200px;"></img>
+              </p>
+            </div>
+          </div>
+        </el-card>
+    </grid-item>
+  </grid>
+</div>
 
-    <div class="page-nav" style="max-width: 1000px; padding-top:0;">
+
+    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;">
       <AdSensePageBottomInline/>
     </div>
     <!-- <div style="text-align: center; margin-bottom: 10px;" v-if="$page.path.indexOf('/learning/') === 0">

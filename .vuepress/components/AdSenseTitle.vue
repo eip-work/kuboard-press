@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="$isDev ? 'background-color: grey;' : ''">
     <p>
       <Qq></Qq> 群号: 808894550 <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描本文末尾的二维码加群
     </p>
