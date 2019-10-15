@@ -52,13 +52,13 @@ metadata:
   * 可以包含字母、数字、减号`-`、下划线`_`、小数点`.`
 * 标签前缀：
   * 标签前缀部分是可选的
-  * 如果指定，必须是一个DNS的子域名，例如：project.company.com
+  * 如果指定，必须是一个DNS的子域名，例如：k8s.eip.work
   * 不能多于 253 个字符
   * 使用 `/` 和标签名分隔
 
 如果省略标签前缀，则标签的 key 将被认为是专属于用户的。Kubernetes的系统组件（例如，kube-scheduler、kube-controller-manager、kube-apiserver、kubectl 或其他第三方组件）向用户的Kubernetes对象添加标签时，必须指定一个前缀。
 
-`kubernetes.io/` 和 `k8s.io/` 这两个前缀是 Kubernetes 核心组件预留的。
+`kubernetes.io/` 和 `k8s.io/` 这两个前缀是 Kubernetes 核心组件预留的。Kuboard 使用 `k8s.eip.work` 这个前缀。
 
 标签的 value 必须：
 * 不能多于 63 个字符

@@ -290,6 +290,8 @@ module.exports = {
                 'k8s-intermediate/obj/namespaces',
                 'k8s-intermediate/obj/namespace-op',
                 'k8s-intermediate/obj/labels',
+                'k8s-intermediate/obj/annotations',
+                'k8s-intermediate/obj/field',
               ]
             },
             {
