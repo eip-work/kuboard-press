@@ -33,10 +33,12 @@ meta:
 
 <script>
 
+const ENV_COUNT = 5
+
 export default {
   data () {
     let validateEnv = (rule, value, callback) => {
-      if (value.length < 4) {
+      if (value.length < ENV_COUNT) {
         callback(new Error('请确认您的环境符合上述条件'));
       } else {
         callback();
@@ -53,7 +55,7 @@ export default {
   },
   computed: {
     envOk () {
-      if (this.form.checked.length === 4) {
+      if (this.form.checked.length === ENV_COUNT) {
         return true
       }
       return false
@@ -63,7 +65,7 @@ export default {
   },
   watch: {
     'form.checked' () {
-      if (this.form.checked.length === 4) {
+      if (this.form.checked.length === ENV_COUNT) {
         
       }
     },
@@ -89,7 +91,7 @@ export default {
       }
     },
     canSlideNext (currentName) {
-      if (currentName === 'step1' && this.form.checked.length < 3) {
+      if (currentName === 'step1' && this.form.checked.length < ENV_COUNT) {
         this.$refs.envForm.validate(valid => {
           
         })
@@ -278,6 +280,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
   <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线</el-checkbox> </li>
   <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
   <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
+  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="networkcard">我的任意节点只有一块网卡（可以在完成K8S安装后再添加网卡）</el-checkbox> </li>
 </el-checkbox-group>
 </el-form-item>
 </el-form>
