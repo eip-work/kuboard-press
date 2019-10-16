@@ -44,21 +44,44 @@ PersistentVolumeClaim（PVC 存储卷声明）代表用户使用存储的请求�
 * PersistentVolumeClaim 是使用该资源的请求，通常由应用程序提出请求，并指定对应的 StorageClass 和需求的空间大小
 * PersistentVolumeClaim 可以做为数据卷的一种，被挂载到容器组/容器中使用
 
-<img src="./pv.assets/image-20190906074512760.png" style="max-width: 450px;" alt="Kubernetes教程：存储卷PersistentVolume"/>
+<p>
+<img src="./pv.assets/image-20190906074512760.png" style="max-width: 400px; padding: 10px;" alt="Kubernetes教程：存储卷PersistentVolume"/>
+</p>
+
+## 存储卷声明的管理过程
 
 PersistantVolume 和 PersistantVolumeClaim 的管理过程描述如下：
+
+> 下图主要描述的是 PV 和 PVC 的管理过程，因为绘制空间的问题，将挂载点与Pod关联了，实际结构应该如上图所示：
+> * Pod 中添加数据卷，数据卷关联PVC
+> * Pod 中包含容器，容器挂载数据卷
+
+<p>
+<img src="./pv.assets/image-20191016133601950.png" style="max-width: 720px; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明的管理过程"/>
+</p>
+
 
 ### 提供 Provisioning
 
 有两种方式为 PersistentVolumeClaim 提供 PersistentVolume : 静态、动态
 
-* **静态提供 Static** <Badge text="Kuboard 暂禁用该特性" type="warn"/>
+* **静态提供 Static** <Badge text="Kuboard 界面暂禁用该特性" type="warn"/>
   
   集群管理员实现创建好一系列 PersistentVolume，它们包含了可供集群中应用程序使用的关于实际存储的具体信息。
+  > Kuboard界面上暂时禁用了手工创建 PV 的功能，但是您仍然可以使用 YAML 文件创建，并在PVC中使用。
 
+  <p>
+  <img src="./pv.assets/image-20191016151323906.png" style="max-width: 720px; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明_静态提供存储卷"/>
+  </p>
+
+  
 * **动态提供 Dynamic** <Badge text="Kuboard 已支持" type="success"/>
 
   在配置有合适的 StorageClass（存储类）且 PersistentVolumeClaim 关联了该 StorageClass 的情况下，kubernetes 集群可以为应用程序动态创建 PersistentVolume。
+  
+  <p>
+  <img src="./pv.assets/image-20191016151308410.png" style="max-width: 720px; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明_动态提供存储卷"/>
+  </p>
 
 ### 绑定 Binding
 
@@ -85,7 +108,7 @@ PersistentVolumeClaim 将始终停留在 ***未绑定 unbound*** 状态，直到
   * 删除该 PersistentVolume。PV 删除后，其数据仍然存在于对应的外部存储介质中（nfs、cefpfs、glusterfs 等）
   * 手工删除对应存储介质上的数据
   * 手工删除对应的存储介质，您也可以创建一个新的 PersistentVolume 并再次使用该存储介质
-  * 
+
 
 * **删除 Delete**
   
