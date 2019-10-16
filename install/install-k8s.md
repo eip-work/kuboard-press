@@ -31,78 +31,6 @@ meta:
 
 <!-- <AdSenseTitle/> -->
 
-<script>
-
-const ENV_COUNT = 5
-
-export default {
-  data () {
-    let validateEnv = (rule, value, callback) => {
-      if (value.length < ENV_COUNT) {
-        callback(new Error('请确认您的环境符合上述条件'));
-      } else {
-        callback();
-      }
-    };
-    return {
-      form: {
-        checked: []
-      },
-      rules: {
-        checked: [{validator: validateEnv, trigger: 'change'}]
-      }
-    }
-  },
-  computed: {
-    envOk () {
-      if (this.form.checked.length === ENV_COUNT) {
-        return true
-      }
-      return false
-    }
-  },
-  mounted () {
-  },
-  watch: {
-    'form.checked' () {
-      if (this.form.checked.length === ENV_COUNT) {
-        
-      }
-    },
-    envOk () {
-      if (this.envOk) {
-        this.$sendGaEvent('install-k8s', 'envOk', '安装k8s-已确认环境符合条件')
-      }
-    }
-  },
-  methods: {
-    downloadDiagram () {
-      console.log('尝试发送 ga event')
-      if (window.ga) {
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: '安装K8S',
-          eventAction: 'Download',
-          eventLabel: '下载拓扑图源文件'
-        });
-        console.log('发送成功 ga event')
-      } else {
-        console.log('开发环境，不发送 ga event')
-      }
-    },
-    canSlideNext (currentName) {
-      if (currentName === 'step1' && this.form.checked.length < ENV_COUNT) {
-        this.$refs.envForm.validate(valid => {
-          
-        })
-        return { flag: false, message: '请翻到本页最下方，并确认您的环境符合要求的条件' }
-      }
-      return { flag: true, message: 'can slide next' }
-    }
-  }
-}
-</script>
-
 <!-- <StoryBook>
 <div slot="introduction"> -->
 
@@ -122,7 +50,7 @@ export default {
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.1
-  * 当前已更新了 <font color="red"> 60 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 61 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
 
@@ -165,7 +93,7 @@ export default {
 **安装后的软件版本为**
 
 * Kubernetes v1.16.1
-  * calico 3.8.2
+  * calico 3.9
   * nginx-ingress 1.5.5
 * Docker 18.09.7
 
@@ -184,7 +112,7 @@ export default {
   </grid-item>
 </grid>
 
-安装后的拓扑图如下：<span v-on:click="downloadDiagram"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
+安装后的拓扑图如下：<span v-on:click="$sendGaEvent('下载拓扑图-kubernetes', '下载拓扑图-kubernetes', 'Download-install-kubernetes.html')"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
 <p style="max-width: 720px;">
 <img src="/images/topology/k8s.png" style="max-width: 100%;" alt="Kubernetes安装：Kubernetes安装拓扑图">
@@ -261,43 +189,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ## 安装 docker / kubelet
 
-<!-- <transition-group name="el-zoom-in-top"> -->
-<div v-show="!envOk" key="not">
-
-<grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-
-<div>
-
-::: danger 必须选中下面的四个勾选框才能继续
-* 选中后显示 **安装 docker/kubelet 的文档**
-
-<div style="display: inline-block; width: 480px; max-width: calc(100vw - 100px); overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
-<el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
-<el-form-item prop="checked" class="env-form-item">
-<el-checkbox-group v-model="form.checked">
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="networkcard">我的任意节点只有一块网卡（可以在完成K8S安装后再添加网卡）</el-checkbox> </li>
-</el-checkbox-group>
-</el-form-item>
-</el-form>
-</div>
-:::
-
-</div>
-
-  </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
-    <AdSenseSquare/>
-  </grid-item>
-</grid>
-
-</div>
-<el-collapse-transition>
-<div v-show="envOk" key="ok">
+<InstallEnvCheck type="k8s">
 
 使用 root 身份在所有节点执行如下代码，以安装软件：
 - docker
@@ -329,8 +221,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
 </el-tab-pane>
 </el-tabs>
 
-</div>
-</el-collapse-transition>
+</InstallEnvCheck>
 <!-- </div>
 
 <div slot="step3"> -->

@@ -1,11 +1,11 @@
 ---
 vssueId: 16
-description: Kubernete安装文档_使用kubeadm安装高可用的Kubernetes_v1.16.1集群_可用于生产环境
+description: Kubernete安装文档_使用kubeadm安装高可用的Kubernetes_v1.15.3集群_可用于生产环境
 meta:
   - name: keywords
     content: Kubernetes集群,Kubernetes高可用,Kubernetes生产环境
 # storyBook:
-#   title: '使用 kubeadm 安装 kubernetes v1.16.1（高可用）'
+#   title: '使用 kubeadm 安装 kubernetes v1.15.3（高可用）'
 #   initial: FullPage
 #   pages:
 #     - name: overview
@@ -26,7 +26,7 @@ meta:
 
 # 安装Kubernetes高可用
 
-<!-- <AdSenseTitle/> -->
+<AdSenseTitle/>
 
 <!-- <StoryBook>
 
@@ -40,22 +40,14 @@ meta:
 
 kubernetes 安装有多种选择，本文档描述的集群安装具备如下特点：
 
-* Kubernetes 1.16.1
-  * calico 3.9
+* Kubernetes 1.15.3
+  * calico 3.8.2
   * nginx-ingress 1.5.3
 * Docker 18.09.7
 * 三个 master 组成主节点集群，通过内网 loader balancer 实现负载均衡；至少需要三个 master 节点才可组成高可用集群，否则会出现 ***脑裂*** 现象
 * 多个 worker 组成工作节点集群，通过外网 loader balancer 实现负载均衡
 
-  [领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
-
-  [腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
-
-  [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
-
-  [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg)
-
-安装后的拓扑图如下：<span v-on:click="$sendGaEvent('下载拓扑图-kubernetes', '下载拓扑图-kubernetes', 'Download-install-kubernetes.html')"> <a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp" >下载拓扑图源文件</a> </span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
+安装后的拓扑图如下：<a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
 ![Kubernetes安装：拓扑结构](/images/topology/kubernetes.png)
 
@@ -65,6 +57,17 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
   <p>
     <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
   </p>
+  
+  <!-- <div>
+    <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
+    <div style="margin-top: 10px;">
+       <span>扫第一个二维码完成打赏，扫第二个进微信群聊。</span> <span style="color: #CCC">QQ 群聊二维码在左侧导航栏下方。</span>
+      <p style="margin-top: 10px;">
+        <img src="/images/dz.png" style="width: 150px; margin-right: 150px;"></img>
+        <img src="/images/dz2.jpeg" style="width: 150px;"></img>
+      </p>
+    </div>
+  </div> -->
 
 <!-- </div>
 
@@ -98,8 +101,6 @@ hostname
 hostnamectl set-hostname your-new-host-name
 # 查看修改结果
 hostnamectl status
-# 设置 hostname 解析
-echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ```
 :::
 
@@ -108,8 +109,6 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 <div slot="step2"> -->
 
 ## 安装 docker / kubelet
-
-<InstallEnvCheck type="kubernetes">
 
 使用 root 身份在所有节点执行如下代码，以安装软件：
 - docker
@@ -122,7 +121,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 
-curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.3/install_kubelet.sh | sh
 
 ```
 
@@ -131,7 +130,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
 
 手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/v1.16.1/install_kubelet.sh
+<<< @/.vuepress/public/install-script/v1.15.3/install_kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -139,8 +138,6 @@ curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
 
 </el-tab-pane>
 </el-tabs>
-
-</InstallEnvCheck>
 
 <!-- </div>
 
@@ -160,9 +157,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
 
 假设完成创建以后，Load Balancer的 ip 地址为 x.x.x.x
 
-> 根据每个人实际的情况不同，实现 LoadBalancer 的方式不一样，本文不详细阐述如何搭建 LoadBalancer，请读者自行解决
-
 ### 初始化第一个master节点
+
 
 ::: tip
 * 以 root 身份在 demo-master-a-1 机器上执行
@@ -181,20 +177,20 @@ curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
 在第一个 master 节点 demo-master-a-1 上执行
 
 ``` sh
-# 只在第一个 master 节点执行
+# 只在 master 节点执行
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.16.1/init_master.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.3/init_master.sh | sh
 ```
 
 </el-tab-pane>
 <el-tab-pane label="手工初始化">
 
 ``` sh
-# 只在第一个 master 节点执行
+# 只在 master 节点执行
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
@@ -202,7 +198,7 @@ export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.16.1/init_master.sh
+<<< @/.vuepress/public/install-script/v1.15.3/init_master.sh
 
 </el-tab-pane>
 </el-tabs>
@@ -255,18 +251,10 @@ watch kubectl get pod -n kube-system -o wide
 kubectl get nodes
 ```
 
-::: danger
-请等到所有容器组（大约9个）全部处于 Running 状态，才进行下一步
-:::
-
 ### 初始化第二、三个master节点
 
 **获得 master 节点的 join 命令**
 
-> 可以和第一个Master节点一起初始化第二、三个Master节点，也可以从单Master节点调整过来，只需要
-> * 增加Master的 LoadBalancer
-> * 将所有节点的 /etc/hosts 文件中 apiserver.demo 解析为 LoadBalancer 的地址
-> * 添加第二、三个Master节点
 
 <el-tabs type="border-card">
 <el-tab-pane label="和第一个Master节点一起初始化">
@@ -296,7 +284,7 @@ kubeadm init phase upload-certs --upload-certs
 ``` sh {6}
 [root@demo-master-a-1 ~]# kubeadm init phase upload-certs --upload-certs
 W0902 09:05:28.355623    1046 version.go:98] could not fetch a Kubernetes version from the internet: unable to get URL "https://dl.k8s.io/release/stable-1.txt": Get https://dl.k8s.io/release/stable-1.txt: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
-W0902 09:05:28.355718    1046 version.go:99] falling back to the local client version: v1.16.1
+W0902 09:05:28.355718    1046 version.go:99] falling back to the local client version: v1.15.3
 [upload-certs] Storing the certificates in Secret "kubeadm-certs" in the "kube-system" Namespace
 [upload-certs] Using certificate key:
 70eb87e62f052d2d5de759969d5b42f372d0ad798f98df38f7fe73efdf63a13c
@@ -362,7 +350,6 @@ kubectl get nodes
 
 ### 获得 join命令参数
 
-
 <el-tabs type="border-card">
 <el-tab-pane label="和第一个Master节点一起初始化">
 
@@ -398,11 +385,9 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 ```sh
 # 只在 worker 节点执行
-# 替换 x.x.x.x 为 ApiServer LoadBalancer 的 IP 地址
-export MASTER_IP=x.x.x.x
-# 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME
-export APISERVER_NAME=apiserver.demo
-echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+# 替换 ${APISERVER_IP} 为 ApiServer LoadBalancer 的 IP 地址
+# 替换 ${APISERVER_NAME} 为 前面已经使用的 dnsName
+echo "${APISERVER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 # 替换为前面 kubeadm token create --print-join-command 的输出结果
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
@@ -416,6 +401,7 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 # 只在第一个 master 节点 demo-master-a-1 上执行
 kubectl get nodes
 ```
+
 
 
 ## 移除 worker 节点
@@ -461,13 +447,13 @@ kubectl delete node demo-worker-x-x
 
 ``` sh
 # 只在第一个 master 节点 demo-master-a-1 上执行
-kubectl apply -f https://kuboard.cn/install-script/v1.16.1/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 ```
 
 </el-tab-pane>
 <el-tab-pane label="YAML文件">
 
-<<< @/.vuepress/public/install-script/v1.16.1/nginx-ingress.yaml
+<<< @/.vuepress/public/install-script/v1.15.3/nginx-ingress.yaml
 
 </el-tab-pane>
 </el-tabs>

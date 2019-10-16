@@ -26,9 +26,9 @@ mkdir /root/.kube/
 cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
 # 安装 calico 网络插件
-# 参考文档 https://docs.projectcalico.org/v3.8/getting-started/kubernetes/
+# 参考文档 https://docs.projectcalico.org/v3.9/getting-started/kubernetes/
 rm -f calico.yaml
-wget https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+wget https://docs.projectcalico.org/v3.9/manifests/calico.yaml
 sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico.yaml
 kubectl apply -f calico.yaml
 

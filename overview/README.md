@@ -96,9 +96,9 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
 
 ## Kuboard在线体验
 
-<grid :rwd="{compact: 'stack'}">
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-      <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;">
+<grid :rwd="{compact: 'stack'}" style="margin-top: 1rem;">
+    <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
+      <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
         <p>
           <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
           Kuboard 在线体验
@@ -109,8 +109,8 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
         </p>
       </el-card>
   </grid-item>
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-    <el-card style="height: 100%">
+  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
+    <el-card style="height: 100%" shadow="hover">
       <a  target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
         <p style="max-width: 100%;">
         <img src="./README.assets/1564841972085.gif" style="border: 1px solid #d7dae2; max-width: 100%;" alt="Kubernetes教程：Kuboard 在线Demo"></img>
