@@ -35,7 +35,7 @@
     </grid-item>
     <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
         <el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
-          <h3>微信群</h3>
+          <h3>微信群（即时）</h3>
           <div>
             <div style="margin-top: 10px;">
               <span>扫第一个二维码完成打赏，扫第二个加微信进群聊（请发送打赏截图）</span>

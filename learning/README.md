@@ -59,6 +59,10 @@ meta:
     * [管理Kubernetes对象](/learning/k8s-intermediate/obj/manage.html)
     * [名称](/learning/k8s-intermediate/obj/names.html)
     * [名称空间](/learning/k8s-intermediate/obj/namespaces.html)
+    * [使用名称空间共享集群](/learning/k8s-intermediate/obj/namespace-op.html)
+    * [标签和选择器](/learning/k8s-intermediate/obj/labels.html)
+    * [注解](/learning/k8s-intermediate/obj/annotations.html)
+    * [字段选择器](/learning/k8s-intermediate/obj/field.html)
   * 容器
     * [容器镜像](/learning/k8s-intermediate/container/images.html)
     * [容器的环境变量](/learning/k8s-intermediate/container/env.html)

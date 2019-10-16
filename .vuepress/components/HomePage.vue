@@ -113,7 +113,46 @@ export default {
   },
   computed: {
     data () {
-      return this.$page.frontmatter
+      let d = {
+
+        home: false,
+        layout: 'HomePage',
+        title: 'Kuboard官网_Kubernetes教程_K8S安装_管理界面',
+        description: 'Kuboard是一款免费的Kubernetes管理界面_同时该网站还提供Kubernetes安装文档_K8S_部署_入门_免费中文Kubernetes教程_以及在Kubernetes上部署SpringCloud的详细文档',
+        meta: [
+          {
+            name: 'keywords',
+            content: 'Kubernetes教程,K8S教程,Kubernetes安装,K8S安装,Kubernetes'
+          }
+        ],
+        actionText: '在线体验',
+        actionText2: '开始使用 →',
+        actionLink2: '/overview/',
+        features:[
+          {
+              title: 'Kubernetes安装文档',
+              details: '快速安装Kubernetes，每天有超过200个用户参考此文档完成Kubernetes安装，碰到问题可QQ在线答疑',
+              link: '/install/install-k8s.html'
+          },
+          {
+              title: 'Kubernetes免费教程',
+              details: '免费但绝不降低品质，活跃的QQ社群，与网友共同学习进步',
+              link: '/learning/'
+          },
+          {
+              title: 'Kubernetes管理界面',
+              details: 'Kubernetes图形化管理界面，无需编写 yaml 文件即可完成应用程序在 Kubernetes 上的部署和维护',
+              link: '/install/install-dashboard.html'
+          },
+          {
+              title: 'Kubernetes + Spring Cloud实战',
+              details: '参考文档，一步一步完成Spring Cloud微服务架构在Kubernetes上的部署和管理',
+              link: '/learning/k8s-practice/ocp'
+          },
+        ]
+      }
+
+      return d
     },
 
     actionLink () {

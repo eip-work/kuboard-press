@@ -1,34 +1,20 @@
 ---
-home: false
 layout: HomePage
 title: Kuboard官网_Kubernetes教程_K8S安装_管理界面
 description: Kuboard是一款免费的Kubernetes管理界面_同时该网站还提供Kubernetes安装文档_K8S_部署_入门_免费中文Kubernetes教程_以及在Kubernetes上部署SpringCloud的详细文档
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,Kubernetes安装,K8S安装,Kubernetes
-actionText: 在线体验
-actionText2: 开始使用 →
-actionLink2: /overview/
-features:
-- title: Kubernetes安装文档
-  details: 快速安装Kubernetes，每天有超过200个用户参考此文档完成Kubernetes安装，碰到问题可QQ在线答疑
-  link: /install/install-k8s.html
-- title: Kubernetes免费教程
-  details: 免费但绝不降低品质，活跃的QQ社群，与网友共同学习进步
-  link: /learning/
-- title: Kubernetes管理界面
-  details: Kubernetes图形化管理界面，无需编写 yaml 文件即可完成应用程序在 Kubernetes 上的部署和维护
-  link: /install/install-dashboard.html
-- title: Kubernetes + Spring Cloud实战
-  details: 参考文档，一步一步完成Spring Cloud微服务架构在Kubernetes上的部署和管理
-  link: /learning/k8s-practice/ocp
 ---
 
 # Kuboard简介
 
-Kuboard 是一款基于 Kubernetes 的微服务管理界面。
+Kuboard 是一款基于 Kubernetes 的微服务管理界面。目的是帮助用户快速在 Kubernetes 上落地微服务。在 [https://kuboard.cn](https://kuboard.cn) 上，您可以获得：
+* 最新版本的 Kubernetes 安装文档
+* 免费的 Kubernetes 中文教程
+* 免费的 Kubernetes 图形化管理界面 Kuboard
+* 在 Kubernetes 上部署 Spring Cloud 的实战分享
 
-点击此处，查看 <a href="https://kuboard.cn/install/install-dashboard.html">Kuboard 安装文档</a>
 
 
 ## Kubernetes安装文档
@@ -38,6 +24,7 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。
   * QQ群在线答疑
 * <a href="https://kuboard.cn/install/install-kubernetes.html">Kubernetes 高可用安装文档</a>
 * <a href="https://kuboard.cn/install/upgrade-k8s/1.15.x-1.16.x.html">Kubernetes升级到1.16.x</a>
+* <a href="https://kuboard.cn/install/install-dashboard.html">Kuboard 安装文档</a>
 
 ## Kubernetes免费教程
 
@@ -67,6 +54,10 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/manage.html">管理Kubernetes对象</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/names.html">名称</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/namespaces.html">名称空间</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/namespace-op.html">使用名称空间共享集群</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/labels.html">标签和选择器</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/annotations.html">注解</a>
+    * <a href="https://kuboard.cn/learning/k8s-intermediate/obj/field.html">字段选择器</a>
   * 容器
     * <a href="https://kuboard.cn/learning/k8s-intermediate/container/images.html">容器镜像</a>
     * <a href="https://kuboard.cn/learning/k8s-intermediate/container/env.html">容器的环境变量</a>
