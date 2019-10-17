@@ -54,9 +54,21 @@ Kubernetes 中，可以为容器指定计算资源的请求数量 request 和限
 
 当您创建 Pod 时（直接创建，或者通过控制器创建），Kubernetes 调度程序选择一个节点去运行该 Pod。每一个节点都有一个最大可提供的资源数量：CPU 数量和内存大小。调度程序将确保：对于每一种资源类型，已调度的 Pod 对该资源的请求之和小于该节点最大可供使用资源数量。
 
-::: tip
+::: tip Kubernetes文档原文翻译
 尽管某个节点实际使用的CPU、内存数量非常低，如果新加入一个 Pod 使得该节点上对 CPU 或内存请求的数量之和大于了该节点最大可供使用 CPU 或内存数量，则调度程序不会将该 Pod 分配到该节点。Kubernetes 这样做可以避免在日常的流量高峰时段，节点上出现资源短缺的情况。
 :::
+
+::: tip Kuboard作者备注
+
+在Kubernetes v1.16.1实际使用中（未验证其他版本），当节点的上容器CPU的请求 Limit（而非请求 Request）总和超出节点CPU总和时，在实际CPU使用率很低的情况下，就已经大量发生了驱逐Pod的现象。此时，可以考虑将资源Limits设置为0（不限制），使用 [Limit Range](/learning/k8s-advanced/policy/lr.html) 来限定Pod（或容器）的资源使用。
+
+当大量Pod处于 Evict 状态时，请执行 `kubectl describe node ${EvictPod所在节点名}` 命令，并注意输出结果中的Allocated resources区域，如下图所示：（Total limits may be over 100 percent, i.e., overcommitted.）
+
+![Kubernetes教程_资源请求实测](./computing-resource.assets/image-20191017071750791.png)
+
+:::
+
+
 
 ## 带有资源限制的容器组是如何运行的
 

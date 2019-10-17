@@ -1,11 +1,11 @@
 ---
 vssueId: 16
-description: Kubernete安装文档_使用kubeadm安装高可用的Kubernetes_v1.16.1集群_可用于生产环境
+description: Kubernete安装文档_使用kubeadm安装高可用的Kubernetes_v1.16.2集群_可用于生产环境
 meta:
   - name: keywords
     content: Kubernetes集群,Kubernetes高可用,Kubernetes生产环境
 # storyBook:
-#   title: '使用 kubeadm 安装 kubernetes v1.16.1（高可用）'
+#   title: '使用 kubeadm 安装 kubernetes v1.16.2（高可用）'
 #   initial: FullPage
 #   pages:
 #     - name: overview
@@ -40,7 +40,7 @@ meta:
 
 kubernetes 安装有多种选择，本文档描述的集群安装具备如下特点：
 
-* Kubernetes 1.16.1
+* Kubernetes 1.16.2
   * calico 3.9
   * nginx-ingress 1.5.3
 * Docker 18.09.7
@@ -122,7 +122,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 
-curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 
 ```
 
@@ -131,7 +131,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.1/install_kubelet.sh | sh
 
 手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/v1.16.1/install_kubelet.sh
+<<< @/.vuepress/public/install-script/v1.16.2/install_kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -187,7 +187,7 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.16.1/init_master.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.16.2/init_master.sh | sh
 ```
 
 </el-tab-pane>
@@ -202,7 +202,7 @@ export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.16.1/init_master.sh
+<<< @/.vuepress/public/install-script/v1.16.2/init_master.sh
 
 </el-tab-pane>
 </el-tabs>
@@ -296,7 +296,7 @@ kubeadm init phase upload-certs --upload-certs
 ``` sh {6}
 [root@demo-master-a-1 ~]# kubeadm init phase upload-certs --upload-certs
 W0902 09:05:28.355623    1046 version.go:98] could not fetch a Kubernetes version from the internet: unable to get URL "https://dl.k8s.io/release/stable-1.txt": Get https://dl.k8s.io/release/stable-1.txt: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
-W0902 09:05:28.355718    1046 version.go:99] falling back to the local client version: v1.16.1
+W0902 09:05:28.355718    1046 version.go:99] falling back to the local client version: v1.16.2
 [upload-certs] Storing the certificates in Secret "kubeadm-certs" in the "kube-system" Namespace
 [upload-certs] Using certificate key:
 70eb87e62f052d2d5de759969d5b42f372d0ad798f98df38f7fe73efdf63a13c
@@ -461,13 +461,13 @@ kubectl delete node demo-worker-x-x
 
 ``` sh
 # 只在第一个 master 节点 demo-master-a-1 上执行
-kubectl apply -f https://kuboard.cn/install-script/v1.16.1/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 ```
 
 </el-tab-pane>
 <el-tab-pane label="YAML文件">
 
-<<< @/.vuepress/public/install-script/v1.16.1/nginx-ingress.yaml
+<<< @/.vuepress/public/install-script/v1.16.2/nginx-ingress.yaml
 
 </el-tab-pane>
 </el-tabs>
@@ -509,12 +509,13 @@ kubectl apply -f https://kuboard.cn/install-script/v1.16.1/nginx-ingress.yaml
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[安装 Kuboard](/install/install-dashboard.html)
+[点击此处，给个 GitHub Star](https://github.com/eip-work/kuboard-press) 
+<span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
+支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？
 
-安装 Kuboard 之前先
-  <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-    在线体验 Kuboard
-  </a>
+[安装 Kuboard - 微服务管理界面](/install/install-dashboard.html)
+
+[获取 Kubernetes 免费教程](/learning/)
 
 <!-- </div>
 
