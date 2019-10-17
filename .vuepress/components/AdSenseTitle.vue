@@ -1,7 +1,13 @@
 <template>
-  <div :style="$isDev ? 'background-color: grey;' : ''">
-    <p>
-      <Qq></Qq> 群号: 808894550 <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描本文末尾的二维码加群
+  <div :style="$isDev ? 'background-color: #grey;' : ''">
+    <p style="background-color: #f3f5f7;padding: 10px 5px 5px 5px;">
+      <Qq></Qq> 
+      群号: 808894550 
+      <span style="color: red; font-weight: 500;">在线答疑</span>，
+      初学者可选择在线课程，语言更通俗：
+      <span @click="$sendGaEvent('极客时间', '极客时间', '极客时间：' + $page.path)">
+        <a target="_blank" href="https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D">深入剖析Kubernetes</a>
+      </span>
     </p>
     <slot></slot>
     <!-- <div class="adsense-page-top">

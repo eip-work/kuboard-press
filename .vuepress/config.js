@@ -202,6 +202,7 @@ module.exports = {
             // ['install-k8s-upgrade', '升级Kubernetes集群'],
             'upgrade-k8s/1.15.x-1.15.4',
             'upgrade-k8s/1.15.x-1.16.x',
+            'upgrade-k8s/calico-3.8-3.9',
           ]
         },
         {
@@ -371,6 +372,7 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-intermediate/persistent/volume',
+                'k8s-intermediate/persistent/volume-mount-point.html',
                 'k8s-intermediate/persistent/pv',
                 'k8s-intermediate/persistent/storage-class',
                 'k8s-intermediate/persistent/nfs',
@@ -460,6 +462,13 @@ module.exports = {
                 'k8s-advanced/schedule/',
                 'k8s-advanced/schedule/tuning',
                 'k8s-advanced/schedule/framework',
+              ]
+            },
+            {
+              title: '策略',
+              collapsable: true,
+              children: [
+                'k8s-advanced/policy/lr',
               ]
             },
           ]

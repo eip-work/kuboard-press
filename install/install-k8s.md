@@ -156,7 +156,7 @@ lscpu
 | ----------- | --------------------------------------- | ----------------------------------- |
 | 7.7         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
-| 7.5         | <span style="font-size: 24px;">😄</span> | 已验证                              |
+| 7.5         | <span style="font-size: 24px;">🤔</span> | 已证实会出现 kubelet 无法启动的问题    |
 | 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
 | 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |

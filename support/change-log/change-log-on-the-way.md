@@ -11,16 +11,15 @@ Kuboard v1.0.x 的更新说明
 
 **优化**
 
-* 工作负载的名称前缀为可选添加
-* 存储类列表为空时，提示当前没有存储类
-* 集群中事件过多时，名称空间页面渲染时间过长
+* Secret 填写 docker 地址时，是否要写 http://
 
 **BUG 修复**
 
+* 工作负载编辑器 --> Ingress --> 注解被错误写成标签了
 
 
+* Prometheus 监控
 * 工作负载编辑器 --> 容器组 --> 容忍 -- 正在开发
-* kubernetes 1.16.1
 * HostAliases
 * Limit Range
 
