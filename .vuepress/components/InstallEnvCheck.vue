@@ -7,7 +7,7 @@
 
     <div>
 
-      <p>必须选中下面的五个勾选框才能继续</p>
+      <p style="color: red">必须选中下面的六个勾选框才能继续</p>
       <p>选中后显示 安装 docker/kubelet 的文档</p>
 
       <div style="display: inline-block; width: 480px; max-width: calc(100vw - 100px); overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
@@ -15,10 +15,11 @@
       <el-form-item prop="checked" class="env-form-item">
       <el-checkbox-group v-model="form.checked">
         <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线</el-checkbox> </li>
         <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
+        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线和小数点</el-checkbox> </li>
+        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="ipaddress">我的任意节点都有固定的内网 IP 地址</el-checkbox> </li>
         <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="networkcard">我的任意节点只有一块网卡（可以在完成K8S安装后再添加网卡）</el-checkbox> </li>
+        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
       </el-checkbox-group>
       </el-form-item>
       </el-form>
@@ -35,6 +36,7 @@
     </div>
     <el-collapse-transition>
     <div v-show="envOk" key="ok">
+      <el-button style="margin-top: 10px;" @click="review" type="text">再看看我是否符合安装条件</el-button>
       <slot></slot>
       </div>
     </el-collapse-transition>
@@ -42,7 +44,7 @@
 </template>
 
 <script>
-const ENV_COUNT = 5
+const ENV_COUNT = 6
 
 export default {
   props: {
@@ -83,6 +85,7 @@ export default {
     },
     envOk () {
       if (this.envOk) {
+        this.$message.success('如果您符合刚才六个条件，请继续安装')
         this.$sendGaEvent('install-' + this.type, 'envOk-' + this.type, '已确认环境符合条件-' + this.type)
       }
     }
@@ -96,6 +99,10 @@ export default {
         return { flag: false, message: '请翻到本页最下方，并确认您的环境符合要求的条件' }
       }
       return { flag: true, message: 'can slide next' }
+    },
+    review () {
+      this.form.checked = []
+      this.$sendGaEvent('install-' + this.type, 'envReview-' + this.type, '回顾安装条件-' + this.type)
     }
   }
 }

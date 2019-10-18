@@ -1,5 +1,5 @@
 ---
-# vssueId: 107
+vssueId: 141
 description: Kubernetes升级1.16.x。本文描述了如何从 Kubernetes 网络插件 calico 3.8.x 升级到 3.9。执行命令 kubectl describe deployment calico-kube-controllers -n kube-system 确认当前 calico 版本
 meta:
   - name: keywords
@@ -60,13 +60,52 @@ Pod Template:
 ``` sh
 # 如果版本号是 v3.8.2 或者 v3.8.x，则删除命令如下
 # calico.yaml 的URL中，不带版本号的最后一位
-kubectl delete -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml --no-check-certificate
+kubectl delete -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
 ```
 
 ## 安装新版本
 
-执行以下命令，安装 calico 3.9：
+执行命令查看kubernetes 
 
-``` sh
-kubectl delete -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml --no-check-certificate
+``` yaml {21}
+apiServer:
+  extraArgs:
+    authorization-mode: Node,RBAC
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta2
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controlPlaneEndpoint: apiserver.demo:6443
+controllerManager: {}
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
+kind: ClusterConfiguration
+kubernetesVersion: v1.16.0
+networking:
+  dnsDomain: cluster.local
+  serviceSubnet: 10.96.0.0/12
+  podSubnet: 10.100.0.1/16
+scheduler: {}
 ```
+
+执行以下命令，安装 calico 3.9，请注意，下面的 POD_SUBNET 环境变量来自于上面的输出结果：
+
+``` sh {2}
+# 命令行中环境变量 POD_SUBNET 的取值 10.100.0.1/16 来自于上一个命令的输出结果
+export POD_SUBNET=10.100.0.1/16
+rm -f calico.yaml
+wget https://docs.projectcalico.org/v3.9/manifests/calico.yaml --no-check-certificate
+sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
+```
+
+此时可执行命令检查 calico 的版本：
+``` sh
+kubectl describe deployment calico-kube-controllers -n kube-system
+```
+
+:tada: :tada: :tada:

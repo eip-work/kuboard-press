@@ -20,7 +20,7 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。目的是帮助用
 ## Kubernetes安装文档
 
 * <a href="https://kuboard.cn/install/install-k8s.html">Kubernetes (K8S)v1.16.2 安装文档</a>
-  * 每天超过200名网友参考此文档完成Kubernetes安装
+  * 每天超过 300 名网友参考此文档完成Kubernetes安装
   * QQ群在线答疑
 * <a href="https://kuboard.cn/install/install-kubernetes.html">Kubernetes 高可用安装文档</a>
 * <a href="https://kuboard.cn/install/upgrade-k8s/1.15.x-1.16.x.html">Kubernetes升级到1.16.x</a>

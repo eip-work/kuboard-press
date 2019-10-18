@@ -29,6 +29,12 @@ module.exports = {
     // `],
     ['script', { 'data-ad-client': "ca-pub-3313149841665250", async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}],
     // <script data-ad-client="ca-pub-3313149841665250" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    // ['script', { 'type': 'text/javascript', async: true, src: '//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js', 'data-dojo-config': 'usePlainJson: true, isDebug: false'}],
+    // ['script', { 'type': 'text/javascript' }, `
+    // window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"2273cb19eb20bb1bc5b7745a7","lid":"f1f25d6dac","uniqueMethods":true}) })
+    // `],
+    // <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+    // <script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"2273cb19eb20bb1bc5b7745a7","lid":"f1f25d6dac","uniqueMethods":true}) })</script>
   ],
   markdown: {
     toc: { includeLevel: [2, 3] },
@@ -64,7 +70,7 @@ module.exports = {
     // },
     '@vssue/vuepress-plugin-vssue': {
       // set `platform` rather than `api`
-      platform: 'github',
+      platform: 'github-v4',
       locale: 'zh-CN',
       autoCreateIssue: false,
       admins: ['shaohq'],
@@ -201,7 +207,7 @@ module.exports = {
           children: [
             // ['install-k8s-upgrade', '升级Kubernetes集群'],
             'upgrade-k8s/1.15.x-1.15.4',
-            'upgrade-k8s/1.15.x-1.16.x',
+            ['upgrade-k8s/1.15.x-1.16.x', 'K8S从1.15.x(1.16.x)升级到 1.16.x'],
             'upgrade-k8s/calico-3.8-3.9',
           ]
         },
@@ -209,11 +215,11 @@ module.exports = {
           title: '管理 Kubernetes',
           collapsable: false,
           children: [
+            'install-dashboard',
+            'install-dashboard-upgrade',
             'install-kubectl',
             'config-kubectl',
             'install-k8s-dashboard',
-            'install-dashboard',
-            'install-dashboard-upgrade'
           ]
         },
         // {
@@ -468,7 +474,14 @@ module.exports = {
               title: '策略',
               collapsable: true,
               children: [
-                'k8s-advanced/policy/lr',
+                {
+                  title: 'Limit Range',
+                  collapsable: true,
+                  children: [
+                    'k8s-advanced/policy/lr',
+                    'k8s-advanced/policy/lr_container',
+                  ]
+                },
               ]
             },
           ]

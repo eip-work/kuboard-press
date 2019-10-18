@@ -41,6 +41,30 @@ export default {
 
 <el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
 
+<span style="font-size: 16px; font-weight: 500;">输入邮件地址，可以获得：</span>
+* Kubernetes 漏洞及补丁通知
+* Kuboard 更新通知
+<!-- Begin Mailchimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" async>
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%; text-align: left}
+	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://foxmail.us20.list-manage.com/subscribe/post?u=2273cb19eb20bb1bc5b7745a7&amp;id=f1f25d6dac" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate
+style="text-align: left;">
+    <div id="mc_embed_signup_scroll">
+	  <input style="width: 210px;" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="邮件地址" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2273cb19eb20bb1bc5b7745a7_f1f25d6dac" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="订阅" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+  </div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
 </el-card>
   </grid-item>
 </grid>

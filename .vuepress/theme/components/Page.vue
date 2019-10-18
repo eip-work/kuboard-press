@@ -51,7 +51,7 @@
 </div>
 
 
-    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;">
+    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="!$frontmatter.lessAds">
       <AdSensePageBottomInline/>
     </div>
     <!-- <div style="text-align: center; margin-bottom: 10px;" v-if="$page.path.indexOf('/learning/') === 0">

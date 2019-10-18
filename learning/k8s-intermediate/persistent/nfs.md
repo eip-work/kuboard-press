@@ -41,6 +41,9 @@ Kubernetes 对 Pod 进行调度时，以当时集群中各节点的可用资源�
   ```
 * 执行以下命令，启动 nfs 服务
   ```sh
+  # 创建共享目录，如果要使用自己的目录，请替换本文档中所有的 /root/nfs_root/
+  mkdir /root/nfs_root
+
   systemctl enable rpcbind
   systemctl enable nfs-server
 

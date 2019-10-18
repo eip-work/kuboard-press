@@ -121,7 +121,7 @@ hostnamectl status
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 
-curl -sSL https://kuboard.cn/install-script/v1.15.3/install_kubelet.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.3/install-kubelet.sh | sh
 
 ```
 
@@ -130,7 +130,7 @@ curl -sSL https://kuboard.cn/install-script/v1.15.3/install_kubelet.sh | sh
 
 手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/v1.15.3/install_kubelet.sh
+<<< @/.vuepress/public/install-script/v1.15.3/install-kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -183,7 +183,7 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.15.3/init_master.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.15.3/init-master.sh | sh
 ```
 
 </el-tab-pane>
@@ -198,7 +198,7 @@ export POD_SUBNET=10.100.0.1/16
 echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.15.3/init_master.sh
+<<< @/.vuepress/public/install-script/v1.15.3/init-master.sh
 
 </el-tab-pane>
 </el-tabs>

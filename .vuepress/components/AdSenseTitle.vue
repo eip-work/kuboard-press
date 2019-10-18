@@ -1,6 +1,6 @@
 <template>
-  <div :style="$isDev ? 'background-color: #grey;' : ''">
-    <p style="background-color: #f3f5f7;padding: 10px 5px 5px 5px;">
+  <div :style="$isDev ? 'background-color: #grey;' : ''" v-if="!$frontmatter.lessAds">
+    <p style="background-color: #f3f5f7;padding: 10px 5px 5px 10px;">
       <Qq></Qq> 
       群号: 808894550 
       <span style="color: red; font-weight: 500;">在线答疑</span>，

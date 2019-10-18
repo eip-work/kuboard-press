@@ -1,7 +1,7 @@
 Kuboard v1.0.x 的更新说明
 
 
-## v1.0.4-beta.3
+## v1.0.4-beta.4
 
 **发布日期**
 
@@ -11,7 +11,7 @@ Kuboard v1.0.x 的更新说明
 
 **优化**
 
-* Secret 填写 docker 地址时，是否要写 http://
+* 修改提示：创建 docker 仓库的 Secret --> 填写 docker 仓库地址时，请以 http:// 或 https:// 开头
 
 **BUG 修复**
 

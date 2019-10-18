@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="(item, key) in vssues" :key="key">
-      <Vssue v-if="item" v-show="key === $route.path" :issueId="item" :options="options"/>
+      <Vssue v-if="item && item > 0" v-show="key === $route.path" :issueId="item" :options="options"/>
       <div v-if="item === undefined && isLocalHost" v-show="key === $route.path" :key="key">
         <el-button type="danger" @click="vssues[key] = ''">请创建 VssueId</el-button>
       </div>
