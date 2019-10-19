@@ -6,22 +6,22 @@
       width="50%"
       :before-close="handleClose"
       :append-to-body	="true">
-      <div style="text-align: center;">
-        <span style="font-size: 18px; weight: 500;">英雄，Kuboard 恭候多时啦，请给一个 github star 吧！</span>
-        <!-- <div style="margin-top: 10px;">未打赏用户可进 QQ 群聊，<span style="color: red;">打赏用户可进微信群聊</span>。</div>
-        <div style="margin-top: 10px;">
-          <span style="font-size: 13px;">扫第一个二维码完成打赏，扫第二个进微信群聊</span>
-          <p style="margin-top: 10px;">
-            <img src="/images/dz.png" style="width: 150px; margin-right: 150px;"></img>
-            <img src="/images/dz2.jpeg" style="width: 150px;"></img>
-          </p>
-        </div>
-        <div style="margin-bottom: 10px;">不方便给打赏的话，那就 <span style="color: red;">给一个 github star</span> 吧！</div>
-        <div style="margin-bottom: 10px;">github star 后，本窗口将不再弹出</div> -->
+      <div style="text-align: center; font-size: 18px; weight: 500;">
+        我想看到
+        <span style="color: red;">更多更好的 Kubernetes 免费内容</span>，
+        所以我要
+        <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
+          给一个 Github Star
+          <OutboundLink/>
+        </a>
+        以鼓励作者。
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="reset">残忍拒绝</el-button>
-        <el-button type="primary" @click="gotoStar">够义气，现在就去！</el-button>
+        <el-button type="text" @click="reset" style="margin-right: 10px; color: grey;">残忍拒绝</el-button>
+        <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
+          够义气，现在就去！
+          <OutboundLink/>
+        </a>
       </span>
     </el-dialog>
   </div>
@@ -95,6 +95,10 @@ export default {
       } else {
         console.log('开发环境，不发送 ga event')
       }
+    },
+    linkToStar() {
+      this.dialogVisible = false
+      this.$sendGaEvent('StarGazer', 'SG:GotoGithub', 'SG:前往github' + this.$page.path)
     },
     gotoStar() {
       this.dialogVisible = false

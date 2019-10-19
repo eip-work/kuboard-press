@@ -1,7 +1,7 @@
 ---
 lessAds: true
 vssueId: 71
-layout: SupportPage
+layout: SpecialSupportPage
 description: Kubernetes教程_本文描述了如何获得Kuboard授权
 ---
 
@@ -26,11 +26,10 @@ export default {
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
 
-<el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
+<el-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
 
-* 许多网友在问，Kuboard收费么？
 * 使用 Kuboard 是 <font color="red">免费</font> 的，无论您是用于学习还是用于生产
-* 将来会推出 Kuboard Plus，当前所有的功能，将来仍然免费。Kuboard Plus 侧重点：
+* 将来会推出 Kuboard Plus，当前所有的功能，<font color="red">将来仍然免费</font>。Kuboard Plus 侧重点：
   * 更完善的权限管理（当前只区分集群管理员权限和只读权限）
   * 审计日志
 * 只要您在本文末尾的评论区留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
@@ -40,25 +39,27 @@ export default {
 </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
 
-<el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
-
+<el-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
+  <div style="background-color: rgb(0, 99, 220); padding: 10px; max-width: 200px;">
+    <img src="/favicon.png" style="max-width: 200px;">
+  </div>
 </el-card>
   </grid-item>
 </grid>
 
 <!-- <KuboardLiscense></KuboardLiscense> -->
 
-## 采纳情况
+## Github趋势
 
-<div style="padding: 1rem 0;">
+<div style="padding: 1rem 0 0 0;">
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-    <el-card style="height: 100%; margin-top: 1rem;" shadow="none">
+    <el-card style="height: calc(100% - 2rem); margin-top: 1rem;" shadow="none">
       <img src="./index.assets/stars.png" alt="Kubernetes教程_Kuboard_Github_Star">
     </el-card>
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-      <el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
+      <el-card style="height: calc(100% - 2rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
         <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经在许多个实际项目中经受住了考验</li>
         <li>Kuboard 于2019年8月初公开发布，两个月时间就已经获得了 559 Github Star（如图所示），当前 <StarCount></StarCount></li>
         <li>Kuboard 社群中，已有许多的用户将 Kuboard 用于自己的生产环境</li>
@@ -90,7 +91,7 @@ export default {
 </grid>
 </div>
 
-## 已注册用户
+## 已采纳用户
 
 * 只要您在此处留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
 

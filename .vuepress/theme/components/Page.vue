@@ -7,7 +7,12 @@
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top;">
           <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
-          <li><a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="$sendGaEvent('GithubStar', '页头求GitHubStar', 'GitHubStar: ' + $page.path)">给一个 Github Start</a> 是对作者最好的鼓励</li>
+          <li>
+            我想看到 <span style="color: red;">更多更好的 Kubernetes 免费内容</span>，
+            所以我要
+            <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="$sendGaEvent('GithubStar', '页头求GitHubStar', 'GitHubStar: ' + $page.path)">给一个 Github Star <OutboundLink/></a> 
+            以鼓励作者
+            </li>
           <!-- <li><Qq></Qq> <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描本文末尾的二维码加群</li> -->
         </div>
       </div>

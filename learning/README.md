@@ -110,6 +110,8 @@ meta:
     * [调度](/learning/k8s-advanced/schedule/)
     * [调度调优](/learning/k8s-advanced/schedule/tuning.html)
     * [调度框架](/learning/k8s-advanced/schedule/framework.html)
+  * 策略
+    * [Limit Range](/learning/k8s-advanced/policy/lr.html)
   * 安全
   * 监控
   * 联邦
