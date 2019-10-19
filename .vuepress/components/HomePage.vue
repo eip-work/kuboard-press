@@ -93,9 +93,9 @@
     <Content></Content>
 
     <div class="footer">
-      Copyright © 2019-present 邵欢庆 <span @click="$sendGaEvent('友情链接', '友情链接: 仁聚汇通', '友情链接:' + $page.path)"><a href="http://www.eigpay.com" target="_blank">仁聚汇通</a></span> | 京ICP备19008693号-2
       <FriendlyUrl></FriendlyUrl>
     </div>
+    <StarGazer/>
     <AdSenseRightSide/>
   </main>
 </template>

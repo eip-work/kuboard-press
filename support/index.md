@@ -1,6 +1,7 @@
 ---
 lessAds: true
 vssueId: 71
+layout: SupportPage
 description: Kubernetes教程_本文描述了如何获得Kuboard授权
 ---
 
@@ -20,7 +21,7 @@ export default {
 }
 </script>
 
-## Kuboard 授权声明
+## 授权声明
 
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
@@ -47,7 +48,7 @@ export default {
 
 <!-- <KuboardLiscense></KuboardLiscense> -->
 
-## Kuboard 采纳情况
+## 采纳情况
 
 <div style="padding: 1rem 0;">
 <grid :rwd="{compact: 'stack'}">
@@ -66,7 +67,7 @@ export default {
 </grid>
 </div>
 
-## Kuboard 商业支持
+## 商业支持
 
 <div style="padding: 1rem 0;">
 <grid :rwd="{compact: 'stack'}">
@@ -88,6 +89,11 @@ export default {
   </grid-item>
 </grid>
 </div>
+
+## 已注册用户
+
+* 只要您在此处留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
+
 
 <!-- ### 微服务落地咨询
 

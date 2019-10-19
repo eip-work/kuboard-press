@@ -1,6 +1,23 @@
 <template>
   <aside class="sidebar">
-    <AdSenseLeftTop />
+    <!-- <NavLinks/> -->
+    <div style="text-align: center; margin-top: 10px;">
+      <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
+        <a href="/overview/" class="nav-link">简介</a>
+      </div>
+      <div class="side-nav-item" :style="activeLinkStyle('/install/')">
+        <a href="/install/install-dashboard.html" class="nav-link router-link-exact-active router-link-active">安装</a>
+      </div>
+      <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
+        <a href="/learning/" class="nav-link router-link-exact-active router-link-active">学习</a>
+      </div>
+      <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
+        <a href="/guide/" class="nav-link">使用</a>
+      </div>
+      <div class="side-nav-item" :style="activeLinkStyle('/support/')">
+        <a href="/support/" class="nav-link">支持</a>
+      </div>
+    </div>
     <slot name="top"/>
     <SidebarLinks :depth="0" :items="items"/>
     <slot name="bottom"/>
@@ -34,20 +51,29 @@
 
 <script>
 import SidebarLinks from '@theme/components/SidebarLinks.vue'
-// import demo from './image-20190723104717575.png'
+import NavLinks from '@theme/components/NavLinks.vue'
 import demo from './1564841972085.gif'
 
 export default {
   name: 'Sidebar',
 
+  components: { SidebarLinks, NavLinks },
+
   props: ['items'],
-  components: { SidebarLinks },
   data () {
     return {
       demo_img: demo
     }
+  },
+  methods: {
+    activeLinkStyle(href) {
+      if (this.$page.path.indexOf(href) === 0) {
+        return 'border-bottom: 2px solid #0b85ff;'
+      } else {
+        return ''
+      }
+    }
   }
-
 }
 </script>
 
@@ -87,4 +113,27 @@ export default {
         top calc(1rem - 2px)
     & > .sidebar-links
       padding 1rem 0
+
+.page-top {
+  margin-top: 0 !important;
+  margin-bottom: -80px !important;
+}
+.bottom-description {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #909399;
+  margin-top: 2rem;
+}
+.side-nav-item {
+  margin-bottom: -2px;
+  margin-left: 10px;
+  display: inline-block;
+  line-height: 1.4rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.side-nav-item a {
+  color: #2c3e50;
+}
 </style>

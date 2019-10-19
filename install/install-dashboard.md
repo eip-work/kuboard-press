@@ -217,7 +217,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 <div slot="next"> -->
 
-::: warning
+<!-- ::: warning
 * 如果不能访问 Kuboard，请参考 [常见问题](faq/timeout.html)
 
 * 如果仍然不能解决，请到 QQ 群提问
@@ -225,13 +225,16 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
   <Qq></Qq> 也可以扫二维码加 QQ 群聊
 
   ![Kubernetes安装：QQ群在线答疑](/images/kuboard_qq.png)
-:::
+::: -->
 
 **下一步**
 
-- 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox.html) （10分钟）
+:tada: :tada: :tada:
+
+- 使用 Kuboard 工作负载编辑器 [创建第一个应用](/guide/example/busybox.html) （10分钟）
 
 - 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
+- 学习 [Kubernetes免费教程](/learning/)
 
 <!-- </div>
 
