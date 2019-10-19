@@ -71,7 +71,8 @@ podtemplates                                                                  tr
 更多内容请参考：
 
 * [限定容器的计算资源](./lr_container.html)
-* [限定Pod的计算资源]
-* [限定存储资源]
-* [Limit/Request 比例]
-* [例子]
+* [限定Pod的计算资源](./lr_pod.html)
+* [限定存储资源](./lr_storage.html)
+* [限定 Limit/Request 比例](./lr_ratio.html)
+
+<!-- Examples -->

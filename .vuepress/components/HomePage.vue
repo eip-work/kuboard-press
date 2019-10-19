@@ -132,7 +132,7 @@ export default {
         features:[
           {
               title: 'Kubernetes安装文档',
-              details: '快速安装Kubernetes，每天有超过200个用户参考此文档完成Kubernetes安装，碰到问题可QQ在线答疑',
+              details: '快速安装Kubernetes，每天有超过300名用户参考此文档完成Kubernetes安装，碰到问题可QQ在线答疑',
               link: '/install/install-k8s.html'
           },
           {

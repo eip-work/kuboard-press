@@ -480,6 +480,9 @@ module.exports = {
                   children: [
                     'k8s-advanced/policy/lr',
                     'k8s-advanced/policy/lr_container',
+                    'k8s-advanced/policy/lr_pod',
+                    'k8s-advanced/policy/lr_storage',
+                    'k8s-advanced/policy/lr_ratio',
                   ]
                 },
               ]
