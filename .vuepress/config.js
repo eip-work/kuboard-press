@@ -491,6 +491,7 @@ module.exports = {
                   children: [
                     'k8s-advanced/policy/rq',
                     'k8s-advanced/policy/rq_types',
+                    'k8s-advanced/policy/rq_scope',
                   ]
                 },
               ]

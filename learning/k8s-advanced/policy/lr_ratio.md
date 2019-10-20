@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文讨论了如何使用LimitRange在名称空间中限制Limits/Requests的比例_如果指定了LimitRange对象的spec.limits.maxLimitRequestRatio字段_名称空间中的Pod/容器的request和limit都不能为0_且limit除以request的结果必须小于或等于LimitRange的spec.limits.maxLimitRequestRatio
 meta:
   - name: keywords
-    content: Kubernetes
+    content: Kubernetes教程, LimitRange, Kubernetes Limit Range
 ---
 
 # 限定 Limit/Request 比例

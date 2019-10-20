@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文讨论了如何使用LimitRange_在Pod级别限定资源的使用_下面是一个用于限定Pod资源使用的LimitRange对象。
 meta:
   - name: keywords
-    content: Kubernetes
+    content: Kubernetes教程, LimitRange, Kubernetes Limit Range
 ---
 
 # 限定Pod的计算资源

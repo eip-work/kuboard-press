@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文讨论了如何使用LimitRange_名称空间中限制存储资源的使用_通过LimitRange对象_集群管理员可以限定名称空间中每个PersistentVolumeClaim存储卷声明可以使用的最小最大存储空间
 meta:
   - name: keywords
-    content: Kubernetes
+    content: Kubernetes教程, LimitRange, Kubernetes Limit Range
 ---
 
 # 限定存储资源

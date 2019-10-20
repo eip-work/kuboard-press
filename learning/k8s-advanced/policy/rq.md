@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_当多个用户或团队共享一个节点数量有限的集群时_如何在多个用户或团队之间分配集群的资源就会变得非常重要_Resource_quota的用途便在于此
 meta:
   - name: keywords
-    content: Kubernetes
+    content: Kubernetes 教程,Resource Quota,ResourceQuota
 ---
 
 # 概述

@@ -5,7 +5,7 @@ layout: LearningLayout
 description: Kubernetes教程_默认情况下_容器在 Kubernetes 集群上运行时_不受计算资源的限制_使用Resourcequota集群管理员可以针对名称空间限定资源的使用情况
 meta:
   - name: keywords
-    content: Kubernetes
+    content: Kubernetes教程, LimitRange, Kubernetes Limit Range
 ---
 
 # 概述

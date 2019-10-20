@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_当多个用户或团队共享一个节点数量有限的集群时_如何在多个用户或团队之间分配集群的资源就会变得非常重要_Resource_quota的用途便在于此_本文探索了可以通过ResourceQuota限定的资源类型。
 meta:
   - name: keywords
-    content: Kubernetes
+    content: K8S 教程,Resource Quota,ResourceQuota
 ---
 
 # 资源类型
