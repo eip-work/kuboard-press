@@ -103,6 +103,9 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
     * <a href="https://kuboard.cn/learning/k8s-advanced/schedule/">调度</a>
     * <a href="https://kuboard.cn/learning/k8s-advanced/schedule/tuning.html">调度调优</a>
     * <a href="https://kuboard.cn/learning/k8s-advanced/schedule/framework.html">调度框架</a>
+  * 策略
+    * <a href="https://kuboard.cn/learning/k8s-advanced/policy/lr.html">Limit Range</a>
+    * <a href="https://kuboard.cn/learning/k8s-advanced/policy/rq.html">Resource Quota</a>
   * 安全
   * 监控
   * 联邦

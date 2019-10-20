@@ -45,33 +45,15 @@ Kubernetes Dashboard 当前，只支持使用 Bearer Token登录。
 
 > 更多关于权限管理的信息，请参考 [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
-* 创建 Service Account
-
-  ``` yaml
-  apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: admin-user
-    namespace: kubernetes-dashboard
-  ```
-
-* 创建 ClusterRoleBinding
+* 创建 Service Account 和 ClusterRoleBinding
 
   使用 `kubeadm` 安装集群时，默认创建了 ClusterRole `cluster-admin`。此时我们可以直接为刚才的 ServiceAccount 创建 ClusterRoleBinding。
 
-  ``` yaml
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: admin-user
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: cluster-admin
-  subjects:
-  - kind: ServiceAccount
-    name: admin-user
-    namespace: kubernetes-dashboard
+  <<< @/.vuepress/public/install-script/k8s-dashboard/auth.yaml
+
+  执行如下命令可创建 ServiceAccount 和 ClusterRoleBinding
+  ``` sh
+  kubectl apply -f https://kuboard.cn/install-script/k8s-dashboard/auth.yaml
   ```
 
 * 获取Bearer Token

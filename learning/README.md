@@ -112,6 +112,7 @@ meta:
     * [调度框架](/learning/k8s-advanced/schedule/framework.html)
   * 策略
     * [Limit Range](/learning/k8s-advanced/policy/lr.html)
+    * [Resource Quota](/learning/k8s-advanced/policy/rq.html)
   * 安全
   * 监控
   * 联邦

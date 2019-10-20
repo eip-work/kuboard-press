@@ -29,7 +29,7 @@ meta:
 
 # 使用kubeadm安装kubernetes_v1.16.2
 
-<!-- <AdSenseTitle/> -->
+<AdSenseTitle/>
 
 <!-- <StoryBook>
 <div slot="introduction"> -->
@@ -115,14 +115,15 @@ meta:
 
 安装后的拓扑图如下：<span v-on:click="$sendGaEvent('下载拓扑图-kubernetes', '下载拓扑图-kubernetes', 'Download-install-kubernetes.html')"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 
+强烈建议初学者先按照此文档完成安装，在对 K8S 有更多理解后，再参考文档 [安装Kubernetes高可用](./install-kubernetes.html)
+
 <p style="max-width: 720px;">
 <img src="/images/topology/k8s.png" style="max-width: 100%;" alt="Kubernetes安装：Kubernetes安装拓扑图">
 </p>
 
-::: tip
-**关于二进制安装**
+::: tip 关于二进制安装
 
-鉴于目前已经有比较方便的办法获得 kubernetes 镜像，我将回避 ***二进制*** 安装是否更好的争论。本文采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。
+kubeadm 是 Kubernetes 官方支持的安装方式，“二进制” 不是。本文档采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。
 
 :::
 

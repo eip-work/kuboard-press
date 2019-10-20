@@ -17,7 +17,6 @@ module.exports = {
       s.parentNode.insertBefore(hm, s);
     })();
     `],
-    ['link', {rel: "stylesheet", href: "/java-script-dist/swiper-4.5.0/css/swiper.min.css"}],    
     ['script', {src: '/java-script-dist/swiper-4.5.0/js/swiper.min.js', async: true}],
     // ['script', {src: "https://www.googletagmanager.com/gtag/js?id=UA-144196556-1", async: true}],
     // ['script', {}, `
@@ -121,6 +120,7 @@ module.exports = {
     }
   },
   themeConfig: {
+    incompleteRatio: 20,
     kuboardToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi1mdGw0diIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE1YWFiMmQxLTQxMjYtNDU5Yi1hZmNhLTkyYzMwZDk0NTQzNSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.eYqN3FLIT6xs0-lm8AidZtaiuHeX70QTn9FhJglhEyh5dlyMU5lo8UtR-h1OY8sTSeYdYKJAS83-9SUObKQhp6XNmRgOYAfZblKUy4mvbGVQ3dn_qnzxYxt6zdGCwIY7E34eNNd9IjMF7G_Y4eJLWE7NvkSB1O8zbdn8En9rQXv_xJ9-ugCyr4CYB1lDGuZl3CIXgQ1FWcQdUBrxTT95tzcNTB0l6OUOGhRxOfw-RyIOST83GV5U0iVzxnD4sjgSaJefvCU-BmwXgpxAwRVhFyHEziXXa0CuZfBfJbmnQW308B4wocr4QDm6Nvmli1P3B6Yo9-HNF__d2hCwZEr7eg',
     nav: [
       { text: '简介', link: '/overview/' },
@@ -483,6 +483,14 @@ module.exports = {
                     'k8s-advanced/policy/lr_pod',
                     'k8s-advanced/policy/lr_storage',
                     'k8s-advanced/policy/lr_ratio',
+                  ]
+                },
+                {
+                  title: 'Resource Quota',
+                  collapsable: true,
+                  children: [
+                    'k8s-advanced/policy/rq',
+                    'k8s-advanced/policy/rq_types',
                   ]
                 },
               ]

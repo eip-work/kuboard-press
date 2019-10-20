@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+/*
+Copyright (c) 2018
+[Master Stylesheet]
+Template Name : Divcastle
+Version    : 1.0
+Author     :
+Author URI :
+Support    :
+*/
+body {
+    text-rendering: optimizeLegibility !important;-webkit-font-smoothing: antialiased !important;
+    font-family: 'Roboto', sans-serif;
+}
+@media(min-width:992px){ body {background: url(../images/body-bg.svg);}}
+
+/* Typography */
+p{color: #666666}
+h1,h2,h3,h4,h5,h6{color: #444444}
+h1 { font-size: 2rem;  }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.4rem; }
+h4 {font-size: 1.2rem; }
+@media(min-width:768px){
+    h1 { font-size: 2.5rem; font-weight: 700;}
+    h2 { font-size: 2.2rem; font-weight: 700;}
+    h3 { font-size: 1.6rem; }
+    h4 {font-size: 1.4rem;font-weight: 500;}
+}
+/* Buttons */
+.btn{
+    padding: 15px 30px; color: #ffffff; font-size: 1.2rem; font-weight: 500;text-transform: uppercase;border-radius: 10px;
+}
+.btn:focus,.btn:hover{-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);}
+.btn-primary{
+    background-color:  #0aadff;border-color: #0aadff; -webkit-box-shadow: 0px 10px 21px 0px rgba(10, 173, 255, 0.3); box-shadow: 0px 10px 21px 0px rgba(10, 173, 255, 0.3);
+}
+.btn-success{
+    background-color: #60c338; border-color: #60c338;-webkit-box-shadow: 0px 10px 21px 0px rgba(96, 195, 56, 0.3);box-shadow: 0px 10px 21px 0px rgba(96, 195, 56, 0.3);
+}
+.btn-success:hover{ background-color: #60c338; border-color: #60c338;}
+.btn-primary:hover{ background-color:  #0aadff;border-color: #0aadff;}
+@media(min-width:992px){.btn-width{min-width: 240px}}
+
+/* Custom grid */
+@media (min-width: 1200px){
+    .container {
+        max-width: 1000px;
+    }
+}
+.section-pad{margin-top: 50px;margin-bottom: 50px;}
+@media(min-width:768px){
+    .section-pad{margin-top: 100px;margin-bottom: 100px;}
+    .lg-gutter{margin-left: 0;margin-right: 0;}
+    .lg-gutter .lg-gutter-col{padding-left: 0;padding-right: 0}
+}
+/* Card */
+.card {  background-color: #ffffff;border: 0;  -webkit-box-shadow: 0px 10px 49px 0px rgba(3, 93, 162, 0.09); box-shadow: 0px 10px 49px 0px rgba(3, 93, 162, 0.09);}
+.card-text {    font-weight: 300; line-height: 1.5; }
+
+/* Header */
+.hero-content {margin: 50px 0 0;}
+@media(min-width:768px){.hero-content {margin-top: 100px;margin-bottom: 50px;}}
+.hero-content h2{color:  rgba(60, 70, 81, 0.4);font-weight: 300;}
+.banner-title{color:  #3a7299;font-style: italic}
+
+/* Navbar */
+.navbar-light .navbar-nav .nav-link{font-size: 1.4rem;color: #000}
+@media(min-width:768px){
+    .navbar-nav .nav-item{margin-left: 20px}
+    .navbar{margin-top: 30px;}
+}
+@media(max-width:768px){
+    .navbar-light .navbar-brand{margin: auto;position: relative;left: -30px;}
+}
+
+/* Price */
+.box-shadow{background-color:  #f7fcff;  -webkit-box-shadow: 0px 10px 49px 0px rgba(3, 93, 162, 0.09);    box-shadow: 0px 10px 49px 0px rgba(3, 93, 162, 0.09);}
+.price-text{padding: 20px}
+
+.price-text p{   font-weight: 300;}
+@media(min-width:768px){.box-shadow.padding{margin: 30px;}.price-text{padding:40px;}.price-text p{font-size: 1rem;}}
+@media(max-width:768px){ .price-text p{font-size: 1rem; }}
+/* Call action*/
+.call-action{
+    border-radius: 6px; background-color: #f7f8fa; border-left: 5px solid  #0aadff;padding:30px;
+}
+@media(max-width:768px){ .call-text{font-size: .9rem;margin-bottom: 20px !important }}
+/* Footer */
+footer{background-color:  #e9f3f5; -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.09); box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.09);
+    color:  rgba(60, 70, 81, 0.4); font-size: .8rem;  font-weight: 400;padding: 10px 0;
+}
+
+/* Custom classes*/
+.nav-img{display: none;}
+@media(max-width:768px){
+    .hide-sm{display: none;}
+    .btn-width{max-width: 280px;width: 100%}
+    .navbar{padding: 0}
+    .navbar-nav{background: #f3f3f3;    margin: 0 !important;
+        padding: 10px 15px;}
+    .navbar-toggler{margin: 0 15px;}
+    .nav-img{margin-right: 10px;display: inline-block;}
+}
+/* --------------------------------------------------
+CSS Animations & Pace Loder
+-------------------------------------------------- */
+@media(min-width:768px){.cs-fade-in-up{-webkit-animation-name:fade-in-up;animation-name:fade-in-up;-webkit-animation-duration:.75s;animation-duration:.75s;-webkit-animation-fill-mode:both;animation-fill-mode:both}.cs-fade-in-up-slow{-webkit-animation-name:fade-in-up;animation-name:fade-in-up;-webkit-animation-duration:.75s;animation-duration:.75s;-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-delay:.3s;animation-delay:.3s}}@-webkit-keyframes fade-in-up{from{opacity:0;-webkit-transform:translate3d(0,32px,0);transform:translate3d(0,32px,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fade-in-up{from{opacity:0;-webkit-transform:translate3d(0,32px,0);transform:translate3d(0,32px,0)}to{opacity:1;-webkit-transform:none;transform:none}}.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.pace-inactive{display:none}.pace .pace-progress{background:#0aadff;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:3px}

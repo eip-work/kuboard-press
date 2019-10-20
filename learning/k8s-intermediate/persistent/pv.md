@@ -44,8 +44,8 @@ PersistentVolumeClaim（PVC 存储卷声明）代表用户使用存储的请求�
 * PersistentVolumeClaim 是使用该资源的请求，通常由应用程序提出请求，并指定对应的 StorageClass 和需求的空间大小
 * PersistentVolumeClaim 可以做为数据卷的一种，被挂载到容器组/容器中使用
 
-<p>
-<img src="./pv.assets/image-20190906074512760.png" style="max-width: 400px; padding: 10px;" alt="Kubernetes教程：存储卷PersistentVolume"/>
+<p style="max-width: 360px;">
+<img src="./pv.assets/image-20190906074512760.png" style="max-width: 100%; padding: 10px;" alt="Kubernetes教程：存储卷PersistentVolume"/>
 </p>
 
 ## 存储卷声明的管理过程
@@ -56,8 +56,8 @@ PersistantVolume 和 PersistantVolumeClaim 的管理过程描述如下：
 > * Pod 中添加数据卷，数据卷关联PVC
 > * Pod 中包含容器，容器挂载数据卷
 
-<p>
-<img src="./pv.assets/image-20191016133601950.png" style="max-width: 720px; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明的管理过程"/>
+<p style="max-width: 720px;">
+<img src="./pv.assets/image-20191016133601950.png" style="max-width: 100%; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明的管理过程"/>
 </p>
 
 
@@ -70,8 +70,8 @@ PersistantVolume 和 PersistantVolumeClaim 的管理过程描述如下：
   集群管理员实现创建好一系列 PersistentVolume，它们包含了可供集群中应用程序使用的关于实际存储的具体信息。
   > Kuboard界面上暂时禁用了手工创建 PV 的功能，但是您仍然可以使用 YAML 文件创建，并在PVC中使用。
 
-  <p>
-  <img src="./pv.assets/image-20191016151323906.png" style="max-width: 720px; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明_静态提供存储卷"/>
+  <p style="max-width: 720px;">
+  <img src="./pv.assets/image-20191016151323906.png" style="max-width: 100%; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明_静态提供存储卷"/>
   </p>
 
   
@@ -79,8 +79,8 @@ PersistantVolume 和 PersistantVolumeClaim 的管理过程描述如下：
 
   在配置有合适的 StorageClass（存储类）且 PersistentVolumeClaim 关联了该 StorageClass 的情况下，kubernetes 集群可以为应用程序动态创建 PersistentVolume。
   
-  <p>
-  <img src="./pv.assets/image-20191016151308410.png" style="max-width: 720px; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明_动态提供存储卷"/>
+  <p style="max-width: 720px;">
+  <img src="./pv.assets/image-20191016151308410.png" style="max-width: 100%; padding: 10px;" alt="Kubernetes教程：存储卷/存储卷声明_动态提供存储卷"/>
   </p>
 
 ### 绑定 Binding

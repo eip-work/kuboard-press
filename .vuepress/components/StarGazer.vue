@@ -7,14 +7,13 @@
       :before-close="handleClose"
       :append-to-body	="true">
       <div style="text-align: center; font-size: 18px; weight: 500;">
-        我想看到
-        <span style="color: red;">更多更好的 Kubernetes 免费内容</span>，
+        鼓励作者完成 Kubernetes 教程
+        <span style="color: red; font-weight: 500;">剩下的 {{$themeConfig.incompleteRatio}}% </span>，
         所以我要
         <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
           给一个 Github Star
           <OutboundLink/>
         </a>
-        以鼓励作者。
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button type="text" @click="reset" style="margin-right: 10px; color: grey;">残忍拒绝</el-button>

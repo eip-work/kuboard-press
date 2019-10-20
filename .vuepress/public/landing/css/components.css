@@ -1,0 +1,673 @@
+@charset "utf-8";
+
+/*
+Copyright (c) 2018
+[Master Stylesheet]
+Template Name :CRM Components
+Version    : 1.0
+Author     :
+Author URI :
+Support    :
+*/
+
+
+/*---------------------------------------------
+Table of Contents
+-----------------------------------------------
+## Infobox
+## Icon text cards
+## Testimonials cards
+## Blog Cards
+## Price Cards
+## Webnair Cards
+## Tabs/Pills
+## Call to actions
+*/
+/* --------------------
+InfoBox Left
+----------------------*/
+
+.cs-infobox-left {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.cs-infobox-left h4 {
+    color: #516378;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 30px;
+}
+
+.cs-infobox-left p {
+    color: #888888;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.857;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+@media(max-width:768px) {
+    .cs-infobox-left {
+        text-align: center;
+        margin-bottom: 0;
+    }
+}
+
+/* --------------------
+InfoBox Center
+----------------------*/
+
+.cs-infobox-center {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cs-infobox-center img {
+    display: block;
+    margin: auto;
+}
+
+.cs-infobox-center h4 {
+    color: #516378;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 30px;
+}
+
+.cs-infobox-center p {
+    color: #888888;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.857;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------------------------- Pills <Start> --------------------------------------------------------------------------------*/
+
+/* --------------------
+Material Pills
+----------------------*/
+
+.material-pills.nav-pills .nav-link::before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -1px;
+}
+
+.material-pills.nav-pills .nav-link.active::after {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.material-pills.nav-pills .nav-link::after {
+    content: "";
+    background: -webkit-gradient(linear, right top, left top, color-stop(1%, #04befe), to(#4481eb));
+    background: linear-gradient(-90deg, #04befe 1%, #4481eb 100%);
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -1px;
+    -webkit-transition: all 250ms ease 0s;
+    transition: all 250ms ease 0s;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.material-pills.nav-pills .nav-link {
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 500
+}
+
+.material-pills.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #333333;
+    background: transparent;
+}
+
+.material-pills-text {
+    margin-top: 80px;
+}
+
+.material-pills-text.r-text {
+    text-align: right;
+}
+
+.material-pills-text h4 {
+    color: #516378;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.material-pills-text p {
+    color: #666666;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.857;
+}
+
+@media(max-width:768px) {
+    .material-pills-text,
+    .material-pills-text.r-text {
+        text-align: center;
+        margin-top: 0;
+    }
+}
+
+/* --------------------
+Nav Pills Group
+----------------------*/
+
+.nav-pills-group.nav-pills .nav-link {
+    background-color: #f4f4f4;
+    border-radius: 0;
+    padding: 14px 25px;
+    text-align: center;
+}
+
+.nav-pills-group.nav-pills .nav-link.active {
+    background: #5b83fe;
+}
+
+.nav-pills-group.nav-pills .nav-item:first-child .nav-link {
+    border-radius: 50px 0 0 50px;
+}
+
+.nav-pills-group.nav-pills .nav-item:last-child .nav-link {
+    border-radius: 0 50px 50px 0;
+}
+
+@media(min-width:992px) {
+    .nav-pills-group.nav-pills .nav-link {
+        min-width: 180px;
+    }
+}
+
+/* -------------------------------------------------------------------------------- Pills </End> --------------------------------------------------------------------------------*/
+
+/* -------------------------------------------------------------------------------- Call Actions <Start> --------------------------------------------------------------------------------*/
+
+/* --------------------
+Call Action Media
+----------------------*/
+
+.call-action-media {
+    border-radius: 6px;
+    border: 3px solid #5b83fe;
+    background-color: #f3f6f9;
+    padding: 30px;
+}
+
+.call-action-media-text {
+    color: #666666;
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.call-action-media .media-body {
+    margin-left: 1.5rem
+}
+
+@media(max-width:768px) {
+    .call-action-media .media {
+        display: block;
+    }
+    .call-action-media .media-body {
+        margin-left: 0;
+        margin-top: 1.5rem;
+    }
+}
+
+/* --------------------
+Call Action Primary
+----------------------*/
+
+.call-action-primary {
+    background: url(../images/call-action-primary.png) no-repeat center center;
+    background-size: cover;
+}
+
+.bg-gradient-primary {
+    background: -webkit-gradient(linear, right top, left top, color-stop(1%, #4481eb), to(#04befe));
+    background: linear-gradient(-90deg, #4481eb 1%, #04befe 100%);
+}
+
+.call-action-head {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.call-action-text {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 400;
+    display: block;
+    max-width: 620px;
+    margin: auto;
+    line-height: 1.5;
+}
+
+.call-action-primary-search {
+    max-width: 569px;
+    margin: auto;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 4px 20px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.call-action-primary-input {
+    border-radius: 27px;
+    background-color: #f4f4f4;
+    border: 0;
+    height: 49px;
+    position: relative;
+    padding-left: 20px;
+    color: #666666;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-weight: 400;
+}
+
+.call-action-primary-btn {
+    background-color: #04befe;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    -webkit-appearance: none;
+    border-color: #04befe;
+    border-radius: 0 27px 27px 0;
+    height: 49px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media(min-width:768px) {
+    .call-action-primary-btn {
+        width: 168px;
+    }
+}
+
+@media(max-width:768px) {
+    .call-action-primary-content h1 {
+        margin-top: 0;
+        font-size: 1.5rem;
+    }
+}
+
+/* -------------------------------------------------------------------------------- Call Actions </End> --------------------------------------------------------------------------------*/
+
+/* --------------------
+Price Card Default
+----------------------*/
+
+.cs-price-card {
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    background-color: #ffffff;
+    text-align: center;
+    display: block;
+    margin: auto;
+    max-width: 370px;
+    position: relative;
+    -webkit-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+.cs-price-card:hover {
+    -webkit-box-shadow: 2px 4px 20px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.cs-price-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: -webkit-gradient(linear, right top, left top, color-stop(1%, #04befe), to(#4481eb));
+    background: linear-gradient(-90deg, #04befe 1%, #4481eb 100%);
+    border-radius: 5px 5px 0 0;
+    height: 7px;
+}
+
+.cs-price-card-info {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f1f1f1;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+    padding: 30px;
+}
+
+.cs-price-card .btn-light {
+    background-color: #edecec;
+    color: #516378;
+    border-color: #edecec;
+}
+
+.cs-price-card-info h5 {
+    color: #666666;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.cs-price-card-info h1 {
+    color: #516378;
+    margin: 0;
+    font-size: 2.375rem;
+    font-weight: 600;
+}
+
+.cs-price-card-info h1 sup {
+    color: inherit;
+    top: -1.2em;
+    font-size: 1rem;
+    font-weight: 500
+}
+
+.cs-price-card-info h1 small {
+    color: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.cs-price-card-content {
+    padding: 40px 30px;
+}
+
+.cs-price-card-features {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.cs-price-card-features li {
+    color: #666666;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 2.571;
+}
+
+.cs-price-card-features li.in-active {
+    color: #d5d5d5;
+}
+
+@media(max-width:768px) {
+    .cs-price-card-info {
+        padding: 20px;
+    }
+    .cs-price-card-content {
+        padding: 20px 15px;
+    }
+    .cs-price-card-features {
+        margin-bottom: 15px;
+    }
+    .cs-price-card-features li {
+        line-height: 2;
+    }
+}
+
+/* --------------------
+Our Partners
+----------------------*/
+
+.partners-horiz-list {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+
+.partners-horiz-item {
+    width: 33.33%;
+    float: left;
+}
+
+.partners-horiz-item img {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);-webkit-transition: all .3s ease;transition: all .3s ease;
+}
+
+.partners-horiz-item:hover img {
+    -webkit-filter: none;
+    filter: none;
+}
+
+@media(min-width:992px) {
+    .partners-horiz-item {
+        width: 20%;
+    }
+}
+
+.partner-img {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* --------------------
+Webnair Card
+----------------------*/
+
+.cs-webnair-card {
+    border-radius: 5px;
+    margin: 15px 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    background-color: #ffffff;
+    border: 0;
+    position: relative;
+}
+
+.cs-webnair-card:hover {
+    -webkit-box-shadow: 2px 4px 20px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.cs-webnair-card .btn-primary {
+    background-color: #edecec;
+    border-color: #edecec;
+    color: #516378;
+}
+
+.cs-webnair-card:hover .btn-primary {
+    background-color: #5b83fe;
+    border-color: #5b83fe;
+    color: #fff;
+}
+
+.cs-webnair-card:after {
+    position: absolute;
+    content: "";
+    background-color: #5b83fe;
+    width: 2px;
+    height: 27px;
+    top: 36px;
+    left: 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.cs-webnair-card:hover:after {
+    height: 50px;
+}
+
+.cs-webnair-card .card-body {
+    padding: 38px;
+}
+
+.cs-webnair-card .card-title {
+    color: #516378;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.cs-webnair-card .card-text {
+    color: #666666;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.857;
+}
+
+.cs-webnair-card .media-body h5 {
+    color: #666666;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.cs-webnair-card .media-body h5 small {
+    font-size: 0.875rem;
+}
+
+.cs-webnair-card .media-body {
+    color: #516378;
+    font-size: 0.75rem;
+    font-weight: 500;
+
+}
+
+.webnair-date {
+    background-color: #5b83fe;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.webnair-date h5 {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.webnair-date h2 {
+    color: #ffffff;
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.webnair-date p {
+    color: #ffffff;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+@media(min-width:768px) {
+    .webnair-date {
+        padding: 20px;
+        width: 136px;
+        height: 114px;
+    }
+}
+
+/* Testimonial - Default */
+
+.testimonial-default {
+    text-align: center;
+    margin: 30px 0
+}
+
+.testimonial-default-img {
+    width: 99px;
+    display: block;
+    margin: auto;
+    height: 99px;border-radius: 50%;
+    overflow: hidden;
+}
+
+.testimonial-default-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.testimonial-default h4 {
+    color: #516378;
+    font-size: 1.125rem;
+    font-weight: 500;
+    max-width: 730px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    line-height: 1.667;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.testimonial-default h5 {
+    color: #aeaeae;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.video-play {
+    position: relative;
+    outline: none
+}
+
+.video-play .vid-fixed-icn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+.video-play .vid-fixed-icn img {
+    -webkit-transform: scale(.9);
+    transform: scale(.9);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.video-play:hover .vid-fixed-icn img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1)
+}
+
+@media(max-width:768px) {
+    .video-play .vid-fixed-icn img {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+    }
+    .testimonial-default-img {
+        width: 69px;
+        height: 69px;
+    }
+    .testimonial-default h4 {
+        font-size: 1rem;
+    }
+    .testimonial-default h5 {
+        font-size: .8rem;
+        margin-top: 7px;
+    }
+    .slick-dotted.slick-slider {
+        margin: 0;
+    }
+    .floated-box {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

@@ -30,7 +30,7 @@ meta:
 
 ## 前提
 
-安装 Kuboard 时，假设您已经有一个 Kubernetes 集群
+Kuboard 是基于一款基于 Kubernetes 的微服务管理面板。安装 Kuboard 时，假设您已经有一个 Kubernetes 集群
 
 如果没有 Kubernetes 集群：
 

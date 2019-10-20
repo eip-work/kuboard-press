@@ -5,15 +5,25 @@
     </div>
     <div class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
-        <div style="display: inline-block; vertical-align: top;">
-          <li><span style="color: red; font-weight: 500;">免费</span> Kubernetes 教程，绝不降低品质</li>
+        <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>
-            我想看到 <span style="color: red;">更多更好的 Kubernetes 免费内容</span>，
+            <span style="color: red; font-weight: 500;">免费</span>
+            Kubernetes 教程，绝不降低品质
+          </li>
+          <li>
+            鼓励作者尽快完成 Kubernetes 教程 <span style="color: red; font-weight: 500;">剩下的 {{$themeConfig.incompleteRatio}}% </span>，
             所以我要
-            <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="$sendGaEvent('GithubStar', '页头求GitHubStar', 'GitHubStar: ' + $page.path)">给一个 Github Star <OutboundLink/></a> 
-            以鼓励作者
-            </li>
-          <!-- <li><Qq></Qq> <span style="color: red; font-weight: 500;">在线答疑</span>，也可以扫描本文末尾的二维码加群</li> -->
+            <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="$sendGaEvent('GithubStar', '页头求GitHubStar', 'GitHubStar: ' + $page.path)">给一个 Github Star <OutboundLink/></a>
+          </li>
+          <li>
+            <Qq></Qq> 
+            群号: 808894550 
+            <span style="font-weight: 500;">在线答疑</span>，
+            初学者可选择在线课程，语言更通俗：
+            <span @click="$sendGaEvent('极客时间', '极客时间', '极客时间：' + $page.path)">
+              <a target="_blank" href="https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D">深入剖析Kubernetes</a>
+            </span>
+          </li>
         </div>
       </div>
     </div>

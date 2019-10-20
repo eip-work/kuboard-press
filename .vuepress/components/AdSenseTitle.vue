@@ -1,14 +1,32 @@
 <template>
   <div :style="$isDev ? 'background-color: #grey;' : ''" v-if="!$frontmatter.lessAds">
-    <p style="background-color: #f3f5f7;padding: 10px 5px 5px 10px;">
-      <Qq></Qq> 
+    <div class="ads">
+      <!-- <Qq></Qq> 
       群号: 808894550 
       <span style="color: red; font-weight: 500;">在线答疑</span>，
       初学者可选择在线课程，语言更通俗：
       <span @click="$sendGaEvent('极客时间', '极客时间', '极客时间：' + $page.path)">
         <a target="_blank" href="https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D">深入剖析Kubernetes</a>
-      </span>
-    </p>
+      </span> -->
+      <div>
+
+      <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
+        <span class="name">
+          {{ random.name }}
+        </span>
+        <span class="description">
+          {{ random.description }}
+        </span>
+        <span class="description-strong">
+          {{ random.strong }}
+        </span>
+        <span class="action">
+          {{ random.action }}
+        </span>
+      </a>
+      <span class="ads-text">广告</span>
+      </div>
+    </div>
     <slot></slot>
     <!-- <div class="adsense-page-top">
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -27,16 +45,98 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      ads: [
+        {
+          name: 'Sealyun',
+          description: '一键离线安装 Kubernetes',
+          strong: '免费试用',
+          action: '去看看',
+          url: 'http://store.lameleg.com?referrer=shaohq',
+          weight: 50
+        },
+        {
+          name: '宝塔面板',
+          description: '一键全能 Linux 部署及管理，',
+          strong: '送你3188元礼包',
+          action: '点我领取',
+          url: 'https://www.bt.cn/?invite_code=MV9vdnlveno=',
+          weight: 50
+        }
+      ]
+    }
+  },
+  computed: {
+    random () {
+      this.ads
+      let totalWeight = 0
+      for (let item of this.ads) {
+        totalWeight += item.weight
+      }
+      let tmp = 0
+      let r = Math.random()
+      for (let item of this.ads) {
+        if (r > tmp / totalWeight && r <= (tmp + item.weight) / totalWeight) {
+          return item
+        }
+        tmp = tmp + item.weight
+      }
+      return this.ads[0]
+    },
+  },
+  methods: {
+    clickAds () {
+      this.$sendGaEvent(this.random.name, this.random.name + '--' + this.$page.path, this.random.name + '--' + this.$page.path)
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 .adsense-page-top {
   /* background-color: green; */
   padding-right: 2px;
   border: 1px solid #d7dae2;
   max-height: 120px !important;
   overflow: hidden;
+}
+.ads {
+  background-color: #f8f8f8;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+}
+.ads a {
+  text-decoration: none;
+}
+.ads span.name {
+  color: $accentColor;
+  font-size: 1em;
+}
+.ads span.description {
+  margin-left: 0.8em;
+  font-size: 0.9em;
+  color: #666;
+  font-weight: normal;
+}
+.ads span.description-strong {
+  font-size: 0.9em;
+  color: red;
+  font-weight: normal;
+}
+.ads span.action {
+  font-size: 0.75em;
+  color: #888;
+  border: 1px solid #888;
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-left: 1em;
+}
+.ads-text {
+  color: #999;
+  float: right;
+  font-size: 12px;
+  border: 1px solid #d7dae2;
+  padding: 2px 10px;
 }
 </style>
