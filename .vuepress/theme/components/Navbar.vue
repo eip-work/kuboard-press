@@ -3,7 +3,7 @@
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
 
     <div style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: calc(100vw - 120px);">
-      <router-link
+      <!-- <router-link
         :to="$localePath"
         class="home-link noselect"
       >
@@ -19,7 +19,15 @@
           v-if="$siteTitle"
           :class="{ 'can-hide': $site.themeConfig.logo }"
         >Kuboard - </span>
-      </router-link>
+      </router-link> -->
+      <a href="/" class="home-link noselect">
+        <span
+          ref="siteName"
+          class="site-name"
+          v-if="$siteTitle"
+          :class="{ 'can-hide': $site.themeConfig.logo }"
+        >Kuboard - </span>
+      </a>
       <span class="home-link noselect" style="line-height: 2.2em; font-size: 1em; font-weight: 400;">
         <a href="/learning/">
           <span style="color: #42b983;">提供K8S免费教程</span>

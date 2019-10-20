@@ -50,8 +50,8 @@ export default {
       ads: [
         {
           name: 'Sealyun',
-          description: '一键离线安装 Kubernetes',
-          strong: '免费试用',
+          description: 'Kubernetes，',
+          strong: '一键离线安装',
           action: '去看看',
           url: 'http://store.lameleg.com?referrer=shaohq',
           weight: 50
