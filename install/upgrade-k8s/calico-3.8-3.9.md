@@ -100,7 +100,7 @@ export POD_SUBNET=10.100.0.1/16
 rm -f calico.yaml
 wget https://docs.projectcalico.org/v3.9/manifests/calico.yaml --no-check-certificate
 sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico.yaml
-kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
+kubectl apply -f calico.yaml
 ```
 
 此时可执行命令检查 calico 的版本：
