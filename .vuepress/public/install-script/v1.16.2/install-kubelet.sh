@@ -33,6 +33,7 @@ systemctl start docker
 # 安装 nfs-utils
 # 必须先安装 nfs-utils 才能挂载 nfs 网络存储
 yum install -y nfs-utils
+yum install -y wget
 
 # 关闭 防火墙
 systemctl stop firewalld

@@ -1,18 +1,25 @@
 <template>
   <div>
     <el-dialog
-      title="感谢阅读"
+      title="催更利器"
       :visible.sync="dialogVisible"
-      width="50%"
+      width="60%"
       :before-close="handleClose"
       :append-to-body	="true">
       <div style="text-align: center; font-size: 18px; weight: 500;">
-        鼓励作者完成 Kubernetes 教程
-        <span style="color: red; font-weight: 500;">剩下的 {{$themeConfig.incompleteRatio}}% </span>，
-        所以我要
+        <div style="background-color: #f8f8f8; padding: 10px 10px 10px 10px; margin-bottom: 10px; border: solid 1px #ddd;">
+          鼓励作者尽快完成 Kubernetes 教程
+          <span style="color: red; font-weight: 500;">剩下的 {{$themeConfig.incompleteRatio}}% </span>，
+          所以我要
+          <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
+            给一个 Github Star
+            <OutboundLink/>
+          </a>
+        </div>
         <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
-          给一个 Github Star
-          <OutboundLink/>
+          <div style="border: solid 1px #ddd;">
+            <img src="./star.png" style="max-width: 50vw; opacity: 0.6;">
+          </div>
         </a>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -97,6 +104,7 @@ export default {
     },
     linkToStar() {
       this.dialogVisible = false
+      localStorage.setItem('stared', 'true')
       this.$sendGaEvent('StarGazer', 'SG:GotoGithub', 'SG:前往github' + this.$page.path)
     },
     gotoStar() {
