@@ -124,13 +124,13 @@ export default {
       }
     },
     handleClose (done) {
-      this.$message.success('赠人玫瑰，手有余香')
+      this.$message.success('Kuboard及文档是免费提供的')
       if (window.ga) {
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'StarGazer',
           eventAction: 'SG:BeforeClose',
-          eventLabel: 'SG:赠人玫瑰，手有余香'
+          eventLabel: 'SG:Kuboard及文档是免费提供的'
         });
         console.log('发送成功 ga event')
       } else {

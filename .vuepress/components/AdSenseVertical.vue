@@ -1,5 +1,5 @@
 <template>
-  <div :style="$isDev ? 'background-color: grey;' : ''">
+  <div v-if="$themeConfig.showAds" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- 正文-垂直 -->
     <ins class="adsbygoogle"

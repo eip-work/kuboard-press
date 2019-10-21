@@ -1,5 +1,5 @@
 <template>
-  <div :style="$isDev ? 'background-color: #grey;' : ''" v-if="!$frontmatter.lessAds">
+  <div :style="$isDev ? 'background-color: #grey;' : ''" v-if="!$frontmatter.lessAds && $themeConfig.showAds">
     <div class="ads">
       <!-- <Qq></Qq> 
       群号: 808894550 
