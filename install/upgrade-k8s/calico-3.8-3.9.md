@@ -59,8 +59,7 @@ Pod Template:
 
 ``` sh
 # 如果版本号是 v3.8.2 或者 v3.8.x，则删除命令如下
-# calico.yaml 的URL中，不带版本号的最后一位
-kubectl delete -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+kubectl delete -f https://kuboard.cn/install-script/calico/calico-3.8.yaml
 ```
 
 ## 安装新版本
@@ -97,10 +96,10 @@ scheduler: {}
 ``` sh {2}
 # 命令行中环境变量 POD_SUBNET 的取值 10.100.0.1/16 来自于上一个命令的输出结果
 export POD_SUBNET=10.100.0.1/16
-rm -f calico.yaml
-wget https://docs.projectcalico.org/v3.9/manifests/calico.yaml --no-check-certificate
-sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico.yaml
-kubectl apply -f calico.yaml
+rm -f calico-3.9.2.yaml
+wget https://kuboard.cn/install-script/calico/calico-3.9.2.yaml
+sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico-3.9.2.yaml
+kubectl apply -f calico-3.9.2.yaml
 ```
 
 此时可执行命令检查 calico 的版本：

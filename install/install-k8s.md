@@ -50,7 +50,7 @@ meta:
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.2
-  * 当前已更新了 <font color="red"> 62 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 63 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **在线答疑** 
 
@@ -443,7 +443,6 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[点击此处，给个 GitHub Star](https://github.com/eip-work/kuboard-press) 
 <span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
 支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？
 
