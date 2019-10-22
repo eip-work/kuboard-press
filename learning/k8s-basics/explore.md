@@ -90,8 +90,8 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
   #查看名称为nginx-XXXXXX的Pod的信息
   kubectl describe pod nginx-XXXXXX	
   
-  #查看名称为nginx-XXXXXXX的Deployment的信息
-  kubectl describe deployment nginx-XXXXXXX	
+  #查看名称为nginx的Deployment的信息
+  kubectl describe deployment nginx	
   ```
 
 - **kubectl logs** - 查看pod中的容器的打印日志（和命令docker logs 类似）
@@ -100,6 +100,7 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
   # kubectl logs Pod名称
   
   #查看名称为nginx-pod-XXXXXXX的Pod内的容器打印的日志
+  #本案例中的 nginx-pod 没有输出日志，所以您看到的结果是空的
   kubectl logs -f nginx-pod-XXXXXXX
   ```
 
