@@ -25,10 +25,12 @@ meta:
 
 | 资源名称        | 描述                                                         |
 | --------------- | ------------------------------------------------------------ |
-| limits.cpu      | 名称空间中，所有非终止状态（non-terminal）的 Pod 的 CPU限制`resources.limits.cpu`之和不能超过此值 |
-| limits.memory   | 名称空间中，所有非终止状态（non-terminal）的 Pod 的内存限制`resources.limits.memory`之和不能超过此值 |
-| requests.cpu    | 名称空间中，所有非终止状态（non-terminal）的 Pod 的 CPU请求`resources.requrest.cpu`之和不能超过此值 |
-| requests.memory | 名称空间中，所有非终止状态（non-terminal）的 Pod 的 CPU请求 `resources.requests.memory`之和不能超过此值 |
+| limits.cpu      | 名称空间中，所有非终止状态（non-terminal）的 Pod 的 CPU限制 `resources.limits.cpu` 之和不能超过此值 |
+| limits.memory   | 名称空间中，所有非终止状态（non-terminal）的 Pod 的内存限制 `resources.limits.memory` 之和不能超过此值 |
+| requests.cpu    | 名称空间中，所有非终止状态（non-terminal）的 Pod 的 CPU请求 `resources.requrest.cpu` 之和不能超过此值 |
+| requests.memory | 名称空间中，所有非终止状态（non-terminal）的 Pod 的 CPU请求 `resources.requests.memory` 之和不能超过此值 |
+
+具体案例请参考： [CPU/内存资源限额](./rq_example_cpu_mem.html)
 
 <!--FIXME 扩展资源的配额 -->
 

@@ -494,6 +494,8 @@ module.exports = {
                     'k8s-advanced/policy/rq_types',
                     'k8s-advanced/policy/rq_scope',
                     'k8s-advanced/policy/rq_more',
+                    'k8s-advanced/policy/rq_example_cpu_mem',
+                    'k8s-advanced/policy/rq_example_obj',
                   ]
                 },
               ]

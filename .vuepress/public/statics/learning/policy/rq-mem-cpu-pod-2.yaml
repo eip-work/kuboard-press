@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quota-mem-cpu-demo-2
+spec:
+  containers:
+  - name: quota-mem-cpu-demo-2-ctr
+    image: redis
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "800m"      
+      requests:
+        memory: "700Mi"
+        cpu: "400m"

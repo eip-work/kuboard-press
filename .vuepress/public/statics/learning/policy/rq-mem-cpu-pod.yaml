@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quota-mem-cpu-demo
+spec:
+  containers:
+  - name: quota-mem-cpu-demo-ctr
+    image: nginx
+    resources:
+      limits:
+        memory: "800Mi"
+        cpu: "800m" 
+      requests:
+        memory: "600Mi"
+        cpu: "400m"

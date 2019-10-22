@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: pod-demo
+spec:
+  hard:
+    pods: "2"
