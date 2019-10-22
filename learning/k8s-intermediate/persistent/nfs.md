@@ -55,7 +55,7 @@ Kubernetes 对 Pod 进行调度时，以当时集群中各节点的可用资源�
   ```sh
   exportfs
   # 输出结果如下所示
-  /home/nfs <world>
+  /root/nfs_root /root/nfs_root
   ```
 
 ## 在客户端测试nfs

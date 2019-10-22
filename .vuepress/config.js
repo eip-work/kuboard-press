@@ -493,6 +493,7 @@ module.exports = {
                     'k8s-advanced/policy/rq',
                     'k8s-advanced/policy/rq_types',
                     'k8s-advanced/policy/rq_scope',
+                    'k8s-advanced/policy/rq_more',
                   ]
                 },
               ]
