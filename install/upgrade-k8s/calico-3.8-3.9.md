@@ -64,7 +64,13 @@ kubectl delete -f https://kuboard.cn/install-script/calico/calico-3.8.yaml
 
 ## 安装新版本
 
-执行命令查看kubernetes 
+执行命令查看kubeadmin的配置
+
+```sh
+kubeadm config view
+```
+
+输出结果如下所示：
 
 ``` yaml {21}
 apiServer:
@@ -91,7 +97,7 @@ networking:
 scheduler: {}
 ```
 
-执行以下命令，安装 calico 3.9，请注意，下面的 POD_SUBNET 环境变量来自于上面的输出结果：
+执行以下命令，安装 calico 3.9，请注意，下面的 POD_SUBNET 环境变量来自于上面的输出结果：（输出结果中，podSubnet字段可能为空，这说明集群安装集群时使用了默认的配置，升级时，请仍然保留空值。）
 
 ``` sh {2}
 # 命令行中环境变量 POD_SUBNET 的取值 10.100.0.1/16 来自于上一个命令的输出结果
