@@ -30,7 +30,7 @@
       </a>
       <span class="home-link noselect" style="line-height: 2.2em; font-size: 1em; font-weight: 400;">
         <a href="/learning/">
-          <span style="color: #42b983;">提供K8S免费教程</span>
+          <span style="color: #42b983;">免费提供K8S教程</span>
         </a>
         <StarCount style="margin-left: 10px;"></StarCount>
         <a href="https://webscan.qianxin.com/safe/detail/?query=kuboard.cn"><img border="0" src="https://webscan.qianxin.com/api/authcode?code=ab3ebe0592248d28477251ecaf72154f" style="display: none;"/></a>

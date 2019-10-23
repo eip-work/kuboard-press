@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文为初学者介绍了一套最合适的Kubernetes入门教程_该教程源自于Kubernetes官方网站_作者对其进行了翻译_并根据初学者的理解情况做了适当的改写
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门
+    content: Kubernetes教程,K8S教程,K8S培训,Kubernetes培训
 ---
 
 # 0.学习Kubernetes基础知识

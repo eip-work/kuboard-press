@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文详细讲解了Kubernetes_Rolling_Update_的概念_并描述了如何使用_kubectl_Kuboard_对一个应用程序执行滚动更新。
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,滚动更新
+    content: Kubernetes教程,K8S教程,K8S培训,Kubernetes培训,滚动更新
 ---
 
 # 5.执行滚动更新

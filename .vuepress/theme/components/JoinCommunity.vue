@@ -1,10 +1,10 @@
 <template>
   <div class="page-nav" style="max-width: 1000px; padding: 1rem;">
-    <el-divider>在线答疑</el-divider>
+    <el-divider>免费在线答疑</el-divider>
     <grid :rwd="{compact: 'stack'}">
       <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
         <el-card style="height: 100%; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
-          <h4>QQ群（免费）</h4>
+          <h4>QQ群</h4>
           <div>
             <Qq/> 808894550
           </div>
@@ -15,12 +15,12 @@
       </grid-item>
       <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
           <el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
-            <h4>微信群（即时）</h4>
+            <h4>微信群</h4>
             <div>
               <div style="margin-top: 10px;">
-                <span>扫第一个二维码完成打赏，扫第二个加微信进群聊（请发送打赏截图）</span>
-                <p style="margin-top: 10px; margin-bottom: 0; text-align-last: justify;">
-                  <img src="/images/dz.png" style="width: 150px;"></img>
+                <span>扫二维码加微信进群聊（群主会要求您分享图片到朋友圈）</span>
+                <p style="margin-top: 10px; margin-bottom: 0; text-align: center;">
+                  <!-- <img src="/images/dz.png" style="width: 150px;"></img> -->
                   <img src="/images/dz2.jpeg" style="width: 150px;"></img>
                 </p>
               </div>

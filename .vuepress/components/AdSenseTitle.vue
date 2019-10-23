@@ -57,13 +57,21 @@ export default {
           weight: 50
         },
         {
-          name: '宝塔面板',
-          description: '一键全能 Linux 部署及管理，',
-          strong: '送你3188元礼包',
-          action: '点我领取',
-          url: 'https://www.bt.cn/?invite_code=MV9vdnlveno=',
+          name: '阳明的博客',
+          description: 'Kubernetes，',
+          strong: '实战课程',
+          action: '去看看',
+          url: 'https://www.qikqiak.com/post/promotion-51/',
           weight: 50
-        }
+        },
+        // {
+        //   name: '宝塔面板',
+        //   description: '一键全能 Linux 部署及管理，',
+        //   strong: '送你3188元礼包',
+        //   action: '点我领取',
+        //   url: 'https://www.bt.cn/?invite_code=MV9vdnlveno=',
+        //   weight: 50
+        // }
       ]
     }
   },

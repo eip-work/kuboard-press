@@ -81,7 +81,7 @@ module.exports = siteData => {
         selfTitle = page.frontmatter.titlePrefix + '_' + selfTitle
       }
       if (page.path.indexOf('/learning/') === 0) {
-        return selfTitle + '_Kubernetes教程_学习K8S'
+        return selfTitle + '_Kubernetes教程_K8S教程_K8S培训'
       }
       if (page.path.indexOf('/install/') === 0) {
         return selfTitle + '_K8S安装部署'

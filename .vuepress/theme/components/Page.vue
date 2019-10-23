@@ -8,7 +8,7 @@
         <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>
             <span style="color: red; font-weight: 500;">免费</span>
-            Kubernetes 教程，绝不降低品质
+            Kubernetes教程K8S教程，绝不降低品质
           </li>
           <li>
             鼓励作者尽快完成 Kubernetes 教程 <span style="color: red; font-weight: 500;">剩下的 {{$themeConfig.incompleteRatio}}% </span>，
@@ -18,11 +18,11 @@
           <li>
             <Qq></Qq> 
             群号: 808894550 
-            <span style="font-weight: 500;">在线答疑</span>，
-            初学者可选择在线课程，语言更通俗：
+            <span style="font-weight: 500;">在线答疑</span>
+            <!-- 初学者可选择在线课程，语言更通俗：
             <span @click="$sendGaEvent('极客时间', '极客时间', '极客时间：' + $page.path)">
               <a target="_blank" href="https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D">深入剖析Kubernetes</a>
-            </span>
+            </span> -->
           </li>
         </div>
       </div>

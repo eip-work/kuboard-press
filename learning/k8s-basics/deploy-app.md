@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文详细讲解了Kubernetes_Deployment的概念_并描述了如何使用kubectl_Kuboard创建一个Deployment
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Deployment,Kubernetes入门,K8S入门
+    content: Kubernetes教程,K8S教程,Deployment,K8S培训,Kubernetes培训
 ---
 
 # 1.部署一个应用程序

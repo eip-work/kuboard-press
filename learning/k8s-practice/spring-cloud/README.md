@@ -1,10 +1,11 @@
 ---
 vssueId: 68
 layout: LearningLayout
+metaTitle: Spring Cloud on Kubernetes（K8S教程/K8S培训）
 description: Kubernetes教程_微服务参考架构_包含微服务运行时_构建及测试_部署及运维_监控及评估__设计和研发Kuboard的初心便源于此SpringCloud微服务参考架构。
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Kubernetes微服务,Kubernetes Spring Cloud
+    content: Kubernetes教程,K8S教程,Kubernetes微服务,K8S培训
 ---
 
 # Spring Cloud on Kubernetes
@@ -47,9 +48,3 @@ Spring Cloud on Kubernetes 并不对 Spring Cloud 架构、组件等做过多解
 为了更好地阐述此主题，作者准备了一个最简单的微服务 example 作为例子，该 example 只实现了对一张简单数据库表执行 CRUD 操作的功能，该 example 的部署架构如下图所示，源代码请参考 [kuboard-example](https://github.com/eip-work/kuboard-example)，您也可以直接通过 Kuboard [导入 example 微服务](/guide/example/import.html)
 
 ![Kubernetes教程：SpringCloud Example](./README.assets/image-20190801063223432.png)
-
-
-
-<div>
-<script type='text/javascript' src='https://www.wjx.top/handler/jqemed.ashx?activity=43409534&width=760&source=iframe'></script>
-</div>

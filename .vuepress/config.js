@@ -68,7 +68,7 @@ module.exports = {
     // },
     '@vssue/vuepress-plugin-vssue': {
       // set `platform` rather than `api`
-      platform: 'github-v4',
+      platform: 'github',
       locale: 'zh-CN',
       autoCreateIssue: false,
       admins: ['shaohq'],
@@ -436,6 +436,7 @@ module.exports = {
                     'k8s-intermediate/config/sec-ctx/con-kuboard',
                   ]
                 },
+                'k8s-intermediate/config/priority-preemption',
               ]
             }
           ]
@@ -498,6 +499,13 @@ module.exports = {
                     'k8s-advanced/policy/rq_example_obj',
                   ]
                 },
+                // {
+                //   title: 'Pod Security',
+                //   collapsable: true,
+                //   children: [
+                //     'k8s-advanced/policy/sec',
+                //   ]
+                // },
               ]
             },
           ]

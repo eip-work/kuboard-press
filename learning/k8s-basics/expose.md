@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文详细讲解了Kubernetes_Service的概念_并描述了如何使用kubectl_Kuboard创建一个Service_以使得部署在Kubernetes上的容器可以被访问
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Kubernetes Service,Kubernetes入门,K8S入门
+    content: Kubernetes教程,K8S教程,Kubernetes Service,K8S培训,Kubernetes培训
 ---
 
 # 3.公布应用程序

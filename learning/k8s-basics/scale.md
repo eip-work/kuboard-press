@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes教程_本文详细讲解了Kubernetes_Scale的概念_并描述了如何使用_kubectl_Kuboard_对一个应用程序进行伸缩操作
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Kubernetes入门,K8S入门,Kubernetes Scale
+    content: Kubernetes教程,K8S教程,K8S培训,Kubernetes培训,Kubernetes Scale
 ---
 
 # 4.伸缩应用程序
