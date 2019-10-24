@@ -83,7 +83,7 @@ Kubernetes Dashboard 当前，只支持使用 Bearer Token登录。
 
 * 执行 `kubectl proxy` 命令
 
-  您必须能够在自己的笔记本（工作电脑）上运行 kubectl 并访问您的集群。可参考文档 [安装Kubectl](./install/install-kubectl.html)
+  您必须能够在自己的笔记本（工作电脑）上运行 kubectl 并访问您的集群。可参考文档 [安装Kubectl](./install-kubectl.html)
 
   访问路径： `http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/`
 

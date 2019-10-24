@@ -69,7 +69,7 @@ Resource Limits
 该结果中展示了 [Resource Quota](/learning/k8s-advanced/policy/rq.html) 和 [resource limit range](/learning/k8s-advanced/policy/lr.html)
 :::
 
-* Resource quota 汇总了名称空间中使用的资源总量，并云讯集群管理员定义该名称空间最多可以使用的资源量
+* Resource quota 汇总了名称空间中使用的资源总量，并指定了集群管理员定义该名称空间最多可以使用的资源量
 * Limit range 定义了名称空间中某种具体的资源类型的最大、最小值
 
 名称空间可能有两种状态（phase）：
@@ -216,7 +216,7 @@ Kubernetes名称空间为集群中的 Pod、Service、Deployment 提供了一个
 
 * 切换到 `development` 名称空间：
   ``` sh
-  kubectl config use-conetxt dev
+  kubectl config use-context dev
   ```
   验证
   ``` sh

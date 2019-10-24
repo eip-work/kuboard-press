@@ -8,7 +8,7 @@ meta:
     content: K8S教程,K8S 教程,K8S培训,Kubernetes培训
 ---
 
-# Kubernetes教程K8S培训
+# Kubernetes教程
 
 <AdSenseTitle>
 

@@ -52,6 +52,14 @@ module.exports = {
         return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
       }
     },
+    'vuepress-plugin-code-copy': {
+      successText: '已复制到剪贴板！',
+      align: 'bottom',
+      backgroundColor: '#FFFFFF',
+      color: '#FFFFFF',
+      // selector: 'div[class*="language-"] pre'
+      selector: 'div[class*="language-"] pre'
+    },
     // '@vuepress/pwa': {
     //   serviceWorker: true,
     //   // popupComponent: 'KbSWUpdatePopup',
@@ -320,6 +328,8 @@ module.exports = {
                 'k8s-intermediate/workload/pod',
                 'k8s-intermediate/workload/pod-lifecycle',
                 'k8s-intermediate/workload/init-container',
+                'k8s-intermediate/workload/init-config',
+                'k8s-intermediate/workload/init-debug',
                 'k8s-intermediate/workload/workload',
                 {
                   title: '控制器 - Deployment',

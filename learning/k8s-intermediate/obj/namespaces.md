@@ -80,7 +80,7 @@ kubectl config view --minify | grep namespace:
 
 ## 名称空间与DNS
 
-当您创建一个 Service 时，Kubernetes 为其创建一个对应的 [DNS 条目](/learning/k8s-intermediate/service/dns.html)。该 DNS 记录的格式为 `<service-name>.<namespace-name>.svc.cluster.local`，也就是说，如果在容器中只使用 `<service-name>`，其DNS将解析到同名称空间下的 Service。这个特点在多环境的情况下非常有用，例如将开发环境、测试换寂静、生产环境部署在不同的名称空间下，应用程序只需要使用 `<service-name>` 即可进行服务发现，无需为不同的环境修改配置。如果您想跨名称空间访问服务，则必须使用完整的域名（fully qualified domain name，FQDN）。
+当您创建一个 Service 时，Kubernetes 为其创建一个对应的 [DNS 条目](/learning/k8s-intermediate/service/dns.html)。该 DNS 记录的格式为 `<service-name>.<namespace-name>.svc.cluster.local`，也就是说，如果在容器中只使用 `<service-name>`，其DNS将解析到同名称空间下的 Service。这个特点在多环境的情况下非常有用，例如将开发环境、测试环境、生产环境部署在不同的名称空间下，应用程序只需要使用 `<service-name>` 即可进行服务发现，无需为不同的环境修改配置。如果您想跨名称空间访问服务，则必须使用完整的域名（fully qualified domain name，FQDN）。
 
 ## 并非所有对象都在名称空间里
 

@@ -5,7 +5,7 @@
       <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
         <el-card style="height: 100%; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
           <h4>QQ群</h4>
-          <div>
+          <div>一键进群
             <Qq/> 808894550
           </div>
           <p style="margin-bottom: 0; margin-top: 10px;">
@@ -18,7 +18,7 @@
             <h4>微信群</h4>
             <div>
               <div style="margin-top: 10px;">
-                <span>扫二维码加微信进群聊（群主会要求您分享图片到朋友圈）</span>
+                <span>微信扫码进群聊（需分享图片到朋友圈）</span>
                 <p style="margin-top: 10px; margin-bottom: 0; text-align: center;">
                   <!-- <img src="/images/dz.png" style="width: 150px;"></img> -->
                   <img src="/images/dz2.jpeg" style="width: 150px;"></img>
