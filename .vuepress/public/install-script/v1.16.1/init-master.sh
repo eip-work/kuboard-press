@@ -32,4 +32,4 @@ wget https://docs.projectcalico.org/v3.9/manifests/calico.yaml
 sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico.yaml
 kubectl apply -f calico.yaml
 
-echo -e "\033[31;1m请确保您正在使用 https://kuboard.cn/install/install-k8s.html 上的最新K8S安装文档，并加入了在线答疑QQ群，以避免碰到问题时无人解答\033[0m"
+echo -e "\033[31;1mKubernetes.org.cn发文审核周期长，请确保您正在使用 https://kuboard.cn/install/install-k8s.html 上的最新文档，并加入了在线答疑QQ群808894550，以避免碰到问题时无人解答\033[0m"

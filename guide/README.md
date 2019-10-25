@@ -25,10 +25,3 @@ description: 熟悉Kuboard_on_Kubernetes_的最佳途径。
 * 根据微服务上下文查看监控结果
 
   [在微服务上下文中监控 example](example/monitor.html) <Badge text="alpha" type="warn"/>
-
-**Kuboard 可用于**
-
-* 管理 Kubernetes 集群
-* 管理部署于 Kubernetes 的微服务
-* 诊断集群中的问题
-* 监控部署于 Kubernetes 的微服务

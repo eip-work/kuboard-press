@@ -96,4 +96,4 @@ systemctl enable kubelet && systemctl start kubelet
 
 docker version
 
-echo -e "\033[31;1m请确保您正在使用 https://kuboard.cn/install/install-k8s.html 上的最新文档，并加入了在线答疑QQ群，以避免碰到问题时无人解答\033[0m"
+echo -e "\033[31;1mKubernetes.org.cn发文审核周期长，请确保您正在使用 https://kuboard.cn/install/install-k8s.html 上的最新文档，并加入了在线答疑QQ群808894550，以避免碰到问题时无人解答\033[0m"

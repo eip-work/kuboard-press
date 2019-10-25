@@ -53,6 +53,8 @@ meta:
 
 ## 实战：更新 nginx Deployment
 
+<SharingBlock>
+
 <el-tabs type="border-card">
 <el-tab-pane label="使用kubectl">
 
@@ -127,3 +129,5 @@ watch kubectl get pods -l app=nginx
 
 
 ~~呱唧呱唧，恭喜您，即将成为k8s的大神的您，已经迈进了您k8s的最重要的一步了--入门，那么接下来请再接再厉，继续征服k8s的高峰！！！
+
+</SharingBlock>

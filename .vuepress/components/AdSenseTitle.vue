@@ -1,30 +1,22 @@
 <template>
   <div :style="$isDev ? 'background-color: #grey;' : ''" v-if="!$frontmatter.lessAds && $themeConfig.showAds">
     <div class="ads">
-      <!-- <Qq></Qq> 
-      群号: 808894550 
-      <span style="color: red; font-weight: 500;">在线答疑</span>，
-      初学者可选择在线课程，语言更通俗：
-      <span @click="$sendGaEvent('极客时间', '极客时间', '极客时间：' + $page.path)">
-        <a target="_blank" href="https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D">深入剖析Kubernetes</a>
-      </span> -->
       <div>
-
-      <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
-        <span class="name">
-          {{ random.name }}
-        </span>
-        <span class="description">
-          {{ random.description }}
-        </span>
-        <span class="description-strong">
-          {{ random.strong }}
-        </span>
-        <span class="action">
-          {{ random.action }}
-        </span>
-      </a>
-      <span class="ads-text">广告</span>
+        <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
+          <span class="name">
+            {{ random.name }}
+          </span>
+          <span class="description">
+            {{ random.description }}
+          </span>
+          <span class="description-strong">
+            {{ random.strong }}
+          </span>
+          <span class="action">
+            {{ random.action }}
+          </span>
+        </a>
+        <span class="ads-text">广告</span>
       </div>
     </div>
     <slot></slot>
@@ -47,40 +39,7 @@
 export default {
   data () {
     return {
-      ads: [
-        {
-          name: 'Sealyun',
-          description: 'Kubernetes，',
-          strong: '一键离线安装',
-          action: '去看看',
-          url: 'http://store.lameleg.com?referrer=shaohq',
-          weight: 20
-        },
-        {
-          name: '阳明的博客',
-          description: 'Kubernetes，',
-          strong: '实战课程',
-          action: '去看看',
-          url: 'https://www.qikqiak.com/post/promotion-51/',
-          weight: 50
-        },
-        {
-          name: '极客时间',
-          description: '精要30计，让DevOps快速落地',
-          strong: 'DevOps实战笔记',
-          action: '去看看',
-          url: 'https://time.geekbang.org/column/intro/100036601?code=0Totv3yN%2FohiumTclUF4ky4qRYs9Ecq6ZK4IdgNf88M%3D',
-          weight: 30
-        },
-        // {
-        //   name: '宝塔面板',
-        //   description: '一键全能 Linux 部署及管理，',
-        //   strong: '送你3188元礼包',
-        //   action: '点我领取',
-        //   url: 'https://www.bt.cn/?invite_code=MV9vdnlveno=',
-        //   weight: 50
-        // }
-      ]
+      ads: require('./ad-list')
     }
   },
   computed: {
@@ -138,7 +97,7 @@ export default {
 .ads span.description-strong {
   font-size: 0.9em;
   color: red;
-  font-weight: normal;
+  font-weight: 500;
 }
 .ads span.action {
   font-size: 0.75em;

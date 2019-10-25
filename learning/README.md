@@ -30,6 +30,7 @@ meta:
 
   * [什么是Kubernetes](/learning/k8s-bg/what-is-k8s.html)
   * [Kubernetes组件](/learning/k8s-bg/component.html)
+
 ## **Kubernetes 体验**
   * [安装 Kubernetes 单Master节点](/install/install-k8s.html) （30分钟，初学者也许需要更多）
     * 参照经过众多网友验证，不断优化的安装文档，迅速完成 Kubernetes 安装，拥有属于自己的 Kubernetes 集群。
@@ -37,8 +38,7 @@ meta:
     * 使用 Kuboard，无需编写复杂冗长的 YAML 文件，就可以轻松管理 Kubernetes 集群。
   * [创建 busybox](/guide/example/busybox.html) （10分钟）
     * 快速在 Kubernetes 集群中安装一个部署，并与当中的容器组交互。
-  * [导入 example 微服务应用](/guide/example/import.html) （15分钟）
-    * 导入一个完整的 example 微服务应用，体验 Spring Cloud 在 Kubernetes 上的部署过程。
+
 
 ## **Kubernetes 入门**
   * [0. 学习Kubernetes基础知识](/learning/k8s-basics/kubernetes-basics.html) (10分钟)
@@ -48,6 +48,17 @@ meta:
     * [4. 伸缩应用程序](/learning/k8s-basics/scale.html) (10分钟)
     * [5. 执行滚动更新](/learning/k8s-basics/update.html) (10分钟)
   * [6. 复习Kubernetes核心概念](/learning/k8s-basics/k8s-core-concepts.html) (10分钟)
+  ::: tip
+  * 入门教程是经典。推荐初学者学习入门教程 2 - 3 遍，甚至更多。
+  * 完成入门教程之后，建议首先阅读的文章内容是：
+    * [控制器](/learning/k8s-bg/architecture/controller.html)
+    * [诊断应用程序](/learning/k8s-advanced/ts/application.html)
+    * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.html)
+    * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html)
+    * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
+    * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
+  * 下一步，可按教程章节顺序对 Kubernetes 各种概念进行深入理解
+  :::
 
 ## **Kubernetes 进阶**
   * 架构
@@ -119,11 +130,15 @@ meta:
 
 ## **Kubernetes 实战**
 
-[从微服务视角理解 Kubernetes](/learning/k8s-practice/micro-service/kuboard-view-of-k8s.html)
+* [从微服务视角理解 Kubernetes](/learning/k8s-practice/micro-service/kuboard-view-of-k8s.html)
 
 在 Kubernetes 上部署 Spring Cloud 微服务：
 
 * [概述](/learning/k8s-practice/spring-cloud/)
+* [导入 example 微服务应用](/guide/example/import.html) （15分钟）
+  * 导入一个完整的 example 微服务应用，体验 Spring Cloud 在 Kubernetes 上的部署过程。
+* [在微服务上下文中监控 example](example/monitor.html) <Badge text="alpha" type="warn"/>
+  * 根据微服务上下文查看监控结果
 
 在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
 

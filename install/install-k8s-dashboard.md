@@ -57,7 +57,7 @@ Kubernetes Dashboard 当前，只支持使用 Bearer Token登录。
   ```
 
 * 获取Bearer Token
-
+  
   执行命令：
   ```sh
   kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')

@@ -1,20 +1,19 @@
 <template>
   <div>
     <el-dialog
-      title="催更利器"
+      title="感谢阅读"
       :visible.sync="dialogVisible"
       width="60%"
       :before-close="handleClose"
       :append-to-body	="true">
       <div style="text-align: center; font-size: 18px; weight: 500;">
-        <div style="background-color: #f8f8f8; padding: 10px 10px 10px 10px; margin-bottom: 10px; border: solid 1px #ddd;">
-          鼓励作者尽快完成 Kubernetes 教程
-          <span style="color: red; font-weight: 500;">剩下的 {{$themeConfig.incompleteRatio}}% </span>，
-          所以我要
+        <div style="background-color: rgb(236, 245, 255); padding: 10px 10px 10px 10px; margin-bottom: 10px; border: solid 1px #007af5;">
           <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
             给一个 Github Star
             <OutboundLink/>
           </a>
+          就可以鼓励作者尽快完成
+          <span style="color: red; font-weight: 500;">剩下的 {{$themeConfig.incompleteRatio}}% </span>
         </div>
         <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
           <div style="border: solid 1px #ddd;">
@@ -107,24 +106,8 @@ export default {
       localStorage.setItem('stared', 'true')
       this.$sendGaEvent('StarGazer', 'SG:GotoGithub', 'SG:前往github' + this.$page.path)
     },
-    gotoStar() {
-      this.dialogVisible = false
-      localStorage.setItem('stared', 'true')
-      window.open('https://github.com/eip-work/kuboard-press')
-      if (window.ga) {
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: 'StarGazer',
-          eventAction: 'SG:GotoGithub',
-          eventLabel: 'SG:前往github'
-        });
-        console.log('发送成功 ga event')
-      } else {
-        console.log('开发环境，不发送 ga event')
-      }
-    },
     handleClose (done) {
-      this.$message.success('Kuboard及文档是免费提供的')
+      this.$message.success('Kuboard及Kubernetes教程都是免费提供的，请给一个 github star 以示鼓励')
       if (window.ga) {
         window.ga('send', {
           hitType: 'event',

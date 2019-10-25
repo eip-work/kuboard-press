@@ -1,6 +1,6 @@
 {
-  "name": "Kuboard文档",
-  "short_name": "KuboardDocs",
+  "name": "Kuboard官网",
+  "short_name": "Kuboard",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",

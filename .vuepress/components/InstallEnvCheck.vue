@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="border: solid 1px #E6A23C; background-color: rgb(253, 246, 236); padding: 1rem;">
     <div v-show="!envOk" key="not">
 
     <grid :rwd="{compact: 'stack'}">
