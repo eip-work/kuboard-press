@@ -77,6 +77,8 @@ Labels（标签）可以在创建 Kubernetes 对象时附加上去，也可以�
 
 ## 实战：为您的 nginx Deployment 创建一个 Service
 
+<SharingBlock>
+
 <el-tabs type="border-card">
 <el-tab-pane label="使用kubectl">
 
@@ -199,3 +201,5 @@ curl <任意节点的 IP>:32600
 ~~接下来是对于多实例部署和滚动更新的相关介绍与实践
 
 ~~let‘s go-> [应用程序的伸缩](./scale.html)
+
+</SharingBlock>

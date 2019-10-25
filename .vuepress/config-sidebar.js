@@ -221,6 +221,7 @@ module.exports = {
             'k8s-intermediate/persistent/pv',
             'k8s-intermediate/persistent/storage-class',
             'k8s-intermediate/persistent/nfs',
+            'k8s-intermediate/persistent/limits',
           ]
         },
         {

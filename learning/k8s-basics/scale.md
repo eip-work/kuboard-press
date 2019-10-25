@@ -44,6 +44,8 @@ spec:
 
 ## 实战：将 nginx Deployment 扩容到 4 个副本
 
+<SharingBlock>
+
 <el-tabs type="border-card">
 <el-tab-pane label="使用kubectl">
 
@@ -112,3 +114,5 @@ watch kubectl get pods -o wide
 ~~一旦运行了多个应用程序实例，就可以在不停机的情况下执行滚动更新了，
 
 ~~let‘s go->  [执行滚动更新](./update.html)
+
+</SharingBlock>

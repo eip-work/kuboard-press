@@ -3,7 +3,7 @@
     <div v-show="!authorized" key="not">
 
         <p style="color: red">请扫描二维码加微信后，获得授权码，显示完整文档。（需分享朋友圈）</p>
-        <p>全站只在此一处需要输入验证码</p>
+        <p>一次验证，可查看全站所有内容</p>
       <grid :rwd="{compact: 'stack'}">
         <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 0rem 0 1rem 1rem;">
 
@@ -34,8 +34,9 @@
     <div v-show="authorized" key="ok">
       <!-- <el-button style="margin-top: 10px;" @click="review" type="text">再看看我是否符合安装条件</el-button> -->
       <el-alert
-        title="已为您显示完整文档，感谢配合。"
-        description="缓存清空后需重新获得验证码"
+        style="margin-bottom: 10px;"
+        title="已为您解锁全站完整文档，感谢配合。"
+        description="缓存清空后需重新输入验证码"
         effect="dark"
         type="success">
       </el-alert>
@@ -46,6 +47,15 @@
 </template>
 
 <script>
+function genCode() {
+  let code = parseInt(Math.random() * 100)
+  if (code < 10) {
+    return code + 10
+  } else {
+    return code
+  }
+}
+
 export default {
 
   data () {
@@ -53,14 +63,10 @@ export default {
     if (typeof window !== 'undefined') {
       a = localStorage.getItem('SharingBlockValidated')
     }
-    let c2 = parseInt(Math.random() * 10)
-    if (c2 === 0) {
-      c2 = 1
-    }
     return {
       authorized: a,
-      code1: parseInt(Math.random() * 100),
-      code2: c2,
+      code1: genCode(),
+      code2: genCode(),
       authCode: undefined
     }
   },

@@ -124,6 +124,8 @@ spec:
 
 ## 实战：通过 Ingress 使您的应用程序在互联网可用
 
+<SharingBlock>
+
 ::: warning 前提
 * 假设您已经完成了 [公布应用程序](/learning/k8s-basics/expose.html) 中的实战部分
 * 假设您已经将 Ingress 融入到您的网络拓扑中，并且将 `*.demo.kuboard.cn` （请使用您自己的域名）解析到对应的外网 IP 地址
@@ -272,3 +274,6 @@ Kuboard 工作负载编辑器将 kubernetes 中三个主要对象 Deployment/Ser
 
 </el-tab-pane>
 </el-tabs>
+
+
+</SharingBlock>

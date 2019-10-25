@@ -109,6 +109,8 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ## 安装 docker / kubelet
 
+<SharingBlock>
+
 <InstallEnvCheck type="kubernetes">
 
 使用 root 身份在所有节点执行如下代码，以安装软件：
@@ -141,6 +143,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 </el-tabs>
 
 </InstallEnvCheck>
+
+</SharingBlock>
 
 <!-- </div>
 

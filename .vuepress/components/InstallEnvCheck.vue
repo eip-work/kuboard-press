@@ -2,8 +2,8 @@
   <div style="border: solid 1px #E6A23C; background-color: rgb(253, 246, 236); padding: 1rem;">
     <div v-show="!envOk" key="not">
 
-    <grid :rwd="{compact: 'stack'}">
-      <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
+    <!-- <grid :rwd="{compact: 'stack'}">
+      <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;"> -->
 
     <div>
 
@@ -27,11 +27,11 @@
 
       </div>
 
-      </grid-item>
+      <!-- </grid-item>
       <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
         <AdSenseSquare/>
       </grid-item>
-    </grid>
+    </grid> -->
 
     </div>
     <el-collapse-transition>

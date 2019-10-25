@@ -112,6 +112,8 @@ meta:
 
 ## 查看部署结果
 
+<SharingBlock>
+
 按照上面的部署方式，有如下两种方式可以从浏览器访问 eureka-server 的界面：
 
 * 使用域名： [http://cloud-eureka.ocp.demo.kuboard.cn/](http://cloud-eureka.ocp.demo.kuboard.cn/)
@@ -122,3 +124,5 @@ meta:
 eureka-server 界面如下图所示：
 
 ![Kubernetes教程：在K8S部署SpringCloud服务注册中心Eureka-Server](./eureka-server.assets/image-20190927140934092.png)
+
+</SharingBlock>
