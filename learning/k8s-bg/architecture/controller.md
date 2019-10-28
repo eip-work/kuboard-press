@@ -1,6 +1,7 @@
 ---
 vssueId: 121
 layout: LearningLayout
+sharingTitle: Kubernete中经常被忽略的最重要的概念：控制器模式
 description: Kubernete教程_Kubernetes控制器_在机器人技术和自动化技术中，控制循环是一个控制系统状态的无限循环。控制循环的例子有：房间里的恒温器。在恒温器上设定好目标温度，就是告诉该控制循环你想要的目标状态。房间里的实际温度，是当前状态恒温器通过打卡或关闭加热装置，不断地使当前状态接近于目标状态
 meta:
   - name: keywords

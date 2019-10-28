@@ -1,6 +1,7 @@
 ---
 vssueId: 116
 layout: LearningLayout
+sharingTitle: 这篇文章终于讲清楚了Kubernetes是什么
 description: Kubernete教程_Kubernetes介绍_Kubernetes是一个可以移植、可扩展的开源平台，使用声明式的配置，并依据配置信息自动地执行容器化应用程序的管理。
 meta:
   - name: keywords

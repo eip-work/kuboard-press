@@ -3,7 +3,7 @@
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
       <AdSensePageTop></AdSensePageTop>
     </div>
-    <div v-if="!$frontmatter.lessAds" class="page-nav" style="max-width: 1000px; margin: auto;">
+    <div v-if="!$frontmatter.isSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>
@@ -29,6 +29,9 @@
     <slot name="top" />
 
     <Content class="theme-default-content" style="padding-top: 0; margin-top: -3rem; padding-bottom: 1rem;"/>
+    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="$frontmatter.isSharing">
+      Kuboard - 快速在 Kubernetes 上落地微服务
+    </div>
     <JoinCommunity></JoinCommunity>
     <PageEdit style="max-width: 1000px;"/>
     <PageNav v-bind="{ sidebarItems }" style="max-width: 1000px;"/>
@@ -50,7 +53,16 @@ import JoinCommunity from './JoinCommunity'
 
 export default {
   components: { PageEdit, PageNav, JoinCommunity },
-  props: ['sidebarItems']
+  props: ['sidebarItems'],
+  mounted () {
+    if (typeof window !== 'undefined') {
+      if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
+        this.$frontmatter.isSharing = true
+        document.title = this.$frontmatter.sharingTitle || this.$page.title
+        this.$frontmatter.title = this.$frontmatter.sharingTitle
+      }
+    }
+  }
 }
 </script>
 

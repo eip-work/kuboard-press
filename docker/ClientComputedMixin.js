@@ -80,7 +80,7 @@ module.exports = siteData => {
       if (page.frontmatter.titlePrefix !== undefined) {
         selfTitle = page.frontmatter.titlePrefix + '_' + selfTitle
       }
-      if (page.path.indexOf('/learning/') === 0) {
+      if (page.path.indexOf('/learning/') === 0 && !page.frontmatter.isSharing) {
         return selfTitle + '_Kubernetes教程_K8S教程_K8S培训'
       }
       if (page.path.indexOf('/install/') === 0) {

@@ -202,6 +202,7 @@ module.exports = {
               children: [
                 'k8s-intermediate/workload/wl-job/',
                 'k8s-intermediate/workload/wl-job/spec',
+                'k8s-intermediate/workload/wl-job/failure',
               ]
             }
           ]

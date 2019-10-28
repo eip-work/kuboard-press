@@ -292,7 +292,7 @@ Hit enter for command prompt
   default-token-il9rc   kubernetes.io/service-account-token   1         1d
   nginxsecret           Opaque                                2         1m
   ```
-* 修改 nginx 部署，使 nginx 使用 Secrets 中的 https 证书，修改 Service，使其暴露 80 端口和 44额端口。nginx-secure-app.yaml 文件如下所示：
+* 修改 nginx 部署，使 nginx 使用 Secrets 中的 https 证书，修改 Service，使其暴露 80 端口和 443端口。nginx-secure-app.yaml 文件如下所示：
 
   ``` yaml {10,11,14,37,45,46}
   apiVersion: v1
@@ -304,7 +304,7 @@ Hit enter for command prompt
   spec:
     type: NodePort
     ports:
-    - port: 8080
+    - port: 80
       targetPort: 80
       protocol: TCP
       name: http

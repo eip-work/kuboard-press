@@ -1,6 +1,6 @@
 <template>
   <div :style="$isDev ? 'background-color: #grey;' : ''" v-if="!$frontmatter.lessAds && $themeConfig.showAds">
-    <div class="ads">
+    <div class="ads" v-if="!$frontmatter.isSharing">
       <div>
         <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
           <span class="name">
