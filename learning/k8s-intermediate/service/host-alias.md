@@ -108,6 +108,8 @@ fe00::2	ip6-allrouters
 
 ## 为什么kubelet要管理hosts文件
 
+<SharingBlock>
+
 Kubelet [管理](https://github.com/kubernetes/kubernetes/issues/14633) `hosts` Pod 中每个容器的 hosts 文件，以便可以阻止 Docker 在容器启动以后 [修改](https://github.com/moby/moby/issues/17190) 该文件。
 
 细节情况请参考两个 github issue：
@@ -117,3 +119,5 @@ Kubelet [管理](https://github.com/kubernetes/kubernetes/issues/14633) `hosts` 
 [https://github.com/moby/moby/issues/17190](https://github.com/moby/moby/issues/17190)
 
 由于该文件已经被 Kubelet 管理起来，任何对该文件手工修改的内容，都将在 Kubelet 重启容器或者 Pod 重新调度时被覆盖。因此，最好是通过 `hostAliases` 修改 Pod 的 /etc/hosts 文件，而不是手工修改。
+
+</SharingBlock>

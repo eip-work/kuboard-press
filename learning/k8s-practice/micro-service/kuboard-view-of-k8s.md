@@ -1,13 +1,14 @@
 ---
 vssueId: 67
 layout: LearningLayout
+lessAds: true
 description: Kubernetes教程_本文描述了一个经典微服务参考架构_并且通过三个视图（集群概览、名称空间、工作负载）理解微服务与Kubernetes的映射关系。
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,Kubernetes微服务,K8S培训,K8S教程
 ---
 
-# 从微服务视角看Kubernetes
+# 从微服务视角理解Kubernetes，并快速在K8S上落地微服务
 
 <AdSenseTitle/>
 
@@ -20,7 +21,24 @@ meta:
 * 更多的部署单元
 * 更复杂的部署脚本
 
-作者在落地 Spring Cloud 微服务的过程中，设计了如下图所示的微服务参考架构：
+Kuboard 为了降低 Kubernetes 学习使用门槛，提供了：
+* **K8S快速安装文档**
+  
+  过去仅仅是安装 Kubernetes 这件事情，初学者都需要用 1 个星期甚至 1 个月才能搞定。如今 Kuboard 提供了安装文档，每天有300多人验证的，初学者30分钟即可完成安装，碰到问题还可在QQ社群在线免费答疑。
+
+* **免费K8S教程**
+  
+  Kubernetes 作为一款开源软件，其官方文档为英文，市面上大部分中文书籍与当前最新的版本存在出入。kuboard.cn 提供了最新的 K8S 免费中文教程，整理了最佳学习路径，帮助初学者快速完成从入门到投产的过程。
+
+* **管理面板**
+
+  使用 Kuboard 作为 Kubernetes 管理面板，无需编写 yaml 文件，直接以图形界面完成 Kubernetes 的管理和运维任务
+
+* **微服务实战**
+  
+  以当下主流的 Spring Cloud 微服务架构作为例子，完成在 Kubernetes 上落地微服务架构的任务。
+
+Kuboard 在落地 Spring Cloud 微服务的过程中，设计了如下图所示的微服务参考架构：
 
 ![Kubernetes教程：Kubernetes实战-微服务参考架构](./kuboard-view-of-k8s.assets/image-20190731230110206.png)
 

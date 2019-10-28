@@ -3,7 +3,7 @@
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
       <AdSensePageTop></AdSensePageTop>
     </div>
-    <div class="page-nav" style="max-width: 1000px; margin: auto;">
+    <div v-if="!$frontmatter.lessAds" class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>

@@ -82,6 +82,18 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
   kubectl get nodes
   ```
 
+  ::: tip 名称空间
+  在命令后增加 `-A` 或 `--all-namespaces` 可查看所有 [名称空间中](/learning/k8s-intermediate/obj/namespaces.html) 的对象，使用参数 `-n` 可查看指定名称空间的对象，例如 
+  ``` sh
+  # 查看所有名称空间的 Deployment
+  kubectl get deployments -A
+  kubectl get deployments --all-namespaces
+  # 查看 kube-system 名称空间的 Deployment
+  kubectl get deployments -n kube-system
+  ```
+  > [并非所有对象都在名称空间里](/learning/k8s-intermediate/obj/namespaces.html#并非所有对象都在名称空间里)
+  :::
+
 - **kubectl describe** - 显示有关资源的详细信息
 
   ``` sh

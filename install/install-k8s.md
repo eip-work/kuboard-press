@@ -86,9 +86,9 @@ meta:
 
 <div>
 
-[领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+<!-- [领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
-[腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+[腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console) -->
 
 [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
@@ -195,6 +195,8 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ## 安装 docker / kubelet
 
+<!-- <SharingBlock> -->
+
 <InstallEnvCheck type="k8s">
 
 使用 root 身份在所有节点执行如下代码，以安装软件：
@@ -228,6 +230,9 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 </el-tabs>
 
 </InstallEnvCheck>
+
+<!-- </SharingBlock> -->
+
 <!-- </div>
 
 <div slot="step3"> -->

@@ -33,7 +33,7 @@ description: 使用Kuboard在Kubernetes上安装监控套件，并对example微�
 许多网友自己搭建 NFS 测试环境，再创建 NFS存储类，经常碰到 `access denied` 这类权限问题。为了帮助大家更快地完成 NFS 测试环境搭建，Kuboard提供了一篇NFS相关的简明文档，请参考 [搭建NFS Server](/learning/k8s-intermediate/persistent/nfs.html)
 :::
 
-* 在 master 节点执行
+* 在 master 节点执行 <Badge type="error">此步骤不可忽略</Badge>
 
 ```bash
 kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kubernetes/pki/etcd/server.crt --from-file=/etc/kubernetes/pki/etcd/server.key
@@ -41,41 +41,43 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
 * 将鼠标移到 ***设置*** 菜单
 
-![Kubernetes教程：在Kuboard中监控-进入监控套件安装页](./monitor.assets/image-20190723150525017.png)
+  ![Kubernetes教程：在Kuboard中监控-进入监控套件安装页](./monitor.assets/image-20190723150525017.png)
 
 
 
 * 点击 ***监控套件 - example***
 
-![Kubernetes教程：在Kuboard中监控-进入监控套件安装页](./monitor.assets/image-20190723150616633.png)
+  ![Kubernetes教程：在Kuboard中监控-进入监控套件安装页](./monitor.assets/image-20190723150616633.png)
 
 * 点击 ***全局监控套件 / 查找并安装***
 
-![Kubernetes教程：在Kuboard中监控-安装全局监控套件-查找](./monitor.assets/image-20190723150853277.png)
+  ![Kubernetes教程：在Kuboard中监控-安装全局监控套件-查找](./monitor.assets/image-20190723150853277.png)
 
 * 点击 ***资源层监控套件 / 安装***
 
-![Kubernetes教程：在Kuboard中监控-安装全局监控套件-安装](./monitor.assets/image-20190723151045112.png)
+  ![Kubernetes教程：在Kuboard中监控-安装全局监控套件-安装](./monitor.assets/image-20190723151045112.png)
 
 * 点击 ***全局监控套件 / 资源层监控套件 / 安装***
 
-![Kubernetes教程：在Kuboard中监控-安装全局监控套件-安装](./monitor.assets/image-20190723151103353.png)
+  ![Kubernetes教程：在Kuboard中监控-安装全局监控套件-安装](./monitor.assets/image-20190723151103353.png)
 
 * 根据向导提示，完成工作负载的导入
 
-![Kubernetes教程：在Kuboard中监控-安装全局监控套件-导入对应的工作负载](./monitor.assets/image-20190723151339137.png)
+  ![Kubernetes教程：在Kuboard中监控-安装全局监控套件-导入对应的工作负载](./monitor.assets/image-20190723151339137.png)
 
 * 点击 ***资源层监控套件 / 初始化***
 
-  由于下载镜像需要时间，您可能需要等待5-10分钟后，才能成功执行初始化。初始化成功的话，您将看到如下提示信息。
+  ::: danger 需要时间
+  由于下载镜像需要时间，您可能需要等待5-10分钟后，才能完成监控套件对应 Pod 的启动。请在所有 Pod 成功启动后再执行初始化。初始化成功的话，您将看到如下提示信息。（如果第一次初始化没有看到 “创建 dashboard 成功” 的消息，可等候一段时间，监控 Pod 启动成功后再“重新初始化”）
+  :::
 
-![Kubernetes教程：在Kuboard中监控-安装全局监控套件-初始化](./monitor.assets/image-20190723151357262.png)
+  ![Kubernetes教程：在Kuboard中监控-安装全局监控套件-初始化](./monitor.assets/image-20190723151357262.png)
 
 ### 安装名称空间监控套件
 
 * 点击 ***名称空间监控套件 example / 查找并安装***
 
-![Kubernetes教程：在Kuboard中监控-安装名称空间监控套件-查找](./monitor.assets/image-20190723151422460.png)
+  ![Kubernetes教程：在Kuboard中监控-安装名称空间监控套件-查找](./monitor.assets/image-20190723151422460.png)
 
 * 重复前述过程，安装监控套件
 
@@ -87,7 +89,7 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
   安装完成后，界面如下图所示：
 
-![Kubernetes教程：在Kuboard中监控-安装名称空间监控套件-安装](./monitor.assets/image-20190723151711230.png)
+  ![Kubernetes教程：在Kuboard中监控-安装名称空间监控套件-安装](./monitor.assets/image-20190723151711230.png)
 
 ### 查看监控套件的工作负载
 
@@ -97,7 +99,7 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
   > 全局监控套件安装在 kube-system 名称空间
 
-![Kubernetes教程：在Kuboard中监控-查看监控套件-全局](./monitor.assets/image-20190723151804727.png)
+  ![Kubernetes教程：在Kuboard中监控-查看监控套件-全局](./monitor.assets/image-20190723151804727.png)
 
 ## 重启 example 容器组
 
@@ -119,7 +121,7 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
   > * Kubernetes 在启动容器组时，根据 imagePullPolicy 的设置 Always，将会尝试从镜像仓库抓取最新镜像，这一特性，可以用于开发环境和测试环境的版本更新，因为您的 devops 系统肯能不会为 daily build 生成新的镜像标签；
   > * 此处删除容器组的目的是，重新启动容器，以便容器中的监控探针能够检测到其对应监控套件的存在。
 
-![Kubernetes教程：在Kuboard中监控-重启容器组](./monitor.assets/image-20190723151845303.png)
+  ![Kubernetes教程：在Kuboard中监控-重启容器组](./monitor.assets/image-20190723151845303.png)
 
 * 在列表中选择
 
@@ -135,31 +137,31 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
   * web-example-xxxxxx-xxxx
 
-![Kubernetes教程：在Kuboard中监控-重启容器组-选中容器组](./monitor.assets/image-20190723151902003.png)
+  ![Kubernetes教程：在Kuboard中监控-重启容器组-选中容器组](./monitor.assets/image-20190723151902003.png)
 
 * 点击 ***删除*** 按钮
 
-![Kubernetes教程：在Kuboard中监控-重启容器组-删除容器组](./monitor.assets/image-20190723151914994.png)
+  ![Kubernetes教程：在Kuboard中监控-重启容器组-删除容器组](./monitor.assets/image-20190723151914994.png)
 
 
 
 * 点击 ***确定***
 
-![Kubernetes教程：在Kuboard中监控-重启容器组-确认删除容器组](./monitor.assets/image-20190723151932871.png)
+  ![Kubernetes教程：在Kuboard中监控-重启容器组-确认删除容器组](./monitor.assets/image-20190723151932871.png)
 
 
 
 * 点击 ***应用***
 
-![Kubernetes教程：在Kuboard中监控-重启容器组-执行](./monitor.assets/image-20190723151951910.png)
+  ![Kubernetes教程：在Kuboard中监控-重启容器组-执行](./monitor.assets/image-20190723151951910.png)
 
 * 等待，直到容器组调整完成
 
-![Kubernetes教程：在Kuboard中监控-重启容器组-等待执行过程](./monitor.assets/image-20190723152020605.png)
+  ![Kubernetes教程：在Kuboard中监控-重启容器组-等待执行过程](./monitor.assets/image-20190723152020605.png)
 
 * 点击 ***后退***
 
-![Kubernetes教程：在Kuboard中监控-重启容器组-查看结果](./monitor.assets/image-20190723152040219.png)
+  ![Kubernetes教程：在Kuboard中监控-重启容器组-查看结果](./monitor.assets/image-20190723152040219.png)
 
 ## 查看监控信息
 
@@ -169,13 +171,13 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
   如果您在下图中没有看到 ***Nginx 监控***， ***容器组监控*** 等，请刷新您的页面，因为监控套件初始化之后需要刷新页面才能加载并显示。
 
-![Kubernetes教程：在Kuboard中监控-查看Nginx监控、容器组监控入口](./monitor.assets/image-20190723152124196.png)
+  ![Kubernetes教程：在Kuboard中监控-查看Nginx监控、容器组监控入口](./monitor.assets/image-20190723152124196.png)
 
 * 点击 ***所在节点监控***
 
   可查看所在节点的资源使用情况监控信息
 
-![Kubernetes教程：在Kuboard中监控-查看所在节点监控](./monitor.assets/image-20190718104156232.png)
+  ![Kubernetes教程：在Kuboard中监控-查看所在节点监控](./monitor.assets/image-20190718104156232.png)
 
 
 
@@ -187,7 +189,7 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
 * 点击 Nginx 监控
 
-![Kubernetes教程：在Kuboard中监控-查看Nginx监控](./monitor.assets/image-20190718104729472.png)
+  ![Kubernetes教程：在Kuboard中监控-查看Nginx监控](./monitor.assets/image-20190718104729472.png)
 
 
 
@@ -197,7 +199,7 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 * 点击 ***持久层 / example db***
 * 点击 ***MySQL 监控***
 
-![Kubernetes教程：在Kuboard中监控-查看MySQL监控](./monitor.assets/image-20190718105420599.png)
+  ![Kubernetes教程：在Kuboard中监控-查看MySQL监控](./monitor.assets/image-20190718105420599.png)
 
 
 
@@ -207,7 +209,7 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 * 点击 ***微服务层 / example***
 * 点击 ***Java 虚拟机监控***
 
-![Kubernetes教程：在Kuboard中监控-查看Java虚拟机监控](./monitor.assets/image-20190718105641651.png)
+  ![Kubernetes教程：在Kuboard中监控-查看Java虚拟机监控](./monitor.assets/image-20190718105641651.png)
 
 
 
@@ -215,10 +217,10 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
 * 在 ***微服务层 / example*** 中点击 ***链路追踪***
 
-![Kubernetes教程：在Kuboard中监控-查看链路追踪信息](./monitor.assets/image-20190718120957255.png)
+  ![Kubernetes教程：在Kuboard中监控-查看链路追踪信息](./monitor.assets/image-20190718120957255.png)
 
 
 
 
 
-![Kubernetes教程：在Kuboard中监控-查看链路追踪信息-APM](./monitor.assets/image-20190718121133160.png)
+  ![Kubernetes教程：在Kuboard中监控-查看链路追踪信息-APM](./monitor.assets/image-20190718121133160.png)

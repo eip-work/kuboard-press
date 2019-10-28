@@ -48,10 +48,12 @@ meta:
     * [4. 伸缩应用程序](/learning/k8s-basics/scale.html) (10分钟)
     * [5. 执行滚动更新](/learning/k8s-basics/update.html) (10分钟)
   * [6. 复习Kubernetes核心概念](/learning/k8s-basics/k8s-core-concepts.html) (10分钟)
-  ::: tip
+  ::: tip 学习路径建议
   * 入门教程是经典。推荐初学者学习入门教程 2 - 3 遍，甚至更多。
   * 完成入门教程之后，建议首先阅读的文章内容是：
     * [控制器](/learning/k8s-bg/architecture/controller.html)
+    * [Pod容器组](/learning/k8s-intermediate/workload/pod.html)
+    * [Deployment](/learning/k8s-intermediate/workload/wl-deployment/)
     * [诊断应用程序](/learning/k8s-advanced/ts/application.html)
     * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.html)
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html)
@@ -85,7 +87,7 @@ meta:
     * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment/)
     * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset/)
     * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset/)
-    * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/)
     * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/) <Badge text="正在撰写" type="warn"/>
   * 服务发现、负载均衡、网络
     * [Service 概述](/learning/k8s-intermediate/service/service.html)

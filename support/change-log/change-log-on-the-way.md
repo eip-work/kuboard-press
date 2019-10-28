@@ -1,28 +1,11 @@
 Kuboard v1.0.x 的更新说明
 
-
-## v1.0.4-beta.4
-
-**发布日期**
-
-2019年10月13日
-
-**新特性**
-
-**优化**
-
-* 修改提示：创建 docker 仓库的 Secret --> 填写 docker 仓库地址时，请以 http:// 或 https:// 开头
-
-**BUG 修复**
-
-* 工作负载编辑器 --> Ingress --> 注解被错误写成标签了
-
-* 打开监控界面时，应该使用 a 标签，而不是window.open 避免被浏览器屏蔽
-* PV可以不与StorageClass关联（手工创建PV的情况）
+* NFS 使用优化
+* 下载日志文件
+* 配置 nfs 时，提示需要能够在节点上 mount，并给出 mount 语句
 * 导入工作负载时，如果存储类没有 annotations，不应该报错
 * 表单校验：数据卷名不能带小数点
-* Kubernetes 体验的安装文档需要优化。
-* 点击空白处，不关闭对话框
+* Kubernetes 体验的安装文档需要优化
 * Prometheus 监控
 * 工作负载编辑器 --> 容器组 --> 容忍 -- 正在开发
 * HostAliases
@@ -40,7 +23,6 @@ Kuboard v1.0.x 的更新说明
 
 * PV 中支持 hostPath
 
-* 创建工作负载时，不追加前缀
 * 存储卷声明去掉分配模式的字段
 * 删除容器组时 - graceful period
 * Pod Conditions: lastProbeTime/reason/message

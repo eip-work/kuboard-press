@@ -18,7 +18,7 @@
             <h4>微信群</h4>
             <div>
               <div style="margin-top: 10px;">
-                <span>微信扫码进群聊（需分享图片到朋友圈）</span>
+                <span>微信扫码后，发送“加群”</span>
                 <p style="margin-top: 10px; margin-bottom: 0; text-align: center;">
                   <!-- <img src="/images/dz.png" style="width: 150px;"></img> -->
                   <img src="/images/dz2.jpeg" style="width: 150px;"></img>

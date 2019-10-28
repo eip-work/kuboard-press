@@ -420,6 +420,8 @@ Hit enter for command prompt
 
 ## 暴露 Service
 
+<SharingBlock>
+
 在您的应用程序中，可能有一部分功能需要通过 Service 发布到一个外部的 IP 地址上。Kubernetes 支持如下两种方式：
 * [NodePort](./service-types.html#nodeport)
 * [LoadBalancer](./service-types.html#loadbalancer)
@@ -458,3 +460,5 @@ spec:
 * 对于 HTTP、HTTPS 形式的访问推荐使用 Ingress 替代这种用法，参考 [Ingress通过互联网访问您的应用](./ingress.html)
 * 对于 TCP、UDP 等形式的访问，您仍然应该使用 Service NodePort
 :::
+
+</SharingBlock>

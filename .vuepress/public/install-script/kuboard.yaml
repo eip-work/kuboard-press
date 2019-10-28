@@ -27,6 +27,9 @@ spec:
       - name: kuboard
         image: eipwork/kuboard:latest
         imagePullPolicy: Always
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
 
 ---
 apiVersion: v1

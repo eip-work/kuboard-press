@@ -195,6 +195,14 @@ module.exports = {
                 'k8s-intermediate/workload/wl-daemonset/update',
                 'k8s-intermediate/workload/wl-daemonset/alternative',
               ]
+            },
+            {
+              title: '控制器 - Job',
+              collapsable: true,
+              children: [
+                'k8s-intermediate/workload/wl-job/',
+                'k8s-intermediate/workload/wl-job/spec',
+              ]
             }
           ]
         },
