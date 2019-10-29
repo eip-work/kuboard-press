@@ -30,7 +30,11 @@
 
     <Content class="theme-default-content" style="padding-top: 0; margin-top: -3rem; padding-bottom: 1rem;"/>
     <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="$frontmatter.isSharing">
-      Kuboard - 快速在 Kubernetes 上落地微服务
+      <p style="text-align: center;">
+        <a href="/">
+          <img src="/images/logo-main.png" style="margin: auto;">
+        </a>
+      </p>
     </div>
     <JoinCommunity></JoinCommunity>
     <PageEdit style="max-width: 1000px;"/>
@@ -57,7 +61,8 @@ export default {
   mounted () {
     if (typeof window !== 'undefined') {
       if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
-        this.$frontmatter.isSharing = true
+        // 如果带参数 sharing，则设置 $frontmatter.isSharing = true
+        this.$set(this.$frontmatter, 'isSharing', true)
         document.title = this.$frontmatter.sharingTitle || this.$page.title
         this.$frontmatter.title = this.$frontmatter.sharingTitle
       }

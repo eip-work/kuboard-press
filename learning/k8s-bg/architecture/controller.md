@@ -28,7 +28,7 @@ meta:
 
 ### 通过APIServer进行控制
 
-以 Kubernetes 中自带的一个控制器 Job Controller 为例。KUbernetes 自带的控制器都是通过与集群中 API Server 交互来达到调整状态的目的。
+以 Kubernetes 中自带的一个控制器 Job Controller 为例。Kubernetes 自带的控制器都是通过与集群中 API Server 交互来达到调整状态的目的。
 
 Job 是一种 Kubernetes API 对象，一个 Job 将运行一个（或多个）Pod，执行一项任务，然后停止。当新的 Job 对象被创建时，Job Controller 将确保集群中有合适数量的节点上的 kubelet 启动了指定个数的 Pod，以完成 Job 的执行任务。Job Controller 自己并不执行任何 Pod 或容器，而是发消息给 API Server，由其他的控制组件配合 API Server，以执行创建或删除 Pod 的实际动作。
 

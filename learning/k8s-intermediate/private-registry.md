@@ -1,6 +1,7 @@
 ---
 vssueId: 28
 layout: LearningLayout
+sharingTitle: 在 Kubernetes 中使用私有镜像仓库中的镜像
 description: Kubernetes教程_通过Kuboard配置Kubernetes_使用私有registry中的docker镜像
 meta:
   - name: keywords

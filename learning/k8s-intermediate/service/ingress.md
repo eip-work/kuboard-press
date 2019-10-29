@@ -1,5 +1,6 @@
 ---
 vssueId: 57
+sharingTitle: Kubernetes 核心概念详解之：Ingress
 layout: LearningLayout
 description: Kubernetes教程_本文介绍Kubernetes_Ingress的概念_包括Ingress基本概念_如何配置Ingress_Controller_如何使用kubectl_Kuboard操作Ingress信息
 meta:

@@ -1,6 +1,6 @@
 <template>
-  <div :style="$isDev ? 'background-color: #grey;' : ''" v-if="!$frontmatter.lessAds && $themeConfig.showAds">
-    <div class="ads" v-if="!$frontmatter.isSharing">
+  <div :style="$isDev ? 'background-color: #grey;' : ''">
+    <div class="ads" v-if="!$frontmatter.lessAds && $themeConfig.showAds && !isSharing">
       <div>
         <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
           <span class="name">
@@ -39,7 +39,15 @@
 export default {
   data () {
     return {
-      ads: require('./ad-list')
+      ads: require('./ad-list'),
+      isSharing: false
+    }
+  },
+  mounted () {
+    if (typeof window !== 'undefined') {
+      if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
+        this.isSharing = true
+      }
     }
   },
   computed: {
