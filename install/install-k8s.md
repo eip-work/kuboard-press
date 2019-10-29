@@ -50,7 +50,7 @@ meta:
 
 * **持续更新和完善**
   * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.2
-  * 当前已更新了 <font color="red"> 63 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
+  * 当前已更新了 <font color="red"> 64 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
 
 * **适应面广**
   * 网上大部分的 Kubernetes 安装文档，都是某位爱好者自己成功安装之后的一份笔记，他的特定条件，并不一定适用于你
@@ -318,6 +318,10 @@ kubeadm token create --print-join-command
 # kubeadm token create 命令的输出
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
+
+::: tip 有效时间
+该 token 的有效时间为 2 个小时，2小时内，您可以使用此 token 初始化任意数量的 worker 节点。
+:::
 
 
 ### 初始化worker

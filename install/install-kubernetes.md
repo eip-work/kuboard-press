@@ -271,6 +271,7 @@ kubectl get nodes
 > * 增加Master的 LoadBalancer
 > * 将所有节点的 /etc/hosts 文件中 apiserver.demo 解析为 LoadBalancer 的地址
 > * 添加第二、三个Master节点
+> * 初始化 master 节点的 token 有效时间为 2 小时
 
 <el-tabs type="border-card">
 <el-tab-pane label="和第一个Master节点一起初始化">
@@ -395,6 +396,10 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 </el-tab-pane>
 </el-tabs>
+
+::: tip 有效时间
+该 token 的有效时间为 2 个小时，2小时内，您可以使用此 token 初始化任意数量的 worker 节点。
+:::
 
 ### 初始化worker
 
