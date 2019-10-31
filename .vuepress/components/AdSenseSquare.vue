@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$themeConfig.showAds" :style="$isDev ? 'background-color: grey;' : ''">
+  <div v-if="$themeConfig.showAds && $isNotSharing" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- 正方形-正文 -->
     <ins class="adsbygoogle"

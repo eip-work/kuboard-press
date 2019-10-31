@@ -1,6 +1,6 @@
 <template>
   <div :style="$isDev ? 'background-color: #grey;' : ''">
-    <div class="ads" v-if="!$frontmatter.lessAds && $themeConfig.showAds && isNotSharing">
+    <div class="ads" v-if="!$frontmatter.lessAds && $themeConfig.showAds && $isNotSharing">
       <div>
         <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
           <span class="name">
@@ -44,18 +44,12 @@ export default {
     }
   },
   mounted () {
-    if (typeof window !== 'undefined') {
-      if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
-        // 如果带参数 sharing，则设置 isSharing = true
-        this.$set(this, 'isNotSharing', false)
-      } else {
-        this.$set(this, 'isNotSharing', true)
-      }
-    }
   },
   computed: {
     random () {
-      this.ads
+      if (!this.isNotSharing) {
+        return this.ads[0]
+      }
       let totalWeight = 0
       for (let item of this.ads) {
         totalWeight += item.weight

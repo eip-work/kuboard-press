@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-left-top" v-if="$themeConfig.showMoreAds" :style="$isDev ? 'background-color: grey;' : ''">
+  <div class="adsense-left-top" v-if="$themeConfig.showMoreAds && $isNotSharing" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- AdsenseLeftTop -->
     <ins class="adsbygoogle"

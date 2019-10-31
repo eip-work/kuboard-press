@@ -3,7 +3,7 @@
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
       <AdSensePageTop></AdSensePageTop>
     </div>
-    <div v-if="isNotSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
+    <div v-if="$isNotSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>
@@ -29,7 +29,7 @@
     <slot name="top" />
 
     <Content class="theme-default-content" style="padding-top: 0; margin-top: -3rem; padding-bottom: 1rem;"/>
-    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="$frontmatter.isSharing">
+    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="$isNotSharing">
       <p style="text-align: center;">
         <a href="/">
           <img src="/images/logo-main.png" style="margin: auto;">
@@ -45,8 +45,8 @@
     <slot name="bottom" />
     <PageVssue class="page-nav" style="max-width: 1000px;"/>
     <FriendlyUrl class="page-nav" style="max-width: 1000px;"/>
-    <StarGazer/>
-    <AdSenseRightSide/>
+    <StarGazer v-if="$isNotSharing"/>
+    <AdSenseRightSide v-if="$isNotSharing"/>
   </main>
 </template>
 
@@ -64,15 +64,9 @@ export default {
     }
   },
   mounted () {
-    if (typeof window !== 'undefined') {
-      if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
-        // 如果带参数 sharing，则设置 $frontmatter.isSharing = true
-        this.$set(this, 'isNotSharing', false)
-        document.title = this.$frontmatter.sharingTitle || this.$page.title
-        this.$frontmatter.title = this.$frontmatter.sharingTitle
-      } else {
-        this.$set(this, 'isNotSharing', true)
-      }
+    if (!this.$isNotSharing) {
+      document.title = this.$frontmatter.sharingTitle || this.$page.title
+      this.$frontmatter.title = this.$frontmatter.sharingTitle
     }
   }
 }

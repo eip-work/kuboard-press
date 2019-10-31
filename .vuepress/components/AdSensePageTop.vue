@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-page-top" v-if="!$frontmatter.lessAds && $themeConfig.showMoreAds" :style="$isDev ? 'background-color: grey;' : ''">
+  <div class="adsense-page-top" v-if="!$frontmatter.lessAds && $themeConfig.showMoreAds && $isNotSharing" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- AdSensePageTop-Display -->
     <ins class="adsbygoogle"

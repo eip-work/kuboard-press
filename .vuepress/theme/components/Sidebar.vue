@@ -3,19 +3,19 @@
     <!-- <NavLinks/> -->
     <div style="text-align: center; margin-top: 10px;">
       <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
-        <a href="/overview/" class="nav-link">简介</a>
+        <a :href="`/overview/${urlSurfix}`" class="nav-link">简介</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/install/')">
-        <a href="/install/install-dashboard.html" class="nav-link router-link-exact-active router-link-active">安装</a>
+        <a :href="`/install/install-dashboard.html${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">安装</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
-        <a href="/learning/" class="nav-link router-link-exact-active router-link-active">学习</a>
+        <a :href="`/learning/${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">学习</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
-        <a href="/guide/" class="nav-link">使用</a>
+        <a :href="`/guide/${urlSurfix}`" class="nav-link">使用</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/support/')">
-        <a href="/support/" class="nav-link">支持</a>
+        <a :href="`/support/${urlSurfix}`" class="nav-link">支持</a>
       </div>
     </div>
     <slot name="top"/>
@@ -63,6 +63,11 @@ export default {
   data () {
     return {
       demo_img: demo
+    }
+  },
+  computed: {
+    urlSurfix () {
+      return this.$isNotSharing ? '' : '?sharing=true'
     }
   },
   methods: {

@@ -50,5 +50,11 @@ export default ({
     if (window.location.hostname === 'localhost') {
       Vue.prototype.$isDev = true
     }
+    if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
+      // 如果带参数 sharing，则设置 isNotSharing = false
+      Vue.prototype.$isNotSharing = false
+    } else {
+      Vue.prototype.$isNotSharing = true
+    }
   }
 }

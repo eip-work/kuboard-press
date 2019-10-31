@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="$isNotSharing">
     <div class="copyright">
       Copyright © 2019-present 邵欢庆 
       <span @click="$sendGaEvent('友情链接', '友情链接: 仁聚汇通', '友情链接:' + $page.path)">

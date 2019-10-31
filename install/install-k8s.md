@@ -37,7 +37,7 @@ meta:
 
 ## 文档特点
 
-<InstallBanner version="v1.16.2" updateCount="64"/>
+<InstallBanner version="v1.16.2" updateCount="65" style="min-height: 750px;"/>
 
 <!-- </div>
 <div slot="overview" style="min-height: 800px;"> -->
