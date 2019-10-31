@@ -1,8 +1,8 @@
 <template>
-  <!-- <div>
+  <div>
     <slot></slot>
-  </!-->
-  <div style="border: solid 1px #E6A23C; background-color: rgb(253, 246, 236); padding: 1rem;">
+  </div>
+  <!-- <div style="border: solid 1px #E6A23C; background-color: rgb(253, 246, 236); padding: 1rem;">
     <div v-show="!authorized" key="not">
         <p style="color: red; font-weight: 500;">免费解锁全站文档：</p>
         <li>扫描二维码加微信获得验证码</li>
@@ -42,7 +42,7 @@
       </el-alert>
       <slot></slot>
       </div>
-  </div>
+  </div> -->
 </template>
 
 <script>

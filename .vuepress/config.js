@@ -35,8 +35,12 @@ module.exports = {
     ['script', { type: 'text/javascript' }, `
       window.onload = function() {
         if (window.innerWidth > 1360) {
-          console.log('init-wechat')
-          IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/15516/bbc69136-e42c-4299-ba85-c57685c8417d')
+          if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
+            console.log('正在分享，不显示机器人')
+          } else {
+            console.log('init-wechat')
+            IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/15516/bbc69136-e42c-4299-ba85-c57685c8417d')
+          }
         } else {
           console.log('窗口太小，不显示机器人')
         }
