@@ -27,6 +27,7 @@
     "esm": "^3.2.25",
     "npm": "^6.11.3",
     "reduce-css-calc": "^2.1.6",
+    "vueg": "^1.4.5",
     "vuepress": "^1.2.0",
     "vuepress-plugin-named-chunks": "^1.0.2"
   }

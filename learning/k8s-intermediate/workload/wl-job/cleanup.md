@@ -34,7 +34,7 @@ Job 中 `.spec.activeDeadlineSeconds` 字段的优先级高于 `.spec.backoffLim
 
 例如：
 
-``` yaml
+``` yaml {7}
 apiVersion: batch/v1
 kind: Job
 metadata:
