@@ -7,12 +7,14 @@ description: 熟悉Kuboard_on_Kubernetes_的最佳途径。
 
 <AdSenseTitle/>
 
-**Kuboard 的设计目标**
+## Kuboard 的设计目标
 
 * 降低 Kubernetes 学习门槛，让初学者先把 Kubernetes 用起来，再逐步理解 Kubernetes 中的各种概念
 * 提高 Kubernetes 运维的便捷性，让资深 Kubernetes 运维人员脱离 kubectl 命令行，直接在 Kuboard 界面中完成日常运维工作
 
-**熟悉 Kuboard 的最佳途径**
+## 熟悉 Kuboard 的最佳途径
+
+在您开始这一部分内容之前，请您确保您已经完成了 [Kubernetes入门教程](/learning/#kubernetes-入门) <Badge type="error">非常重要</Badge>
 
 * 创建一个最简单的工作负载
 

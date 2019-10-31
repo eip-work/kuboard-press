@@ -169,7 +169,7 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
 * 点击 ***展现层 / web-example***
 
-  如果您在下图中没有看到 ***Nginx 监控***， ***容器组监控*** 等，请刷新您的页面，因为监控套件初始化之后需要刷新页面才能加载并显示。
+  如果您在下图中没有看到 ***Nginx 监控***， ***容器组监控*** 等，请刷新您的页面，因为监控套件初始化之后需要刷新页面才能加载并显示。<Badge type="error">刷新很重要</Badge>
 
   ![Kubernetes教程：在Kuboard中监控-查看Nginx监控、容器组监控入口](./monitor.assets/image-20190723152124196.png)
 

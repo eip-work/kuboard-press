@@ -203,6 +203,7 @@ module.exports = {
                 'k8s-intermediate/workload/wl-job/',
                 'k8s-intermediate/workload/wl-job/spec',
                 'k8s-intermediate/workload/wl-job/failure',
+                'k8s-intermediate/workload/wl-job/cleanup',
               ]
             }
           ]

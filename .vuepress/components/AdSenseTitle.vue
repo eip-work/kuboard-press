@@ -1,6 +1,6 @@
 <template>
   <div :style="$isDev ? 'background-color: #grey;' : ''">
-    <div class="ads" v-if="!$frontmatter.lessAds && $themeConfig.showAds && !isSharing">
+    <div class="ads" v-if="!$frontmatter.lessAds && $themeConfig.showAds && isNotSharing">
       <div>
         <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
           <span class="name">
@@ -40,13 +40,16 @@ export default {
   data () {
     return {
       ads: require('./ad-list'),
-      isSharing: false
+      isNotSharing: false
     }
   },
   mounted () {
     if (typeof window !== 'undefined') {
       if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
-        this.isSharing = true
+        // 如果带参数 sharing，则设置 isSharing = true
+        this.$set(this, 'isNotSharing', false)
+      } else {
+        this.$set(this, 'isNotSharing', true)
       }
     }
   },

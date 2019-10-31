@@ -61,7 +61,7 @@ export default {
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
       <el-card style="height: calc(100% - 2rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
         <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经在许多个实际项目中经受住了考验</li>
-        <li>Kuboard 于2019年8月初公开发布，两个月时间就已经获得了 559 Github Star（如图所示），当前 <StarCount></StarCount></li>
+        <li>Kuboard 于2019年8月初公开发布，不到三个月时间就已经获得了 855 Github Star（如图所示），当前 <StarCount></StarCount></li>
         <li>Kuboard 社群中，已有许多的用户将 Kuboard 用于自己的生产环境</li>
       </el-card>
   </grid-item>

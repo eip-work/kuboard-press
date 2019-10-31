@@ -1,11 +1,9 @@
 Kuboard v1.0.x 的更新说明
 
-* NFS 使用优化
-* 下载日志文件
-* 配置 nfs 时，提示需要能够在节点上 mount，并给出 mount 语句
+
+* EndPoint
 * 导入工作负载时，如果存储类没有 annotations，不应该报错
 * 表单校验：数据卷名不能带小数点
-* Kubernetes 体验的安装文档需要优化
 * Prometheus 监控
 * 工作负载编辑器 --> 容器组 --> 容忍 -- 正在开发
 * HostAliases

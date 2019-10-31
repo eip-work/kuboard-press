@@ -37,7 +37,7 @@ spec:
 
 上述 YAML 文件可用来创建一个 Service：
 * 名字为 `my-service`
-* 目标端口未 TCP 9376
+* 目标端口为 TCP 9376
 * 选取所有包含标签 app=MyApp 的 Pod
 
 关于 Service，您还需要了解：

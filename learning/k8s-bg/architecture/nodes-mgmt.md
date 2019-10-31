@@ -22,7 +22,7 @@ metadata:
     name: "my-first-k8s-node"
 ```
 
-Kubernetes 在 APIServer 上创建一个节点 API 对象（节点的描述），并且基于 `metadata.name` 字段对节点进行健康检查。如果节点有效（[节点组件](/learning/k8s-bg/component.html#node-组件)正在运行），则可以向该节点调度 Pod；否则，该节点 API 对象将被忽略，知道节点变为有效状态。
+Kubernetes 在 APIServer 上创建一个节点 API 对象（节点的描述），并且基于 `metadata.name` 字段对节点进行健康检查。如果节点有效（[节点组件](/learning/k8s-bg/component.html#node-组件)正在运行），则可以向该节点调度 Pod；否则，该节点 API 对象将被忽略，直到节点变为有效状态。
 
 ::: tip
 Kubernetes 将保留无效的节点 API 对象，并不断地检查该节点是否有效。除非您使用 `kubectl delete node my-first-k8s-node` 命令删除该节点。

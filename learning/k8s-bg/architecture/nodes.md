@@ -124,8 +124,8 @@ Events:              <none>
 
 依据你集群部署的方式（在哪个云供应商部署，或是在物理机上部署），Addesses 字段可能有所不同。
 * HostName： 在节点命令行界面上执行 `hostname` 命令所获得的值。启动 kubelet 时，可以通过参数 `--hostname-override` 覆盖
-* ExternalIP：通常是节点的外部IP（可以从集群外访问的IP地址，内网地址）
-* InternalIP：通常是从节点内部可以访问的 IP 地址（上面的例子中，此字段为空）
+* ExternalIP：通常是节点的外部IP（可以从集群外访问的内网IP地址；上面的例子中，此字段为空）
+* InternalIP：通常是从节点内部可以访问的 IP 地址
 
 ### Conditions
 

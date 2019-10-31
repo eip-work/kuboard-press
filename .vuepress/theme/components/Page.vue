@@ -3,7 +3,7 @@
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
       <AdSensePageTop></AdSensePageTop>
     </div>
-    <div v-if="!$frontmatter.isSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
+    <div v-if="isNotSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>
@@ -58,13 +58,20 @@ import JoinCommunity from './JoinCommunity'
 export default {
   components: { PageEdit, PageNav, JoinCommunity },
   props: ['sidebarItems'],
+  data () {
+    return {
+      isNotSharing: false
+    }
+  },
   mounted () {
     if (typeof window !== 'undefined') {
       if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
         // 如果带参数 sharing，则设置 $frontmatter.isSharing = true
-        this.$set(this.$frontmatter, 'isSharing', true)
+        this.$set(this, 'isNotSharing', false)
         document.title = this.$frontmatter.sharingTitle || this.$page.title
         this.$frontmatter.title = this.$frontmatter.sharingTitle
+      } else {
+        this.$set(this, 'isNotSharing', true)
       }
     }
   }

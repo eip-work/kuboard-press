@@ -156,7 +156,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 
 监听端口：6443 / TCP
 
-后端资源组：包含 demo-master-a-1, demo-master-b-1, demo-master-b-2
+后端资源组：包含 demo-master-a-1, demo-master-a-2, demo-master-a-3
 
 后端端口：6443
 
@@ -164,7 +164,11 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 
 假设完成创建以后，Load Balancer的 ip 地址为 x.x.x.x
 
-> 根据每个人实际的情况不同，实现 LoadBalancer 的方式不一样，本文不详细阐述如何搭建 LoadBalancer，请读者自行解决
+> 根据每个人实际的情况不同，实现 LoadBalancer 的方式不一样，本文不详细阐述如何搭建 LoadBalancer，请读者自行解决，可以考虑的选择有：
+> * nginx
+> * haproxy
+> * keepalived
+> * 云供应商提供的负载均衡产品
 
 ### 初始化第一个master节点
 
@@ -350,6 +354,34 @@ kubeadm join apiserver.demo:6443 --token ejwx62.vqwog6il5p83uk7y \
 --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303 \
 --control-plane --certificate-key 70eb87e62f052d2d5de759969d5b42f372d0ad798f98df38f7fe73efdf63a13c
 ```
+
+::: tip 常见问题
+如果一直停留在 pre-flight 状态，请在第二、三个节点上执行命令检查：
+``` sh
+curl -ik https://apiserver.demo:6443/version
+```
+输出结果应该如下所示
+```
+HTTP/1.1 200 OK
+Cache-Control: no-cache, private
+Content-Type: application/json
+Date: Wed, 30 Oct 2019 08:13:39 GMT
+Content-Length: 263
+
+{
+  "major": "1",
+  "minor": "16",
+  "gitVersion": "v1.16.2",
+  "gitCommit": "2bd9643cee5b3b3a5ecbd3af49d09018f0773c77",
+  "gitTreeState": "clean",
+  "buildDate": "2019-09-18T14:27:17Z",
+  "goVersion": "go1.12.9",
+  "compiler": "gc",
+  "platform": "linux/amd64"
+}
+```
+否则，请您检查一下您的 Loadbalancer 是否设置正确
+:::
 
 **检查 master 初始化结果**
 

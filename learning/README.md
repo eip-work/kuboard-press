@@ -1,7 +1,7 @@
 ---
 vssueId: 9
 layout: LearningLayout
-sharingTitle: 这里有一份免费在线答疑的 K8S 教程
+sharingTitle: 这里有一份最新的 K8S 教程，还可以免费在线答疑
 sidebarDepth: 0
 description: 本教程的主要依据是：Kubernetes官网文档，以及使用Kubernetes落地SpringCloud微服务并投产的实战经验，在线答疑。适用人群_ Kubernetes 初学者_学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 meta:

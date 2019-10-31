@@ -1,6 +1,7 @@
 ---
 vssueId: 15
 # layout: StepLayout
+sharingTitle: 参考这个文档能快速完成K8S安装，装不好还有人免费远程协助
 description: Kubernete安装文档_Kubernetes最新稳定版v1.16.2的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords
@@ -36,40 +37,7 @@ meta:
 
 ## 文档特点
 
-
-<grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-
-<div>
-
-**网上那么多 Kubernetes 安装文档，为什么这篇文档更有参考价值？**
-
-* **众多网友验证**
-  * 每天有超过 300 人参照此文档完成 Kubernetes 安装
-  * 不断有网友对安装文档提出改进意见
-
-* **持续更新和完善**
-  * 始终有最新的 Kubernetes 稳定版安装文档，当前版本 v1.16.2
-  * 当前已更新了 <font color="red"> 64 次 </font>， [查看更新历史](https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md)
-
-* **适应面广**
-  * 网上大部分的 Kubernetes 安装文档，都是某位爱好者自己成功安装之后的一份笔记，他的特定条件，并不一定适用于你
-  * 此文档有众多网友验证，在公有云、私有云、自建虚拟机多种条件下均适用
-
-* **在线答疑** 
-
-  <Qq></Qq> QQ群号为：808894550，也可以扫描二维码加群
-  <p>
-    <img src="/images/kuboard_qq.png" alt="Kubernetes安装：QQ群在线答疑"/>
-  </p>
-
-</div>
-
-  </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
-    <AdSenseVertical/>
-  </grid-item>
-</grid>
+<InstallBanner version="v1.16.2" updateCount="64"/>
 
 <!-- </div>
 <div slot="overview" style="min-height: 800px;"> -->
@@ -78,7 +46,7 @@ meta:
 
 对于 Kubernetes 初学者，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
 
-* 3台 **2核4G** 的ECS（突发性能实例 t5 ecs.t5-c1m2.large或同等配置，单台约 0.4元/小时，停机时不收费）
+* 至少2台 **2核4G** 的服务器
 * **Cent OS 7.6**
 
 <grid :rwd="{compact: 'stack'}">
@@ -86,9 +54,9 @@ meta:
 
 <div>
 
-<!-- [领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+[领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
-[腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console) -->
+[腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
 [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
 
