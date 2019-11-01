@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$themeConfig.showAds && $isNotSharing" :style="$isDev ? 'background-color: grey;' : ''">
+  <div v-if="$themeConfig.showAds" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- 正文-垂直 -->
     <ins class="adsbygoogle"
@@ -9,7 +9,9 @@
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
     <script>
+      if (!window.kuboardSharing) {
         (adsbygoogle = window.adsbygoogle || []).push({});
+      }
     </script>
   </div>
 </template>

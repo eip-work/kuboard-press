@@ -81,17 +81,7 @@ module.exports = siteData => {
         selfTitle = page.frontmatter.titlePrefix + '_' + selfTitle
       }
 
-      let isNotSharing = true
-      if (typeof window !== 'undefined') {
-        if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
-          // 如果带参数 sharing，则设置 isNotSharing = false
-          isNotSharing = false
-        } else {
-          isNotSharing = true
-        }
-      }
-
-      if (page.path.indexOf('/learning/') === 0 && isNotSharing) {
+      if (page.path.indexOf('/learning/') === 0) {
         return selfTitle + '_Kubernetes教程_K8S教程_K8S培训'
       }
       if (page.path.indexOf('/install/') === 0) {

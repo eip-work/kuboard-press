@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="/landing/css/style.css">
     <link rel="stylesheet" href="/landing/css/components.css">
-    <div class="py-80" id="features" style="padding-top: 1rem;">
+    <div class="py-80" id="features" style="padding-top: 1rem; padding-bottom: 1rem;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -16,8 +16,7 @@
                 </div>
             </div>
             <div class="row">
-              <transition-group name="bounceRight" tag="div">
-
+              <transition-group name="lightSpeed" tag="div">
                 <div class="col-md-4" key="f1" v-show="f1">
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4 feature">
@@ -28,14 +27,15 @@
                       <div class="feature-description">
                         <li>每天有超过
                           <span style="font-weight: 500; color: red;">
-                            <div style="display: inline-block; width: 2rem;">
-                              <animated-number
-                                style=""
-                                :value="value"
-                                :formatValue="formatToPrice"
-                                :duration="4000"
-                              />
-                            </div>
+                              <!-- {{value}} -->
+                              <div style="width: 2rem; display: inline-block;">
+                                <animated-number
+                                  style=""
+                                  :value="value"
+                                  :formatValue="formatToPrice"
+                                  :duration="2000"
+                                />
+                              </div>
                           </span>
                           人参考此文档完成 Kubernetes 集群的安装</li>
                         <li>不断有网友对安装文档提出改进意见</li>
@@ -44,7 +44,7 @@
                     <!-- InfoBox Center </End> -->
                 </div>
               
-                <div class="col-md-4 bg-gray" key="f2" v-show="f2">
+                <div class="col-md-4" key="f2" v-show="f2">
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4 feature">
                       <div class="feature-title">
@@ -56,7 +56,7 @@
                         <li>当前版本 Kubernetes {{version}}</li>
                         <li>已完成了
                           <span style="font-weight: 500; color: red;">
-                            <div style="display: inline-block; width: 1.5rem;">
+                            <div style="width: 1.2rem; display: inline-block;">
                               <animated-number
                                 style=""
                                 :value="updateCount"
@@ -64,6 +64,7 @@
                                 :duration="6000"
                               />
                             </div>
+                              <!-- {{updateCount}} -->
                             次更新
                           </span>，每次更新都帮您排除一个或更多可能踩的坑。
                           <a href="https://github.com/eip-work/kuboard-press/commits/master/install/install-k8s.md" target="_blank">
@@ -89,7 +90,7 @@
                     </div>
                     <!-- InfoBox Left </End> -->
                 </div>
-                <div class="col-md-4 bg-gray" key="f4" v-show="f4">
+                <div class="col-md-4" key="f4" v-show="f4">
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4 feature" data-aos="fade-up">
                       <div class="feature-title">
@@ -116,7 +117,7 @@
 
 <script>
 import AnimatedNumber from "animated-number-vue";
-require('vue2-animate/dist/vue2-animate.min.css')
+import 'vue2-animate/dist/vue2-animate.min.css';
 
 export default {
   props: {
@@ -138,9 +139,7 @@ export default {
   },
   mounted () {
     this.show = true
-    setTimeout(_ => {
-      this.f1 = true
-    }, 0)
+    this.f1 = true
     setTimeout(_ => {
       this.f2 = true
     }, 1000)
@@ -151,11 +150,11 @@ export default {
       this.f4 = true
     }, 3000)
   },
-   methods: {
+  methods: {
     formatToPrice(value) {
       return `${value.toFixed(0)}`;
     }
-   }
+  }
 }
 </script>
 
@@ -168,8 +167,17 @@ export default {
 .feature {
   text-align: left;
   padding: 1rem;
-  margin-bottom: 0;
-  border-top: solid 1px #f7f7f7;
+  margin-bottom: 1rem;
+
+  border: 1px solid #8096b0;
+  border-radius: 5px;
+  -webkit-transition: .5s;
+  transition: .5s;
+  background-color: #fff;
+}
+.feature:hover {
+  background-color: #edf5ff;
+  /* border-color: #fff; */
 }
 .feature-title {
   display: inline-block;

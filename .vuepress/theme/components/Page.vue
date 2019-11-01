@@ -1,9 +1,8 @@
 <template>
   <main class="page">
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
-      <AdSensePageTop></AdSensePageTop>
     </div>
-    <div v-if="$isNotSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
+    <div v-show="!$isSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>
@@ -29,24 +28,24 @@
     <slot name="top" />
 
     <Content class="theme-default-content" style="padding-top: 0; margin-top: -3rem; padding-bottom: 1rem;"/>
-    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="$isNotSharing">
+    <!-- <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="!!$isSharing">
       <p style="text-align: center;">
         <a href="/">
           <img src="/images/logo-main.png" style="margin: auto;">
         </a>
       </p>
-    </div>
+    </div> -->
     <JoinCommunity></JoinCommunity>
     <PageEdit style="max-width: 1000px;"/>
     <PageNav v-bind="{ sidebarItems }" style="max-width: 1000px;"/>
-    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-if="!$frontmatter.lessAds">
+    <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-show="!$frontmatter.lessAds && !$isSharing">
       <AdSensePageBottomInline/>
     </div>
     <slot name="bottom" />
-    <PageVssue class="page-nav" style="max-width: 1000px;"/>
-    <FriendlyUrl class="page-nav" style="max-width: 1000px;"/>
-    <StarGazer v-if="$isNotSharing"/>
-    <AdSenseRightSide v-if="$isNotSharing"/>
+    <PageVssue class="page-nav" style="max-width: 1000px;" v-show="!$isSharing"/>
+    <FriendlyUrl class="page-nav" style="max-width: 1000px;" v-show="!$isSharing"/>
+    <StarGazer/>
+    <AdSenseRightSide v-show="!$isSharing"/>
   </main>
 </template>
 
@@ -60,11 +59,10 @@ export default {
   props: ['sidebarItems'],
   data () {
     return {
-      isNotSharing: false
     }
   },
   mounted () {
-    if (!this.$isNotSharing) {
+    if (this.$isSharing) {
       document.title = this.$frontmatter.sharingTitle || this.$page.title
       this.$frontmatter.title = this.$frontmatter.sharingTitle
     }

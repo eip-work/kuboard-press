@@ -1,5 +1,21 @@
 Kuboard v1.0.x 的更新说明
 
+## v1.0.4
+
+**发布日期**
+
+2019年11月？日
+
+**新特性**
+
+
+**优化**
+
+* 将监控套件的安装脚本从 github 迁移到 https://addons.kuboard.cn
+
+**BUG 修复**
+
+
 
 * EndPoint
 * 导入工作负载时，如果存储类没有 annotations，不应该报错

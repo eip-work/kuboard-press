@@ -66,10 +66,6 @@
       </div>
     </div>
 
-    <div style="margin-top: 2rem;">
-      <AdSenseParagraph></AdSenseParagraph>
-    </div>
-
     <div class="intro">
       <el-card class="intro_text" shadow="hover">
         <p>
@@ -106,7 +102,6 @@ import NavLink from '@theme/components/NavLink.vue'
 export default {
   components: { NavLink },
   created () {
-    console.log(this.$page)
     // this.$title = 'hello---'
   },
   mounted () {

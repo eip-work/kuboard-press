@@ -26,7 +26,7 @@
       </el-form>
       </div>
 
-      </div>
+    </div>
 
       <!-- </grid-item>
       <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">

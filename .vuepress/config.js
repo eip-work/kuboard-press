@@ -1,6 +1,9 @@
 let dateFns = require('date-fns')
 
 module.exports = {
+  // configureWebpack: () => ({
+  //   devtool: 'source-map'
+  // }),
   title: 'Kuboard官网',
   description: '一款Kubernetes_Dashboard_简化Kubernetes的学习和使用_帮助您快速落地Kubernetes_提供_Kubernetes_免费中文教程_国内安装文档',
   head: [
@@ -19,7 +22,7 @@ module.exports = {
       s.parentNode.insertBefore(hm, s);
     })();
     `],
-    ['script', {src: '/java-script-dist/swiper-4.5.0/js/swiper.min.js', async: true}],
+    // ['script', {src: '/java-script-dist/swiper-4.5.0/js/swiper.min.js', async: true}],
     // ['script', {src: "https://www.googletagmanager.com/gtag/js?id=UA-144196556-1", async: true}],
     // ['script', {}, `
     // window.dataLayer = window.dataLayer || [];
@@ -31,20 +34,16 @@ module.exports = {
     ['script', { 'data-ad-client': "ca-pub-3313149841665250", async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}],
     // <script data-ad-client="ca-pub-3313149841665250" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-    ['script', { type: 'text/javascript', async: true, src: "https://bot.4paradigm.com/web/assets/ics-web-sdk-js.js" }],
-    ['script', { type: 'text/javascript' }, `
-      window.onload = function() {
-        if (window.innerWidth > 1360) {
-          if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
-            console.log('正在分享，不显示机器人')
-          } else {
-            console.log('init-wechat')
-            IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/15516/bbc69136-e42c-4299-ba85-c57685c8417d')
-          }
-        } else {
-          console.log('窗口太小，不显示机器人')
-        }
-      }`],
+    // ['script', { type: 'text/javascript', async: true, src: "https://bot.4paradigm.com/web/assets/ics-web-sdk-js.js" }],
+    // ['script', { type: 'text/javascript' }, `
+    //   window.onload = function() {
+    //     if (window.innerWidth > 1360) {
+    //       console.log('init-wechat')
+    //       IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/15516/bbc69136-e42c-4299-ba85-c57685c8417d')
+    //     } else {
+    //       console.log('窗口太小，不显示机器人')
+    //     }
+    //   }`],
     
     // <script type="text/javascript" src="https://bot.4paradigm.com/web/assets/ics-web-sdk-js.js"></script>
 
@@ -152,9 +151,9 @@ module.exports = {
     showAds: true,
     kuboardToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXZpZXdlci10b2tlbi1mdGw0diIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJvYXJkLXZpZXdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE1YWFiMmQxLTQxMjYtNDU5Yi1hZmNhLTkyYzMwZDk0NTQzNSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJvYXJkLXZpZXdlciJ9.eYqN3FLIT6xs0-lm8AidZtaiuHeX70QTn9FhJglhEyh5dlyMU5lo8UtR-h1OY8sTSeYdYKJAS83-9SUObKQhp6XNmRgOYAfZblKUy4mvbGVQ3dn_qnzxYxt6zdGCwIY7E34eNNd9IjMF7G_Y4eJLWE7NvkSB1O8zbdn8En9rQXv_xJ9-ugCyr4CYB1lDGuZl3CIXgQ1FWcQdUBrxTT95tzcNTB0l6OUOGhRxOfw-RyIOST83GV5U0iVzxnD4sjgSaJefvCU-BmwXgpxAwRVhFyHEziXXa0CuZfBfJbmnQW308B4wocr4QDm6Nvmli1P3B6Yo9-HNF__d2hCwZEr7eg',
     nav: [
-      { text: '简介', link: '/overview/' },
+      // { text: '简介', link: '/overview/' },
       { text: '安装', link: '/install/install-dashboard' },
-      { text: '学习', link: '/learning/' },
+      { text: '教程', link: '/learning/' },
       { text: '使用', link: '/guide/' },
       { text: '支持', link: '/support/' },
       // { text: '博客', link: 'https://blog.kuboard.cn/compaign' }

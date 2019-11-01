@@ -291,7 +291,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
-    <AdSenseSquare/>
+    <!-- <AdSenseSquare/> -->
   </grid-item>
 </grid>
 

@@ -49,12 +49,21 @@ export default ({
   if (typeof window !== 'undefined') {
     if (window.location.hostname === 'localhost') {
       Vue.prototype.$isDev = true
-    }
-    if (location.search !== undefined && location.search.indexOf('sharing') >= 0) {
-      // 如果带参数 sharing，则设置 isNotSharing = false
-      Vue.prototype.$isNotSharing = false
     } else {
-      Vue.prototype.$isNotSharing = true
+      Vue.prototype.$isDev = false
     }
   }
+
+  let sharing = true
+  if (typeof window !== 'undefined') {
+    if (location.search && location.search.indexOf('sharing') >=0) {
+      sharing = true
+      window.kuboardSharing = true
+    } else {
+      sharing = false
+      window.kuboardSharing = false
+    }
+  }
+  console.log('sharing', sharing)
+  Vue.prototype.$isSharing = sharing
 }

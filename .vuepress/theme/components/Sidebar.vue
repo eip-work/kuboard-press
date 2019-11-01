@@ -2,14 +2,14 @@
   <aside class="sidebar">
     <!-- <NavLinks/> -->
     <div style="text-align: center; margin-top: 10px;">
-      <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
+      <!-- <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
         <a :href="`/overview/${urlSurfix}`" class="nav-link">简介</a>
-      </div>
+      </div> -->
       <div class="side-nav-item" :style="activeLinkStyle('/install/')">
         <a :href="`/install/install-dashboard.html${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">安装</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
-        <a :href="`/learning/${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">学习</a>
+        <a :href="`/learning/${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">教程</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
         <a :href="`/guide/${urlSurfix}`" class="nav-link">使用</a>
@@ -62,12 +62,13 @@ export default {
   props: ['items'],
   data () {
     return {
-      demo_img: demo
+      demo_img: demo,
     }
   },
   computed: {
     urlSurfix () {
-      return this.$isNotSharing ? '' : '?sharing=true'
+      // return this.isSharing ? '' : '?sharing=true'
+      return ''
     }
   },
   methods: {
