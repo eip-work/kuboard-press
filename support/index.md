@@ -26,7 +26,7 @@ export default {
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
 
-<el-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
+<el-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="none">
 
 * 使用 Kuboard 是 <font color="red">免费</font> 的，无论您是用于学习还是用于生产
 * 将来会推出 Kuboard Plus，当前所有的功能，<font color="red">将来仍然免费</font>。Kuboard Plus 侧重点：

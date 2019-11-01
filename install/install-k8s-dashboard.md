@@ -38,11 +38,10 @@ Kubernetes Dashboard 是 Kubernetes 的官方 Web UI。使用 Kubernetes Dashboa
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta5/aio/deploy/recommended.yaml
 ```
 
-如果访问不了该 yaml 文件，请使用下面的命令，效果是等价的
-
-``` sh
-kubectl apply -f https://kuboard.cn/install-script/k8s-dashboard/v2.0.0-beta5.yaml
-```
+> 如果访问不了该 yaml 文件，请使用下面的命令，效果是等价的
+> ``` sh
+> kubectl apply -f https://kuboard.cn/install-script/k8s-dashboard/v2.0.0-beta5.yaml
+> ```
 
 
 ## 访问

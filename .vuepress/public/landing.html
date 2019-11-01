@@ -47,6 +47,110 @@
 
 <body>
 
+<style type="text/css">
+.box{
+    font-family: 'Merriweather Sans', sans-serif;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: all .5s;
+    margin-bottom: 2rem;
+}
+.box:hover{ box-shadow: 3px 3px 5px #999; }
+.box:before,
+.box:after{
+    content: "";
+    background: radial-gradient(circle at 23% 70%,rgba(255,255,255,0.8),#fff 30%);
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+    transform: rotate(45deg);
+    position: absolute;
+    top:-10.5%;
+    right:-150%;
+    z-index: 1;
+    transition: all 0.35s ease;
+}
+.box:after{
+    background: rgba(255,255,255,0.5);
+    width: 65%;
+    height: 65%;
+    right: auto;
+    left: -20%;
+    top: -65%;
+}
+.box:hover:before{
+    opacity: 1;
+    right: -85%;
+}
+.box:hover:after{
+    opacity: 1;
+    top: -42%;
+}
+.box img{
+    width: 100%;
+    height: auto;
+    transition: all 0.5s ease;
+}
+.box:hover img{ transform: scale(1.2); }
+.box .box-content{
+    text-align: right;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: -100%;
+    z-index: 2;
+    transition: all .5s;
+}
+.box:hover .box-content{ right: 5%; }
+.box .title{
+    color: #1e272e;
+    font-size: 23px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 3px 0;
+}
+.box .post{
+    font-size: 16px;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+    display: block;
+}
+.box .icon{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.box .icon li{
+    display: inline-block;
+    margin: 0 4px;
+}
+.box .icon li a{
+    color: #fff;
+    background-color: #1e272e;
+    font-size: 18px;
+    text-align: center;
+    line-height: 35px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.3s;
+}
+.box .icon li  a:hover{
+    color: #1e272e;
+    background-color: #fff;
+    border-radius: 10%;
+    box-shadow: 0 0 5px #1e272e inset;
+}
+@media only screen and (max-width:990px){
+    .box { margin: 0 0 30px; }
+}
+@media only screen and (max-width:479px){
+    .box .title{ font-size: 20px; }
+}                   
+</style>
+    
     <!-- Navigation -->
     <div id="menu_area" class="menu-area fixed-top">
         <div class="container">
@@ -111,8 +215,7 @@
     </header>
     <!-- /Header -->
 
-
-    <div class="bg-gray py-80" id="webinars">
+    <div class="bg-gray py-80" id="products">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -123,156 +226,71 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <!-- Webnair Card  <Start> -->
-                    <div class="card cs-webnair-card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                        <div class="card-body">
-                            <h4 class="card-title text-primary">Kubernetes 安装文档</h4>
-                            <p class="card-text">
-                                <li>每天有超过300名网友参考此安装文档顺利完成 Kubernetes 的安装</li>
-                                <li>自2019年8月开始，已更新60+个版本，始终与最新 Kubernetes 稳定版保持同步</li>
-                            </p>
-                            <div class="media">
-                                <img class="mr-3" src="landing/images/icn4.svg" alt="image" width="50" height="50">
-                                <div class="media-body">
-                                    <h5><small>保证</small> 安装成功</h5>
-                                    碰到问题可免费找群主远程协助
-                                </div>
-                            </div>
-
+                <div class="col-md-3 col-sm-6">
+                    <div class="box" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <a href="/install/install-k8s.html">
+                        <img src="landing/images/install.png" alt="K8S教程_K8S培训_K8S安装手册_每天300人采纳_使用与最新K8S版本同步_免费远程协助_成功保证">
+                        <div class="box-content">
+                            <h3 class="title">K8S 安装手册</h3>
+                            <span class="post" style="color: #212529;">Kuboard for K8S</span>
+                            <ul class="icon">
+                                <!-- <li><a href="#"><i class="fa fa-search"></i></a></li> -->
+                                <li><i class="fa fa-link"></i></li>
+                            </ul>
                         </div>
-                        <div class="card-actions">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- <div class="webnair-date">
-                                        <h5>Apr</h5>
-                                        <h2>18</h2>
-                                        <p>10:30AM IST</p>
-                                    </div> -->
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="my-4 text-center" style="margin-top: 0 !important;">
-                                        <a href="/install/install-k8s.html" class="btn btn-primary btn-round">免费获取文档 <i class="fa fa-long-arrow-right" ></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </a>
                     </div>
-                    <!-- Webnair Card </End> -->
                 </div>
-                <div class="col-md-6">
-                    <!-- Webnair Card  <Start> -->
-                    <div class="card cs-webnair-card" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
-                        <div class="card-body">
-                            <h4 class="card-title text-primary">Kubernetes 免费教程</h4>
-                            <p class="card-text">
-                                <li>权威资料，主要依据来源于 kubernetes 官网，及 Kubernetes 第一手实战经验</li>
-                                <li>随时查看，自适应 PC 端和手机端，可以随时随地翻阅</li>
-                            </p>
-                            <div class="media">
-                                <img class="mr-3" src="landing/images/icn5.svg" alt="image" width="50" height="50">
-                                <div class="media-body">
-                                    <h5><small>答疑</small> 在线答疑</h5>
-                                    碰到问题可以直接与作者沟通
-                                </div>
-                            </div>
-
+                <div class="col-md-3 col-sm-6">
+                    <div class="box" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
+                            <a href="/learning/">
+                       <img src="landing/images/tutorial-p.png" alt="K8S教程_K8S培训_K8S安装手册_权威资料_第一手实战经验_自适应PC/手机">
+                        <div class="box-content">
+                            <h3 class="title">K8S 免费教程</h3>
+                            <span class="post" style="color: #212529;">Kuboard for K8S</span>
+                            <ul class="icon">
+                                <!-- <li><i class="fa fa-search"></i></li> -->
+                                <!-- <li><a href="#"></a><i class="fa fa-link"></i></a></li> -->
+                                <li><i class="fa fa-link"></i></li>
+                            </ul>
                         </div>
-                        <div class="card-actions">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- <div class="webnair-date">
-                                        <h5>Apr</h5>
-                                        <h2>18</h2>
-                                        <p>10:30AM IST</p>
-                                    </div> -->
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="my-4 text-center" style="margin-top: 0 !important;">
-                                        <a href="/learning/" class="btn btn-primary btn-round">免费获取教程 <i class="fa fa-long-arrow-right" ></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </a>
                     </div>
-                    <!-- Webnair Card </End> -->
                 </div>
-                <div class="col-md-6">
-                    <!-- Webnair Card  <Start> -->
-                    <div class="card cs-webnair-card" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
-                        <div class="card-body">
-                            <h4 class="card-title text-primary">Kubernetes 管理面板</h4>
-                            <p class="card-text">
-                                <li>无需编写 YAML，通过图形化管理界面便可轻松完成应用的部署和管理</li>
-                                <li>多环境管理</li>
-                            </p>
-                            <div class="media">
-                                <img class="mr-3" src="landing/images/icn1.svg" alt="image" width="50" height="50">
-                                <div class="media-body">
-                                    <h5>降低门槛</h5>
-                                    使用 Kuboard 可以有效的降低 K8S 的门槛
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="card-actions">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- <div class="webnair-date">
-                                        <h5>Apr</h5>
-                                        <h2>18</h2>
-                                        <p>10:30AM IST</p>
-                                    </div> -->
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="my-4 text-center" style="margin-top: 0 !important;">
-                                        <a href="/install/install-dashboard.html" class="btn btn-primary btn-round">免费获取 <i class="fa fa-long-arrow-right" ></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="/install/install-dashboard.html">
+                    <div class="box" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="2500">
+                        <img src="landing/images/dashboard-p.png" alt="K8S教程_K8S培训_K8S安装手册_无需编写YAML文件_纯图形化管理_多环境管理">
+                        <div class="box-content">
+                            <h3 class="title">K8S 管理面板</h3>
+                            <span class="post" style="color: #212529;">Kuboard for K8S</span>
+                            <ul class="icon">
+                                <!-- <li><i class="fa fa-search"></i></li> -->
+                                <!-- <li><a href="#"></a><i class="fa fa-link"></i></a></li> -->
+                                <li><i class="fa fa-link"></i></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- Webnair Card </End> -->
+                    </a>
                 </div>
-                <div class="col-md-6">
-                    <!-- Webnair Card  <Start> -->
-                    <div class="card cs-webnair-card" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
-                        <div class="card-body">
-                            <h4 class="card-title text-primary">Spring Cloud 实战文档</h4>
-                            <p class="card-text">
-                                <li>在 Kubernetes 上部署 Spring Cloud 微服务架构</li>
-                                <li>第一手实战经验分享</li>
-                            </p>
-                            <div class="media">
-                                <img class="mr-3" src="landing/images/icn3.svg" alt="image" width="50" height="50">
-                                <div class="media-body">
-                                    <h5><small>答疑</small> 在线答疑</h5>
-                                    碰到问题可以直接与作者沟通
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="card-actions">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- <div class="webnair-date">
-                                        <h5>Apr</h5>
-                                        <h2>18</h2>
-                                        <p>10:30AM IST</p>
-                                    </div> -->
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="my-4 text-center" style="margin-top: 0 !important;">
-                                        <a href="/learning/k8s-practice/micro-service/kuboard-view-of-k8s.html" class="btn btn-primary btn-round">免费获取文档 <i class="fa fa-long-arrow-right" ></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="/learning/k8s-practice/micro-service/kuboard-view-of-k8s.html">
+                    <div class="box" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="2000">
+                        <img src="landing/images/springcloud-p.png" alt="K8S教程_K8S培训_K8S安装手册_在Kubernetes上实战Spring_Cloud_活跃的OCP社区支持">
+                        <div class="box-content">
+                            <h3 class="title">微服务实战</h3>
+                            <span class="post" style="color: #212529;">Kuboard for K8S</span>
+                            <ul class="icon">
+                                <!-- <li><i class="fa fa-search"></i></li> -->
+                                <!-- <li><a href="#"></a><i class="fa fa-link"></i></a></li> -->
+                                <li><i class="fa fa-link"></i></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- Webnair Card </End> -->
+                    </a>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
 
     <!-- Media Call Action <Start> -->

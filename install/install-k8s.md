@@ -131,13 +131,12 @@ lscpu
 | ----------- | --------------------------------------- | ----------------------------------- |
 | 7.7         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
-| 7.5         | <span style="font-size: 24px;">🤔</span> | 已证实会出现 kubelet 无法启动的问题    |
-| 7.4         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
-| 7.3         | <span style="font-size: 24px;">🤔</span> | 待验证                              |
-| 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题 |
+| 7.5         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题    |
+| 7.4         | <span style="font-size: 24px;">😞</span> | 同上                              |
+| 7.3         | <span style="font-size: 24px;">😞</span> | 同上                              |
+| 7.2         | <span style="font-size: 24px;">😞</span> | 同上                              |
 
 </div>
-
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
     <AdSenseVertical/>
@@ -327,9 +326,10 @@ demo-worker-a-1   Ready    <none>   2m26s   v1.16.2
 demo-worker-a-2   Ready    <none>   3m56s   v1.16.2
 ```
 
-
-
 ## 移除 worker 节点
+
+<el-collapse style="margin-top: 20px;">
+  <el-collapse-item title="正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加。点我查看具体步骤。" name="1">
 
 ::: warning
 正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加
@@ -353,6 +353,10 @@ kubectl delete node demo-worker-x-x
 * 将 demo-worker-x-x 替换为要移除的 worker 节点的名字
 * worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
 :::
+
+  </el-collapse-item>
+</el-collapse>
+
 
 <!-- </div>
 

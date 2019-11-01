@@ -10,7 +10,7 @@
       <p style="color: red">必须选中下面的 {{envCount}} 个勾选框才能继续</p>
       <p>选中后显示 安装 docker/kubelet 的文档</p>
 
-      <div style="display: inline-block; width: 520px; max-width: calc(100vw - 100px); overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
+      <div style="display: inline-block; width: 550px; max-width: calc(100vw - 100px); overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
       <el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
       <el-form-item prop="checked" class="env-form-item">
       <el-checkbox-group v-model="form.checked">

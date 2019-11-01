@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/landing/css/style.css">
     <link rel="stylesheet" href="/landing/css/components.css">
     <div class="py-80" id="features" style="padding-top: 1rem; padding-bottom: 1rem;">
-        <div class="container">
+        <div class="container" style="margin-top: 0;">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="text-center" style="margin-bottom: 1rem;">
@@ -169,15 +169,16 @@ export default {
   padding: 1rem;
   margin-bottom: 1rem;
 
-  border: 1px solid #8096b0;
+  z-index: 10;
+  border: 1px solid #f2be45;
   border-radius: 5px;
   -webkit-transition: .5s;
   transition: .5s;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 .feature:hover {
-  background-color: #edf5ff;
-  /* border-color: #fff; */
+  /* background-color: rgba(255,227,200); */
+  background-color: rgba(242, 190, 69, 0.1);
 }
 .feature-title {
   display: inline-block;
@@ -190,4 +191,5 @@ export default {
   vertical-align: top;
   text-align: left;
 }
+
 </style>

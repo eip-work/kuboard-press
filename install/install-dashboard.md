@@ -1,5 +1,6 @@
 ---
 vssueId: 13
+lessAds: true
 description: Kuboard_是一款Kubernetes_Dashboard_快速在K8S上落地微服务_本文是Kuboard的安装手册_包括安装Kuboard的前提条件_与Kubernetes的版本兼容性_安装步骤_以及完成安装后如何访问Kuboard界面。
 meta:
   - name: keywords
@@ -28,15 +29,24 @@ meta:
 
 <div slot="overview"> -->
 
+
+
+
+## 在线体验
+
+<div style="min-height: 433px;">
+  <InstallDashboardPreview/>
+</div>
+
 ## 前提
 
-Kuboard 是基于一款基于 Kubernetes 的微服务管理面板。安装 Kuboard 时，假设您已经有一个 Kubernetes 集群
+安装 Kuboard 时，假设您已经有一个 Kubernetes 集群
 
 如果没有 Kubernetes 集群：
 
-* 初学者，  请参考 
-  * [在 Windows/Mac 安装 Kubernetes 测试集群](install-docker-desktop.html) 
-  * [安装 Kubernetes 单Master节点](install-k8s.html)
+* 初学者，请参考 
+  * [在 Windows/Mac 安装 Kubernetes 测试集群](install-docker-desktop.html) <Badge type="error">不推荐</Badge>
+  * [安装 Kubernetes 单Master节点](install-k8s.html) <Badge type="success">推荐</Badge>
 * 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes.html)
 
 ## 兼容性

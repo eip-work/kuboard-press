@@ -2,7 +2,7 @@
   <main class="page">
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
     </div>
-    <div v-show="!$isSharing" class="page-nav" style="max-width: 1000px; margin: auto;">
+    <div v-show="!$isSharing && !$frontmatter.lessAds" class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
         <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
           <li>
@@ -36,8 +36,8 @@
       </p>
     </div> -->
     <JoinCommunity></JoinCommunity>
-    <PageEdit style="max-width: 1000px;"/>
-    <PageNav v-bind="{ sidebarItems }" style="max-width: 1000px;"/>
+    <PageEdit style="max-width: 1000px; margin-top: 2rem; background-color: #FFF;"/>
+    <PageNav v-bind="{ sidebarItems }" style="max-width: 1000px; padding: 1rem;"/>
     <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-show="!$frontmatter.lessAds && !$isSharing">
       <AdSensePageBottomInline/>
     </div>

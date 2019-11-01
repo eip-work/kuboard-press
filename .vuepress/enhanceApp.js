@@ -3,6 +3,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import Element from 'element-ui'
 
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import BootstrapVue from 'bootstrap-vue'
+
 import Container from './grid/Container'
 import Grid from './grid/Grid'
 import GridItem from './grid/GridItem'
@@ -23,7 +28,8 @@ export default ({
   router, // 当前应用的路由实例
   siteData // 站点元数据
 }) => {
-  Vue.use(Element)  
+  Vue.use(Element)
+  Vue.use(BootstrapVue)
   Vue.use(VueFractionGrid, {
     approach: 'desktop-first',
     gutter: '1rem',
