@@ -43,7 +43,7 @@ import { differenceInMinutes } from 'date-fns'
 export default {
   data() {
     return {
-      dialogVisible: true
+      dialogVisible: false
     };
   },
   mounted () {

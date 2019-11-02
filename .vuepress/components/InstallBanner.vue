@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div class="py-80" id="features" style="padding-top: 1rem; padding-bottom: 1rem;">
         <div class="container" style="margin-top: 0;">
             <div class="row">
@@ -9,9 +10,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-              <!-- <transition-group name="lightSpeed" tag="div"> -->
-                <div class="col-md-6" key="f1">
+            <div>
+              <transition-group name="lightSpeed" tag="div" class="row">
+                <div class="col-md-6" key="f1" v-show="f1">
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4 feature">
                         <img src="/landing/images/icn3.svg" alt="" class="img-fluid">
@@ -34,9 +35,9 @@
                     <!-- InfoBox Center </End> -->
                 </div>
               
-                <div class="col-md-6" key="f2">
+                <div class="col-md-6" key="f2" v-show="f2">
                     <!-- InfoBox Center  <Start> -->
-                    <div class="cs-infobox-left mt-4 feature" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="2000">
+                    <div class="cs-infobox-left mt-4 feature">
                         <img src="/landing/images/icn4.svg" alt="" class="img-fluid">
                         <div class="text-primary-install-banner">持续更新</div>
 
@@ -63,7 +64,7 @@
                     </div>
                     <!-- InfoBox Center </End> -->
                 </div>
-                <div class="col-md-6" key="f3">
+                <div class="col-md-6" key="f3" v-show="f3">
                     <!-- InfoBox Left  <Start> -->
                     <div class="cs-infobox-left mt-4 feature">
                         <img src="/landing/images/icn5.svg" alt="" class="img-fluid">
@@ -73,7 +74,7 @@
                     </div>
                     <!-- InfoBox Left </End> -->
                 </div>
-                <div class="col-md-6" key="f4">
+                <div class="col-md-6" key="f4" v-show="f4">
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4 feature" data-aos="fade-up">
                         <img src="/landing/images/icn1.svg" alt="" class="img-fluid">
@@ -83,13 +84,12 @@
                             <p><Qq></Qq></p>
                             <img src="/images/kuboard_qq.png" alt="Kubernetes安装：QQ群在线答疑" style="width: 120px;"/>
                           </div>
-                          如需远程协助，请扫描本文页尾的微信二维码
                         </div>
 
                     </div>
                     <!-- InfoBox Center </End> -->
                 </div>
-              <!-- </transition-group> -->
+              </transition-group>
             </div>
         </div>
     </div>
@@ -150,7 +150,7 @@ export default {
 .feature {
   text-align: left;
   padding: 1rem;
-  min-height: 272px;
+  min-height: 260px;
   z-index: 10;
   border: 1px solid #f2be45;
   border-radius: 5px;
