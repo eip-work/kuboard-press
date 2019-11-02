@@ -11,6 +11,8 @@ meta:
 
 <AdSenseTitle>
 
+> 参考文档： [Jobs - Run to Completion](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)
+
 </AdSenseTitle>
 
 Kubernetes中的 Job 对象将创建一个或多个 Pod，并确保指定数量的 Pod 可以成功执行到进程正常结束：

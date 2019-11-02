@@ -206,6 +206,8 @@ module.exports = {
                 'k8s-intermediate/workload/wl-job/cleanup',
                 'k8s-intermediate/workload/wl-job/auto-cleanup',
                 'k8s-intermediate/workload/wl-job/pattern',
+                'k8s-intermediate/workload/wl-job/usage',
+                'k8s-intermediate/workload/wl-job/when',
               ]
             }
           ]

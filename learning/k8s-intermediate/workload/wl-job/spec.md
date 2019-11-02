@@ -31,7 +31,7 @@ Job 对象的 YAML 文件，还需要一个 `.spec` 字段。
 
 ## Pod Selector
 
-`.spec.selector` 字段是可选的。绝大部分情况下，您不需要指定该字段。
+`.spec.selector` 字段是可选的。绝大部分情况下，您不需要指定该字段。只有在少数情况下，您才需要这样做，请参考 [Job 的特殊操作](./usage.html)
 
 
 ## Parallel Jobs
