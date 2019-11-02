@@ -12,10 +12,10 @@
             </div>
             <div>
               <transition-group name="lightSpeed" tag="div" class="row">
-                <div class="col-md-6" key="f1" v-show="f1">
+                <div class="col-md-6" key="f1">
                     <!-- InfoBox Center  <Start> -->
-                    <div class="cs-infobox-left mt-4 feature box">
-                        <img src="/landing/images/icn3.svg" alt="" class="img-fluid">
+                    <div class="cs-infobox-left mt-4 feature" data-aos="fade-up" data-aos-duration="800">
+                        <img src="/landing/images/icn3.svg" alt="K8S安装_K8S培训_每天超过300人参考此文档成功安装K8S" class="img-fluid">
                         <div class="text-primary-install-banner">广泛验证</div>
                         <li>每天有超过
                           <span style="font-weight: 500; color: red;">
@@ -25,7 +25,7 @@
                                   style=""
                                   :value="value"
                                   :formatValue="formatToPrice"
-                                  :duration="2000"
+                                  :duration="5000"
                                 />
                               </div>
                           </span>
@@ -35,10 +35,10 @@
                     <!-- InfoBox Center </End> -->
                 </div>
               
-                <div class="col-md-6" key="f2" v-show="f2">
+                <div class="col-md-6" key="f2">
                     <!-- InfoBox Center  <Start> -->
-                    <div class="cs-infobox-left mt-4 feature">
-                        <img src="/landing/images/icn4.svg" alt="" class="img-fluid">
+                    <div class="cs-infobox-left mt-4 feature" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="/landing/images/icn4.svg" alt="K8S安装_K8S培训_始终有最新的K8S版本" class="img-fluid">
                         <div class="text-primary-install-banner">持续更新</div>
 
                         <li>始终有最新的 Kubernetes 稳定版安装文档</li>
@@ -50,7 +50,7 @@
                                 style=""
                                 :value="updateCount"
                                 :formatValue="formatToPrice"
-                                :duration="6000"
+                                :duration="5000"
                               />
                             </div>
                               <!-- {{updateCount}} -->
@@ -64,20 +64,20 @@
                     </div>
                     <!-- InfoBox Center </End> -->
                 </div>
-                <div class="col-md-6" key="f3" v-show="f3">
+                <div class="col-md-6" key="f3">
                     <!-- InfoBox Left  <Start> -->
-                    <div class="cs-infobox-left mt-4 feature">
-                        <img src="/landing/images/icn5.svg" alt="" class="img-fluid">
+                    <div class="cs-infobox-left mt-4 feature" data-aos="fade-up" data-aos-duration="1500">
+                        <img src="/landing/images/icn5.svg" alt="K8S安装_K8S培训_适应各种环境下的安装过程" class="img-fluid">
                         <div class="text-primary-install-banner">适应面广</div>
                         <li>大部分的 K8S 安装文档都是个人爱好者的一份笔记而已，他当时的特定条件并不一定适用于你</li>
                         <li>此文档经众多网友验证，在公有云、私有云、自建虚拟机等多种条件下均适用</li>
                     </div>
                     <!-- InfoBox Left </End> -->
                 </div>
-                <div class="col-md-6" key="f4" v-show="f4">
+                <div class="col-md-6" key="f4">
                     <!-- InfoBox Center  <Start> -->
-                    <div class="cs-infobox-left mt-4 feature" data-aos="fade-up">
-                        <img src="/landing/images/icn1.svg" alt="" class="img-fluid">
+                    <div class="cs-infobox-left mt-4 feature" data-aos="fade-up" data-aos-duration="1200">
+                        <img src="/landing/images/icn1.svg" alt="K8S安装_K8S培训_在线答疑" class="img-fluid">
                         <div class="text-primary-install-banner">在线答疑</div>
                         <div>
                           <div style="text-align: center;">
@@ -109,10 +109,6 @@ export default {
     return {
       show: false,
       value: 300,
-      f1: false,
-      f2: false,
-      f3: false,
-      f4: false
     }
   },
   components: {
@@ -120,16 +116,6 @@ export default {
   },
   mounted () {
     this.show = true
-    this.f1 = true
-    setTimeout(_ => {
-      this.f2 = true
-    }, 1000)
-    setTimeout(_ => {
-      this.f3 = true
-    }, 2000)
-    setTimeout(_ => {
-      this.f4 = true
-    }, 3000)
   },
   methods: {
     formatToPrice(value) {

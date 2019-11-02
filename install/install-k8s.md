@@ -1,7 +1,7 @@
 ---
 vssueId: 15
 # layout: StepLayout
-sharingTitle: 参考这个文档能快速完成K8S安装，装不好还有人免费远程协助，更有K8S免费教程提供
+sharingTitle: K8S入门第一步---安装，装不好还有人免费远程协助，更有K8S免费教程提供，你还在等什么？
 description: Kubernete安装文档_Kubernetes最新稳定版v1.16.2的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords

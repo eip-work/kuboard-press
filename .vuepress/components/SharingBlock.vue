@@ -2,7 +2,7 @@
   <!-- <div>
     <slot></slot>
   </!-->
-  <div style="border: solid 1px #f2be45; background-color: rgba(242, 190, 69, 0.1); padding: 1rem;">
+  <div style="border: solid 1px #f2be45; background-color: rgba(242, 190, 69, 0.1); padding: 1rem;" data-aos="slide-up">
     <div v-show="!authorized" key="not">
         <p style="color: red; font-weight: 500;">免费解锁全站文档：</p>
         <li>扫描二维码加微信获得验证码</li>
@@ -48,12 +48,8 @@
         variant="success" show
         style="margin-bottom: 10px;"
       >
-        
         <h4 class="alert-heading">已为您解锁全站完整文档，感谢配合！</h4>
         <hr/>
-        <li>
-          Kuboard - 快速在 Kubernetes 上落地微服务
-        </li>
         <li>
           清空浏览器缓存后需重新输入验证码
         </li>

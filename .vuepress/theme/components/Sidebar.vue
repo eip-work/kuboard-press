@@ -33,7 +33,7 @@
       </p>
       <div>
         <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-          <img :src="demo_img" style="width: 242px; height: 127px; border: 1px solid #d7dae2;" alt="Kubernetes教程：Kuboard在线体验"></img>
+          <FancyImage src="/images/preview.gif" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
         </a>
       </div>
       <p>
@@ -52,7 +52,6 @@
 <script>
 import SidebarLinks from '@theme/components/SidebarLinks.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
-import demo from './1564841972085.gif'
 
 export default {
   name: 'Sidebar',
@@ -62,7 +61,6 @@ export default {
   props: ['items'],
   data () {
     return {
-      demo_img: demo,
     }
   },
   computed: {

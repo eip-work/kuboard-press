@@ -30,7 +30,7 @@
     </Sidebar>
     <main class="page" style="padding-top: 2rem;">
       <Content class="theme-default-content" style="padding-top: 0; margin-top: 0; padding-bottom: 1rem;"/>
-      <PageVssue style="max-width: 1000px; margin: auto;"></PageVssue>
+      <PageVssue style="max-width: 1000px; margin: auto; padding: 0 2.5rem;"></PageVssue>
     </main>
   </div>
 </template>

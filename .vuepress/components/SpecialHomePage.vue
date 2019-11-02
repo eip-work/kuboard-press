@@ -81,7 +81,7 @@
       </b-card>
       <div class="intro_picture">
         <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-          <img src="./1564841972085.gif" style="max-width: 100%;" alt="Kubernetes教程：Kuboard在线演示"/>
+          <FancyImage src="/images/preview.gif" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
         </a>
       </div>
     </div>

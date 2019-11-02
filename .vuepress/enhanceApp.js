@@ -1,6 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import 'vue2-animate/dist/vue2-animate.min.css';
+
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import BootstrapVue from 'bootstrap-vue'
 
 import Container from './grid/Container'
@@ -64,7 +70,12 @@ export default ({
       sharing = false
       window.kuboardSharing = false
     }
+    AOS.init({
+      easing: 'ease-out-back',
+      duration: 1000
+    });
   }
   console.log('sharing', sharing)
   Vue.prototype.$isSharing = sharing
+
 }

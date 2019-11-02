@@ -24,6 +24,7 @@
   "dependencies": {
     "@vuepress/plugin-pwa": "^1.2.0",
     "animated-number-vue": "^1.0.0",
+    "aos": "^3.0.0-beta.6",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.4",
     "esm": "^3.2.25",

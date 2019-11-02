@@ -113,7 +113,7 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
     <b-card style="height: 100%" shadow="hover">
       <a  target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
         <p style="max-width: 100%;">
-        <img src="./README.assets/1564841972085.gif" style="border: 1px solid #d7dae2; max-width: 100%;" alt="Kubernetes教程：Kuboard 在线Demo"></img>
+        <FancyImage src="/images/preview.gif" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
         </p>
       </a>
     </b-card>

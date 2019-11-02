@@ -49,6 +49,9 @@ meta:
     * [4. 伸缩应用程序](/learning/k8s-basics/scale.html) (10分钟)
     * [5. 执行滚动更新](/learning/k8s-basics/update.html) (10分钟)
   * [6. 复习Kubernetes核心概念](/learning/k8s-basics/k8s-core-concepts.html) (10分钟)
+
+<div data-aos="fade-up">
+
   ::: tip 学习路径建议
   * 入门教程是经典。推荐初学者学习入门教程 2 - 3 遍，甚至更多。
   * 完成入门教程之后，建议首先阅读的文章内容是：
@@ -62,6 +65,8 @@ meta:
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
   * 下一步，可按教程章节顺序对 Kubernetes 各种概念进行深入理解
   :::
+
+</div>
 
 ## **Kubernetes 进阶**
   * 架构

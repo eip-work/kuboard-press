@@ -3,7 +3,8 @@
     <b-alert style="margin-bottom: 0;" show variant="primary">免费答疑</b-alert>
     <grid :rwd="{compact: 'stack'}">
       <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
-        <b-card style="height: 100%; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
+        <b-card style="height: 100%; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}"
+        data-aos="fade-up" data-aos-duration="800">
           <h4>QQ群</h4>
           <div>
             <!-- 一键进群 -->
@@ -16,7 +17,8 @@
         </b-card>
       </grid-item>
       <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-          <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
+          <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none" :body-style="{padding: '0rem 1.5rem'}"
+          data-aos="fade-up" data-aos-duration="1000">
             <h4>微信群</h4>
             <div>
               <div style="margin-top: 10px;">
@@ -30,7 +32,8 @@
           </b-card>
       </grid-item>
       <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-          <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="none" :body-style="{padding: '0rem 1.5rem'}">
+          <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="none" :body-style="{padding: '0rem 1.5rem'}"
+          data-aos="fade-up" data-aos-duration="1200">
             <h4>VIP群</h4>
             <div>
               <div style="margin-top: 10px;">

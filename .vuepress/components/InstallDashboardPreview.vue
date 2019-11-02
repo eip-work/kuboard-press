@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <transition name="lightSpeed">
+  <div data-aos="zoom-in-up">
     <grid :rwd="{compact: 'stack'}" style="margin-top: 1rem;" v-show="show">
         <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
           <b-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
@@ -21,20 +20,15 @@
       <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
         <b-card style="height: 100%; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="hover">
           <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-            <p style="max-width: 100%;">
-              <img src="./1564841972085.gif" style="border: 1px solid #d7dae2; max-width: 100%;" alt="Kubernetes教程：Kuboard 在线Demo"></img>
-            </p>
+            <FancyImage src="/images/preview.gif" alt="Kubernetes教程：Kuboard 在线Demo" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
           </a>
         </b-card>
       </grid-item>
     </grid>
-    </transition>
   </div>
 </template>
 
 <script>
-import 'vue2-animate/dist/vue2-animate.min.css';
-
 export default {
   data() {
     return {
@@ -48,4 +42,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
