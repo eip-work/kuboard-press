@@ -15,9 +15,9 @@ meta:
 
 本文描述了如何创建一个 Deployment，如何理解 Deployment 各个字段，以及如何查看 Deployment 的创建结果。
 
-<el-tabs type="border-card">
-
-<el-tab-pane label="使用 kubectl 创建 Deployment">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用 kubectl 创建 Deployment" active>
 
 下面的 yaml 文件定义了一个 Deployment，该 Deployment 将创建一个有 3 个 nginx Pod 副本的 ReplicaSet（副本集）：
 
@@ -131,15 +131,14 @@ spec:
 pod-template-hash 标签时 Deployment 创建 ReplicaSet 时添加到 ReplicaSet 上的，ReplicaSet 进而将此标签添加到 Pod 上。这个标签用于区分 Deployment 中哪个 ReplicaSet 创建了哪些 Pod。该标签的值是 `.spec.template` 的 hash 值。
 
 
-</el-tab-pane>
-
-<el-tab-pane label="使用 Kuboard 创建 Deployment">
+</b-tab>
+<b-tab title="使用 Kuboard 创建 Deployment">
 
 正在撰写
 
-</el-tab-pane>
-
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 
 [返回 Deployment](./#deployment-概述)

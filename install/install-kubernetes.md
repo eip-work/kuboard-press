@@ -118,8 +118,9 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 - nfs-utils
 - kubectl / kubeadm / kubelet
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速安装">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速安装" active>
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
@@ -128,8 +129,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 
 ```
 
-</el-tab-pane>
-<el-tab-pane label="手动安装">
+  </b-tab>
+  <b-tab title="手动安装">
 
 手动执行以下代码，效果与快速安装完全相同。
 
@@ -139,8 +140,9 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 </InstallEnvCheck>
 
@@ -183,8 +185,9 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/16
 :::
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速初始化">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速初始化" active>
 
 在第一个 master 节点 demo-master-a-1 上执行
 
@@ -198,8 +201,8 @@ echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.16.2/init_master.sh | sh
 ```
 
-</el-tab-pane>
-<el-tab-pane label="手工初始化">
+  </b-tab>
+  <b-tab title="手动初始化">
 
 ``` sh
 # 只在第一个 master 节点执行
@@ -212,8 +215,9 @@ echo "127.0.0.1    ${APISERVER_NAME}" >> /etc/hosts
 
 <<< @/.vuepress/public/install-script/v1.16.2/init_master.sh
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 ***执行结果***
 
@@ -277,8 +281,9 @@ kubectl get nodes
 > * 添加第二、三个Master节点
 > * 初始化 master 节点的 token 有效时间为 2 小时
 
-<el-tabs type="border-card">
-<el-tab-pane label="和第一个Master节点一起初始化">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="和第一个Master节点一起初始化" active>
 
 初始化第一个 master 节点时的输出内容中，第15、16、17行就是用来初始化第二、三个 master 节点的命令，如下所示：<font color="red">此时请不要执行该命令</font>
 
@@ -288,8 +293,8 @@ kubectl get nodes
     --control-plane --certificate-key 41a741533a038a936759aff43b5680f0e8c41375614a873ea49fde8944614dd6
 ```
 
-</el-tab-pane>
-<el-tab-pane label="第一个Master节点初始化2个小时后再初始化">
+  </b-tab>
+  <b-tab title="第一个Master节点初始化2个小时后再初始化">
 
 **获得 certificate key**
 
@@ -335,8 +340,9 @@ kubeadm join apiserver.demo:6443 --token bl80xo.hfewon9l5jlpmjft     --discovery
 --control-plane --certificate-key <font color="red">70eb87e62f052d2d5de759969d5b42f372d0ad798f98df38f7fe73efdf63a13c</font>
 </div>
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 **初始化第二、三个 master 节点**
 
@@ -399,9 +405,9 @@ kubectl get nodes
 
 ### 获得 join命令参数
 
-
-<el-tabs type="border-card">
-<el-tab-pane label="和第一个Master节点一起初始化">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="和第一个Master节点一起初始化" active>
 
 初始化第一个 master 节点时的输出内容中，第25、26行就是用来初始化 worker 节点的命令，如下所示：<font color="red">此时请不要执行该命令</font>
 
@@ -410,8 +416,8 @@ kubectl get nodes
     --discovery-token-ca-cert-hash sha256:959569cbaaf0cf3fad744f8bd8b798ea9e11eb1e568c15825355879cf4cdc5d6
 ```
 
-</el-tab-pane>
-<el-tab-pane label="第一个Master节点初始化2个小时后再初始化">
+  </b-tab>
+  <b-tab title="第一个Master节点初始化2个小时后再初始化">
 
 **在第一个 master 节点 demo-master-a-1 节点执行**
 
@@ -426,8 +432,9 @@ kubeadm token create --print-join-command
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 ::: tip 有效时间
 该 token 的有效时间为 2 个小时，2小时内，您可以使用此 token 初始化任意数量的 worker 节点。
@@ -495,8 +502,9 @@ kubectl delete node demo-worker-x-x
 > kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
 
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速安装">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速安装" active>
 
 **在 master 节点上执行**
 
@@ -505,13 +513,14 @@ kubectl delete node demo-worker-x-x
 kubectl apply -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 ```
 
-</el-tab-pane>
-<el-tab-pane label="YAML文件">
+  </b-tab>
+  <b-tab title="YAML文件">
 
 <<< @/.vuepress/public/install-script/v1.16.2/nginx-ingress.yaml
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 ::: warning
 如果您打算将 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.3/docs/installation.md)，完善 Ingress 的配置

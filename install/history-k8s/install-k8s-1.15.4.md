@@ -2,26 +2,26 @@
 vssueId: 93
 # layout: StepLayout
 description: Kubernetes 最新稳定版 v1.15.4 的快速安装文档。该文档由众多网友验证并在线提出修改意见、持续不断地更新和完善、并且通过 QQ 群提供免费在线答疑的服务。
-storyBook:
-  title: '使用 kubeadm 安装 kubernetes v1.15.4（单Master节点）'
-  initial: StoryBook
-  pages:
-    - name: introduction
-      title: 文档特点
-    - name: overview
-      title: 配置要求
-    - name: step1
-      title: 检查环境
-    - name: step2
-      title: 安装 docker/kubelet
-    - name: step3
-      title: 初始化 master 节点
-    - name: step4
-      title: 初始化 worker 节点
-    - name: step5
-      title: 安装 Ingress Controller
-    - name: step6
-      title: 总结
+# storyBook:
+#   title: '使用 kubeadm 安装 kubernetes v1.15.4（单Master节点）'
+#   initial: StoryBook
+#   pages:
+#     - name: introduction
+#       title: 文档特点
+#     - name: overview
+#       title: 配置要求
+#     - name: step1
+#       title: 检查环境
+#     - name: step2
+#       title: 安装 docker/kubelet
+#     - name: step3
+#       title: 初始化 master 节点
+#     - name: step4
+#       title: 初始化 worker 节点
+#     - name: step5
+#       title: 安装 Ingress Controller
+#     - name: step6
+#       title: 总结
 ---
 
 # 使用 kubeadm 安装 kubernetes v1.15.4
@@ -85,8 +85,6 @@ export default {
 }
 </script>
 
-<StoryBook>
-<div slot="introduction">
 
 ## 文档特点
 
@@ -117,8 +115,8 @@ export default {
     </div>
   </div> -->
 
-</div>
-<div slot="overview" style="min-height: 800px;">
+<!-- </div>
+<div slot="overview" style="min-height: 800px;"> -->
 
 ## 配置要求
 
@@ -155,8 +153,8 @@ export default {
 
 :::
 
-</div>
-<div slot="step1">
+<!-- </div>
+<div slot="step1"> -->
 
 ## 检查 centos / hostname
 
@@ -196,22 +194,6 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ```
 :::
 
-<div style="display: inline-block; width: calc(100% - 400px);"></div>
-<div style="display: inline-block; width: 302px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
-<el-form :model="form" ref="envForm" :rules="rules" style="text-align: right;">
-<el-form-item prop="checked" class="env-form-item">
-<el-checkbox-group v-model="form.checked" style="height: 120px;">
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
-</el-checkbox-group>
-</el-form-item>
-</el-form>
-</div>
-
-</div>
-
-<div slot="step2">
 
 ## 安装 docker / kubelet
 
@@ -220,8 +202,11 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 - nfs-utils
 - kubectl / kubeadm / kubelet
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速安装">
+
+
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速安装" active>
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
@@ -230,8 +215,8 @@ curl -sSL https://kuboard.cn/install-script/v1.15.4/install-kubelet.sh | sh
 
 ```
 
-</el-tab-pane>
-<el-tab-pane label="手动安装">
+  </b-tab>
+  <b-tab title="手动安装">
 
 手动执行以下代码，效果与快速安装完全相同。
 
@@ -241,12 +226,13 @@ curl -sSL https://kuboard.cn/install-script/v1.15.4/install-kubelet.sh | sh
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
-</div>
+<!-- </div>
 
-<div slot="step3">
+<div slot="step3"> -->
 
 ## 初始化 master 节点
 
@@ -259,8 +245,9 @@ curl -sSL https://kuboard.cn/install-script/v1.15.4/install-kubelet.sh | sh
 * POD_SUBNET 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请不要修改这个字段的取值 10.100.0.1/20
 :::
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速初始化">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速初始化" active>
 
 ``` sh
 # 只在 master 节点执行
@@ -275,8 +262,8 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.15.4/init-master.sh | sh
 ```
 
-</el-tab-pane>
-<el-tab-pane label="手工初始化">
+  </b-tab>
+  <b-tab title="手动初始化">
 
 ``` sh
 # 只在 master 节点执行
@@ -292,9 +279,9 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 <<< @/.vuepress/public/install-script/v1.15.4/init-master.sh
 
-</el-tab-pane>
-</el-tabs>
-
+  </b-tab>
+</b-tabs>
+</b-card>
 
 **检查 master 初始化结果**
 
@@ -308,9 +295,9 @@ watch kubectl get pod -n kube-system -o wide
 kubectl get nodes -o wide
 ```
 
-</div>
+<!-- </div>
 
-<div slot="step4">
+<div slot="step4"> -->
 
 ## 初始化 worker节点
 
@@ -389,14 +376,15 @@ kubectl delete node demo-worker-x-x
 * worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
 :::
 
-</div>
+<!-- </div>
 
-<div slot="step5">
+<div slot="step5"> -->
 
 ## 安装 Ingress Controller
 
-<el-tabs type="border-card">
-<el-tab-pane label="安装IngressController">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速初始化" active>
 
 **在 master 节点上执行**
 
@@ -405,8 +393,9 @@ kubectl delete node demo-worker-x-x
 kubectl apply -f https://kuboard.cn/install-script/v1.15.4/nginx-ingress.yaml
 ```
 
-</el-tab-pane>
-<el-tab-pane label="卸载IngressController">
+  </b-tab>
+  <b-tab title="卸载IngressController">
+
 
 **在 master 节点上执行**
 
@@ -417,13 +406,15 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.4/nginx-ingress.yaml
 kubectl delete -f https://kuboard.cn/install-script/v1.15.4/nginx-ingress.yaml
 ```
 
-</el-tab-pane>
-<el-tab-pane label="YAML文件">
+  </b-tab>
+  <b-tab title="YAML文件">
 
 <<< @/.vuepress/public/install-script/v1.15.4/nginx-ingress.yaml
 
-</el-tab-pane>
-</el-tabs>
+
+  </b-tab>
+</b-tabs>
+</b-card>
 
 
 **配置域名解析**
@@ -445,9 +436,9 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.4/nginx-ingress.yaml
 :::
 
 
-</div>
+<!-- </div>
 
-<div slot="step6">
+<div slot="step6"> -->
 
 
 ## 下一步
@@ -467,5 +458,5 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.4/nginx-ingress.yaml
 :::
 
 
-</div>
-</StoryBook>
+<!-- </div>
+</StoryBook> -->

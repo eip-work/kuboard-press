@@ -68,8 +68,9 @@ meta:
 ## 安装
 
 
-<el-tabs type="border-card">
-<el-tab-pane label="安装">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="安装" active>
 
 安装 Kuboard。
 
@@ -79,9 +80,8 @@ meta:
 kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 ```
 
-
-</el-tab-pane>
-<el-tab-pane label="卸载">
+  </b-tab>
+  <b-tab title="卸载">
 
 卸载 Kuboard
 
@@ -89,8 +89,9 @@ kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 ```
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 <!-- </div>
 
@@ -100,8 +101,9 @@ kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 
 您可以获得管理员用户、只读用户的Token
 
-<el-tabs type="border-card">
-<el-tab-pane label="管理员用户">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="管理员用户" active>
 
 **拥有的权限**
 
@@ -133,8 +135,8 @@ namespace: 11 bytes
 token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLWc4aHhiIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI5NDhiYjVlNi04Y2RjLTExZTktYjY3ZS1mYTE2M2U1ZjdhMGYiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.DZ6dMTr8GExo5IH_vCWdB_MDfQaNognjfZKl0E5VW8vUFMVvALwo0BS-6Qsqpfxrlz87oE9yGVCpBYV0D00811bLhHIg-IR_MiBneadcqdQ_TGm_a0Pz0RbIzqJlRPiyMSxk1eXhmayfPn01upPdVCQj6D3vAY77dpcGplu3p5wE6vsNWAvrQ2d_V1KhR03IB1jJZkYwrI8FHCq_5YuzkPfHsgZ9MBQgH-jqqNXs6r8aoUZIbLsYcMHkin2vzRsMy_tjMCI9yXGiOqI-E5efTb-_KbDVwV5cbdqEIegdtYZ2J3mlrFQlmPGYTwFI8Ba9LleSYbCi4o0k74568KcN_w
 ```
 
-</el-tab-pane>
-<el-tab-pane label="只读用户">
+  </b-tab>
+  <b-tab title="只读用户">
 
 **拥有的权限**
 
@@ -174,8 +176,9 @@ namespace: 11 bytes
 token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLWc4aHhiIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI5NDhiYjVlNi04Y2RjLTExZTktYjY3ZS1mYTE2M2U1ZjdhMGYiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.DZ6dMTr8GExo5IH_vCWdB_MDfQaNognjfZKl0E5VW8vUFMVvALwo0BS-6Qsqpfxrlz87oE9yGVCpBYV0D00811bLhHIg-IR_MiBneadcqdQ_TGm_a0Pz0RbIzqJlRPiyMSxk1eXhmayfPn01upPdVCQj6D3vAY77dpcGplu3p5wE6vsNWAvrQ2d_V1KhR03IB1jJZkYwrI8FHCq_5YuzkPfHsgZ9MBQgH-jqqNXs6r8aoUZIbLsYcMHkin2vzRsMy_tjMCI9yXGiOqI-E5efTb-_KbDVwV5cbdqEIegdtYZ2J3mlrFQlmPGYTwFI8Ba9LleSYbCi4o0k74568KcN_w
 ```
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 <!-- </div>
 
@@ -185,9 +188,9 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 
 您可以通过NodePort、port-forward 两种方式当中的任意一种访问 Kuboard
 
-
-<el-tabs type="border-card">
-<el-tab-pane label="通过NodePort访问">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="通过NodePort访问" active>
 
 Kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 Kuboard。
 
@@ -202,8 +205,8 @@ http://任意一个Worker节点的IP地址:32567/
 * 您也可以修改 Kuboard.yaml 文件，使用自己定义的 NodePort 端口号
 :::
 
-</el-tab-pane>
-<el-tab-pane label="通过port-forward访问">
+  </b-tab>
+  <b-tab title="通过port-forward访问">
 
 在您的客户端电脑中执行如下命令
 
@@ -222,8 +225,9 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 需要您先完成 [从客户端电脑远程管理 Kubernetes](install-kubectl.html) 的配置
 :::
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 <!-- </div>
 

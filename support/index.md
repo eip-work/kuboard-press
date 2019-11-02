@@ -26,7 +26,7 @@ export default {
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
 
-<el-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="none">
+<b-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="none">
 
 * 使用 Kuboard 是 <font color="red">免费</font> 的，无论您是用于学习还是用于生产
 * 将来会推出 Kuboard Plus，当前所有的功能，<font color="red">将来仍然免费</font>。Kuboard Plus 侧重点：
@@ -34,16 +34,16 @@ export default {
   * 审计日志
 * 只要您在本文末尾的评论区留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
 
-</el-card>
+</b-card>
 
 </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
 
-<el-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
-  <div style="background-color: rgb(0, 99, 220); padding: 10px; max-width: 200px;">
+<b-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
+  <div style="background-color: rgb(0, 99, 220); padding: 10px; max-width: 220px;">
     <img src="/favicon.png" style="max-width: 200px;">
   </div>
-</el-card>
+</b-card>
   </grid-item>
 </grid>
 
@@ -54,16 +54,16 @@ export default {
 <div style="padding: 1rem 0 0 0;">
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-    <el-card style="height: calc(100% - 2rem); margin-top: 1rem;" shadow="none">
+    <b-card style="height: calc(100% - 2rem); margin-top: 1rem;" shadow="none">
       <img src="./index.assets/stars.png" alt="Kubernetes教程_Kuboard_Github_Star">
-    </el-card>
+    </b-card>
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-      <el-card style="height: calc(100% - 2rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
+      <b-card style="height: calc(100% - 2rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
         <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经在许多个实际项目中经受住了考验</li>
         <li>Kuboard 于2019年8月初公开发布，不到三个月时间就已经获得了 855 Github Star（如图所示），当前 <StarCount></StarCount></li>
         <li>Kuboard 社群中，已有许多的用户将 Kuboard 用于自己的生产环境</li>
-      </el-card>
+      </b-card>
   </grid-item>
 </grid>
 </div>
@@ -73,20 +73,20 @@ export default {
 <div style="padding: 1rem 0;">
 <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-    <el-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
+    <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;" shadow="none">
       <h3>服务范围</h3>
       <li>Kubernetes 企业培训</li>
       <li>DevOps 环境搭建及培训</li>
       <li>SpringCloud 微服务架构咨询</li>
       <li>Kubernetes 投产支持及问题解决</li>
       <li>Kuboard 定制化</li>
-    </el-card>
+    </b-card>
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-      <el-card style="height: 100%; margin-top: 1rem;" shadow="none">
+      <b-card style="height: 100%; margin-top: 1rem;" shadow="none">
         <h3>联系方式</h3>
         <img src="/images/dz2.jpeg" style="width: 200px; margin: auto;"></img>
-      </el-card>
+      </b-card>
   </grid-item>
 </grid>
 </div>

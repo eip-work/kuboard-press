@@ -36,7 +36,7 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
     align-content: stretch;
     justify-content: space-between;">
 <div style="flex-grow: 1; flex-basis: 20%; min-width: 200px; cursor: pointer; padding: 1rem 0.5rem;" @click="$router.push({path: '/install/install-k8s.html'})">
-<el-card shadow="hover" style="height: 225px;">
+<b-card shadow="hover" style="height: 225px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes安装文档
   </h2>
@@ -49,11 +49,11 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
   <li style="color: #4e6e8e;">
   碰到问题可QQ在线答疑
   </li>
-  </el-card>
+  </b-card>
 </div>
 
 <div style="flex-grow: 1; flex-basis: 20%; min-width: 200px; cursor: pointer; padding: 1rem 0.5rem;" @click="$router.push({path: '/learning/'})">
-<el-card shadow="hover" style="height: 225px;">
+<b-card shadow="hover" style="height: 225px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes免费教程
   </h2>
@@ -63,11 +63,11 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
   <li style="color: #4e6e8e;">
   活跃的QQ社群，与网友共同学习进步
   </li>
-</el-card>
+</b-card>
 </div>
 
 <div style="flex-grow: 1; flex-basis: 20%; min-width: 200px; cursor: pointer; padding: 1rem 0.5rem;" @click="$router.push({path: '/install/install-dashboard.html'})">
-<el-card shadow="hover" style="height: 225px;">
+<b-card shadow="hover" style="height: 225px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes管理界面
   </h2>
@@ -77,18 +77,18 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
   <li style="color: #4e6e8e;">
   免费
   </li>
-</el-card>
+</b-card>
 </div>
 
 <div style="flex-grow: 1; flex-basis: 20%; min-width: 200px; cursor: pointer; padding: 1rem 0.5rem;" @click="$router.push({path: '/learning/k8s-practice/ocp/'})">
-<el-card shadow="hover" style="height: 225px;">
+<b-card shadow="hover" style="height: 225px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes + SpringCloud实战
   </h2>
   <li style="color: #4e6e8e;">
   参考文档，一步一步完成Spring Cloud微服务架构在Kubernetes上的部署和管理
   </li>
-</el-card>
+</b-card>
 </div>
 
 </div>
@@ -98,7 +98,7 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
 
 <grid :rwd="{compact: 'stack'}" style="margin-top: 1rem;">
     <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
-      <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
+      <b-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
         <p>
           <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
           Kuboard 在线体验
@@ -107,16 +107,16 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
         <p>
         为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>
         </p>
-      </el-card>
+      </b-card>
   </grid-item>
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-    <el-card style="height: 100%" shadow="hover">
+    <b-card style="height: 100%" shadow="hover">
       <a  target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
         <p style="max-width: 100%;">
         <img src="./README.assets/1564841972085.gif" style="border: 1px solid #d7dae2; max-width: 100%;" alt="Kubernetes教程：Kuboard 在线Demo"></img>
         </p>
       </a>
-    </el-card>
+    </b-card>
   </grid-item>
 </grid>
 

@@ -20,9 +20,9 @@ meta:
 :::
 
 
-<el-tabs type="border-card">
-
-<el-tab-pane label="使用 kubectl 回滚 Deployment">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用 kubectl 回滚 Deployment" active>
 
 <h2>模拟更新错误</h2>
 
@@ -218,14 +218,13 @@ meta:
       Normal  ScalingReplicaSet   15s   deployment-controller  Scaled down replica set nginx-deployment-595696685f to 0
     ```
 
-</el-tab-pane>
-
-<el-tab-pane label="使用 Kuboard 回滚 Deployment">
+</b-tab>
+<b-tab title="使用 Kuboard 回滚 Deployment">
 
 正在撰写中
 
-</el-tab-pane>
-
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 [返回 Deployment](./#deployment-概述)

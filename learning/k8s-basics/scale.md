@@ -46,8 +46,9 @@ spec:
 
 <SharingBlock>
 
-<el-tabs type="border-card">
-<el-tab-pane label="使用kubectl">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用kubectl" active>
 
 **修改 nginx-deployment.yaml 文件**
 
@@ -89,8 +90,8 @@ kubectl apply -f nginx-deployment.yaml
 watch kubectl get pods -o wide
 ```
 
-</el-tab-pane>
-<el-tab-pane label="使用Kuboard">
+</b-tab>
+<b-tab title="使用Kuboard">
 
 * 在 default 名称空间 点击 ***展现层 --> Nginx部署***
 
@@ -108,8 +109,9 @@ watch kubectl get pods -o wide
 
 ![Kubernetes教程：伸缩应用-Scaling](./scale.assets/image-20190822213709967.png)
 
-</el-tab-pane>
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 ~~一旦运行了多个应用程序实例，就可以在不停机的情况下执行滚动更新了，
 

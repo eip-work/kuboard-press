@@ -67,7 +67,7 @@
     </div>
 
     <div class="intro">
-      <el-card class="intro_text" shadow="hover">
+      <b-card class="intro_text" shadow="hover">
         <p>
           <h2>Kuboard</h2>
           <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
@@ -78,7 +78,7 @@
           <li>无需手写 YAML</li>
           <li><a href="/install/install-dashboard.html">安装Kuboard</a></li>
         </p>
-      </el-card>
+      </b-card>
       <div class="intro_picture">
         <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
           <img src="./1564841972085.gif" style="max-width: 100%;" alt="Kubernetes教程：Kuboard在线演示"/>

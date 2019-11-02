@@ -3,7 +3,7 @@
     <transition name="lightSpeed">
     <grid :rwd="{compact: 'stack'}" style="margin-top: 1rem;" v-show="show">
         <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
-          <el-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
+          <b-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
             <p>
               <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
               Kuboard 在线体验
@@ -16,16 +16,16 @@
             <li>无需编写YAML</li>
             <li>纯图形化环境</li>
             <li>多环境管理</li>
-          </el-card>
+          </b-card>
       </grid-item>
       <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-        <el-card style="height: 100%; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="hover">
+        <b-card style="height: 100%; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="hover">
           <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
             <p style="max-width: 100%;">
               <img src="./1564841972085.gif" style="border: 1px solid #d7dae2; max-width: 100%;" alt="Kubernetes教程：Kuboard 在线Demo"></img>
             </p>
           </a>
-        </el-card>
+        </b-card>
       </grid-item>
     </grid>
     </transition>

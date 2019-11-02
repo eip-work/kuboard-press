@@ -18,9 +18,9 @@ Deployment 的生命周期中，将会进入不同的状态，这些状态可能
 * complete
 * fail to progress
 
-<el-tabs type="border-card">
-
-<el-tab-pane label="使用 kubectl 查看 Deployment 状态">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用 kubectl 查看 Deployment 状态" active>
 
 <h2>Progressing 状态</h2>
 
@@ -161,13 +161,14 @@ $ echo $?
 * 回滚到前一个版本
 * 暂停（pause）Deployment，以对 Deployment 的 Pod template 执行多处更新
 
-</el-tab-pane>
+</b-tab>
+<b-tab title="使用 Kuboard 查看 Deployment 状态">
 
-<el-tab-pane label="使用 Kuboard 查看 Deployment 状态">
+
 正在撰写中
 
-</el-tab-pane>
-
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 [返回 Deployment](./#deployment-概述)

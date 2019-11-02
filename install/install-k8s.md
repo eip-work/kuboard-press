@@ -37,8 +37,8 @@ meta:
 
 ## 文档特点
 
-<div style="min-height: 645px;">
-  <InstallBanner version="v1.16.2" updateCount="65" style="min-height: 750px;"/>
+<div style="min-height: 300px;">
+  <InstallBanner version="v1.16.2" updateCount="65"/>
 </div>
 
 <!-- </div>
@@ -174,8 +174,10 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 - kubectl / kubeadm / kubelet
 
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速安装">
+
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速安装" active>
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
@@ -184,8 +186,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 
 ```
 
-</el-tab-pane>
-<el-tab-pane label="手动安装">
+  </b-tab>
+  <b-tab title="手动安装">
 
 手动执行以下代码，效果与快速安装完全相同。
 
@@ -195,8 +197,9 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 </InstallEnvCheck>
 
@@ -219,8 +222,9 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改
 :::
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速初始化">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速初始化" active>
 
 ``` sh
 # 只在 master 节点执行
@@ -234,8 +238,9 @@ export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.16.2/init_master.sh | sh
 ```
-</el-tab-pane>
-<el-tab-pane label="手工初始化">
+
+  </b-tab>
+  <b-tab title="手动初始化">
 
 ``` sh
 # 只在 master 节点执行
@@ -251,8 +256,9 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 <<< @/.vuepress/public/install-script/v1.16.2/init_master.sh
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 **检查 master 初始化结果**
 
@@ -328,8 +334,9 @@ demo-worker-a-2   Ready    <none>   3m56s   v1.16.2
 
 ## 移除 worker 节点
 
-<el-collapse style="margin-top: 20px;">
-  <el-collapse-item title="正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加。点我查看具体步骤。" name="1">
+<b-button v-b-toggle.collapse-1 variant="outline-danger" size="sm" style="margin-top: 1rem;">添加节点出错时，可移除节点重新添加</b-button>
+<b-collapse id="collapse-1" class="mt-2">
+  <b-card>
 
 ::: warning
 正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加
@@ -354,8 +361,8 @@ kubectl delete node demo-worker-x-x
 * worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
 :::
 
-  </el-collapse-item>
-</el-collapse>
+  </b-card>
+</b-collapse>
 
 
 <!-- </div>
@@ -364,9 +371,9 @@ kubectl delete node demo-worker-x-x
 
 ## 安装 Ingress Controller
 
-
-<el-tabs type="border-card">
-<el-tab-pane label="安装IngressController">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速初始化" active>
 
 **在 master 节点上执行**
 
@@ -375,8 +382,9 @@ kubectl delete node demo-worker-x-x
 kubectl apply -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 ```
 
-</el-tab-pane>
-<el-tab-pane label="卸载IngressController">
+  </b-tab>
+  <b-tab title="卸载IngressController">
+
 
 **在 master 节点上执行**
 
@@ -387,14 +395,15 @@ kubectl apply -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 kubectl delete -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 ```
 
-</el-tab-pane>
-<el-tab-pane label="YAML文件">
+  </b-tab>
+  <b-tab title="YAML文件">
 
 <<< @/.vuepress/public/install-script/v1.16.2/nginx-ingress.yaml
 
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 **配置域名解析**
 

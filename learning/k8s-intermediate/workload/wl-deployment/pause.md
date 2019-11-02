@@ -17,9 +17,9 @@ meta:
 
 以我们在 [创建Deployment](./create.html) 中创建的 Deployment 为例。
 
-<el-tabs type="border-card">
-
-<el-tab-pane label="使用 kubectl 暂停 Deployment">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用 kubectl 暂停 Deployment" active>
 
 * 执行命令 `kubectl get deployment`，查看 Deployment 信息，输出结果如下所示：
 
@@ -102,14 +102,15 @@ meta:
   您不能回滚（rollback）一个已暂停的 Deployment，除非您继续（resume）该 Deployment。
   :::
 
-</el-tab-pane>
+</b-tab>
+<b-tab title="使用 Kuboard 暂停 Deployment">
 
-<el-tab-pane label="使用 Kuboard 暂停 Deployment">
+
 正在撰写中
 
-</el-tab-pane>
-
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 
 [返回 Deployment](./#deployment-概述)

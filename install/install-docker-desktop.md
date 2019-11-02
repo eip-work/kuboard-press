@@ -22,8 +22,9 @@ meta:
 
 ## 启用 Kubernetes 集群
 
-<el-tabs type="border-card">
-<el-tab-pane label="MAC">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="MAC" active>
 
 * **启动 docker-desktop**
 
@@ -41,10 +42,11 @@ meta:
     <img src="./install-docker-desktop.assets/image-20190914223501758.png" style="max-width: 600px;" alt="Kubernetes教程：DockerDesktop"/>
   </p>
 
-</el-tab-pane>
-<el-tab-pane label="Windows">
+</b-tab>
+<b-tab title="Windows">
 
 具体操作与 Mac 的操作过程相似，已有许多网友验证过。作者使用的是 MAC 电脑，所以未能提供 Windows 上的截图。
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>

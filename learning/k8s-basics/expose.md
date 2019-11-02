@@ -79,8 +79,9 @@ Labels（标签）可以在创建 Kubernetes 对象时附加上去，也可以�
 
 <SharingBlock>
 
-<el-tabs type="border-card">
-<el-tab-pane label="使用kubectl">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用kubectl" active>
 
 创建nginx的Deployment中定义了Labels，如下：
 
@@ -166,8 +167,8 @@ curl <任意节点的 IP>:32600
 ```
 > 如果您的集群在云上，您可能通过云服务商的安全组开放 32600 端口的访问
 
-</el-tab-pane>
-<el-tab-pane label="使用Kuboard">
+</b-tab>
+<b-tab title="使用Kuboard">
 
 * 在 default 名称空间 点击 ***展现层 --> Nginx部署***
 
@@ -193,8 +194,9 @@ curl <任意节点的 IP>:32600
 
   在浏览器打开 `http://<任意节点的 IP>:32601`
 
-</el-tab-pane>
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 ~~到目前为止，我们已经成功部署好项目，并能够对其进行访问，
 

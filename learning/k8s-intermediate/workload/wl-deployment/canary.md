@@ -15,9 +15,9 @@ meta:
 
 如果您想使用 Deployment 将最新的应用程序版本发布给一部分用户（或服务器），您可以为每个版本创建一个 Deployment，此时，应用程序的新旧两个版本都可以同时获得生产上的流量。
 
-<el-tabs type="border-card">
-
-<el-tab-pane label="使用 kubectl 执行金丝雀发布">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用 kubectl 执行金丝雀发布" active>
 
 * 部署第一个版本
 
@@ -95,9 +95,8 @@ meta:
 
 * 当您确定新的版本没有问题之后，可以将 `nginx-deployment` 的镜像标签修改为新版本的镜像标签，并在完成对 `nginx-deployment` 的滚动更新之后，删除 `nginx-deployment-canary` 这个 Deployment
 
-</el-tab-pane>
-
-<el-tab-pane label="使用 Kuboard 执行金丝雀发布">
+</b-tab>
+<b-tab title="使用 Kuboard 执行金丝雀发布">
 
 在 Kuboard 执行金丝雀发布的过程，与使用 kubectl 的过程相同，此处特别说明的一点是，当使用 Kuboard 创建 `web-nginx-canary` Deployment时，如何解决其Pod 的标签被 `web-nginx` 的Service包含的问题：
 
@@ -108,9 +107,9 @@ meta:
 
 ![Kubernetes教程_在Kuboard中执行金丝雀发布](./canary.assets/image-20191013204426338.png)
 
-</el-tab-pane>
-
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 ::: danger 局限性
 按照 Kubernetes 默认支持的这种方式进行金丝雀发布，有一定的局限性：

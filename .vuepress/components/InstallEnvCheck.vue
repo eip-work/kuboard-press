@@ -8,22 +8,21 @@
     <div>
 
       <p style="color: red">必须选中下面的 {{envCount}} 个勾选框才能继续</p>
-      <p>选中后显示 安装 docker/kubelet 的文档</p>
 
-      <div style="display: inline-block; width: 550px; max-width: calc(100vw - 100px); overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
-      <el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
-      <el-form-item prop="checked" class="env-form-item">
-      <el-checkbox-group v-model="form.checked">
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="ipaddress">我的任意节点都有固定的内网 IP 地址</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="networkcard">我的任意节点只有一块网卡（可以在完成K8S安装后再添加网卡）</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="nat">如果我直接使用vmware等创建虚拟机，我使用NAT网络，而不是桥接网络</el-checkbox> </li>
-        <li style="height: 40px;"> <el-checkbox style="width: 300px; max-width: calc(100vw - 100px); text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
-      </el-checkbox-group>
-      </el-form-item>
-      </el-form>
+      <div style="overflow: hidden; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-top: 1rem; margin-bottom: 20px; border: 1px solid #d7dae2;">
+      <b-form>
+        <b-form-group label="选中后显示 安装 docker/kubelet 的文档">
+          <b-form-checkbox-group id="checkbox-group-2" v-model="form.checked" name="flavour-2">
+            <b-form-checkbox value="centos">我的任意节点 centos 版本在兼容列表中</b-form-checkbox><br/>
+            <b-form-checkbox value="cpu">我的任意节点 CPU 内核数量大于等于 2</b-form-checkbox><br/>
+            <b-form-checkbox value="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</b-form-checkbox><br/>
+            <b-form-checkbox value="ipaddress">我的任意节点都有固定的内网 IP 地址</b-form-checkbox><br/>
+            <b-form-checkbox value="networkcard">我的任意节点只有一块网卡（可以在完成K8S安装后再添加网卡）</b-form-checkbox><br/>
+            <b-form-checkbox value="nat">如果我直接使用vmware等创建虚拟机，我使用NAT网络，而不是桥接网络</b-form-checkbox><br/>
+            <b-form-checkbox value="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</b-form-checkbox><br/>
+          </b-form-checkbox-group>
+        </b-form-group>
+      </b-form>
       </div>
 
     </div>
@@ -35,12 +34,10 @@
     </grid> -->
 
     </div>
-    <el-collapse-transition>
     <div v-show="envOk" key="ok">
-      <el-button style="margin-top: 10px;" @click="review" type="text">再看看我是否符合安装条件</el-button>
+      <b-button style="margin-top: 10px;" @click="review" variant="info">再看看我是否符合安装条件</b-button>
       <slot></slot>
-      </div>
-    </el-collapse-transition>
+    </div>
   </div>
 </template>
 
@@ -87,7 +84,11 @@ export default {
     },
     envOk () {
       if (this.envOk) {
-        this.$message.success(`如果您符合刚才 ${ENV_COUNT} 个条件，请继续安装`)
+        this.$bvToast.toast(`如果您符合刚才 ${ENV_COUNT} 个条件，请继续安装`, {
+          title: '完成环境检查',
+          variant: 'success',
+          autoHideDelay: 5000,
+        })
         this.$sendGaEvent('install-' + this.type, 'envOk-' + this.type, '已确认环境符合条件-' + this.type)
       }
     }

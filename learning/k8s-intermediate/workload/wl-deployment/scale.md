@@ -15,9 +15,9 @@ meta:
 
 伸缩（Scaling） Deployment，是指改变 Deployment 中 Pod 的副本数量，以应对实际业务流量的变化。
 
-<el-tabs type="border-card">
-
-<el-tab-pane label="使用 kubectl 伸缩 Deployment">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用 kubectl 伸缩 Deployment" active>
 
 <h2>执行伸缩</h2>
 
@@ -82,13 +82,14 @@ meta:
   nginx-deployment-618515232    11        11        11        7m
   ```
 
-</el-tab-pane>
+</b-tab>
+<b-tab title="使用 Kuboard 伸缩 Deployment">
 
-<el-tab-pane label="使用 Kuboard 伸缩 Deployment">
+
 正在撰写中
 
-</el-tab-pane>
-
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 [返回 Deployment](./#deployment-概述)

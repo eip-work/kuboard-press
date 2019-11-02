@@ -35,16 +35,16 @@ module.exports = {
     ['script', { 'data-ad-client': "ca-pub-3313149841665250", async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}],
     // <script data-ad-client="ca-pub-3313149841665250" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-    // ['script', { type: 'text/javascript', async: true, src: "https://bot.4paradigm.com/web/assets/ics-web-sdk-js.js" }],
-    // ['script', { type: 'text/javascript' }, `
-    //   window.onload = function() {
-    //     if (window.innerWidth > 1360) {
-    //       console.log('init-wechat')
-    //       IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/15516/bbc69136-e42c-4299-ba85-c57685c8417d')
-    //     } else {
-    //       console.log('窗口太小，不显示机器人')
-    //     }
-    //   }`],
+    ['script', { type: 'text/javascript', async: true, src: "https://bot.4paradigm.com/web/assets/ics-web-sdk-js.js" }],
+    ['script', { type: 'text/javascript' }, `
+      window.onload = function() {
+        if (window.innerWidth > 1360) {
+          console.log('init-wechat')
+          IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/15516/bbc69136-e42c-4299-ba85-c57685c8417d')
+        } else {
+          console.log('窗口太小，不显示机器人')
+        }
+      }`],
     
     // <script type="text/javascript" src="https://bot.4paradigm.com/web/assets/ics-web-sdk-js.js"></script>
 

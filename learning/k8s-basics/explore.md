@@ -62,8 +62,9 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
 ## 实战：故障排除
 
 
-<el-tabs type="border-card">
-<el-tab-pane label="使用kubectl">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="使用kubectl" active>
 
 在[部署第一个应用程序](./deploy-app.html) 中，我们使用了 kubectl 命令行界面部署了 nginx 并且查看了 Deployment 和 Pod。kubectl 还有如下四个常用命令，在我们排查问题时可以提供帮助：
 
@@ -127,8 +128,8 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
 
 请尝试在您的集群中执行一下上述的几个命令，了解如何通过 kubectl 操作 kubernetes 集群中的 Node、Pod、Container。
 
-</el-tab-pane>
-<el-tab-pane label="使用Kuboard">
+  </b-tab>
+  <b-tab title="使用Kuboard">
 
 **在名称空间中查看部署**
 
@@ -139,8 +140,9 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
 ![Kubernetes教程：查看 Pods/Nodes](./explore.assets/image-20190822172457417.png)
 
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 ::: tip
 Worker节点是k8s中的工作计算机，可能是VM或物理计算机，具体取决于群集。多个Pod可以在一个节点上运行。

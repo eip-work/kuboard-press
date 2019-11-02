@@ -132,8 +132,9 @@ spec:
 * 假设您已经将 Ingress 融入到您的网络拓扑中，并且将 `*.demo.kuboard.cn` （请使用您自己的域名）解析到对应的外网 IP 地址
 :::
 
-<el-tabs type="border-card">
-<el-tab-pane label="使用kubectl">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用kubectl" active>
 
 **创建文件 nginx-deployment.yaml**
 ``` sh
@@ -237,8 +238,8 @@ kubectl get ingress -o wide
 curl a.demo.kuboard.cn
 ```
 
-</el-tab-pane>
-<el-tab-pane label="使用Kuboard">
+</b-tab>
+<b-tab title="使用Kuboard">
 
 * 在 default 名称空间 点击 ***创建工作负载***
 
@@ -273,8 +274,9 @@ Kuboard 工作负载编辑器将 kubernetes 中三个主要对象 Deployment/Ser
 
   在浏览器打开 `http://a.demo.kuboard.cn` （请使用您自己的域名）
 
-</el-tab-pane>
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 
 </SharingBlock>

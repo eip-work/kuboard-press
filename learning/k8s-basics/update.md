@@ -55,8 +55,9 @@ meta:
 
 <SharingBlock>
 
-<el-tabs type="border-card">
-<el-tab-pane label="使用kubectl">
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="使用kubectl" active>
 
 **修改 nginx-deployment.yaml 文件**
 
@@ -99,8 +100,8 @@ kubectl apply -f nginx-deployment.yaml
 watch kubectl get pods -l app=nginx
 ```
 
-</el-tab-pane>
-<el-tab-pane label="使用Kuboard">
+</b-tab>
+<b-tab title="使用Kuboard">
 
 * **进入 default 名称空间**
 
@@ -124,8 +125,9 @@ watch kubectl get pods -l app=nginx
 
 ![Kubernetes教程：执行滚动更新-过程](./update.assets/image-20190822214503847.png)
 
-</el-tab-pane>
-</el-tabs>
+</b-tab>
+</b-tabs>
+</b-card>
 
 
 ~~呱唧呱唧，恭喜您，即将成为k8s的大神的您，已经迈进了您k8s的最重要的一步了--入门，那么接下来请再接再厉，继续征服k8s的高峰！！！

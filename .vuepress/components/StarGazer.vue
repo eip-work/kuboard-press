@@ -1,11 +1,13 @@
 <template>
   <div>
-    <el-dialog
+    <b-modal
+      size="xl"
       title="感谢阅读"
-      :visible.sync="dialogVisible"
-      width="60%"
-      :before-close="handleClose"
-      :append-to-body	="true">
+      centered
+      no-close-on-esc
+      no-close-on-backdrop
+      @hide="reset"
+      v-model="dialogVisible">
       <div style="text-align: center; font-size: 18px; weight: 500;">
         <div style="background-color: rgb(236, 245, 255); padding: 10px 10px 10px 10px; margin-bottom: 10px; border: solid 1px #007af5;">
           <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
@@ -17,34 +19,31 @@
         </div>
         <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
           <div style="border: solid 1px #ddd;">
-            <img src="./star.png" style="max-width: 50vw; opacity: 0.6;">
+            <img src="./star.png" style="max-width: 100%; opacity: 0.6;">
           </div>
         </a>
       </div>
-      <span slot="footer" class="dialog-footer">
-        <el-button type="text" @click="reset" style="margin-right: 10px; color: grey;">残忍拒绝</el-button>
+      <span slot="modal-footer" class="dialog-footer">
+        <a type="text" @click="dialogVisible = false" style="margin-right: 10px; font-size: 14px; color: grey; cursor: pointer;">残忍拒绝</a>
         <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
-          够义气，现在就去！
-          <OutboundLink/>
+          <b-button variant="primary">
+            够义气，现在就去！
+            <OutboundLink/>
+          </b-button>
         </a>
       </span>
-    </el-dialog>
+    </b-modal>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import 'element-ui/lib/theme-chalk/index.css'
-import { Dialog, Button } from 'element-ui'
 import { differenceInMinutes } from 'date-fns'
-
-Vue.component(Dialog.name, Dialog)
-Vue.component(Button.name, Button)
 
 export default {
   data() {
     return {
-      dialogVisible: false
+      dialogVisible: true
     };
   },
   mounted () {
@@ -105,20 +104,6 @@ export default {
       this.dialogVisible = false
       localStorage.setItem('stared', 'true')
       this.$sendGaEvent('StarGazer', 'SG:GotoGithub', 'SG:前往github' + this.$page.path)
-    },
-    handleClose (done) {
-      this.$message.success('Kuboard及Kubernetes教程都是免费提供的，请给一个 github star 以示鼓励')
-      if (window.ga) {
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: 'StarGazer',
-          eventAction: 'SG:BeforeClose',
-          eventLabel: 'SG:Kuboard及文档是免费提供的'
-        });
-        console.log('发送成功 ga event')
-      } else {
-        console.log('开发环境，不发送 ga event')
-      }
     }
   }
 }

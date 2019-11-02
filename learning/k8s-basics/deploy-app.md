@@ -58,8 +58,10 @@ Deployment 处于 master 节点上，通过发布 Deployment，master 节点会�
 * 使用 Kuboard
 
 
-<el-tabs type="border-card">
-<el-tab-pane label="使用kubectl">
+
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="使用kubectl" active>
 
 **创建 YAML 文件**
 
@@ -135,8 +137,8 @@ kubectl get deployments
 kubectl get pods
 ```
 
-</el-tab-pane>
-<el-tab-pane label="使用Kuboard">
+  </b-tab>
+  <b-tab title="使用Kuboard">
 
 **打开 Kuboard 集群概览界面**，如下图所示：
 
@@ -177,8 +179,9 @@ kubectl get pods
 
 此时可查看到该应用的部署结果
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 可分别查看到一个名为 nginx-deployment 的 Deployment 和一个名为 nginx-deployment-xxxxxxx 的 Pod
 

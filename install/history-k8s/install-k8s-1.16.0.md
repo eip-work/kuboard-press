@@ -29,87 +29,6 @@ meta:
 
 # 使用kubeadm安装kubernetes_v1.16.0
 
-<AdSenseTitle/>
-
-<script>
-
-export default {
-  data () {
-    let validateEnv = (rule, value, callback) => {
-      if (value.length < 4) {
-        callback(new Error('请确认您的环境符合上述条件'));
-      } else {
-        callback();
-      }
-    };
-    return {
-      form: {
-        checked: []
-      },
-      rules: {
-        checked: [{validator: validateEnv, trigger: 'change'}]
-      }
-    }
-  },
-  computed: {
-    envOk () {
-      if (this.form.checked.length === 4) {
-        return true
-      }
-      return false
-    }
-  },
-  mounted () {
-  },
-  watch: {
-    'form.checked' () {
-      if (this.form.checked.length === 4) {
-        
-      }
-    },
-    envOk () {
-      if (envOk) {
-        let e = {
-          hitType: 'event',
-          eventCategory: 'install-k8s',
-          eventAction: 'envOK',
-          eventLabel: '安装k8s-已确认环境符合条件'
-        }
-        if (window.ga) {
-          window.ga('send', e);
-        } else {
-          console.log('开发环境，不发送 ga event', e)
-        }
-      }
-    }
-  },
-  methods: {
-    downloadDiagram () {
-      console.log('尝试发送 ga event')
-      if (window.ga) {
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: '安装K8S',
-          eventAction: 'Download',
-          eventLabel: '下载拓扑图源文件'
-        });
-        console.log('发送成功 ga event')
-      } else {
-        console.log('开发环境，不发送 ga event')
-      }
-    },
-    canSlideNext (currentName) {
-      if (currentName === 'step1' && this.form.checked.length < 3) {
-        this.$refs.envForm.validate(valid => {
-          
-        })
-        return { flag: false, message: '请翻到本页最下方，并确认您的环境符合要求的条件' }
-      }
-      return { flag: true, message: 'can slide next' }
-    }
-  }
-}
-</script>
 
 <!-- <StoryBook>
 <div slot="introduction"> -->
@@ -262,42 +181,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ## 安装 docker / kubelet
 
-<!-- <transition-group name="el-zoom-in-top"> -->
-<div v-show="!envOk" key="not">
-
-<grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-
-<div>
-
-::: danger 必须选中下面的四个勾选框才能继续
-* 选中后显示 **安装 docker/kubelet 的文档**
-
-<div style="display: inline-block; width: 480px; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-bottom: 20px; border: 1px solid #d7dae2;">
-<el-form :model="form" ref="envForm" :rules="rules" style="text-align: left;">
-<el-form-item prop="checked" class="env-form-item">
-<el-checkbox-group v-model="form.checked">
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="centos">我的任意节点 centos 版本在兼容列表中</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="cpu">我的任意节点 CPU 内核数量大于等于 2</el-checkbox> </li>
-  <li style="height: 40px;"> <el-checkbox style="width: 300px; text-align: left;" label="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</el-checkbox> </li>
-</el-checkbox-group>
-</el-form-item>
-</el-form>
-</div>
-:::
-
-</div>
-
-  </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
-    <!-- <AdSenseSquare/> -->
-  </grid-item>
-</grid>
-
-</div>
-<el-collapse-transition>
-<div v-show="envOk" key="ok">
+<InstallEnvCheck type="k8s">
 
 使用 root 身份在所有节点执行如下代码，以安装软件：
 - docker
@@ -305,8 +189,10 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 - kubectl / kubeadm / kubelet
 
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速安装">
+
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速安装" active>
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
@@ -315,8 +201,8 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install_kubelet.sh | sh
 
 ```
 
-</el-tab-pane>
-<el-tab-pane label="手动安装">
+  </b-tab>
+  <b-tab title="手动安装">
 
 手动执行以下代码，效果与快速安装完全相同。
 
@@ -326,11 +212,11 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install_kubelet.sh | sh
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
-</div>
-</el-collapse-transition>
+</InstallEnvCheck>
 <!-- </div>
 
 <div slot="step3"> -->
@@ -348,8 +234,9 @@ curl -sSL https://kuboard.cn/install-script/v1.16.0/install_kubelet.sh | sh
 * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改
 :::
 
-<el-tabs type="border-card">
-<el-tab-pane label="快速初始化">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速初始化" active>
 
 ``` sh
 # 只在 master 节点执行
@@ -363,8 +250,9 @@ export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.16.0/init_master.sh | sh
 ```
-</el-tab-pane>
-<el-tab-pane label="手工初始化">
+
+  </b-tab>
+  <b-tab title="手动初始化">
 
 ``` sh
 # 只在 master 节点执行
@@ -380,8 +268,9 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 <<< @/.vuepress/public/install-script/v1.16.0/init_master.sh
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 **检查 master 初始化结果**
 
@@ -484,9 +373,9 @@ kubectl delete node demo-worker-x-x
 
 ## 安装 Ingress Controller
 
-
-<el-tabs type="border-card">
-<el-tab-pane label="安装IngressController">
+<b-card>
+<b-tabs content-class="mt-3">
+  <b-tab title="快速初始化" active>
 
 **在 master 节点上执行**
 
@@ -495,8 +384,9 @@ kubectl delete node demo-worker-x-x
 kubectl apply -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 ```
 
-</el-tab-pane>
-<el-tab-pane label="卸载IngressController">
+  </b-tab>
+  <b-tab title="卸载IngressController">
+
 
 **在 master 节点上执行**
 
@@ -507,14 +397,15 @@ kubectl apply -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 kubectl delete -f https://kuboard.cn/install-script/v1.16.0/nginx-ingress.yaml
 ```
 
-</el-tab-pane>
-<el-tab-pane label="YAML文件">
+  </b-tab>
+  <b-tab title="YAML文件">
 
 <<< @/.vuepress/public/install-script/v1.16.0/nginx-ingress.yaml
 
 
-</el-tab-pane>
-</el-tabs>
+  </b-tab>
+</b-tabs>
+</b-card>
 
 **配置域名解析**
 

@@ -3,10 +3,10 @@
     <div v-for="(item, key) in vssues" :key="key">
       <Vssue v-if="item && item > 0" v-show="key === $route.path" :issueId="item" :options="options"/>
       <div v-if="item === undefined && isLocalHost" v-show="key === $route.path" :key="key">
-        <el-button type="danger" @click="vssues[key] = ''">请创建 VssueId</el-button>
+        <b-button variant="danger" @click="vssues[key] = ''">请创建 VssueId</b-button>
       </div>
       <div v-if="item === ''">
-        <el-button type="warning" @click="refreshId = $refs.vssue[0].vssue.issue.id">请填写 vusseId <span v-if="refreshId"> - {{refreshId}}</span></el-button>
+        <b-button variant="warning" @click="refreshId = $refs.vssue[0].vssue.issue.id">请填写 vusseId <span v-if="refreshId"> - {{refreshId}}</span></b-button>
         <Vssue ref="vssue" :title="$page.path" :options="options"/>
       </div>
     </div>
