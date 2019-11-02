@@ -11,7 +11,7 @@
             <!-- 808894550 -->
           </div>
           <p style="margin-bottom: 0; margin-top: 10px;">
-            <img style="margin: auto; padding: 7px; width: 135px;" src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+            <img style="margin: auto; width: 150px;" src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
           </p>
         </b-card>
       </grid-item>
@@ -37,7 +37,7 @@
                 <span>微信扫码</span>
                 <p style="margin-top: 10px; margin-bottom: 0; text-align: center;">
                   <!-- <img src="/images/dz.png" style="width: 150px;"></img> -->
-                  <img src="/images/dz2.jpeg" style="width: 150px;"></img>
+                  <img src="/images/qr-vip.jpeg" style="width: 150px;"></img>
                 </p>
               </div>
             </div>

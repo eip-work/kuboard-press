@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <!-- <div>
     <slot></slot>
-  </div>
-  <!-- <div style="border: solid 1px #E6A23C; background-color: rgb(253, 246, 236); padding: 1rem;">
+  </!-->
+  <div style="border: solid 1px #f2be45; background-color: rgba(242, 190, 69, 0.1); padding: 1rem;">
     <div v-show="!authorized" key="not">
         <p style="color: red; font-weight: 500;">免费解锁全站文档：</p>
         <li>扫描二维码加微信获得验证码</li>
@@ -11,38 +11,56 @@
         <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 0rem 0 1rem 1rem;">
 
       <div>
-
-        <p>
+        <p style="text-align: center;">
           <img src="/images/dz2.jpeg" style="width: 180px;"></img>
         </p>
         </div>
         </grid-item>
         <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 1rem 1rem 1rem;">
-          <div style="display: inline-block; max-width: calc(100% - 2rem); overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 1rem; margin-bottom: 20px; border: 1px solid #d7dae2;">
-            <el-form ref="envForm" style="text-align: left;" label-width="80px">
-              <el-form-item label="随机码：">
-                <el-tag size="medium" effect="dark">{{code1}}{{code2}}</el-tag>
-              </el-form-item>
-              <el-form-item prop="checked" class="env-form-item" label="验证码：">
-                <el-input placeholder="Kuboard返回的验证码" v-model.number="authCode"></el-input>
-              </el-form-item>
-            </el-form>
+          <div style="display: inline-block; width: 100%; overflow: hidden; line-height: 40px; background-color: rgba(255,229,100,0.3); padding: 1rem; margin-bottom: 20px; border: 1px solid #d7dae2;">
+            <b-form ref="envForm" style="text-align: left;" label-width="80px">
+              <b-form-group
+                id="fieldset-1"
+                label="随机码："
+                label-cols-sm="4"
+                label-cols-lg="3"
+                label-for="input-1"
+                style="text-align: left"
+              >
+                <b-badge size="medium" variant="dark">{{code1}}</b-badge>
+                <b-badge size="medium" variant="dark">{{code2}}</b-badge>
+              </b-form-group>
+              <b-form-group 
+                label-cols-sm="4"
+                label-cols-lg="3"
+                style="text-align: left"
+                label="验证码：">
+                <b-input placeholder="请输入验证码" v-model.number="authCode"></b-input>
+              </b-form-group>
+            </b-form>
           </div>
         </grid-item>
       </grid>
 
     </div>
     <div v-show="authorized" key="ok">
-      <el-alert
+      <b-alert
+        variant="success" show
         style="margin-bottom: 10px;"
-        title="已为您解锁全站完整文档，感谢配合。"
-        description="缓存清空后需重新输入验证码"
-        effect="dark"
-        type="success">
-      </el-alert>
+      >
+        
+        <h4 class="alert-heading">已为您解锁全站完整文档，感谢配合！</h4>
+        <hr/>
+        <li>
+          Kuboard - 快速在 Kubernetes 上落地微服务
+        </li>
+        <li>
+          清空浏览器缓存后需重新输入验证码
+        </li>
+      </b-alert>
       <slot></slot>
       </div>
-  </div> -->
+  </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div style="border: solid 1px #E6A23C; background-color: rgb(253, 246, 236); padding: 1rem;">
+  <div style="border: solid 1px #f2be45; background-color: rgba(242, 190, 69, 0.1); padding: 1rem;">
     <div v-show="!envOk" key="not">
 
     <!-- <grid :rwd="{compact: 'stack'}">
@@ -9,7 +9,7 @@
 
       <p style="color: red">必须选中下面的 {{envCount}} 个勾选框才能继续</p>
 
-      <div style="overflow: hidden; background-color: rgba(255,229,100,0.3); padding: 20px 0 0 20px; margin-top: 1rem; margin-bottom: 20px; border: 1px solid #d7dae2;">
+      <div style="overflow: hidden; padding: 20px 0 0 20px; margin-top: 1rem; margin-bottom: 20px; border: 1px solid #d7dae2;">
       <b-form>
         <b-form-group label="选中后显示 安装 docker/kubelet 的文档">
           <b-form-checkbox-group id="checkbox-group-2" v-model="form.checked" name="flavour-2">

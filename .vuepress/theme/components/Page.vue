@@ -35,9 +35,9 @@
         </a>
       </p>
     </div> -->
-    <JoinCommunity></JoinCommunity>
-    <PageEdit style="max-width: 1000px; margin-top: 2rem; background-color: #FFF;"/>
-    <PageNav v-bind="{ sidebarItems }" style="max-width: 1000px; padding: 1rem;"/>
+    <JoinCommunity style="padding: 1rem 2.5rem;"></JoinCommunity>
+    <PageEdit style="max-width: 1000px; padding: 1rem 2.5rem; margin-top: 2rem; background-color: #FFF;"/>
+    <PageNav v-bind="{ sidebarItems }" style="max-width: 1000px; padding: 1rem 2.5rem;"/>
     <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-show="!$frontmatter.lessAds && !$isSharing">
       <AdSensePageBottomInline/>
     </div>

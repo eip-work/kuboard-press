@@ -224,3 +224,21 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
 
   ![Kubernetes教程：在Kuboard中监控-查看链路追踪信息-APM](./monitor.assets/image-20190718121133160.png)
+
+## 直接访问全局监控
+
+如果想要直接访问全局监控的 Grafana 界面（通常并不需要这么做），url 如下所示：
+
+```
+http://任意节点IP:32567/eip-monitor/namespace/kube-system/service/monitor-grafana/port/3000/login
+```
+
+* 用户名为： `admin`
+* 密码为：  `jmx09KT23BClpa7xzs`
+
+::: warning Grafana密码
+* 全局监控的产品化程度已经比较高，但是，目前仍然为解决安装全局监控时，自定义 grafana 用户名和密码的问题。请使用者知晓。
+* 目前的建议是：
+  * 将 Kuboard 的访问通路做成相对私有化的方式，例如只能通过 vpn 访问
+  * 完成全局监控的安装之后，登录 grafana，并手工修改 grafana 密码
+:::

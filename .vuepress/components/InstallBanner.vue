@@ -14,7 +14,7 @@
               <transition-group name="lightSpeed" tag="div" class="row">
                 <div class="col-md-6" key="f1" v-show="f1">
                     <!-- InfoBox Center  <Start> -->
-                    <div class="cs-infobox-left mt-4 feature">
+                    <div class="cs-infobox-left mt-4 feature box">
                         <img src="/landing/images/icn3.svg" alt="" class="img-fluid">
                         <div class="text-primary-install-banner">广泛验证</div>
                         <li>每天有超过
@@ -81,7 +81,7 @@
                         <div class="text-primary-install-banner">在线答疑</div>
                         <div>
                           <div style="text-align: center;">
-                            <p><Qq></Qq></p>
+                            <!-- <Qq><Qq></Qq></p> -->
                             <img src="/images/kuboard_qq.png" alt="Kubernetes安装：QQ群在线答疑" style="width: 120px;"/>
                           </div>
                         </div>
@@ -150,7 +150,7 @@ export default {
 .feature {
   text-align: left;
   padding: 1rem;
-  min-height: 260px;
+  min-height: 240px;
   z-index: 10;
   border: 1px solid #f2be45;
   border-radius: 5px;
