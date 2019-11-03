@@ -47,13 +47,14 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
 * 三个 master 组成主节点集群，通过内网 loader balancer 实现负载均衡；至少需要三个 master 节点才可组成高可用集群，否则会出现 ***脑裂*** 现象
 * 多个 worker 组成工作节点集群，通过外网 loader balancer 实现负载均衡
 
-  [领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+  [腾讯云11.11爆款1核2G云服务器首购88元，免费领9888元代金券，百款云产品一折起](https://cloud.tencent.com/act/cps/redirect?redirect=1050&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
-  [腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+  <!-- [腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console) -->
 
-  [领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
+  [阿里云双十一，All in Cloud，低至一折](https://www.aliyun.com/1111/2019/home?userCode=obezo3pg)
 
-  [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg)
+  <!-- [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg) -->
+
 
 安装后的拓扑图如下：<span v-on:click="$sendGaEvent('下载拓扑图-kubernetes', '下载拓扑图-kubernetes', 'Download-install-kubernetes.html')"> <a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp" >下载拓扑图源文件</a> </span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 

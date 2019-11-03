@@ -209,6 +209,13 @@ module.exports = {
                 'k8s-intermediate/workload/wl-job/usage',
                 'k8s-intermediate/workload/wl-job/when',
               ]
+            },
+            {
+              title: '控制器 - CronJob',
+              collapsable: true,
+              children: [
+                'k8s-intermediate/workload/wl-cronjob/',
+              ]
             }
           ]
         },

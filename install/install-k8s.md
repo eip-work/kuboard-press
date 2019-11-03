@@ -6,43 +6,17 @@ description: Kubernete安装文档_Kubernetes最新稳定版v1.16.2的快速安�
 meta:
   - name: keywords
     content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装
-# storyBook:
-#   title: '使用 kubeadm 安装 kubernetes v1.16.2（单Master节点）'
-#   initial: FullPage
-#   pages:
-#     - name: introduction
-#       title: 文档特点
-#     - name: overview
-#       title: 配置要求
-#     - name: step1
-#       title: 检查环境
-#     - name: step2
-#       title: 安装 docker/kubelet
-#     - name: step3
-#       title: 初始化 master 节点
-#     - name: step4
-#       title: 初始化 worker 节点
-#     - name: step5
-#       title: 安装 Ingress Controller
-#     - name: step6
-#       title: 总结
 ---
 
 # 使用kubeadm安装kubernetes_v1.16.2
 
 <AdSenseTitle/>
 
-<!-- <StoryBook>
-<div slot="introduction"> -->
-
 ## 文档特点
 
 <div style="min-height: 612px;">
   <InstallBanner version="v1.16.2" updateCount="65"/>
 </div>
-
-<!-- </div>
-<div slot="overview" style="min-height: 800px;"> -->
 
 ## 配置要求
 
@@ -56,13 +30,13 @@ meta:
 
 <div>
 
-[领取腾讯云最高2860元代金券](https://cloud.tencent.com/act/cps/redirect?redirect=1040&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+[腾讯云11.11爆款1核2G云服务器首购88元，免费领9888元代金券，百款云产品一折起](https://cloud.tencent.com/act/cps/redirect?redirect=1050&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
-[腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+<!-- [腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console) -->
 
-[领取阿里云最高2000元红包](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=obezo3pg)
+[阿里云双十一，All in Cloud，低至一折](https://www.aliyun.com/1111/2019/home?userCode=obezo3pg)
 
-[阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg)
+<!-- [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg) -->
 
 **安装后的软件版本为**
 
