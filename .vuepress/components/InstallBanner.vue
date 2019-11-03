@@ -98,7 +98,6 @@
 
 <script>
 import AnimatedNumber from "animated-number-vue";
-import 'vue2-animate/dist/vue2-animate.min.css';
 
 export default {
   props: {
