@@ -39,13 +39,17 @@
     <PageEdit style="max-width: 1000px; padding: 1rem 2.5rem; margin-top: 2rem; background-color: #FFF;"/>
     <PageNav v-bind="{ sidebarItems }" style="max-width: 1000px; padding: 1rem 2.5rem;"/>
     <div class="page-nav" style="max-width: 1000px; padding-top:0; margin-top: 1rem;" v-show="!$frontmatter.lessAds && !$isSharing">
-      <AdSensePageBottomInline/>
+      <LazyLoad :noAdsOnSharing="true">
+        <AdSensePageBottomInline/>
+      </LazyLoad>
     </div>
     <slot name="bottom" />
     <PageVssue class="page-nav" style="max-width: 1000px;" v-show="!$isSharing"/>
     <FriendlyUrl class="page-nav" style="max-width: 1000px;" v-show="!$isSharing"/>
     <StarGazer/>
-    <AdSenseRightSide v-show="!$isSharing"/>
+    <LazyLoad :noAdsOnSharing="true">
+      <AdSenseRightSide v-show="!$isSharing"/>
+    </LazyLoad>
   </main>
 </template>
 

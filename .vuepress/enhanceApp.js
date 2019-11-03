@@ -65,9 +65,9 @@ export default ({
   if (typeof window !== 'undefined') {
     AOS.init({
       easing: 'ease-out-back',
-      duration: 1000
+      duration: 1200
     });
-    if (location.search && location.search.indexOf('sharing') >=0) {
+    if (location.search && (location.search.indexOf('sharing') >=0 || location.search.indexOf('from=timeline') >= 0)) {
       sharing = true
       window.kuboardSharing = true
     } else {

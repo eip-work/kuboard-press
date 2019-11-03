@@ -9,9 +9,9 @@
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
     <script>
-      if (!window.kuboardSharing) {
+      <!-- if (!window.kuboardSharing) { -->
         (adsbygoogle = window.adsbygoogle || []).push({});
-      }
+      <!-- } -->
     </script>
   </div>
 </template>

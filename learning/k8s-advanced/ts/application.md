@@ -75,6 +75,13 @@ Events:          <none>
 ### Pod一直是Pending
 
 如果 Pod 一直停留在 `Pending`，意味着该 Pod 不能被调度到某一个节点上。通常，这是因为集群中缺乏足够的资源或者 ***“合适”*** 的资源。在上述 `kubectl describe...` 命令的输出中的 `Events` 字段，会有对应的事件描述为什么 Pod 不能调度到节点上。可能的原因有：
+* **资源不就绪**：创建 Pod 时，有时候需要依赖于集群中的其他对象， ConfigMap（配置字典）、PVC（存储卷声明）等，例如
+  * 可能该 Pod 需要的存储卷声明尚未与存储卷绑定，Events 信息如下所示：
+    ```
+    Type     Reason            Age        From               Message
+    ----     ------            ----       ----               -------
+    Warning  FailedScheduling  <unknown>  default-scheduler  pod has unbound immediate PersistentVolumeClaims (repated 2 times)
+    ```
 * **缺乏足够的资源**：可能集群中的CPU或内存都已经耗尽，此时，您可以尝试：
   * 删除某些 Pod
   * 调整Pod的资源请求
