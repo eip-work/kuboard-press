@@ -18,7 +18,7 @@ meta:
 * 已经创建的 Pod 也不会被清理掉。此时，您仍然可以继续查看已结束 Pod 的日志，以检查 errors/warnings 或者其他诊断用的日志输出
 * Job 对象也仍然保留着，以便您可以查看该 Job 的状态
 * 由用户决定是否删除已完成的 Job 及其 Pod
-  * 可通过 `kubectl` 命令删除 Job，例如： `kubectl delete jobs/pi` 或者 `kubectl delete -f ./job.yaml`
+  * 可通过 `kubectl` 命令删除 Job，例如： `kubectl delete jobs/pi` 或者 `kubectl delete -f https://kuboard.cn/statics/learning/job/job.yaml`
   * 删除 Job 对象时，由该 Job 创建的 Pod 也将一并被删除
 
 Job 通常会顺利的执行下去，但是在如下情况可能会非正常终止：

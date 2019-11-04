@@ -94,7 +94,7 @@ meta:
     * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset/)
     * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset/)
     * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/)
-    * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/) <Badge text="正在撰写" type="warn"/>
+    * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/)
   * 服务发现、负载均衡、网络
     * [Service 概述](/learning/k8s-intermediate/service/service.html)
     * [Service 详细描述](/learning/k8s-intermediate/service/service-details.html)

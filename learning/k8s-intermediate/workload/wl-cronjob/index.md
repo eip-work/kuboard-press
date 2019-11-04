@@ -1,7 +1,7 @@
 ---
 vssueId: 151
 layout: LearningLayout
-description: Kubernetes 的控制器模式中，
+description: Kubernetes_CronJob 按照预定的时间计划创建Job_一个CronJob对象类似于 crontable_文件中的一行记录_该对象根据_Cron_格式定义的时间计划_周期性地创建Job对象
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,K8S培训,Kubernetes Job

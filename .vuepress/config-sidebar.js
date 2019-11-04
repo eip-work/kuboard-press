@@ -215,6 +215,7 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-intermediate/workload/wl-cronjob/',
+                'k8s-intermediate/workload/wl-cronjob/run',
               ]
             }
           ]

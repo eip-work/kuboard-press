@@ -17,9 +17,11 @@ Kuboard v1.0.x 的更新说明
   * 可显示下载进度
   * 可取消下载
 * 将监控套件的安装脚本从 github 迁移到 https://addons.kuboard.cn
+* 进入终端界面前选择 sh / bash
 
 **BUG 修复**
 
+* 终端界面已经连接上以后，切换 sh / bash 失败的问题
 
 
 * EndPoint
