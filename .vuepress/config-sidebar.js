@@ -371,6 +371,7 @@ module.exports = {
             // },
           ]
         },
+        'k8s-advanced/gc',
       ]
     },
     {
