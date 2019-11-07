@@ -17,5 +17,22 @@ services:
       - ./docs:/usr/share/nginx/html
     networks:
       - webnet
+  kubetrain:
+    # replace username/repo:tag with your name and image details
+    image: eipwork/kuboard-press:latest
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8082:80"
+    volumes:
+      - /Users/shaohuanqing/Kuboard/kuboard-workspace/kubetrain/root:/usr/share/nginx/html
+    networks:
+      - webnet
 networks:
   webnet:

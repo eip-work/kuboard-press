@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-repset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      pod-is-for: garbage-collection-example
+  template:
+    metadata:
+      labels:
+        pod-is-for: garbage-collection-example
+    spec:
+      containers:
+      - name: nginx
+        image: nginx

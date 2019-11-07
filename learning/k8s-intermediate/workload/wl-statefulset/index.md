@@ -28,7 +28,7 @@ StatefulSet 管理 Pod 时，确保其 Pod 有一个按顺序增长的 ID。
 对于有如下要求的应用程序，StatefulSet 非常适用：
 
 * 稳定、唯一的网络标识（dnsname）
-* 稳定、不变的持久化路径（或存储卷）
+* 每个Pod始终对应各自的存储路径（PersistantVolumeClaimTemplate）
 * 按顺序地增加副本、减少副本，并在减少副本时执行清理
 * 按顺序自动地执行滚动更新
 

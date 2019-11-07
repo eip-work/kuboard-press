@@ -158,6 +158,7 @@ module.exports = {
             'k8s-intermediate/workload/init-container',
             'k8s-intermediate/workload/init-config',
             'k8s-intermediate/workload/init-debug',
+            'k8s-intermediate/workload/disruption',
             'k8s-intermediate/workload/workload',
             {
               title: '控制器 - Deployment',
@@ -217,7 +218,8 @@ module.exports = {
                 'k8s-intermediate/workload/wl-cronjob/',
                 'k8s-intermediate/workload/wl-cronjob/run',
               ]
-            }
+            },
+            'k8s-intermediate/workload/gc',
           ]
         },
         {

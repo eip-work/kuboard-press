@@ -1,6 +1,6 @@
 ---
 vssueId: 126
-description: Kubernetes升级_使用kubeadm升级K8S集群_到Kubernetes_v1.15.3
+description: Kubernetes_Dashboard_是Kubernetes的官方WebUI_本文描述了如何在K8S集群上安装Kuberentes_Dashboard
 meta:
   - name: keywords
     content: Kubernetes Dashboard,安装Kubernetes Dashboard,K8S Dashboard,K8S管理界面
@@ -92,6 +92,8 @@ Kubernetes Dashboard 当前，只支持使用 Bearer Token登录。
   您必须能够在自己的笔记本（工作电脑）上运行 kubectl 并访问您的集群。可参考文档 [安装Kubectl](./install-kubectl.html)
 
   访问路径： `http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/`
+
+  > 我曾经尝试过将 kubernetes-dashboard 的访问当时修改为 nodePort 的访问，但是一直未能成功，如果有朋友解决了此问题，请告知我一下。
 
 * 将上一个步骤中获得的 Token 输入到登录界面中，点击 **Sign in** 按钮，完成登录
 

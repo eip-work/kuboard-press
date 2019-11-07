@@ -55,18 +55,54 @@ yum install -y kubectl
 kubectl version
 ```
 
-  </b-tab>
-  <b-tab title="Windows">
+</b-tab>
+<b-tab title="Windows">
+
+* 从下面的链接下载 kubectl 可执行文件
+
+  `
+  https://storage.googleapis.com/kubernetes-release/release/v1.16.2/bin/windows/amd64/kubectl.exe
+  `
+  > * 请将其中的 v1.16.2 替换为最新的版本号
+  > * 通过此链接可获取最新的版本号 `https://storage.googleapis.com/kubernetes-release/release/stable.txt`
 
 
-待完善
+* 将下载的可执行文件添加到 PATH 环境变量
 
-  </b-tab>
-  <b-tab title="MAC">
 
-待完善
+* 执行命令查看已安装的 kubectl 版本号
+  ```
+  kubectl version
+  ```
 
-  </b-tab>
+</b-tab>
+<b-tab title="MAC">
+
+* 下载最新的可执行文件
+
+  ```sh
+  curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl"
+  ```
+
+* 添加可执行权限
+
+  ```sh
+  chmod +x ./kubectl
+  ```
+
+* 复制到 PATH 路径
+
+  ```sh
+  sudo mv ./kubectl /usr/local/bin/kubectl
+  ```
+
+* 检查已安装版本
+
+  ``` sh
+  kubectl version
+  ```
+
+</b-tab>
 </b-tabs>
 </b-card>
 
@@ -137,17 +173,65 @@ kubectl get pods -n kube-system
 ```
 
 
-  </b-tab>
-  <b-tab title="Windows">
+</b-tab>
+<b-tab title="Windows">
 
-待完善
+**执行命令**
 
-  </b-tab>
-  <b-tab title="MAC">
+用记事本（或其他文本编辑器）创建文件 `~/.kube/config`，其中 `~` 代表当前的用户目录
 
-待完善
+将前面获得的 `/etc/kubernetes/admin.conf` 文件的内容粘贴进该文件并保存
 
-  </b-tab>
+**配置 hosts**
+
+用记事本打开 C:\windows\System32\drivers\etc\hosts 文件（需要管理员权限），在该文件末尾添加一行记录：
+
+```
+x.x.x.x    apiserver.demo
+```
+
+> * 将 x.x.x.x 替换成 demo-master-a-1 的实际 IP 地址
+> * 将 apiserver.demo 替换成前面获得 `/etc/kubernetes/admin.conf` 文件中 `clusters/cluster/server` 中 URL 里 host 对应的部分
+
+**验证安装结果**
+
+执行命令
+
+```sh
+kubectl get nodes
+kubectl get pods -n kube-system
+```
+
+</b-tab>
+<b-tab title="MAC">
+
+**执行命令**
+
+```sh
+vi ~/.kube/config
+```
+
+将前面获得的 `/etc/kubernetes/admin.conf` 文件的内容粘贴进该文件并保存
+
+**配置 hosts**
+
+```sh
+echo "x.x.x.x    apiserver.demo" >> /etc/hosts
+```
+
+> * 将 x.x.x.x 替换成 demo-master-a-1 的实际 IP 地址
+> * 将 apiserver.demo 替换成前面获得 `/etc/kubernetes/admin.conf` 文件中 `clusters/cluster/server` 中 URL 里 host 对应的部分
+
+**验证安装结果**
+
+执行命令
+
+```sh
+kubectl get nodes
+kubectl get pods -n kube-system
+```
+
+</b-tab>
 </b-tabs>
 </b-card>
 

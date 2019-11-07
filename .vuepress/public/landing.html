@@ -558,6 +558,12 @@
     <!-- Custom JS -->
     <script src="landing/js/main.js"></script>
 
+    <script>
+        if (location.search && (location.search.indexOf('sharing') >=0 || location.search.indexOf('from=timeline') >= 0)) {
+            document.title = 'Kuboard - 快速在 Kubernetes 上落地微服务。可一个月从K8S入门到投产'
+        }
+    </script>
+
 </body>
 
 </html>
