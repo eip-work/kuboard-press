@@ -12,11 +12,16 @@ description: 使用Kuboard在Kubernetes上安装监控套件，并对example微�
 必须具备如下条件：
 
 * 已完成 [导入 example 微服务](/guide/example/import.html)
+* 已配置了 NFS [StorageClass](/learning/k8s-intermediate/persistent/storage-class.html)
 
 ::: warning
 
 监控套件相关的功能目前处于 alpha 状态，虽然在实际投产项目中取得了非常好的效果，但是产品化封装还需要进一步改进。
 
+:::
+
+::: tip
+许多网友自己搭建 NFS 测试环境，再创建 NFS存储类，经常碰到 `access denied` 这类权限问题。为了帮助大家更快地完成 NFS 测试环境搭建，Kuboard提供了一篇NFS相关的简明文档，请参考 [搭建NFS Server](/learning/k8s-intermediate/persistent/nfs.html)
 :::
 
 假设您已进入 example 名称空间，如下图所示：
@@ -29,11 +34,7 @@ description: 使用Kuboard在Kubernetes上安装监控套件，并对example微�
 
 ### 安装全局监控套件
 
-::: tip
-许多网友自己搭建 NFS 测试环境，再创建 NFS存储类，经常碰到 `access denied` 这类权限问题。为了帮助大家更快地完成 NFS 测试环境搭建，Kuboard提供了一篇NFS相关的简明文档，请参考 [搭建NFS Server](/learning/k8s-intermediate/persistent/nfs.html)
-:::
-
-* 在 master 节点执行 <Badge type="error">此步骤不可忽略</Badge>
+* 在 master 节点执行 <Badge type="error">此步骤必须执行</Badge>
 
 ```bash
 kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kubernetes/pki/etcd/server.crt --from-file=/etc/kubernetes/pki/etcd/server.key
