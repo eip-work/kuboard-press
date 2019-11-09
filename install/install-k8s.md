@@ -25,10 +25,10 @@ meta:
 * 至少2台 **2核4G** 的服务器
 * **Cent OS 7.6**
 
-<grid :rwd="{compact: 'stack'}">
+<!-- <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
 
-<div>
+<div> -->
 
 [腾讯云11.11爆款1核2G云服务器首购88元，免费领9888元代金券，百款云产品一折起](https://cloud.tencent.com/act/cps/redirect?redirect=1050&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
@@ -37,6 +37,12 @@ meta:
 [阿里云双十一，All in Cloud，低至一折](https://www.aliyun.com/1111/2019/home?userCode=obezo3pg)
 
 <!-- [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg) -->
+
+::: danger 警告
+* 因为双十一，许多网友使用腾讯云、阿里云不同的账号各买了一台优惠价格的机器。目前我没有找到方法将不同局域网内的机器通过公网连接组成K8S集群，请谨慎。
+* 建议的做法是：腾讯云（或阿里云）采购一台优惠价格的包年实例作为 Master，同时再采购一台竞价实例（腾讯云）或抢占式实例（阿里云）作为 Worker 节点。竞价实例（抢占式实例）按分钟付费，以阿里云为例，一台2核8G的机器一天下来的费用大概是 1.2 - 1.5元。
+* 再次强调：按照本文档进行安装时，所有节点必须在同一个局域网内
+:::
 
 **安装后的软件版本为**
 
@@ -53,13 +59,13 @@ meta:
 > * [安装 Kubernetes v1.15.2 单Master节点](/install/history-k8s/install-k8s-1.15.2.html)
 > * [安装 Kubernetes v1.15.1 单Master节点](/install/history-k8s/install-k8s-1.15.1.html)
 
-</div>
+<!-- </div>
 
   </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
     <AdSenseVertical/>
   </grid-item>
-</grid>
+</grid> -->
 
 安装后的拓扑图如下：<span v-on:click="$sendGaEvent('下载拓扑图-kubernetes', '下载拓扑图-kubernetes', 'Download-install-kubernetes.html')"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
 

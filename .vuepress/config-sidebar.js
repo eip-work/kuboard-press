@@ -379,6 +379,13 @@ module.exports = {
       collapsable: true,
       children: [
         {
+          title: '练习',
+          collapsable: true,
+          children: [
+            'k8s-practice/access/port-forward',
+          ]
+        },
+        {
           title: '概述',
           collapsable: false,
           children: [
