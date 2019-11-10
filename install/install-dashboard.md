@@ -1,36 +1,15 @@
 ---
 vssueId: 13
-lessAds: true
+lessAds: false
 description: Kuboard_是一款Kubernetes_Dashboard_快速在K8S上落地微服务_本文是Kuboard的安装手册_包括安装Kuboard的前提条件_与Kubernetes的版本兼容性_安装步骤_以及完成安装后如何访问Kuboard界面。
 meta:
   - name: keywords
     content: Kubernetes Dashboard安装,Kuboard安装,K8S Dashboard安装
-# storyBook:
-#   title: '安装 Kuboard'
-#   initial: FullPage
-#   pages:
-#     - name: overview
-#       title: 前提条件
-#     - name: install
-#       title: 安装/卸载
-#     - name: 获取token
-#       title: 获取 Token
-#     - name: access
-#       title: 访问 Kuboard
-#     - name: next
-#       title: 下一步
 ---
 
 # 安装Kuboard
 
 <AdSenseTitle/>
-
-<!-- <StoryBook>
-
-<div slot="overview"> -->
-
-
-
 
 ## 在线体验
 
@@ -60,11 +39,6 @@ meta:
 | v1.13           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
 | v1.12           | v1.0 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
 | v1.11           | v1.0 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
-
-<!-- </div>
-
-<div slot="install"> -->
-
 ## 安装
 
 
@@ -92,10 +66,6 @@ kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
   </b-tab>
 </b-tabs>
 </b-card>
-
-<!-- </div>
-
-<div slot="获取token"> -->
 
 ## 获取Token
 
@@ -180,10 +150,6 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2Nv
 </b-tabs>
 </b-card>
 
-<!-- </div>
-
-<div slot="access"> -->
-
 ## 访问Kuboard
 
 您可以通过NodePort、port-forward 两种方式当中的任意一种访问 Kuboard
@@ -229,21 +195,34 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 </b-tabs>
 </b-card>
 
-<!-- </div>
+## 免登陆访问
 
-<div slot="next"> -->
+可以通过查询参数中的 k8sToken 字段直接登录系统，无需在登录界面输入 Token。
 
-<!-- ::: warning
-* 如果不能访问 Kuboard，请参考 [常见问题](faq/timeout.html)
+### 直接访问集群概览页
 
-* 如果仍然不能解决，请到 QQ 群提问
+如需要无登录访问集群概览页面，可使用如下格式的 url 进入：
 
-  <Qq></Qq> 也可以扫二维码加 QQ 群聊
+```
+http://任意一个Worker节点的IP地址:32567/#/dashboard?k8sToken=yourToken
+```
 
-  ![Kubernetes安装：QQ群在线答疑](/images/kuboard_qq.png)
-::: -->
+::: tip 其他界面
+其他任意 Kuboard 界面同理，只需要增加 k8sToken 作为查询参数，即可跳过输入 Token 的步骤
+:::
 
-**下一步**
+### 直接访问终端界面
+
+如果想要无登录直接访问容器组的控制台，可使用如下格式的 url 进入：
+```
+http://任意一个Worker节点的IP地址:32567/#/console/pzy/yourPod?containerName=yourContainer&shell=bash&k8sToken=yourToken
+```
+
+其中，shell 参数可选取值有：
+* `bash`，使用 /bin/bash 作为 shell
+* `sh`， 使用 /bin/sh 作为 shell
+
+## 下一步
 
 :tada: :tada: :tada:
 
@@ -251,7 +230,3 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 - 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
 - 学习 [Kubernetes免费教程](/learning/)
-
-<!-- </div>
-
-</!-->

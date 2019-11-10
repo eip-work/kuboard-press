@@ -21,6 +21,9 @@ Kuboard v1.0.x 的更新说明
 * Limit Range
 
 
+* https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/
+
+
 * 可以在这里加一个自动部署的按钮，点击按钮显示部署秘钥。shell 脚本可以加一句curl http://kubord.com?秘钥+版本。镜像推送到仓库之后，shell脚本加一句这个curl就可以完成k8s自动集成了
 * 
 

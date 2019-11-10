@@ -14,6 +14,9 @@
       <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
         <a :href="`/guide/${urlSurfix}`" class="nav-link">使用</a>
       </div>
+      <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
+        <a :href="`https://kubetrain.cn/?from=kuboard`" class="nav-link" target="_blank">培训</a>
+      </div>
       <div class="side-nav-item" :style="activeLinkStyle('/support/')">
         <a :href="`/support/${urlSurfix}`" class="nav-link">支持</a>
       </div>

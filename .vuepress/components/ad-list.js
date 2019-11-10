@@ -38,6 +38,14 @@ module.exports = [
     action: '去抢',
     url: 'https://www.aliyun.com/1111/2019/home?userCode=obezo3pg',
     weight: 30
+  },
+  {
+    name: 'Kubetrain',
+    description: 'K8S在线直播培训，首次开班优惠',
+    strong: '不满意可无条件退款',
+    action: '再不去没名额啦',
+    url: 'https://kubetrain.cn/?from=kuboard-ads',
+    weight: 30
   }
 
   // {

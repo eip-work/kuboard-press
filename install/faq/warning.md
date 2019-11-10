@@ -8,6 +8,8 @@ meta:
 
 # 错误提示
 
+<AdSenseTitle/>
+
 Kuboard中经常会出现如下情况，某一个工作负载（Deployment/StatefulSet/DaemonSet等）显示为红色，且有一个闪烁的红色 `E` 图标。
 
 ![image-20191108220746427](./warning.assets/image-20191108220746427.png)

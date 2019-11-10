@@ -39,16 +39,6 @@ module.exports = {
       ]
     },
     {
-      title: '升级 Kubernetes',
-      collapsable: false,
-      children: [
-        // ['install-k8s-upgrade', '升级Kubernetes集群'],
-        'upgrade-k8s/1.15.x-1.15.4',
-        ['upgrade-k8s/1.15.x-1.16.x', 'K8S从1.15.x(1.16.x)升级到 1.16.x'],
-        'upgrade-k8s/calico-3.8-3.9',
-      ]
-    },
-    {
       title: '管理 Kubernetes',
       collapsable: false,
       children: [
@@ -59,13 +49,16 @@ module.exports = {
         'install-k8s-dashboard',
       ]
     },
-    // {
-    //   title: '常见问题',
-    //   collapsable: false,
-    //   children: [
-    //     'faq/timeout'
-    //   ]
-    // }
+    {
+      title: '升级 Kubernetes',
+      collapsable: false,
+      children: [
+        // ['install-k8s-upgrade', '升级Kubernetes集群'],
+        'upgrade-k8s/1.15.x-1.15.4',
+        ['upgrade-k8s/1.15.x-1.16.x', 'K8S从1.15.x(1.16.x)升级到 1.16.x'],
+        'upgrade-k8s/calico-3.8-3.9',
+      ]
+    },
   ],
 
   '/learning/': [
@@ -159,6 +152,8 @@ module.exports = {
             'k8s-intermediate/workload/init-config',
             'k8s-intermediate/workload/init-debug',
             'k8s-intermediate/workload/disruption',
+            'k8s-intermediate/workload/pod-health.html',
+            
             'k8s-intermediate/workload/workload',
             {
               title: '控制器 - Deployment',

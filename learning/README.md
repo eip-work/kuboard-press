@@ -9,16 +9,47 @@ meta:
     content: K8S教程,K8S 教程,K8S培训,Kubernetes培训
 ---
 
-# Kubernetes教程
+# Kubernetes 教程
 
-<AdSenseTitle>
+<div class="row">
+  <div class="col-md-4" data-aos="fade-up" data-aos-duration="800">
+    <a href="#Kubernetes免费教程">
+      <FancyImage src="/images/courses/free.png" title="免费教程" description="权威资料" alt="K8S培训_免费教程" type="Rolling"/>
+    </a>
+  </div>
+  <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+    <a href="https://kubetrain.cn/?from=learning" target="_blank">
+      <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Cross"/>
+    </a>
+  </div>
+  <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+    <a href="https://kubetrain.cn/advanced.html?from=learning" target="_blank">
+      <FancyImage src="/images/courses/advanced.png" title="K8S高级班" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
+    </a>
+  </div>
+</div>
+
+
+
+## Kubernetes免费教程
 
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
 * Kubernetes 初学者
 * 学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 
-</AdSenseTitle>
+推荐自学能力强的同学选择免费教程，这里有来自 kubernetes.io 的权威资料，同时结合 Kuboard 作者的实战经验，已有证据证明，Kuboard 有许多用户能够在一个月左右时间 **从Kubernetes入门到投产**。
 
+同时，Kuboard 与资深 Kubernetes 运维工程师/布道者合作，为大家带来直播课程，可以更深入系统地学习 K8S。[Kubernetes中级班](https://kubetrain.cn/?from=learning-free) 由 360 资深运维工程师阿良为您直播讲解。直播课程的优势如下：
+* 360 大厂一线实战经验
+* 专属学员答疑群
+* 优秀学员内推机会
+* 不满意无条件退费
+
+对于有意向在运维/架构领域更深入发展的同学，还可以考虑课程 [Kuberentes高级班](https://kubetrain.cn/?from=learning-free)。高级班的主要内容如下：
+* K8S弹性伸缩
+* K8S网络深入解析
+* Ceph存储
+* 微服务自动化发布（Spring Cloud & Jenkins CI/CD）
 
 
 <!-- <div style="background-color: #0063dc;">
@@ -63,6 +94,7 @@ meta:
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html)
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
+    * [使用port-forward访问集群中的应用程序](/learning/k8s-practice/access/port-forward.html)
   * 下一步，可按教程章节顺序对 Kubernetes 各种概念进行深入理解
   :::
 

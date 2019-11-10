@@ -157,6 +157,7 @@ module.exports = {
       { text: '安装', link: '/install/install-dashboard' },
       { text: '教程', link: '/learning/' },
       { text: '使用', link: '/guide/' },
+      { text: '培训', link: 'https://kubetrain.cn/?from=kuboard', target: '_blank' },
       { text: '支持', link: '/support/' },
       // { text: '博客', link: 'https://blog.kuboard.cn/compaign' }
       // { text: 'DevOps', link: '/devops/' }
