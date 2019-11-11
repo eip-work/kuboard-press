@@ -12,17 +12,17 @@ meta:
 # Kubernetes 教程
 
 <div class="row">
-  <div class="col-md-4" data-aos="fade-up" data-aos-duration="800">
-    <a href="#Kubernetes免费教程">
+  <div class="col-md-4">
+    <a href="#kubernetes免费教程">
       <FancyImage src="/images/courses/free.png" title="免费教程" description="权威资料" alt="K8S培训_免费教程" type="Rolling"/>
     </a>
   </div>
-  <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+  <div class="col-md-4">
     <a href="https://kubetrain.cn/?from=learning" target="_blank">
       <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Cross"/>
     </a>
   </div>
-  <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+  <div class="col-md-4">
     <a href="https://kubetrain.cn/advanced.html?from=learning" target="_blank">
       <FancyImage src="/images/courses/advanced.png" title="K8S高级班" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
     </a>
@@ -122,9 +122,13 @@ meta:
     * [容器组 - 生命周期](/learning/k8s-intermediate/workload/pod-lifecycle.html)
     * [容器组 - 初始化容器](/learning/k8s-intermediate/workload/init-container.html)
     * [控制器 - 概述](/learning/k8s-intermediate/workload/workload.html)
+    * [控制器 - ReplicaSet](/learning/k8s-intermediate/workload/wl-replicaset/)
+    * [控制器 - ReplicationController](/learning/k8s-intermediate/workload/wl-replication-con/)
     * [控制器 - Deployment](/learning/k8s-intermediate/workload/wl-deployment/)
     * [控制器 - StatefulSet](/learning/k8s-intermediate/workload/wl-statefulset/)
     * [控制器 - DaemonSet](/learning/k8s-intermediate/workload/wl-daemonset/)
+    * [控制器 - 垃圾回收](/learning/k8s-intermediate/workload/gc)
+    * [控制器 - TTL](/learning/k8s-intermediate/workload/wl-ttl/)
     * [控制器 - Job](/learning/k8s-intermediate/workload/wl-job/)
     * [控制器 - CronJob](/learning/k8s-intermediate/workload/wl-cronjob/)
   * 服务发现、负载均衡、网络

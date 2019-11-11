@@ -36,6 +36,7 @@ module.exports = {
         'install-docker-desktop',
         ['install-k8s', '安装Kubernetes单Master节点'],
         'install-kubernetes',
+        'install-node-port-range'
       ]
     },
     {
@@ -155,6 +156,7 @@ module.exports = {
             'k8s-intermediate/workload/pod-health.html',
             
             'k8s-intermediate/workload/workload',
+            'k8s-intermediate/workload/wl-replicaset/',
             {
               title: '控制器 - Deployment',
               collapsable: true,

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    tier: frontend
+spec:
+  containers:
+  - name: hello1
+    image: nginx:1.7.9
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+  labels:
+    tier: frontend
+spec:
+  containers:
+  - name: hello2
+    image: nginx:1.8.0

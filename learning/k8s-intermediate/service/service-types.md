@@ -45,7 +45,7 @@ ClusterIP 是 ServiceType 的默认值。在 [Iptables 代理模式](service-det
 
 ## NodePort
 
-对于 `NodePort` 类型的 Service，Kubernetes 为其分配一个节点端口（对于同一 Service，在每个节点上的节点端口都相同），该端口的范围在初始化 apiserver 时可通过参数 `--service-node-port-range` 指定（默认是：30000-32767）。节点将该端口上的网络请求转发到对应的 Service 上。可通过 Service 的 `.spec.ports[*].nodePort` 字段查看该 Service 分配到的节点端口号。
+对于 `NodePort` 类型的 Service，Kubernetes 为其分配一个节点端口（对于同一 Service，在每个节点上的节点端口都相同），该端口的范围在初始化 apiserver 时可通过参数 `--service-node-port-range` 指定（默认是：30000-32767），参考 [修改NodePort的范围](/install/install-node-port-range.html)。节点将该端口上的网络请求转发到对应的 Service 上。可通过 Service 的 `.spec.ports[*].nodePort` 字段查看该 Service 分配到的节点端口号。
 
 在启动 kube-proxy 时使用参数 `--nodeport-address` 可指定阶段端口可以绑定的 IP 地址段。该参数接收以逗号分隔的 CIDR 作为参数值（例如：10.0.0.0/8,192.0.2.0/25），kube-proxy 将查找本机符合该 CIDR 的 IP 地址，并将节点端口绑定到符合的 IP 地址上。
 
