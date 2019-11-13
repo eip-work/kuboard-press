@@ -232,7 +232,15 @@ module.exports = {
             'k8s-intermediate/service/connecting',
             'k8s-intermediate/service/ingress',
             'k8s-intermediate/service/cni',
-            'k8s-intermediate/service/np'
+            {
+              title: '网络策略',
+              collapsable: true,
+              children: [
+                'k8s-intermediate/service/np',
+                'k8s-intermediate/service/np-default',
+                'k8s-intermediate/service/np-example',
+              ]
+            },
           ]
         },
         {

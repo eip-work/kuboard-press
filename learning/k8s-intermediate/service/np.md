@@ -1,10 +1,10 @@
 ---
 vssueId: 158
 layout: LearningLayout
-description: Kubernetes中_网络策略定义了一组Pod是否允许相互通信_或者与网络中的其他端点endpoint通信
+description: Kubernetes中_网络策略定义了一组Pod是否允许相互通信_或者与网络中的其他端点endpoint通信_NetworkPolicy对象使用标签选择Pod_并定义规则指定选中的Pod可以执行什么样的网络通信
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,Kubernetes服务发现
+    content: Kubernetes教程,K8S教程,Kubernetes Network Policies, K8S 网络策略
 ---
 
 # Network Policies
