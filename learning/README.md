@@ -12,17 +12,17 @@ meta:
 # Kubernetes 教程
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-6">
     <a href="#kubernetes免费教程">
       <FancyImage src="/images/courses/free.png" title="免费教程" description="权威资料" alt="K8S培训_免费教程" type="Rolling"/>
     </a>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-6">
     <a href="https://kubetrain.cn/?from=learning" target="_blank">
       <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Cross"/>
     </a>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-6">
     <a href="https://kubetrain.cn/advanced.html?from=learning" target="_blank">
       <FancyImage src="/images/courses/advanced.png" title="K8S高级班" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
     </a>

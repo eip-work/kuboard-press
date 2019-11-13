@@ -36,7 +36,8 @@ module.exports = {
         'install-docker-desktop',
         ['install-k8s', '安装Kubernetes单Master节点'],
         'install-kubernetes',
-        'install-node-port-range'
+        'install-node-port-range',
+        'k8s-restart',
       ]
     },
     {
@@ -231,6 +232,7 @@ module.exports = {
             'k8s-intermediate/service/connecting',
             'k8s-intermediate/service/ingress',
             'k8s-intermediate/service/cni',
+            'k8s-intermediate/service/np'
           ]
         },
         {

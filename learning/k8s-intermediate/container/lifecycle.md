@@ -43,7 +43,7 @@ Kubernetes中为容器提供了两个 hook（钩子函数）：
 容器只要实现并注册 hook handler 便可以使用钩子函数。Kubernetes 中，容器可以实现两种类型的 hook handler：
 
 * Exec - 在容器的名称空进和 cgroups 中执行一个指定的命令，例如 `pre-stop.sh`。该命令所消耗的 CPU、内存等资源，将计入容器可以使用的资源限制。
-* HTTP - 想容器的指定端口发送一个 HTTP 请求
+* HTTP - 向容器的指定端口发送一个 HTTP 请求
 
 
 ### Hook handler的执行

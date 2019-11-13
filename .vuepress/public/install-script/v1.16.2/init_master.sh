@@ -5,6 +5,14 @@
 # 脚本出错时终止执行
 set -e
 
+if [ ${#POD_SUBNET} -eq 0 ] || [ ${#APISERVER_NAME} -eq 0 ]; then
+  echo -e "\033[31;1m请确保您已经设置了环境变量 POD_SUBNET 和 APISERVER_NAME \033[0m"
+  echo 当前POD_SUBNET=$POD_SUBNET
+  echo 当前APISERVER_NAME=$APISERVER_NAME
+  exit 1
+fi
+
+
 # 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2
 rm -f ./kubeadm-config.yaml
 cat <<EOF > ./kubeadm-config.yaml

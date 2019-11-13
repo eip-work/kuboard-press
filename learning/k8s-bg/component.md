@@ -94,7 +94,7 @@ kube-proxy 在节点上维护网络规则。这些网络规则使得您可以在
 
 ### 容器引擎
 
-容器引擎负责运行容器。Kubernetes支持多宗容器引擎：[Docker](http://www.docker.com/)、[containerd](https://containerd.io/)、[cri-o](https://cri-o.io/)、[rktlet](https://github.com/kubernetes-incubator/rktlet) 以及任何实现了 [Kubernetes容器引擎接口](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md) 的容器引擎
+容器引擎负责运行容器。Kubernetes支持多种容器引擎：[Docker](http://www.docker.com/)、[containerd](https://containerd.io/)、[cri-o](https://cri-o.io/)、[rktlet](https://github.com/kubernetes-incubator/rktlet) 以及任何实现了 [Kubernetes容器引擎接口](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md) 的容器引擎
 
 ## Addons
 

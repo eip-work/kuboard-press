@@ -54,6 +54,19 @@ meta:
 kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 ```
 
+查看 Kuboard 运行状态：
+
+``` sh
+kubectl get pods -l k8s.eip.work/name=kuboard -n kube-system
+```
+
+输出结果如下所示：
+```
+NAME                       READY   STATUS        RESTARTS   AGE
+kuboard-54c9c4f6cb-6lf88   1/1     Running       0          45s
+```
+> 如果您一直不能看到 kuboard 处于 Running 状态，可参考 [诊断应用程序](/learning/k8s-advanced/ts/application.html)，查找原因。如不能解决，请到本文页尾加群，联系群主解决。
+
   </b-tab>
   <b-tab title="卸载">
 

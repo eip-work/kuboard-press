@@ -91,7 +91,7 @@ Replication Controller确保任意时间都有指定数量的Pod“副本”在�
 
 *如果Pods是短暂的，那么重启时IP地址可能会改变，怎么才能从前端容器正确可靠地指向后台容器呢？*
 [Service](https://kubernetes.io/docs/concepts/services-networking/service/) **抽象**
-现在，假定有2个后台Pod，并且定义后台Service的名称为‘backend-service’，lable选择器为（）。 的Service会完成如下两件重要的事情：
+现在，假定有2个后台Pod，并且定义后台Service的名称为‘backend-service’，label选择器为(tier=backend, app=myapp) 的Service会完成如下两件重要的事情：
 
 - 会为Service创建一个本地集群的DNS入口，因此前端Pod只需要DNS查找主机名为 ‘backend-service’，就能够解析出前端应用程序可用的IP地址。
 - 现在前端已经得到了后台服务的IP地址，但是它应该访问2个后台Pod的哪一个呢？Service在这2个后台Pod之间提供透明的负载均衡，会将请求分发给其中的任意一个（如下面的动画所示）。通过每个Node上运行的代理（kube-proxy）完成。
