@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.16.2" updateCount="65"/>
+  <InstallBanner version="v1.16.2" updateCount="66"/>
 </div>
 
 ## 配置要求
@@ -142,7 +142,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 <div slot="step2"> -->
 
-## 安装 docker / kubelet
+## 安装docker及kubelet
 
 <!-- <SharingBlock> -->
 
@@ -191,11 +191,6 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 
 ## 初始化 master 节点
 
-::: tip
-* 以 root 身份在 demo-master-a-1 机器上执行
-* 初始化 master 节点时，如果因为中间某些步骤的配置出错，想要重新初始化 master 节点，请先执行 `kubeadm reset` 操作
-:::
-
 ::: danger 关于初始化时用到的环境变量
 * **APISERVER_NAME** 不能是 master 的 hostname
 * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
@@ -224,7 +219,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.2/init_master.sh | sh
 
 ``` sh
 # 只在 master 节点执行
-# 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
+# 替换 x.x.x.x 为 master 节点的内网IP
 # export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
 export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName
@@ -239,6 +234,26 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
   </b-tab>
 </b-tabs>
 </b-card>
+
+<b-button v-b-toggle.collapse-init-error variant="danger" size="sm" style="margin-top: 1rem;">如果出错点这里</b-button>
+<b-collapse id="collapse-init-error" class="mt-2">
+<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
+
+* 请确保您的环境符合 [安装docker及kubelet](#安装docker及kubelet) 中所有勾选框的要求
+* 请确保您使用 root 用户执行初始化命令
+* 执行如下命令
+  ``` sh
+  echo MASTER_IP=${MASTER_IP} && echo APISERVER_NAME=${APISERVER_NAME} && echo POD_SUBNET=${POD_SUBNET}
+  ```
+  请验证如下几点：
+  * 环境变量 ***MASTER_IP*** 的值应该为 master 节点的 **内网IP**，如果不是，请重新 export
+  * **APISERVER_NAME** 不能是 master 的 hostname
+  * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
+  * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改
+* 重新初始化 master 节点，请先执行 `kubeadm reset -f` 操作
+
+</b-card>
+</b-collapse>
 
 **检查 master 初始化结果**
 
@@ -285,7 +300,7 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 ``` sh
 # 只在 worker 节点执行
-# 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
+# 替换 x.x.x.x 为 master 节点的内网 IP
 export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME
 export APISERVER_NAME=apiserver.demo
@@ -294,6 +309,97 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 # 替换为 master 节点上 kubeadm token create 命令的输出
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
+
+<b-button v-b-toggle.collapse-join-error variant="danger" size="sm" style="margin-top: 1rem;">如果出错点这里</b-button>
+<b-collapse id="collapse-join-error" class="mt-2">
+<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
+
+### 常见错误原因
+经常在群里提问为什么 join 不成功的情况大致有这几种：
+
+#### worker 节点不能访问 apiserver
+
+  在worker节点执行以下语句可验证worker节点是否能访问 apiserver
+  ``` sh
+  curl -ik https://apiserver.demo:6443
+  ```
+  如果不能，请在 master 节点上验证
+  ``` sh
+  curl -ik https://localhost:6443
+  ```
+  如果 master 节点能够访问 apiserver、而 worker 节点不能，则请检查自己的网络设置
+
+#### worker 节点有多个网卡
+  
+  在worker节点执行 
+  ```sh
+  ip address
+  ```
+  输出结果如下所示：
+  ```
+  1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+      inet 127.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+      inet6 ::1/128 scope host 
+        valid_lft forever preferred_lft forever
+  2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+      link/ether 52:54:00:9b:eb:48 brd ff:ff:ff:ff:ff:ff
+      inet 172.21.0.12/20 brd 172.21.15.255 scope global eth0
+        valid_lft forever preferred_lft forever
+      inet6 fe80::5054:ff:fe9b:eb48/64 scope link 
+        valid_lft forever preferred_lft forever
+  ```
+  通常只有一个 loopback 地址，和一个 eth0 内网地址，如果您有更多的网卡，kubelet 可能会出现不能使用正确的内网 IP 地址与 apiserver 通信的情况。建议先删除多余网卡，需要的话，在完成 k8s 安装后再重新添加
+
+#### worker 节点与 master 节点不在同一个局域网
+  
+  worker 节点必须与 master 节点在同一个局域网内，并且能够互通（安装 kubelet 和 docker 时，已经关闭了防火墙）
+  ``` sh
+  systemctl status firewalld
+  ```
+  输出结果如下
+  ```
+  ● firewalld.service - firewalld - dynamic firewall daemon
+    Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
+    Active: inactive (dead)
+      Docs: man:firewalld(1)
+  ```
+  如果您使用云环境，请确保您的安全组配置规则里，master节点和worker节点之间的相互通信是不受阻碍的
+
+### 移除worker节点并重试
+
+::: warning
+正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加
+:::
+
+在准备移除的 worker 节点上执行
+
+``` sh
+# 只在 worker 节点执行
+kubeadm reset -f
+```
+
+在 master 节点 demo-master-a-1 上执行
+
+```sh
+# 只在 master 节点执行
+kubectl get nodes -o wide
+```
+如果列表中没有您要移除的节点，则忽略下一个步骤
+
+``` sh
+# 只在 master 节点执行
+kubectl delete node demo-worker-x-x
+```
+
+::: tip
+* 将 demo-worker-x-x 替换为要移除的 worker 节点的名字
+* worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
+:::
+
+</b-card>
+</b-collapse>
 
 ### 检查初始化结果
 
@@ -311,38 +417,6 @@ demo-master-a-1   Ready    master   5m3s    v1.16.2
 demo-worker-a-1   Ready    <none>   2m26s   v1.16.2
 demo-worker-a-2   Ready    <none>   3m56s   v1.16.2
 ```
-
-## 移除 worker 节点
-
-<b-button v-b-toggle.collapse-1 variant="outline-danger" size="sm" style="margin-top: 1rem;">添加节点出错时，可移除节点重新添加</b-button>
-<b-collapse id="collapse-1" class="mt-2">
-  <b-card>
-
-::: warning
-正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加
-:::
-
-在准备移除的 worker 节点上执行
-
-``` sh
-# 只在 worker 节点执行
-kubeadm reset
-```
-
-在 master 节点 demo-master-a-1 上执行
-
-``` sh
-# 只在 master 节点执行
-kubectl delete node demo-worker-x-x
-```
-
-::: tip
-* 将 demo-worker-x-x 替换为要移除的 worker 节点的名字
-* worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
-:::
-
-  </b-card>
-</b-collapse>
 
 
 <!-- </div>
@@ -411,9 +485,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 
 ## 下一步
 
-::: danger 关于重启
-已经默认开启了 kubelet、docker 的开机启动，但是仍然有网友在重启虚拟机之后抱怨 kubernetes 不能正常使用。这种情况大多数是因为 **重启后，你的内网IP地址发生了变化**
-:::
+如果您使用自己笔记本上的虚拟机安装的集群，将来打算重启虚拟机，请参考 [重启Kubernetes集群](./k8s-restart.html)
 
 :tada: :tada: :tada: 
 
