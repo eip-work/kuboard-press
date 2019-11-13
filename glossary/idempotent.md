@@ -63,7 +63,7 @@ meta:
 >
 > 处理流程：
 >
-> 数据提交前要向服务的申请token，token放到redis或jvm内存，token有效时间
+> 数据提交前要向服务申请token，token放到redis或jvm内存，每个token有自己的有效时间
 >
 > 提交后后台校验token，同时删除token，生成新的token返回
 >
