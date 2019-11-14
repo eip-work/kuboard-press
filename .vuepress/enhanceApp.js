@@ -63,10 +63,6 @@ export default ({
 
   let sharing = true
   if (typeof window !== 'undefined') {
-    AOS.init({
-      easing: 'ease-out-back',
-      duration: 1200
-    });
     if (location.search && (location.search.indexOf('sharing') >=0 || location.search.indexOf('from=timeline') >= 0)) {
       sharing = true
       window.kuboardSharing = true
@@ -74,6 +70,12 @@ export default ({
       sharing = false
       window.kuboardSharing = false
     }
+    setTimeout(_ => {
+      AOS.init({
+        easing: 'ease-out-back',
+        duration: 1200
+      });
+    }, 200)
   }
   console.log('sharing', sharing)
   Vue.prototype.$isSharing = sharing
