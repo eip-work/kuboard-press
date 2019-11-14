@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.16.2" updateCount="66"/>
+  <InstallBanner version="v1.16.2" updateCount="67"/>
 </div>
 
 ## 配置要求
@@ -229,7 +229,7 @@ export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.16.2/init_master.sh
+<<< @/.vuepress/public/install-script/v1.16.2/init_master.sh {22}
 
   </b-tab>
 </b-tabs>
@@ -241,7 +241,13 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 * 请确保您的环境符合 [安装docker及kubelet](#安装docker及kubelet) 中所有勾选框的要求
 * 请确保您使用 root 用户执行初始化命令
-* 执行如下命令
+* 不能下载 kubernetes 的 docker 镜像
+  * 安装文档中，默认使用阿里云的 docker 镜像仓库，然而，有时候，该镜像会罢工
+  * 如碰到不能下载 docker 镜像的情况，请尝试手工初始化，并修改手工初始化脚本里的第22行（文档中已高亮）为：
+    ```yaml
+    imageRepository: gcr.azk8s.cn/google-containers
+    ```
+* 检查环境变量，执行如下命令
   ``` sh
   echo MASTER_IP=${MASTER_IP} && echo APISERVER_NAME=${APISERVER_NAME} && echo POD_SUBNET=${POD_SUBNET}
   ```
@@ -250,7 +256,7 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
   * **APISERVER_NAME** 不能是 master 的 hostname
   * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
   * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改
-* 重新初始化 master 节点，请先执行 `kubeadm reset -f` 操作
+* 重新初始化 master 节点前，请先执行 `kubeadm reset -f` 操作
 
 </b-card>
 </b-collapse>
