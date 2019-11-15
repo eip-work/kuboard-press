@@ -144,7 +144,7 @@ metadata:
 
 这些 Pod 没有对应的控制器（或者任何其他对象）作为其 ownerReference，且他们都匹配了 ReplicaSet `frontend` 中的选择器（selector），此时他们将立刻被 ReplicaSet `frontend` 接管。
 
-假设您先创建你了上面例子中的 ReplicaSet（其 `replicas` 为 3），此时再执行命令，以创建上面YAML文件中的两个 Pod：
+假设您先创建了上面例子中的 ReplicaSet（其 `replicas` 为 3），此时再执行命令，以创建上面YAML文件中的两个 Pod：
 ```sh
 kubectl apply -f https://kuboard.cn/statics/learning/replicaset/pod-rs.yaml
 ```
