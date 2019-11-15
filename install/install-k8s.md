@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.16.2" updateCount="67"/>
+  <InstallBanner version="v1.16.2" updateCount="68"/>
 </div>
 
 ## 配置要求
@@ -135,12 +135,23 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ```
 :::
 
-<!-- <div style="display: inline-block; width: calc(100% - 400px);"></div> -->
+## 检查网络
 
+在所有节点执行命令
+``` sh
+ip route show
+```
+输入结果如下所示，（根据你自己机器配置的情况，条目的数量可能不一样）
+``` {1}
+default via 172.21.0.23 dev eth0 
+169.254.0.0/16 dev eth0 scope link metric 1002 
+172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 
+```
 
-<!-- </div>
-
-<div slot="step2"> -->
+::: tip 网络要求
+* 所有节点上该命令输出的第一行，即 ***default via <font color="blue" weight="500">172.21.0.23</font> dev eth0*** 中的 ip 地址必须都在内网，并且可以互通（没有安全组或防火墙隔离）。
+  * 如果你使用 vmware 或 virtualbox 创建虚拟机用于 K8S 学习，可以尝试 NAT 模式的网络，而不是桥接模式的网络
+:::
 
 ## 安装docker及kubelet
 
@@ -235,7 +246,7 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 </b-tabs>
 </b-card>
 
-<b-button v-b-toggle.collapse-init-error variant="danger" size="sm" style="margin-top: 1rem;">如果出错点这里</b-button>
+<b-button v-b-toggle.collapse-init-error variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-error', 'error-init-master', '查看初始化时的错误解决办法')">如果出错点这里</b-button>
 <b-collapse id="collapse-init-error" class="mt-2">
 <b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
 
@@ -316,7 +327,7 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
 ```
 
-<b-button v-b-toggle.collapse-join-error variant="danger" size="sm" style="margin-top: 1rem;">如果出错点这里</b-button>
+<b-button v-b-toggle.collapse-join-error variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-error', 'error-init-worker', '查看初始化worker时的错误解决办法')">如果出错点这里</b-button>
 <b-collapse id="collapse-join-error" class="mt-2">
 <b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
 
@@ -333,45 +344,44 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
   ``` sh
   curl -ik https://localhost:6443
   ```
-  如果 master 节点能够访问 apiserver、而 worker 节点不能，则请检查自己的网络设置
+  正常输出结果如下所示：
+  ``` {1}
+  HTTP/1.1 403 Forbidden
+  Cache-Control: no-cache, private
+  Content-Type: application/json
+  X-Content-Type-Options: nosniff
+  Date: Fri, 15 Nov 2019 04:34:40 GMT
+  Content-Length: 233
 
-#### worker 节点有多个网卡
-  
-  在worker节点执行 
-  ```sh
-  ip address
+  {
+    "kind": "Status",
+    "apiVersion": "v1",
+    "metadata": {
+  ...
   ```
-  输出结果如下所示：
-  ```
-  1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-      inet 127.0.0.1/8 scope host lo
-        valid_lft forever preferred_lft forever
-      inet6 ::1/128 scope host 
-        valid_lft forever preferred_lft forever
-  2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-      link/ether 52:54:00:9b:eb:48 brd ff:ff:ff:ff:ff:ff
-      inet 172.21.0.12/20 brd 172.21.15.255 scope global eth0
-        valid_lft forever preferred_lft forever
-      inet6 fe80::5054:ff:fe9b:eb48/64 scope link 
-        valid_lft forever preferred_lft forever
-  ```
-  通常只有一个 loopback 地址，和一个 eth0 内网地址，如果您有更多的网卡，kubelet 可能会出现不能使用正确的内网 IP 地址与 apiserver 通信的情况。建议先删除多余网卡，需要的话，在完成 k8s 安装后再重新添加
+  ::: tip 可能原因
+  * 如果 master 节点能够访问 apiserver、而 worker 节点不能，则请检查自己的网络设置
+    * /etc/hosts 是否正确设置？
+    * 是否有安全组或防火墙的限制？
+  :::
 
-#### worker 节点与 master 节点不在同一个局域网
+#### worker 节点默认网卡
   
-  worker 节点必须与 master 节点在同一个局域网内，并且能够互通（安装 kubelet 和 docker 时，已经关闭了防火墙）
+  在worker节点执行
   ``` sh
-  systemctl status firewalld
+  ip route show
   ```
-  输出结果如下
+  输入结果如下所示，（根据你自己机器配置的情况，条目的数量可能不一样）
+  ``` {1}
+  default via 172.21.0.23 dev eth0 
+  169.254.0.0/16 dev eth0 scope link metric 1002 
+  172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 
   ```
-  ● firewalld.service - firewalld - dynamic firewall daemon
-    Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
-    Active: inactive (dead)
-      Docs: man:firewalld(1)
-  ```
-  如果您使用云环境，请确保您的安全组配置规则里，master节点和worker节点之间的相互通信是不受阻碍的
+
+  ::: tip 网络要求
+  * 该命令输出的第一行，即 ***default via <font color="blue" weight="500">172.21.0.23</font> dev eth0*** 中的 ip 地址必须在内网，并且可以和 master 节点的内网 IP 互通（没有安全组或防火墙隔离）。
+    * 如果你使用 vmware 或 virtualbox 创建虚拟机用于 K8S 学习，可以尝试 NAT 模式的网络，而不是桥接模式的网络
+  :::
 
 ### 移除worker节点并重试
 

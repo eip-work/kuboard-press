@@ -104,9 +104,23 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ```
 :::
 
-<!-- </div>
+## 检查网络
 
-<div slot="step2"> -->
+在所有节点执行命令
+``` sh
+ip route show
+```
+输入结果如下所示，（根据你自己机器配置的情况，条目的数量可能不一样）
+``` {1}
+default via 172.21.0.23 dev eth0 
+169.254.0.0/16 dev eth0 scope link metric 1002 
+172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 
+```
+
+::: tip 网络要求
+* 所有节点上该命令输出的第一行，即 ***default via <font color="blue" weight="500">172.21.0.23</font> dev eth0*** 中的 ip 地址必须都在内网，并且可以互通（没有安全组或防火墙隔离）。
+  * 如果你使用 vmware 或 virtualbox 创建虚拟机用于 K8S 学习，可以尝试 NAT 模式的网络，最终满足上面那一条要求即可
+:::
 
 ## 安装 docker / kubelet
 
