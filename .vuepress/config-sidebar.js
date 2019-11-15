@@ -379,6 +379,13 @@ module.exports = {
           ]
         },
         'k8s-advanced/gc',
+        {
+          title: '扩展Kubernetes',
+          collapsable: true,
+          children: [
+            'k8s-advanced/extend/aggregation',
+          ]
+        },
       ]
     },
     {
