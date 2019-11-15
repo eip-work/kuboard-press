@@ -138,20 +138,28 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 ## 检查网络
 
 在所有节点执行命令
-``` sh
-ip route show
-```
-输入结果如下所示，（根据你自己机器配置的情况，条目的数量可能不一样）
-``` {1}
-default via 172.21.0.23 dev eth0 
+``` {2,11,13}
+[root@demo-master-a-1 ~]$ ip route show
+default via 172.21.0.1 dev eth0 
 169.254.0.0/16 dev eth0 scope link metric 1002 
 172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 
-```
 
-::: tip 网络要求
-* 所有节点上该命令输出的第一行，即 ***default via <font color="blue" weight="500">172.21.0.23</font> dev eth0*** 中的 ip 地址必须都在内网，并且可以互通（没有安全组或防火墙隔离）。
-  * 如果你使用 vmware 或 virtualbox 创建虚拟机用于 K8S 学习，可以尝试 NAT 模式的网络，而不是桥接模式的网络
+[root@demo-master-a-1 ~]$ ip address
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:16:3e:12:a4:1b brd ff:ff:ff:ff:ff:ff
+    inet 172.17.216.80/20 brd 172.17.223.255 scope global dynamic eth0
+       valid_lft 305741654sec preferred_lft 305741654sec
+```
+::: tip kubelet使用的IP地址
+* `ip route show` 命令中，可以知道机器的默认网卡，通常是 `eth0`，如 ***default via 172.21.0.23 dev <font color="blue" weight="500">eth0</font>***
+* `ip address` 命令中，可显示默认网卡的 IP 地址，Kubernetes 将使用此 IP 地址与集群内的其他节点通信，如 `172.17.216.80`
+* 所有节点上 Kubernetes 所使用的 IP 地址必须可以互通（无需 NAT 映射、无安全组或防火墙隔离）
 :::
+
 
 ## 安装docker及kubelet
 
@@ -367,21 +375,8 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 
 #### worker 节点默认网卡
   
-  在worker节点执行
-  ``` sh
-  ip route show
-  ```
-  输入结果如下所示，（根据你自己机器配置的情况，条目的数量可能不一样）
-  ``` {1}
-  default via 172.21.0.23 dev eth0 
-  169.254.0.0/16 dev eth0 scope link metric 1002 
-  172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 
-  ```
-
-  ::: tip 网络要求
-  * 该命令输出的第一行，即 ***default via <font color="blue" weight="500">172.21.0.23</font> dev eth0*** 中的 ip 地址必须在内网，并且可以和 master 节点的内网 IP 互通（没有安全组或防火墙隔离）。
+  * [Kubelet使用的 IP 地址](#检查网络) 与 master 节点可互通（无需 NAT 映射），且没有防火墙、安全组隔离
     * 如果你使用 vmware 或 virtualbox 创建虚拟机用于 K8S 学习，可以尝试 NAT 模式的网络，而不是桥接模式的网络
-  :::
 
 ### 移除worker节点并重试
 

@@ -17,7 +17,7 @@
             <b-form-checkbox value="cpu">我的任意节点 CPU 内核数量大于等于 2</b-form-checkbox><br/>
             <b-form-checkbox value="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</b-form-checkbox><br/>
             <b-form-checkbox value="ipaddress">我的任意节点都有固定的内网 IP 地址</b-form-checkbox><br/>
-            <b-form-checkbox value="networkcard">我的任意节点默认使用内网 IP 地址，并且没有防火墙或安全组隔离</b-form-checkbox><br/>
+            <b-form-checkbox value="networkcard">我的任意节点上 <a href="#检查网络">Kubelet使用的 IP 地址</a> 可互通（无需 NAT 映射），且没有防火墙、安全组隔离</b-form-checkbox><br/>
             <b-form-checkbox value="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</b-form-checkbox><br/>
           </b-form-checkbox-group>
         </b-form-group>
