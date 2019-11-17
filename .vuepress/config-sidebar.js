@@ -403,7 +403,8 @@ module.exports = {
           title: '概述',
           collapsable: false,
           children: [
-            'k8s-practice/micro-service/kuboard-view-of-k8s'
+            'k8s-practice/micro-service/kuboard-view-of-k8s',
+            'k8s-practice/micro-service/design-pattern'
           ]
         },
         {

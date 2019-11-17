@@ -33,7 +33,7 @@ meta:
 * [Romana](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/romana-network-policy/)
 * [Weave Net](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/weave-network-policy/)
 
-::: tip
+::: tip 排序
 按字母顺序排序，不代表推荐顺序。本文中的例子对上述所有网络插件都有效
 :::
 
