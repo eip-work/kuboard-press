@@ -1,7 +1,7 @@
 ---
-# vssueId: 67
+vssueId: 156
 layout: LearningLayout
-lessAds: true
+lessAds: false
 description: Kubernetes教程_本文描述了如何在K8S上部署一个WordPress和MySQL应用_并将数据存储在PersistentVolume中
 meta:
   - name: keywords

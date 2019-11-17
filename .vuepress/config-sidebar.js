@@ -224,13 +224,19 @@ module.exports = {
           title: '服务发现、负载均衡、网络',
           collapsable: true,
           children: [
-            'k8s-intermediate/service/service',
-            'k8s-intermediate/service/service-details',
-            'k8s-intermediate/service/service-types',
-            'k8s-intermediate/service/dns',
-            'k8s-intermediate/service/host-alias',
-            'k8s-intermediate/service/connecting',
+            {
+              title: 'Service',
+              collapsable: true,
+              children: [
+                'k8s-intermediate/service/service',
+                'k8s-intermediate/service/service-details',
+                'k8s-intermediate/service/service-types',
+                'k8s-intermediate/service/dns',
+                'k8s-intermediate/service/connecting',
+              ]
+            },
             'k8s-intermediate/service/ingress',
+            'k8s-intermediate/service/host-alias',
             'k8s-intermediate/service/cni',
             {
               title: '网络策略',
@@ -397,6 +403,7 @@ module.exports = {
           collapsable: true,
           children: [
             'k8s-practice/access/port-forward',
+            'k8s-practice/admin/list-images',
           ]
         },
         {

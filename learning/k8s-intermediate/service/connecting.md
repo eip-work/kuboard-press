@@ -7,7 +7,7 @@ meta:
     content: Kubernetes教程,K8S教程,Kubernetes Service,Kubernetes服务发现
 ---
 
-# Service连接应用程序
+# Example：Service连接应用程序
 
 <AdSenseTitle/>
 
