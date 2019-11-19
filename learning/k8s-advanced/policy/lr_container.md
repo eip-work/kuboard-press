@@ -1,7 +1,7 @@
 ---
 vssueId: 143
 layout: LearningLayout
-description: Kubernetes教程_本文讨论了如何在容器级别创建 LimitRange。假设有一个 Pod 包含 4个容器，每个容器都定义了 spec.resource，此时 LimitRanger 管理控制器在处理该 Pod 中的 4个容器是，处理方式是不一样的。
+description: Kubernetes教程_本文讨论了如何在容器级别创建 LimitRange。假设有一个 Pod 包含 4个容器，每个容器都定义了 spec.resource，此时 LimitRanger 管理控制器在处理该 Pod 中的 4个容器时，处理方式是不一样的。
 meta:
   - name: keywords
     content: Kubernetes教程, LimitRange, Kubernetes Limit Range
@@ -14,7 +14,7 @@ meta:
 <AdSenseTitle>
 </AdSenseTitle>
 
-本文讨论了如何在容器级别创建 LimitRange。假设有一个 Pod 包含 4个容器，每个容器都定义了 `spec.resource`，此时 LimitRanger 管理控制器在处理该 Pod 中的 4个容器是，处理方式是不一样的。
+本文讨论了如何在容器级别创建 LimitRange。假设有一个 Pod 包含 4个容器，每个容器都定义了 `spec.resource`，此时 LimitRanger 管理控制器在处理该 Pod 中的 4个容器时，处理方式是不一样的。
 
 演示步骤如下：
 

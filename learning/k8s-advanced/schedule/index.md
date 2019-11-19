@@ -76,7 +76,7 @@ Filtering（筛选/过滤）阶段，使用的过滤器有：
 * **SelectorSpreadPriority**：将 Pod 分散到不同的节点，主要考虑同属于一个 Service、StatefulSet、Deployment的情况
 * **InterPodAffinityPriority**：遍历 `weightedPodAffinityTerm` 并求和，找出结果最高的节点
 * **LeastRequestedPriority**：已被消耗的资源最少的节点得分最高。如果节点上的 Pod 越多，被消耗的资源越多，则评分约低
-* **MostRequestedPriority**：已被小号的额资源最多的节点得分最高。此策略会把 Pod 尽量集中到集群中的少数节点上
+* **MostRequestedPriority**：已被消耗的资源最多的节点得分最高。此策略会把 Pod 尽量集中到集群中的少数节点上
 * **RequestedToCapacityRatioPriority**：按 requested / capacity 的百分比评分
 * **BalancedResourceAllocation**：资源使用均衡的节点评分高
 * **NodePreferAvoidPodsPriority**：根据节点的 annotation `scheduler.alpha.kubernetes.io/preferAvoidPods` 评分。可使用此 annotation 标识哪些 Pod 不能够运行在同一个节点上

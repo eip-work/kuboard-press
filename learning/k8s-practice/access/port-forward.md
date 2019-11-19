@@ -129,7 +129,7 @@ meta:
 
 ## 总结
 
-本机 7000 端口的连接被转发到集群中 Redis Server 所在 Pod 的 6379 端口。当此连接存在是，您可以使用您自己的机器上的客户端对部署在集群中的 Redis Server 进行 Debug。
+本机 7000 端口的连接被转发到集群中 Redis Server 所在 Pod 的 6379 端口。当此连接存在时，您可以使用您自己的机器上的客户端对部署在集群中的 Redis Server 进行 Debug。
 
 ::: tip 提示
 * 由于一些限制，port-forward 目前只支持 TCP 协议，[issue 47862](https://github.com/kubernetes/kubernetes/issues/47862) 用来跟进对 UDP 协议的支持。
