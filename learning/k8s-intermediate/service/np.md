@@ -92,13 +92,15 @@ spec:
 
 因此，例子中的 `NetworkPolicy` 对网络流量做了如下限制：
 1. 隔离了 `default` 名称空间中带有 `role=db` 标签的所有 Pod 的入方向网络流量和出方向网络流量
-2. Ingress规则（入方向白名单规则）允许访问 `default` 名称空间中所有带 `role=db` 标签的 Pod 的 `6379` 端口，但* 请求方可以是如下三种来源当中的任意一种：
-   * ipBlock 为 `172.17.0.0/16` 网段（请参考 [CIDR](/glossary/cidr.html)），但是不包括 `172.17.1.0/24` 网段
-   * namespaceSelector 标签选择器，匹配标签为 `project=myproject`
-   * podSelector 标签选择器，匹配标签为 `role=frontend`
-3. Egress rules（出方向白名单规则）允许的出方向网络流量必须符合如下条件：
-    * 目标端口为 `5978`
-    * 目标 ipBlock 为 `10.0.0.0/24` 网段（请参考 [CIDR](/glossary/cidr.html)）
+2. Ingress规则（入方向白名单规则）：
+   * 当请求方是如下三种来源当中的任意一种时，允许访问 `default` 名称空间中所有带 `role=db` 标签的 Pod 的 `6379` 端口：
+     * ipBlock 为 `172.17.0.0/16` 网段（请参考 [CIDR](/glossary/cidr.html)），但是不包括 `172.17.1.0/24` 网段
+     * namespaceSelector 标签选择器，匹配标签为 `project=myproject`
+     * podSelector 标签选择器，匹配标签为 `role=frontend`
+3. Egress rules（出方向白名单规则）：
+   * 当如下条件满足时，允许出方向的网络流量：
+     * 目标端口为 `5978`
+     * 目标 ipBlock 为 `10.0.0.0/24` 网段（请参考 [CIDR](/glossary/cidr.html)）
 
 
 ## to和from选择器的行为

@@ -1,10 +1,10 @@
 ---
 vssueId: 151
 layout: LearningLayout
-description: Kubernetes 的控制器模式中，
+description: Kubernetes的CronJob可以用来执行基于时间计划的定时任务_类似于Linux/Unix系统中的crontable_CronJob执行周期性的重复任务时非常有用_例如备份数据_发送邮件等_CronJob也可以用来指定将来某个时间点执行单个任务_例如将某项任务定时到系统负载比较低的时候执行。
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,K8S培训,Kubernetes Job
+    content: Kubernetes教程,K8S教程,K8S培训,Kubernetes CronJob
 ---
 
 # 使用CronJob执行自动任务

@@ -191,7 +191,7 @@ Kubernetes 支持两种方式发现服务：
   ```
   请注意，此时环境变量中没有任何与您的 Service 相关的内容。因为在本教程的前面部分，我们先创建了 Pod 的副本，后创建了 Service。如果我们删除已有的两个 Pod，Deployment 将重新创建 Pod 以替代被删除的 Pod。此时，因为在创建 Pod 时，Service 已经存在，所以我们可以在新的 Pod 中查看到 Service 的环境变量被正确设置。
 
-* 执行命令 `kubectl get pods -l run=my-nginx`以删除 Pod
+* 执行命令 `kubectl delete pods -l run=my-nginx`以删除 Pod
 * 执行命令 `kubectl get pods -l run=my-nginx -o wide` 查看新建Pod，输出结果如下：
   ```
   NAME                        READY     STATUS    RESTARTS   AGE     IP            NODE
