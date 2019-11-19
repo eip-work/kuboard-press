@@ -2,20 +2,20 @@
 vssueId: 15
 # layout: StepLayout
 sharingTitle: K8S入门第一步---安装，装不好还有人免费远程协助，更有K8S免费教程提供，你还在等什么？
-description: Kubernete安装文档_Kubernetes最新稳定版v1.16.3的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
+description: Kubernete安装文档_Kubernetes最新稳定版v1.16.2的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords
     content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装
 ---
 
-# 使用kubeadm安装kubernetes_v1.16.3
+# 使用kubeadm安装kubernetes_v1.16.2
 
 <AdSenseTitle/>
 
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.16.3" updateCount="69"/>
+  <InstallBanner version="v1.16.2" updateCount="68"/>
 </div>
 
 ## 配置要求
@@ -46,13 +46,12 @@ meta:
 
 **安装后的软件版本为**
 
-* Kubernetes v1.16.3
+* Kubernetes v1.16.2
   * calico 3.9
   * nginx-ingress 1.5.5
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
-> * [安装 Kubernetes v1.16.1 单Master节点](/install/history-k8s/install-k8s-1.16.2.html)
 > * [安装 Kubernetes v1.16.1 单Master节点](/install/history-k8s/install-k8s-1.16.1.html)
 > * [安装 Kubernetes v1.16.0 单Master节点](/install/history-k8s/install-k8s-1.16.0.html)
 > * [安装 Kubernetes v1.15.4 单Master节点](/install/history-k8s/install-k8s-1.15.4.html)
@@ -182,7 +181,7 @@ default via 172.21.0.1 dev eth0
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 
-curl -sSL https://kuboard.cn/install-script/v1.16.3/install_kubelet.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
 
 ```
 
@@ -191,7 +190,7 @@ curl -sSL https://kuboard.cn/install-script/v1.16.3/install_kubelet.sh | sh
 
 手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/v1.16.3/install_kubelet.sh
+<<< @/.vuepress/public/install-script/v1.16.2/install_kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -231,7 +230,7 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.16.3/init_master.sh | sh
+curl -sSL https://kuboard.cn/install-script/v1.16.2/init_master.sh | sh
 ```
 
   </b-tab>
@@ -249,7 +248,7 @@ export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.16.3/init_master.sh {22}
+<<< @/.vuepress/public/install-script/v1.16.2/init_master.sh {22}
 
   </b-tab>
 </b-tabs>
@@ -425,9 +424,9 @@ kubectl get nodes -o wide
 ```sh
 [root@demo-master-a-1 ~]# kubectl get nodes
 NAME     STATUS   ROLES    AGE     VERSION
-demo-master-a-1   Ready    master   5m3s    v1.16.3
-demo-worker-a-1   Ready    <none>   2m26s   v1.16.3
-demo-worker-a-2   Ready    <none>   3m56s   v1.16.3
+demo-master-a-1   Ready    master   5m3s    v1.16.2
+demo-worker-a-1   Ready    <none>   2m26s   v1.16.2
+demo-worker-a-2   Ready    <none>   3m56s   v1.16.2
 ```
 
 
@@ -445,7 +444,7 @@ demo-worker-a-2   Ready    <none>   3m56s   v1.16.3
 
 ``` sh
 # 只在 master 节点执行
-kubectl apply -f https://kuboard.cn/install-script/v1.16.3/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 ```
 
   </b-tab>
@@ -458,13 +457,13 @@ kubectl apply -f https://kuboard.cn/install-script/v1.16.3/nginx-ingress.yaml
 
 ``` sh
 # 只在 master 节点执行
-kubectl delete -f https://kuboard.cn/install-script/v1.16.3/nginx-ingress.yaml
+kubectl delete -f https://kuboard.cn/install-script/v1.16.2/nginx-ingress.yaml
 ```
 
   </b-tab>
   <b-tab title="YAML文件">
 
-<<< @/.vuepress/public/install-script/v1.16.3/nginx-ingress.yaml
+<<< @/.vuepress/public/install-script/v1.16.2/nginx-ingress.yaml
 
 
   </b-tab>
