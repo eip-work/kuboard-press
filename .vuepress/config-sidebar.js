@@ -207,6 +207,7 @@ module.exports = {
                 'k8s-intermediate/workload/wl-job/pattern',
                 'k8s-intermediate/workload/wl-job/usage',
                 'k8s-intermediate/workload/wl-job/when',
+                'k8s-intermediate/workload/wl-job/task_expansion',
               ]
             },
             {
