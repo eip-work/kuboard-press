@@ -99,7 +99,7 @@ spec:
   tolerations:
   - operator: "Exists"
   ```
-* 容忍中未定义 `effect` 但是定义了 `key`，Kubernetes 认为此容忍匹配所有 `effect`，如下欧式：
+* 容忍中未定义 `effect` 但是定义了 `key`，Kubernetes 认为此容忍匹配所有 `effect`，如下所示：
 
   ``` yaml
   tolerations:

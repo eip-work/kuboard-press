@@ -130,7 +130,7 @@ kubectl exec cassandra -- cat /var/log/cassandra/system.log
 
 ### Pod处于Running状态，但是不工作
 
-Pod已经处于Running状态了，但是不像您期望的那样工作，此时，很有可能是您的部署描述yaml文件（例如 Pod、Deployment、StatefulSet等）出现了问题，而创建是，kubectl 忽略了该错误。例如环境变量中某一个 Key 写错了，`command` 拼写成了 `commnd` 等。如果 `command` 拼写成了 `commnd`，您仍然能够使用该 yaml 文件创建工作负载，但是容器在运行时，却不会使用您原本期望的命令，而是执行了镜像中的 `EntryPoint`。
+Pod已经处于Running状态了，但是不像您期望的那样工作，此时，很有可能是您的部署描述yaml文件（例如 Pod、Deployment、StatefulSet等）出现了问题，而创建时，kubectl 忽略了该错误。例如环境变量中某一个 Key 写错了，`command` 拼写成了 `commnd` 等。如果 `command` 拼写成了 `commnd`，您仍然能够使用该 yaml 文件创建工作负载，但是容器在运行时，却不会使用您原本期望的命令，而是执行了镜像中的 `EntryPoint`。
 
 * 首先，在使用 `kubectl apply -f` 命令之前，可以尝试为其添加 `--validate` 选项，例如， `kubectl apply --validate -f mypod.yaml`。如果您将 `command` 拼写成 `commnd`，将看到如下错误信息：
 

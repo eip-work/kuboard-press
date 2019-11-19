@@ -27,7 +27,7 @@ secret "db-user-pass" created
 ::: tip
 * 上述命令的执行效果与此命令执行效果相同：
   `kubectl create secret generic db-user-pass –from-literal=username=admin –from-literal=password=1f2d1e2e67df`
-* 如果您的密码中包含特殊字符需要转码（例如 `$`、`*`、`\`、`!`），请使用 `\\` 进行转码。例如：实际密码为 `S!B\*d$zDsb`，kubectl 命令应该写成 `kubectl create secret generic dev-db-secret –from-literal=username=devuser –from-literal=password=S\!B\\*d\$zDsb`。如果通过文件创建（--from-file），则无需对文件中的密码进行转码。
+* 如果您的密码中包含特殊字符需要转码（例如 `$`、`*`、`\`、`!`），请使用 `\` 进行转码。例如：实际密码为 `S!B\*d$zDsb`，kubectl 命令应该写成 `kubectl create secret generic dev-db-secret –from-literal=username=devuser –from-literal=password=S\!B\\*d\$zDsb`。如果通过文件创建（--from-file），则无需对文件中的密码进行转码。
 :::
 
 执行命令 `kubectl get secrets`，检查 Secret 的创建结果，输出信息如下所示：
