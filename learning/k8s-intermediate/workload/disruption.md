@@ -1,10 +1,10 @@
 ---
 vssueId: 155
 layout: LearningLayout
-description: Kubernetes教程_Kubernetes_garbage_collector_垃圾回收器的作用是删除那些曾经有owner_后来又不再有owner的对象。
+description: Kubernetes教程_本文面向想要构建高可用的应用程序的应用程序管理员_为此您需要理解有哪些毁坏_disruption_可能发生在Pod上_本文也是为集群管理员准备的_如果集群管理员想要将集群的部分管理任务自动化的话_例如_升级_自动伸缩等
 meta:
   - name: keywords
-    content: Kubernetes教程,K8S教程,K8S培训,K8S垃圾回收,K8S Garbage Collection
+    content: Kubernetes教程,K8S教程,K8S培训,K8S Disruption,PodDisruptionBudget
 ---
 
 # 容器组_毁坏Disruptions

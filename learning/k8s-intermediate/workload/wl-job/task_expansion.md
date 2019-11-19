@@ -7,7 +7,7 @@ meta:
     content: Kubernetes教程,K8S教程,K8S培训,Kubernetes CronJob
 ---
 
-# 使用扩展进行并行处理
+# 练习_使用扩展进行并行处理
 
 <AdSenseTitle>
 

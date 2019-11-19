@@ -154,6 +154,7 @@ module.exports = {
             'k8s-intermediate/workload/init-config',
             'k8s-intermediate/workload/init-debug',
             'k8s-intermediate/workload/disruption',
+            'k8s-intermediate/workload/disruption-example',
             'k8s-intermediate/workload/pod-health.html',
             
             'k8s-intermediate/workload/workload',
