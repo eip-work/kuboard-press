@@ -1,17 +1,14 @@
 <template>
-  <div class="adsense-page-bottom-inline" :style="$isDev ? 'background-color: grey;' : ''">
+  <div v-if="$themeConfig.showAds" class="adsense-page-bottom-inline" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- PageBottomInline -->
     <ins class="adsbygoogle"
         style="display:block"
+        data-ad-format="fluid"
+        data-ad-layout-key="-hh-5+1v-2l-d"
         data-ad-client="ca-pub-3313149841665250"
-        data-ad-slot="8977269331"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
+        data-ad-slot="2494099929"></ins>
     <script>
-      <!-- if (!window.kuboardSharing) { -->
         (adsbygoogle = window.adsbygoogle || []).push({});
-      <!-- } -->
     </script>
   </div>
 </template>

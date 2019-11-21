@@ -532,6 +532,16 @@ module.exports = {
       ]
     },
   ],
+
+  '/t/': [
+    {
+      title: 'CKA每日一题',
+      collapsable: false,
+      children: [
+        'cka/daily',
+      ]
+    },
+  ],
   
   '/support/': [
     {

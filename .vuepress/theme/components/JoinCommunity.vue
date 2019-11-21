@@ -1,5 +1,5 @@
 <template>
-  <div class="page-nav" style="max-width: 1000px; padding: 1rem; text-align: center;">
+  <div v-if="$page.path.indexOf('/t/') !== 0" class="page-nav" style="max-width: 1000px; padding: 1rem; text-align: center;">
     <b-alert style="margin-bottom: 0;" show variant="primary">免费答疑</b-alert>
 
     <div>

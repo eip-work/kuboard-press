@@ -133,3 +133,23 @@ Linux Ethernet bridge 是一个虚拟的 Layer 2 网络设备，可用来连接�
 <p style="max-width: 480px">
   <img src="./network.assets/pods-connected-by-bridge.png" alt="K8S教程_Kubernetes网络模型_network_bridge_网桥_虚拟网卡"/>
 </p>
+
+### 数据包的传递：Pod-to-Pod，同节点
+
+在 network namespace 将每一个 Pod 隔离到各自的网络堆栈的情况下，虚拟以太网设备（virtual Ethernet device）将每一个 namespace 连接到 root namespace，网桥将 namespace 又连接到一起，此时，Pod 可以向同一节点上的另一个 Pod 发送网络报文了。下图演示了同节点上，网络报文从一个Pod传递到另一个Pod的情况。
+
+<p style="max-width: 600px">
+  <img src="./network.assets/pod-to-pod-same-node.gif" alt="K8S教程_Kubernetes网络模型_同节点上Pod之间发送数据包"/>
+</p>
+
+Pod1 发送一个数据包到其自己的默认以太网设备 `eth0`。
+1. 对 Pod1 来说，`eth0` 通过虚拟以太网设备（veth0）连接到 root namespace
+2. 网桥 `cbr0` 中为 `veth0` 配置了一个网段。一旦数据包到达网桥，网桥使用[ARP](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) 协议解析出其正确的目标网段 `veth1`
+3. 网桥 `cbr0` 将数据包发送到 `veth1`
+4. 数据包到达 `veth1` 时，被直接转发到 Pod2 的 network namespace 中的 `eth0` 网络设备。
+
+在整个数据包传递过程中，每一个 Pod 都只和 `localhost` 上的 `eth0` 通信，且数包被路由到正确的 Pod 上。与开发人员正常使用网络的习惯没有差异。
+
+Kubernetes 的网络模型规定，在跨节点的情况下 Pod 也必须可以通过 IP 地址访问。也就是说，Pod 的 IP 地址必须始终对集群中其他 Pod 可见；且从 Pod 内部和从 Pod 外部来看，Pod 的IP地址都是相同的。接下来我们讨论跨节点情况下，网络数据包如何传递。
+
+### 数据包的传递：Pod-to-Pod，跨节点

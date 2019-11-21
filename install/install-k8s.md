@@ -52,7 +52,7 @@ meta:
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
-> * [安装 Kubernetes v1.16.1 单Master节点](/install/history-k8s/install-k8s-1.16.2.html)
+> * [安装 Kubernetes v1.16.2 单Master节点](/install/history-k8s/install-k8s-1.16.2.html)
 > * [安装 Kubernetes v1.16.1 单Master节点](/install/history-k8s/install-k8s-1.16.1.html)
 > * [安装 Kubernetes v1.16.0 单Master节点](/install/history-k8s/install-k8s-1.16.0.html)
 > * [安装 Kubernetes v1.15.4 单Master节点](/install/history-k8s/install-k8s-1.15.4.html)
@@ -341,6 +341,7 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 <b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
 
 ### 常见错误原因
+
 经常在群里提问为什么 join 不成功的情况大致有这几种：
 
 #### worker 节点不能访问 apiserver
