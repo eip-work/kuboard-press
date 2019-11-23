@@ -7,6 +7,7 @@ import Diamond from './fancy-images/Diamond'
 import Cross from './fancy-images/Cross'
 import Rectangle from './fancy-images/Rectangle'
 import Rolling from './fancy-images/Rolling'
+import SlideLeft2Right from './fancy-images/SlideLeft2Right'
 
 export default {
   props: {
@@ -17,7 +18,7 @@ export default {
     type: { type: String, required: false, default: 'Diamond' }
   },
   components: {
-    Diamond, Cross, Rectangle, Rolling
+    Diamond, Cross, Rectangle, Rolling, SlideLeft2Right
   }
 }
 </script>
