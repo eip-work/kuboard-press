@@ -41,6 +41,9 @@ CKA证书的含金量如何？考不考这个证完全取决于个人，因为�
 作为在Kubernetes技术上摸爬滚打1年多的老鸟，最近正准备备考CKA，鉴于此，我希望想证明自己kubernetes开发运维能力的小伙伴能一起从今天开始，我们一起每日一题，在留言区答题打卡，我会在其中选出3位认真并坚持打卡21天的小伙伴送出3本书。
 
 [CKA每日一题 - Day 1](./daily/001.html)
+
 [CKA每日一题 - Day 2](./daily/002.html)
+
+[CKA每日一题 - Day 3](./daily/003.html)
 
 <JoinCKACommunity/>
