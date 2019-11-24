@@ -83,15 +83,16 @@ export default {
     font-size: 21px;
     padding: 10px;
     background: #111111;
-    margin: 30px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 .ih-item.square.effect11 .info p {
     font-style: italic;
     font-size: 14px;
     position: relative;
+    margin-top: 0px;
     color: #bbb;
-    padding: 20px 20px 20px;
+    padding: 10px 20px 20px;
     text-align: center;
 }
 

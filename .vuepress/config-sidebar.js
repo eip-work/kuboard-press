@@ -479,7 +479,7 @@ module.exports = {
   '/guide/': [
     {
       title: '概述',
-      collapsable: false,
+      collapsable: true,
       children: [
         ['', '概述']
       ]
@@ -495,7 +495,7 @@ module.exports = {
     },
     {
       title: '集群管理',
-      collapsable: false,
+      collapsable: true,
       children: [
         'cluster/computing',
         'cluster/storage',
@@ -504,7 +504,7 @@ module.exports = {
     },
     {
       title: '应用管理',
-      collapsable: false,
+      collapsable: true,
       children: [
         'namespace/workload',
         'namespace/secrets',
@@ -516,7 +516,7 @@ module.exports = {
     },
     {
       title: '问题诊断',
-      collapsable: false,
+      collapsable: true,
       children: [
         'diagonize/events',
         'diagonize/logs',
@@ -524,13 +524,28 @@ module.exports = {
       ]
     },
     {
+      title: '套件',
+      collapsable: false,
+      children: [
+        'addon/',
+        'addon/customize',
+        'addon/repository'
+      ]
+    },
+    {
       title: '监控套件',
       collapsable: false,
       children: [
         'monitor/',
-        'monitor/apis'
       ]
     },
+    {
+      title: 'CI/CD集成',
+      collapsable: false,
+      children: [
+        'cicd/'
+      ]
+    }
   ],
 
   '/t/': [
