@@ -27,3 +27,11 @@ description: 熟悉Kuboard_on_Kubernetes_的最佳途径。
 * 根据微服务上下文查看监控结果
 
   [在微服务上下文中监控 example](example/monitor.html) <Badge text="alpha" type="warn"/>
+
+* 了解Kuboard的套件
+  
+  [Kuboard套件](addon/)
+
+* 了解Kuboard与CICD的集成
+
+  [CI/CD集成](cicd/)

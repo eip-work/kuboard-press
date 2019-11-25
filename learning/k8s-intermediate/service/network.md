@@ -245,3 +245,66 @@ DNS Pod 被暴露为 Kubernetes 中的一个 Service，该 Service 及其 Cluste
 CoreDNS 的工作方式与 `kubedns` 类似，但是通过插件化的架构构建，因而灵活性更强。自 Kubernetes v1.11 开始，CoreDNS 是 Kubernetes 中默认的 DNS 实现。
 
 ## Internet-to-Service的网络
+
+前面我们已经了解了 Kubernetes 集群内部的网络路由。下面，我们来探讨一下如何将 Service 暴露到集群外部：
+* 从集群内部访问互联网
+* 从互联网访问集群内部
+
+### 出方向 - 从集群内部访问互联网
+
+将网络流量从集群内的一个节点路由到公共网络是与具体网络以及实际网络配置紧密相关的。为了更加具体地讨论此问题，本文将使用 AWS VPC 来讨论其中的具体问题。
+
+在 AWS，Kubernetes 集群在 VPC 内运行，在此处，每一个节点都被分配了一个内网地址（private IP address）可以从 Kubernetes 集群内部访问。为了使访问外部网络，通常会在 VPC 中添加互联网网关（Internet Gateway），以实现如下两个目的：
+* 作为 VPC 路由表中访问外网的目标地址
+* 提供网络地址转换（NAT Network Address Translation），将节点的内网地址映射到一个外网地址，以使外网可以访问内网上的节点
+
+在有互联网网关（Internet Gateway）的情况下，虚拟机可以任意访问互联网。但是，存在一个小问题：Pod 有自己的 IP 地址，且该 IP 地址与其所在节点的 IP 地址不一样，并且，互联网网关上的 NAT 地址映射只能够转换节点（虚拟机）的 IP 地址，因为网关不知道每个节点（虚拟机）上运行了哪些 Pod （互联网网关不知道 Pod 的存在）。接下来，我们了解一下 Kubernetes 是如何使用 iptables 解决此问题的。
+
+#### 数据包的传递：Node-to-Internet
+
+下图中：
+1. 数据包从 Pod 的 network namespace 发出
+2. 通过 `veth0` 到达虚拟机的 root network namespace
+3. 由于网桥上找不到数据包目标地址对应的网段，数据包将被网桥转发到 root network namespace 的网卡 `eth0`。在数据包到达 `eth0` 之前，iptables 将过滤该数据包。
+4. 在此处，数据包的源地址是一个 Pod，如果仍然使用此源地址，互联网网关将拒绝此数据包，因为其 NAT 只能识别与节点（虚拟机）相连的 IP 地址。因此，需要 iptables 执行源地址转换（source NAT），这样子，对互联网网关来说，该数据包就是从节点（虚拟机）发出的，而不是从 Pod 发出的
+5. 数据包从节点（虚拟机）发送到互联网网关
+6. 互联网网关再次执行源地址转换（source NAT），将数据包的源地址从节点（虚拟机）的内网地址修改为网关的外网地址，最终数据包被发送到互联网
+
+在回路径上，数据包沿着相同的路径反向传递，源地址转换（source NAT）在对应的层级上被逆向执行。
+
+<p style="max-width: 600px">
+  <img src="./network.assets/pod-to-internet.gif" alt="K8S教程_Kubernetes网络模型_数据包的传递_pod-to-internet"/>
+</p>
+
+### 入方向 - 从互联网访问Kubernetes
+
+入方向访问（从互联网访问Kubernetes集群）是一个非常棘手的问题。该问题同样跟具体的网络紧密相关，通常来说，入方向访问在不同的网络堆栈上有两个解决方案：
+1. Service LoadBalancer
+2. Ingress Controller
+
+#### Layer 4：LoadBalancer
+
+当创建 Kubernetes Service 时，可以指定其类型为 [LoadBalancer](/learning/k8s-intermediate/service/service-types.html#loadbalancer)。 LoadBalancer 的实现由 [cloud controller](https://kubernetes.io/docs/concepts/architecture/cloud-controller/) 提供，cloud controller 可以调用云供应商 IaaS 层的接口，为 Kubernetes Service 创建负载均衡器（如果您自建 Kubernetes 集群，可以使用 NodePort 类型的 Service，并手动创建负载均衡器）。用户可以将请求发送到负载均衡器来访问 Kubernetes 中的 Service。
+
+在 AWS，负载均衡器可以将网络流量分发到其目标服务器组（即 Kubernetes 集群中的所有节点）。一旦数据包到达节点，Service 的 iptables 规则将确保其被转发到 Service 的一个后端 Pod。
+
+#### 数据包的传递：LoadBalancer-to-Service
+
+接下来了解一下 Layer 4 的入方向访问具体是如何做到的：
+1. Loadbalancer 类型的 Service 创建后，cloud controller 将为其创建一个负载均衡器
+2. 负载均衡器只能直接和节点（虚拟机沟通），不知道 Pod 的存在，当数据包从请求方（互联网）到达 LoadBalancer 之后，将被分发到集群的节点上
+3. 节点上的 iptables 规则将数据包转发到合适的 Pod 上 （同 [数据包的传递：Service-to-Pod](#数据包的传递：service-to-pod)）
+
+从 Pod 到请求方的相应数据包将包含 Pod 的 IP 地址，但是请求方需要的是负载均衡器的 IP 地址。iptables 和 `conntrack` 被用来重写返回路径上的正确的 IP 地址。
+
+下图描述了一个负载均衡器和三个集群节点：
+1. 请求数据包从互联网发送到负载均衡器
+2. 负载均衡器将数据包随机分发到其中的一个节点（虚拟机），此处，我们假设数据包被分发到了一个没有对应 Pod 的节点（VM2）上
+3. 在 VM2 节点上，kube-proxy 在节点上安装的 iptables 规则会将该数据包的目标地址判定到对应的 Pod 上（集群内负载均衡将生效）
+4. iptables 完成 NAT 映射，并将数据包转发到目标 Pod
+
+<p style="max-width: 600px">
+  <img src="./network.assets/internet-to-service.gif" alt="K8S教程_Kubernetes网络模型_数据包的传递_internet-to-service"/>
+</p>
+
+### Layer 7：Ingress控制器
