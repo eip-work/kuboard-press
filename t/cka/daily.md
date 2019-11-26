@@ -48,4 +48,6 @@ CKA证书的含金量如何？考不考这个证完全取决于个人，因为�
 
 [CKA每日一题 - Day 4](./daily/004.html)
 
+[CKA每日一题 - Day 5](./daily/005.html)
+
 <JoinCKACommunity/>

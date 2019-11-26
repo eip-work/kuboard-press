@@ -1,14 +1,14 @@
 ---
 vssueId: 167
 layout: LearningLayout
-sharingTitle: 深度长文 - 深入理解 Kubernetes 的网络模型
-description: Kubernetes中_网络策略定义了一组Pod是否允许相互通信_或者与网络中的其他端点endpoint通信_本文描述了K8S集群中默认的网络策略
+sharingTitle: 深度长文 - 深入理解 Kubernetes 的网络模型 - 这次我终于弄明白了
+description: Kubernetes用来在集群上运行分布式系统_分布式系统的本质使得网络组件在Kubernetes中是至关重要也不可或缺的_理解 Kubernetes的网络模型可以帮助你更好的在Kubernetes上运行_监控_诊断你的应用程序
 meta:
   - name: keywords
     content: Kubernetes教程,K8S教程,Kubernetes Network Model, K8S 网络模型
 ---
 
-# Network Model
+# Kubernetes网络模型
 
 <AdSenseTitle>
 
@@ -303,8 +303,44 @@ CoreDNS 的工作方式与 `kubedns` 类似，但是通过插件化的架构构�
 3. 在 VM2 节点上，kube-proxy 在节点上安装的 iptables 规则会将该数据包的目标地址判定到对应的 Pod 上（集群内负载均衡将生效）
 4. iptables 完成 NAT 映射，并将数据包转发到目标 Pod
 
-<p style="max-width: 600px">
+<p style="max-width: 480px">
   <img src="./network.assets/internet-to-service.gif" alt="K8S教程_Kubernetes网络模型_数据包的传递_internet-to-service"/>
 </p>
 
-### Layer 7：Ingress控制器
+#### Layer 7：Ingress控制器
+
+::: tip 译者注
+本章节讲述的 Ingress 控制器实现方式是特定于 AWS 的，与 [nginx ingress controller](/learning/k8s-intermediate/service/ingress.html) 的具体做法有所不同
+:::
+
+Layer 7 网络入方向访问在网络堆栈的 HTTP/HTTPS 协议层面工作，并且依赖于 KUbernetes Service。要实现 Layer 7 网络入方向访问，首先需要将 Service 指定为 `NodtePort` 类型，此时 Kubernetes master 将会为该 Service 分配一个 [节点端口](/learning/k8s-intermediate/service/service-types.html#nodeport)，每一个节点上的 iptables 都会将此端口上的请求转发到 Service 的后端 Pod 上。此时，Service-to-Pod 的路由与 [数据包的传递：Service-to-Pod](#数据包的传递：service-to-pod) 的描述相同。
+
+接下来，创建一个 Kubernetes [Ingress](/learning/k8s-intermediate/service/ingress.html) 对象可以将该 Service 发布到互联网。Ingress 是一个高度抽象的 HTTP 负载均衡器，可以将 HTTP 请求映射到 Kubernetes Service。在不同的 Kubernetes 集群中，Ingress 的具体实现可能是不一样的。与 Layer 4 的网络负载均衡器相似，HTTP 负载均衡器只理解节点的 IP 地址（而不是 Pod 的 IP 地址），因此，也同样利用了集群内部通过 iptables 实现的负载均衡特性。
+
+在 AWS 中，ALB Ingress 控制器使用 Amazon 的 Layer 7 Application Load Balancer实现了 Kubernetes Ingress 的功能。下图展示了 AWS 上 Ingress 控制器的细节，也展示了网络请求是如何从 ALB 路由到 Kubernetes 集群的。
+
+![K8S教程_Kubernetes网络模型_Ingress_Controller_Design](./network.assets/ingress-controller-design.png)
+
+1. ALB Ingress Controller 创建后，将监听 Kubernetes API 上关于 Ingress 的事件。当发现匹配的 Ingress 对象时，Ingress Controller 开始创建 AWS 资源
+2. AWS 使用 Application Load Balancer（ALB）来满足 Ingress 对象的要求，并使用 Target Group 将请求路由到目标节点
+3. ALB Ingress Controller 为 Kubernetes Ingress 对象中用到的每一个 Kubernetes Service 创建一个 AWS Target Group
+4. Listener 是一个 ALB 进程，由 ALB Ingress Controller 根据 Ingress 的注解（annotations）创建，监听 ALB 上指定的协议和端口，并接收外部的请求
+5. ALB Ingress Controller 还根据 Kubernetes Ingress 中的路径定义，创建了 Target Group Rule，确保指定路径上的请求被路由到合适的 Kubernetes Service
+
+#### 数据包的传递：Ingress-to-Service
+
+Ingress-to-Service 的数据包传递与 LoadBalancer-to-Service 的数据包传递非常相似。核心差别是：
+* Ingress 能够解析 URL 路径（可基于路径进行路由）
+* Ingress 连接到 Service 的 NodePort
+
+下图展示了 Ingress-to-Service 的数据包传递过程。
+1. 创建 Ingress 之后，cloud controller 将会为其创建一个新的 Ingress Load Balancer
+2. 由于 Load Balancer 并不知道 Pod 的 IP 地址，当路由到达 Ingress Load Balancer 之后，会被转发到集群中的节点上（Service的节点端口）
+3. 节点上的 iptables 规则将数据包转发到合适的 Pod
+4. Pod 接收到数据包
+
+从 Pod 返回的响应数据包将包含 Pod 的 IP 地址，但是请求客户端需要的是 Ingress Load Balancer 的 IP 地址。iptables 和 `conntrack` 被用来重写返回路径上的 IP 地址。
+
+<p style="max-width: 600px">
+  <img src="./network.assets/ingress-to-service.gif" alt="K8S教程_Kubernetes网络模型_数据包的传递_Ingress-to-Service"/>
+</p>

@@ -95,6 +95,7 @@ meta:
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
     * [使用port-forward访问集群中的应用程序](/learning/k8s-practice/access/port-forward.html)
+    * [Kubernetes网络模型](/learning/k8s-intermediate/service/network.html)
   * 下一步，可按教程章节顺序对 Kubernetes 各种概念进行深入理解
   :::
 

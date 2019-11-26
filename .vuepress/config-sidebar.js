@@ -249,6 +249,7 @@ module.exports = {
                 'k8s-intermediate/service/np-example',
               ]
             },
+            'k8s-intermediate/service/network'
           ]
         },
         {
