@@ -13,17 +13,25 @@ p img {
   cursor: pointer !important;
 }
 
-p code {
+p>code {
   /*border: 1px solid #007af5;*/
   color: #c7254e !important;
   background-color: #f9f2f4;
   font-size: 90%;
 }
 
-li code {
+li>code {
   color: #c7254e !important;
   background-color: #f9f2f4;
   font-size: 90%;
+}
+
+.custom-block .custom-block-title {
+  margin-bottom: 0.4rem;
+}
+
+.custom-block .custom-block-title~p {
+  margin-top: 0;
 }
 
 .noselect {
