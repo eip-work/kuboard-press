@@ -36,6 +36,7 @@ module.exports = {
         'install-docker-desktop',
         ['install-k8s', '安装Kubernetes单Master节点'],
         'install-kubernetes',
+        'sealos/',
         'install-node-port-range',
         'k8s-restart',
       ]
@@ -45,6 +46,7 @@ module.exports = {
       collapsable: false,
       children: [
         'install-dashboard',
+        'install-dashboard-offline',
         'install-dashboard-upgrade',
         'install-kubectl',
         'config-kubectl',
