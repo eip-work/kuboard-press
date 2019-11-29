@@ -83,7 +83,7 @@ export default {
     font-size: 21px;
     padding: 10px;
     background: #111111;
-    margin: 10px 0 0 0;
+    margin: 2rem 0 0 0;
 }
 
 .ih-item.square.effect11 .info p {

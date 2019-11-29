@@ -14,7 +14,7 @@ meta:
 <div class="row">
   <div class="col-md-4 col-sm-6">
     <a href="#kubernetes免费教程">
-      <FancyImage src="/images/courses/free.png" title="免费教程" description="kubernetes.io 权威资料，kuboard翻译" alt="K8S培训_免费教程" type="SlideLeft2Right"/>
+      <FancyImage src="/images/courses/free.png" title="免费教程" description="kubernetes.io权威资料，kuboard翻译" alt="K8S培训_免费教程" type="SlideLeft2Right"/>
     </a>
   </div>
   <div class="col-md-4 col-sm-6">
