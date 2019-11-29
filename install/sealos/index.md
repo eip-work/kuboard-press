@@ -17,10 +17,22 @@ meta:
   * 一台 worker，IP地址为 192.168.0.5
 * 在任何一台机器上执行如下两行命令
 
+**特性**
+
+* 纯golang开发，只需一个二进制，无任何依赖
+* 内核本地负载，不依赖haproxy keepalived等
+* 不依赖ansible
+* 99年证书
+* 支持自定义配置安装
+* 工具与资源包分离，离线安装，安装不同版本仅需要更换不同资源包即可
+* 支持ingress kuboard prometheus等APP（addons）安装
+
 ::: tip 机器要求
-* centos 7.6 或 centos 7.7
-* 配置不低于2核4G
+* 内核3.10以上，推荐4.14以上，centos7.2以上或者ubuntu16.04以上
+* master节点配置不低于2核4G
 * 所有机器 root 用户密码一致（如不一致也可以使用 ssh 密钥，可参考 [sealos](https://github.com/fanux/sealos)）
+* 主机名不要重复
+* 机器时间需要同步
 :::
 
 ``` sh
@@ -32,5 +44,14 @@ sealos init --passwd YOUR_SERVER_PASSWD \
 	--pkg-url https://sealyun.oss-cn-beijing.aliyuncs.com/37374d999dbadb788ef0461844a70151-1.16.0/kube1.16.0.tar.gz \
 	--version v1.16.0
 ```
+> 参数含义
+
+参数名|含义|示例
+---|---|---
+passwd|服务器密码|123456
+master|k8s master节点IP地址| 192.168.0.2
+node|k8s node节点IP地址|192.168.0.2
+pkg-url|离线资源包地址，支持下载到本地，或者一个远程地址|/root/kube1.16.0.tar.gz
+version|资源包对应的版本|v1.16.0
 
 [了解一下这是怎么做到的](https://github.com/fanux/sealos)
