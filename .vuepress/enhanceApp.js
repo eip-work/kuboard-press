@@ -61,8 +61,15 @@ export default ({
     }
   }
 
+  // Vue.prototype.
+
   let sharing = true
   if (typeof window !== 'undefined') {
+    window.$sendGaEvent = Vue.prototype.$sendGaEvent
+    window.openOutboundLink = function (a) {
+      let url = new URL(a.href)
+      window.$sendGaEvent('OutboundLink: ' + url.hostname, 'OutboundLink: ' + a.innerText, 'OL:' + a.href)
+    }
     if (location.search && (location.search.indexOf('sharing') >=0 || location.search.indexOf('from=timeline') >= 0)) {
       sharing = true
       window.kuboardSharing = true
