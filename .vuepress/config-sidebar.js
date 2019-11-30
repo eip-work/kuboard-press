@@ -282,6 +282,7 @@ module.exports = {
                 'k8s-intermediate/config/taints-toleration/use-case',
                 'k8s-intermediate/config/taints-toleration/taint-based-evictions',
                 'k8s-intermediate/config/taints-toleration/taint-nodes-by-condition',
+                'k8s-intermediate/config/taints-toleration/kuboard-toleration',
               ]
             },
             {

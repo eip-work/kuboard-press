@@ -11,6 +11,8 @@ meta:
 
 <AdSenseTitle>
 
+> 参考文档：[Extending the Kubernetes API with the aggregation layer](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
+
 通过Kubernetes的aggregation层可以在已提供的K8S核心API之外增加额外的API
 
 </AdSenseTitle>

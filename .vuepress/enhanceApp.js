@@ -68,7 +68,7 @@ export default ({
     window.$sendGaEvent = Vue.prototype.$sendGaEvent
     window.openOutboundLink = function (a) {
       let url = new URL(a.href)
-      window.$sendGaEvent('OutboundLink: ' + url.hostname, 'OutboundLink: ' + a.innerText, 'OL:' + a.href)
+      window.$sendGaEvent('OL: ' + url.hostname, 'OL: ' + a.innerText, 'OL: ' + a.href)
     }
     if (location.search && (location.search.indexOf('sharing') >=0 || location.search.indexOf('from=timeline') >= 0)) {
       sharing = true

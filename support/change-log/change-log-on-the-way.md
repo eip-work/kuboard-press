@@ -1,14 +1,22 @@
 Kuboard v1.0.x 的更新说明
 
 
+**新特性**
+
+* 工作负载编辑器 --> 容忍
+
 **优化**
+
+* 显示资源对象全名时的交互体验问题
+* 将预览YAML文件复制到剪贴板
+* 提示ping Service失败
+* 
 
 **BUG 修复**
 
 
 
 
-* 为什么 ping service-name 会失败？
 * EndPoint
 * 导入工作负载时，如果存储类没有 annotations，不应该报错
 * 表单校验：数据卷名不能带小数点
@@ -19,9 +27,6 @@ Kuboard v1.0.x 的更新说明
 
 * https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/
 
-
-* 可以在这里加一个自动部署的按钮，点击按钮显示部署秘钥。shell 脚本可以加一句curl http://kubord.com?秘钥+版本。镜像推送到仓库之后，shell脚本加一句这个curl就可以完成k8s自动集成了
-* 
 
 * 容器组列表，筛选结果为空时，提示筛选 “其他”
 
