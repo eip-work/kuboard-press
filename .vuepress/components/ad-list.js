@@ -4,17 +4,17 @@ module.exports = [
     description: 'Kubernetes，',
     strong: '一键离线安装',
     action: '去看看',
-    url: 'http://store.lameleg.com?referrer=shaohq',
-    weight: 1
+    url: 'https://github.com/fanux/sealos',
+    weight: 50
   },
-  {
-    name: '阳明的博客',
-    description: 'Kubernetes，',
-    strong: '实战课程',
-    action: '去看看',
-    url: 'https://www.qikqiak.com/post/promotion-51/',
-    weight: 1
-  },
+  // {
+  //   name: '阳明的博客',
+  //   description: 'Kubernetes，',
+  //   strong: '实战课程',
+  //   action: '去看看',
+  //   url: 'https://www.qikqiak.com/post/promotion-51/',
+  //   weight: 1
+  // },
   {
     name: '极客时间',
     description: '精要30计，让DevOps快速落地。',
@@ -29,7 +29,7 @@ module.exports = [
     strong: '百款云产品一折起',
     action: '去抢',
     url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1050&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
-    weight: 67
+    weight: 30
   },
   {
     name: '阿里云',
@@ -37,16 +37,16 @@ module.exports = [
     strong: '低至一折',
     action: '去抢',
     url: 'https://www.aliyun.com/1111/2019/home?userCode=obezo3pg',
-    weight: 30
+    weight: 10
   },
-  {
-    name: 'Kubetrain',
-    description: 'K8S在线直播培训，首次开班优惠',
-    strong: '不满意可无条件退款',
-    action: '再不去没名额啦',
-    url: 'https://kubetrain.cn/?from=kuboard-ads',
-    weight: 30
-  }
+  // {
+  //   name: 'Kubetrain',
+  //   description: 'K8S在线直播培训，首次开班优惠',
+  //   strong: '不满意可无条件退款',
+  //   action: '再不去没名额啦',
+  //   url: 'https://kubetrain.cn/?from=kuboard-ads',
+  //   weight: 30
+  // }
 
   // {
   //   name: '宝塔面板',
