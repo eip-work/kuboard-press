@@ -1,16 +1,11 @@
 Kuboard v1.0.x 的更新说明
 
 
-**BUG 修复**
-
-
-
 
 * EndPoint
 * 导入工作负载时，如果存储类没有 annotations，不应该报错
 * 表单校验：数据卷名不能带小数点
 * Prometheus 监控
-* 工作负载编辑器 --> 容器组 --> 容忍 -- 正在开发
 * Limit Range
 
 
