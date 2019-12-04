@@ -74,7 +74,33 @@ kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kuberne
 
   ![Kubernetes教程：在Kuboard中监控-安装全局监控套件-初始化](./monitor.assets/image-20190723151357262.png)
 
+<FrequentQuestion fqId="example-monitor-faq">
+
+#### etcd-secrets未找到
+
+在 `kube-system` 名称空间中，查看到 `监控指标采集` 这个部署出现错误，如下图所示：
+
+![Kubernetes教程_安装监控套件_错误](./monitor.assets/image-20191204091148062.png)
+
+点击查看详情后，提示 `etcd-secrets not found`，如下图所示： 
+
+![Kubernetes教程_安装监控套件_错误](./monitor.assets/image-20191204091207232.png)
+
+此错误出现的原因是，您忽略了本文最开始时要求的一个步骤 [在master节点执行](#安装全局监控套件)，此时，您只需补充该步骤即可：在master节点执行如下命令
+```sh
+kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kubernetes/pki/etcd/server.crt --from-file=/etc/kubernetes/pki/etcd/server.key
+```
+
+
+</FrequentQuestion>
+
 ### 安装名称空间监控套件
+
+  ::: danger 提示
+
+  名称空间监控套件目前还未达到产品化的程度。您可以体验一下具体的使用，如需要定制到自己的项目上，请联系 Kuboard 作者。
+
+  :::
 
 * 点击 ***名称空间监控套件 example / 查找并安装***
 

@@ -1,7 +1,9 @@
 Kuboard v1.0.x 的更新说明
 
 
-
+* 工作负载查看 --> 存储卷 --> config-volume类型的显示为JSON
+  * 可在 example/monitor-prometheus 中复现
+* 工作负载查看 --> 未显示 SecurityContext
 * EndPoint
 * 导入工作负载时，如果存储类没有 annotations，不应该报错
 * 表单校验：数据卷名不能带小数点
