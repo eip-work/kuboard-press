@@ -71,7 +71,7 @@ meta:
 
 - 捕获并响应Terminate (SIGTERM)信号，来尽快优雅的终止服务进程，以避免kill (SIGKILL)信号强行终止进程。例如一下的NodeJS代码。
 
-  ```
+  ``` go
   process.on('SIGTERM', function () {
     console.log("Received SIGTERM. Exiting.")
     server.close(function () {
@@ -84,7 +84,7 @@ meta:
 
 - 返回退出码
 
-  ```
+  ``` go
   process.exit(0);
   ```
 
@@ -214,7 +214,7 @@ Sidecar是最常见的模式，在同一个Pod中，我们需要把不同的责�
 
 通常作为服务的容器有一个启动的过程，在启动过程中，服务是不可用的。Kubernetes提供了[Readiness](/learning/k8s-intermediate/workload/pod-lifecycle.html#容器的检查)探测功能。
 
-```
+``` yaml
 readinessProbe:
   httpGet:
     path: /
@@ -233,7 +233,7 @@ readinessProbe:
 
 例如下面的Dockerfile例子：
 
-```
+``` dockerfile
 FROM ubuntu:14.04
 
 RUN apt-get update
@@ -257,7 +257,7 @@ Latest标签用于标记最近的稳定版本，然而在创建容器时，尽�
 
 Job是Kubernetes提供的只运行一次的容器，和service正好相反。要避免快速失败
 
-```
+``` yaml
 apiVersion: batch/v1
 kind: Job
 metadata:

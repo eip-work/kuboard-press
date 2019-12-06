@@ -99,6 +99,7 @@ meta:
     * [使用port-forward访问集群中的应用程序](/learning/k8s-practice/access/port-forward.html)
     * [Kubernetes网络模型](/learning/k8s-intermediate/service/network.html)
     * [CI/CD集成](/guide/cicd/)
+    * [容器应用的设计原则、模式和反模式](/learning/k8s-practice/micro-service/design-pattern.html)
   * 下一步，可按教程章节顺序对 Kubernetes 各种概念进行深入理解
   :::
 

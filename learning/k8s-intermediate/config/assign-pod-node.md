@@ -77,9 +77,14 @@ nodeSelector 是 PodSpec 中的一个字段。指定了一组名值对。节点�
 
   此时您已完成了通过 nodeSelector 为 Pod 指定节点的任务。
 
-## Node isolation/restriction <Badge text="Kuboard 暂不支持" type="warn"/>
+## Node isolation/restriction
 
-请参考 Kubernetes 官网文档 [Node isolation/restriction](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-isolation-restriction)
+向节点对象添加标签后，可以将 Pod 指定到特定（一个或一组）的节点，以便确保某些 Pod 只在具备某些隔离性、安全性或符合管理规定的节点上运行。如果将标签用于这个目的，推荐选择那些不会被 kubelet 修改的标签。这样做可以避免节点非法使用其 kubelet credential 来设置节点自己的标签，进一步影响到调度器将工作负载调度到该节点上。
+
+`NodeRestriction` 管理插件可以阻止 kubelet 设置或者修改节点上以 `node-restriction.kubernetes.io/` 开头的标签。如需要使用该标签前缀作为节点隔离的目的，需要：
+1. 确保 kubenetes 已经启用了 [Node authorizer](https://kubernetes.io/docs/reference/access-authn-authz/node/) 和 [NodeRestriction admission plugin](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction)
+2. 添加带 `node-restriction.kubernetes.io/` 前缀的标签到节点对象，并将这些标签作为 Pod 中的节点选择器。例如： `example.com.node-restriction.kubernetes.io/fips=true` 或 `example.com.node-restriction.kubernetes.io/pci-dss=true`。
+
 
 ## Affinity and anti-affinity <Badge text="Kuboard 暂不支持" type="warn"/>
 

@@ -30,7 +30,7 @@ meta:
 
   输出结果如下所示：
   ```
-  eipwork/kuboard-press     latest                86eaead8421e        3 weeks ago         170MB
+  eipwork/kuboard           latest                0146965e6475        3 weeks ago         133MB
   ```
 
 * 将 Kuboard 镜像导出到文件
@@ -55,8 +55,11 @@ meta:
 * 为镜像重新添加标签
 
   ``` sh
-  docker tag 86eaead8421e eipwork/kuboard:latest
+  docker tag 0146965e6475 eipwork/kuboard:latest
   ```
+  ::: tip ImageID
+  请使用上一个步骤中查询到的 image ID
+  :::
 
 ## 准备kuboard.yaml文件
 

@@ -469,15 +469,16 @@ module.exports = {
             },
           ]
         },
-        // {
-        //   title: '部署LNMP应用',
-        //   collapsable: true,
-        //   children: [
-        //     '/learning/k8s-practice/lnmp/wordpress'
-        //   ]
-        // }
       ]
-    }
+    },
+    {
+      title: 'Kubernetes 常见问题',
+      collapsable: true,
+      children: [
+        'faq/ping-service',
+        'faq/request-limit',
+      ]
+    },
   ],
 
   '/guide/': [
