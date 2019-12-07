@@ -10,7 +10,7 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。目的是帮助用
 * 免费的 Kubernetes 图形化管理界面 Kuboard
 * 在 Kubernetes 上部署 Spring Cloud 的实战分享
 
-
+![集群概览页](.overview.png)
 
 ## Kubernetes安装文档
 
