@@ -5,7 +5,7 @@ sharingTitle: K8S入门第一步---安装，装不好还有人免费远程协助
 description: Kubernete安装文档_Kubernetes最新稳定版v1.16.3的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords
-    content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装
+    content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装,k8s搭建
 ---
 
 # 使用kubeadm安装kubernetes_v1.16.3
@@ -20,7 +20,7 @@ meta:
 
 ## 配置要求
 
-对于 Kubernetes 初学者，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
+对于 Kubernetes 初学者，在搭建K8S集群时，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
 
 * 至少2台 **2核4G** 的服务器
 * **Cent OS 7.6**

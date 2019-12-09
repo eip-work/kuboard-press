@@ -5,7 +5,7 @@ module.exports = [
     strong: '一键离线安装',
     action: '去看看',
     url: 'https://github.com/fanux/sealos',
-    weight: 50
+    weight: 30
   },
   // {
   //   name: '阳明的博客',
@@ -25,28 +25,28 @@ module.exports = [
   },
   {
     name: '腾讯云',
-    description: '腾讯云11.11爆款1核2G云服务器首购88元，免费领9888元代金券，',
+    description: '腾讯云双十二活动，',
     strong: '百款云产品一折起',
     action: '去抢',
-    url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1050&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
-    weight: 30
+    url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
+    weight: 60
   },
   {
     name: '阿里云',
-    description: '双十一，All in Cloud，',
+    description: '双十二，主会场，',
     strong: '低至一折',
     action: '去抢',
-    url: 'https://www.aliyun.com/1111/2019/home?userCode=obezo3pg',
-    weight: 10
+    url: 'https://www.aliyun.com/1212/2019/home?userCode=obezo3pg',
+    weight: 60
   },
-  // {
-  //   name: 'Kubetrain',
-  //   description: 'K8S在线直播培训，首次开班优惠',
-  //   strong: '不满意可无条件退款',
-  //   action: '再不去没名额啦',
-  //   url: 'https://kubetrain.cn/?from=kuboard-ads',
-  //   weight: 30
-  // }
+  {
+    name: 'Kubetrain',
+    description: 'K8S在线直播培训，首次开班优惠',
+    strong: '不满意可无条件退款',
+    action: '现在就去',
+    url: 'https://kubetrain.cn/?from=kuboard-ads',
+    weight: 30
+  }
 
   // {
   //   name: '宝塔面板',

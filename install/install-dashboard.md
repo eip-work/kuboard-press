@@ -217,7 +217,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 如需要无登录访问集群概览页面，可使用如下格式的 url 进入：
 
 ```
-http://任意一个Worker节点的IP地址:32567/#/dashboard?k8sToken=yourToken
+http://任意一个Worker节点的IP地址:32567/#/dashboard?k8sToken=yourtoken
 ```
 
 ::: tip 其他界面
@@ -228,7 +228,7 @@ http://任意一个Worker节点的IP地址:32567/#/dashboard?k8sToken=yourToken
 
 如果想要无登录直接访问容器组的控制台，可使用如下格式的 url 进入：
 ```
-http://任意一个Worker节点的IP地址:32567/#/console/pzy/yourPod?containerName=yourContainer&shell=bash&k8sToken=yourToken
+http://任意一个Worker节点的IP地址:32567/#/console/yournamespace/yourpod?containerName=yourcontainer&shell=bash&k8sToken=yourtoken
 ```
 
 其中，shell 参数可选取值有：

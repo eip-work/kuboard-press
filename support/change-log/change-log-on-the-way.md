@@ -1,12 +1,7 @@
 Kuboard v1.0.x 的更新说明
 
-* 为什么CPU使用很低，却仍然提示无法调度？
-* 节点详情页 --> 优化布局
-* 节点详情页 --> 显示 total-request 和 total-limit
-* 节点详情页 --> 显示 pod 的 request-limit
+* 导入导出时，需要支持 nfs 等类型的数据卷
 
-* 工作负载查看 --> 存储卷 --> config-volume类型的显示为JSON
-  * 可在 example/monitor-prometheus 中复现
 * 工作负载查看 --> 未显示 SecurityContext
 * EndPoint
 * 导入工作负载时，如果存储类没有 annotations，不应该报错

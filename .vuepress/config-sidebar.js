@@ -274,6 +274,7 @@ module.exports = {
             'k8s-intermediate/config/config-map',
             'k8s-intermediate/config/computing-resource',
             'k8s-intermediate/config/assign-pod-node',
+            'k8s-intermediate/config/affinity',
             {
               title: '污点和容忍',
               collapsable: true,

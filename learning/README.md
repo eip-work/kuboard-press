@@ -6,12 +6,12 @@ sidebarDepth: 0
 description: 本教程的主要依据是：Kubernetes官网文档，以及使用Kubernetes落地SpringCloud微服务并投产的实战经验，在线答疑。适用人群_ Kubernetes 初学者_学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 meta:
   - name: keywords
-    content: K8S教程,K8S 教程,K8S培训,Kubernetes培训
+    content: K8S教程,K8S 教程,K8S培训,Kubernetes培训,K8S搭建,kuberntes搭建
 ---
 
 # Kubernetes教程
 
-<!-- <div class="row">
+<div class="row">
   <div class="col-md-4 col-sm-6">
     <a href="#kubernetes免费教程">
       <FancyImage src="/images/courses/free.png" title="免费教程" description="kubernetes.io权威资料，kuboard翻译" alt="K8S培训_免费教程" type="SlideLeft2Right"/>
@@ -27,7 +27,7 @@ meta:
       <FancyImage src="/images/courses/advanced.png" title="K8S高级班" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
     </a>
   </div>
-</div> -->
+</div>
 
 
 

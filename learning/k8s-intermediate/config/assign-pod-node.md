@@ -84,8 +84,3 @@ nodeSelector 是 PodSpec 中的一个字段。指定了一组名值对。节点�
 `NodeRestriction` 管理插件可以阻止 kubelet 设置或者修改节点上以 `node-restriction.kubernetes.io/` 开头的标签。如需要使用该标签前缀作为节点隔离的目的，需要：
 1. 确保 kubenetes 已经启用了 [Node authorizer](https://kubernetes.io/docs/reference/access-authn-authz/node/) 和 [NodeRestriction admission plugin](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction)
 2. 添加带 `node-restriction.kubernetes.io/` 前缀的标签到节点对象，并将这些标签作为 Pod 中的节点选择器。例如： `example.com.node-restriction.kubernetes.io/fips=true` 或 `example.com.node-restriction.kubernetes.io/pci-dss=true`。
-
-
-## Affinity and anti-affinity <Badge text="Kuboard 暂不支持" type="warn"/>
-
-请参考 Kubernetes 官网文档 [Affinity and anti-affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity)
