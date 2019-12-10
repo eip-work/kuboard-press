@@ -18,6 +18,8 @@ meta:
 
 具体应用请参考 [监控 example](/guide/example/monitor.html)
 
+请参考 [自定义套件](./customize.html) 了解如何实现自己的套件。
+
 ## 特点
 
 Kuboard套件具备如下特点：
@@ -36,6 +38,7 @@ Kuboard套件具备如下特点：
   * 可以在Kuboard界面中方便地卸载已经安装的套件
 * 新增自定义套件
   * Kuboard套件的API已经开放，可以根据自己的需要创建套件，或者在已有套件基础上修改为更加符合自己需要的套件
+  * 请参考 [自定义套件](./customize.html) 了解如何实现自己的套件。
 
 ## 类型
 
