@@ -33,8 +33,16 @@ meta:
 }
 
 .ts-deployment pre {
-  border-radius: 0;
-  margin: 0;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+.ts-deployment .carousel-indicators .active {
+  background-color: red;
+}
+
+.ts-deployment .carousel-indicators li {
+  opacity: 1 !important;
 }
 /* .ts-deployment .carousel-control-prev {
   height: calc(100% - 59px);
@@ -70,6 +78,8 @@ meta:
 下图可帮助你调试Kubernetes Deployment。[点击此处](https://kuboard.cn/statics/learning/troubleshooting-kubernetes.pdf) 获取该图的PDF版本
 
 ![Kubernetes教程_Flow chart to debug deployments in Kubernetes](./deployment.assets/f65ffe9f61de0f4a417f7a05306edd4c.png)
+
+## 背景假设
 
 当你希望在Kubernetes中部署应用程序时，你通常会定义三个组件：
 

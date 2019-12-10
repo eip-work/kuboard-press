@@ -95,6 +95,7 @@ meta:
     * [使用私有 registry 中的 docker 镜像](/learning/k8s-intermediate/private-registry.html)
     * [Service 连接应用程序](/learning/k8s-intermediate/service/connecting.html)
     * [Ingress 通过互联网访问您的应用](/learning/k8s-intermediate/service/ingress.html)
+    * [Deployment故障排除](/learning/k8s-advanced/ts/deployment.html)
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
     * [使用port-forward访问集群中的应用程序](/learning/k8s-practice/access/port-forward.html)
     * [Kubernetes网络模型](/learning/k8s-intermediate/service/network.html)
