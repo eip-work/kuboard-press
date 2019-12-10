@@ -17,6 +17,7 @@ meta:
   height: unset !important;
   overflow: auto !important;
   overflow-y: auto !important;
+  max-width: 630px;
 }
 .ts-deployment .carousel-caption {
   bottom: 0 !important;
@@ -458,7 +459,7 @@ $ kubectl port-forward nginx-ingress-controller-6fc5bcc 3000:80 --namespace kube
 
 Pod可能无法启动，或者正在崩溃。
 
-## 三. kubernetes deployment故障排除的3个步骤
+## 三. k8s deployment故障排除的步骤
 
 在深入研究失败的deployment之前，我们必须对Kubernetes的工作原理有一个明确定义的思维模型。
 
