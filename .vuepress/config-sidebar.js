@@ -334,6 +334,7 @@ module.exports = {
           children: [
             'k8s-advanced/ts/application',
             'k8s-advanced/ts/cluster',
+            'k8s-advanced/ts/deployment'
           ]
         },
         {
