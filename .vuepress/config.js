@@ -97,7 +97,7 @@ module.exports = {
     // },
     '@vssue/vuepress-plugin-vssue': {
       // set `platform` rather than `api`
-      platform: 'github',
+      platform: 'github-v4',
       locale: 'zh-CN',
       autoCreateIssue: false,
       admins: ['shaohq'],
