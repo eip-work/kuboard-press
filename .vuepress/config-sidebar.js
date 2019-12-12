@@ -33,7 +33,7 @@ module.exports = {
       title: '安装 Kubernetes',
       collapsable: false,
       children: [
-        'install-docker-desktop',
+        // 'install-docker-desktop',
         ['install-k8s', '安装Kubernetes单Master节点'],
         'install-kubernetes',
         'sealos/',
@@ -493,7 +493,7 @@ module.exports = {
     },
     {
       title: 'Example',
-      collapsable: false,
+      collapsable: true,
       children: [
         'example/busybox',
         'example/import',
@@ -536,6 +536,7 @@ module.exports = {
       children: [
         'addon/',
         'addon/customize',
+        'addon/api',
         'addon/repository'
       ]
     },
