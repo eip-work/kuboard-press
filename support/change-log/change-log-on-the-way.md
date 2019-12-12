@@ -1,6 +1,9 @@
 Kuboard v1.0.x 的更新说明
 
+
+* 更新版本时，可以通过下拉列表选择仓库中的版本号
 * 导入导出时，需要支持 nfs 等类型的数据卷
+* subPathExpr     https://kuboard.cn/learning/k8s-intermediate/persistent/volume-mount-point.html#%E6%95%B0%E6%8D%AE%E5%8D%B7%E5%86%85%E5%AD%90%E8%B7%AF%E5%BE%84
 
 * 工作负载查看 --> 未显示 SecurityContext
 * EndPoint

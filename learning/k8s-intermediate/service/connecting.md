@@ -268,7 +268,7 @@ Hit enter for command prompt
   cat /d/tmp/nginx.crt | base64
   cat /d/tmp/nginx.key | base64
   ```
-* 创建一个如下格式的 nginxsecrets.yaml 文件，使用前面命令输出的 base64 编码替换其中的内容（base64编码内容不能换行）
+* 创建一个如下格式的 nginxsecrets.yaml 文件，使用前面命令输出的 base64 编码替换其中的内容（base64编码内容不能换行）(请使用前面两行命令生成的结果替换 nginx.crt 和 nginx.key 的内容，)
   ```yaml
   apiVersion: "v1"
   kind: "Secret"

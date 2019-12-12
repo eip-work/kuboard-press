@@ -2,20 +2,20 @@
 vssueId: 15
 # layout: StepLayout
 sharingTitle: K8S入门第一步---安装，装不好还有人免费远程协助，更有K8S免费教程提供，你还在等什么？
-description: Kubernete安装文档_Kubernetes最新稳定版v1.17.x的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
+description: Kubernete安装文档_Kubernetes最新稳定版v1.16.3的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords
     content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装,k8s搭建
 ---
 
-# 使用kubeadm安装kubernetes_v1.17.x
+# 使用kubeadm安装kubernetes_v1.16.3
 
 <AdSenseTitle/>
 
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.17.x" updateCount="70"/>
+  <InstallBanner version="v1.16.3" updateCount="69"/>
 </div>
 
 ## 配置要求
@@ -30,23 +30,28 @@ meta:
 
 <div> -->
 
-[腾讯云，热门云产品限量特惠秒杀，云服务器1核2G，99元/1年](https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+[腾讯云11.11爆款1核2G云服务器首购88元，免费领9888元代金券，百款云产品一折起](https://cloud.tencent.com/act/cps/redirect?redirect=1050&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
 <!-- [腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console) -->
 
-[阿里云，双十二主会场，低至一折](https://www.aliyun.com/1212/2019/home?userCode=obezo3pg)
+[阿里云双十一，All in Cloud，低至一折](https://www.aliyun.com/1111/2019/home?userCode=obezo3pg)
 
 <!-- [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg) -->
 
+::: danger 警告
+* 因为双十一，许多网友使用腾讯云、阿里云不同的账号各买了一台优惠价格的机器。目前我没有找到方法将不同局域网内的机器通过公网连接组成K8S集群，请谨慎。
+* 建议的做法是：腾讯云（或阿里云）采购一台优惠价格的包年实例作为 Master，同时再采购一台竞价实例（腾讯云）或抢占式实例（阿里云）作为 Worker 节点。竞价实例（抢占式实例）按分钟付费，以阿里云为例，一台2核8G的机器一天下来的费用大概是 1.2 - 1.5元。
+* 再次强调：按照本文档进行安装时，所有节点必须在同一个局域网内
+:::
+
 **安装后的软件版本为**
 
-* Kubernetes v1.17.x
-  * calico 3.10.2
+* Kubernetes v1.16.3
+  * calico 3.9
   * nginx-ingress 1.5.5
 * Docker 18.09.7
 
 > 如果要安装 Kubernetes 历史版本，请参考：
-> * [安装 Kubernetes v1.16.3 单Master节点](/install/history-k8s/install-k8s-1.16.3.html)
 > * [安装 Kubernetes v1.16.2 单Master节点](/install/history-k8s/install-k8s-1.16.2.html)
 > * [安装 Kubernetes v1.16.1 单Master节点](/install/history-k8s/install-k8s-1.16.1.html)
 > * [安装 Kubernetes v1.16.0 单Master节点](/install/history-k8s/install-k8s-1.16.0.html)
@@ -173,23 +178,20 @@ default via 172.21.0.1 dev eth0
 <b-card>
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
-**请将脚本最后的 1.17.0 替换成您需要的版本号，**
-<font color="red">脚本中间的 v1.17.x 不要替换</font>
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.17.0 用于指定 kubenetes 版本，支持所有 1.17.x 版本的安装
 
-curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1.17.0
+curl -sSL https://kuboard.cn/install-script/v1.16.3/install_kubelet.sh | sh
 
 ```
 
   </b-tab>
   <b-tab title="手动安装">
 
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.0***</font>
+手动执行以下代码，效果与快速安装完全相同。
 
-<<< @/.vuepress/public/install-script/v1.17.x/install_kubelet.sh {79}
+<<< @/.vuepress/public/install-script/v1.16.3/install_kubelet.sh
 
 ::: warning
 如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -219,10 +221,7 @@ curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1
 <b-tabs content-class="mt-3">
   <b-tab title="快速初始化" active>
 
-**请将脚本最后的 1.17.0 替换成您需要的版本号，**
-<font color="red">脚本中间的 v1.17.x 不要替换</font>
-
-``` sh {10}
+``` sh
 # 只在 master 节点执行
 # 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
 # export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
@@ -232,13 +231,11 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.17.x/init_master.sh | sh -s 1.17.0
+curl -sSL https://kuboard.cn/install-script/v1.16.3/init_master.sh | sh
 ```
 
   </b-tab>
   <b-tab title="手动初始化">
-
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.0***</font>
 
 ``` sh
 # 只在 master 节点执行
@@ -252,7 +249,7 @@ export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.17.x/init_master.sh {21}
+<<< @/.vuepress/public/install-script/v1.16.3/init_master.sh {22}
 
   </b-tab>
 </b-tabs>
@@ -429,9 +426,9 @@ kubectl get nodes -o wide
 ```sh
 [root@demo-master-a-1 ~]# kubectl get nodes
 NAME     STATUS   ROLES    AGE     VERSION
-demo-master-a-1   Ready    master   5m3s    v1.17.x
-demo-worker-a-1   Ready    <none>   2m26s   v1.17.x
-demo-worker-a-2   Ready    <none>   3m56s   v1.17.x
+demo-master-a-1   Ready    master   5m3s    v1.16.3
+demo-worker-a-1   Ready    <none>   2m26s   v1.16.3
+demo-worker-a-2   Ready    <none>   3m56s   v1.16.3
 ```
 
 
@@ -449,7 +446,7 @@ demo-worker-a-2   Ready    <none>   3m56s   v1.17.x
 
 ``` sh
 # 只在 master 节点执行
-kubectl apply -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/v1.16.3/nginx-ingress.yaml
 ```
 
   </b-tab>
@@ -462,13 +459,13 @@ kubectl apply -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
 
 ``` sh
 # 只在 master 节点执行
-kubectl delete -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
+kubectl delete -f https://kuboard.cn/install-script/v1.16.3/nginx-ingress.yaml
 ```
 
   </b-tab>
   <b-tab title="YAML文件">
 
-<<< @/.vuepress/public/install-script/v1.17.x/nginx-ingress.yaml
+<<< @/.vuepress/public/install-script/v1.16.3/nginx-ingress.yaml
 
 
   </b-tab>

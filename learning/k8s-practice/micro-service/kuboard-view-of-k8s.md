@@ -188,7 +188,7 @@ Kuboard 认为，掌握这些概念并正确理解这些概念的关系之后，
 
 * 资源层监控：Prometheus + Grafana + Node Exporter 等组件，监控Kubernetes 节点的 CPU、内存、网络、磁盘等使用情况
 * 中间件层监控：Prometheus + Grafana + MySQL Exporter + Nginx Exporter + JVM Exporter 等，监控 MySQL、Nginx、JVM 等中间件的使用情况
-* 链路/APM监控：Pinpoint / SkyWorking 等监控工具，监控应用程序的性能表现
+* 链路/APM监控：Pinpoint / Skywalking 等监控工具，监控应用程序的性能表现
 
 各种监控系统各有侧重，如果想要取得比较好的监控效果，必须克服如下几个困难：
 

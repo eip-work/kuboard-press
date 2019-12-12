@@ -19,7 +19,8 @@ Kuboard 日志界面和终端界面都使用了 websocket 与服务器端通信�
 * 您当前使用的浏览器不支持 WebSocket，推荐使用最新版本的 chrome 浏览器，也可以尝试最新版本的 firefox
 
 如果您还有问题，请尝试：
-* 清空浏览器缓存，重新登录 Kuboard
+* （如果刚完成 Kuboard 的升级）退出 Kuboard 登录，重新输入 token 登录 Kuboard
+* 清空浏览器缓存
 
 ## 第二步
 
