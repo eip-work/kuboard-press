@@ -13,6 +13,8 @@ meta:
 
 ## 在线体验
 
+Kuboard 是 Kubernetes 的一款图形化管理界面。
+
 <div style="min-height: 433px;">
   <InstallDashboardPreview/>
 </div>
@@ -37,7 +39,7 @@ meta:
 | v1.15           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.14           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.13           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
-| v1.12           | v1.0 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 尚不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
+| v1.12           | v1.0 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
 | v1.11           | v1.0 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
 ## 安装
 
@@ -82,7 +84,9 @@ kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 
 ## 获取Token
 
-您可以获得管理员用户、只读用户的Token
+您可以获得管理员用户、只读用户的Token。
+
+> Kuboard 有计划开发权限设置的功能，在这之前，如果您需要更细粒度的权限控制，请参考 [RBAC Example](/learning/k8s-advanced/sec/rbac/example.html)
 
 <b-card>
 <b-tabs content-class="mt-3">

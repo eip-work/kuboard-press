@@ -14,7 +14,7 @@
               <!-- 808894550 -->
             </div>
             <p style="margin-bottom: 0; margin-top: 10px;">
-              <img style="margin: auto; width: 150px;" src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+              <img style="margin: auto; width: 150px; padding: 10px;" src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
             </p>
           </b-card>
         </div>

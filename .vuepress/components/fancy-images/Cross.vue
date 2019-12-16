@@ -157,9 +157,9 @@ export default {
     background-color: #E65100;
     box-shadow: 0 0 10px #000;
 }
-@media only screen and (max-width:990px){
+/* @media only screen and (max-width:990px){
     .box{ margin-bottom: 30px; }
-}
+} */
 @media only screen and (max-width:479px){
     .box .title{ font-size: 22px; }
 }

@@ -15,14 +15,14 @@ module.exports = [
   //   url: 'https://www.qikqiak.com/post/promotion-51/',
   //   weight: 1
   // },
-  {
-    name: '极客时间',
-    description: '精要30计，让DevOps快速落地。',
-    strong: 'DevOps实战笔记',
-    action: '去看看',
-    url: 'https://time.geekbang.org/column/intro/100036601?code=0Totv3yN%2FohiumTclUF4ky4qRYs9Ecq6ZK4IdgNf88M%3D',
-    weight: 1
-  },
+  // {
+  //   name: '极客时间',
+  //   description: '精要30计，让DevOps快速落地。',
+  //   strong: 'DevOps实战笔记',
+  //   action: '去看看',
+  //   url: 'https://time.geekbang.org/column/intro/100036601?code=0Totv3yN%2FohiumTclUF4ky4qRYs9Ecq6ZK4IdgNf88M%3D',
+  //   weight: 1
+  // },
   {
     name: '腾讯云',
     description: '腾讯云双十二活动，',

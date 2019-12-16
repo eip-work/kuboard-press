@@ -394,6 +394,14 @@ module.exports = {
         },
         'k8s-advanced/gc',
         {
+          title: '安全',
+          collapsable: true,
+          children: [
+            'k8s-advanced/sec/rbac/api',
+            'k8s-advanced/sec/rbac/example',
+          ]
+        },
+        {
           title: '扩展Kubernetes',
           collapsable: true,
           children: [

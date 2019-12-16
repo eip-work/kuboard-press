@@ -17,12 +17,14 @@
       <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
         <a :href="`/guide/${urlSurfix}`" class="nav-link">使用</a>
       </div>
-      <div class="side-nav-item" :style="activeLinkStyle('/training/')">
-        <!-- <a :href="`https://kubetrain.cn/?from=kuboard`" class="nav-link" target="_blank">培训</a> -->
-        <a href="/t/cka/daily.html" class="nav-link" target="_self">CKA</a>
-      </div>
       <div class="side-nav-item" :style="activeLinkStyle('/support/')">
         <a :href="`/support/${urlSurfix}`" class="nav-link">支持</a>
+      </div>
+      <div class="side-nav-item" :style="activeLinkStyle('/training/')">
+        <a :href="`https://kubetrain.cn/?from=kuboard`" class="nav-link" target="_blank">培训</a>
+      </div>
+      <div class="side-nav-item">
+        <a href="http://k8s.kubetrain.cn" class="nav-link" target="_blank">博客</a>
       </div>
     </div>
     <slot name="top"/>
@@ -137,7 +139,7 @@ export default {
 }
 .side-nav-item {
   margin-bottom: -2px;
-  margin-left: 10px;
+  margin-left: 3px;
   display: inline-block;
   line-height: 1.4rem;
   white-space: nowrap;

@@ -157,9 +157,9 @@ module.exports = {
       { text: '安装', link: '/install/install-dashboard' },
       { text: '教程', link: '/learning/' },
       { text: '使用', link: '/guide/' },
-      // { text: '培训', link: 'https://kubetrain.cn/?from=kuboard', target: '_blank' },
       { text: '支持', link: '/support/' },
-      // { text: '博客', link: 'https://blog.kuboard.cn/compaign' }
+      { text: '培训', link: 'https://kubetrain.cn/?from=kuboard', target: '_blank' },
+      { text: '博客', link: 'http://k8s.kubetrain.cn/' },
       // { text: 'DevOps', link: '/devops/' }
     ],
     displayAllHeaders: false,
