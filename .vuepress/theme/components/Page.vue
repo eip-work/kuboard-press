@@ -3,8 +3,8 @@
     <div class="page-nav" style="max-width: 1000px; margin-top: 56px;">
     </div>
     <div v-show="!$isSharing && !$frontmatter.lessAds" class="page-nav" style="max-width: 1000px; margin: auto;">
-      <div class="tip custom-block" style=" padding: 1rem; margin-top: 0;">
-        <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;">
+      <div class="tip custom-block row" style="padding: 1rem; margin-top: 0;">
+        <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;" class="col-md-10">
           <li>
             <span style="color: red; font-weight: 500;">免费</span>
             Kubernetes教程K8S教程，绝不降低品质
@@ -22,6 +22,11 @@
               <a target="_blank" href="https://time.geekbang.org/column/intro/100015201?code=MH1Wu456g0ZsrKtQI7QidivKV2hVvzerAUxDz5pOuQs%3D">深入剖析Kubernetes</a>
             </span> -->
           </li>
+        </div>
+        <div class="col-md-2">
+          <a href="https://kubetrain.cn/?from=page-top" target="_blank">
+            <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
+          </a>
         </div>
       </div>
     </div>
