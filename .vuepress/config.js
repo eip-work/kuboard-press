@@ -23,7 +23,6 @@ module.exports = {
       s.parentNode.insertBefore(hm, s);
     })();
     `],
-    
     // ['script', {src: '/java-script-dist/swiper-4.5.0/js/swiper.min.js', async: true}],
     // ['script', {src: "https://www.googletagmanager.com/gtag/js?id=UA-144196556-1", async: true}],
     // ['script', {}, `

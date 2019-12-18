@@ -22,11 +22,13 @@ Kubernetes 容器编排已越来越被大家关注，然而学习 Kubernetes 的
 * Kuboard 官网提供 Spring Cloud 等微服务参考架构在 K8S 上的详细部署文档和步骤，是 Spring Cloud 用户将自己的应用迁移到 K8S 部署环境的非常好的参考资料。
 
 
-Kuboard 发布不到两个月时间，github star 已经迅速增长到 461，获得了许多用户的喜爱。
 
-<p style="max-width: 720px;">
-  <img src="./share-coder.assets/image-20191008204458253.png" alt="Kubernetes 教程" style="max-width: 100%"></img>
-</p>
+Kuboard 官网地址：[https://kuboard.cn](https://kuboard.cn/)
+
+Kuboard 在 github 已获得 1867 star，获得了许多用户的喜爱。
+
+![image-20191217133227879](./share-coder.assets/image-20191217133227879.png)
+
 
 
 ## 安装Kuboard
@@ -49,7 +51,7 @@ Kuboard 通过三层界面来管理 Kubernetes 以及部署在其上的微服务
 
    Kuboard 中查看集群概览的界面如下图所示，下层由 Kubernetes 的计算资源和存储资源组成，上层则是应用的名称空间。
 
-   ![Kubernetes 教程](./share-coder.assets/image-20191002073039330.png)
+   ![kuboard_demo](./share-coder.assets/kuboard.demo.eip.work.png)
 
 2. 名称空间层
 
@@ -135,11 +137,24 @@ Kuboard 通过三层界面来管理 Kubernetes 以及部署在其上的微服务
 
 ### **Kubernetes 高级**
 
-* Kubernetes 日志可视化
-
-* Kubernetes 监控
-
-* Kubernetes 联邦
+* 问题诊断
+  - [诊断应用程序](https://kuboard.cn/learning/k8s-advanced/ts/application.html)
+  - [诊断集群问题](https://kuboard.cn/learning/k8s-advanced/ts/cluster.html)
+  - [Deployment故障排除图解](https://kuboard.cn/learning/k8s-advanced/ts/deployment.html)
+* 日志
+  - [日志](https://kuboard.cn/learning/k8s-advanced/logs/)
+* 调度
+  - [调度](https://kuboard.cn/learning/k8s-advanced/schedule/)
+  - [调度调优](https://kuboard.cn/learning/k8s-advanced/schedule/tuning.html)
+  - [调度框架](https://kuboard.cn/learning/k8s-advanced/schedule/framework.html)
+* 策略
+  - [Limit Range](https://kuboard.cn/learning/k8s-advanced/policy/lr.html)
+  - [Resource Quota](https://kuboard.cn/learning/k8s-advanced/policy/rq.html)
+* 安全
+  - [RBAC 授权接口](https://kuboard.cn/learning/k8s-advanced/sec/rbac/api.html)
+  - [RBAC Example](https://kuboard.cn/learning/k8s-advanced/sec/rbac/example.html)
+* 监控
+* 联邦
 
 ## Spring Cloud在Kubernetes上的部署实战
 

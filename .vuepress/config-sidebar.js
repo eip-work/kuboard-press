@@ -398,6 +398,7 @@ module.exports = {
           collapsable: true,
           children: [
             'k8s-advanced/sec/rbac/api',
+            'k8s-advanced/sec/rbac/default',
             'k8s-advanced/sec/rbac/example',
           ]
         },
