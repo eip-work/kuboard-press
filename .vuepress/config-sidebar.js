@@ -399,6 +399,10 @@ module.exports = {
           children: [
             'k8s-advanced/sec/rbac/api',
             'k8s-advanced/sec/rbac/default',
+            'k8s-advanced/sec/rbac/escalation',
+            'k8s-advanced/sec/rbac/cmd',
+            'k8s-advanced/sec/rbac/sa',
+            'k8s-advanced/sec/rbac/permissive',
             'k8s-advanced/sec/rbac/example',
           ]
         },

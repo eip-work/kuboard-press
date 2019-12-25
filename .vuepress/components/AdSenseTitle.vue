@@ -1,25 +1,25 @@
 <template>
   <div :style="$isDev ? 'background-color: #grey;' : ''">
-    <div v-show="!$isSharing">
-      <div class="ads" v-if="!$frontmatter.lessAds && $themeConfig.showAds">
-        <div>
-          <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none;">
-            <span class="name">
-              {{ random.name }}
-            </span>
-            <span class="description">
-              {{ random.description }}
-            </span>
-            <span class="description-strong">
-              {{ random.strong }}
-            </span>
-            <span class="action">
-              {{ random.action }}
-            </span>
-          </a>
-          <span class="ads-text">广告</span>
+    <div v-show="!$isSharing && !$frontmatter.lessAds && $themeConfig.showAds">
+      <a @click="clickAds" :href="random.url" target="_blank" rel="nofollow" style="text-decoration: none; width: 100%">
+        <div class="ads">
+          <div>
+              <span class="name">
+                {{ random.name }}
+              </span>
+              <span class="description">
+                {{ random.description }}
+              </span>
+              <span class="description-strong">
+                {{ random.strong }}
+              </span>
+              <span class="action">
+                {{ random.action }}
+              </span>
+            <span class="ads-text">广告</span>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <slot></slot>
     <!-- <div class="adsense-page-top">

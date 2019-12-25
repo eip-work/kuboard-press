@@ -23,8 +23,11 @@
       <div class="side-nav-item" :style="activeLinkStyle('/training/')">
         <a :href="`https://kubetrain.cn/?from=kuboard`" class="nav-link" target="_blank">培训</a>
       </div>
-      <div class="side-nav-item">
+      <!-- <div class="side-nav-item">
         <a href="http://k8s.kubetrain.cn" class="nav-link" target="_blank">博客</a>
+      </div> -->
+      <div class="side-nav-item">
+        <a href="http://bbs.kuboard.cn" class="nav-link" target="_blank">论坛</a>
       </div>
     </div>
     <slot name="top"/>

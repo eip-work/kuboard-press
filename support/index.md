@@ -51,20 +51,26 @@ export default {
 
 <!-- <KuboardLiscense></KuboardLiscense> -->
 
-## Github趋势
+## Github Star
 
 <div style="padding: 1rem 0 0 0;" data-aos="fade-up" data-aos-duration="1500">
 <grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-    <b-card style="height: calc(100% - 2rem); margin-top: 1rem;">
-      <img src="./index.assets/stars.png" alt="Kubernetes教程_Kuboard_Github_Star">
-    </b-card>
-  </grid-item>
+<grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
+<b-card style="height: calc(100% - 2rem); margin-top: 1rem;">
+  <a href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
+    <img src="https://starchart.cc/eip-work/kuboard-press.svg" alt="Kubernetes教程_Kuboard_Github_Star" style="height: 320px;">
+  </a>
+      
+<!-- [![Stargazers over time](https://starchart.cc/eip-work/kuboard-press.svg)](https://starchart.cc/eip-work/kuboard-press) -->
+
+
+</b-card>
+</grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
     <b-card style="height: calc(100% - 2rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;">
-        <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经在许多个实际项目中经受住了考验</li>
-        <li>Kuboard 于2019年8月初公开发布，不到三个月时间就已经获得了 855 Github Star（如图所示），当前 <StarCount></StarCount></li>
-        <li>Kuboard 社群中，已有许多的用户将 Kuboard 用于自己的生产环境</li>
+        <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经经受住了生产环境的考验</li>
+        <li>Kuboard 于2019年8月初公开发布，当前 <StarCount></StarCount></li>
+        <li>参考 kuboard.cn，通常一个月时间可以从 Kubernetes 入门到投产</li>
       </b-card>
   </grid-item>
 </grid>
@@ -87,7 +93,9 @@ export default {
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
       <b-card style="height: 100%; margin-top: 1rem;">
         <h3>联系方式</h3>
-        <img src="/images/dz2.jpeg" style="width: 200px; margin: auto;"></img>
+        <p style="text-align: center;">
+        <img src="/images/support-contact.jpg" style="width: 200px; margin: auto;"></img>
+        </p>
       </b-card>
   </grid-item>
 </grid>

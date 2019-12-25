@@ -12,8 +12,7 @@ Kuboard v1.0.x 的更新说明
 * Prometheus 监控
 * Limit Range
 
-
-* https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/
+* https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 
 
 * 容器组列表，筛选结果为空时，提示筛选 “其他”
