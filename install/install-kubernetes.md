@@ -521,7 +521,7 @@ kubectl delete node demo-worker-x-x
 >
 > 本文中使用如下部署方式：https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
 >
-> kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
+> kubernetes支持多种Ingress Controllers (Traefik / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
 
 
 <b-card>
