@@ -29,8 +29,6 @@ meta:
   </div>
 </div>
 
-
-
 ## Kubernetes免费教程
 
 本教程的主要依据是：Kubernetes 官网文档，以及使用 Kubernetes 落地 Spring Cloud 微服务并投产的实战经验。适用人群：
@@ -210,3 +208,6 @@ meta:
   * [导入部署配置](/learning/k8s-practice/ocp/import.html)
 
 Kuboard提供免费K8S教程、K8S培训
+
+
+<!-- <LearningPlan/> -->

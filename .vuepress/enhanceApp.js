@@ -14,6 +14,8 @@ import Grid from './grid/Grid'
 import GridItem from './grid/GridItem'
 import defaults from './grid/utils/defaults'
 
+import Comp from './comp/index'
+
 const VueFractionGrid = {
   install (Vue, options) {
     const config = Object.assign(defaults, options)
@@ -22,6 +24,7 @@ const VueFractionGrid = {
     Vue.component(GridItem.name, { extends: GridItem, config })
   }
 }
+
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
@@ -39,6 +42,7 @@ export default ({
       tablet: '719px 959px'
     }
   })
+  Vue.use(Comp)
   Vue.prototype.$sendGaEvent = function (category, action, label) {
     let e = {
       hitType: 'event',
