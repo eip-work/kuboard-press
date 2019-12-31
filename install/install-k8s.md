@@ -18,6 +18,17 @@ meta:
   <InstallBanner version="v1.17.x" updateCount="70"/>
 </div>
 
+参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
+
+同时，也许您还想：
+* 探究安装文档中每一个脚本的用途
+* 了解何规划自己的集群，并可以结合自己的实际情况对安装脚本做客户化定制
+* 了解快速落地 K8S 的最佳学习路径
+
+[报名直播课程-详细讲解此安装过程](https://ke.qq.com/course/477593?flowToken=1016935)
+
+也可以在此 [提出对直播课的要求](http://bbs.kuboard.cn/forum.php?mod=viewthread&tid=10)
+
 ## 配置要求
 
 对于 Kubernetes 初学者，在搭建K8S集群时，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
@@ -30,13 +41,11 @@ meta:
 
 <div> -->
 
-[腾讯云，热门云产品限量特惠秒杀，云服务器1核2G，99元/1年](https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+[【腾讯云】12.12云产品限时秒杀，爆款1核2G云服务器，99元/1年](https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
 <!-- [腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console) -->
 
-[阿里云，双十二主会场，低至一折](https://www.aliyun.com/1212/2019/home?userCode=obezo3pg)
-
-<!-- [阿里云服务器限时2折](https://www.aliyun.com/acts/limit-buy?userCode=obezo3pg) -->
+<!-- [阿里云，双十二主会场，低至一折](https://www.aliyun.com/1212/2019/home?userCode=obezo3pg) -->
 
 **安装后的软件版本为**
 
@@ -506,6 +515,8 @@ kubectl delete -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
 :tada: :tada: :tada: 
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
+
+[报名直播课程-详细讲解此安装过程](https://ke.qq.com/course/477593?flowToken=1016934) 也可以在此 [提出对直播课的要求](http://bbs.kuboard.cn/forum.php?mod=viewthread&tid=10)
 
 <span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
 支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？

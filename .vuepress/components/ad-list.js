@@ -5,7 +5,7 @@ module.exports = [
     strong: '一键离线安装',
     action: '去看看',
     url: 'https://github.com/fanux/sealos',
-    weight: 60
+    weight: 10
   },
   // {
   //   name: '阳明的博客',
@@ -29,22 +29,30 @@ module.exports = [
     strong: '百款云产品一折起',
     action: '去抢',
     url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
-    weight: 30
+    weight: 60
   },
-  {
-    name: '阿里云',
-    description: '双十二，主会场，',
-    strong: '低至一折',
-    action: '去抢',
-    url: 'https://www.aliyun.com/1212/2019/home?userCode=obezo3pg',
-    weight: 30
-  },
+  // {
+  //   name: '阿里云',
+  //   description: '双十二，主会场，',
+  //   strong: '低至一折',
+  //   action: '去抢',
+  //   url: 'https://www.aliyun.com/1212/2019/home?userCode=obezo3pg',
+  //   weight: 30
+  // },
   {
     name: 'Kubetrain',
     description: 'K8S在线直播培训，首次开班优惠',
     strong: '不满意可无条件退款',
     action: '现在就去',
     url: 'https://kubetrain.cn/?from=kuboard-ads',
+    weight: 60
+  },
+  {
+    name: '10元直播课',
+    description: 'Kubernetes集群安装详解，安装脚本定制',
+    strong: '入门起点',
+    action: '捧个场',
+    url: 'https://ke.qq.com/course/477593?flowToken=1016937',
     weight: 60
   }
 

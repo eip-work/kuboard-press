@@ -12,17 +12,22 @@ meta:
 # Kubernetes教程
 
 <div class="row">
-  <div class="col-md-4 col-sm-12" style="margin-top: 1rem;">
+  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
     <a href="#kubernetes免费教程">
       <FancyImage src="/images/courses/free.png" title="免费教程" description="kubernetes.io权威资料，kuboard翻译" alt="K8S培训_免费教程" type="SlideLeft2Right"/>
     </a>
   </div>
-  <div class="col-md-4 col-sm-12" style="margin-top: 1rem;">
+  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
+    <a href="https://ke.qq.com/course/477593?flowToken=1016936" target="_blank">
+      <FancyImage src="/images/courses/kubeadm.png" title="10元直播课" description="安装详解 / 集群规划" alt="K8S培训" type="SlideLeft2Right"/>
+    </a>
+  </div>
+  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
     <a href="https://kubetrain.cn/?from=learning" target="_blank">
       <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Cross"/>
     </a>
   </div>
-  <div class="col-md-4 col-sm-12" style="margin-top: 1rem;">
+  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
     <a href="https://kubetrain.cn/advanced.html?from=learning" target="_blank">
       <FancyImage src="/images/courses/advanced.png" title="K8S高级班" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
     </a>
@@ -173,6 +178,7 @@ meta:
     * [Limit Range](/learning/k8s-advanced/policy/lr.html)
     * [Resource Quota](/learning/k8s-advanced/policy/rq.html)
   * 安全
+    * [RBAC授权](/learning/k8s-advanced/sec/rbac/api.html)
   * 监控
   * 联邦
 
