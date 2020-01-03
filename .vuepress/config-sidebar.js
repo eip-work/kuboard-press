@@ -397,6 +397,7 @@ module.exports = {
           title: '安全',
           collapsable: true,
           children: [
+            'k8s-advanced/sec/sa-admin',
             'k8s-advanced/sec/rbac/api',
             'k8s-advanced/sec/rbac/default',
             'k8s-advanced/sec/rbac/escalation',

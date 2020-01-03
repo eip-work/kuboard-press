@@ -54,11 +54,15 @@ spec:
 
 ### 通过环境变量指定数据卷内子路径
 
-**FEATURE STATE：** `Kubernetes v1.15` <Badge type="warning">beta</Badge> <Badge type="error">Kuboard暂不支持</Badge>
+**FEATURE STATE：** `Kubernetes v1.15` <Badge type="warning">beta</Badge>
 
 使用 `volumeMounts.subPathExpr` 字段，可以通过容器的环境变量指定容器内路径。使用此特性时，必须启用 `VolumeSubpathEnvExpansion` [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) （自 Kubernetes v1.15 开始，是默认启用的。）
 
 同一个 volumeMounts 中 `subPath` 字段和 `subPathExpr` 字段不能同时使用。
+
+> 在Kuboard界面中，如果工作负载编辑器中挂载点的 subPath/subPathExpr 字段中包含 `$`，则 Kuboard 认为该字段为 subPathExpr，否则被认为是 subPath。例如，下图中的 $(podName) 将被认为是 subPathExpr ：<Badge type="default">Kuboard v1.0.6-beta.1</Badge>
+>
+> ![./image-20200101173914313](./volume-mount-point.assets/image-20200101173914313.png)
 
 如下面的例子，该 Pod 使用 `subPathExpr` 在 hostPath 数据卷 `/var/log/pods` 中创建了一个目录 `pod1`（该参数来自于Pod的名字）。此时，宿主机目录 `/var/log/pods/pod1` 挂载到了容器的 `/logs` 路径：
 

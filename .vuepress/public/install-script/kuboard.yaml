@@ -125,6 +125,8 @@ metadata:
   name: kuboard
   namespace: kube-system
   annotations:
+    k8s.eip.work/displayName: kuboard
+    k8s.eip.work/workload: kuboard
     nginx.org/websocket-services: "kuboard"
     nginx.com/sticky-cookie-services: "serviceName=kuboard srv_id expires=1h path=/"
 spec:
