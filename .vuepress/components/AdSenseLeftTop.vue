@@ -10,6 +10,11 @@
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+    <!-- <div>
+      <a @click="$sendGaEvent('ads-nav-top:tencent-cloud', 'ads-nav-top', 'ads-nav-top')" href="https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console" target="_blank">
+        <img style="max-width: 100%;" src="/images/ads/tencent-cloud.jpg"/>
+      </a>
+    </div> -->
   </div>
 </template>
 

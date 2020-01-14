@@ -1,13 +1,22 @@
 Kuboard v1.0.x 的更新说明
 
-
-## v1.0.6-beta.1
-
+## v1.0.6-beta.5
 
 **新特性**
+* ServiceAccount详情页 --> 使用 ServiceAccount 的 Token 访问 kubectl
 
-* 工作负载编辑器 --> 容器信息 --> 挂载点 --> 支持subPathExpr
+**优化**
+* ServiceAccount列表页 --> 按名称、标签搜索
+* ServiceAccount详情页 --> 删除ServiceAccount时，同时删除关联的 RoleBinding/ClusterRoleBinding
 
+**Bug修复**
+* Secret对话框 --> 创建Secret时，不显示内容区
+* 名称空间页 --> StatefulSet如果没有 annotations 时，不能在名称空间页上显示
+  * 此问题的具体表现：部分使用 helm 创建的工作负载不能在Kuboard上显示，原因是Deployment、StatefulSet或DaemonSet中没有 annotations 信息
+
+------------------
+
+* 安装文档中，去除 IngressController 的链接
 
 * 日志界面支持 ctrl + F
 * 更新版本时，可以通过下拉列表选择仓库中的版本号

@@ -1,0 +1,34 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kuboard-viewer:kuboard-minimum-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kuboard-minimum-role
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:serviceaccounts
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kuboard-minimum-role
+rules:
+  - apiGroups:
+    - 'rbac.authorization.k8s.io'
+    resources:
+    - 'clusterrolebindings'
+    - 'rolebindings'
+    verbs:
+    - 'list'
+  - apiGroups:
+    - 'rbac.authorization.k8s.io'
+    resources:
+    - 'clusterroles'
+    - 'roles'
+    verbs:
+    - 'get'

@@ -48,8 +48,15 @@ module.exports = {
         'install-dashboard',
         'install-dashboard-offline',
         'install-dashboard-upgrade',
-        'install-kubectl',
-        'config-kubectl',
+        {
+          title: 'kubectl',
+          collapsable: true,
+          children: [
+            'install-kubectl',
+            'config-kubectl',
+            'install-kubectl-sa',
+          ]
+        },
         'install-k8s-dashboard',
       ]
     },
@@ -398,6 +405,7 @@ module.exports = {
           collapsable: true,
           children: [
             'k8s-advanced/sec/sa-admin',
+            'k8s-advanced/sec/kuboard',
             'k8s-advanced/sec/rbac/api',
             'k8s-advanced/sec/rbac/default',
             'k8s-advanced/sec/rbac/escalation',

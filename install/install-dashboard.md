@@ -47,15 +47,28 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 <b-card>
 <b-tabs content-class="mt-3">
-  <b-tab title="安装" active>
+<b-tab title="安装" active>
 
 安装 Kuboard。
 
 > 如果您参考 https://kuboard.cn 网站上提供的 Kubernetes 安装文档，可在 master 节点上执行以下命令。
 
+<b-tabs content-class="mt-3">
+<b-tab title="稳定版">
+
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 ```
+
+</b-tab>
+<b-tab title="Beta版">
+
+``` sh
+kubectl apply -f https://kuboard.cn/install-script/kuboard-beta.yaml
+```
+
+</b-tab>
+</b-tabs>
 
 查看 Kuboard 运行状态：
 
@@ -70,8 +83,8 @@ kuboard-54c9c4f6cb-6lf88   1/1     Running       0          45s
 ```
 > 如果您一直不能看到 kuboard 处于 Running 状态，可参考 [诊断应用程序](/learning/k8s-advanced/ts/application.html)，查找原因。如不能解决，请到本文页尾加群，联系群主解决。
 
-  </b-tab>
-  <b-tab title="卸载">
+</b-tab>
+<b-tab title="卸载">
 
 卸载 Kuboard
 
@@ -79,7 +92,7 @@ kuboard-54c9c4f6cb-6lf88   1/1     Running       0          45s
 kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 ```
 
-  </b-tab>
+</b-tab>
 </b-tabs>
 </b-card>
 
@@ -87,7 +100,8 @@ kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 
 您可以获得管理员用户、只读用户的Token。
 
-> Kuboard 有计划开发权限设置的功能，在这之前，如果您需要更细粒度的权限控制，请参考 [RBAC Example](/learning/k8s-advanced/sec/rbac/example.html)
+> * 如果您需要更细粒度的权限控制，请参考 [RBAC Example](/learning/k8s-advanced/sec/rbac/example.html)
+> * Kuboard beta 版已经开始支持 RBAC，请参考 [使用Kuboard管理ServiceAccount及RBAC](/learning/k8s-advanced/sec/kuboard.html)
 
 <b-card>
 <b-tabs content-class="mt-3">

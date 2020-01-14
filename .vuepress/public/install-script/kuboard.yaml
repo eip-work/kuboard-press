@@ -94,29 +94,29 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: kuboard-viewer-node
+  name: kuboard-viewer:kuboard-minimum-role
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: system:node
+  name: kuboard-minimum-role
 subjects:
-- kind: ServiceAccount
-  name: kuboard-viewer
-  namespace: kube-system
+  - kind: ServiceAccount
+    name: kuboard-viewer
+    namespace: kube-system
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: ClusterRole
 metadata:
-  name: kuboard-viewer-pvp
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: system:persistent-volume-provisioner
-subjects:
-- kind: ServiceAccount
-  name: kuboard-viewer
-  namespace: kube-system
+  name: kuboard-minimum-role
+rules:
+  - apiGroups:
+    - ''
+    resources:
+    - 'namespaces'
+    - 'nodes'
+    verbs:
+    - 'list'
 
 ---
 apiVersion: extensions/v1beta1

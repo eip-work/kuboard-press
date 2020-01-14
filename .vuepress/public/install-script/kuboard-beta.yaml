@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     k8s.eip.work/displayName: kuboard
-    k8s.eip.work/ingress: "false"
+    k8s.eip.work/ingress: "true"
     k8s.eip.work/service: NodePort
     k8s.eip.work/workload: kuboard
   labels:
@@ -23,11 +23,10 @@ spec:
         k8s.eip.work/layer: monitor
         k8s.eip.work/name: kuboard
     spec:
-      nodeName: your-node-name
       containers:
       - name: kuboard
-        image: eipwork/kuboard:latest
-        imagePullPolicy: IfNotPresent
+        image: eipwork/kuboard:beta
+        imagePullPolicy: Always
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
@@ -92,29 +91,22 @@ subjects:
   namespace: kube-system
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
-  name: kuboard-viewer:kuboard-minimum-role
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: kuboard-minimum-role
-subjects:
-  - kind: ServiceAccount
-    name: kuboard-viewer
-    namespace: kube-system
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: kuboard-minimum-role
-rules:
-  - apiGroups:
-    - ''
-    resources:
-    - 'namespaces'
-    - 'nodes'
-    verbs:
-    - 'list'
+  name: kuboard
+  namespace: kube-system
+  annotations:
+    k8s.eip.work/displayName: kuboard
+    k8s.eip.work/workload: kuboard
+    nginx.org/websocket-services: "kuboard"
+    nginx.com/sticky-cookie-services: "serviceName=kuboard srv_id expires=1h path=/"
+spec:
+  rules:
+  - host: kuboard.yourdomain.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kuboard
+          servicePort: http

@@ -52,7 +52,7 @@ kubectl get clusterroles system:discovery -o yaml
 * 可通过 ClusterRoleBinding 绑定的集群级别的角色（`cluster-status`）
 * 可通过 RoleBinding 绑定到特定名称空间的角色（`admin`、`edit`、`view`）
 
-从 Kubernetes 1.9 开始，user-facing roles 使用 [ClusterRole Aggregation](./api.html#aggregated-clusterroles) 以使管理员在其中包含 Custom Resource 的授权规则。想 `admin`、`edit`、`view` 等角色添加授权规则时，可创建一个 ClusterRole，包含一个或多个下述标签即可：
+从 Kubernetes 1.9 开始，user-facing roles 使用 [ClusterRole Aggregation](./api.html#aggregated-clusterroles) 以使管理员在其中包含 Custom Resource 的授权规则。向 `admin`、`edit`、`view` 等角色添加授权规则时，可创建一个 ClusterRole，包含一个或多个下述标签即可：
 
 ``` yaml
 metadata:

@@ -26,9 +26,9 @@
       <!-- <div class="side-nav-item">
         <a href="http://k8s.kubetrain.cn" class="nav-link" target="_blank">博客</a>
       </div> -->
-      <div class="side-nav-item">
+      <!-- <div class="side-nav-item">
         <a href="http://bbs.kuboard.cn" class="nav-link" target="_blank">论坛</a>
-      </div>
+      </div> -->
     </div>
     <slot name="top"/>
     <SidebarLinks :depth="0" :items="items"/>

@@ -63,8 +63,8 @@ kubernetes 安装有多种选择，本文档描述的集群安装具备如下特
 * **在线答疑** 
 
   <Qq></Qq> 也可以扫描二维码加群
-  <p>
-    <img src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
+  <p style="max-width: 160px;">
+    <img src="/images/kuboard_qq.png" style="padding: 10px;" alt="Kubernetes教程：QQ群在线答疑"/>
   </p>
 
 <!-- </div>
@@ -515,14 +515,14 @@ kubectl delete node demo-worker-x-x
 
 ## 安装 Ingress Controller
 
-> Ingress官方文档：https://kubernetes.io/docs/concepts/services-networking/ingress/
+<!-- > Ingress官方文档：https://kubernetes.io/docs/concepts/services-networking/ingress/
 >
 > Ingress Controllers官网介绍：https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 >
 > 本文中使用如下部署方式：https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
 >
-> kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
-
+> kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress -->
+kubernetes支持多种Ingress Controllers (traefic / Kong / Istio / Nginx 等)，本文推荐使用 https://github.com/nginxinc/kubernetes-ingress
 
 <b-card>
 <b-tabs content-class="mt-3">

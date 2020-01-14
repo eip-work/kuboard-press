@@ -25,7 +25,7 @@ meta:
 * 了解何规划自己的集群，并可以结合自己的实际情况对安装脚本做客户化定制
 * 了解快速落地 K8S 的最佳学习路径
 
-[报名直播课程-详细讲解此安装过程](https://ke.qq.com/course/477593?flowToken=1016935)
+[报名12元直播课程-详细讲解此安装过程](https://ke.qq.com/course/477593?flowToken=1016935)
 
 也可以在此 [提出对直播课的要求](http://bbs.kuboard.cn/forum.php?mod=viewthread&tid=10)
 
@@ -117,9 +117,9 @@ lscpu
 | 7.7         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.5         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题    |
-| 7.4         | <span style="font-size: 24px;">😞</span> | 同上                              |
-| 7.3         | <span style="font-size: 24px;">😞</span> | 同上                              |
-| 7.2         | <span style="font-size: 24px;">😞</span> | 同上                              |
+| 7.4         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题                              |
+| 7.3         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题                              |
+| 7.2         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题                              |
 
 </div>
   </grid-item>
@@ -516,7 +516,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[报名直播课程-详细讲解此安装过程](https://ke.qq.com/course/477593?flowToken=1016934) 也可以在此 [提出对直播课的要求](http://bbs.kuboard.cn/forum.php?mod=viewthread&tid=10)
+[报名12元直播课程-详细讲解此安装过程](https://ke.qq.com/course/477593?flowToken=1016934) 也可以在此 [提出对直播课的要求](http://bbs.kuboard.cn/forum.php?mod=viewthread&tid=10)
 
 <span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
 支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？
