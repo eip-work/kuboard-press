@@ -175,7 +175,7 @@ web-kuboard-press   192.168.144.158:80,192.168.199.135:80   70d
 
 ### Service中没有Endpoints
 
-如果您的Service中没有Enpoints，请尝试使用 Service 的 label selector 查询一下是否存在 Pod。假设您的 Service 如下：
+如果您的Service中没有Endpoints，请尝试使用 Service 的 label selector 查询一下是否存在 Pod。假设您的 Service 如下：
 
 ``` yaml
 ...
