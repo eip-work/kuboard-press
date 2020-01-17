@@ -58,6 +58,7 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
 ```
 
 </b-tab>
@@ -65,6 +66,7 @@ kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard-beta.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
 ```
 
 </b-tab>
