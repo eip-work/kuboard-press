@@ -24,8 +24,8 @@
           </li>
         </div>
         <div class="col-md-2">
-          <a href="https://kubetrain.cn/?from=page-top" target="_blank">
-            <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
+          <a href="https://ke.qq.com/course/477593?flowToken=1017366" target="_blank">
+            <FancyImage src="/images/courses/kubeadm.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
           </a>
         </div>
       </div>

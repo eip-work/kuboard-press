@@ -20,13 +20,13 @@ meta:
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
 
-此课程配有直播视频讲解，点击此处可 [报名12元直播课程](https://ke.qq.com/course/477593?flowToken=1016935)
+<Course courseId="477593" />
+<!-- 此课程配有直播视频讲解，点击此处可 [报名12元直播课程](https://ke.qq.com/course/477593?flowToken=1016935)
 * 讲解K8S集群规划
 * 以更加直观易于理解的形式讲解此安装过程
 * 介绍K8S学习路径
 * 报名学员如碰到安装问题，可获得远程协助
-
-> 第一次直播课已经于1月18日完成，现在 [报名]((https://ke.qq.com/course/477593?flowToken=1016935)) 可以随时看回看，如需要，还可在2月8日免费再听一次直播。
+> 第一次直播课已经于1月18日完成，现在 [报名]((https://ke.qq.com/course/477593?flowToken=1016935)) 可以随时看回看，如需要，还可在2月8日免费再听一次直播。 -->
 
 
 ## 配置要求
@@ -516,7 +516,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[报名12元直播课程-详细讲解此安装过程](https://ke.qq.com/course/477593?flowToken=1016934)
+<Course courseId="477593" />
 
 <span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
 支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？

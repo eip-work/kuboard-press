@@ -12,26 +12,26 @@ meta:
 # Kubernetes教程
 
 <div class="row">
-  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
+  <!-- <div class="col-md-4 col-sm-12" style="margin-top: 1rem;">
     <a href="#kubernetes免费教程">
       <FancyImage src="/images/courses/free.png" title="免费教程" description="kubernetes.io权威资料，kuboard翻译" alt="K8S培训_免费教程" type="SlideLeft2Right"/>
     </a>
   </div>
-  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
+  <div class="col-md-4 col-sm-12" style="margin-top: 1rem;">
     <a href="https://ke.qq.com/course/477593?flowToken=1016936" target="_blank">
-      <FancyImage src="/images/courses/kubeadm.png" title="10元直播课" description="安装详解 / 集群规划" alt="K8S培训" type="SlideLeft2Right"/>
+      <FancyImage src="/images/courses/kubeadm.png" title="12元直播课" description="安装详解 / 集群规划" alt="K8S培训" type="SlideLeft2Right"/>
     </a>
   </div>
-  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
+   <div class="col-md-4 col-sm-12" style="margin-top: 1rem;">
     <a href="https://kubetrain.cn/?from=learning" target="_blank">
-      <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Cross"/>
+      <FancyImage src="/images/courses/intermediate.png" title="K8S高薪培训" description="不满意无条件退费" alt="K8S培训_高薪培训" type="Cross"/>
     </a>
-  </div>
-  <div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
+  </div> -->
+  <!--<div class="col-md-3 col-sm-12" style="margin-top: 1rem;">
     <a href="https://kubetrain.cn/advanced.html?from=learning" target="_blank">
       <FancyImage src="/images/courses/advanced.png" title="K8S高级班" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
     </a>
-  </div>
+  </div> -->
 </div>
 
 ## Kubernetes免费教程
@@ -41,27 +41,6 @@ meta:
 * 学习过 Kubernetes，但在投产过程中仍有诸多疑虑和困惑的技术爱好者
 
 根据实际反馈，有很大比例的用户参考 kuboard.cn 网站后，能够在 1 个月内完成 Kubernetes 上的微服务落地工作。
-
-<!-- 推荐自学能力强的同学选择免费教程，这里有来自 kubernetes.io 的权威资料，同时结合 Kuboard 作者的实战经验，已有证据证明，Kuboard 有许多用户能够在一个月左右时间 **从Kubernetes入门到投产**。
-
-同时，Kuboard 与资深 Kubernetes 运维工程师/布道者合作，为大家带来直播课程，可以更深入系统地学习 K8S。[Kubernetes中级班](https://kubetrain.cn/?from=learning-free) 由 360 资深运维工程师阿良为您直播讲解。直播课程的优势如下：
-* 360 大厂一线实战经验
-* 专属学员答疑群
-* 优秀学员内推机会
-* 不满意无条件退费
-
-对于有意向在运维/架构领域更深入发展的同学，还可以考虑课程 [Kuberentes高级班](https://kubetrain.cn/?from=learning-free)。高级班的主要内容如下：
-* K8S弹性伸缩
-* K8S网络深入解析
-* Ceph存储
-* 微服务自动化发布（Spring Cloud & Jenkins CI/CD） -->
-
-
-<!-- <div style="background-color: #0063dc;">
-  <div style="max-width: 363px; margin: auto;">
-    <img src="/images/logo-main.png" style="background-color: #0063dc; max-width: 100%;" alt="Kubernetes管理界面：Kuboard Logo"/>
-  </div>
-</div> -->
 
 ## **Kubernetes 介绍**
 
@@ -75,6 +54,8 @@ meta:
     * 使用 Kuboard，无需编写复杂冗长的 YAML 文件，就可以轻松管理 Kubernetes 集群。
   * [创建 busybox](/guide/example/busybox.html) （10分钟）
     * 快速在 Kubernetes 集群中安装一个部署，并与当中的容器组交互。
+
+<Course courseId="477593" />
 
 
 ## **Kubernetes 入门**

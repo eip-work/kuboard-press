@@ -1,5 +1,6 @@
 let components = [
-  { name: 'LearningPlan', component: () => import(`./LearningPlan.vue`) }
+  { name: 'LearningPlan', component: () => import(`./LearningPlan.vue`) },
+  { name: 'Course', component: () => import(`./Course.vue`) }
 ]
 
 export default function (Vue) {
