@@ -190,7 +190,6 @@ default via 172.21.0.1 dev eth0
 # 最后一个参数 1.17.1 用于指定 kubenetes 版本，支持所有 1.17.x 版本的安装
 
 curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1.17.1
-
 ```
 
   </b-tab>

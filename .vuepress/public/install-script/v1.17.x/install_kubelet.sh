@@ -88,7 +88,7 @@ sed -i "s#^ExecStart=/usr/bin/dockerd.*#ExecStart=/usr/bin/dockerd -H fd:// --co
 
 # 设置 docker 镜像，提高 docker 镜像下载速度和稳定性
 # 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
-curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+curl -sSL https://kuboard.cn/install-script/set_mirror.sh | sh -s https://registry.cn-hangzhou.aliyuncs.com
 
 # 重启 docker，并启动 kubelet
 systemctl daemon-reload
