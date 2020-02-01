@@ -2,11 +2,21 @@ Kuboard v1.0.x 的更新说明
 
 
 
+
+
+
+必须完成：
+* 文档
+* 教程
+
+* 群反馈 Pod 列表界面出现重复数据的问题
+
 ------------------
 * 按名称空间查看 Events
 * 按名称空间查看 top pods
-* 修改 metadata.labels
+* 修改 metadata.labels kuboard v1.0.7
 * 支持 Headless Service
+* 在服务器端配置 openid connect 的 client_secret 以增强安全性
 
 * 安装文档中，将 daocloud 的镜像地址修改为阿里云的镜像地址
 * 日志界面支持 ctrl + F
@@ -40,3 +50,10 @@ Kuboard v1.0.x 的更新说明
 * 显示 Deployment/StatefulSet/DaemonSet 的事件
 * 控制台/日志界面，按 名称空间/工作负载/Pod/容器 进行切换
 * StatefulSet 在 available 数与 replicas 数不一致时，链接到帮助提示
+
+
+# 用户认证相关
+
+* Gitlab
+  * GitLab 的 idtoken 中只包含 sub 字段（此处的含义为用户的ID），没有用户名和邮箱地址等信息，因此不能直接和 Kubernetes OpenID Connect 对接
+    *  https://docs.gitlab.com/ee/integration/openid_connect_provider.html#shared-information

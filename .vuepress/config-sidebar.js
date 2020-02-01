@@ -404,15 +404,28 @@ module.exports = {
           title: '安全',
           collapsable: true,
           children: [
-            'k8s-advanced/sec/sa-admin',
-            'k8s-advanced/sec/kuboard',
-            'k8s-advanced/sec/rbac/api',
-            'k8s-advanced/sec/rbac/default',
-            'k8s-advanced/sec/rbac/escalation',
-            'k8s-advanced/sec/rbac/cmd',
-            'k8s-advanced/sec/rbac/sa',
-            'k8s-advanced/sec/rbac/permissive',
-            'k8s-advanced/sec/rbac/example',
+            {
+              title: '用户认证',
+              collapsable: true,
+              children: [
+                'k8s-advanced/sec/authenticate/',
+                'k8s-advanced/sec/sa-admin',
+                'k8s-advanced/sec/authenticate/install',
+              ]
+            }, {
+              title: '用户授权',
+              collapsable: true,
+              children: [
+                'k8s-advanced/sec/kuboard',
+                'k8s-advanced/sec/rbac/api',
+                'k8s-advanced/sec/rbac/default',
+                'k8s-advanced/sec/rbac/escalation',
+                'k8s-advanced/sec/rbac/cmd',
+                'k8s-advanced/sec/rbac/sa',
+                'k8s-advanced/sec/rbac/permissive',
+                'k8s-advanced/sec/rbac/example',
+              ]
+            },
           ]
         },
         {
