@@ -94,7 +94,7 @@ Dex 支持的 Identity Provider 有多种类型，请参考  [Dex](https://githu
 * 为 User/Group 授权
 
 <p style="max-width: 800px;">
-  <img src="./install.assets/image-20200201152914338.png" alt="Kubernetes教程-OpenID Connect"/>
+  <img src="./install.assets/image-20200201215109659.png" alt="Kubernetes教程-OpenID Connect"/>
 </p>
 
 ##### 配置GitLab Application
@@ -123,11 +123,8 @@ Dex 支持的 Identity Provider 有多种类型，请参考  [Dex](https://githu
 * 配置 Kuboard OIDC 参数
 * 配置 Kubernetes OIDC 参数
 
-
-
-
 <p style="max-width: 500px;">
-  <img src="./install.assets/image-20200201174418018.png" alt="Kubernetes教程-OpenID Connect"/>
+  <img src="./install.assets/image-20200201215213112.png" alt="Kubernetes教程-OpenID Connect"/>
 </p>
 
 ### 安装Dex
