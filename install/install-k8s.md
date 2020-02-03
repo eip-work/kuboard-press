@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.17.x" updateCount="72"/>
+  <InstallBanner version="v1.17.x" updateCount="73"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -182,20 +182,20 @@ default via 172.21.0.1 dev eth0
 <b-card>
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
-**请将脚本最后的 1.17.1 替换成您需要的版本号，**
+**请将脚本最后的 1.17.2 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.17.x 不要替换</font>
 
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.17.1 用于指定 kubenetes 版本，支持所有 1.17.x 版本的安装
+# 最后一个参数 1.17.2 用于指定 kubenetes 版本，支持所有 1.17.x 版本的安装
 
-curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1.17.1
+curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1.17.2
 ```
 
   </b-tab>
   <b-tab title="手动安装">
 
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.1***</font>
+手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.2***</font>
 
 <<< @/.vuepress/public/install-script/v1.17.x/install_kubelet.sh {79}
 
@@ -227,7 +227,7 @@ curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1
 <b-tabs content-class="mt-3">
   <b-tab title="快速初始化" active>
 
-**请将脚本最后的 1.17.1 替换成您需要的版本号，**
+**请将脚本最后的 1.17.2 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.17.x 不要替换</font>
 
 ``` sh {10}
@@ -240,13 +240,13 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.17.x/init_master.sh | sh -s 1.17.1
+curl -sSL https://kuboard.cn/install-script/v1.17.x/init_master.sh | sh -s 1.17.2
 ```
 
   </b-tab>
   <b-tab title="手动初始化">
 
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.1***</font>
+手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.2***</font>
 
 ``` sh
 # 只在 master 节点执行
