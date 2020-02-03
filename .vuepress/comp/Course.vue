@@ -1,12 +1,14 @@
 <template>
   <div v-if="course">
-    <div class="school">
-      <a
-        :href="course.href"
-        target="_blank"
-        :title="course.description"
-      >{{ course.title ? course.title : '观看本节视频讲解'}}</a>
-    </div>
+    <a class="school"
+      :href="course.href"
+      target="_blank"
+      :title="course.description"
+    >
+      <p>
+        {{ course.title ? course.title : '观看本节视频讲解'}}
+      </p>
+    </a>
   </div>
   <div v-else>配置信息不存在</div>
 </template>
@@ -33,37 +35,37 @@ export default {
 </script>
 
 <style scoped>
-.school {
+.school p {
   background-color: #e7ecf3;
-  padding: 1em 1.25em;
+  padding: 10px 66px;
   border-radius: 2px;
   color: #486491;
   position: relative;
 }
-.school a {
+.school {
   color: #486491 !important;
   position: relative;
   padding-left: 36px;
 }
-.school a:before {
+.school p:before {
   content: '';
   position: absolute;
   display: block;
   width: 30px;
   height: 30px;
-  top: -5px;
-  left: -4px;
+  top: 9px;
+  left: 20px;
   border-radius: 50%;
   background-color: #73abfe;
 }
-.school a:after {
+.school p:after {
   content: '';
   position: absolute;
   display: block;
   width: 0;
   height: 0;
-  top: 5px;
-  left: 8px;
+  top: 19px;
+  left: 32px;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 8px solid #fff;

@@ -517,10 +517,12 @@ kubectl delete -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
 
 <Course courseId="477593" />
 
-<span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
-支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？
+<!-- <span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
+支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？ -->
 
 [安装 Kuboard - 微服务管理界面](/install/install-dashboard.html)
+
+[使用 GitHub/GitLab 账号登录 Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
 
 [获取 Kubernetes 免费教程](/learning/)
 

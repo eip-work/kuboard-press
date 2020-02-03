@@ -238,5 +238,7 @@ http://任意一个Worker节点的IP地址:32567/#/console/yournamespace/yourpod
 
 - 使用 Kuboard 工作负载编辑器 [创建第一个应用](/guide/example/busybox.html) （10分钟）
 
+- [使用 GitHub/GitLab 账号登录 Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
+
 - 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
 - 学习 [Kubernetes免费教程](/learning/)

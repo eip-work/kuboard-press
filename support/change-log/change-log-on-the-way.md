@@ -2,9 +2,6 @@ Kuboard v1.0.x 的更新说明
 
 
 
-
-
-
 必须完成：
 * 文档
 * 教程
@@ -12,13 +9,10 @@ Kuboard v1.0.x 的更新说明
 * 群反馈 Pod 列表界面出现重复数据的问题
 
 ------------------
-* 按名称空间查看 Events
-* 按名称空间查看 top pods
 * 修改 metadata.labels kuboard v1.0.7
 * 支持 Headless Service
 * 在服务器端配置 openid connect 的 client_secret 以增强安全性
 
-* 安装文档中，将 daocloud 的镜像地址修改为阿里云的镜像地址
 * 日志界面支持 ctrl + F
 * 更新版本时，可以通过下拉列表选择仓库中的版本号
 * 导入导出时，需要支持 nfs 等类型的数据卷
@@ -31,7 +25,6 @@ Kuboard v1.0.x 的更新说明
 * Limit Range
 
 * https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
-
 
 * 容器组列表，筛选结果为空时，提示筛选 “其他”
 
