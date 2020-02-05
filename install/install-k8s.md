@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.17.x" updateCount="73"/>
+  <InstallBanner version="v1.17.x" updateCount="75"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -182,13 +182,23 @@ default via 172.21.0.1 dev eth0
 <b-card>
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
+
 **请将脚本最后的 1.17.2 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.17.x 不要替换</font>
 
+> docker hub 镜像请根据自己网络的情况任选一个
+> * 第四行为腾讯云 docker hub 镜像
+> * 第六行为DaoCloud docker hub 镜像
+> * 第八行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 # 最后一个参数 1.17.2 用于指定 kubenetes 版本，支持所有 1.17.x 版本的安装
-
+# 腾讯云 docker hub 镜像
+# export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
+# DaoCloud 镜像
+# export REGISTRY_MIRROR="http://f1361db2.m.daocloud.io"
+# 阿里云 docker hub 镜像
+export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1.17.2
 ```
 
@@ -196,6 +206,21 @@ curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1
   <b-tab title="手动安装">
 
 手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.2***</font>
+
+> docker hub 镜像请根据自己网络的情况任选一个
+> * 第四行为腾讯云 docker hub 镜像
+> * 第六行为DaoCloud docker hub 镜像
+> * 第八行为阿里云 docker hub 镜像
+``` sh
+# 在 master 节点和 worker 节点都要执行
+# 最后一个参数 1.17.2 用于指定 kubenetes 版本，支持所有 1.17.x 版本的安装
+# 腾讯云 docker hub 镜像
+# export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
+# DaoCloud 镜像
+# export REGISTRY_MIRROR="http://f1361db2.m.daocloud.io"
+# 阿里云 docker hub 镜像
+export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
+```
 
 <<< @/.vuepress/public/install-script/v1.17.x/install_kubelet.sh {79}
 

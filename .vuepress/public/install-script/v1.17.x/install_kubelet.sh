@@ -76,6 +76,7 @@ EOF
 yum remove -y kubelet kubeadm kubectl
 
 # 安装kubelet、kubeadm、kubectl
+# 将 ${1} 替换为 kubernetes 版本号，例如 1.17.2
 yum install -y kubelet-${1} kubeadm-${1} kubectl-${1}
 
 # 修改docker Cgroup Driver为systemd
@@ -88,7 +89,7 @@ sed -i "s#^ExecStart=/usr/bin/dockerd.*#ExecStart=/usr/bin/dockerd -H fd:// --co
 
 # 设置 docker 镜像，提高 docker 镜像下载速度和稳定性
 # 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
-curl -sSL https://kuboard.cn/install-script/set_mirror.sh | sh -s https://registry.cn-hangzhou.aliyuncs.com
+curl -sSL https://kuboard.cn/install-script/set_mirror.sh | sh -s ${REGISTRY_MIRROR}
 
 # 重启 docker，并启动 kubelet
 systemctl daemon-reload
