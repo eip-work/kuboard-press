@@ -102,8 +102,9 @@ kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 
 您可以获得管理员用户、只读用户的Token。
 
-> * 如果您需要更细粒度的权限控制，请参考 [RBAC Example](/learning/k8s-advanced/sec/rbac/example.html)
-> * Kuboard beta 版已经开始支持 RBAC，请参考 [使用Kuboard管理ServiceAccount及RBAC](/learning/k8s-advanced/sec/kuboard.html)
+> * 默认情况下，您可以使用 ServiceAccount 的 Token 登录 Kuboard
+> * 您还可以 [使用 GitLab/GitHub 账号登录 Kuboard/Kubectl](/learning/k8s-advanced/sec/authenticate/install.html)
+> * 您也可以 [为用户授权](/learning/k8s-advanced/sec/kuboard.html)
 
 <b-card>
 <b-tabs content-class="mt-3">

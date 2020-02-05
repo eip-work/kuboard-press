@@ -13,6 +13,8 @@ meta:
 
 > 参考文档：[Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
+<Course courseId="484058" />
+
 Role-based access control (RBAC)基于角色的访问控制，是Kubernetes中支持的一种授权方式。使用 `rbac.authorization.k8s.io` API 来驱动授权决策，允许管理员通过该 API 动态配置授权策略。自 Kubernetes 1.8 起，RBAC 模式已稳定可用，且通过 `rbac.authorization.k8s.io/v1` API 提供支持。如果要激活 RBAC，在启动 API Server 时必须使用参数 `--authorization-mode=RBAC`
 
 > 译者注：

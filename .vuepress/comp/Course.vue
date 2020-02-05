@@ -41,11 +41,12 @@ export default {
   border-radius: 2px;
   color: #486491;
   position: relative;
+  margin: 10px 0;
 }
 .school {
   color: #486491 !important;
-  position: relative;
-  padding-left: 36px;
+  /* position: relative; */
+  /* padding-left: 36px; */
 }
 .school p:before {
   content: '';

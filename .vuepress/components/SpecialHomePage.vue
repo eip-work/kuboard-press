@@ -70,7 +70,7 @@
       <b-card class="intro_text" shadow="hover">
         <p>
           <h2>Kuboard</h2>
-          <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+          <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
             Kuboard 在线体验
           </a>
           <li>Kubernetes 管理界面</li>
@@ -80,7 +80,7 @@
         </p>
       </b-card>
       <div class="intro_picture">
-        <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+        <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
           <FancyImage src="/images/preview.gif" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
         </a>
       </div>
@@ -153,7 +153,7 @@ export default {
 
     actionLink () {
       return {
-        link: `http://demo.kuboard.cn/#/dashboard?k8sToken=${this.$site.themeConfig.kuboardToken}`,
+        link: `http://demo.kuboard.cn/dashboard?k8sToken=${this.$site.themeConfig.kuboardToken}`,
         text: this.data.actionText
       }
     },

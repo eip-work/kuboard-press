@@ -159,7 +159,11 @@ meta:
     * [Limit Range](/learning/k8s-advanced/policy/lr.html)
     * [Resource Quota](/learning/k8s-advanced/policy/rq.html)
   * 安全
+    * [用户认证概述](/learning/k8s-advanced/sec/authenticate/)
+    * [使用GitLab/GitHub等账号登录Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
     * [RBAC授权](/learning/k8s-advanced/sec/rbac/api.html)
+
+    <Course courseId="484058" />
   * 监控
   * 联邦
 

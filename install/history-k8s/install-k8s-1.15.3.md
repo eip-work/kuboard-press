@@ -450,7 +450,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 [安装 Kuboard](/install/install-dashboard.html)
 
 安装 Kuboard 之前先
-  <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+  <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
     在线体验 Kuboard
   </a>
 

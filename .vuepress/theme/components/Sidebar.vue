@@ -34,17 +34,17 @@
     <SidebarLinks :depth="0" :items="items"/>
     <slot name="bottom"/>
     <div style="text-align: center; margin-top: 5vh;">
-      <!-- <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+      <!-- <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
         <img style="width: 242px; border: 1px solid #d7dae2;" src="/images/logo-main.png" alt="Kuboard_快速在Kubernetes上落地微服务"/>
       </a> -->
 
       <p>
         <strong>
-          <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">在线体验</a>
+          <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">在线体验</a>
         </strong>
       </p>
       <div>
-        <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+        <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
           <FancyImage style="width: 242px;" src="/images/preview.gif" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
         </a>
       </div>

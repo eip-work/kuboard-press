@@ -199,7 +199,7 @@ Kuboard 认为，应该以微服务视角快速查看到该微服务在不同层
 
 ![Kubernetes教程：Kuboard监控](./kuboard-view-of-k8s.assets/image-20190809220543742.png)
 
-点击图中 ***Nginx 监控***、 ***容器组监控***、 ***所在节点监控*** 等按钮，可以直接打开该容器组对应的监控界面。因为篇幅的限制，此处不再展开描述，请点击 <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+点击图中 ***Nginx 监控***、 ***容器组监控***、 ***所在节点监控*** 等按钮，可以直接打开该容器组对应的监控界面。因为篇幅的限制，此处不再展开描述，请点击 <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
   Kuboard 在线体验
 </a> 查看具体的监控效果。
 

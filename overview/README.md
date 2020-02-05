@@ -100,7 +100,7 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
     <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}" >
       <b-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
         <p>
-          <a target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+          <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
           Kuboard 在线体验
           </a>
         </p>
@@ -111,7 +111,7 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
   </grid-item>
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
     <b-card style="height: 100%" shadow="hover">
-      <a  target="_blank" :href="`http://demo.kuboard.cn/#/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
+      <a  target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
         <p style="max-width: 100%;">
         <FancyImage src="/images/preview.gif" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
         </p>

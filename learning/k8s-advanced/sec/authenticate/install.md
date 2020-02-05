@@ -14,6 +14,8 @@ meta:
 
 本文描述了如何为已有 Kubernetes 集群安装认证模块，并可以通过 GitLab、GitHub、LDAP 中的已有账号登录 Kubernetes 集群。
 
+<Course courseId="484058" />
+
 ## 前提条件
 
 * 您已经安装了 Kubernetes 集群
