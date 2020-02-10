@@ -2,11 +2,23 @@ Kuboard v1.0.x 的更新说明
 
 
 
-必须完成：
-* 文档
-* 教程
 
-* 群反馈 Pod 列表界面出现重复数据的问题
+**新特性**
+
+* 增加 Grafana，并与 Kuboard 实现单点登录
+
+
+**优化**
+
+* 去除dnsmasq，直接使用 KUBE_DNS 进行 upstream 域名解析
+
+
+BUG
+
+
+
+* etcd 安装和备份文档
+* kubeadm 安装之后的目录结构
 
 ------------------
 * 修改 metadata.labels kuboard v1.0.7

@@ -1,38 +1,48 @@
 version: "3"
 services:
-  web:
-    # replace username/repo:tag with your name and image details
-    image: eipwork/kuboard-press:latest
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 500M
-      restart_policy:
-        condition: on-failure
+  kuboard:
+    image: eipwork/kuboard:lua
     ports:
-      - "8081:80"
+      - "8083:80"
     volumes:
-      - ./docs:/usr/share/nginx/html
+      - /Users/shaohuanqing/Kuboard/kuboard-workspace/nginx-lua/docker/nginx.80.conf:/etc/nginx/conf.d/nginx.80.conf
+      - /Users/shaohuanqing/Kuboard/kuboard-workspace/kuboard-press/docs:/usr/share/nginx/html
+      - /Users/shaohuanqing/Kuboard/kuboard-workspace/nginx-lua/docker/nginx-jwt.lua:/usr/local/openresty/nginx/jwt-lua/resty/nginx-jwt.lua
     networks:
       - webnet
-  kubetrain:
-    # replace username/repo:tag with your name and image details
-    image: eipwork/kuboard-press:latest
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 500M
-      restart_policy:
-        condition: on-failure
-    ports:
-      - "8082:80"
-    volumes:
-      - /Users/shaohuanqing/Kuboard/kuboard-workspace/kubetrain/root:/usr/share/nginx/html
-    networks:
-      - webnet
+  # web:
+  #   # replace username/repo:tag with your name and image details
+  #   image: eipwork/kuboard-press:latest
+  #   deploy:
+  #     replicas: 1
+  #     resources:
+  #       limits:
+  #         cpus: "0.1"
+  #         memory: 500M
+  #     restart_policy:
+  #       condition: on-failure
+  #   ports:
+  #     - "8081:80"
+  #   volumes:
+  #     - ./docs:/usr/share/nginx/html
+  #   networks:
+  #     - webnet
+  # kubetrain:
+  #   # replace username/repo:tag with your name and image details
+  #   image: eipwork/kuboard-press:latest
+  #   deploy:
+  #     replicas: 1
+  #     resources:
+  #       limits:
+  #         cpus: "0.1"
+  #         memory: 500M
+  #     restart_policy:
+  #       condition: on-failure
+  #   ports:
+  #     - "8082:80"
+  #   volumes:
+  #     - /Users/shaohuanqing/Kuboard/kuboard-workspace/kubetrain/root:/usr/share/nginx/html
+  #   networks:
+  #     - webnet
 networks:
   webnet:

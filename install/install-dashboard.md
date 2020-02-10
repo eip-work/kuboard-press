@@ -35,13 +35,13 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
-| v1.17           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.16           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.15           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.14           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.13           | v1.0 | <span style="font-size: 24px;">😄</span>      | 已验证                       |
-| v1.12           | v1.0 | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 不支持 dryRun，<br />忽略Kuboard在执行命令时的参数校验错误，可正常工作 |
-| v1.11           | v1.0 | <span style="font-size: 24px;">😐</span>      | 同上                                                         |
+| v1.17           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.16           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.15           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.14           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.13           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                       |
+| v1.12           | v1.0.x | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 不支持 dryRun，<br />Kuboard 不支持 Kubernetes v1.12 |
+| v1.11           | v1.0.x | <span style="font-size: 24px;">😐</span>      | Kuboard 不支持 Kubernetes v1.11                                                         |
 ## 安装
 
 
@@ -92,6 +92,7 @@ kuboard-54c9c4f6cb-6lf88   1/1     Running       0          45s
 
 ``` sh
 kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
+kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
 ```
 
 </b-tab>
@@ -215,7 +216,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 如需要无登录访问集群概览页面，可使用如下格式的 url 进入：
 
 ```
-http://任意一个Worker节点的IP地址:32567/#/dashboard?k8sToken=yourtoken
+http://任意一个Worker节点的IP地址:32567/dashboard?k8sToken=yourtoken
 ```
 
 ::: tip 其他界面
@@ -226,7 +227,7 @@ http://任意一个Worker节点的IP地址:32567/#/dashboard?k8sToken=yourtoken
 
 如果想要无登录直接访问容器组的控制台，可使用如下格式的 url 进入：
 ```
-http://任意一个Worker节点的IP地址:32567/#/console/yournamespace/yourpod?containerName=yourcontainer&shell=bash&k8sToken=yourtoken
+http://任意一个Worker节点的IP地址:32567/console/yournamespace/yourpod?containerName=yourcontainer&shell=bash&k8sToken=yourtoken
 ```
 
 其中，shell 参数可选取值有：

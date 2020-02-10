@@ -4,7 +4,7 @@
     </div>
     <div v-show="!$isSharing && !$frontmatter.lessAds" class="page-nav" style="max-width: 1000px; margin: auto;">
       <div class="tip custom-block row" style="padding: 1rem; margin-top: 0;">
-        <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;" class="col-md-10">
+        <div style="display: inline-block; vertical-align: top; line-height: 1.6rem;" class="col-md-8">
           <li>
             <span style="color: red; font-weight: 500;">免费</span>
             Kubernetes教程K8S教程，绝不降低品质
@@ -23,10 +23,13 @@
             </span> -->
           </li>
         </div>
-        <div class="col-md-2">
-          <a href="https://ke.qq.com/course/477593?flowToken=1017366" target="_blank">
+        <div class="col-md-4">
+          <span style="font-size: 18px; font-weight: 600;">Kuboard</span>
+          <br/>
+          <span style="font-size: 14px; color: #666;">- 快速在 Kubernetes 落地微服务</span>
+          <!-- <a href="https://ke.qq.com/course/477593?flowToken=1017366" target="_blank">
             <FancyImage src="/images/courses/kubeadm.png" title="K8S高薪培训" description="360讲师授课" alt="K8S培训_高薪培训" type="Rectangle"/>
-          </a>
+          </a> -->
         </div>
       </div>
     </div>

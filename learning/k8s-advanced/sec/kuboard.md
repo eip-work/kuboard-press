@@ -15,16 +15,18 @@ meta:
 
 
 
-首先，确保您已经 [安装了 Kuboard](/install/install-dashboard-upgrade.html) <Badge>Kuboard v1.0.6-beta.3</Badge>，并且使用 [管理员用户](/install/install-dashboard.html#获取token)) 登录Kuboard
+首先，确保您已经 [安装了 Kuboard](/install/install-dashboard-upgrade.html) <Badge>Kuboard v1.0.6</Badge>，并且使用 [管理员用户](/install/install-dashboard.html#获取token)) 登录Kuboard
 
 
 
 ## 为名称空间创建管理员用户
 
 ::: tip 用户名密码？
-* 当前只支持 [ServiceAccount](/learning/k8s-advanced/sec/sa-admin.html#user-accounts-vs-service-accounts)
-* 用户名密码（OpenID Connect）的登录方式将在2020年2月提供
+* 本文档以 [ServiceAccount](/learning/k8s-advanced/sec/sa-admin.html#user-accounts-vs-service-accounts) 为例
+* 用户名密码（OpenID Connect）的登录方式请参考 [使用 GitHub/GitLab 账号登录 Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
 :::
+
+<Course courseId="484058" />
 
 按照下面的步骤，可以快速为 Kubernetes 中的某个名称空间创建管理用户
 

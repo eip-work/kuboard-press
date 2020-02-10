@@ -38,6 +38,7 @@ module.exports = {
         'install-kubernetes',
         'sealos/',
         'install-node-port-range',
+        'docker-mirror',
         'k8s-restart',
       ]
     },

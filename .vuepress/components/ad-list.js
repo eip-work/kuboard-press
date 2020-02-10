@@ -47,14 +47,14 @@ module.exports = [
     url: 'https://kubetrain.cn/?from=kuboard-ads',
     weight: 60
   },
-  {
-    name: '12元直播课',
-    description: 'Kubernetes集群安装详解，安装脚本定制',
-    strong: '入门起点',
-    action: '捧个场',
-    url: 'https://ke.qq.com/course/477593?flowToken=1016937',
-    weight: 60
-  }
+  // {
+  //   name: '12元直播课',
+  //   description: 'Kubernetes集群安装详解，安装脚本定制',
+  //   strong: '入门起点',
+  //   action: '捧个场',
+  //   url: 'https://ke.qq.com/course/477593?flowToken=1016937',
+  //   weight: 60
+  // }
 
   // {
   //   name: '宝塔面板',
