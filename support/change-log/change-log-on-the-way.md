@@ -3,9 +3,15 @@ Kuboard v1.0.x 的更新说明
 
 
 
+------------------
+
 **新特性**
 
 * 增加 Grafana，并与 Kuboard 实现单点登录
+  * ServiceAccount 可以与 Grafana 单点登录
+  * OpenID Connect 账号可以与 Grafana 单点登录
+  * TeamSync （是否要实现？）
+* 
 
 
 **优化**

@@ -12,7 +12,7 @@
     "babel-plugin-component": "^1.1.1",
     "date-fns": "^1.30.1",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
-    "vuepress-plugin-code-copy": "^1.0.4-alpha",
+    "vuepress-plugin-code-copy": "^1.0.4",
     "vuepress-plugin-code-switcher": "^1.0.0",
     "vuepress-plugin-reading-progress": "^1.0.7",
     "vuepress-plugin-seo": "^0.1.2",
