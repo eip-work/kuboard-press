@@ -1,0 +1,74 @@
+{
+  "kind": "NodeMetricsList",
+  "apiVersion": "metrics.k8s.io/v1beta1",
+  "metadata": {
+    "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "10.199.20.85",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/10.199.20.85",
+        "creationTimestamp": "2020-02-13T07:58:07Z"
+      },
+      "timestamp": "2020-02-13T07:37:11Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "352364061n",
+        "memory": "4865632Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "10.199.20.81",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/10.199.20.81",
+        "creationTimestamp": "2020-02-13T07:58:07Z"
+      },
+      "timestamp": "2020-02-13T07:57:41Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "285520108n",
+        "memory": "6121964Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "10.199.20.82",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/10.199.20.82",
+        "creationTimestamp": "2020-02-13T07:58:07Z"
+      },
+      "timestamp": "2020-02-13T07:57:36Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "331513048n",
+        "memory": "2275856Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "10.199.20.83",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/10.199.20.83",
+        "creationTimestamp": "2020-02-13T07:58:07Z"
+      },
+      "timestamp": "2020-02-13T07:57:34Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "372888673n",
+        "memory": "3291644Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "10.199.20.84",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/10.199.20.84",
+        "creationTimestamp": "2020-02-13T07:58:07Z"
+      },
+      "timestamp": "2020-02-13T07:57:42Z",
+      "window": "30s",
+      "usage": {
+        "cpu": "733828281n",
+        "memory": "7879220Ki"
+      }
+    }
+  ]
+}

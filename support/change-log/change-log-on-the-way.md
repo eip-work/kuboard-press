@@ -2,6 +2,8 @@ Kuboard v1.0.x 的更新说明
 
 
 
+* 创建工作负载时，layer 不能选择默认
+* KUBE_CLUSTER_NAME
 
 ------------------
 
@@ -18,6 +20,9 @@ Kuboard v1.0.x 的更新说明
 
 * 去除dnsmasq，直接使用 KUBE_DNS 进行 upstream 域名解析
 
+
+**优化**
+* 容器镜像版本调整的页面里，去掉默认条件
 
 BUG
 
