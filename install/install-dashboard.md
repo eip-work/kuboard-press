@@ -238,6 +238,8 @@ http://任意一个Worker节点的IP地址:32567/console/yournamespace/yourpod?c
 
 :tada: :tada: :tada:
 
+- 了解 [Kuboard 的环境变量](./install-kuboard-env.html)
+
 - 使用 Kuboard 工作负载编辑器 [创建第一个应用](/guide/example/busybox.html) （10分钟）
 
 - [使用 GitHub/GitLab 账号登录 Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)

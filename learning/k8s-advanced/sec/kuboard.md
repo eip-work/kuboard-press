@@ -46,7 +46,11 @@ meta:
 
 * 完成创建后，将自动进入 ServiceAccount 详情页，如下图所示：
 
-  图中，可以看到 Kubernetes 默认为 ServiceAccount 授予的 ***集群级别权限***
+  * 图中，可以看到 Kubernetes 默认为 ServiceAccount 授予的 ***集群级别权限***
+  * 可以为一个 Service Account 创建多个 Secret
+  * 也可以删除 Service Account 的原有 Secret
+  
+  > 当您使用 Service Account 作为 Kuboard / Kubernetes Dashboard 的登录方式时，这个特性就显得非常有用，您可以定期更换 ServiceAccount 的 Secret Token，以增强系统的安全性。
 
   ![Kubernetes教程_ServiceAccount](./kuboard.assets/image-20200107221157156.png)
 

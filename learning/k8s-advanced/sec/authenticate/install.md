@@ -8,7 +8,7 @@ meta:
 
 ---
 
-# Kubernetes Authenticate 安装向导
+# Kubernetes Authentication 安装向导
 
 <AdSenseTitle/>
 
@@ -103,14 +103,14 @@ Dex 支持的 Identity Provider 有多种类型，请参考  [Dex](https://githu
 
 如果选择 GitLab 作为 Identity Provider：
 
-* 需要在 GitLab 中为 Dex 创建 Application，此时，RedirectURL 参数请从 Kubernetes Authenticate 安装向导的界面上获取，Scopes 请至少选择 `openid`、`read_user` 这两个 scope，如下图所示，
-* 完成 GitLab Application 创建后，需要将 `Client ID`、`Client Secret` 两个字段回填到 Kubernetes Authenticate 安装向导。
+* 需要在 GitLab 中为 Dex 创建 Application，此时，RedirectURL 参数请从 Kubernetes Authentication 安装向导的界面上获取，Scopes 请至少选择 `openid`、`read_user` 这两个 scope，如下图所示，
+* 完成 GitLab Application 创建后，需要将 `Client ID`、`Client Secret` 两个字段回填到 Kubernetes Authentication 安装向导。
 
 ![Kubernetes - OIDC - GITLAB](./install.assets/image-20200201180554307.png)
 
 ##### 配置 GitHub Application
 
-* 请根据向导的提示，在 GitHub 中创建 OAuth Apps，并将 `Client ID`、`Client Secret` 两个字段回填到 Kubernetes Authenticate 安装向导。
+* 请根据向导的提示，在 GitHub 中创建 OAuth Apps，并将 `Client ID`、`Client Secret` 两个字段回填到 Kubernetes Authentication 安装向导。
 
 #### 直连 Identity Provider
 
@@ -131,11 +131,11 @@ Dex 支持的 Identity Provider 有多种类型，请参考  [Dex](https://githu
 
 ### 安装Dex
 
-Kubernetes Authenticate 安装向导中，请按照如下步骤完成 Dex 的安装：
+Kubernetes Authentication 安装向导中，请按照如下步骤完成 Dex 的安装：
 
 * 填写参数，如下图所示：
 
-  此步骤中的参数都无需修改，因为在前一个步骤 ***准备*** 环节，已经填写了，其他的参数由 Kubernetes Authenticate 安装向导为您生成。
+  此步骤中的参数都无需修改，因为在前一个步骤 ***准备*** 环节，已经填写了，其他的参数由 Kubernetes Authentication 安装向导为您生成。
 
   如果您希望多个 Kubernetes 集群都使用这一个 Dex 实例，请在下图表单中新增一个 Dex Client 的信息。
 
@@ -143,7 +143,7 @@ Kubernetes Authenticate 安装向导中，请按照如下步骤完成 Dex 的安
 
 * 保存上图表单后，点击 **安装** 按钮
 
-  Kubernetes Authenticate 安装向导将在此 Kubernetes 集群安装 Dex，如需要了解具体安装的内容，可在安装过程中预览 Dex 的安装文件，也可以参考 [Dex](https://github.com/dexidp/dex) 的文档，已了解更多关于 Dex 的知识。
+  Kubernetes Authentication 安装向导将在此 Kubernetes 集群安装 Dex，如需要了解具体安装的内容，可在安装过程中预览 Dex 的安装文件，也可以参考 [Dex](https://github.com/dexidp/dex) 的文档，已了解更多关于 Dex 的知识。
 
 * 完成 Dex 安装后，Kubernetes Authenticate 安装向导将引导您确认一些信息，点击 ***已确认*** 按钮，可进入下一个步骤，**设定 Kuboard OIDC**
 

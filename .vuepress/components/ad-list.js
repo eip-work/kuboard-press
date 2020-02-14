@@ -7,6 +7,13 @@ module.exports = [
     url: 'https://github.com/fanux/sealos',
     weight: 60
   },
+  {
+    name: 'Suven',
+    description: '趣丸网络科技 Suven 免费提供的视频课',
+    strong: '免费学习',
+    url: 'https://www.bilibili.com/video/av88798402',
+    weight: 50,
+  },
   // {
   //   name: '阳明的博客',
   //   description: 'Kubernetes，',
@@ -23,14 +30,14 @@ module.exports = [
   //   url: 'https://time.geekbang.org/column/intro/100036601?code=0Totv3yN%2FohiumTclUF4ky4qRYs9Ecq6ZK4IdgNf88M%3D',
   //   weight: 1
   // },
-  // {
-  //   name: '腾讯云',
-  //   description: '腾讯云双十二活动，',
-  //   strong: '百款云产品一折起',
-  //   action: '去抢',
-  //   url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
-  //   weight: 60
-  // },
+  {
+    name: '腾讯云',
+    description: '【腾讯云】云产品采购季，助力行业复工。',
+    strong: '1核2G云服务器，首年99元',
+    action: '去抢',
+    url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1053&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
+    weight: 60
+  },
   // {
   //   name: '阿里云',
   //   description: '双十二，主会场，',

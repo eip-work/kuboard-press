@@ -3,7 +3,6 @@ Kuboard v1.0.x 的更新说明
 
 
 * 创建工作负载时，layer 不能选择默认
-* KUBE_CLUSTER_NAME
 
 ------------------
 
@@ -27,7 +26,7 @@ Kuboard v1.0.x 的更新说明
 BUG
 
 
-
+* 显示相对时间时，kubectl 使用服务器时间计算相对时间，Kuboard 则使用客户端的机器时间计算相对时间
 * etcd 安装和备份文档
 * kubeadm 安装之后的目录结构
 

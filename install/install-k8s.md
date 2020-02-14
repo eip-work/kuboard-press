@@ -41,9 +41,8 @@ meta:
 
 <div> -->
 
-[【腾讯云】12.12云产品限时秒杀，爆款1核2G云服务器，99元/1年](https://cloud.tencent.com/act/cps/redirect?redirect=1052&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+[【腾讯云】云产品采购季，助力行业复工。1核2G云服务器，首年99元](https://cloud.tencent.com/act/cps/redirect?redirect=1053&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
-<!-- [腾讯云限时1折秒杀](https://cloud.tencent.com/act/cps/redirect?redirect=1044&cps_key=2ee6baa049659f4713ddc55a51314372&from=console) -->
 
 <!-- [阿里云，双十二主会场，低至一折](https://www.aliyun.com/1212/2019/home?userCode=obezo3pg) -->
 
