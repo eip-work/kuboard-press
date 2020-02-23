@@ -18,6 +18,7 @@ meta:
 | ------------------------- | --------------------------------------- | ------------- |
 | KUBERNETES_CLUSTER_DOMAIN | Kubernetes Cluster Name                 | cluster.local |
 | KUBOARD_ICP_DESCRIPTION   | 您的 ICP 备案号                         | 空            |
+| KUBOARD_PROXY_COOKIE_TTL | Kuboard Proxy 中 Cookie 的有效时长 | 36000         |
 | KUBOARD_SAFE_MODE         | 是否禁用监控套件的转发                  | 空            |
 | OIDC_ISSUER               | OpenID Connect 对应的 Identity Provider | 空            |
 

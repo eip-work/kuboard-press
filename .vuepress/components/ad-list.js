@@ -8,11 +8,11 @@ module.exports = [
     weight: 60
   },
   {
-    name: 'Suven',
-    description: '趣丸网络科技 Suven 免费提供的视频课',
+    name: 'Suveng',
+    description: '趣丸网络科技 Suveng 免费提供的视频课',
     strong: '免费学习',
     url: 'https://www.bilibili.com/video/av88798402',
-    weight: 50,
+    weight: 60,
   },
   // {
   //   name: '阳明的博客',

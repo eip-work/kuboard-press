@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$themeConfig.showAds" class="adsense-page-bottom-inline" :style="$isDev ? 'background-color: grey;' : ''">
+  <div v-if="$themeConfig.showAds && false" class="adsense-page-bottom-inline" :style="$isDev ? 'background-color: grey;' : ''">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <ins class="adsbygoogle"
         style="display:block"

@@ -30,9 +30,6 @@ export default {
 <b-card style="height: calc(100% - 1.5rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)">
 
 * 使用 Kuboard 是 <font color="red">免费</font> 的，无论您是用于学习还是用于生产
-* 将来会推出 Kuboard Plus，当前所有的功能，<font color="red">将来仍然免费</font>。Kuboard Plus 侧重点：
-  * 更完善的权限管理（当前只区分集群管理员权限和只读权限）
-  * 审计日志
 * 只要您在本文末尾的评论区留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
 
 </b-card>
@@ -68,34 +65,8 @@ export default {
 </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
     <b-card style="height: calc(100% - 2rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;">
-        <li>Kuboard 诞生于大型微服务项目的落地实施，在其发布之前，就已经经受住了生产环境的考验</li>
         <li>Kuboard 于2019年8月初公开发布，当前 <StarCount></StarCount></li>
         <li>参考 kuboard.cn，通常一个月时间可以从 Kubernetes 入门到投产</li>
-      </b-card>
-  </grid-item>
-</grid>
-</div>
-
-## 商业支持
-
-<div style="padding: 1rem 0;" data-aos="fade-up" data-aos-duration="1200">
-<grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-    <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; margin-top: 1rem;">
-      <h3>服务范围</h3>
-      <li>Kubernetes 企业培训</li>
-      <li>DevOps 环境搭建及培训</li>
-      <li>SpringCloud 微服务架构咨询</li>
-      <li>Kubernetes 投产支持及问题解决</li>
-      <li>Kuboard 定制化</li>
-    </b-card>
-  </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
-      <b-card style="height: 100%; margin-top: 1rem;">
-        <h3>联系方式</h3>
-        <p style="text-align: center;">
-        <img src="/images/support-contact.jpg" style="width: 200px; margin: auto;"></img>
-        </p>
       </b-card>
   </grid-item>
 </grid>
