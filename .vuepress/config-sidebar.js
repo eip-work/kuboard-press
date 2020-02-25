@@ -567,6 +567,23 @@ module.exports = {
       ]
     },
     {
+      title: 'Kuboard Proxy',
+      collapsable: false,
+      children: [
+        ['proxy/', 'Kuboard Proxy 介绍'],
+        ['proxy/authorization', '授权用户访问 Kuboard Proxy'],
+        ['proxy/rebase', '为何极少部分网页显示不正常-Rebase'],
+        ['proxy/auth-proxy', '使用Auth-Proxy实现单点登录']
+      ]
+    },
+    {
+      title: 'CI/CD集成',
+      collapsable: false,
+      children: [
+        'cicd/'
+      ]
+    },
+    {
       title: '套件',
       collapsable: false,
       children: [
@@ -583,13 +600,6 @@ module.exports = {
         'monitor/',
       ]
     },
-    {
-      title: 'CI/CD集成',
-      collapsable: false,
-      children: [
-        'cicd/'
-      ]
-    }
   ],
 
   '/t/': [

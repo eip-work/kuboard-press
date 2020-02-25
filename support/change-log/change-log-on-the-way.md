@@ -1,8 +1,28 @@
 Kuboard v1.0.x 的更新说明
 
 
+## v1.0.7-beta.4
+
+* 优化 KuboardProxy 的界面显示
+* 增加环境变量的设置 [KUBOARD_AUTH_ENCRYPT_KEY](/install/install-kuboard-env.html)
+  * 如果不定义此环境变量，则在Kuboard每次启动时生成随机字符串用作 ENCRYPT_KEY
+* OpenID Connect安装向导
+  * 对输入框做trim操作，避免用户输入空格
+  * 如果准备步骤选择了 dex 作为连接方式，则在设定Kuboard OIDC步骤的认证方式选项中，禁用用户名密码的选项
+
+**BUG修正**
+
+* 工作负载编辑器 --> 容器 --> 安全设定 --> 编辑按钮在一部分情况下点击无效
+* 部分情况下 kubectl config 对话框显示不正常
+
+
+
+
+
+
 
 * 创建工作负载时，layer 不能选择默认
+* 工作负载编辑页 --> 容器 --> 就绪检查 --> 当未填写容器名称时，出现 undefined 的显示
 
 ------------------
 
@@ -15,13 +35,7 @@ Kuboard v1.0.x 的更新说明
 * 
 
 
-**优化**
 
-* 去除dnsmasq，直接使用 KUBE_DNS 进行 upstream 域名解析
-
-
-**优化**
-* 容器镜像版本调整的页面里，去掉默认条件
 
 BUG
 
