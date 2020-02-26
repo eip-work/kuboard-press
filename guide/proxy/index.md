@@ -1,6 +1,7 @@
 ---
 vssueId: 184
 # lessAds: true
+sharingTitle: 快速调试 Kubernetes 上部署的应用程序
 description: Kubernetes教程：本文介绍了如何 Kuboard Proxy 的特点和使用方法
 meta:
   - name: keywords
@@ -32,9 +33,9 @@ meta:
 
   ![Kubernetest教程_使用KuboardProxy](./index.assets/image-20200225204455933.png)
 
-  如果您看不到途中的 ***代理*** 按钮，很可能是您的 Kuboard 版本低于 v1.0.7-beta.4；也可能是因为您没有该Service 的 `service/proxy` 对应的权限，请参考 [授权用户访问 KuboardProxy](./auth-proxy.html)
+  如果您看不到图中的 ***代理*** 按钮，很可能是您的 Kuboard 版本低于 v1.0.7-beta.4；也可能是因为您没有该Service 的 `service/proxy` 对应的权限，请参考 [授权用户访问 KuboardProxy](./auth-proxy.html)
 
-* 点击上图中的 ***代理*** 按钮，将打开如下界面：
+* 点击上图中的 ***代理*** 按钮，将打开如下代理发现界面：
 
   界面中显示了三个区域：
 

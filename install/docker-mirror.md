@@ -66,7 +66,7 @@ systemctl start kubelet # 假设您安装了 kubenetes
 docker info
 ```
 * 查看结果
-``` log {12}
+``` {12}
 ...
 
 Docker Root Dir: /var/lib/docker

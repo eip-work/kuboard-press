@@ -99,7 +99,7 @@ Kuboard 用于管理的 Kubernetes 集群上部署的各类资源，如果您想
 
 在 Kuboard 早期版本中，为了尝试监控套件的功能，在 Kuboard 所使用的 nginx 中设置了比较宽泛的动态转发，具体配置如下所示：
 
-``` nginx.conf
+``` nginx
 location ^~ /eip-monitor/ {
     location ~ "^/eip-monitor/namespace/(.*)/service/(.*)/port/(.*)/(.*)" {
         resolver 127.0.0.1 valid=5s;
