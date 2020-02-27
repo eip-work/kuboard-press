@@ -113,5 +113,5 @@ KuboardProxy代理的设置有：
   * 以上述 `example` 名称空间的 Service `web-example` 为例，如需要使用 http 协议访问该 Service 的 80 端口，实现上面使用 Kuboard Proxy 的例子中一样的访问效果，请在浏览器打开如下链接：
 
   ```
-  http://localhost:8001/api/v1/namespaces/example/services/https:web-example:80/proxy/
+  http://localhost:8001/api/v1/namespaces/example/services/http:web-example:80/proxy/
   ```

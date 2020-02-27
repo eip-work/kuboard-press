@@ -31,7 +31,7 @@
     "npm": "^6.11.3",
     "reduce-css-calc": "^2.1.6",
     "vue2-animate": "^2.1.2",
-    "vuepress": "^1.2.0",
+    "vuepress": "1.2.0",
     "vuepress-plugin-named-chunks": "^1.0.2"
   }
 }
