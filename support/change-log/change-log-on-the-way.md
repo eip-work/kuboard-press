@@ -1,23 +1,6 @@
 Kuboard v1.0.x 的更新说明
 
 
-## v1.0.7-beta.5
-
-**优化**
-
-* KuboardProxy 权限判断，登录用户必须具备 `services/proxy` 或者 `pods/proxy` 的 create 操作权限，才能访问 Kuboard Proxy；
-
-
-**BUG修正**
-
-* 创建工作负载时，layer 不能选择默认；
-* RoleBinding/ClusterRolebinding 对话框 --> 部分情况下不能点击删除按钮；
-
-
-
-
-* 工作负载编辑页 --> 容器 --> 就绪检查 --> 当未填写容器名称时，出现 undefined 的显示
-
 ------------------
 
 **新特性**

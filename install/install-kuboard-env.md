@@ -3,10 +3,10 @@ vssueId: 126
 description: Kubernetes_Dashboard_是Kubernetes的官方WebUI_本文描述了在K8S集群上安装Kuberentes_Dashboard后_如何修改Kuboard登录页末尾的ICP备案编号_以及其他的一些Kuboard的环境变量
 meta:
   - name: keywords
-    content: Kubernetes Dashboard,安装Kubernetes Dashboard,K8S Dashboard,K8S管理界面
+    content: Kubernetes Dashboard,配置Kuboard环境变量,K8S Dashboard,K8S管理界面
 ---
 
-# 安装Kubernetes Dashboard
+# 配置Kuboard环境变量
 
 <AdSenseTitle/>
 
@@ -86,6 +86,7 @@ Kuboard 用于管理的 Kubernetes 集群上部署的各类资源，如果您想
 
 * 建议您限制可以访问 Kuboard 的 IP 地址白名单；
 * 不要泄露 ServiceAccount 的 Token，如需要修改 ServiceAccount 的 Token，请参考 [为名称空间创建管理员用户](/learning/k8s-advanced/sec/kuboard.html) 中，关于在 ServiceAccount 界面上删除 Secret 的部分；
+* 建议使用 [GitLab/GitHub 单点登录](/learning/k8s-advanced/sec/authenticate/install.html)
 * 请为 Kuboard 配置 https 证书，配置方式有：
   * 在 `http://节点IP:32567/namespace/kube-system/workload/edit/Deployment/kuboard` 界面上互联网入口（Ingress）这一部分开启 https 即可配置；
   * 如果您在 Kuboard 前面另外配置了反向代理，请在您自己的反向代理中配置 https 证书；

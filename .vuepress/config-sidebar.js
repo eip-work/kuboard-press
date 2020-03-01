@@ -43,12 +43,20 @@ module.exports = {
       ]
     },
     {
-      title: '管理 Kubernetes',
+      title: '安装 Kubernetes 管理工具',
       collapsable: false,
       children: [
         'install-dashboard',
         'install-dashboard-offline',
-        'install-dashboard-upgrade',
+        {
+          title: '配置Kuboard',
+          collapsable: true,
+          children: [
+            'install-dashboard-upgrade',
+            'install-kuboard-layout',
+            'install-kuboard-env',
+          ]
+        },
         {
           title: 'kubectl',
           collapsable: true,
