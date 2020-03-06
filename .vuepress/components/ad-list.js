@@ -8,12 +8,20 @@ module.exports = [
     weight: 60
   },
   {
-    name: 'Suveng',
-    description: '趣丸网络科技 Suveng 免费提供的视频课',
-    strong: '免费学习',
-    url: 'https://www.bilibili.com/video/av88798402',
-    weight: 60,
+    name: '华为云',
+    description: '【2核4G云服务器低至331元/年，限时抢购】华为云开年回馈用户，产品低至1折',
+    strong: '限时抢购',
+    action: '立享优惠',
+    url: 'https://activity.huaweicloud.com/2020feb_promotion/invite.html?fromuser=05f073ad3c0010ea0f4bc00b7105ec20&fromacct=36cf686d-2650-4107-baa4-f0dc3c860df4&needGalaxy=true',
+    weight: 60
   },
+  // {
+  //   name: 'Suveng',
+  //   description: '趣丸网络科技 Suveng 免费提供的视频课',
+  //   strong: '免费学习',
+  //   url: 'https://www.bilibili.com/video/av88798402',
+  //   weight: 60,
+  // },
   // {
   //   name: '阳明的博客',
   //   description: 'Kubernetes，',

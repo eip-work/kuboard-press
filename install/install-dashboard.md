@@ -245,4 +245,7 @@ http://任意一个Worker节点的IP地址:32567/console/yournamespace/yourpod?c
 - [使用 GitHub/GitLab 账号登录 Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
 
 - 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
+
 - 学习 [Kubernetes免费教程](/learning/)
+
+- [授权 kuboard-viewer 查看日志](/learning/k8s-advanced/sec/rbac/logs.html)

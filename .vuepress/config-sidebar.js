@@ -433,6 +433,7 @@ module.exports = {
                 'k8s-advanced/sec/rbac/sa',
                 'k8s-advanced/sec/rbac/permissive',
                 'k8s-advanced/sec/rbac/example',
+                'k8s-advanced/sec/rbac/logs.html',
               ]
             },
           ]
