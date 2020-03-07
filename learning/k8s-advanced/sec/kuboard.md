@@ -14,9 +14,10 @@ meta:
 <AdSenseTitle/>
 
 
+## 前提
 
-首先，确保您已经 [安装了 Kuboard](/install/install-dashboard-upgrade.html) <Badge>Kuboard v1.0.6</Badge>，并且使用 [管理员用户](/install/install-dashboard.html#获取token)) 登录Kuboard
-
+* 您已经 [安装了 Kuboard](/install/install-dashboard-upgrade.html) <Badge>Kuboard v1.0.7</Badge>
+* 使用 [管理员用户](/install/install-dashboard.html#获取token)) 登录 Kuboard
 
 
 ## 为名称空间创建管理员用户
@@ -32,7 +33,11 @@ meta:
 
 * 进入 Kuboard 名称空间页面，如下图所示：
 
-  ![Kubernetes教程_ServiceAccount](./kuboard.assets/image-20200107220752697.png)
+  ![Kubernetes教程_ServiceAccount](./kuboard.assets/image-20200307233255088.png)
+
+* 点击上图中的 ***权限管理*** 按钮，进入权限管理子菜单，如下图所示：
+
+  ![Kubernetes教程_ServiceAccount](./kuboard.assets/image-20200307233423531.png)
 
 * 点击上图中的 ***ServiceAccount*** 按钮，进入 ServiceAccount 列表页面，如下图所示：
 
