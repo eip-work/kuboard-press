@@ -572,7 +572,8 @@ module.exports = {
       children: [
         'diagonize/events',
         'diagonize/logs',
-        'diagonize/port-forward'
+        'diagonize/port-forward',
+        'diagonize/skills',
       ]
     },
     {

@@ -6,7 +6,7 @@ description: 使用Kuboard打开并跟踪容器组的最新日志，以便对Kub
 
 <AdSenseTitle/>
 
-# 日志
+## 日志
 
 通过 Kuboard 可以实时跟踪容器的日志信息。
 
@@ -22,7 +22,7 @@ description: 使用Kuboard打开并跟踪容器组的最新日志，以便对Kub
 
 
 
-# 终端
+## 终端
 
 * 点击容器信息中的 ***终端*** 按钮
 
