@@ -1,0 +1,88 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: grafana-ns
+  name: monitor-grafana
+  annotations:
+    k8s.eip.work/workload: monitor-grafana
+    k8s.eip.work/displayName: Grafana
+    deployment.kubernetes.io/revision: '5'
+    k8s.eip.work/ingress: 'false'
+    k8s.eip.work/service: ClusterIP
+  labels:
+    k8s.eip.work/layer: monitor
+    k8s.eip.work/name: monitor-grafana
+spec:
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: monitor
+      k8s.eip.work/name: monitor-grafana
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: monitor
+        k8s.eip.work/name: monitor-grafana
+    spec:
+      securityContext:
+        seLinuxOptions: {}
+      imagePullSecrets: []
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'grafana/grafana:6.6.2'
+          imagePullPolicy: Always
+          name: grafana
+          volumeMounts:
+            - name: grafana-volume
+              mountPath: /var/lib/grafana
+              subPath: grafana
+          resources:
+            limits:
+            requests:
+          env:
+            - name: GF_SERVER_ROOT_URL
+              value: '/proxy/http/grafana-ns/monitor-grafana/:/3000/'
+            - name: GF_AUTH_PROXY_ENABLED
+              value: 'true'
+            - name: GF_SECURITY_ADMIN_USER
+              value: kuboard-user
+          ports:
+            - name: grafana
+              containerPort: 3000
+              protocol: TCP
+      volumes:
+        - name: grafana-volume
+          persistentVolumeClaim:
+            claimName: grafana-pvc
+      terminationGracePeriodSeconds: 30
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: grafana-ns
+  name: monitor-grafana
+  annotations:
+    k8s.eip.work/workload: monitor-grafana
+    k8s.eip.work/displayName: Grafana
+    proxy.kuboard.cn/auth-header-groups-3000: X-WEBAUTH-GROUPS
+    proxy.kuboard.cn/auth-header-user-3000: X-WEBAUTH-USER
+    proxy.kuboard.cn/disable-rebase-3000: 'true'
+  labels:
+    k8s.eip.work/layer: monitor
+    k8s.eip.work/name: monitor-grafana
+spec:
+  selector:
+    k8s.eip.work/layer: monitor
+    k8s.eip.work/name: monitor-grafana
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: b5nffa
+      nodePort: 0
+

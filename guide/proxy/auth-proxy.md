@@ -115,3 +115,9 @@ Kuboard Proxy 提供了 Auth Proxy 的功能，本文以 Grafana 为例，介绍
   如果您使用 kuboard-user 登录，则您在 Grafana 中是系统管理员的角色，可以对 Grafana 做任何配置，截图如下所示：
 
   ![image-20200308105924109](./auth-proxy.assets/image-20200308105924109.png)
+
+## 直接导入
+
+本文所创建的 Grafana 部署可以直接导入：
+* 请在此处下载 <span v-on:click="$sendGaEvent('kuboard_grafana_proxy_demo.yaml', 'kuboard_grafana_proxy_demo.yaml', 'kuboard_grafana_proxy_demo.yaml')"><a :href="$withBase('/statics/guide/proxy/kuboard_grafana_proxy_demo.yaml')" download="kuboard_grafana_proxy_demo.yaml">kuboard_grafana_proxy_demo.yaml</a></span> ；
+* 请参考 [导入 example 微服务](/guide/example/import.html) 了解如何在 Kuboard 中导入配置。
