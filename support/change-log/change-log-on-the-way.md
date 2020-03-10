@@ -5,6 +5,13 @@ v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动
 这几样做完以后，就 v1.1.0
 
 
+
+  * 删除 ReplicaSet 下所有的 Pod
+* Pod 详情
+  * 显示 Pod 的 Status
+* 工作负载编辑器
+  * 保存前对比 YAML
+
 ------------------
 
 **新特性**
