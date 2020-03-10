@@ -1,6 +1,9 @@
 Kuboard v1.0.x 的更新说明
 
 
+v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动更新、v1.0.9 做 kubectl port-forward v1.0.10 做 kubectl cp、v1.0.11 做 Job 和 CronJob。
+这几样做完以后，就 v1.1.0
+
 
 ------------------
 
