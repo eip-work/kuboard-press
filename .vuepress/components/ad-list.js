@@ -12,8 +12,8 @@ module.exports = [
     description: '【2核4G云服务器低至331元/年，限时抢购】华为云开年回馈用户，产品低至1折',
     strong: '限时抢购',
     action: '立享优惠',
-    url: 'https://activity.huaweicloud.com/2020feb_promotion/invite.html?fromuser=05f073ad3c0010ea0f4bc00b7105ec20&fromacct=36cf686d-2650-4107-baa4-f0dc3c860df4&needGalaxy=true',
-    weight: 60
+    url: 'https://activity.huaweicloud.com/2020feb_promotion/index.html?&fromuser=a3Vib2FyZA==&utm_source=a3Vib2FyZA==&utm_medium=cps&utm_campaign=201905',
+    weight: 180
   },
   // {
   //   name: 'Suveng',

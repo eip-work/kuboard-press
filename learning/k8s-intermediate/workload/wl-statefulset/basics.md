@@ -100,7 +100,7 @@ StatefulSet 中的 Pod 具备一个唯一标识，该标识由以下几部分组
 
 | 字段名                | 组合一                                       | 组合二                                   | 组合三                                |
 | --------------------- | -------------------------------------------- | ---------------------------------------- | ------------------------------------- |
-| **集群域 Cluster Domain** | cluster.local                                | cluster.local                            | cluster.local                         |
+| **集群域 Cluster Domain** | cluster.local                                | cluster.local                            | kube.local                         |
 | **Service name**          | default/nginx                                | foo/nginx                                | foo/nginx                             |
 | **StatefulSet name**      | default/web                                  | foo/web                                  | foo/web                               |
 | **StatefulSet Domain**    | nginx.default.svc.cluster.local              | nginx.foo.svc.cluster.local              | nginx.foo.svc.kube.local              |
@@ -119,7 +119,7 @@ Kubernetes 为每一个 VolumeClaimTemplate 创建一份 PersistentVolume（存�
 
 ### Pod name 标签
 
-当 StatefulSet 控制器创建一个 Pod 时，会为 Pod 添加一个标签（label） `statefulset.kubernetes.io/pod-name` 且该标签的值为 Pod 的名字。您可以利用此名字，StatefulSet 中的某一个特定的 Pod 关联一个 Service。
+当 StatefulSet 控制器创建一个 Pod 时，会为 Pod 添加一个标签（label） `statefulset.kubernetes.io/pod-name` 且该标签的值为 Pod 的名字。您可以利用此名字，为 StatefulSet 中的某一个特定的 Pod 关联一个 Service。
 
 ::: tip
 实际操作中，您无需为 StatefulSet 中的一个特定 Pod 关联 Service，因为您可以直接通过该 Pod 的 DNS Name 访问到 Pod。

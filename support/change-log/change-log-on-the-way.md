@@ -6,9 +6,10 @@ v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动
 
 
 
-  * 删除 ReplicaSet 下所有的 Pod
-* Pod 详情
-  * 显示 Pod 的 Status
+
+
+---
+
 * 工作负载编辑器
   * 保存前对比 YAML
 
@@ -27,7 +28,7 @@ v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动
 
 BUG
 
-
+* 导入 yaml，Safari 浏览器不能选择 yaml 文件
 * 显示相对时间时，kubectl 使用服务器时间计算相对时间，Kuboard 则使用客户端的机器时间计算相对时间
 * etcd 安装和备份文档
 * kubeadm 安装之后的目录结构
