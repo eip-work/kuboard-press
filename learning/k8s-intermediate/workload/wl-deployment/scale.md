@@ -15,9 +15,13 @@ meta:
 
 伸缩（Scaling） Deployment，是指改变 Deployment 中 Pod 的副本数量，以应对实际业务流量的变化。
 
+> 本文提供了两种途径对 Deployment 执行伸缩操作：
+> * 使用 kubectl 伸缩 Deployment
+> * 使用 Kuboard 伸缩 Deployment
+
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用 kubectl 伸缩 Deployment" active>
+<b-tab title="使用 kubectl 伸缩 Deployment">
 
 <h2>执行伸缩</h2>
 
@@ -83,10 +87,63 @@ meta:
   ```
 
 </b-tab>
-<b-tab title="使用 Kuboard 伸缩 Deployment">
+<b-tab title="使用 Kuboard 伸缩 Deployment" active>
 
 
-正在撰写中
+
+## 执行伸缩
+
+* 在 Deployment 详情页面，点击 ***伸缩*** 按钮，调整副本数并保存，如下图所示：
+
+  即可完成对 Deployment 的伸缩操作；
+
+  ![Kubernetes-教程-伸缩](./scale.assets/image-20200315133044513.png)
+
+* `kubectl autoscale` 指令可以执行对 Deployment 的自动伸缩，目前 Kuboard 界面还不支持此操作。
+
+  请参考 [horizontal Pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+
+
+
+## 按比例伸缩
+
+滚动更新（RollingUpdate） Deployment 过程中同一时间点运行应用程序的多个版本。如果一个 Deployment 正在执行滚动更新（RollingUpdate）的过程中（也可能暂停了滚动更新），您或者自动伸缩器（autoscaler）对该 Deployment 执行伸缩操作，此时，Deployment Controller 会按比例将新建的 Pod 分配到当前活动的 ReplicaSet（有 Pod 的 ReplicaSet） 中，以避免可能的风险。这种情况叫做按比例伸缩（Proportional Scaling）
+
+例如，假设您已经运行了一个 10 副本数的 Deployment，其 maxSurge=3, maxUnavailable=2。
+
+* 点击 Deployment 详情页面中的 ***部署策略*** 下的 ***编辑部署策略*** 按钮，如下图所示：
+
+  将 *最大超出副本数* 修改为 `3`；
+
+  将 *最大不可用副本数* 修改为 `2`；
+
+  修改后保存。
+
+  ![Kubernetes-教程](./scale.assets/image-20200315135123901.png)
+
+* 确认当前 10 个副本正在运行，如下图所示：
+
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315135701001.png)
+
+* 点击 ***调整镜像标签*** 按钮，将容器镜像更新到一个不存在的标签，例如 `sometag`，如下图所示：
+
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315135949626.png)
+
+* 此时，Deployment 将新建一个副本集，并且其期望的副本数为 `5`，原来的副本集的期望副本数被调整为 `8`，如下图所示：
+
+  由于新副本集中的 Pod 不能获取到镜像，因此滚动更新将卡在这个位置。
+
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315140245614.png)
+
+* 点击 ***伸缩*** 按钮，将期望副本数调整为 `15`，如下图所示：
+
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315140447782.png)
+
+* 此时，由于比原来期望的副本数增加了 5，新增副本数将按比例增加到新、旧两个副本集，最终结果如下图所示：
+
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315140740451.png)
+
+
 
 </b-tab>
 </b-tabs>

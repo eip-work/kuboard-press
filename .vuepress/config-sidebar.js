@@ -189,6 +189,7 @@ module.exports = {
                 'k8s-intermediate/workload/wl-deployment/pause',
                 'k8s-intermediate/workload/wl-deployment/status',
                 'k8s-intermediate/workload/wl-deployment/cleanup',
+                'k8s-intermediate/workload/wl-deployment/strategy',
                 'k8s-intermediate/workload/wl-deployment/canary',
               ]
             },

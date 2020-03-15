@@ -19,10 +19,13 @@ meta:
 当且仅当 Deployment 的 `.spec.template` 字段被修改时（例如，您修改了容器的镜像），kubernetes 将为其创建一个 Deployment revision（版本）。Deployment 的其他更新（例如：修改 `.spec.replicas` 字段）将不会创建新的 Deployment reviesion（版本）。
 :::
 
+> 本文提供了两种途径对 Deployment 执行回滚操作：
+> * 使用 kubectl 回滚 Deployment
+> * 使用 Kuboard 回滚 Deployment
 
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用 kubectl 回滚 Deployment" active>
+<b-tab title="使用 kubectl 回滚 Deployment">
 
 <h2>模拟更新错误</h2>
 
@@ -111,7 +114,7 @@ meta:
 <h2>检查 Deployment 的更新历史</h2>
 
 1. 执行命令 `kubectl rollout history deployment.v1.apps/nginx-deployment` 检查 Deployment 的历史版本，输出结果如下所示：
-   
+  
     ```
     deployments "nginx-deployment"
     REVISION    CHANGE-CAUSE
@@ -149,7 +152,7 @@ meta:
 下面的步骤可将 Deployment 从当前版本回滚到前一个版本（version 2）
 
 1. 执行命令 `kubectl rollout undo deployment.v1.apps/nginx-deployment` 将当前版本回滚到前一个版本，输出结果如下所示：
-   
+  
     ```
     deployment.apps/nginx-deployment
     ```
@@ -219,9 +222,31 @@ meta:
     ```
 
 </b-tab>
-<b-tab title="使用 Kuboard 回滚 Deployment">
+<b-tab title="使用 Kuboard 回滚 Deployment" active>
 
-正在撰写中
+
+
+## 模拟更新错误
+
+* 假设您更新 Deployment 的时候，犯了一个拼写错误，将 `1.9.1` 写成了 `1.91`，如下图所示：
+
+  ![Kubernetes-教程](./rollback.assets/image-20200315114441313.png)
+
+* 该更新将卡住，新的副本集中的 Pod 将因为抓取不到镜像而不能启动，并陷入不断抓取镜像的死循环当中，如下图所示：
+
+  ![Kubernetes-教程](./rollback.assets/image-20200315114807304.png)
+
+
+
+## 检查 Deployment 的更新历史，并回滚
+
+* 上图中，显示了该 Deployment 有三个副本集，分别对应 Deployment 的版本 `1`、`2`、`3`。点击某一个副本集上的 ***回滚*** 按钮，Kuboard 将为您对比两个版本之间的差异，如下图所示：
+
+  ![Kubernetes-教程](./rollback.assets/image-20200315115224518.png)
+
+* 点击 **确认回滚** 按钮，将回滚到选定的版本
+
+
 
 </b-tab>
 </b-tabs>

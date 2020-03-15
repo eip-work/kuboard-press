@@ -15,9 +15,13 @@ meta:
 
 本文描述了如何创建一个 Deployment，如何理解 Deployment 各个字段，以及如何查看 Deployment 的创建结果。
 
+> 本文同时讲述了两种创建 Deployment 的方式：
+> * 使用 kubectl 创建 Deployment
+> * 使用 Kuboard 创建 Deployment
+
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用 kubectl 创建 Deployment" active>
+<b-tab title="使用 kubectl 创建 Deployment">
 
 下面的 yaml 文件定义了一个 Deployment，该 Deployment 将创建一个有 3 个 nginx Pod 副本的 ReplicaSet（副本集）：
 
@@ -130,11 +134,54 @@ spec:
 
 pod-template-hash 标签是 Deployment 创建 ReplicaSet 时添加到 ReplicaSet 上的，ReplicaSet 进而将此标签添加到 Pod 上。这个标签用于区分 Deployment 中哪个 ReplicaSet 创建了哪些 Pod。该标签的值是 `.spec.template` 的 hash 值。
 
-
 </b-tab>
-<b-tab title="使用 Kuboard 创建 Deployment">
+<b-tab title="使用 Kuboard 创建 Deployment" active>
 
-正在撰写
+
+
+1. 进入 Kuboard 名称空间页面，并点击页头上的 ***创建工作负载*** 按钮；
+
+   截图如下所示：
+
+   ![Kubernetes-教程](./create.assets/image-20200315103827631.png)
+
+2. 在工作负载创建页面填写表单如下：
+
+   | 区域              | 字段名称 | 填写内容     | 字段说明                                                     |
+   | ----------------- | -------- | ------------ | ------------------------------------------------------------ |
+   | 基本信息          | 服务类型 | Deployment   |                                                              |
+   |                   | 服务分层 | 展现层       | Kuboard 特性的字段，用于表示该工作复杂显示在名称空间的哪一个分层 |
+   |                   | 服务名称 | web-nginx    |                                                              |
+   |                   | 副本数量 | 3            |                                                              |
+   | 容器组-->工作容器 | 容器名称 | nginx        |                                                              |
+   |                   | 镜像     | nginx:1.7.9  |                                                              |
+   |                   | Ports    | TCP   :   80 | 容器组暴露的端口                                             |
+
+   截图如下图所示：
+
+   ![Kubernetes-教程](./create.assets/image-20200315103300026.png)
+
+3. 点击保存后，可以看到 Deployment 的更新界面，如下图所示：
+
+   
+
+   Kuboard 在界面中显示了 ReplicaSets、Pods 的动态变化过程。
+
+   > 显示 ReplicaSets 的特性要求 Kuboard 版本不低于 v1.0.8
+
+   
+
+   ![Kubernetes-教程](./create.assets/image-20200315105410219.png)
+
+   ![Kubernetes-教程](./create.assets/image-20200315110103544.png)
+
+4. 对于每一个 Pod，Kuboard 提供了如下几个功能可以便捷的与容器内应用进行交互：
+
+   代理：替代 kubectl proxy 功能，可以直接访问容器内应用，参考 [KuboardProxy](/guide/proxy)
+
+   日志：替代 kubectl logs 功能，可以直接追踪容器内应用的日志输出；
+
+   bash/sh：替代 kubectl exec 功能，可以直接进入容器内应用的终端；
 
 </b-tab>
 </b-tabs>

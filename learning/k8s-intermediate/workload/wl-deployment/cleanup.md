@@ -19,18 +19,10 @@ meta:
 如果该字段被设为 0，Kubernetes 将清理掉该 Deployment 的所有历史版本（revision），因此，您将无法对该 Deployment 执行回滚操作 `kubectl rollout undo`。
 :::
 
-<!-- <el-tabs type="border-card">
+Kuboard 中，可以通过如下界面调整 `.spec.revisionHistoryLimit` 字段，如下所示：
 
-<el-tab-pane label="使用 kubectl 指定 revisionHistroyLimit">
-正在撰写中
+![Kubernetes Deployment revisionHistoryLimit](./cleanup.assets/image-20200315164731927.png)
 
-</el-tab-pane>
 
-<el-tab-pane label="使用 Kuboard 指定 revisionHistroyLimit">
-正在撰写中
-
-</el-tab-pane>
-
-</el-tabs> -->
 
 [返回 Deployment](./#deployment-概述)

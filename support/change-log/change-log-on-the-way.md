@@ -5,7 +5,15 @@ v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动
 这几样做完以后，就 v1.1.0
 
 
+v1.0.8.1
 
+**BUG修正**
+
+* 如果两个 Deployment 的 label 相匹配，则，ReplicaSets 显示会出现混淆的情况
+
+
+
+* 如果在代理后面使用 Kuboard
 
 
 ---

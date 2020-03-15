@@ -164,8 +164,13 @@ $ echo $?
 </b-tab>
 <b-tab title="使用 Kuboard 查看 Deployment 状态">
 
+在前面的处理中，您已经熟悉了 Kuboard 界面中如何管理 Deployment 的滚动更新过程。此外，还有少许 Deployment 的状态信息显示在运行时信息这个区块，如下图所示：
 
-正在撰写中
+> 您也可以直接查看 Deployment 的 YAML 内容。
+
+![Kubernetes-教程-查看Deployment状态](./status.assets/image-20200315163007630.png)
+
+
 
 </b-tab>
 </b-tabs>
