@@ -7,13 +7,26 @@ v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动
 
 v1.0.8.1
 
+**新特性**
+
+
+**优化**
+
+* 编辑 Annotation 的取值时可以换行；
+* 调整 watcher 的长连接时间为 5 秒，以便在用户使用了反向代理的情况下，获得更及时的事件反馈信息；
+
 **BUG修正**
 
 * 如果两个 Deployment 的 label 相匹配，则，ReplicaSets 显示会出现混淆的情况
+* 调整镜像版本时 my-registry.example.com:5000/example/web-example:v1.0.1，这种格式的，镜像标签不显示v1.0.1，而是显示5000/example/web-example
 
 
 
-* 如果在代理后面使用 Kuboard
+
+* 直接编辑 YAML 文件，并应用到 K8S
+
+
+---
 
 
 ---

@@ -69,7 +69,7 @@ module.exports = {
     '@vuepress/back-to-top': {},
     '@vuepress/last-updated': {
       transformer: (timestamp, lang) => {
-        return dateFns.format(timestamp, 'YYYY-MM-DD HH:mm:ss')
+        return dateFns.format(timestamp, 'yyyy-MM-dd HH:mm:ss')
       }
     },
     'vuepress-plugin-code-copy': {
