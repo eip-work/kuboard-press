@@ -1,6 +1,5 @@
 FROM nginx:1.17.1
 
-COPY docker/entrypoint.sh /entrypoint.sh
 RUN rm -f /etc/nginx/nginx.conf \
     && rm -f /etc/nginx/conf.d/default.conf
 COPY docker/nginx.80.conf /etc/nginx/conf.d/nginx.80.conf

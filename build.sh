@@ -6,11 +6,14 @@ tag=eipwork/kuboard-press
 npm install --registry=https://registry.npm.taobao.org
 npm run docs:build
 
-# docker build -t $tag:latest .
+yarn install
+yarn docs:build
+
+docker build -t $tag:latest .
 
 
-# if test $datetime != ""; then
-#   # docker push $tag:latest
-#   docker tag $tag:latest $tag:$datetime
-#   docker push $tag:$datetime
-# fi
+if test $datetime != ""; then
+  # docker push $tag:latest
+  docker tag $tag:latest $tag:$datetime
+  docker push $tag:$datetime
+fi
