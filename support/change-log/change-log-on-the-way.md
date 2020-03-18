@@ -7,8 +7,6 @@ v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动
 
 
 
-* 直接编辑 YAML 文件，并应用到 K8S
-
 
 ---
 
