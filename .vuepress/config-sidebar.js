@@ -525,6 +525,7 @@ module.exports = {
       children: [
         'faq/ping-service',
         'faq/request-limit',
+        'faq/image-pull-backoff'
       ]
     },
   ],
