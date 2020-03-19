@@ -26,7 +26,7 @@ lvm2
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 # 安装并启动 docker
-yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
+yum install -y docker-ce-19.03.8 docker-ce-cli-19.03.8 containerd.io
 systemctl enable docker
 systemctl start docker
 
@@ -53,10 +53,18 @@ cat /etc/fstab_bak |grep -v swap > /etc/fstab
 sed -i "s#^net.ipv4.ip_forward.*#net.ipv4.ip_forward=1#g"  /etc/sysctl.conf
 sed -i "s#^net.bridge.bridge-nf-call-ip6tables.*#net.bridge.bridge-nf-call-ip6tables=1#g"  /etc/sysctl.conf
 sed -i "s#^net.bridge.bridge-nf-call-iptables.*#net.bridge.bridge-nf-call-iptables=1#g"  /etc/sysctl.conf
+sed -i "s#^net.ipv6.conf.all.disable_ipv6.*#net.ipv6.conf.all.disable_ipv6=1#g"  /etc/sysctl.conf
+sed -i "s#^net.ipv6.conf.default.disable_ipv6.*#net.ipv6.conf.default.disable_ipv6=1#g"  /etc/sysctl.conf
+sed -i "s#^net.ipv6.conf.lo.disable_ipv6.*#net.ipv6.conf.lo.disable_ipv6=1#g"  /etc/sysctl.conf
+sed -i "s#^net.ipv6.conf.all.forwarding.*#net.ipv6.conf.all.forwarding=1#g"  /etc/sysctl.conf
 # 可能没有，追加
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 echo "net.bridge.bridge-nf-call-ip6tables = 1" >> /etc/sysctl.conf
 echo "net.bridge.bridge-nf-call-iptables = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.all.forwarding = 1"  >> /etc/sysctl.conf
 # 执行命令以应用
 sysctl -p
 

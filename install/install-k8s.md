@@ -51,9 +51,9 @@ meta:
 **安装后的软件版本为**
 
 * Kubernetes v1.17.x
-  * calico 3.10.2
+  * calico 3.13.1
   * nginx-ingress 1.5.5
-* Docker 18.09.7
+* Docker 19.03.8
 
 > 如果要安装 Kubernetes 历史版本，请参考：
 > * [安装 Kubernetes v1.16.3 单Master节点](/install/history-k8s/install-k8s-1.16.3.html)
@@ -251,7 +251,7 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 
 <b-card>
 <b-tabs content-class="mt-3">
-  <b-tab title="快速初始化" active>
+<b-tab title="快速初始化" active>
 
 **请将脚本最后的 1.17.4 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.17.x 不要替换</font>
@@ -269,8 +269,8 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.17.x/init_master.sh | sh -s 1.17.4
 ```
 
-  </b-tab>
-  <b-tab title="手动初始化">
+</b-tab>
+<b-tab title="手动初始化">
 
 手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.17.4***</font>
 
@@ -288,7 +288,7 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 <<< @/.vuepress/public/install-script/v1.17.x/init_master.sh {21}
 
-  </b-tab>
+</b-tab>
 </b-tabs>
 </b-card>
 
@@ -335,7 +335,21 @@ kubectl get nodes -o wide
 <b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
 
 * ImagePullBackoff / Pending
-  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中出现 ImagePullBackoff 或者长时间处于 Pending 的情况，请参考 [为什么我不能获取到镜像](/learning/faq/image-pull-backoff.html)
+  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中出现 ImagePullBackoff 或者长时间处于 Pending 的情况，请参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
+* ContainerCreating
+  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中某个 Pod 长期处于 ContainerCreating、PodInitializing 或 Init:0/3 的状态，可以尝试：
+    * 查看该 Pod 的状态，例如：
+      ``` sh
+      kubectl describe pod kube-flannel-ds-amd64-8l25c -n kube-system
+      ```
+      如果输出结果中，最后一行显示的是 Pulling image，请耐心等待，或者参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
+      ```
+      Normal  Pulling    44s   kubelet, k8s-worker-02  Pulling image "quay.io/coreos/flannel:v0.12.0-amd64"
+      ```
+    * 将该 Pod 删除，系统会自动重建一个新的 Pod，例如：
+      ``` sh
+      kubectl delete pod kube-flannel-ds-amd64-8l25c -n kube-system
+      ```
 
 
 </b-card>
@@ -531,6 +545,8 @@ kubectl delete -f https://kuboard.cn/install-script/v1.17.x/nginx-ingress.yaml
 ::: tip 提示
 
 许多初学者在安装 Ingress Controller 时会碰到问题，请不要灰心，可暂时跳过 ***安装 Ingress Controller*** 这个部分，等您学完 www.kuboard.cn 上 [Kubernetes 入门](/learning/k8s-basics/kubernetes-basics.html) 以及 [通过互联网访问您的应用程序](/learning/k8s-intermediate/service/ingress.html) 这两部分内容后，再来回顾 Ingress Controller 的安装。
+
+也可以参考 [Install Nginx Ingress](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)
 
 :::
 
