@@ -637,6 +637,7 @@ module.exports = {
       collapsable: false,
       children: [
         'change-log/v1.0.x',
+        'known-issue',
       ]
     }
   ],
