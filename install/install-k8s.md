@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.17.x" updateCount="76"/>
+  <InstallBanner version="v1.17.x" updateCount="78"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -190,7 +190,8 @@ default via 172.21.0.1 dev eth0
 > docker hub 镜像请根据自己网络的情况任选一个
 > * 第四行为腾讯云 docker hub 镜像
 > * 第六行为DaoCloud docker hub 镜像
-> * 第八行为阿里云 docker hub 镜像
+> * 第八行为华为云 docker hub 镜像
+> * 第十行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
 # 最后一个参数 1.17.4 用于指定 kubenetes 版本，支持所有 1.17.x 版本的安装
@@ -198,6 +199,8 @@ default via 172.21.0.1 dev eth0
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
 # export REGISTRY_MIRROR="http://f1361db2.m.daocloud.io"
+# 华为云镜像
+# export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # 阿里云 docker hub 镜像
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 curl -sSL https://kuboard.cn/install-script/v1.17.x/install_kubelet.sh | sh -s 1.17.4
