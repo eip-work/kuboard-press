@@ -32,7 +32,7 @@ Kuboard 日志界面和终端界面都使用了 websocket 与服务器端通信�
   * 您通过 VPN 接入到服务器所在的网络，然后访问 Kuboard 的节点端口 32567
   * 您的网络运营商（如长城宽带、小区宽带、电力猫等）为了节省出口带宽，对所有的 HTTP 服务都做了代理和缓存
 
-此时，您可以尝试使用 kubectl port-forward 的方式来访问 Kuboard。具体步骤如下：
+此时，您可以为 Kuboard 启用 https （请在方向代理上配置 https）；或者，您可以尝试使用 kubectl port-forward 的方式来访问 Kuboard。具体步骤如下：
 
 * 请参考 [在客户端电脑安装 kubectl](/install/install-kubectl.html)
 * 在客户端电脑上执行端口转发命令，此命令将监听您客户端机器的 8000 端口，并将请求转发到 kuboard 所在 Pod 的 80 端口
