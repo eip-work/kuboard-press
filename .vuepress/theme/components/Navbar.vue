@@ -140,6 +140,21 @@ $navbar-horizontal-padding = 1.5rem
       flex: 0 0 auto
       vertical-align top
 
+@media print
+  .reading-progress
+    display none
+  .navbar
+    display none
+    padding-left 4rem
+    .can-hide
+      display none
+    .links
+      padding-left 1.5rem
+  .sidebar
+    display none
+  .page
+    padding-left: 0
+
 @media (max-width: $MQMobile)
   .navbar
     padding-left 4rem

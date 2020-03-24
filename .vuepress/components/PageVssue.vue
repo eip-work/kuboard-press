@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vssue-wrapper">
     <LazyLoad>
       <div v-for="(item, key) in vssues" :key="key">
         <BaiduAutoPush></BaiduAutoPush>
@@ -76,8 +76,11 @@ export default {
 }
 </script>
 
-<style>
-.vssue-header-powered-by {
-  display: none;
-}
+<style lang="stylus">
+.vssue-header-powered-by
+  display none
+
+@media print
+  .vssue-wrapper
+    display none
 </style>
