@@ -26,6 +26,8 @@ meta:
 # export REGISTRY_MIRROR="https://registry.docker-cn.com"
 # 腾讯云 docker hub mirror
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
+# 华为云镜像
+# export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # DaoCloud 镜像
 # export REGISTRY_MIRROR="http://f1361db2.m.daocloud.io"
 # 阿里云 docker hub mirror
