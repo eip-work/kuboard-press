@@ -70,6 +70,20 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 ```
 
 </b-tab>
+
+<b-tab title="Arm版">
+
+基于 Arm CPU 的机器上，许多镜像都不能直接使用，但是，Arm 很可能是未来服务器端发展的一个方向，以华为鲲鹏社区为代表的 arm 服务器已经获得了许多用户的青睐。因此，Kuboard 也提供了 arm 版本的镜像。安装 arm 版 Kuboard 之前，请确保您在 arm 上的 Kubernetes 集群已经搭建好，并可以正常工作。
+
+> 于 Kuboard 而言，arm 版本与 x86_64 版本的主要区别在于所使用的基础 nginx/openresty 镜像不同，Kuboard 所提供的各项功能完全一致。
+
+``` sh
+kubectl apply -f https://kuboard.cn/install-script/kuboard-beta.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+```
+
+</b-tab>
+
 </b-tabs>
 
 查看 Kuboard 运行状态：
