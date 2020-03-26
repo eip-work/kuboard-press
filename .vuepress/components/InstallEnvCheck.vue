@@ -17,6 +17,7 @@
             <b-form-checkbox value="cpu">我的任意节点 CPU 内核数量大于等于 2，且内存大于等于 4G</b-form-checkbox><br/>
             <b-form-checkbox value="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</b-form-checkbox><br/>
             <b-form-checkbox value="ipaddress">我的任意节点都有固定的内网 IP 地址</b-form-checkbox><br/>
+            <b-form-checkbox value="single_network_card">我的任意节点都只有一个网卡，如果有特殊目的，我可以在完成 K8S 安装后再增加新的网卡</b-form-checkbox><br/>
             <b-form-checkbox value="networkcard">我的任意节点上 <a href="#检查网络">Kubelet使用的 IP 地址</a> 可互通（无需 NAT 映射即可相互访问），且没有防火墙、安全组隔离</b-form-checkbox><br/>
             <b-form-checkbox value="docker">我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</b-form-checkbox><br/>
           </b-form-checkbox-group>
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-const ENV_COUNT = 6
+const ENV_COUNT = 7
 
 export default {
   props: {

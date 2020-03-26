@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.17.x" updateCount="78"/>
+  <InstallBanner version="v1.17.x" updateCount="79"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
