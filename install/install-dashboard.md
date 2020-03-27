@@ -79,11 +79,10 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard-beta.yaml
-kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-arm.yaml
 ```
 
 </b-tab>
-
 </b-tabs>
 
 查看 Kuboard 运行状态：
@@ -102,12 +101,35 @@ kuboard-54c9c4f6cb-6lf88   1/1     Running       0          45s
 </b-tab>
 <b-tab title="卸载">
 
-卸载 Kuboard
+执行以下指令，可以卸载 Kuboard
+
+<b-tabs content-class="mt-3">
+<b-tab title="稳定版">
 
 ``` sh
 kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
 kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
 ```
+
+</b-tab>
+<b-tab title="Beta版">
+
+``` sh
+kubectl delete -f https://kuboard.cn/install-script/kuboard-beta.yaml
+kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+```
+
+</b-tab>
+
+<b-tab title="Arm版">
+
+``` sh
+kubectl delete -f https://kuboard.cn/install-script/kuboard-beta.yaml
+kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-arm.yaml
+```
+
+</b-tab>
+</b-tabs>
 
 </b-tab>
 </b-tabs>
