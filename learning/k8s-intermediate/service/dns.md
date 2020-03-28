@@ -148,7 +148,9 @@ spec:
   dnsPolicy: ClusterFirstWithHostNet
 ```
 
-### Pod 的 DNS 配置 <Badge text="Kuboard 暂不支持" type="warn"/>
+### Pod 的 DNS 配置 <Badge text="Kuboard v1.0.8.3" type="default"/>
+
+> Kuboard v1.0.8.3 开始，支持 Pod 的 dnsConfig 字段。配置界面在 `工作负载编辑器 --> 容器组的更多设定`
 
 在 Kubernetes 中，您可以直接配置 Pod 的 DNS 设置。
 
