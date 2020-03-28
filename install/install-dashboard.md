@@ -135,6 +135,58 @@ kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-
 </b-tabs>
 </b-card>
 
+## 检查安装结果
+
+执行命令，查看 Kuboard 的安装结果
+```sh
+watch kubectl get pod -n kube-system -o wide
+```
+输出结果如下所示：
+> * kuboard-8b8574658-q4lvf 的状态为 `Running`，表明 Kuboard 启动正常
+> * metrics-server-bd9789dfc-dbwvg  的状态为 `Running`，表明 metrics-server 启动正常。（ kuboard 以及 kubectl 依赖该组件以显示 top nodes、top pods 信息。
+``` {13,14}
+NAME                                       READY   STATUS    RESTARTS   AGE     IP               NODE    NOMINATED NODE   READINESS GATES
+calico-kube-controllers-5b8b769fcd-6j2zc   1/1     Running   0          5m41s   10.100.73.66     k8s01   <none>           <none>
+calico-node-56ptj                          1/1     Running   0          3m18s   192.168.0.134    k8s02   <none>           <none>
+calico-node-vpkv5                          1/1     Running   0          5m41s   192.168.0.157    k8s01   <none>           <none>
+coredns-546565776c-ll8f8                   1/1     Running   0          5m41s   10.100.73.65     k8s01   <none>           <none>
+coredns-546565776c-wg2gn                   1/1     Running   0          5m41s   10.100.73.67     k8s01   <none>           <none>
+etcd-k8s01                                 1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
+kube-apiserver-k8s01                       1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
+kube-controller-manager-k8s01              1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
+kube-proxy-hk92t                           1/1     Running   0          3m18s   192.168.0.134    k8s02   <none>           <none>
+kube-proxy-lkk5g                           1/1     Running   0          5m41s   192.168.0.157    k8s01   <none>           <none>
+kube-scheduler-k8s01                       1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
+kuboard-8b8574658-q4lvf                    1/1     Running   0          2m19s   10.100.236.130   k8s02   <none>           <none>
+metrics-server-bd9789dfc-dbwvg             1/1     Running   0          2m16s   10.100.236.131   k8s02   <none>           <none>
+```
+
+<b-button v-b-toggle.collapse-init-pending variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-pending', 'error-init-master', '查看初始化时的镜像下载错误的解决办法')">如果出错点这里</b-button>
+<b-collapse id="collapse-init-pending" class="mt-2">
+<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
+
+* ImagePullBackoff / Pending
+  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中出现 ImagePullBackoff 或者长时间处于 Pending 的情况，请参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
+* ContainerCreating
+  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中某个 Pod 长期处于 ContainerCreating、PodInitializing 或 Init:0/3 的状态，可以尝试：
+    * 查看该 Pod 的状态，例如：
+      ``` sh
+      kubectl describe pod kuboard-8b8574658-q4lvf -n kube-system
+      ```
+      如果输出结果中，最后一行显示的是 Pulling image，请耐心等待，或者参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
+      ```
+      Normal  Pulling    44s   kubelet, k8s02  Pulling image "eipwork/kuboard:latest"
+      ```
+    * 将该 Pod 删除，系统会自动重建一个新的 Pod，例如：
+      ``` sh
+      kubectl delete pod kuboard-8b8574658-q4lvf -n kube-system
+      ```
+* 其他问题
+  * 请在本文页尾，加入 Kuboard 社群，以获得帮助；
+
+</b-card>
+</b-collapse>
+
 ## 获取Token
 
 您可以获得管理员用户、只读用户的Token。
