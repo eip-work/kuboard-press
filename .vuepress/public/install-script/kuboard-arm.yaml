@@ -1,0 +1,112 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuboard
+  namespace: kube-system
+  annotations:
+    k8s.eip.work/displayName: kuboard
+    k8s.eip.work/ingress: "true"
+    k8s.eip.work/service: NodePort
+    k8s.eip.work/workload: kuboard
+  labels:
+    k8s.eip.work/layer: monitor
+    k8s.eip.work/name: kuboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.eip.work/layer: monitor
+      k8s.eip.work/name: kuboard
+  template:
+    metadata:
+      labels:
+        k8s.eip.work/layer: monitor
+        k8s.eip.work/name: kuboard
+    spec:
+      containers:
+      - name: kuboard
+        image: eipwork/kuboard:arm
+        imagePullPolicy: Always
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuboard
+  namespace: kube-system
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    nodePort: 32567
+  selector:
+    k8s.eip.work/layer: monitor
+    k8s.eip.work/name: kuboard
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kuboard-user
+  namespace: kube-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kuboard-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: kuboard-user
+  namespace: kube-system
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kuboard-viewer
+  namespace: kube-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kuboard-viewer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+- kind: ServiceAccount
+  name: kuboard-viewer
+  namespace: kube-system
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kuboard
+  namespace: kube-system
+  annotations:
+    k8s.eip.work/displayName: kuboard
+    k8s.eip.work/workload: kuboard
+    nginx.org/websocket-services: "kuboard"
+    nginx.com/sticky-cookie-services: "serviceName=kuboard srv_id expires=1h path=/"
+spec:
+  rules:
+  - host: kuboard.yourdomain.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kuboard
+          servicePort: http

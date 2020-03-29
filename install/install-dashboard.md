@@ -35,6 +35,7 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
+| v1.18           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.17           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.16           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.15           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
@@ -78,7 +79,7 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 > 于 Kuboard 而言，arm 版本与 x86_64 版本的主要区别在于所使用的基础 nginx/openresty 镜像不同，Kuboard 所提供的各项功能完全一致。
 
 ``` sh
-kubectl apply -f https://kuboard.cn/install-script/kuboard-beta.yaml
+kubectl apply -f https://kuboard.cn/install-script/kuboard-arm.yaml
 kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-arm.yaml
 ```
 
@@ -96,7 +97,34 @@ kubectl get pods -l k8s.eip.work/name=kuboard -n kube-system
 NAME                       READY   STATUS        RESTARTS   AGE
 kuboard-54c9c4f6cb-6lf88   1/1     Running       0          45s
 ```
-> 如果您一直不能看到 kuboard 处于 Running 状态，可参考 [诊断应用程序](/learning/k8s-advanced/ts/application.html)，查找原因。如不能解决，请到本文页尾加群，联系群主解决。
+
+<b-button v-b-toggle.collapse-init-pending variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-dashboard-pending', 'error-init-master', '查看初始化时的镜像下载错误的解决办法')">如果出错点这里</b-button>
+<b-collapse id="collapse-init-pending" class="mt-2">
+<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
+
+* ImagePullBackoff / Pending
+  
+  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中出现 ImagePullBackoff 或者长时间处于 Pending 的情况，请参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
+* ContainerCreating
+  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中某个 Pod 长期处于 ContainerCreating、PodInitializing 或 Init:0/3 的状态，可以尝试：
+    * 查看该 Pod 的状态，例如：
+      ``` sh
+      kubectl describe pod kuboard-8b8574658-q4lvf -n kube-system
+      ```
+      如果输出结果中，最后一行显示的是 Pulling image，请耐心等待，或者参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
+      ```
+      Normal  Pulling    44s   kubelet, k8s02  Pulling image "eipwork/kuboard:latest"
+      ```
+    * 将该 Pod 删除，系统会自动重建一个新的 Pod，例如：
+      ``` sh
+      kubectl delete pod kuboard-8b8574658-q4lvf -n kube-system
+      ```
+* 其他问题
+  
+  * 请在本文页尾，加入 Kuboard 社群，以获得帮助；
+
+</b-card>
+</b-collapse>
 
 </b-tab>
 <b-tab title="卸载">
@@ -124,7 +152,7 @@ kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.
 <b-tab title="Arm版">
 
 ``` sh
-kubectl delete -f https://kuboard.cn/install-script/kuboard-beta.yaml
+kubectl delete -f https://kuboard.cn/install-script/kuboard-arm.yaml
 kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-arm.yaml
 ```
 
@@ -135,57 +163,6 @@ kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-
 </b-tabs>
 </b-card>
 
-## 检查安装结果
-
-执行命令，查看 Kuboard 的安装结果
-```sh
-watch kubectl get pod -n kube-system -o wide
-```
-输出结果如下所示：
-> * kuboard-8b8574658-q4lvf 的状态为 `Running`，表明 Kuboard 启动正常
-> * metrics-server-bd9789dfc-dbwvg  的状态为 `Running`，表明 metrics-server 启动正常。（ kuboard 以及 kubectl 依赖该组件以显示 top nodes、top pods 信息。
-``` {13,14}
-NAME                                       READY   STATUS    RESTARTS   AGE     IP               NODE    NOMINATED NODE   READINESS GATES
-calico-kube-controllers-5b8b769fcd-6j2zc   1/1     Running   0          5m41s   10.100.73.66     k8s01   <none>           <none>
-calico-node-56ptj                          1/1     Running   0          3m18s   192.168.0.134    k8s02   <none>           <none>
-calico-node-vpkv5                          1/1     Running   0          5m41s   192.168.0.157    k8s01   <none>           <none>
-coredns-546565776c-ll8f8                   1/1     Running   0          5m41s   10.100.73.65     k8s01   <none>           <none>
-coredns-546565776c-wg2gn                   1/1     Running   0          5m41s   10.100.73.67     k8s01   <none>           <none>
-etcd-k8s01                                 1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
-kube-apiserver-k8s01                       1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
-kube-controller-manager-k8s01              1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
-kube-proxy-hk92t                           1/1     Running   0          3m18s   192.168.0.134    k8s02   <none>           <none>
-kube-proxy-lkk5g                           1/1     Running   0          5m41s   192.168.0.157    k8s01   <none>           <none>
-kube-scheduler-k8s01                       1/1     Running   0          5m50s   192.168.0.157    k8s01   <none>           <none>
-kuboard-8b8574658-q4lvf                    1/1     Running   0          2m19s   10.100.236.130   k8s02   <none>           <none>
-metrics-server-bd9789dfc-dbwvg             1/1     Running   0          2m16s   10.100.236.131   k8s02   <none>           <none>
-```
-
-<b-button v-b-toggle.collapse-init-pending variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-pending', 'error-init-master', '查看初始化时的镜像下载错误的解决办法')">如果出错点这里</b-button>
-<b-collapse id="collapse-init-pending" class="mt-2">
-<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
-
-* ImagePullBackoff / Pending
-  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中出现 ImagePullBackoff 或者长时间处于 Pending 的情况，请参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
-* ContainerCreating
-  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中某个 Pod 长期处于 ContainerCreating、PodInitializing 或 Init:0/3 的状态，可以尝试：
-    * 查看该 Pod 的状态，例如：
-      ``` sh
-      kubectl describe pod kuboard-8b8574658-q4lvf -n kube-system
-      ```
-      如果输出结果中，最后一行显示的是 Pulling image，请耐心等待，或者参考 [查看镜像抓取进度](/learning/faq/image-pull-backoff.html)
-      ```
-      Normal  Pulling    44s   kubelet, k8s02  Pulling image "eipwork/kuboard:latest"
-      ```
-    * 将该 Pod 删除，系统会自动重建一个新的 Pod，例如：
-      ``` sh
-      kubectl delete pod kuboard-8b8574658-q4lvf -n kube-system
-      ```
-* 其他问题
-  * 请在本文页尾，加入 Kuboard 社群，以获得帮助；
-
-</b-card>
-</b-collapse>
 
 ## 获取Token
 
@@ -294,6 +271,54 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
   </b-tab>
 </b-tabs>
 </b-card>
+
+<b-button v-b-toggle.collapse-access-error variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-dashboard-pending', 'error-get-token', '获取Token出错')">如果出错点这里</b-button>
+<b-collapse id="collapse-access-error" class="mt-2">
+<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
+
+* 可以访问 Kuboard 登录界面，但是登录失败，表现有如下几种：
+  * 提示认证失败，通常是因为 Token 拷贝不完整
+
+      如下图所示，您很可能忽略了图中红色标注的部分：
+
+      ![image-20200329174546499](./install-dashboard.assets/image-20200329174546499.png)
+
+  * 输入 Token 后长时间无响应，通常是因为从 Kuboard 的容器中访问到您的 APIServer 接口，可能有如下两种情况：
+    * 您 Kubernetes 集群的 dnsDomain 不是默认的 `cluster.local`，请参考 [配置Kuboard环境变量 - KUBERNETES_CLUSTER_DOMAIN](/install/install-kuboard-env.html#kubernetes-cluster-domain)
+    * Kuboard 容器中不能访问到您的 API Server，定位问题的方式如下：
+      * 进入 Kuboard 的终端
+        ```sh
+        kubectl exec -it $(kubectl get pods -l k8s.eip.work/name=kuboard -n kube-system | grep kuboard | awk '{print $1}') /bin/bash -n kube-system
+        ```
+      * 在 Kuboard 终端中执行
+        ``` sh
+        curl -k https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT
+        ```
+        如果一切正常，您将获得如下输出结果：
+        ``` json
+        {
+          "kind": "Status",
+          "apiVersion": "v1",
+          "metadata": {
+          },
+          "status": "Failure",
+          "message": "forbidden: User \"system:anonymous\" cannot get path \"/\"",
+          "reason": "Forbidden",
+          "details": {
+          },
+          "code": 403
+        }
+        ```
+        如果是其他情况，请检查一下您 Kubernetes 集群的网络插件是否正常工作
+
+* 不能访问 Kuboard 界面，可能的原因有：
+  * 您的防火墙/安全组配置规则不允许访问节点的 `32567` 端口
+  * 如果您为 Kuboard 配置了反向代理，请确保 Kuboard 使用了根路径，例如：
+    * 正确设置： `https://your.kuboard.dns/`
+    * 错误设置： `https://your.kuboard.dns/subcontext/`
+
+</b-card>
+</b-collapse>
 
 ## 免登陆访问
 
