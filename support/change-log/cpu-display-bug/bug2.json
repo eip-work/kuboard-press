@@ -1,0 +1,5561 @@
+{
+  "kind": "PodList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/pods",
+    "resourceVersion": "99718738"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "kube-collect-baixingbroker-baixing-list-944c5bc7-xshmd",
+        "generateName": "kube-collect-baixingbroker-baixing-list-944c5bc7-",
+        "namespace": "kube-collect",
+        "selfLink": "/api/v1/namespaces/kube-collect/pods/kube-collect-baixingbroker-baixing-list-944c5bc7-xshmd",
+        "uid": "c9a7bae4-6da9-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "99696535",
+        "creationTimestamp": "2020-03-24T08:30:58Z",
+        "labels": {
+          "app": "baixingbroker",
+          "pod-template-hash": "944c5bc7",
+          "project": "collect-baixingbroker"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-collect-baixingbroker-baixing-list-944c5bc7",
+            "uid": "c99991a8-6da9-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-zsfvz",
+            "secret": {
+              "secretName": "default-token-zsfvz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "collect-baixingbroker",
+            "image": "harbor.tuituifang.com/collect-project/baixingbroker:eadfb29",
+            "env": [
+              {
+                "name": "projectname",
+                "value": "baixingbroker"
+              },
+              {
+                "name": "crawlername",
+                "value": "baixing_list"
+              },
+              {
+                "name": "threadnum",
+                "value": "4"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-zsfvz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "nodeSelector": {
+          "environment": "master"
+        },
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "registry"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-24T08:19:22Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-24T08:19:28Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-24T08:19:28Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-24T08:30:58Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.64",
+        "startTime": "2020-03-24T08:19:22Z",
+        "containerStatuses": [
+          {
+            "name": "collect-baixingbroker",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-24T08:19:27Z"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": true,
+            "restartCount": 0,
+            "image": "harbor.tuituifang.com/collect-project/baixingbroker:eadfb29",
+            "imageID": "docker-pullable://harbor.tuituifang.com/collect-project/baixingbroker@sha256:9bd668df2fec1ea9b177dd0ff685255dd3afe991946b5385fe44db76885cda65",
+            "containerID": "docker://a98f8ecc69d144ab2d4cd2f1ee08e631144378c434810e38fff0aa405294d91d"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "node-exporter-5m7jr",
+        "generateName": "node-exporter-",
+        "namespace": "kube-monitor",
+        "selfLink": "/api/v1/namespaces/kube-monitor/pods/node-exporter-5m7jr",
+        "uid": "3a7d73e0-d2e0-11e9-af09-a2e9a0e649c5",
+        "resourceVersion": "97391470",
+        "creationTimestamp": "2019-09-09T09:00:10Z",
+        "labels": {
+          "controller-revision-hash": "6cfc5f9848",
+          "name": "node-exporter",
+          "pod-template-generation": "1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "node-exporter",
+            "uid": "3a6a36ae-d2e0-11e9-a12d-4e41441f072e",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "proc",
+            "hostPath": {
+              "path": "/proc",
+              "type": ""
+            }
+          },
+          {
+            "name": "sys",
+            "hostPath": {
+              "path": "/sys",
+              "type": ""
+            }
+          },
+          {
+            "name": "root",
+            "hostPath": {
+              "path": "/",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-8mttl",
+            "secret": {
+              "secretName": "default-token-8mttl",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "node-exporter",
+            "image": "prom/node-exporter:v0.18.1",
+            "args": [
+              "--path.procfs=/host/proc",
+              "--path.sysfs=/host/sys",
+              "--path.rootfs=/host/root",
+              "--collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+)($|/)",
+              "--collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$"
+            ],
+            "ports": [
+              {
+                "hostPort": 9100,
+                "containerPort": 9100,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "150m"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "proc",
+                "mountPath": "/host/proc"
+              },
+              {
+                "name": "sys",
+                "mountPath": "/host/sys"
+              },
+              {
+                "name": "root",
+                "readOnly": true,
+                "mountPath": "/host/root",
+                "mountPropagation": "HostToContainer"
+              },
+              {
+                "name": "default-token-8mttl",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "privileged": true,
+              "procMount": "Default"
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "hostNetwork": true,
+        "hostPID": true,
+        "hostIPC": true,
+        "securityContext": {
+          
+        },
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchFields": [
+                    {
+                      "key": "metadata.name",
+                      "operator": "In",
+                      "values": [
+                        "k8s-node-160"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node-role.kubernetes.io/master",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute"
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute"
+          },
+          {
+            "key": "node.kubernetes.io/disk-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/pid-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/unschedulable",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/network-unavailable",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-09T08:59:12Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:54:19Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:54:19Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-09T09:00:10Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "192.168.0.160",
+        "startTime": "2019-09-09T08:59:12Z",
+        "containerStatuses": [
+          {
+            "name": "node-exporter",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:53:56Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 143,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:03:47Z",
+                "finishedAt": "2020-03-18T02:01:54Z",
+                "containerID": "docker://21fca7bcf90ee76333b16a3b937aceae3d0392526002927d76cc1c2610482eaf"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "prom/node-exporter:v0.18.1",
+            "imageID": "docker-pullable://prom/node-exporter@sha256:a2f29256e53cc3e0b64d7a472512600b2e9410347d53cdc85b49f659c17e02ee",
+            "containerID": "docker://ec705d285d029de728d1225f88443bc06b647699da4ac16c8c00e6ed40663247"
+          }
+        ],
+        "qosClass": "Burstable"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-flannel-ds-amd64-csc8b",
+        "generateName": "kube-flannel-ds-amd64-",
+        "namespace": "kube-system",
+        "selfLink": "/api/v1/namespaces/kube-system/pods/kube-flannel-ds-amd64-csc8b",
+        "uid": "bdf3bff0-a579-11e9-9d39-a2e9a0e649c5",
+        "resourceVersion": "97391819",
+        "creationTimestamp": "2019-07-13T14:23:10Z",
+        "labels": {
+          "app": "flannel",
+          "controller-revision-hash": "5b945dff5",
+          "pod-template-generation": "1",
+          "tier": "node"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "kube-flannel-ds-amd64",
+            "uid": "9723653a-6ef9-11e9-b85f-b8ca3a618464",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "run",
+            "hostPath": {
+              "path": "/run/flannel",
+              "type": ""
+            }
+          },
+          {
+            "name": "cni",
+            "hostPath": {
+              "path": "/etc/cni/net.d",
+              "type": ""
+            }
+          },
+          {
+            "name": "flannel-cfg",
+            "configMap": {
+              "name": "kube-flannel-cfg",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "flannel-token-f9s6c",
+            "secret": {
+              "secretName": "flannel-token-f9s6c",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "initContainers": [
+          {
+            "name": "install-cni",
+            "image": "quay.io/coreos/flannel:v0.11.0-amd64",
+            "command": [
+              "cp"
+            ],
+            "args": [
+              "-f",
+              "/etc/kube-flannel/cni-conf.json",
+              "/etc/cni/net.d/10-flannel.conflist"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "cni",
+                "mountPath": "/etc/cni/net.d"
+              },
+              {
+                "name": "flannel-cfg",
+                "mountPath": "/etc/kube-flannel/"
+              },
+              {
+                "name": "flannel-token-f9s6c",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "containers": [
+          {
+            "name": "kube-flannel",
+            "image": "quay.io/coreos/flannel:v0.11.0-amd64",
+            "command": [
+              "/opt/bin/flanneld"
+            ],
+            "args": [
+              "--ip-masq",
+              "--kube-subnet-mgr",
+              "--iface=eth1"
+            ],
+            "env": [
+              {
+                "name": "POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "metadata.name"
+                  }
+                }
+              },
+              {
+                "name": "POD_NAMESPACE",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "metadata.namespace"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "100m",
+                "memory": "50Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "50Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "run",
+                "mountPath": "/run/flannel"
+              },
+              {
+                "name": "flannel-cfg",
+                "mountPath": "/etc/kube-flannel/"
+              },
+              {
+                "name": "flannel-token-f9s6c",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "add": [
+                  "NET_ADMIN"
+                ]
+              },
+              "privileged": false,
+              "procMount": "Default"
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "nodeSelector": {
+          "beta.kubernetes.io/arch": "amd64"
+        },
+        "serviceAccountName": "flannel",
+        "serviceAccount": "flannel",
+        "nodeName": "k8s-node-160",
+        "hostNetwork": true,
+        "securityContext": {
+          
+        },
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchFields": [
+                    {
+                      "key": "metadata.name",
+                      "operator": "In",
+                      "values": [
+                        "k8s-node-160"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute"
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute"
+          },
+          {
+            "key": "node.kubernetes.io/disk-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/pid-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/unschedulable",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/network-unavailable",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-07-13T14:26:01Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:12Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:12Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-07-13T14:23:10Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "192.168.0.160",
+        "startTime": "2019-07-13T14:23:06Z",
+        "initContainerStatuses": [
+          {
+            "name": "install-cni",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2020-03-18T01:54:36Z",
+                "finishedAt": "2020-03-18T01:54:36Z",
+                "containerID": "docker://2c29a576fe83e5ca9ff14c2ea0ddde6f73c7d363f17a67b42c2d900f39793f2e"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": true,
+            "restartCount": 4,
+            "image": "quay.io/coreos/flannel:v0.11.0-amd64",
+            "imageID": "docker-pullable://quay.io/coreos/flannel@sha256:7806805c93b20a168d0bbbd25c6a213f00ac58a511c47e8fa6409543528a204e",
+            "containerID": "docker://2c29a576fe83e5ca9ff14c2ea0ddde6f73c7d363f17a67b42c2d900f39793f2e"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "kube-flannel",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:54:53Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:18Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://a61b02c46edba0874c77944ef4921be6b42957a21196942b50d56ab531595a57"
+              }
+            },
+            "ready": true,
+            "restartCount": 4,
+            "image": "quay.io/coreos/flannel:v0.11.0-amd64",
+            "imageID": "docker-pullable://quay.io/coreos/flannel@sha256:7806805c93b20a168d0bbbd25c6a213f00ac58a511c47e8fa6409543528a204e",
+            "containerID": "docker://fc876c563eebe6cbd76f3633df7910d198df191d8653af612564fa7854ed2cd6"
+          }
+        ],
+        "qosClass": "Guaranteed"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-proxy-njvcc",
+        "generateName": "kube-proxy-",
+        "namespace": "kube-system",
+        "selfLink": "/api/v1/namespaces/kube-system/pods/kube-proxy-njvcc",
+        "uid": "bdfd35a6-a579-11e9-9d39-a2e9a0e649c5",
+        "resourceVersion": "97391662",
+        "creationTimestamp": "2019-07-13T14:23:10Z",
+        "labels": {
+          "controller-revision-hash": "779dff74dc",
+          "k8s-app": "kube-proxy",
+          "pod-template-generation": "1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "kube-proxy",
+            "uid": "cecc26bf-6eeb-11e9-983b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "kube-proxy",
+            "configMap": {
+              "name": "kube-proxy",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "xtables-lock",
+            "hostPath": {
+              "path": "/run/xtables.lock",
+              "type": "FileOrCreate"
+            }
+          },
+          {
+            "name": "lib-modules",
+            "hostPath": {
+              "path": "/lib/modules",
+              "type": ""
+            }
+          },
+          {
+            "name": "kube-proxy-token-qndls",
+            "secret": {
+              "secretName": "kube-proxy-token-qndls",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "kube-proxy",
+            "image": "registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.14.0",
+            "command": [
+              "/usr/local/bin/kube-proxy",
+              "--config=/var/lib/kube-proxy/config.conf",
+              "--hostname-override=$(NODE_NAME)"
+            ],
+            "env": [
+              {
+                "name": "NODE_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "spec.nodeName"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "kube-proxy",
+                "mountPath": "/var/lib/kube-proxy"
+              },
+              {
+                "name": "xtables-lock",
+                "mountPath": "/run/xtables.lock"
+              },
+              {
+                "name": "lib-modules",
+                "readOnly": true,
+                "mountPath": "/lib/modules"
+              },
+              {
+                "name": "kube-proxy-token-qndls",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "privileged": true,
+              "procMount": "Default"
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "kube-proxy",
+        "serviceAccount": "kube-proxy",
+        "nodeName": "k8s-node-160",
+        "hostNetwork": true,
+        "securityContext": {
+          
+        },
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchFields": [
+                    {
+                      "key": "metadata.name",
+                      "operator": "In",
+                      "values": [
+                        "k8s-node-160"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "CriticalAddonsOnly",
+            "operator": "Exists"
+          },
+          {
+            "operator": "Exists"
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute"
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute"
+          },
+          {
+            "key": "node.kubernetes.io/disk-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/pid-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/unschedulable",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/network-unavailable",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priorityClassName": "system-node-critical",
+        "priority": 2000001000,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-07-13T14:23:06Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:54:50Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:54:50Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-07-13T14:23:10Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "192.168.0.160",
+        "startTime": "2019-07-13T14:23:06Z",
+        "containerStatuses": [
+          {
+            "name": "kube-proxy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:53:52Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 2,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:03:47Z",
+                "finishedAt": "2020-03-18T02:01:54Z",
+                "containerID": "docker://4c0ebcfcbcec599e857bc7333581622c597d77c51f9c0093a88f101b949bf8f4"
+              }
+            },
+            "ready": true,
+            "restartCount": 4,
+            "image": "registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.14.0",
+            "imageID": "docker-pullable://registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy@sha256:a704064100b363856afa4cee160a51948b9ac49bbc34ba97caeb7928055e9de1",
+            "containerID": "docker://6e64ee57c3840879bdf220b689c6bd4b1afc2d1cc51603fbcd273066a2e82bb8"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-commrent-anjuke-rentnum-6969845467-fm7lg",
+        "generateName": "kube-scrapy-commrent-anjuke-rentnum-6969845467-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-commrent-anjuke-rentnum-6969845467-fm7lg",
+        "uid": "828422c4-3770-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392084",
+        "creationTimestamp": "2020-01-15T08:24:55Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6969845467",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-commrent-anjuke-rentnum-6969845467",
+            "uid": "80ad1bab-3770-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-commrent:26a1526",
+            "env": [
+              {
+                "name": "project",
+                "value": "commrent"
+              },
+              {
+                "name": "name",
+                "value": "anjuke_RentNum"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-01-15T08:17:02Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-01-15T08:24:55Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.36",
+        "startTime": "2020-01-15T08:17:02Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:27Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-01-15T08:17:07Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://58e254cab6970f5f0c895ea11ac610e7fa9b7965ac0ec4570a2f8bb1a4fe84d1"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-commrent:26a1526",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-commrent@sha256:9132a04aceb72f62993f2b979b4ba1867b205120939412b7b0455f1f6503a706",
+            "containerID": "docker://c4ff2446b3022e0f12e3609d15d48f840497be0f841b534473fe548c997b293a"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-commrent-wuba-rentnum-6f7b59f76-mz9zl",
+        "generateName": "kube-scrapy-commrent-wuba-rentnum-6f7b59f76-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-commrent-wuba-rentnum-6f7b59f76-mz9zl",
+        "uid": "c68aa6de-37b7-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392127",
+        "creationTimestamp": "2020-01-15T16:55:03Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6f7b59f76",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-commrent-wuba-rentnum-6f7b59f76",
+            "uid": "80c16f03-3770-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-commrent:26a1526",
+            "env": [
+              {
+                "name": "project",
+                "value": "commrent"
+              },
+              {
+                "name": "name",
+                "value": "wuba_RentNum"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-01-15T16:47:11Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:38Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:38Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-01-15T16:55:03Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.45",
+        "startTime": "2020-01-15T16:47:11Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:31Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-01-15T16:47:14Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://71395275051f665d7f86e59ba31c46460c9a1c8bd08f4615f429ac410da6b4ca"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-commrent:26a1526",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-commrent@sha256:9132a04aceb72f62993f2b979b4ba1867b205120939412b7b0455f1f6503a706",
+            "containerID": "docker://61e95695b0c6c39b79ec0434d09184441ef4a5e1833ef5e980db31065780191f"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-fang-fang-59c596d84-x8gmn",
+        "generateName": "kube-scrapy-fang-fang-59c596d84-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-fang-fang-59c596d84-x8gmn",
+        "uid": "8bc6cdd2-b1ec-11e9-8e5a-a2e9a0e649c5",
+        "resourceVersion": "97392111",
+        "creationTimestamp": "2019-07-29T10:35:12Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "59c596d84",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-fang-fang-59c596d84",
+            "uid": "8718277b-b1ec-11e9-8e5a-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "192.168.0.72:9000/caiji/scrapy-fang:1079e76",
+            "env": [
+              {
+                "name": "project",
+                "value": "fang"
+              },
+              {
+                "name": "name",
+                "value": "fang"
+              },
+              {
+                "name": "thread",
+                "value": "10"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-07-29T10:34:37Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-07-29T10:35:12Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.47",
+        "startTime": "2019-07-29T10:34:37Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:32Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:12Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://c13c73ef9e7ce8880aa0bad5bc955d2fd8c58f652b7bc481333891f44dabba78"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "192.168.0.72:9000/caiji/scrapy-fang:1079e76",
+            "imageID": "docker-pullable://192.168.0.72:9000/caiji/scrapy-fang@sha256:8ba10d2c6ff5538992409fd3345a7da3b6801d9d66c3943d4653566ba16d23a5",
+            "containerID": "docker://8e7551772509a2ee1bdfcef14ee494ee52196495307c74508c504ba48ee3e81a"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-fang-fang-page-79965cdd7-glqrf",
+        "generateName": "kube-scrapy-fang-fang-page-79965cdd7-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-fang-fang-page-79965cdd7-glqrf",
+        "uid": "983192d6-de02-11e9-af09-a2e9a0e649c5",
+        "resourceVersion": "97392005",
+        "creationTimestamp": "2019-09-23T13:03:53Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "79965cdd7",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-fang-fang-page-79965cdd7",
+            "uid": "45e3456d-b7f1-11e9-8e5a-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-fang:a2ce558",
+            "env": [
+              {
+                "name": "project",
+                "value": "fang"
+              },
+              {
+                "name": "name",
+                "value": "fang_page"
+              },
+              {
+                "name": "thread",
+                "value": "6"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-23T13:02:47Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-23T13:03:53Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.28",
+        "startTime": "2019-09-23T13:02:47Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:20Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:37Z",
+                "finishedAt": "2020-03-18T02:02:04Z",
+                "containerID": "docker://7b1262ca1d198b588494046a430ce1b7c956265352521d3957d36c87963160bb"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-fang:a2ce558",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-fang@sha256:bc516774a7f6b655490499cffc4e1f8b3983a5b28d147366af27afb4d9d10ae5",
+            "containerID": "docker://69f41c1e95c6b6b80129b878b39642acd093024a9a8443c0e8670361d72f3ffa"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-fang-fang-saleinfo-app-6557df8b87-9l48t",
+        "generateName": "kube-scrapy-fang-fang-saleinfo-app-6557df8b87-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-fang-fang-saleinfo-app-6557df8b87-9l48t",
+        "uid": "79e26e2b-c31e-11e9-acb7-b8ca3a618464",
+        "resourceVersion": "97392028",
+        "creationTimestamp": "2019-08-20T07:45:27Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6557df8b87",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-fang-fang-saleinfo-app-6557df8b87",
+            "uid": "724669ef-c31e-11e9-acb7-b8ca3a618464",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-fang:a00e07e",
+            "env": [
+              {
+                "name": "project",
+                "value": "fang"
+              },
+              {
+                "name": "name",
+                "value": "fang_SaleInfo_app"
+              },
+              {
+                "name": "thread",
+                "value": "6"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-08-20T07:44:40Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-08-20T07:45:27Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.24",
+        "startTime": "2019-08-20T07:44:40Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:14Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:07Z",
+                "finishedAt": "2020-03-18T02:02:03Z",
+                "containerID": "docker://c1553733dcef614789ac87227c41656bbca4e8f6ee5aaecfde876dbb7ef1dcae"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-fang:a00e07e",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-fang@sha256:02d8fcb678de4ae6eed9bb4e5b8c6397e2e18eda397c2f014640288143802839",
+            "containerID": "docker://f9f11834aea6e93fdd547b5f25a9788c28ee2b369899aea51944e5fdc659d0dc"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-fangranking-fang-rankinglist-bak-6cdd8fcd6c-fcrc9",
+        "generateName": "kube-scrapy-fangranking-fang-rankinglist-bak-6cdd8fcd6c-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-fangranking-fang-rankinglist-bak-6cdd8fcd6c-fcrc9",
+        "uid": "f9c87cc4-1639-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97392017",
+        "creationTimestamp": "2019-12-04T02:01:24Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6cdd8fcd6c",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-fangranking-fang-rankinglist-bak-6cdd8fcd6c",
+            "uid": "f283cc50-1639-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-fangranking:92473c2",
+            "env": [
+              {
+                "name": "project",
+                "value": "fangranking"
+              },
+              {
+                "name": "name",
+                "value": "fang_rankingList_bak"
+              },
+              {
+                "name": "thread",
+                "value": "6"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-04T01:59:39Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-04T02:01:24Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.35",
+        "startTime": "2019-12-04T01:59:39Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:26Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:45Z",
+                "finishedAt": "2020-03-18T02:02:03Z",
+                "containerID": "docker://c3bd5d6778e353acbbe23fdb9e95ae17fcc87570e0e8caf743136324ecbccf10"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-fangranking:92473c2",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-fangranking@sha256:f4003415401e6b900721e58a22c7ec0e025ef358fb7950b5ca64ab39e4642c85",
+            "containerID": "docker://d4bebd115e3eac516811bd3c97a32688efa98e11e1a3dc9499490ccc3369ad27"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-holographic-findlaw-phone-7bdfb878cf-cgf22",
+        "generateName": "kube-scrapy-holographic-findlaw-phone-7bdfb878cf-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-holographic-findlaw-phone-7bdfb878cf-cgf22",
+        "uid": "f14db121-61b6-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392048",
+        "creationTimestamp": "2020-03-09T03:34:54Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "7bdfb878cf",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-holographic-findlaw-phone-7bdfb878cf",
+            "uid": "f14b1e31-61b6-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-holographic:5353ac9",
+            "env": [
+              {
+                "name": "project",
+                "value": "holographic"
+              },
+              {
+                "name": "name",
+                "value": "findlaw_phone"
+              },
+              {
+                "name": "thread",
+                "value": "3"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-09T03:34:51Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:32Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:32Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-09T03:34:54Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.25",
+        "startTime": "2020-03-09T03:34:51Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:15Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-09T03:34:53Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://2810b059b92a3837bcc4c4e3c18474624df15d752fc1a773bfa8ed0b68c9d80f"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-holographic:5353ac9",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-holographic@sha256:9c0562eeb091b507daa80d080341a3569f9d2510b58b41cc71ec2fa210ed50a1",
+            "containerID": "docker://d0bc5a42344a4e3af2d13d99b3808ce3d99b676a93e8fa8ca7f8033fb0f5a32e"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-jjr-fang-jjr-8d54ccfbc-qmzk4",
+        "generateName": "kube-scrapy-jjr-fang-jjr-8d54ccfbc-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-jjr-fang-jjr-8d54ccfbc-qmzk4",
+        "uid": "d42f82c6-0209-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97391928",
+        "creationTimestamp": "2019-11-08T09:26:22Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "8d54ccfbc",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-jjr-fang-jjr-8d54ccfbc",
+            "uid": "d1a5cc93-0209-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-jjr:5fdf914",
+            "env": [
+              {
+                "name": "project",
+                "value": "jjr"
+              },
+              {
+                "name": "name",
+                "value": "fang_jjr"
+              },
+              {
+                "name": "thread",
+                "value": "8"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-11-08T09:24:51Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:25Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:25Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-11-08T09:26:22Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.18",
+        "startTime": "2019-11-08T09:24:51Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:11Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:37Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://b1e5b023537f553824e748312b07c21f89d47f8a9358ca24f799cc78c35268e1"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-jjr:5fdf914",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-jjr@sha256:7ae2ef82e8a482cfc49c82c6f38f257d2cfed098e9443b44416c90c578a5d5de",
+            "containerID": "docker://8955a31158729d801896d051d0bd9f58aca5053f79bfad1d43572e2e6b40224b"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-jjr-wuba-jjr-58c5b67f99-b2mn6",
+        "generateName": "kube-scrapy-jjr-wuba-jjr-58c5b67f99-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-jjr-wuba-jjr-58c5b67f99-b2mn6",
+        "uid": "06ab8214-ff94-11e9-af09-a2e9a0e649c5",
+        "resourceVersion": "97391812",
+        "creationTimestamp": "2019-11-05T06:18:04Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "58c5b67f99",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-jjr-wuba-jjr-58c5b67f99",
+            "uid": "d42e5c07-bd77-11e9-8e5a-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-jjr:5897acc",
+            "env": [
+              {
+                "name": "project",
+                "value": "jjr"
+              },
+              {
+                "name": "name",
+                "value": "wuba_jjr"
+              },
+              {
+                "name": "thread",
+                "value": "8"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-11-05T06:16:34Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:11Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:11Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-11-05T06:18:04Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.19",
+        "startTime": "2019-11-05T06:16:34Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:11Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:55Z",
+                "finishedAt": "2020-03-18T02:02:04Z",
+                "containerID": "docker://620c4c8fd574f70f568eeca2c1103a0742efee772c52a09a4d031e42cd05d8a2"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-jjr:5897acc",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-jjr@sha256:62d1342413ca5c77e2344aa6966019a9a053d385a62f5db31e9fb1788a87c6e3",
+            "containerID": "docker://6b78c223f0d5fe5321cb1525355ecd67eb556dbd37957b1463d6eb4e88fdadc0"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-liebiaolist-liebiaophone-86f675555-dcpz8",
+        "generateName": "kube-scrapy-liebiaolist-liebiaophone-86f675555-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-liebiaolist-liebiaophone-86f675555-dcpz8",
+        "uid": "85409b98-64da-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392142",
+        "creationTimestamp": "2020-03-13T03:27:08Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "86f675555",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-liebiaolist-liebiaophone-86f675555",
+            "uid": "80fa120e-64da-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-liebiaolist:f9b2094",
+            "env": [
+              {
+                "name": "project",
+                "value": "liebiaolist"
+              },
+              {
+                "name": "name",
+                "value": "liebiaophone"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-13T03:27:03Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:40Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:40Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-13T03:27:09Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.51",
+        "startTime": "2020-03-13T03:27:03Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:39Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2020-03-13T03:27:10Z",
+                "finishedAt": "2020-03-18T02:02:03Z",
+                "containerID": "docker://f6cf34957e7feb7c9573b9378ba28e79b22787e231e6af85f74ee96c493b2755"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-liebiaolist:f9b2094",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-liebiaolist@sha256:2a54fde1ab063a8bfe0c094c26d8d75096ba641431a525da603adbf10b98cadf",
+            "containerID": "docker://42d77b40068c5d82666a38355174dc9b2cdbffb0d8f223de968e2bfc706b8474"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-monthcomm-tt-wuba-info-6fd5bd8778-d9xds",
+        "generateName": "kube-scrapy-monthcomm-tt-wuba-info-6fd5bd8778-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-monthcomm-tt-wuba-info-6fd5bd8778-d9xds",
+        "uid": "d8e0625a-5f97-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392054",
+        "creationTimestamp": "2020-03-06T10:47:17Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6fd5bd8778",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-monthcomm-tt-wuba-info-6fd5bd8778",
+            "uid": "d8dd7db0-5f97-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:bcc3f9f",
+            "env": [
+              {
+                "name": "project",
+                "value": "monthcomm"
+              },
+              {
+                "name": "name",
+                "value": "tt_wuba_Info"
+              },
+              {
+                "name": "thread",
+                "value": "8"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-06T10:47:15Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:32Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:32Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-06T10:47:17Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.31",
+        "startTime": "2020-03-06T10:47:15Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:21Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2020-03-06T10:47:17Z",
+                "finishedAt": "2020-03-18T02:02:04Z",
+                "containerID": "docker://1b0cb208452f2245fc6a6d8828c05709ccbedbc0993e2050d996972cf6eca292"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:bcc3f9f",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:515e0e328dd338c1935be76b9d9f951e25573bd8e22456815742953ee911caa0",
+            "containerID": "docker://a141f7945d5da90440b3a651b6e4ae1d48ed5bf9ae6a83d029d34a7864cc9857"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-monthcomm-tt-wuba-info-x-7964464dbb-r6r5h",
+        "generateName": "kube-scrapy-monthcomm-tt-wuba-info-x-7964464dbb-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-monthcomm-tt-wuba-info-x-7964464dbb-r6r5h",
+        "uid": "0e4c930b-62b3-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392135",
+        "creationTimestamp": "2020-03-10T09:39:36Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "7964464dbb",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-monthcomm-tt-wuba-info-x-7964464dbb",
+            "uid": "0b3c5baa-62b3-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:ff0b16b",
+            "env": [
+              {
+                "name": "project",
+                "value": "monthcomm"
+              },
+              {
+                "name": "name",
+                "value": "tt_wuba_Info_X"
+              },
+              {
+                "name": "thread",
+                "value": "8"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-10T09:39:32Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:39Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:39Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-10T09:39:36Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.49",
+        "startTime": "2020-03-10T09:39:32Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:33Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-10T09:39:40Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://eb3eafb4bc0a8dafee21def0621b7ebf6a30b4f6290ca54082e0a8ce5ff8b194"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:ff0b16b",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:74b5451ad4f9d487c7e7f8372e43318c2e0c46e047d39007cd07fc7628e3c4ca",
+            "containerID": "docker://9eb6287215ee476c646dd12488d09bbec6c44244efd0689fb1bb08628ad0b315"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-monthcomm-tuitui-anjuke-list-5f774985d7-bvbq4",
+        "generateName": "kube-scrapy-monthcomm-tuitui-anjuke-list-5f774985d7-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-monthcomm-tuitui-anjuke-list-5f774985d7-bvbq4",
+        "uid": "102768d9-62b3-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392076",
+        "creationTimestamp": "2020-03-10T09:39:39Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "5f774985d7",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-monthcomm-tuitui-anjuke-list-5f774985d7",
+            "uid": "0b49e14e-62b3-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:ff0b16b",
+            "env": [
+              {
+                "name": "project",
+                "value": "monthcomm"
+              },
+              {
+                "name": "name",
+                "value": "tuitui_anjuke_list"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-10T09:39:35Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-10T09:39:39Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.39",
+        "startTime": "2020-03-10T09:39:35Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:29Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-03-10T09:39:41Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://d3fbbb777eb7d5de7d4597256f606812f7934656fc93f8652ce7a69965b8c8a3"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:ff0b16b",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:74b5451ad4f9d487c7e7f8372e43318c2e0c46e047d39007cd07fc7628e3c4ca",
+            "containerID": "docker://0e199db902071b4a3decf4a704f1c518b208ad9a42e9846f35f046ab4e886ac6"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-monthcomm-tuitui-fang-list-6fd4bd4cd9-b64h5",
+        "generateName": "kube-scrapy-monthcomm-tuitui-fang-list-6fd4bd4cd9-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-monthcomm-tuitui-fang-list-6fd4bd4cd9-b64h5",
+        "uid": "ec39d4dd-d861-11e9-af09-a2e9a0e649c5",
+        "resourceVersion": "97392124",
+        "creationTimestamp": "2019-09-16T09:11:09Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6fd4bd4cd9",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-monthcomm-tuitui-fang-list-6fd4bd4cd9",
+            "uid": "e2971611-d861-11e9-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:1610a24",
+            "env": [
+              {
+                "name": "project",
+                "value": "monthcomm"
+              },
+              {
+                "name": "name",
+                "value": "tuitui_fang_list"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-16T09:10:07Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:38Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:38Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-16T09:11:09Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.50",
+        "startTime": "2019-09-16T09:10:07Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:33Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:59Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://67580f98b4ae1abf9ce266e1eceb5469fddd2752b99bbb1a9773e8a95e8b3556"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:1610a24",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:f988335cb24fa9e3290c2b90b437152c2edebe060bcb3e976583cbb04312321e",
+            "containerID": "docker://082c40ce039640ceef489e100c3a1447f60515d080a7d4d806d7e3059efaf93e"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-monthcomm-tuitui-wuba-list-654f6f9898-9t9l4",
+        "generateName": "kube-scrapy-monthcomm-tuitui-wuba-list-654f6f9898-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-monthcomm-tuitui-wuba-list-654f6f9898-9t9l4",
+        "uid": "10479bac-62b3-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97391981",
+        "creationTimestamp": "2020-03-10T09:39:40Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "654f6f9898",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-monthcomm-tuitui-wuba-list-654f6f9898",
+            "uid": "0b63bbb1-62b3-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:ff0b16b",
+            "env": [
+              {
+                "name": "project",
+                "value": "monthcomm"
+              },
+              {
+                "name": "name",
+                "value": "tuitui_wuba_list"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-10T09:39:35Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:29Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:29Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-10T09:39:40Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.22",
+        "startTime": "2020-03-10T09:39:35Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:11Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2020-03-10T09:39:41Z",
+                "finishedAt": "2020-03-18T02:02:03Z",
+                "containerID": "docker://54b2ff56333d3c28c595a9283662e2b18a742ef8641bc8c9d3c19b9d811cd059"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-monthcomm:ff0b16b",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:74b5451ad4f9d487c7e7f8372e43318c2e0c46e047d39007cd07fc7628e3c4ca",
+            "containerID": "docker://6d0d4915552ec78d36af9996c58d738f883cb5e1bc9b31bcc06b16d252a031d0"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-info-14-3-6d9d95fdfc-qtfnn",
+        "generateName": "kube-scrapy-qbpro-info-14-3-6d9d95fdfc-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-info-14-3-6d9d95fdfc-qtfnn",
+        "uid": "9c6def74-1b00-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97391932",
+        "creationTimestamp": "2019-12-10T03:53:22Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6d9d95fdfc",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-info-14-3-6d9d95fdfc",
+            "uid": "9c6a5938-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "info_14_3"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:51:33Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:25Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:25Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:53:22Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.23",
+        "startTime": "2019-12-10T03:51:33Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:11Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:12Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://ca47e57ecc96031775cfa4a76f11bd20b2356f4d58c14f8d57776bde4be299bd"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://f4ad9fcbc3ca8d41d98ce1c1e7c33f3b6081b436513a73f74b1dd484c6cefe8f"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-info-2-5-8478667868-52lxx",
+        "generateName": "kube-scrapy-qbpro-info-2-5-8478667868-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-info-2-5-8478667868-52lxx",
+        "uid": "9d99ec02-1b00-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97392131",
+        "creationTimestamp": "2019-12-10T03:53:24Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "8478667868",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-info-2-5-8478667868",
+            "uid": "9d5e202d-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "info_2_5"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:51:35Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:38Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:38Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:53:24Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.44",
+        "startTime": "2019-12-10T03:51:35Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:31Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:14Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://6e03751faf6fc781e1c9bd15f6870f25a2da1f5763753cc0fa5cd4b3be960b47"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://547cb55ffa5cf72c0ca479e4939adb124dfd60911a72fabd2d87ab2d61b393d7"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-url3page-14-3-794cf78b7d-4fb8m",
+        "generateName": "kube-scrapy-qbpro-url3page-14-3-794cf78b7d-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-url3page-14-3-794cf78b7d-4fb8m",
+        "uid": "9ee1fddc-1b00-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97392060",
+        "creationTimestamp": "2019-12-10T03:53:26Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "794cf78b7d",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-url3page-14-3-794cf78b7d",
+            "uid": "9e2bf7fb-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "url3page_14_3"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:51:37Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:32Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:32Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:53:26Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.42",
+        "startTime": "2019-12-10T03:51:37Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:30Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:14Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://7e624a256598835d72be010210b3736644dcdf81d2c44e3497e9a59eb4d7657b"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://8dcafd8b610f947f8423a37d9e2609f0c5a1de26e1677c2ea61bcc63d4a3c833"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-url3page-14-5-78d78db964-mt6r7",
+        "generateName": "kube-scrapy-qbpro-url3page-14-5-78d78db964-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-url3page-14-5-78d78db964-mt6r7",
+        "uid": "9f89ddb0-1b00-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97391999",
+        "creationTimestamp": "2019-12-10T03:53:27Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "78d78db964",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-url3page-14-5-78d78db964",
+            "uid": "9ebcec29-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "url3page_14_5"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:51:39Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:53:27Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.30",
+        "startTime": "2019-12-10T03:51:39Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:20Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:13Z",
+                "finishedAt": "2020-03-18T02:02:03Z",
+                "containerID": "docker://03b8abf2f19eb4e09ad1009943cfca540b5c5314a364e0e4e4666572b14fa777"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://04d22084ae04a8142914554a5cf0dbceb3fac5f8946025c1543042667bebde0a"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-url3page-2-7-6d5f88b6ff-dfqcz",
+        "generateName": "kube-scrapy-qbpro-url3page-2-7-6d5f88b6ff-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-url3page-2-7-6d5f88b6ff-dfqcz",
+        "uid": "a0b3664f-1b00-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97391821",
+        "creationTimestamp": "2019-12-10T03:53:29Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6d5f88b6ff",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-url3page-2-7-6d5f88b6ff",
+            "uid": "9f9a2a91-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "url3page_2_7"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:51:41Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:12Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:12Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:53:29Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.21",
+        "startTime": "2019-12-10T03:51:41Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:11Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:12Z",
+                "finishedAt": "2020-03-18T02:02:04Z",
+                "containerID": "docker://a6a9f4f9088b0a4290e8732d1024f76d177de3848b3a7de1103095af75354667"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://d9c3b6379f627e620f61a8b109a9279eabf5d048847dac8ab2ba75d8e47c1398"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-url3page-first-0-3-58985984fb-ll7v7",
+        "generateName": "kube-scrapy-qbpro-url3page-first-0-3-58985984fb-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-url3page-first-0-3-58985984fb-ll7v7",
+        "uid": "d977a309-2021-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392039",
+        "creationTimestamp": "2019-12-16T16:33:54Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "58985984fb",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-url3page-first-0-3-58985984fb",
+            "uid": "a03a6cc4-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "url3page_first_0_3"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-16T16:26:18Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-16T16:33:54Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.32",
+        "startTime": "2019-12-16T16:26:18Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:22Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-16T16:26:21Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://9da68c35df72678a3035dd1afcacbc507cf23ca68a373f79143fbcee03fcee3f"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://18c06c8beeacb55aed1c465d084f32014eae4f5bc41f189254b4940da46800d9"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-url3page-first-1-0-5b5f458f74-b7jt9",
+        "generateName": "kube-scrapy-qbpro-url3page-first-1-0-5b5f458f74-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-url3page-first-1-0-5b5f458f74-b7jt9",
+        "uid": "a29bb369-1b00-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97392021",
+        "creationTimestamp": "2019-12-10T03:53:33Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "5b5f458f74",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-url3page-first-1-0-5b5f458f74",
+            "uid": "a100c0c7-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "url3page_first_1_0"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:51:44Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T03:53:33Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.43",
+        "startTime": "2019-12-10T03:51:44Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:30Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:12Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://fa6bc35028e74227d5d373394edec8893e8fadc2017b789791b5c89bd27352aa"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://454221d1d8aa5f189ff81c98e0a70c18ecf041ea1f1a8afac1552c1768c35d23"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-url3page-first-14-5-779bb4bcdc-g2b5v",
+        "generateName": "kube-scrapy-qbpro-url3page-first-14-5-779bb4bcdc-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-url3page-first-14-5-779bb4bcdc-g2b5v",
+        "uid": "d981fd57-2021-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392107",
+        "creationTimestamp": "2019-12-16T16:33:54Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "779bb4bcdc",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-url3page-first-14-5-779bb4bcdc",
+            "uid": "a0f17faf-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "url3page_first_14_5"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-16T16:26:18Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-16T16:33:54Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.38",
+        "startTime": "2019-12-16T16:26:18Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:28Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-16T16:26:21Z",
+                "finishedAt": "2020-03-18T02:02:03Z",
+                "containerID": "docker://ae6d0ae9a9ed3ada25bb7e345a9100fa63dd34bfaaff66abb859d0f9a9a04b01"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://df045d667d4613455b77b8bafd4d75c9c28db1b568eba0fd748ce0278d48a3d6"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-qbpro-urlallpage-0-3-546c89bf95-h64r5",
+        "generateName": "kube-scrapy-qbpro-urlallpage-0-3-546c89bf95-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-qbpro-urlallpage-0-3-546c89bf95-h64r5",
+        "uid": "dd90d5f1-1b6b-11ea-af09-a2e9a0e649c5",
+        "resourceVersion": "97392035",
+        "creationTimestamp": "2019-12-10T16:41:08Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "546c89bf95",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-qbpro-urlallpage-0-3-546c89bf95",
+            "uid": "a25817fa-1b00-11ea-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "env": [
+              {
+                "name": "project",
+                "value": "qbpro"
+              },
+              {
+                "name": "name",
+                "value": "urlallpage_0_3"
+              },
+              {
+                "name": "thread",
+                "value": "1"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T16:39:19Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-12-10T16:41:08Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.41",
+        "startTime": "2019-12-10T16:39:19Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:29Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:51Z",
+                "finishedAt": "2020-03-18T02:02:03Z",
+                "containerID": "docker://b6e9c842c8373dca267fbbd6b7524432a7680b7ad49e5d93c7989599bc950ca4"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+            "containerID": "docker://7b62d3acbbb9774d82b67e81e583f76942f4cc08859cc25869ee7fcba7c0fff8"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-rankinglist-fang-rankingalllist-6b46cdd95d-26ldb",
+        "generateName": "kube-scrapy-rankinglist-fang-rankingalllist-6b46cdd95d-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-rankinglist-fang-rankingalllist-6b46cdd95d-26ldb",
+        "uid": "b04ef729-6980-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97751193",
+        "creationTimestamp": "2020-03-19T01:26:42Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "6b46cdd95d",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-rankinglist-fang-rankingalllist-6b46cdd95d",
+            "uid": "9ebe769a-6980-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-rankinglist:1855bf1",
+            "env": [
+              {
+                "name": "project",
+                "value": "rankinglist"
+              },
+              {
+                "name": "name",
+                "value": "fang_rankingAllList"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-19T01:15:08Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-19T01:15:14Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-19T01:15:14Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-19T01:26:42Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.53",
+        "startTime": "2020-03-19T01:15:08Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-19T01:15:14Z"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": true,
+            "restartCount": 0,
+            "image": "harbor.tuituifang.com/caiji/scrapy-rankinglist:1855bf1",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-rankinglist@sha256:b61dc156488b52a2949f7166d24bea8b2491d89047ed2b1ce6ca600e02aaedc3",
+            "containerID": "docker://a146dcff13d9b76d02d6aaac7553d0369f9daa7229a2a0d27d59945193487c53"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-rankinglist-fang-rankinglist-557455cb74-brwjr",
+        "generateName": "kube-scrapy-rankinglist-fang-rankinglist-557455cb74-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-rankinglist-fang-rankinglist-557455cb74-brwjr",
+        "uid": "0dee10fe-ceec-11e9-acb7-b8ca3a618464",
+        "resourceVersion": "97392008",
+        "creationTimestamp": "2019-09-04T08:14:45Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "557455cb74",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-rankinglist-fang-rankinglist-557455cb74",
+            "uid": "0422a2e1-ceec-11e9-acb7-b8ca3a618464",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-rankinglist:0996b1d",
+            "env": [
+              {
+                "name": "project",
+                "value": "rankinglist"
+              },
+              {
+                "name": "name",
+                "value": "fang_rankingList"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-04T08:13:49Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:31Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-04T08:14:45Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.37",
+        "startTime": "2019-09-04T08:13:49Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:28Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:05:07Z",
+                "finishedAt": "2020-03-18T02:02:04Z",
+                "containerID": "docker://e7651a92cd59c2a9fef885538ba5ae8b89532fdd6994c8c3fc12eb3a88e1b101"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/caiji/scrapy-rankinglist:0996b1d",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-rankinglist@sha256:37e3fcfa740cb42ad54eee9e2d5cd6cf0cc6f17d609f781730c7942cb9a19fa0",
+            "containerID": "docker://6b810652d88dcab0702d179b49a82df4343886e69925eeeeaf931dfac5cdd407"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-scrapy-wubasalehouselist-wuba-salehouselist-app-5679fj9qb4",
+        "generateName": "kube-scrapy-wubasalehouselist-wuba-salehouselist-app-5679f99c4-",
+        "namespace": "scrapy",
+        "selfLink": "/api/v1/namespaces/scrapy/pods/kube-scrapy-wubasalehouselist-wuba-salehouselist-app-5679fj9qb4",
+        "uid": "695ee183-544b-11ea-a66b-b8ca3a61600c",
+        "resourceVersion": "97392069",
+        "creationTimestamp": "2020-02-21T01:42:25Z",
+        "labels": {
+          "app": "scrapy",
+          "pod-template-hash": "5679f99c4",
+          "project": "caiji"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-scrapy-wubasalehouselist-wuba-salehouselist-app-5679f99c4",
+            "uid": "6741658f-544b-11ea-a66b-b8ca3a61600c",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-pcfmz",
+            "secret": {
+              "secretName": "default-token-pcfmz",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "scrapy",
+            "image": "harbor.tuituifang.com/caiji/scrapy-wubasalehouselist:f4b8b14",
+            "env": [
+              {
+                "name": "project",
+                "value": "wubasalehouselist"
+              },
+              {
+                "name": "name",
+                "value": "wuba_SaleHouseList_app"
+              },
+              {
+                "name": "thread",
+                "value": "5"
+              }
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-pcfmz",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-02-21T01:34:13Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-02-21T01:42:25Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.26",
+        "startTime": "2020-02-21T01:34:13Z",
+        "containerStatuses": [
+          {
+            "name": "scrapy",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:20Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2020-02-21T01:34:18Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://4644d50dce526b0da7a3bb9ef1c63ea6df3ce6cad4f00ac06a2c8e5dded55b98"
+              }
+            },
+            "ready": true,
+            "restartCount": 1,
+            "image": "harbor.tuituifang.com/caiji/scrapy-wubasalehouselist:f4b8b14",
+            "imageID": "docker-pullable://harbor.tuituifang.com/caiji/scrapy-wubasalehouselist@sha256:17565fdd0f35a47d876c83aeb0721e9aa576d70e7036f82b9d4a5ad8f675beb6",
+            "containerID": "docker://7d0b32bf6e59031fbfc969da9af28432c3ab59862b6c751c5d9baadccd83f9e4"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-vpsip-freeip-c8497ccbb-q68m5",
+        "generateName": "kube-vpsip-freeip-c8497ccbb-",
+        "namespace": "vpsip",
+        "selfLink": "/api/v1/namespaces/vpsip/pods/kube-vpsip-freeip-c8497ccbb-q68m5",
+        "uid": "de82c8f5-d77f-11e9-af09-a2e9a0e649c5",
+        "resourceVersion": "97392081",
+        "creationTimestamp": "2019-09-15T06:13:00Z",
+        "labels": {
+          "app": "vpsip",
+          "pod-template-hash": "c8497ccbb",
+          "project": "vpsip"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kube-vpsip-freeip-c8497ccbb",
+            "uid": "de7f323f-d77f-11e9-af09-a2e9a0e649c5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "date-config",
+            "hostPath": {
+              "path": "/etc/localtime",
+              "type": ""
+            }
+          },
+          {
+            "name": "default-token-7f2cr",
+            "secret": {
+              "secretName": "default-token-7f2cr",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "vpsip",
+            "image": "harbor.tuituifang.com/vpsip/vpsip-freeip:1636de7",
+            "resources": {
+              "limits": {
+                "memory": "1Gi"
+              },
+              "requests": {
+                "memory": "500Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "date-config",
+                "mountPath": "/etc/localtime"
+              },
+              {
+                "name": "default-token-7f2cr",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 5,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "k8s-node-160",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-15T06:11:58Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2020-03-18T01:55:35Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-09-15T06:13:00Z"
+          }
+        ],
+        "hostIP": "192.168.0.160",
+        "podIP": "10.244.10.46",
+        "startTime": "2019-09-15T06:11:58Z",
+        "containerStatuses": [
+          {
+            "name": "vpsip",
+            "state": {
+              "running": {
+                "startedAt": "2020-03-18T01:55:35Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 255,
+                "reason": "Error",
+                "startedAt": "2019-12-14T10:04:48Z",
+                "finishedAt": "2020-03-18T01:53:02Z",
+                "containerID": "docker://629e10716a9e2e9f15048627f72231ab50c9b3c21cfd3fcdabe84a8cac634021"
+              }
+            },
+            "ready": true,
+            "restartCount": 2,
+            "image": "harbor.tuituifang.com/vpsip/vpsip-freeip:1636de7",
+            "imageID": "docker-pullable://harbor.tuituifang.com/vpsip/vpsip-freeip@sha256:000fe7af1fbe44f894e1e1f4cd3cb635662191c8bbaf21baa48da662388d3247",
+            "containerID": "docker://dac7d0369c3823fb2b739a0a10a90ae510e35e0c6bf83d9caa45af0e7090a150"
+          }
+        ],
+        "qosClass": "Burstable"
+      }
+    }
+  ]
+}

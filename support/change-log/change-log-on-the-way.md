@@ -6,22 +6,9 @@ v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动
 
 
 
-v1.0.9-beta.2
+BUG:
 
-* 存储卷声明：
-  * 以列表页显示存储卷声明的列表；
-  * 详情对话框增加表单校验；
-* ConfigMap：
-  * 以列表页显示ConfigMap的列表；
-  * 
-
-
-
-
----
-缺少字段：
-
-
+arm 环境下，应该使用镜像： https://hub.docker.com/r/vbouchaud/nfs-client-provisioner/tags
 
 
 

@@ -1,0 +1,154 @@
+---
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: '1'
+      deployment.kubernetes.io/max-replicas: '2'
+      deployment.kubernetes.io/revision: '2'
+      kubernetes.io/change-cause: kubectl apply --filename=- --record=true
+    creationTimestamp: '2020-03-24T08:17:17Z'
+    generation: 2
+    labels:
+      app: bsdbui-sit
+      pod-template-hash: 76f5d48b47
+    name: bsdbui-sit-76f5d48b47
+    namespace: pay
+    ownerReferences:
+      - apiVersion: apps/v1
+        blockOwnerDeletion: true
+        controller: true
+        kind: Deployment
+        name: bsdbui-sit
+        uid: d87a80a6-6da7-11ea-996b-fa163e38ce9e
+    resourceVersion: '4142193'
+    selfLink: /apis/apps/v1/namespaces/pay/replicasets/bsdbui-sit-76f5d48b47
+    uid: e0479972-6da7-11ea-9447-fa163ed105c7
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: bsdbui-sit
+        pod-template-hash: 76f5d48b47
+    template:
+      metadata:
+        labels:
+          app: bsdbui-sit
+          pod-template-hash: 76f5d48b47
+      spec:
+        containers:
+          - command:
+              - /bin/bash
+              - '-c'
+              - >-
+                /usr/java/jdk1.8.0_162/bin/java
+                -Dapollo.meta=http://apollo-meta-server.op:8080
+                -Dapollo.host=apollo-meta-server.op:8080 -Denv=PRO -Dapp.id=bsdbui
+                -Dapollo.cacheDir=/data/
+                -Dskywalking.agent.service_name=bsdbui-sit
+                -Decp.plt.inst_no=$(hostname |awk -F- '{print $NF}')
+                -Duser.timezone=Asia/Shanghai -Xms1536M -Xmx1536M
+                -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256m -Xss256k
+                -XX:+HeapDumpOnOutOfMemoryError -XX:+PrintGCDateStamps
+                -Xloggc:/data/bsdbui/logs/gc-bsdbui.log -XX:+PrintGCDetails
+                -XX:+UseParallelGC -XX:+UseParallelOldGC -DHWORKDIR=/data/bsdbui
+                -javaagent:/app/agent/skywalking-agent/skywalking-agent.jar -jar
+                bsdbui.*ar
+            env:
+              - name: APOLLO_HOST
+                value: 'apollo-meta-server.op:8080'
+              - name: LANG
+                value: en_US.utf8
+            image: 'harbor.tenserpay.xyz/pay/bsdbui:release_2020-03-23-16-48_13'
+            imagePullPolicy: IfNotPresent
+            lifecycle:
+              preStop:
+                exec:
+                  command:
+                    - sleep
+                    - '20'
+            name: bsdbui-sit
+            resources:
+              limits:
+                cpu: '2'
+                memory: 4Gi
+              requests:
+                cpu: '1'
+                memory: 2Gi
+            securityContext:
+              privileged: false
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+              - mountPath: /data/bsdbui/log
+                name: bizlog
+              - mountPath: /data/bsdbui/logs
+                name: bizlogs
+              - mountPath: /data/bsdbui/trc
+                name: trclog
+            workingDir: /data/bsdbui/approot/data/
+          - env:
+              - name: SSH_ENABLE_ROOT
+                value: 'true'
+            image: 'harbor.tenserpay.xyz/op/sshd:v1.0.3'
+            imagePullPolicy: IfNotPresent
+            lifecycle:
+              preStop:
+                exec:
+                  command:
+                    - sleep
+                    - '1'
+            livenessProbe:
+              failureThreshold: 10
+              initialDelaySeconds: 30
+              periodSeconds: 10
+              successThreshold: 1
+              tcpSocket:
+                port: 22
+              timeoutSeconds: 1
+            name: sshd
+            readinessProbe:
+              failureThreshold: 10
+              initialDelaySeconds: 30
+              periodSeconds: 10
+              successThreshold: 1
+              tcpSocket:
+                port: 22
+              timeoutSeconds: 1
+            resources:
+              limits:
+                cpu: 200m
+                memory: 429496729600m
+              requests:
+                cpu: 100m
+                memory: 214748364800m
+            securityContext:
+              privileged: false
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+              - mountPath: /data/bsdbui/log
+                name: bizlog
+              - mountPath: /data/bsdbui/logs
+                name: bizlogs
+              - mountPath: /data/bsdbui/trc
+                name: trclog
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        shareProcessNamespace: true
+        terminationGracePeriodSeconds: 30
+        volumes:
+          - hostPath:
+              path: /data/bsdbui-sit/log
+              type: ''
+            name: bizlog
+          - hostPath:
+              path: /data/bsdbui-sit/logs
+              type: ''
+            name: bizlogs
+          - hostPath:
+              path: /data/bsdbui-sit/trc
+              type: ''
+            name: trclog
+  status:
+    observedGeneration: 2
+    replicas: 0

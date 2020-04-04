@@ -1,0 +1,364 @@
+{
+  "kind": "Node",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "k8s-node-160",
+    "selfLink": "/api/v1/nodes/k8s-node-160",
+    "uid": "bdeaea31-a579-11e9-9d39-a2e9a0e649c5",
+    "resourceVersion": "99718610",
+    "creationTimestamp": "2019-07-13T14:23:10Z",
+    "labels": {
+      "beta.kubernetes.io/arch": "amd64",
+      "beta.kubernetes.io/os": "linux",
+      "environment": "master",
+      "kubernetes.io/arch": "amd64",
+      "kubernetes.io/hostname": "k8s-node-160",
+      "kubernetes.io/os": "linux"
+    },
+    "annotations": {
+      "flannel.alpha.coreos.com/backend-data": "{\"VtepMAC\":\"46:23:a4:b0:05:f3\"}",
+      "flannel.alpha.coreos.com/backend-type": "vxlan",
+      "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+      "flannel.alpha.coreos.com/public-ip": "192.168.0.160",
+      "kubeadm.alpha.kubernetes.io/cri-socket": "/var/run/dockershim.sock",
+      "node.alpha.kubernetes.io/ttl": "0",
+      "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+    }
+  },
+  "spec": {
+    "podCIDR": "10.244.10.0/24"
+  },
+  "status": {
+    "capacity": {
+      "cpu": "24",
+      "ephemeral-storage": "100660296Ki",
+      "hugepages-2Mi": "0",
+      "memory": "32164Mi",
+      "pods": "110"
+    },
+    "allocatable": {
+      "cpu": "24",
+      "ephemeral-storage": "92768528641",
+      "hugepages-2Mi": "0",
+      "memory": "32064Mi",
+      "pods": "110"
+    },
+    "conditions": [
+      {
+        "type": "MemoryPressure",
+        "status": "False",
+        "lastHeartbeatTime": "2020-03-24T09:43:44Z",
+        "lastTransitionTime": "2020-03-18T01:53:14Z",
+        "reason": "KubeletHasSufficientMemory",
+        "message": "kubelet has sufficient memory available"
+      },
+      {
+        "type": "DiskPressure",
+        "status": "False",
+        "lastHeartbeatTime": "2020-03-24T09:43:44Z",
+        "lastTransitionTime": "2020-03-18T01:53:14Z",
+        "reason": "KubeletHasNoDiskPressure",
+        "message": "kubelet has no disk pressure"
+      },
+      {
+        "type": "PIDPressure",
+        "status": "False",
+        "lastHeartbeatTime": "2020-03-24T09:43:44Z",
+        "lastTransitionTime": "2020-03-18T01:53:14Z",
+        "reason": "KubeletHasSufficientPID",
+        "message": "kubelet has sufficient PID available"
+      },
+      {
+        "type": "Ready",
+        "status": "True",
+        "lastHeartbeatTime": "2020-03-24T09:43:44Z",
+        "lastTransitionTime": "2020-03-18T01:53:14Z",
+        "reason": "KubeletReady",
+        "message": "kubelet is posting ready status"
+      }
+    ],
+    "addresses": [
+      {
+        "type": "InternalIP",
+        "address": "192.168.0.160"
+      },
+      {
+        "type": "Hostname",
+        "address": "k8s-node-160"
+      }
+    ],
+    "daemonEndpoints": {
+      "kubeletEndpoint": {
+        "Port": 10250
+      }
+    },
+    "nodeInfo": {
+      "machineID": "5fade1f3575148e1ab4922b7585a54b0",
+      "systemUUID": "4C4C4544-0036-3510-8033-B8C04F4D4C31",
+      "bootID": "73f676e9-d5e4-4568-8720-251382678d9b",
+      "kernelVersion": "4.4.185-1.el7.elrepo.x86_64",
+      "osImage": "CentOS Linux 7 (Core)",
+      "containerRuntimeVersion": "docker://18.9.7",
+      "kubeletVersion": "v1.14.0",
+      "kubeProxyVersion": "v1.14.0",
+      "operatingSystem": "linux",
+      "architecture": "amd64"
+    },
+    "images": [
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/m5i5j@sha256:0d98b2da8b789736c24d28c98cfb908afded84a76aac7444fb02d601a6b0b696",
+          "harbor.tuituifang.com/collect-project/m5i5j:225be35"
+        ],
+        "sizeBytes": 1243367148
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:0b6f7fe576d465669e4d56fee6681145c39bbfd6298f98765708a50a21f9ae5c",
+          "harbor.tuituifang.com/collect-project/baixingbroker:c30daeb"
+        ],
+        "sizeBytes": 1243335295
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:dc6cf68e300542807100ddd09553e56f1aaf7641a50d9a6b0ddbd0c7855aaeb0",
+          "harbor.tuituifang.com/collect-project/baixingbroker:2b0bc77"
+        ],
+        "sizeBytes": 1243251475
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:6eed30f18aead03ce1161d2ba9e5fbe311c75d53af14d7036e561b9005195821",
+          "harbor.tuituifang.com/collect-project/baixingbroker:e9b8b2e"
+        ],
+        "sizeBytes": 1243250628
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:a008016dfad130511982e60b3b61a860bb9f6183d0b499ce1d37abcef560e616",
+          "harbor.tuituifang.com/collect-project/baixingbroker:fa6e78b"
+        ],
+        "sizeBytes": 1243223532
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:9bd668df2fec1ea9b177dd0ff685255dd3afe991946b5385fe44db76885cda65",
+          "harbor.tuituifang.com/collect-project/baixingbroker:eadfb29"
+        ],
+        "sizeBytes": 1242587773
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:7b41e0970335329355f769f049e92ee1bb1defbfed7588fcf4ee915c87650065",
+          "harbor.tuituifang.com/collect-project/baixingbroker:00f3ba6"
+        ],
+        "sizeBytes": 1242586915
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:33fcb115f76041aeb47d74906de55ec1717a32017e4d701a67f6e3f68b9a918c",
+          "harbor.tuituifang.com/collect-project/baixingbroker:b3fe7f6"
+        ],
+        "sizeBytes": 1242586055
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/collect-project/baixingbroker@sha256:78d70c8eef58bbbebd45c486c010834fd06d866a35776044e955b3123798ef69",
+          "harbor.tuituifang.com/collect-project/baixingbroker:75a1b25"
+        ],
+        "sizeBytes": 1242585175
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-rankinglist@sha256:b61dc156488b52a2949f7166d24bea8b2491d89047ed2b1ce6ca600e02aaedc3",
+          "harbor.tuituifang.com/caiji/scrapy-rankinglist:1855bf1"
+        ],
+        "sizeBytes": 1238396363
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-rankinglist@sha256:37e3fcfa740cb42ad54eee9e2d5cd6cf0cc6f17d609f781730c7942cb9a19fa0",
+          "harbor.tuituifang.com/caiji/scrapy-rankinglist:0996b1d"
+        ],
+        "sizeBytes": 1238379437
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-qbpro@sha256:27974660a2efef14b0786e3f9fea7a13ff60f77abc1be127b5b01a55f034ede0",
+          "harbor.tuituifang.com/caiji/scrapy-qbpro:9a60e26"
+        ],
+        "sizeBytes": 1238270483
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-deal@sha256:999db7e27e6d6e2c90604b71bf9da286781bc8c2af817fb8b1907d6732d3a53d",
+          "harbor.tuituifang.com/caiji/scrapy-deal:ec116d1"
+        ],
+        "sizeBytes": 1238220396
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-deal@sha256:a33d69d9d93b96dc5acbc90e659db587dfd7dfdf9477183c3ac9c449b7a8faf4",
+          "harbor.tuituifang.com/caiji/scrapy-deal:2fa6ce8"
+        ],
+        "sizeBytes": 1238212099
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:74b5451ad4f9d487c7e7f8372e43318c2e0c46e047d39007cd07fc7628e3c4ca",
+          "harbor.tuituifang.com/caiji/scrapy-monthcomm:ff0b16b"
+        ],
+        "sizeBytes": 1238208023
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:515e0e328dd338c1935be76b9d9f951e25573bd8e22456815742953ee911caa0",
+          "harbor.tuituifang.com/caiji/scrapy-monthcomm:bcc3f9f"
+        ],
+        "sizeBytes": 1238201083
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-monthcomm@sha256:f988335cb24fa9e3290c2b90b437152c2edebe060bcb3e976583cbb04312321e",
+          "harbor.tuituifang.com/caiji/scrapy-monthcomm:1610a24"
+        ],
+        "sizeBytes": 1238181359
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-jjr@sha256:7ae2ef82e8a482cfc49c82c6f38f257d2cfed098e9443b44416c90c578a5d5de",
+          "harbor.tuituifang.com/caiji/scrapy-jjr:5fdf914"
+        ],
+        "sizeBytes": 1238170562
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-fang@sha256:02d8fcb678de4ae6eed9bb4e5b8c6397e2e18eda397c2f014640288143802839",
+          "harbor.tuituifang.com/caiji/scrapy-fang:a00e07e"
+        ],
+        "sizeBytes": 1238167963
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-fang@sha256:bc516774a7f6b655490499cffc4e1f8b3983a5b28d147366af27afb4d9d10ae5",
+          "harbor.tuituifang.com/caiji/scrapy-fang:a2ce558"
+        ],
+        "sizeBytes": 1238160901
+      },
+      {
+        "names": [
+          "192.168.0.72:9000/caiji/scrapy-fang@sha256:8ba10d2c6ff5538992409fd3345a7da3b6801d9d66c3943d4653566ba16d23a5",
+          "192.168.0.72:9000/caiji/scrapy-fang:1079e76"
+        ],
+        "sizeBytes": 1238158948
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-jjr@sha256:62d1342413ca5c77e2344aa6966019a9a053d385a62f5db31e9fb1788a87c6e3",
+          "harbor.tuituifang.com/caiji/scrapy-jjr:5897acc"
+        ],
+        "sizeBytes": 1238157769
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-holographic@sha256:9c0562eeb091b507daa80d080341a3569f9d2510b58b41cc71ec2fa210ed50a1",
+          "harbor.tuituifang.com/caiji/scrapy-holographic:5353ac9"
+        ],
+        "sizeBytes": 1238155623
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-wubasalehouselist@sha256:17565fdd0f35a47d876c83aeb0721e9aa576d70e7036f82b9d4a5ad8f675beb6",
+          "harbor.tuituifang.com/caiji/scrapy-wubasalehouselist:f4b8b14"
+        ],
+        "sizeBytes": 1238135517
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-commrent@sha256:9132a04aceb72f62993f2b979b4ba1867b205120939412b7b0455f1f6503a706",
+          "harbor.tuituifang.com/caiji/scrapy-commrent:26a1526"
+        ],
+        "sizeBytes": 1238128716
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-liebiaolist@sha256:2a54fde1ab063a8bfe0c094c26d8d75096ba641431a525da603adbf10b98cadf",
+          "harbor.tuituifang.com/caiji/scrapy-liebiaolist:f9b2094"
+        ],
+        "sizeBytes": 1238125875
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/caiji/scrapy-fangranking@sha256:f4003415401e6b900721e58a22c7ec0e025ef358fb7950b5ca64ab39e4642c85",
+          "harbor.tuituifang.com/caiji/scrapy-fangranking:92473c2"
+        ],
+        "sizeBytes": 1238123745
+      },
+      {
+        "names": [
+          "192.168.0.72:9000/ops/python2-scrapy@sha256:74a39ad105cfa47218c495637246b4f5514db5e5abf32beaa74cc5676b94f742",
+          "harbor.tuituifang.com/ops/python2-scrapy@sha256:74a39ad105cfa47218c495637246b4f5514db5e5abf32beaa74cc5676b94f742",
+          "192.168.0.72:9000/ops/python2-scrapy:latest",
+          "harbor.tuituifang.com/ops/python2-scrapy:latest"
+        ],
+        "sizeBytes": 1237919102
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/vpsip/payvpsip@sha256:d0ac33b4bea1c8462e9676293de1acd5db00ac376d583c38fda64a5ba86316a7",
+          "harbor.tuituifang.com/vpsip/payvpsip:v1"
+        ],
+        "sizeBytes": 581708263
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/ops/jenkins-slave@sha256:57bbf32c46ad700988cc2057bb34d76a95b311bfc3632517bb90c76ac096c723",
+          "harbor.tuituifang.com/ops/jenkins-slave:latest"
+        ],
+        "sizeBytes": 532678399
+      },
+      {
+        "names": [
+          "harbor.tuituifang.com/vpsip/vpsip-freeip@sha256:000fe7af1fbe44f894e1e1f4cd3cb635662191c8bbaf21baa48da662388d3247",
+          "harbor.tuituifang.com/vpsip/vpsip-freeip:1636de7"
+        ],
+        "sizeBytes": 179445905
+      },
+      {
+        "names": [
+          "registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy@sha256:a704064100b363856afa4cee160a51948b9ac49bbc34ba97caeb7928055e9de1",
+          "registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.14.0"
+        ],
+        "sizeBytes": 82104359
+      },
+      {
+        "names": [
+          "quay.io/coreos/flannel@sha256:7806805c93b20a168d0bbbd25c6a213f00ac58a511c47e8fa6409543528a204e",
+          "quay.io/coreos/flannel:v0.11.0-amd64"
+        ],
+        "sizeBytes": 52567296
+      },
+      {
+        "names": [
+          "prom/node-exporter@sha256:a2f29256e53cc3e0b64d7a472512600b2e9410347d53cdc85b49f659c17e02ee",
+          "prom/node-exporter:v0.18.1"
+        ],
+        "sizeBytes": 22933477
+      },
+      {
+        "names": [
+          "quay.io/prometheus/node-exporter@sha256:1b129a3801a0440f9c5b2afb20082dfdb31bf6092b561f5f249531130000cb83",
+          "quay.io/prometheus/node-exporter:v0.17.0"
+        ],
+        "sizeBytes": 20982005
+      },
+      {
+        "names": [
+          "registry.cn-hangzhou.aliyuncs.com/google_containers/pause@sha256:759c3f0f6493093a9043cc813092290af69029699ade0e3dbe024e968fcb7cca",
+          "registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1"
+        ],
+        "sizeBytes": 742472
+      }
+    ]
+  }
+}
