@@ -13,7 +13,7 @@ module.exports = [
     strong: '限时抢购',
     action: '立享优惠',
     url: 'https://activity.huaweicloud.com/2020feb_promotion/index.html?&fromuser=a3Vib2FyZA==&utm_source=a3Vib2FyZA==&utm_medium=cps&utm_campaign=201905',
-    weight: 180
+    weight: 60
   },
   // {
   //   name: 'Suveng',
