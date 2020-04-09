@@ -440,6 +440,13 @@ module.exports = {
           ]
         },
         {
+          title: '监控',
+          collapsable: true,
+          children: [
+            'k8s-advanced/observe/kube-prometheus.html',
+          ]
+        },
+        {
           title: '扩展Kubernetes',
           collapsable: true,
           children: [

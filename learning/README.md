@@ -187,6 +187,7 @@ meta:
 
     <Course courseId="484058" />
   * 监控
+    * [kube-prometheus](/learning/k8s-advanced/observe/kube-prometheus.html)
   * 联邦
 
 ## **Kubernetes 实战**
