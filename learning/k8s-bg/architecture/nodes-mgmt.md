@@ -33,7 +33,7 @@ Kubernetes 将保留无效的节点 API 对象，并不断地检查该节点是�
 节点控制器是一个负责管理节点的 Kubernetes master 组件。在节点的生命周期中，节点控制器起到了许多作用。
 
 * **首先**，节点控制器在注册节点时为节点分配 [CIDR](/glossary/cidr.html) 地址块
-* **第二**，节点控制器通过云供应商（[cloud-controller-manager](learning/k8s-bg/component.html#cloud-controller-manager)）接口检查节点列表中每一个节点对象对应的虚拟机是否可用。在云环境中，只要节点状态异常，节点控制器检查其虚拟机在云供应商的状态，如果虚拟机不可用，自动将节点对象从 APIServer 中删除。
+* **第二**，节点控制器通过云供应商（[cloud-controller-manager](/learning/k8s-bg/component.html#cloud-controller-manager)）接口检查节点列表中每一个节点对象对应的虚拟机是否可用。在云环境中，只要节点状态异常，节点控制器检查其虚拟机在云供应商的状态，如果虚拟机不可用，自动将节点对象从 APIServer 中删除。
 * **第三**，节点控制器监控节点的健康状况。当节点变得不可触达时（例如，由于节点已停机，节点控制器不再收到来自节点的心跳信号），节点控制器将节点API对象的 `NodeStatus` Condition 取值从 `NodeReady` 更新为 `Unknown`；然后在等待 `pod-eviction-timeout` 时间后，将节点上的所有 Pod 从节点驱逐。
   > * 默认40秒未收到心跳，修改 `NodeStatus` Condition 为 `Unknown`；
   > * 默认 `pod-eviction-timeout` 为 5分钟
@@ -60,7 +60,7 @@ Kubernetes 将保留无效的节点 API 对象，并不断地检查该节点是�
 
 最极端的情况是，所有的高可用区都完全不可用（例如，集群中一个健康的节点都没有），此时节点控制器 master 节点的网络连接出现故障，并停止所有的驱逐 Pod 的动作，直到某些连接得到恢复。
 
-自 Kubernetes v1.6 开始，节点控制器同时也负责为带有 `NoExecute` 污点的节点驱逐其上的 Pod。此外，节点控制器还负责根据节点的状态（例如，节点不可用，节点未就绪等）为节点添加污点。参考 [NoExecute](](/learning/k8s-intermediate/config/taints-toleration/#污点与容忍的匹配)) 获取更多信息。
+自 Kubernetes v1.6 开始，节点控制器同时也负责为带有 `NoExecute` 污点的节点驱逐其上的 Pod。此外，节点控制器还负责根据节点的状态（例如，节点不可用，节点未就绪等）为节点添加污点。参考 [NoExecute](/learning/k8s-intermediate/config/taints-toleration/#污点与容忍的匹配)) 获取更多信息。
 
 自 Kubernetes v1.8 开始，节点控制器可以根据节点的 Condition 为节点添加污点，此特性处于 alpha 阶段
 
