@@ -8,13 +8,21 @@ module.exports = [
     weight: 60
   },
   {
-    name: '华为云',
-    description: '【2核4G云服务器低至331元/年，限时抢购】华为云开年回馈用户，产品低至1折',
-    strong: '限时抢购',
-    action: '立享优惠',
-    url: 'https://activity.huaweicloud.com/2020feb_promotion/index.html?&fromuser=a3Vib2FyZA==&utm_source=a3Vib2FyZA==&utm_medium=cps&utm_campaign=201905',
-    weight: 60
+    name: 'SOCK BOOM',
+    description: '我在这里 Fan Qiang 查阅 Kubernetes 第一手资料',
+    strong: '推荐',
+    action: '试一试',
+    url: 'https://sockboom.tel/auth/register?affid=182351',
+    weight: 100
   },
+  // {
+  //   name: '华为云',
+  //   description: '【2核4G云服务器低至331元/年，限时抢购】华为云开年回馈用户，产品低至1折',
+  //   strong: '限时抢购',
+  //   action: '立享优惠',
+  //   url: 'https://activity.huaweicloud.com/2020feb_promotion/index.html?&fromuser=a3Vib2FyZA==&utm_source=a3Vib2FyZA==&utm_medium=cps&utm_campaign=201905',
+  //   weight: 60
+  // },
   // {
   //   name: 'Suveng',
   //   description: '趣丸网络科技 Suveng 免费提供的视频课',
