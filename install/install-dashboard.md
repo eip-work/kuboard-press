@@ -320,11 +320,20 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 </b-card>
 </b-collapse>
 
-## 免登陆访问
+## 为开发测试人员授权
+
+运维团队搭建好 Kubernetes 之后，需要授权开发/测试团队的成员执行某些特定的操作，例如更新镜像版本、查看容器日志、进入容器终端、通过Proxy访问接口等，以便开发测试人员可以自行完成日常的测试联调等任务。使用 Kubernetes + Kuboard 的团队可能以如下几种形式授权开发、测试人员访问：
+* 为开发团队、测试团队创建各自的 ServiceAccount，并授权其访问指定的名称空间，请参考：
+  * [使用Kuboard管理ServiceAccount及RBAC](/learning/k8s-advanced/sec/kuboard.html)；
+  * [授权 kuboard-viewer 查看日志](/learning/k8s-advanced/sec/rbac/logs.html)
+* 与自建的 gitlab / github 实现单点登录，并授权 gitlab / github 中的 group/user 访问指定的名称空间，请参考 [Kubernetes Authentication 安装向导](/learning/k8s-advanced/sec/authenticate/install.html)；
+* 与自研的 PaaS 平台整合，免登录访问 Kuboard 提供的控制台界面、日志界面，请参考 [免登录访问](#免登录访问)；
+
+### 免登陆访问
 
 可以通过查询参数中的 k8sToken 字段直接登录系统，无需在登录界面输入 Token。
 
-### 直接访问集群概览页
+#### 直接访问集群概览页
 
 如需要无登录访问集群概览页面，可使用如下格式的 url 进入：
 
@@ -336,7 +345,7 @@ http://任意一个Worker节点的IP地址:32567/dashboard?k8sToken=yourtoken
 其他任意 Kuboard 界面同理，只需要增加 k8sToken 作为查询参数，即可跳过输入 Token 的步骤
 :::
 
-### 直接访问终端界面
+#### 直接访问终端界面
 
 如果想要无登录直接访问容器组的控制台，可使用如下格式的 url 进入：
 ```
@@ -355,10 +364,6 @@ http://任意一个Worker节点的IP地址:32567/console/yournamespace/yourpod?c
 
 - 使用 Kuboard 工作负载编辑器 [创建第一个应用](/guide/example/busybox.html) （10分钟）
 
-- [使用 GitHub/GitLab 账号登录 Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
-
 - 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
 
 - 学习 [Kubernetes免费教程](/learning/)
-
-- [授权 kuboard-viewer 查看日志](/learning/k8s-advanced/sec/rbac/logs.html)
