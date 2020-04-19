@@ -427,6 +427,7 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-advanced/sec/kuboard',
+                'k8s-advanced/sec/rbac/logs.html',
                 'k8s-advanced/sec/rbac/api',
                 'k8s-advanced/sec/rbac/default',
                 'k8s-advanced/sec/rbac/escalation',
@@ -434,7 +435,6 @@ module.exports = {
                 'k8s-advanced/sec/rbac/sa',
                 'k8s-advanced/sec/rbac/permissive',
                 'k8s-advanced/sec/rbac/example',
-                'k8s-advanced/sec/rbac/logs.html',
               ]
             },
           ]

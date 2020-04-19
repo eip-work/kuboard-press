@@ -11,6 +11,8 @@ meta:
 
 # Kubernetes教程
 
+<AdSenseTitle/>
+
 <div class="row">
   <!-- <div class="col-md-4 col-sm-12" style="margin-top: 1rem;">
     <a href="#kubernetes免费教程">
@@ -89,6 +91,7 @@ meta:
   * 完善工具配置
     * [掌握快速部署高可用Kubernetes集群的窍门](https://github.com/fanux/sealos)
     * [自定义Kuboard名称空间布局](/install/install-kuboard-layout.html)
+    * [创建ServiceAccount并授权其访问指定的名称空间](/learning/k8s-advanced/sec/kuboard.html)
     * [实现Kubernetes与GitLab/GitHub的单点登录](/learning/k8s-advanced/sec/authenticate/install.html)
     * [了解日志聚合](/learning/k8s-advanced/logs/)
     * [了解Kubernetes的监控](/guide/example/monitor.html)

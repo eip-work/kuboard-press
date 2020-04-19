@@ -14,19 +14,17 @@ meta:
 ## 前提
 
 * 您已经安装了 kubernetes
-* 您已经安装了 [Kuboard](/install/install-dashboard.html)，版本号不低于 v1.0.6.3
+* 您已经安装了 [Kuboard](/install/install-dashboard.html)，版本号不低于 v1.0.9.3
 
 ## 步骤
 
 * 以 kuboard-user 用户登录 Kuboard 界面；
   
-  参考 [获取Token、访问Kuboard](/install/install-dashboard.html#获取Token)
+  参考 [获取Token并访问Kuboard](/install/install-dashboard.html#获取Token)
   
-* 进入 `kube-system` 名称空间页面；
+* 进入 `kube-system` 名称空间页面（或任意名称空间）；
 
-* 点击 ***权限*** 按钮，进入 RBAC 权限管理页面；
-
-* 点击 ***ClusterRole*** 按钮，进入 ClusterRole 列表页面；
+* 点击左侧菜单的 ***权限*** -> ***ClusterRole*** 按钮，进入 ClusterRole 列表页面；
 
 * 点击 ***创建 ClusterRole*** 按钮，如下图所示：
 
@@ -39,7 +37,7 @@ meta:
   | 聚合标签名         | Boolean  | 否          | 如果填写，则此 ClusterRole 中的权限来自于指定标签所选中 ClusterRole 中定义权限的合集。 |
   | 聚合到 ClusterRole | String   | view        | logs-viewer 中定义的权限将聚合到 view 这个 ClusterRole 中。  |
 
-  ![image-20200305232329557](./logs.assets/image-20200305232329557.png)
+  ![image-20200305232329557](./logs.assets/image-20200419092227402.png)
 
 * 点击 ***保存*** 按钮，保存后在如下界面填写：
 
@@ -50,18 +48,20 @@ meta:
   | resourceNames |                           | 不指定，则可以访问任意 Pod 的日志                            |
   | verbs         | get<br />create           | 必须具备对 pods/log 和 pods/attach 进行 get 和 create 操作的权限 |
 
-  ![image-20200305233155635](./logs.assets/image-20200305233155635.png)
+  ![image-20200419092412412](./logs.assets/image-20200419092412412.png)
 
 * 点击 ***保存*** 按钮，退出后，以 `kuboard-viewer` 的身份登录 Kuboard
 
-  参考 [获取Token、访问Kuboard](/install/install-dashboard.html#获取Token)
+  参考 [获取Token并访问Kuboard](/install/install-dashboard.html#获取Token)
 
   此时，`kuboard-viewer` 将具备权限访问 Pod 的日志；
 
 
 ::: tip 备注
 这样操作能够成功的原因是：
-* 在安装 Kuboard 的 yaml 文件中，创建了 `kuboard-viewer`，并通过 ClusterRoleBinding 将其绑定到了 `view` 这个 ClusterRole，这意味着 `kuboard-viewer` 具备集群级别的查看权限；
+* 在安装 Kuboard 的 yaml 文件中，创建了 `kuboard-viewer`，并通过 ClusterRoleBinding 将其绑定到了 `view` 这个 ClusterRole，这意味着 `kuboard-viewer` 具备集群级别的查看权限，您也可以：
+  * [创建 ServiceAccount 并授权其访问指定的名称空间](../kuboard.html)；
+  * [安装 OpenID Connect](/learning/k8s-advanced/sec/authenticate/install.html) 以使用自建 github / gitlab 的账号登录 Kuboard；
 * `view` 这个 ClusterRole 在安装 Kubernetes 时，由 kubernetes 自己初始化，其中不包括查看日志所需的权限；
 * `view` 这个 ClusterRole 是一个 [聚合 ClusterRole](/learning/k8s-advanced/sec/rbac/api.html#aggregated-clusterroles)，这意味着我们可以通过定义新的 ClusterRole，为 `view` 增加权限
 * 本操作中，定义的 `logs-viewer` 包含了查看日志所需要的权限，并将其聚合到了 `view` ClusterRole，因此， `kuboard-viewer` 就可以查看容器组的日志了。
