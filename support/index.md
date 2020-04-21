@@ -65,7 +65,15 @@ export default {
 </grid-item>
   <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '1/1'}">
     <b-card style="height: calc(100% - 2rem); color: #2c3e50; line-height: 1.7; margin-top: 1rem;">
-        <li>Kuboard 于2019年8月初公开发布，当前 <StarCount></StarCount></li>
+        <li>
+          Kuboard 于2019年8月初公开发布，当前：
+          <li style="margin-left: 40px;">
+            <StarCount></StarCount>
+          </li>
+          <li style="margin-left: 40px;">
+            <StarCountDockerPulls></StarCountDockerPulls>
+          </li>
+        </li>
         <li>参考 kuboard.cn，通常一个月时间可以从 Kubernetes 入门到投产</li>
       </b-card>
   </grid-item>
