@@ -11,6 +11,7 @@
 yum remove -y docker \
 docker-client \
 docker-client-latest \
+docker-ce-cli \
 docker-common \
 docker-latest \
 docker-latest-logrotate \
