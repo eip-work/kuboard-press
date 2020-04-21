@@ -20,9 +20,9 @@
       <div class="side-nav-item" :style="activeLinkStyle('/support/')">
         <a :href="`/support/${urlSurfix}`" class="nav-link">支持</a>
       </div>
-      <div class="side-nav-item" :style="activeLinkStyle('/training/')">
+      <!-- <div class="side-nav-item" :style="activeLinkStyle('/training/')">
         <a :href="`https://kubetrain.cn/?from=kuboard`" class="nav-link" target="_blank">培训</a>
-      </div>
+      </div> -->
       <!-- <div class="side-nav-item">
         <a href="http://k8s.kubetrain.cn" class="nav-link" target="_blank">博客</a>
       </div> -->

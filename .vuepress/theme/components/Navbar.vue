@@ -2,7 +2,7 @@
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
 
-    <div style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: calc(100vw - 120px);">
+    <div style="white-space: nowrap; text-overflow: ellipsis; max-width: calc(100vw - 120px);">
       <!-- <router-link
         :to="$localePath"
         class="home-link noselect"
@@ -30,9 +30,10 @@
       </a>
       <span class="home-link noselect" style="line-height: 2.2em; font-size: 1em; font-weight: 400;">
         <StarCount style="margin-left: 10px;"></StarCount>
-        <a href="/learning/">
+        <StarCountDockerPulls></StarCountDockerPulls>
+        <!-- <a href="/learning/">
           <span style="color: #42b983;">免费提供K8S教程</span>
-        </a>
+        </a> -->
         <!-- <a href="https://webscan.qianxin.com/safe/detail/?query=kuboard.cn"><img border="0" src="https://webscan.qianxin.com/api/authcode?code=ab3ebe0592248d28477251ecaf72154f" style="display: none;"/></a> -->
         <!-- <span style="color: #2c3e50;">|</span>
         <a href="/support/#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%90%BD%E5%9C%B0%E5%92%A8%E8%AF%A2">
