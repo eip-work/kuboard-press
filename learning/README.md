@@ -188,7 +188,7 @@ meta:
     * [使用GitLab/GitHub等账号登录Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
     * [RBAC授权](/learning/k8s-advanced/sec/rbac/api.html)
 
-    <Course courseId="484058" />
+    <!-- <Course courseId="484058" /> -->
   * 监控
     * [kube-prometheus](/learning/k8s-advanced/observe/kube-prometheus.html)
   * 联邦

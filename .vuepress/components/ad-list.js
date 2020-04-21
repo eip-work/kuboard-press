@@ -62,14 +62,14 @@ module.exports = [
   //   url: 'https://www.aliyun.com/1212/2019/home?userCode=obezo3pg',
   //   weight: 30
   // },
-  {
-    name: 'Kubetrain',
-    description: 'K8S在线直播培训，内推机会',
-    strong: '不满意可无条件退款',
-    action: '现在就去',
-    url: 'https://kubetrain.cn/?from=kuboard-ads',
-    weight: 60
-  },
+  // {
+  //   name: 'Kubetrain',
+  //   description: 'K8S在线直播培训，内推机会',
+  //   strong: '不满意可无条件退款',
+  //   action: '现在就去',
+  //   url: 'https://kubetrain.cn/?from=kuboard-ads',
+  //   weight: 60
+  // },
   // {
   //   name: '12元直播课',
   //   description: 'Kubernetes集群安装详解，安装脚本定制',
