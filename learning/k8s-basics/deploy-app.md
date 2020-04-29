@@ -142,13 +142,13 @@ kubectl get pods
 
 **打开 Kuboard 集群概览界面**，如下图所示：
 
-![Kubernetes教程：部署第一个应用程序-Kuboard集群概览页](./deploy-app.assets/image-20190822165220992.png)
+![Kubernetes教程：部署第一个应用程序-Kuboard集群概览页](./deploy-app.assets/image-20200429234145358.png)
 
 
 
 **点击 default 名称空间**
 
-![Kubernetes教程：部署第一个应用程序-Kuboard名称空间页](./deploy-app.assets/image-20190822165351264.png)
+![Kubernetes教程：部署第一个应用程序-Kuboard名称空间页](./deploy-app.assets/image-20200429234212468.png)
 
 
 
@@ -166,8 +166,9 @@ kubectl get pods
 | 容器名称 | nginx       |                                                         |
 | 镜像     | nginx:1.7.9 |                                                         |
 | 抓取策略 | Always      | 每次创建 Pod 都尝试抓取镜像                             |
+| Ports    | TCP : 80    | 该容器组监听 TCP 80 端口                                |
 
-![Kubernetes教程：部署第一个应用程序-在Kuboard中创建工作负载](./deploy-app.assets/image-20190822171013606.png)
+![Kubernetes教程：部署第一个应用程序-在Kuboard中创建工作负载](./deploy-app.assets/image-20200429234711586.png)
 
 
 
@@ -179,9 +180,9 @@ kubectl get pods
 
 此时可查看到该应用的部署结果，如下图所示：
 
-![Kubernetes入门教程](./deploy-app.assets/image-20200226121449752.png)
+![Kubernetes入门教程](./deploy-app.assets/image-20200429235118699.png)
 
-点击上图中的 ***代理*** 按钮，可以直接测试部署结果。更多细节请参考 [Kuboard Proxy](/guide/proxy)， 此功能要求 Kuboard 版本不低于 `v1.0.7-beta.4`。
+点击上图中的 ***代理*** 按钮，可以直接测试部署结果。更多细节请参考 [Kuboard Proxy](/guide/proxy)， 此功能要求 Kuboard 版本不低于 `v1.0.9.4`。
 
 通过代理访问已部署的 nginx 服务时，默认显示结果如下所示：
 

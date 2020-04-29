@@ -7,14 +7,14 @@ module.exports = [
     url: 'https://github.com/fanux/sealos',
     weight: 60
   },
-  {
-    name: 'SOCK BOOM',
-    description: '我在这里 Fan Qiang 查阅 Kubernetes 第一手资料',
-    strong: '推荐',
-    action: '试一试',
-    url: 'https://sockboom.tel/auth/register?affid=182351',
-    weight: 100
-  },
+  // {
+  //   name: 'SOCK BOOM',
+  //   description: '我在这里 Fan Qiang 查阅 Kubernetes 第一手资料',
+  //   strong: '推荐',
+  //   action: '试一试',
+  //   url: 'https://sockboom.tel/auth/register?affid=182351',
+  //   weight: 100
+  // },
   // {
   //   name: '华为云',
   //   description: '【2核4G云服务器低至331元/年，限时抢购】华为云开年回馈用户，产品低至1折',
