@@ -33,8 +33,7 @@ meta:
 # 阿里云 docker hub mirror
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 curl -sSL https://kuboard.cn/install-script/set_mirror.sh | sh -s ${REGISTRY_MIRROR}
-systemctl daemon-reload
-systemctl restart docker
+
 systemctl restart kubelet  # 假设您安装了 kubenetes
 ```
 

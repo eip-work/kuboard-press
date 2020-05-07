@@ -69,6 +69,17 @@ can_set_json(){
 	fi
 }
 
+restart_docker () {
+    echo "systemctl daemon-reload"
+    systemctl daemon-reload
+    echo "systemctl restart docker"
+    systemctl restart docker
+    echo
+    echo -e "\033[31;1m--------请检查下面输出结果中的 Registry Mirrors 是否已经修改过来-------- \033[0m"
+    echo "docker info"
+    docker info
+}
+
 set_mirror(){
     if [ "$docker_major_version" -eq 1 ] && [ "$docker_minor_version" -lt 9 ]
         then
@@ -85,7 +96,7 @@ set_mirror(){
             sudo sed -i "s|other_args=\"|other_args=\"--registry-mirror='${MIRROR_URL}'|g" ${DOCKER_SERVICE_FILE}
             sudo sed -i "s|OPTIONS='|OPTIONS='--registry-mirror='${MIRROR_URL}'|g" ${DOCKER_SERVICE_FILE}
             echo "Success."
-            echo "You need to restart docker to take effect: sudo service docker restart"
+            restart_docker
             exit 0
         fi
         if grep "CentOS Linux release 7" /etc/redhat-release > /dev/null
@@ -99,7 +110,7 @@ set_mirror(){
                 set_daemon_json_file
             fi
             echo "Success."
-            echo "You need to restart docker to take effect: sudo systemctl restart docker "
+            restart_docker
             exit 0
         else
             echo "Error: Set mirror failed, please set registry-mirror manually please."
@@ -118,7 +129,7 @@ set_mirror(){
                 set_daemon_json_file
             fi
             echo "Success."
-            echo "You need to restart docker to take effect: sudo systemctl restart docker"
+            restart_docker
             exit 0
         else
             echo "Error: Set mirror failed, please set registry-mirror manually please."
@@ -155,7 +166,7 @@ set_mirror(){
             fi
         fi
         echo "Success."
-        echo "You need to restart docker to take effect: sudo service docker restart"
+        restart_docker
         exit 0
     ;;
         debian)
@@ -173,7 +184,7 @@ set_mirror(){
             set_daemon_json_file
         fi
         echo "Success."
-        echo "You need to restart docker to take effect: sudo service docker restart"
+        restart_docker
         exit 0
     ;;
         arch)
@@ -188,7 +199,7 @@ set_mirror(){
                 set_daemon_json_file
             fi
             echo "Success."
-            echo "You need to restart docker to take effect: sudo systemctl restart docker"
+            restart_docker
             exit 0
         else
             echo "Error: Set mirror failed, please set registry-mirror manually please."
@@ -207,7 +218,8 @@ set_mirror(){
                 set_daemon_json_file
             fi
             echo "Success."
-            echo "You need to restart docker to take effect: sudo systemctl restart docker"
+            restart_docker
+            
             exit 0
         else
             echo "Error: Set mirror failed, please set registry-mirror manually please."
@@ -217,4 +229,5 @@ set_mirror(){
     echo "Error: Unsupported OS, please set registry-mirror manually."
     exit 1
 }
+
 set_mirror
