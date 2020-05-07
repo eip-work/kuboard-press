@@ -93,7 +93,7 @@ Kubernetes Dashboard 当前，只支持使用 Bearer Token登录。
 
   访问路径： `http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/`
 
-  > 我曾经尝试过将 kubernetes-dashboard 的访问当时修改为 nodePort 的访问，但是一直未能成功，如果有朋友解决了此问题，请告知我一下。
+  > 如需要使用 nodePort 或 Ingress 的方式访问 Kubernetes Dashboard 请配置正确的 https 证书，或者使用 Firefox 浏览器，并忽略 HTTPS 校验错误。
 
 * 将上一个步骤中获得的 Token 输入到登录界面中，点击 **Sign in** 按钮，完成登录
 
