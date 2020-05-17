@@ -643,7 +643,9 @@ module.exports = {
       title: '更新说明',
       collapsable: false,
       children: [
+        'change-log/v2.0.x',
         'change-log/v1.0.x',
+        'change-log/upgrade-1-2',
         'known-issue',
       ]
     }
