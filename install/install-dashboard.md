@@ -21,7 +21,11 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 ## 前提
 
-安装 Kuboard 时，假设您已经有一个 Kubernetes 集群
+安装 Kuboard 时，假设您已经有一个 Kubernetes 集群，以下任何形式安装的集群都可以：
+* kubeadm 安装（或者基于 kubeadm 的衍生工具，如 Sealos 等）；
+* 二进制安装；
+* 阿里云、腾讯云等公有云托管集群；
+* 其他。
 
 如果没有 Kubernetes 集群：
 
