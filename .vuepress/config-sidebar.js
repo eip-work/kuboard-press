@@ -427,6 +427,7 @@ module.exports = {
               collapsable: true,
               children: [
                 'k8s-advanced/sec/kuboard',
+                'k8s-advanced/sec/rbac/list-namespace.html',
                 'k8s-advanced/sec/rbac/logs.html',
                 'k8s-advanced/sec/rbac/api',
                 'k8s-advanced/sec/rbac/default',
