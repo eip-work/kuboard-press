@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: config-center
+  namespace: antucd
+spec:
+  serviceName: "config-center"
+  selector:
+    matchLabels:
+      app: config-center
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: config-center
+    spec:
+      imagePullSecrets:
+        - name: $SECRET_NAME
+      containers:
+        - image: $IMAGE_NAME
+          name: config-center
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3301
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-center
+  namespace: antucd
+  labels:
+    app: config-center
+spec:
+  type: NodePort
+  ports:
+    - port: 3301
+      name: config-center
+      targetPort: 3301
+  selector:
+    app: config-center

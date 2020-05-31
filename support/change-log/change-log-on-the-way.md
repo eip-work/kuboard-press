@@ -1,36 +1,68 @@
 Kuboard v1.0.x 的更新说明
 
 
-v1.0.7 已经支持了 kubectl proxy 的功能、v1.0.8 做 Deployment 的滚动更新、v1.0.9 做 kubectl port-forward v1.0.10 做 kubectl cp、v1.0.11 做 Job 和 CronJob。
-这几样做完以后，就 v1.1.0
+kubectl port-forward
+kubectl cp
+Job / CronJob
 
-
-**优化**
-* 事件通知
-  * 可以关闭事件通知；
-  * 设置菜单中可以重新开启事件通知；
-* 切换名称空间
-  * 部分情况下，切换名称空间时，应该直接进入名称空间首页；
-  * 高亮当前所在的名称空间；
-* 日志/终端界面
-  * 可以调整字体大小；
-
-**BUG修正**
-* 部分情况下，切换名称空间时，内容未刷新；
-
-
-调整控制台字体大小
-删除 NFS StorageClass 出错
 
 BUG:
 
 arm 环境下，应该使用镜像： https://hub.docker.com/r/vbouchaud/nfs-client-provisioner/tags
 
 
+Calico 指定网卡的方式：
+            - name: IP_AUTODETECTION_METHOD
+              value: "interface=em1"
+
+
+补充文档，描述如何授权一个 ServiceAccount 访问多个名称空间
+
+
+Deployment 页面，可能存在请求线程过多导致页面部分内容显示为加载状态的情况；
+
+
+安装 kube-prometheus 后，与 kuboard 安装的 metrics-server 有冲突：
+
+按照 https://github.com/coreos/kube-prometheus  clone 下来后执行：
+kubectl create -f manifests/setup
+until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
+kubectl create -f manifests/
+
+**优化**
+* 提示用户怎么填写 Command 命令
+* 通过 YAML 文件创建对象时，如果名称空间和当前不一致，应该给出提示
+* 将 secret 绑定到环境变量
+* 默认 StorageClass
+* 图形化实例 Service 的 NodePort/Port/targetPort
+
+**BUG修正**
+* Kubernetes 版本过低时，Ingress列表页加载失败
+* 部分情况下，终端界面打不开时，未弹出错误提示对话框
+
+
 
 删除 PV 时，出现 /notsupported 错误
 
+
+
+Start by reading through this tutorial on windows services:
+
+https://github.com/iswix-llc/iswix-tutorials
+
+Now read this article to understand how any old script/EXE can be made a service using srvany.exe:
+
+https://support.microsoft.com/en-us/help/137890/how-to-create-a-user-defined-service
+
+Take a look at my answer to see how it all comes together:
+
+Wix installer to replace INSTSRV and SRVANY for user defined service installation
+
+If that still isn't enough, send me an email and I'll give you a complimentary 30-60 minute session to show you.
+
 ---
+
+* 修改套件的信息之后，需要重新 apply
 
 * 工作负载编辑器
   * 保存前对比 YAML

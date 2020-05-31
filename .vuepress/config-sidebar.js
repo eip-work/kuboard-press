@@ -552,7 +552,7 @@ module.exports = {
       children: [
         'example/busybox',
         'example/import',
-        'example/monitor',
+        'example/monitor-v2',
       ]
     },
     {

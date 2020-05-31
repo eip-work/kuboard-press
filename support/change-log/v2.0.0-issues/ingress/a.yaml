@@ -1,0 +1,122 @@
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: '2'
+      k8s.kuboard.cn/ingress: 'false'
+      k8s.kuboard.cn/service: ClusterIP
+      k8s.kuboard.cn/workload: nginx-deployment
+      kubectl.kubernetes.io/last-applied-configuration: >
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"nginx"},"name":"nginx-deployment","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"nginx"}},"template":{"metadata":{"labels":{"app":"nginx"}},"spec":{"containers":[{"image":"nginx:1.7.9","name":"nginx"}]}}}}
+    creationTimestamp: '2020-05-13T13:53:22Z'
+    generation: 2
+    labels:
+      app: nginx
+    name: nginx-deployment
+    namespace: default
+    resourceVersion: '165068'
+    selfLink: /apis/apps/v1/namespaces/default/deployments/nginx-deployment
+    uid: cf76662d-4b76-49b3-95c0-0912c0d175bd
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: nginx
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: nginx
+      spec:
+        containers:
+          - image: 'nginx:1.7.9'
+            imagePullPolicy: IfNotPresent
+            name: nginx
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+      - lastTransitionTime: '2020-05-18T11:46:29Z'
+        lastUpdateTime: '2020-05-18T11:46:29Z'
+        message: Deployment has minimum availability.
+        reason: MinimumReplicasAvailable
+        status: 'True'
+        type: Available
+      - lastTransitionTime: '2020-05-13T13:53:22Z'
+        lastUpdateTime: '2020-05-18T12:07:38Z'
+        message: ReplicaSet "nginx-deployment-564949df9d" has successfully progressed.
+        reason: NewReplicaSetAvailable
+        status: 'True'
+        type: Progressing
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+  
+  ---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      k8s.kuboard.cn/workload: nginx-deployment
+    creationTimestamp: '2020-05-18T12:13:31Z'
+    labels:
+      app: nginx
+    name: nginx-deployment
+    namespace: default
+    resourceVersion: '167877'
+    selfLink: /api/v1/namespaces/default/services/nginx-deployment
+    uid: f00605fb-d534-4eb0-a72a-86a4128aa998
+  spec:
+    clusterIP: 10.99.104.165
+    ports:
+      - name: hcwdid
+        port: 80
+        protocol: TCP
+        targetPort: 80
+    selector:
+      app: nginx
+    sessionAffinity: None
+    type: ClusterIP
+  
+  ---
+  apiVersion: networking.k8s.io/v1beta1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: >
+        {"apiVersion":"networking.k8s.io/v1beta1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.class":"nginx"},"name":"nginx-deployment","namespace":"default"},"spec":{"rules":[{"host":"a.demo.kuboard.cn","http":{"paths":[{"backend":{"serviceName":"nginx-deployment","servicePort":80},"path":"/"}]}}]}}
+      kubernetes.io/ingress.class: nginx
+    creationTimestamp: '2020-05-18T12:36:23Z'
+    generation: 1
+    name: nginx-deployment
+    namespace: default
+    resourceVersion: '168334'
+    selfLink: >-
+      /apis/networking.k8s.io/v1beta1/namespaces/default/ingresses/nginx-deployment
+    uid: 67bb41ae-e95e-4adc-91dd-b3d4738c4bad
+  spec:
+    rules:
+      - host: a.demo.kuboard.cn
+        http:
+          paths:
+            - backend:
+                serviceName: nginx-deployment
+                servicePort: 80
+              path: /
+  status:
+    loadBalancer:
+      ingress:
+        - hostname: localhost

@@ -88,7 +88,7 @@ export default ({
       });
     }, 200)
   }
-  console.log('sharing', sharing)
+  // console.log('sharing', sharing)
   Vue.prototype.$isSharing = sharing
 
 }

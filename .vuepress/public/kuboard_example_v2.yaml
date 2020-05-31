@@ -1,0 +1,359 @@
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: example
+  name: cloud-eureka
+  annotations:
+    k8s.kuboard.cn/workload: cloud-eureka
+    k8s.kuboard.cn/displayName: 服务注册
+    k8s.kuboard.cn/service: ClusterIP
+    k8s.kuboard.cn/ingress: 'true'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: cloud-eureka
+spec:
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: cloud
+      k8s.kuboard.cn/name: cloud-eureka
+  template:
+    metadata:
+      labels:
+        k8s.kuboard.cn/layer: cloud
+        k8s.kuboard.cn/name: cloud-eureka
+    spec:
+      imagePullSecrets:
+        - {}
+      initContainers: []
+      containers:
+        - image: 'eipsample/example-cloud-eureka:v1.0.0-alpha.1'
+          imagePullPolicy: Always
+          name: cloud-eureka
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: CLOUD_EUREKA_DEFAULT_ZONE
+              value: 'http://cloud-eureka-0:9200/eureka'
+      volumes: []
+  replicas: 1
+  volumeClaimTemplates: []
+  serviceName: cloud-eureka
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: example
+  name: cloud-eureka
+  annotations:
+    k8s.kuboard.cn/workload: cloud-eureka
+    k8s.kuboard.cn/displayName: 服务注册
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: cloud-eureka
+spec:
+  selector:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: cloud-eureka
+  type: ClusterIP
+  ports:
+    - port: 9200
+      targetPort: 9200
+      protocol: TCP
+      name: mtfsyi
+      nodePort: 0
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: example
+  name: cloud-eureka
+  annotations:
+    k8s.kuboard.cn/workload: cloud-eureka
+    k8s.kuboard.cn/displayName: 服务注册
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: cloud-eureka
+spec:
+  rules:
+    - host: cloud-eureka.example.demo.kuboard.cn
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: cloud-eureka
+              servicePort: mtfsyi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: example
+  name: db-example
+  annotations:
+    k8s.kuboard.cn/workload: db-example
+    k8s.kuboard.cn/displayName: db-example
+    k8s.kuboard.cn/service: ClusterIP
+    k8s.kuboard.cn/ingress: 'false'
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: db-example
+spec:
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: db-example
+  template:
+    metadata:
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: db-example
+    spec:
+      imagePullSecrets:
+        - {}
+      initContainers: []
+      containers:
+        - image: 'eipsample/example-db-example:v1.0.0-alpha.1'
+          imagePullPolicy: Always
+          name: db-example
+          volumeMounts:
+            - name: db-example-storage
+              mountPath: /var/lib/mysql
+              subPath: mysql
+          resources: {}
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: 'soqjdke4#es'
+      volumes:
+        - name: db-example-storage
+          persistentVolumeClaim:
+            claimName: db-example-storage
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: example
+  name: db-example
+  annotations:
+    k8s.kuboard.cn/workload: db-example
+    k8s.kuboard.cn/displayName: db-example
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: db-example
+spec:
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: db-example
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+      name: fp6ksw
+      nodePort: 0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: example
+  name: gateway-example
+  annotations:
+    k8s.kuboard.cn/workload: gateway-example
+    k8s.kuboard.cn/displayName: gateway-example
+    k8s.kuboard.cn/service: ClusterIP
+    k8s.kuboard.cn/ingress: 'false'
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: gateway-example
+spec:
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: gateway
+      k8s.kuboard.cn/name: gateway-example
+  template:
+    metadata:
+      labels:
+        k8s.kuboard.cn/layer: gateway
+        k8s.kuboard.cn/name: gateway-example
+    spec:
+      imagePullSecrets:
+        - {}
+      initContainers: []
+      containers:
+        - image: 'eipsample/example-gateway-example:v1.0.0-alpha.1'
+          imagePullPolicy: Always
+          name: gateway-example
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: CLOUD_EUREKA_DEFAULT_ZONE
+              value: 'http://cloud-eureka:9200/eureka'
+            - name: SPRING_PROFILES_ACTIVE
+              value: example
+      volumes: []
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: example
+  name: gateway-example
+  annotations:
+    k8s.kuboard.cn/workload: gateway-example
+    k8s.kuboard.cn/displayName: gateway-example
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: gateway-example
+spec:
+  selector:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: gateway-example
+  type: ClusterIP
+  ports:
+    - port: 9201
+      targetPort: 9201
+      protocol: TCP
+      name: pdmd3y
+      nodePort: 0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: example
+  name: svc-example
+  annotations:
+    k8s.kuboard.cn/workload: svc-example
+    k8s.kuboard.cn/displayName: svc-example
+    k8s.kuboard.cn/service: none
+    k8s.kuboard.cn/ingress: 'false'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: svc-example
+spec:
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: svc-example
+  template:
+    metadata:
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: svc-example
+    spec:
+      imagePullSecrets:
+        - {}
+      initContainers: []
+      containers:
+        - image: 'eipsample/example-svc-example:v1.0.0-alpha.1'
+          imagePullPolicy: Always
+          name: svc-example
+          volumeMounts: []
+          resources: {}
+          env:
+            - name: CLOUD_EUREKA_DEFAULT_ZONE
+              value: 'http://cloud-eureka:9200/eureka'
+            - name: DB_EXAMPLE_URL
+              value: >-
+                jdbc:mysql://db-example:3306/eip_db_example?characterEncoding=utf8&useSSL=false
+            - name: DB_EXAMPLE_USERNAME
+              value: eip_user
+            - name: DB_EXAMPLE_PASSWORD
+              value: 1qaz2wsx
+            - name: snowflake.dataCenterId
+              value: '1'
+            - name: csp.sentinel.dashboard.server
+              value: monitor-sentinel
+      volumes: []
+  replicas: 1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: example
+  name: web-example
+  annotations:
+    k8s.kuboard.cn/workload: web-example
+    k8s.kuboard.cn/displayName: web-example
+    k8s.kuboard.cn/service: ClusterIP
+    k8s.kuboard.cn/ingress: 'true'
+  labels:
+    k8s.kuboard.cn/layer: web
+    k8s.kuboard.cn/name: web-example
+spec:
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: web
+      k8s.kuboard.cn/name: web-example
+  template:
+    metadata:
+      labels:
+        k8s.kuboard.cn/layer: web
+        k8s.kuboard.cn/name: web-example
+    spec:
+      imagePullSecrets:
+        - {}
+      initContainers: []
+      containers:
+        - image: 'eipsample/example-web-example:v1.0.0-alpha.1'
+          imagePullPolicy: Always
+          name: web-example
+          volumeMounts: []
+          resources: {}
+          env: []
+      volumes: []
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: example
+  name: web-example
+  annotations:
+    k8s.kuboard.cn/workload: web-example
+    k8s.kuboard.cn/displayName: web-example
+  labels:
+    k8s.kuboard.cn/layer: web
+    k8s.kuboard.cn/name: web-example
+spec:
+  selector:
+    k8s.kuboard.cn/layer: web
+    k8s.kuboard.cn/name: web-example
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: mawfrp
+      nodePort: 0
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: example
+  name: web-example
+  annotations:
+    k8s.kuboard.cn/workload: web-example
+    k8s.kuboard.cn/displayName: we-example
+  labels:
+    k8s.kuboard.cn/layer: web
+    k8s.kuboard.cn/name: web-example
+spec:
+  rules:
+    - host: web-example.example.demo.kuboard.cn
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web-example
+              servicePort: mawfrp

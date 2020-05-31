@@ -32,7 +32,7 @@ export default {
   },
   components: { },
   mounted () {
-    axios.get('https://addons.kuboard.cn/kuboard-latest-version.json').then(resp => {
+    axios.get('https://addons.kuboard.cn/kuboard-latest-version.json?' + Math.random).then(resp => {
       console.log(resp)
       this.latestVersion = resp.data
     }).catch(e => {

@@ -11,7 +11,7 @@ description: 通过Kuboard将一个预先定义好的SpringCloud微服务样例�
 
 必须具备如下条件：
 
-* Kubernetes 集群 （安装在阿里云，本文将使用阿里云的 NFS 服务作为存储资源，Kuboard 也可以运行在其他云环境或者私有环境中。）
+* Kubernetes 集群
 * 导入 example 微服务时，要求 Kubernetes 集群版本不低于 1.14.0 <Badge type="error">重要</Badge>
 * 已在集群中安装 Kuboard
 

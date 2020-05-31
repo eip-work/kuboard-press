@@ -1,0 +1,33 @@
+# cat sms-h5-backend.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    k8s.eip.work/workload: sms-h5-backend
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v1
+      kind: Mapping
+      name: sms-h5-backend_mapping
+      prefix: /sms-h5-backend/
+      service: sms-h5-backend:30003    
+  labels:
+    app: sms-h5-backend
+  name: sms-h5-backend
+  namespace: default
+spec:
+  ports:
+    - name: hx8s7a
+      nodePort: 30003
+      port: 30003
+      protocol: TCP
+      targetPort: 30003
+  selector:
+    app: sms-h5-backend
+  sessionAffinity: None
+  type: NodePort
+
+
+    
+    

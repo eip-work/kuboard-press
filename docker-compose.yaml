@@ -1,16 +1,16 @@
 version: "3"
 services:
   kuboard:
-    image: eipwork/kuboard:arm
+    image: eipwork/kuboard:latest
     ports:
       - "8083:80"
     environment: 
       KUBERNETES_SERVICE_HOST: 127.0.0.1
       KUBERNETES_SERVICE_PORT_HTTPS: 6443
     volumes:
-      - /Users/shaohuanqing/Kuboard/kuboard-workspace/nginx-lua/docker/nginx.80.conf:/etc/nginx/conf.d/nginx.80.conf
+      # - /Users/shaohuanqing/Kuboard/kuboard-workspace/nginx-lua/docker/nginx.80.conf:/etc/nginx/conf.d/nginx.80.conf
       - /Users/shaohuanqing/Kuboard/kuboard-workspace/kuboard-press/docs:/usr/share/nginx/html
-      - /Users/shaohuanqing/Kuboard/kuboard-workspace/nginx-lua/docker/nginx-jwt.lua:/usr/local/openresty/nginx/jwt-lua/resty/nginx-jwt.lua
+      # - /Users/shaohuanqing/Kuboard/kuboard-workspace/nginx-lua/docker/nginx-jwt.lua:/usr/local/openresty/nginx/jwt-lua/resty/nginx-jwt.lua
     networks:
       - webnet
   # web:

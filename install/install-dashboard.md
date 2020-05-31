@@ -58,6 +58,10 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 > 如果您参考 https://kuboard.cn 网站上提供的 Kubernetes 安装文档，可在 master 节点上执行以下命令。
 
+> 关于版本选择：
+> * 当前，Kuboard 正在从 v1.0.x 向 Kuboard v2.0.0 过渡，由于 v2.0.0 仍然处于 beta 状态，latest 版本仍然保持为 v1.0.9.7。新用户可以从 beta 版开始，以获得更好的体验。
+> * 参考此文，[了解如何从 v1.0.x 升级到 Kuboard v2.0.x](/support/change-log/upgrade-1-2.html)
+
 <b-tabs content-class="mt-3">
 <b-tab title="稳定版">
 
