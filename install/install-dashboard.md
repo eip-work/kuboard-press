@@ -39,14 +39,14 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
-| v1.18           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.17           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.16           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.15           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.14           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
-| v1.13           | v1.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                       |
-| v1.12           | v1.0.x | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 不支持 dryRun，<br />Kuboard 不支持 Kubernetes v1.12 |
-| v1.11           | v1.0.x | <span style="font-size: 24px;">😐</span>      | Kuboard 不支持 Kubernetes v1.11                                                         |
+| v1.18           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.17           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.16           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.15           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.14           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.13           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                       |
+| v1.12           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 不支持 dryRun，<br />Kuboard 不支持 Kubernetes v1.12 |
+| v1.11           | v1.0.x， v2.0.x | <span style="font-size: 24px;">😐</span>      | Kuboard 不支持 Kubernetes v1.11                                                         |
 ## 安装
 
 
@@ -59,7 +59,7 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 > 如果您参考 https://kuboard.cn 网站上提供的 Kubernetes 安装文档，可在 master 节点上执行以下命令。
 
 > 关于版本选择：
-> * 当前，Kuboard 正在从 v1.0.x 向 Kuboard v2.0.0 过渡，由于 v2.0.0 仍然处于 beta 状态，latest 版本仍然保持为 v1.0.9.7。新用户可以从 beta 版开始，以获得更好的体验。
+> * 当前，Kuboard 正在从 v1.0.x 向 Kuboard v2.0.0 过渡，v2.0.0-beta.3.c 完成度已经比较高，由于文档尚未更新，latest 版本仍然保持为 v1.0.9.7。新用户可以从 beta 版开始，以获得更好的体验。
 > * 参考此文，[了解如何从 v1.0.x 升级到 Kuboard v2.0.x](/support/change-log/upgrade-1-2.html)
 
 <b-tabs content-class="mt-3">

@@ -94,7 +94,7 @@ meta:
     * [创建ServiceAccount并授权其访问指定的名称空间](/learning/k8s-advanced/sec/kuboard.html)
     * [实现Kubernetes与GitLab/GitHub的单点登录](/learning/k8s-advanced/sec/authenticate/install.html)
     * [了解日志聚合](/learning/k8s-advanced/logs/)
-    * [了解Kubernetes的监控](/guide/example/monitor.html)
+    * [了解Kubernetes的监控](/guide/example/monitor-v2.html)
     * [免费获得Kuboard授权](/support/)
     * 自动伸缩
   * 按教程章节顺序对 Kubernetes 各种概念进行深入理解
@@ -202,7 +202,7 @@ meta:
 * [概述](/learning/k8s-practice/spring-cloud/)
 * [导入 example 微服务应用](/guide/example/import.html) （15分钟）
   * 导入一个完整的 example 微服务应用，体验 Spring Cloud 在 Kubernetes 上的部署过程。
-* [在微服务上下文中监控 example](example/monitor.html) <Badge text="alpha" type="warn"/>
+* [在微服务上下文中监控 example](/guide/example/monitor-v2.html) 
   * 根据微服务上下文查看监控结果
 
 在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)

@@ -1134,21 +1134,21 @@
     markdown-it-table-of-contents "^0.4.0"
     prismjs "^1.13.0"
 
-"@vuepress/plugin-active-header-links@1.5.0", "@vuepress/plugin-active-header-links@^1.5.0":
+"@vuepress/plugin-active-header-links@1.5.0", "@vuepress/plugin-active-header-links@^1.3.1":
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-active-header-links/download/@vuepress/plugin-active-header-links-1.5.0.tgz#a7b9ce361e97119928f5209aeda69b699205bd31"
   integrity sha1-p7nONh6XEZko9SCa7aabaZIFvTE=
   dependencies:
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-back-to-top@^1.5.0":
+"@vuepress/plugin-back-to-top@^1.3.1":
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-back-to-top/download/@vuepress/plugin-back-to-top-1.5.0.tgz#393cbc392ac7c1718cdbdbcac6375f8079a57912"
   integrity sha1-OTy8OSrHwXGM29vKxjdfgHmleRI=
   dependencies:
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-google-analytics@^1.5.0":
+"@vuepress/plugin-google-analytics@^1.3.1":
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-google-analytics/download/@vuepress/plugin-google-analytics-1.5.0.tgz#07a9783739a552e3e4c435e3e2ad64432a540002"
   integrity sha1-B6l4NzmlUuPkxDXj4q1kQypUAAI=
@@ -1160,21 +1160,21 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@vuepress/plugin-medium-zoom@^1.5.0":
+"@vuepress/plugin-medium-zoom@^1.3.1":
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-medium-zoom/download/@vuepress/plugin-medium-zoom-1.5.0.tgz#99a574f6c52570ae16be3de529bdc556d09f88fe"
   integrity sha1-maV09sUlcK4Wvj3lKb3FVtCfiP4=
   dependencies:
     medium-zoom "^1.0.4"
 
-"@vuepress/plugin-nprogress@1.5.0", "@vuepress/plugin-nprogress@^1.5.0":
+"@vuepress/plugin-nprogress@1.5.0", "@vuepress/plugin-nprogress@^1.3.1":
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-nprogress/download/@vuepress/plugin-nprogress-1.5.0.tgz#bbf5d331a4acc1d862e2c7143b3b7587c3e4f0cc"
   integrity sha1-u/XTMaSswdhi4scUOzt1h8Pk8Mw=
   dependencies:
     nprogress "^0.2.0"
 
-"@vuepress/plugin-pwa@^1.5.0":
+"@vuepress/plugin-pwa@^1.3.1":
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-pwa/download/@vuepress/plugin-pwa-1.5.0.tgz#700ac453e1f670a662af2fbc6455b3e98488843d"
   integrity sha1-cArEU+H2cKZiry+8ZFWz6YSIhD0=
@@ -2225,7 +2225,7 @@ chokidar@^2.0.3, chokidar@^2.1.8:
   optionalDependencies:
     fsevents "^1.2.7"
 
-chokidar@^3.2.2, chokidar@^3.4.0:
+chokidar@^3.2.2:
   version "3.4.0"
   resolved "https://registry.npm.taobao.org/chokidar/download/chokidar-3.4.0.tgz#b30611423ce376357c765b9b8f904b9fba3c0be8"
   integrity sha1-swYRQjzjdjV8dlubj5BLn7o8C+g=
@@ -7976,7 +7976,7 @@ vuepress-plugin-smooth-scroll@^0.0.3:
   dependencies:
     smoothscroll-polyfill "^0.4.3"
 
-vuepress@^1.5.0:
+vuepress@^1.3.1:
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/vuepress/download/vuepress-1.5.0.tgz#690ed2b190844c2e53665df1e211a5fb107a8de7"
   integrity sha1-aQ7SsZCETC5TZl3x4hGl+xB6jec=
@@ -7988,23 +7988,14 @@ vuepress@^1.5.0:
     opencollective-postinstall "^2.0.2"
     update-notifier "^4.0.0"
 
-watchpack-chokidar2@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/watchpack-chokidar2/download/watchpack-chokidar2-2.0.0.tgz?cache=0&sync_timestamp=1589640722705&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwatchpack-chokidar2%2Fdownload%2Fwatchpack-chokidar2-2.0.0.tgz#9948a1866cbbd6cb824dea13a7ed691f6c8ddff0"
-  integrity sha1-mUihhmy71suCTeoTp+1pH2yN3/A=
+watchpack@1.6.1, watchpack@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.npm.taobao.org/watchpack/download/watchpack-1.6.1.tgz?cache=0&sync_timestamp=1589640713702&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwatchpack%2Fdownload%2Fwatchpack-1.6.1.tgz#280da0a8718592174010c078c7585a74cd8cd0e2"
+  integrity sha1-KA2gqHGFkhdAEMB4x1hadM2M0OI=
   dependencies:
     chokidar "^2.1.8"
-
-watchpack@^1.6.1:
-  version "1.7.2"
-  resolved "https://registry.npm.taobao.org/watchpack/download/watchpack-1.7.2.tgz?cache=0&sync_timestamp=1589640713702&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwatchpack%2Fdownload%2Fwatchpack-1.7.2.tgz#c02e4d4d49913c3e7e122c3325365af9d331e9aa"
-  integrity sha1-wC5NTUmRPD5+EiwzJTZa+dMx6ao=
-  dependencies:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-  optionalDependencies:
-    chokidar "^3.4.0"
-    watchpack-chokidar2 "^2.0.0"
 
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"

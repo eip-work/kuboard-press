@@ -5,7 +5,15 @@ module.exports = [
     strong: '一键离线安装',
     action: '去看看',
     url: 'https://github.com/fanux/sealos',
-    weight: 60
+    weight: 50
+  },
+  {
+    name: '免费教程',
+    description: '廖雪峰研发 Java 进阶教程',
+    strong: '原价2580元，限时免费',
+    action: '立即学习',
+    url: 'https://datayi.cn/w/GR4bGZ3o',
+    weight: 100
   },
   // {
   //   name: 'SOCK BOOM',
@@ -23,36 +31,13 @@ module.exports = [
   //   url: 'https://activity.huaweicloud.com/2020feb_promotion/index.html?&fromuser=a3Vib2FyZA==&utm_source=a3Vib2FyZA==&utm_medium=cps&utm_campaign=201905',
   //   weight: 60
   // },
-  // {
-  //   name: 'Suveng',
-  //   description: '趣丸网络科技 Suveng 免费提供的视频课',
-  //   strong: '免费学习',
-  //   url: 'https://www.bilibili.com/video/av88798402',
-  //   weight: 60,
-  // },
-  // {
-  //   name: '阳明的博客',
-  //   description: 'Kubernetes，',
-  //   strong: '实战课程',
-  //   action: '去看看',
-  //   url: 'https://www.qikqiak.com/post/promotion-51/',
-  //   weight: 1
-  // },
-  // {
-  //   name: '极客时间',
-  //   description: '精要30计，让DevOps快速落地。',
-  //   strong: 'DevOps实战笔记',
-  //   action: '去看看',
-  //   url: 'https://time.geekbang.org/column/intro/100036601?code=0Totv3yN%2FohiumTclUF4ky4qRYs9Ecq6ZK4IdgNf88M%3D',
-  //   weight: 1
-  // },
   {
     name: '腾讯云',
     description: '【腾讯云】云产品采购季，助力行业复工。',
     strong: '1核2G云服务器，首年99元',
     action: '去抢',
     url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1053&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
-    weight: 60
+    weight: 50
   },
   // {
   //   name: '阿里云',
