@@ -57,10 +57,7 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 安装 Kuboard。
 
 > 如果您参考 https://kuboard.cn 网站上提供的 Kubernetes 安装文档，可在 master 节点上执行以下命令。
-
-> 关于版本选择：
-> * 当前，Kuboard 正在从 v1.0.x 向 Kuboard v2.0.0 过渡，v2.0.0-beta.3.c 完成度已经比较高，由于文档尚未更新，latest 版本仍然保持为 v1.0.9.7。新用户可以从 beta 版开始，以获得更好的体验。
-> * 参考此文，[了解如何从 v1.0.x 升级到 Kuboard v2.0.x](/support/change-log/upgrade-1-2.html)
+> * 如果您已经安装了 Kuboard v1.0.x，请参考 [了解如何从 v1.0.x 升级到 Kuboard v2.0.x](/support/change-log/upgrade-1-2.html)
 
 <b-tabs content-class="mt-3">
 <b-tab title="稳定版">
@@ -97,7 +94,7 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-a
 查看 Kuboard 运行状态：
 
 ``` sh
-kubectl get pods -l k8s.eip.work/name=kuboard -n kube-system
+kubectl get pods -l k8s.kuboard.cn/name=kuboard -n kube-system
 ```
 
 输出结果如下所示：
@@ -296,7 +293,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
     * Kuboard 容器中不能访问到您的 API Server，定位问题的方式如下：
       * 进入 Kuboard 的终端
         ```sh
-        kubectl exec -it $(kubectl get pods -l k8s.eip.work/name=kuboard -n kube-system | grep kuboard | awk '{print $1}') /bin/bash -n kube-system
+        kubectl exec -it $(kubectl get pods -l k8s.kuboard.cn/name=kuboard -n kube-system | grep kuboard | awk '{print $1}') /bin/bash -n kube-system
         ```
       * 在 Kuboard 终端中执行
         ``` sh

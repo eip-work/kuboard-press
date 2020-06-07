@@ -52,9 +52,9 @@ module.exports = {
           title: '配置Kuboard',
           collapsable: true,
           children: [
-            'install-dashboard-upgrade',
+            // 'install-dashboard-upgrade',
             'install-kuboard-layout',
-            'install-kuboard-env',
+            'install-kuboard-env-2',
           ]
         },
         {
@@ -647,6 +647,7 @@ module.exports = {
         'change-log/v2.0.x',
         'change-log/v1.0.x',
         'change-log/upgrade-1-2',
+        'change-log/upgrade-2-from-beta',
         'known-issue',
       ]
     }

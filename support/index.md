@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-## 授权声明
+<!-- ## 授权声明
 
 <div data-aos="fade-up">
 <grid :rwd="{compact: 'stack'}">
@@ -44,7 +44,7 @@ export default {
 </b-card>
   </grid-item>
 </grid>
-</div>
+</div> -->
 
 <!-- <KuboardLiscense></KuboardLiscense> -->
 
@@ -80,22 +80,12 @@ export default {
 </grid>
 </div>
 
+## 订阅
+
+<KbIframe style="margin-top: 10px" src="https://uc.kuboard.cn/public/home"></KbIframe>
+
 ## 已采纳用户
 
-只要您在此处留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
+<!-- 只要您在此处留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
 
-> 如果列表不能显示，请直接到这个链接留言 [Kuboard 授权列表](https://github.com/eip-work/kuboard-press/issues/71)
-
-
-<!-- ### 微服务落地咨询
-
-Kuboard 团队提供微服务实施落地的全过程咨询和实施，服务范围：
-<p>
-  <img src="./consulting.png">
-</p>
-
-如有需要请加微信：
-
-<p>
-  <img src="/images/dz2.jpeg" style="width: 200px;"></img>
-</p> -->
+> 如果列表不能显示，请直接到这个链接留言 [Kuboard 授权列表](https://github.com/eip-work/kuboard-press/issues/71) -->
