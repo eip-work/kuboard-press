@@ -1,10 +1,7 @@
 #!/bin/bash
 datetime=`date +%Y%m%d-%H%M%S`
 # echo $datetime
-tag=eipwork/kuboard-press
-
-npm install --registry=https://registry.npm.taobao.org
-npm run docs:build
+tag=swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard-press
 
 yarn install
 yarn docs:build

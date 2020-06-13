@@ -266,7 +266,7 @@ kubectl port-forward service/kuboard 8080:80 -n kube-system
 
 `http://localhost:8080`
 
-输入前一步骤中获得的 token，可进入 **Kuboard 集群概览页**
+输入前一步骤中获得的 token，可进入 **Kubernetes 集群概览**
 
 
 ::: tip
