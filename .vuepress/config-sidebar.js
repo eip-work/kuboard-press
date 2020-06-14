@@ -1,4 +1,4 @@
-module.exports = {
+let sidebar = {
   '/overview/': [
     {
       title: '简介',
@@ -654,3 +654,11 @@ module.exports = {
   ],
 
 }
+
+if (process.env.NODE_ENV === 'development') {
+  let guideV2 = require('./config-sidebar-guide.js')
+  
+  sidebar = Object.assign(sidebar, guideV2)
+}
+
+module.exports = sidebar

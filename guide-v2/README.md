@@ -7,7 +7,9 @@ description: 搭建一个基于Kubernetes的私有化云平台
 
 <AdSenseTitle/>
 
-# 安装 Kuboard
+大量的企业已经开始将应用向云原生迁移，本文描述了一种方案，可以帮助企业以最低的成本快速搭建基于 Kubernetes 的云原生应用环境，并展示了如何在其中部署、诊断、运维微服务应用。
+
+## 参考架构
 
 ## Kuboard 介绍
 
