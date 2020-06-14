@@ -148,3 +148,14 @@ http://任意一个Worker节点的IP地址:32567/
 `
 
 输入前一步骤中获得的 token，可进入 **Kubernetes 集群概览**
+
+### 进一步使用
+
+请访问 Kuboard 官网，了解如何：
+* 利用 Kuboard 管理 Kubernetes 集群；
+* 授权用户访问指定的名称空间；
+* 让多个团队协作使用 Kuboard 管理 Kubernetes 集群；
+* 将 Kuboard/Kubernetes 与 CI/CD 工具整合；
+* 利用 Kuboard 进行 Kubernetes 应用程序的问题诊断；
+* 使用 Kuboard 监控套件监控 Kubernetes 集群；
+* 使用 Kuboard 日志聚合套件查看应用的日志；
