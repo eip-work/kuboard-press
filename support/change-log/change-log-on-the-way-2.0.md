@@ -19,4 +19,21 @@ Prob 设置时，可以使用端口名
 
 套件：
   增加控制器级别的扩展点
-s
+
+
+增加应用商店；
+增加HPA；
+增加Resource Quotas；
+
+
+
+
+
+
+
+IsConfigTransportTLS
+
+
+K8S 事件通知
+
+Service 增加 sessionAffinity 选项
