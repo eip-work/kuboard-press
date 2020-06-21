@@ -113,7 +113,34 @@ Kuboard 是一款免费的 Kubernetes 管理工具，提供了丰富的功能，
 
 ## 订阅
 
-<KbIframe style="margin-top: 10px" src="https://uc.kuboard.cn/public/home"></KbIframe>
+<KbIframe v-if="isDev" style="margin-top: 10px" src="http://localhost:25679/public/home" :commands="commands"></KbIframe>
+<KbIframe v-else style="margin-top: 10px" src="https://uc.kuboard.cn/public/home" :commands="commands"></KbIframe>
+
+<script>
+export default {
+  data () {
+    return {
+      commands: {
+        openUserCenter: this.openUserCenter,
+      }
+    }
+  },
+  computed: {
+    isDev () {
+      return process.env.NODE_ENV === 'development'
+    }
+  },
+  methods: {
+    openUserCenter (params) {
+      let url = 'https://uc.kuboard.cn' + params.path
+      if (this.isDev) {
+        url = 'http://localhost:25679' + params.path
+      }
+      this.$openUrlInBlank(url)
+    },
+  }
+}
+</script>
 
 ## 已采纳用户
 

@@ -18,7 +18,7 @@ meta:
 * 修改上传文件的大小限制 `nginx.org/client-max-body-size`
 * 在开启 HTTPS 时，默认重定向到 HTTPS `nginx.org/redirect-to-https`
 * 启用 websocket `nginx.org/websocket-services`
-* 更多请参考文档 [nginx-ingress ConfigMap and Annotations](https://github.com/nginxinc/kubernetes-ingress/blob/master/docs/configmap-and-annotations.md)
+* 更多请参考文档 [nginx-ingress ConfigMap and Annotations](https://docs.nginx.com/nginx-ingress-controller/configuration/ingress-resources/advanced-configuration-with-annotations/)
 
 ## ingress-nginx
 
