@@ -53,6 +53,7 @@ let sidebar = {
           collapsable: true,
           children: [
             // 'install-dashboard-upgrade',
+            'reverse-proxy',
             'install-kuboard-layout',
             'install-kuboard-env-2',
           ]
