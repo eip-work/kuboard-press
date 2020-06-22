@@ -37,3 +37,12 @@ IsConfigTransportTLS
 K8S 事件通知
 
 Service 增加 sessionAffinity 选项
+
+
+只显示正确/错误的时间通知
+
+
+https://github.com/NVIDIA/k8s-device-plugin#enabling-gpu-support-in-kubernetes @欢庆
+
+
+优化命令行组件

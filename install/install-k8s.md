@@ -179,7 +179,7 @@ default via 172.21.0.1 dev eth0
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
 
-**请将脚本最后的 1.18.3 替换成您需要的版本号，**
+**请将脚本最后的 1.18.4 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.18.x 不要替换</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
@@ -189,7 +189,7 @@ default via 172.21.0.1 dev eth0
 > * 第十行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.18.3 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
+# 最后一个参数 1.18.4 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -198,13 +198,13 @@ default via 172.21.0.1 dev eth0
 # export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # 阿里云 docker hub 镜像
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
-curl -sSL https://kuboard.cn/install-script/v1.18.x/install_kubelet.sh | sh -s 1.18.3
+curl -sSL https://kuboard.cn/install-script/v1.18.x/install_kubelet.sh | sh -s 1.18.4
 ```
 
   </b-tab>
   <b-tab title="手动安装">
 
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.3***</font>
+手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.4***</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
 > * 第四行为腾讯云 docker hub 镜像
@@ -212,7 +212,7 @@ curl -sSL https://kuboard.cn/install-script/v1.18.x/install_kubelet.sh | sh -s 1
 > * 第八行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.18.3 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
+# 最后一个参数 1.18.4 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -251,8 +251,11 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 <b-tabs content-class="mt-3">
 <b-tab title="快速初始化" active>
 
-**请将脚本最后的 1.18.3 替换成您需要的版本号，**
+
+**请将脚本最后的 1.18.4 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.18.x 不要替换</font>
+
+> 如果直接装 kubelet 1.18.3 会出现 kubernetes-cni 依赖包的错误；如果初始化 1.18.4，则阿里云镜像仓库中还没有更新 kube-apiserver 1.18.4 的镜像。因此短期内，本文档出现了 kubelet 版本为 1.18.4，而 kube-apiserver 版本为 1.18.3 的不一致现象。
 
 ``` sh {10}
 # 只在 master 节点执行
@@ -270,7 +273,7 @@ curl -sSL https://kuboard.cn/install-script/v1.18.x/init_master.sh | sh -s 1.18.
 </b-tab>
 <b-tab title="手动初始化">
 
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.3***</font>
+手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.4***</font>
 
 ``` sh
 # 只在 master 节点执行
