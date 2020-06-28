@@ -27,7 +27,7 @@
                 <span>微信扫码</span>
                 <p style="margin-top: 10px; margin-bottom: 0; text-align: center;">
                   <!-- <img src="/images/dz.png" style="width: 150px;"></img> -->
-                  <img src="/images/dz2.jpeg" style="width: 150px;"></img>
+                  <img src="/images/qun/5.png" style="width: 150px; padding: 8px;"></img>
                 </p>
               </div>
             </div>
