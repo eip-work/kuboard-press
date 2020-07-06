@@ -15,8 +15,6 @@ Prob 设置时，可以使用端口名
 
 
 
-只显示错误事件的通知
-
 套件：
   增加控制器级别的扩展点
 
@@ -46,3 +44,12 @@ https://github.com/NVIDIA/k8s-device-plugin#enabling-gpu-support-in-kubernetes @
 
 
 优化命令行组件
+
+
+**优化**
+
+* 完善工作负载编辑器中 Ingress 的表单校验逻辑
+
+
+* 当没有编辑权限时，只显示 预览YAML，而不是 预览/编辑YAML
+* 文件浏览器，显示隐藏文件

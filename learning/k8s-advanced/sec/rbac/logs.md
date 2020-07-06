@@ -46,7 +46,7 @@ meta:
   | apiGroups     | v1                        | 资源对象所属的 apiGroups                                     |
   | resources     | pods/log<br />pods/attach | 查看日志必须访问 pods/log 和 pods/attach 这两个资源          |
   | resourceNames |                           | 不指定，则可以访问任意 Pod 的日志                            |
-  | verbs         | get<br />create           | 必须具备对 pods/log 和 pods/attach 进行 get 和 create 操作的权限 |
+  | verbs         | get           | 必须具备对 pods/log 和 pods/attach 进行 get 操作的权限 |
 
   ![image-20200419092412412](./logs.assets/image-20200419092412412.png)
 
