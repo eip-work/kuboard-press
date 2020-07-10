@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.18.x" updateCount="83"/>
+  <InstallBanner version="v1.18.x" updateCount="85"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -34,16 +34,16 @@ meta:
 对于 Kubernetes 初学者，在搭建K8S集群时，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
 
 * 至少2台 **2核4G** 的服务器
-* **Cent OS 7.6**
+* **Cent OS 7.6 / 7.7 / 7.8**
 
 <!-- <grid :rwd="{compact: 'stack'}">
   <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
 
 <div> -->
 
-[【2核4G云服务器低至331元/年，限时抢购】华为云开年回馈用户，产品低至1折](https://activity.huaweicloud.com/2020feb_promotion/invite.html?fromuser=05f073ad3c0010ea0f4bc00b7105ec20&fromacct=36cf686d-2650-4107-baa4-f0dc3c860df4&needGalaxy=true)
+[【云上优选 特惠来袭】华为云回馈用户，产品低至2折](https://activity.huaweicloud.com/discount_area_v5/index.html?fromacct=36cf686d-2650-4107-baa4-f0dc3c860df4&utm_source=V1g3MDY4NTY=&utm_medium=cps&utm_campaign=201905)
 
-[【腾讯云】云产品采购季，助力行业复工。1核2G云服务器，首年99元](https://cloud.tencent.com/act/cps/redirect?redirect=1053&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
+[【腾讯云】云产品限时秒杀，爆款1核2G云服务器，首年99元](https://cloud.tencent.com/act/cps/redirect?redirect=1062&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
 
 <!-- [阿里云，双十二主会场，低至一折](https://www.aliyun.com/1212/2019/home?userCode=obezo3pg) -->
@@ -110,6 +110,7 @@ lscpu
 
 | CentOS 版本 | 本文档是否兼容                          | 备注                                |
 | ----------- | --------------------------------------- | ----------------------------------- |
+| 7.8         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.7         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.6         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | 7.5         | <span style="font-size: 24px;">😞</span> | 已证实会出现 kubelet 无法启动的问题    |
@@ -179,7 +180,7 @@ default via 172.21.0.1 dev eth0
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
 
-**请将脚本最后的 1.18.4 替换成您需要的版本号，**
+**请将脚本最后的 1.18.5 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.18.x 不要替换</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
@@ -189,7 +190,7 @@ default via 172.21.0.1 dev eth0
 > * 第十行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.18.4 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
+# 最后一个参数 1.18.5 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -198,13 +199,13 @@ default via 172.21.0.1 dev eth0
 # export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # 阿里云 docker hub 镜像
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
-curl -sSL https://kuboard.cn/install-script/v1.18.x/install_kubelet.sh | sh -s 1.18.4
+curl -sSL https://kuboard.cn/install-script/v1.18.x/install_kubelet.sh | sh -s 1.18.5
 ```
 
   </b-tab>
   <b-tab title="手动安装">
 
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.4***</font>
+手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.5***</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
 > * 第四行为腾讯云 docker hub 镜像
@@ -212,7 +213,7 @@ curl -sSL https://kuboard.cn/install-script/v1.18.x/install_kubelet.sh | sh -s 1
 > * 第八行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.18.4 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
+# 最后一个参数 1.18.5 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -252,10 +253,8 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 <b-tab title="快速初始化" active>
 
 
-**请将脚本最后的 1.18.4 替换成您需要的版本号，**
+**请将脚本最后的 1.18.5 替换成您需要的版本号，**
 <font color="red">脚本中间的 v1.18.x 不要替换</font>
-
-> 如果直接装 kubelet 1.18.3 会出现 kubernetes-cni 依赖包的错误；如果初始化 1.18.4，则阿里云镜像仓库中还没有更新 kube-apiserver 1.18.4 的镜像。因此短期内，本文档出现了 kubelet 版本为 1.18.4，而 kube-apiserver 版本为 1.18.3 的不一致现象。
 
 ``` sh {10}
 # 只在 master 节点执行
@@ -267,13 +266,13 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.18.x/init_master.sh | sh -s 1.18.3
+curl -sSL https://kuboard.cn/install-script/v1.18.x/init_master.sh | sh -s 1.18.5
 ```
 
 </b-tab>
 <b-tab title="手动初始化">
 
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.4***</font>
+手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.18.5***</font>
 
 ``` sh
 # 只在 master 节点执行
@@ -291,6 +290,9 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 </b-tab>
 </b-tabs>
+
+> 感谢 [https://github.com/zhangguanzhang/google_containers](https://github.com/zhangguanzhang/google_containers) 提供最新的 google_containers 国内镜像
+
 </b-card>
 
 <b-button v-b-toggle.collapse-init-error variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-error', 'error-init-master', '查看初始化时的错误解决办法')">如果出错点这里</b-button>

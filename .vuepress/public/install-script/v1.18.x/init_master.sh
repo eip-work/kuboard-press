@@ -19,7 +19,7 @@ cat <<EOF > ./kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 kubernetesVersion: v${1}
-imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
+imageRepository: registry.aliyuncs.com/k8sxio
 controlPlaneEndpoint: "${APISERVER_NAME}:6443"
 networking:
   serviceSubnet: "10.96.0.0/16"
