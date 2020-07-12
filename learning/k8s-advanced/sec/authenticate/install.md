@@ -1,7 +1,7 @@
 ---
 vssueId: 180
 layout: LearningLayout
-description: Kubernetes教程_除了ServiceAccount以外，Kubernetes不提供任何形式的用户认证方式，如果需要通过用户名密码登录Kubernete/Kuboard，本文描述使用Kubernetes 认真模块安装向导为已有的 Kubernetes 集群增加用户认证功能，并可以使用 GitHub、GitLab 账号登录 Kubernetes。
+description: Kubernetes教程_除了ServiceAccount以外，Kubernetes不提供任何形式的用户认证方式，如果需要通过用户名密码登录Kubernete/Kuboard，本文描述使用Kubernetes 认证模块安装向导为已有的 Kubernetes 集群增加用户认证功能，并可以使用 GitHub、GitLab 账号登录 Kubernetes。
 meta:
   - name: keywords
     content: Kubernetes 教程,Kubernetes 授权,Kubernetes authentication,Kubernetes用户名密码
@@ -51,6 +51,8 @@ Kubernetes 支持 [多种认证方式](./#认证策略) ，关于安装 Kubernet
 ### 进入Kubernetes认证模块安装向导
 
 当 Kuboard 版本不低于 v1.0.6-beta.7 时，可以通过 http://yournodeip:32567/authenticate-install 链接进入 Kuboard 认证模块安装向导。如下图所示：
+
+> Kuboard v2.0.x 中，此链接仍然有效，界面风格与 v1.0.x 有差异，但是认证模块安装向导的功能相同。
 
 ![Kubernetes安装认证模块](./install.assets/image-20200201160933419.png)
 
