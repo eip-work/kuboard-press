@@ -6,12 +6,12 @@
   "dependencies": {
     "@vssue/api-github-v4": "^1.4.0",
     "@vssue/vuepress-plugin-vssue": "^1.4.6",
-    "@vuepress/plugin-active-header-links": "^1.3.1",
-    "@vuepress/plugin-back-to-top": "^1.3.1",
-    "@vuepress/plugin-google-analytics": "^1.3.1",
-    "@vuepress/plugin-medium-zoom": "^1.3.1",
-    "@vuepress/plugin-nprogress": "^1.3.1",
-    "@vuepress/plugin-pwa": "^1.3.1",
+    "@vuepress/plugin-active-header-links": "^1.5.2",
+    "@vuepress/plugin-back-to-top": "^1.5.2",
+    "@vuepress/plugin-google-analytics": "^1.5.2",
+    "@vuepress/plugin-medium-zoom": "^1.5.2",
+    "@vuepress/plugin-nprogress": "^1.5.2",
+    "@vuepress/plugin-pwa": "^1.5.2",
     "animated-number-vue": "^1.0.0",
     "aos": "^2.3.4",
     "axios": "^0.19.2",
@@ -20,19 +20,16 @@
     "bootstrap-vue": "^2.15.0",
     "date-fns": "^1.30.1",
     "esm": "^3.2.25",
-    "nodemon": "2.0.4",
+    "nodemon": "^2.0.4",
     "reduce-css-calc": "^2.1.7",
     "vue2-animate": "^2.1.3",
-    "vuepress": "^1.3.1",
+    "vuepress": "^1.5.2",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-code-switcher": "^1.0.3",
     "vuepress-plugin-named-chunks": "^1.1.3",
-    "vuepress-plugin-reading-progress": "^1.0.9",
+    "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-seo": "^0.1.3",
-    "vuepress-plugin-sitemap": "2.1.2"
-  },
-  "resolutions": {
-    "watchpack": "1.6.1"
+    "vuepress-plugin-sitemap": "^2.3.1"
   }
 }

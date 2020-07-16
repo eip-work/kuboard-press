@@ -23,6 +23,7 @@ spec:
         k8s.kuboard.cn/layer: monitor
         k8s.kuboard.cn/name: kuboard
     spec:
+      nodeName: your-node-name
       containers:
       - name: kuboard
         image: eipwork/kuboard:latest
