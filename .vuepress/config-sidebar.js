@@ -412,6 +412,13 @@ let sidebar = {
         },
         'k8s-advanced/gc',
         {
+          title: '自动伸缩',
+          collapsable: true,
+          children: [
+            'k8s-advanced/hpa/hpa',
+          ]
+        },
+        {
           title: '安全',
           collapsable: true,
           children: [

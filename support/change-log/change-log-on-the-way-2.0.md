@@ -48,4 +48,3 @@ https://github.com/NVIDIA/k8s-device-plugin#enabling-gpu-support-in-kubernetes @
 
 
 * 当没有编辑权限时，只显示 预览YAML，而不是 预览/编辑YAML
-* 文件浏览器，显示隐藏文件

@@ -1,0 +1,87 @@
+{
+  "kind": "NodeMetricsList",
+  "apiVersion": "metrics.k8s.io/v1beta1",
+  "metadata": {
+    "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "qingke7",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/qingke7",
+        "creationTimestamp": "2020-06-30T07:54:33Z"
+      },
+      "timestamp": "2020-06-30T07:54:33Z",
+      "window": "1m0s",
+      "usage": {
+        "cpu": "300m",
+        "memory": "4869932Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "k8s",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/k8s",
+        "creationTimestamp": "2020-06-30T07:54:33Z"
+      },
+      "timestamp": "2020-06-30T07:54:33Z",
+      "window": "1m0s",
+      "usage": {
+        "cpu": "283m",
+        "memory": "3250712Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "iz2ze0ephck4d1aw6rxk8gz",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/iz2ze0ephck4d1aw6rxk8gz",
+        "creationTimestamp": "2020-06-30T07:54:33Z"
+      },
+      "timestamp": "2020-06-30T07:54:33Z",
+      "window": "1m0s",
+      "usage": {
+        "cpu": "351m",
+        "memory": "4602996Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "qingke0",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/qingke0",
+        "creationTimestamp": "2020-06-30T07:54:33Z"
+      },
+      "timestamp": "2020-06-30T07:54:33Z",
+      "window": "1m0s",
+      "usage": {
+        "cpu": "1219m",
+        "memory": "1240616Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "qingke1",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/qingke1",
+        "creationTimestamp": "2020-06-30T07:54:33Z"
+      },
+      "timestamp": "2020-06-30T07:54:33Z",
+      "window": "1m0s",
+      "usage": {
+        "cpu": "181m",
+        "memory": "1004804Ki"
+      }
+    },
+    {
+      "metadata": {
+        "name": "qingke6",
+        "selfLink": "/apis/metrics.k8s.io/v1beta1/nodes/qingke6",
+        "creationTimestamp": "2020-06-30T07:54:33Z"
+      },
+      "timestamp": "2020-06-30T07:54:33Z",
+      "window": "1m0s",
+      "usage": {
+        "cpu": "152m",
+        "memory": "954652Ki"
+      }
+    }
+  ]
+}

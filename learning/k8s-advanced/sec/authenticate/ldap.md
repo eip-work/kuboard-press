@@ -11,3 +11,13 @@ meta:
 # Kubernetes Authentication LDAP
 
 <AdSenseTitle/>
+
+本文介绍了两部分内容，如果您已经有 LDAP 在使用，请直接进入文档的第二部分内容。
+
+* 安装 OpenLDAP
+  > 仅用于配合此文档达成演示目的，部署到生产环境时，请参考 OpenLDAP 的官方网站
+* 配置 Kubernetes/Kuboard 使用 OpenLDAP 登录
+
+## 安装 OpenLDAP
+
+## 配置 Kubernetes/Kuboard 使用 OpenLDAP 登录
