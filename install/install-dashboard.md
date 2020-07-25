@@ -64,7 +64,7 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
-kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.yaml
 ```
 
 </b-tab>
@@ -72,7 +72,7 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard-beta.yaml
-kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.yaml
 ```
 
 </b-tab>
@@ -85,7 +85,7 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard-arm.yaml
-kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-arm.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server-arm.yaml
 ```
 
 </b-tab>
@@ -141,7 +141,7 @@ kuboard-54c9c4f6cb-6lf88   1/1     Running       0          45s
 
 ``` sh
 kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
-kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.yaml
 ```
 
 </b-tab>
@@ -149,7 +149,7 @@ kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.
 
 ``` sh
 kubectl delete -f https://kuboard.cn/install-script/kuboard-beta.yaml
-kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.yaml
 ```
 
 </b-tab>
@@ -158,7 +158,7 @@ kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.
 
 ``` sh
 kubectl delete -f https://kuboard.cn/install-script/kuboard-arm.yaml
-kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-arm.yaml
+kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server-arm.yaml
 ```
 
 </b-tab>
