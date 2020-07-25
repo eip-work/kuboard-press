@@ -57,13 +57,13 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    k8s.eip.work/displayName: kuboard
-    k8s.eip.work/workload: kuboard
+    k8s.kuboard.cn/displayName: kuboard
+    k8s.kuboard.cn/workload: kuboard
     nginx.com/sticky-cookie-services: serviceName=kuboard srv_id expires=1h path=/
     nginx.org/websocket-services: kuboard
   labels:
-    k8s.eip.work/layer: monitor
-    k8s.eip.work/name: kuboard
+    k8s.kuboard.cn/layer: monitor
+    k8s.kuboard.cn/name: kuboard
   name: kuboard
   namespace: kube-system
 spec:
@@ -90,6 +90,10 @@ server {
     proxy_pass  http://192.168.2.39:32567;  # 替换成你的节点地址
     proxy_http_version 1.1;
     proxy_pass_header Authorization;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
   }
   location /k8s-ws/ {
     proxy_pass  http://192.168.2.39:32567;  # 替换成你的节点地址
@@ -97,6 +101,10 @@ server {
     proxy_pass_header Authorization;
     proxy_set_header Upgrade "websocket";
     proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
   }
   gzip on;
 }
