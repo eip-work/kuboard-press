@@ -429,12 +429,14 @@ let sidebar = {
                 'k8s-advanced/sec/authenticate/',
                 'k8s-advanced/sec/sa-admin',
                 'k8s-advanced/sec/authenticate/install',
+                'k8s-advanced/sec/authenticate/ldap',
               ]
             }, {
               title: '用户授权',
               collapsable: true,
               children: [
                 'k8s-advanced/sec/kuboard',
+                'k8s-advanced/sec/rbac/user-namespace.html',
                 'k8s-advanced/sec/rbac/list-namespace.html',
                 'k8s-advanced/sec/rbac/logs.html',
                 'k8s-advanced/sec/rbac/api',

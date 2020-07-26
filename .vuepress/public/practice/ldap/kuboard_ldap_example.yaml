@@ -1,0 +1,213 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ldap-example
+  name: ldap
+  annotations:
+    k8s.kuboard.cn/workload: ldap
+    k8s.kuboard.cn/ingress: 'false'
+    k8s.kuboard.cn/service: none
+  labels:
+    app: ldap
+spec:
+  selector:
+    matchLabels:
+      app: ldap
+  revisionHistoryLimit: 10
+  template:
+    metadata:
+      labels:
+        app: ldap
+    spec:
+      securityContext:
+        seLinuxOptions: {}
+      imagePullSecrets: []
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'osixia/openldap:1.4.0'
+          imagePullPolicy: IfNotPresent
+          name: ldap
+          volumeMounts:
+            - name: openldap-data
+              mountPath: /var/lib/ldap
+              subPath: data
+            - name: openldap-data
+              mountPath: /etc/ldap/slapd.d
+              subPath: config
+            - name: openldap-data
+              mountPath: /container/service/slapd/assets/certs
+              subPath: certs
+            - name: secret-volume
+              mountPath: /container/environment/01-custom
+            - name: container-run
+              mountPath: /container/run
+          args:
+            - '--copy-service'
+          resources:
+            limits:
+            requests:
+          env: []
+          readinessProbe:
+            tcpSocket:
+              port: openldap
+            initialDelaySeconds: 20
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: openldap
+            initialDelaySeconds: 20
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 10
+          lifecycle: {}
+          ports:
+            - name: openldap
+              containerPort: 389
+              protocol: TCP
+            - name: ssl-ldap-port
+              containerPort: 636
+              protocol: TCP
+      volumes:
+        - name: openldap-data
+          emptyDir: {}
+        - name: secret-volume
+          secret:
+            secretName: ldap-secret
+            defaultMode: 420
+            items: []
+        - name: container-run
+          emptyDir: {}
+      dnsPolicy: ClusterFirst
+      dnsConfig: {}
+      terminationGracePeriodSeconds: 30
+  progressDeadlineSeconds: 600
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  replicas: 1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ldap-example
+  name: phpldapadmin
+  annotations:
+    k8s.kuboard.cn/workload: phpldapadmin
+    k8s.kuboard.cn/ingress: 'false'
+    k8s.kuboard.cn/service: ClusterIP
+  labels:
+    io.kompose.service: phpldapadmin
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: phpldapadmin
+  revisionHistoryLimit: 10
+  template:
+    metadata:
+      labels:
+        io.kompose.service: phpldapadmin
+    spec:
+      securityContext:
+        seLinuxOptions: {}
+      imagePullSecrets: []
+      restartPolicy: Always
+      initContainers: []
+      containers:
+        - image: 'osixia/phpldapadmin:0.9.0'
+          imagePullPolicy: Always
+          name: phpldapadmin
+          volumeMounts: []
+          resources:
+            limits:
+            requests:
+          env:
+            - name: PHPLDAPADMIN_HTTPS
+              value: 'false'
+            - name: PHPLDAPADMIN_LDAP_HOSTS
+              value: ldap-service
+          lifecycle: {}
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      volumes: []
+      dnsPolicy: ClusterFirst
+      dnsConfig: {}
+      terminationGracePeriodSeconds: 30
+  progressDeadlineSeconds: 600
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  replicas: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    app: ldap
+  name: ldap-service
+  namespace: ldap-example
+spec:
+  ports:
+    - name: openldap
+      port: 389
+      protocol: TCP
+      targetPort: openldap
+    - name: ssl-ldap-port
+      port: 636
+      protocol: TCP
+      targetPort: ssl-ldap-port
+  selector:
+    app: ldap
+  sessionAffinity: None
+  type: ClusterIP
+  
+    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ldap-example
+  name: phpldapadmin
+  annotations:
+    k8s.kuboard.cn/workload: phpldapadmin
+  labels:
+    io.kompose.service: phpldapadmin
+spec:
+  selector:
+    io.kompose.service: phpldapadmin
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+      name: '8080'
+      nodePort: 0
+  sessionAffinity: None
+
+---
+metadata:
+  name: ldap-secret
+  namespace: ldap-example
+  annotations: {}
+data:
+  env.startup.yaml: >-
+    IyBUaGlzIGlzIHRoZSBkZWZhdWx0IGltYWdlIHN0YXJ0dXAgY29uZmlndXJhdGlvbiBmaWxlCiMgdGhpcyBmaWxlIGRlZmluZSBlbnZpcm9ubWVudCB2YXJpYWJsZXMgdXNlZCBkdXJpbmcgdGhlIGNvbnRhaW5lciAqKmZpcnN0IHN0YXJ0KiogaW4gKipzdGFydHVwIGZpbGVzKiouCgojIFRoaXMgZmlsZSBpcyBkZWxldGVkIHJpZ2h0IGFmdGVyIHN0YXJ0dXAgZmlsZXMgYXJlIHByb2Nlc3NlZCBmb3IgdGhlIGZpcnN0IHRpbWUsCiMgYWZ0ZXIgdGhhdCBhbGwgdGhlc2UgdmFsdWVzIHdpbGwgbm90IGJlIGF2YWlsYWJsZSBpbiB0aGUgY29udGFpbmVyIGVudmlyb25tZW50LgojIFRoaXMgaGVscHMgdG8ga2VlcCB5b3VyIGNvbnRhaW5lciBjb25maWd1cmF0aW9uIHNlY3JldC4KIyBtb3JlIGluZm9ybWF0aW9uIDogaHR0cHM6Ly9naXRodWIuY29tL29zaXhpYS9kb2NrZXItbGlnaHQtYmFzZWltYWdlCgojIFJlcXVpcmVkIGFuZCB1c2VkIGZvciBuZXcgbGRhcCBzZXJ2ZXIgb25seQpMREFQX09SR0FOSVNBVElPTjogRXhhbXBsZSBJbmMuCkxEQVBfRE9NQUlOOiBleGFtcGxlLm9yZwpMREFQX0JBU0VfRE46ICNpZiBlbXB0eSBhdXRvbWF0aWNhbGx5IHNldCBmcm9tIExEQVBfRE9NQUlOCgpMREFQX0FETUlOX1BBU1NXT1JEOiBhZG1pbgpMREFQX0NPTkZJR19QQVNTV09SRDogY29uZmlnCgpMREFQX1JFQURPTkxZX1VTRVI6IGZhbHNlCkxEQVBfUkVBRE9OTFlfVVNFUl9VU0VSTkFNRTogcmVhZG9ubHkKTERBUF9SRUFET05MWV9VU0VSX1BBU1NXT1JEOiByZWFkb25seQoKIyBCYWNrZW5kCkxEQVBfQkFDS0VORDogaGRiCgojIFRscwpMREFQX1RMUzogdHJ1ZQpMREFQX1RMU19DUlRfRklMRU5BTUU6IGxkYXAuY3J0CkxEQVBfVExTX0tFWV9GSUxFTkFNRTogbGRhcC5rZXkKTERBUF9UTFNfQ0FfQ1JUX0ZJTEVOQU1FOiBjYS5jcnQKCkxEQVBfVExTX0VORk9SQ0U6IGZhbHNlCkxEQVBfVExTX0NJUEhFUl9TVUlURTogU0VDVVJFMjU2Oi1WRVJTLVNTTDMuMApMREFQX1RMU19QUk9UT0NPTF9NSU46IDMuMQpMREFQX1RMU19WRVJJRllfQ0xJRU5UOiBkZW1hbmQKCiMgUmVwbGljYXRpb24KTERBUF9SRVBMSUNBVElPTjogZmFsc2UKIyB2YXJpYWJsZXMgJExEQVBfQkFTRV9ETiwgJExEQVBfQURNSU5fUEFTU1dPUkQsICRMREFQX0NPTkZJR19QQVNTV09SRAojIGFyZSBhdXRvbWF0aWNhbHkgcmVwbGFjZWQgYXQgcnVuIHRpbWUKCiMgaWYgeW91IHdhbnQgdG8gYWRkIHJlcGxpY2F0aW9uIHRvIGFuIGV4aXN0aW5nIGxkYXAKIyBhZGFwdCBMREFQX1JFUExJQ0FUSU9OX0NPTkZJR19TWU5DUFJPViBhbmQgTERBUF9SRVBMSUNBVElPTl9EQl9TWU5DUFJPViB0byB5b3VyIGNvbmZpZ3VyYXRpb24KIyBhdm9pZCB1c2luZyAkTERBUF9CQVNFX0ROLCAkTERBUF9BRE1JTl9QQVNTV09SRCBhbmQgJExEQVBfQ09ORklHX1BBU1NXT1JEIHZhcmlhYmxlcwpMREFQX1JFUExJQ0FUSU9OX0NPTkZJR19TWU5DUFJPVjogYmluZGRuPSJjbj1hZG1pbixjbj1jb25maWciIGJpbmRtZXRob2Q9c2ltcGxlIGNyZWRlbnRpYWxzPSRMREFQX0NPTkZJR19QQVNTV09SRCBzZWFyY2hiYXNlPSJjbj1jb25maWciIHR5cGU9cmVmcmVzaEFuZFBlcnNpc3QgcmV0cnk9IjYwICsiIHRpbWVvdXQ9MSBzdGFydHRscz1jcml0aWNhbApMREFQX1JFUExJQ0FUSU9OX0RCX1NZTkNQUk9WOiBiaW5kZG49ImNuPWFkbWluLCRMREFQX0JBU0VfRE4iIGJpbmRtZXRob2Q9c2ltcGxlIGNyZWRlbnRpYWxzPSRMREFQX0FETUlOX1BBU1NXT1JEIHNlYXJjaGJhc2U9IiRMREFQX0JBU0VfRE4iIHR5cGU9cmVmcmVzaEFuZFBlcnNpc3QgaW50ZXJ2YWw9MDA6MDA6MDA6MTAgcmV0cnk9IjYwICsiIHRpbWVvdXQ9MSBzdGFydHRscz1jcml0aWNhbApMREFQX1JFUExJQ0FUSU9OX0hPU1RTOgogIC0gbGRhcDovL2xkYXAuZXhhbXBsZS5vcmcgIyBUaGUgb3JkZXIgbXVzdCBiZSB0aGUgc2FtZSBvbiBhbGwgbGRhcCBzZXJ2ZXJzCiAgLSBsZGFwOi8vbGRhcDIuZXhhbXBsZS5vcmcKCgojIFJlbW92ZSBjb25maWcgYWZ0ZXIgc2V0dXAKTERBUF9SRU1PVkVfQ09ORklHX0FGVEVSX1NFVFVQOiB0cnVlCgojIGNmc3NsIGVudmlyb25tZW50IHZhcmlhYmxlcyBwcmVmaXgKTERBUF9DRlNTTF9QUkVGSVg6IGxkYXAgIyBjZnNzbC1oZWxwZXIgZmlyc3Qgc2VhcmNoIGNvbmZpZyBmcm9tIExEQVBfQ0ZTU0xfKiB2YXJpYWJsZXMsIGJlZm9yZSBDRlNTTF8qIHZhcmlhYmxlcy4K
+  env.yaml: >-
+    IyBUaGlzIGlzIHRoZSBkZWZhdWx0IGltYWdlIGNvbmZpZ3VyYXRpb24gZmlsZQojIFRoZXNlIHZhbHVlcyB3aWxsIHBlcnNpc3RzIGluIGNvbnRhaW5lciBlbnZpcm9ubWVudC4KCiPCoEFsbCBlbnZpcm9ubWVudCB2YXJpYWJsZXMgdXNlZCBhZnRlciB0aGUgY29udGFpbmVyIGZpcnN0IHN0YXJ0CiMgbXVzdCBiZSBkZWZpbmVkIGhlcmUuCiMgbW9yZSBpbmZvcm1hdGlvbiA6IGh0dHBzOi8vZ2l0aHViLmNvbS9vc2l4aWEvZG9ja2VyLWxpZ2h0LWJhc2VpbWFnZQoKIyBHZW5lcmFsIGNvbnRhaW5lciBjb25maWd1cmF0aW9uCiMgc2VlIHRhYmxlIDUuMSBpbiBodHRwOi8vd3d3Lm9wZW5sZGFwLm9yZy9kb2MvYWRtaW4yNC9zbGFwZGNvbmYyLmh0bWwgZm9yIHRoZSBhdmFpbGFibGUgbG9nIGxldmVscy4KTERBUF9MT0dfTEVWRUw6IDI1Ngo=
+type: Opaque
+kind: Secret
+apiVersion: v1
