@@ -1,10 +1,18 @@
 module.exports = [
+  // {
+  //   name: 'Sealyun',
+  //   description: 'Kubernetes，',
+  //   strong: '一键离线安装',
+  //   action: '去看看',
+  //   url: 'https://github.com/fanux/sealos',
+  //   weight: 50
+  // },
   {
-    name: 'Sealyun',
-    description: 'Kubernetes，',
-    strong: '一键离线安装',
-    action: '去看看',
-    url: 'https://github.com/fanux/sealos',
+    name: 'Google 文档查看',
+    description: '搜索第一手技术资料必备工具',
+    strong: '亲测好用',
+    action: '打开页面后点击页头的 "Order"',
+    url: 'https://aff.gae1s.com/aff.php?aff=10455',
     weight: 50
   },
   {
