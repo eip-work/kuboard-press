@@ -88,6 +88,8 @@ meta:
     * [Kubernetes网络模型](/learning/k8s-intermediate/service/network.html)
     * [容器应用的设计原则、模式和反模式](/learning/k8s-practice/micro-service/design-pattern.html)
     * [尝试部署完整的微服务](/learning/k8s-practice/ocp/)
+    * [自动伸缩](/learning/k8s-advanced/hpa/hpa.html)
+    * [自动伸缩-例子](/learning/k8s-advanced/hpa/walkthrough.html)
   * 完善工具配置
     * [掌握快速部署高可用Kubernetes集群的窍门](https://github.com/fanux/sealos)
     * [自定义Kuboard名称空间布局](/install/install-kuboard-layout.html)
@@ -96,7 +98,6 @@ meta:
     * [了解日志聚合](/learning/k8s-advanced/logs/)
     * [了解Kubernetes的监控](/guide/example/monitor-v2.html)
     * [免费获得Kuboard授权](/support/)
-    * 自动伸缩
   * 按教程章节顺序对 Kubernetes 各种概念进行深入理解
   * CI/CD 工具链
     * 私有 Docker 镜像仓库
@@ -176,6 +177,7 @@ meta:
     * [诊断集群问题](/learning/k8s-advanced/ts/cluster.html)
   * 日志
     * [日志](/learning/k8s-advanced/logs/)
+    * [日志聚合套件](/learning/k8s-advanced/logs/loki-addon.html)
   * 调度
     * [调度](/learning/k8s-advanced/schedule/)
     * [调度调优](/learning/k8s-advanced/schedule/tuning.html)
@@ -185,8 +187,11 @@ meta:
     * [Resource Quota](/learning/k8s-advanced/policy/rq.html)
   * 安全
     * [用户认证概述](/learning/k8s-advanced/sec/authenticate/)
-    * [使用GitLab/GitHub等账号登录Kubernetes](/learning/k8s-advanced/sec/authenticate/install.html)
+    * [使用GitLab/GitHub等账号登录Kubernetes/Kuboard](/learning/k8s-advanced/sec/authenticate/install.html)
+    * [使用 LDAP 用户登录Kubernetes/Kuboard](/learning/k8s-advanced/sec/authenticate/ldap.html)
     * [RBAC授权](/learning/k8s-advanced/sec/rbac/api.html)
+    * [授权用户访问名称空间](/learning/k8s-advanced/sec/rbac/user-namespace.html)
+    * [授权用户访问名称空间列表](/learning/k8s-advanced/sec/rbac/list-namespace.html)
 
     <!-- <Course courseId="484058" /> -->
   * 监控
