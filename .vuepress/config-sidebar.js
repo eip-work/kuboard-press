@@ -363,6 +363,7 @@ let sidebar = {
             'k8s-advanced/logs/basic',
             'k8s-advanced/logs/node',
             'k8s-advanced/logs/cluster',
+            'k8s-advanced/logs/loki-addon'
           ]
         },
         {
@@ -416,6 +417,7 @@ let sidebar = {
           collapsable: true,
           children: [
             'k8s-advanced/hpa/hpa',
+            'k8s-advanced/hpa/walkthrough',
           ]
         },
         {
