@@ -4,7 +4,7 @@ layout: LearningLayout
 description: Kubernetes_自动水平伸缩_Horizontal_Pod_Autoscaler
 meta:
   - name: keywords
-    content: Kubernetes 教程,Kubernetes 授权,Kubernetes RBAC,Kubernetes权限
+    content: Kubernetes 教程,Kubernetes 授权,Kubernetes Horizontal Pod Autoscaler,水平自动伸缩
 ---
 
 # 自动伸缩
@@ -40,7 +40,7 @@ HorizontalPodAutoscaler 通常从一系列 [聚合 API](/learning/k8s-advanced/e
 自 Kubernetes 1.11 开始，已经不推荐从 Heapster 中获取度量信息。
 :::
 
-## 算法
+### 算法
 
 简单地说，Horizontal Pod Autoscaler 控制器基于期望的度量值和当前度量值之间的比例运作：
 ```
@@ -177,4 +177,86 @@ scaleDown:
   stabilizationWindowSeconds: 300
 ```
 
-当度量值表明目标控制器（Deployment、StatefulSet 等）应该被向下伸缩时，自动伸缩算法将会查找 `stabilizationWindowSeconds` 指定的时间窗口内已计算出来的目标伸缩副本数，并使用这些数值里最大的一个作为伸缩的目标副本数。
+当度量值表明目标控制器（Deployment、StatefulSet 等）应该被向下伸缩时，自动伸缩算法将会查找 `stabilizationWindowSeconds` 指定的时间窗口内已计算出来的目标伸缩副本数，并使用这些数值里最大的一个作为伸缩的目标副本数。在上面的例子中，`stabilizationWindowSeconds=300`，因此，过去 5 分钟内所有的已计算出来的目标伸缩副本数都会被纳入考量。
+
+### 默认行为
+
+如果要使用自定义伸缩，并不一定要指定所有的字段，只需要指定那些需要自定义的字段就可以了。您在 HorizontalPodAutoscaler 的 `.spec.behavior` 中自定义的字段将会和默认值合并后再使用。默认值如下所示：
+
+``` yaml
+behavior:
+  scaleDown:
+    stabilizationWindowSeconds: 300
+    policies:
+    - type: Percent
+      value: 100
+      periodSeconds: 15
+  scaleUp:
+    stabilizationWindowSeconds: 0
+    policies:
+    - type: Percent
+      value: 100
+      periodSeconds: 15
+    - type: Pods
+      value: 4
+      periodSeconds: 15
+    selectPolicy: Max
+```
+
+对于向下伸缩来说，默认的稳定窗口（Stabilization Window）是 300 秒（或者 `--horizontal-pod-autoscaler-downscale-stabilization` 参数指定的值）。当前，默认值中只包含一个向下伸缩的伸缩策略，即允许移除当前所有正在运行的副本，这意味着，HorizontalPodAutoscaler 可以直接将副本数缩减到期望的目标值。
+
+对于向上伸缩来说，默认值中指定了稳定窗口（Stabilization Window）为 0，当观测到的度量值表明需要执行向上伸缩，则 HorizontalPodAutoscaler 将立刻执行伸缩动作。默认值中还包括两个向上伸缩的策略，一个允许每 15 秒中添加和当前副本数同等数量的副本数，另一个允许每 15 秒中添加 4 个副本数。
+
+### 例子：调整向下伸缩的稳定窗口
+
+下面的例子指定了 HPA 使用 1 分钟作为向下伸缩的稳定窗口：
+
+``` yaml
+behavior:
+  scaleDown:
+    stabilizationWindowSeconds: 60
+```
+
+### 例子：限制向下伸缩的速度
+
+下面的例子限定了 HPA 每分钟只能移除当前副本数的 10% 的副本：
+
+``` yaml
+behavior:
+  scaleDown:
+    policies:
+    - type: Percent
+      value: 10
+      periodSeconds: 60
+```
+
+下面的例子中，增加了另外一个 Policy，以使得 HorizontalPodAutoscaler 可以一次性移除最后 5 个 Pod （策略选择方式为 Maximum）：
+
+``` yaml
+behavior:
+  scaleDown:
+    policies:
+    - type: Percent
+      value: 10
+      periodSeconds: 60
+    - type: Pods
+      value: 5
+      periodSeconds: 60
+    selectPolicy: Max
+```
+
+### 例子：禁用向下伸缩
+
+将 `selectPolicy` 字段设置为 `Disabled` 可以关闭该伸缩方向的自动伸缩。因此，如果要禁止向下伸缩，配置文件如下所示：
+
+``` yaml
+behavior:
+  scaleDown:
+    selectPolicy: Disabled
+```
+
+## 下一步
+
+* 设计文档： [Horizontal Pod Autoscaling](https://git.k8s.io/community/contributors/design-proposals/autoscaling/horizontal-pod-autoscaler.md)
+* kubectl autoscale command ： [kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands/#autoscale)
+* 使用 [Horizontal Pod Autoscaler](./walkthrough.html) 的例子
