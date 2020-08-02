@@ -247,15 +247,119 @@ php-apache   1/1     1            1           27m
 
 除了 ***resource metrics*** 资源度量以外，还存在两种类型的度量（pod metrics / object metrics），这两种类型的度量都被认为是 ***custom metrics*** 自定义度量。自定义度量需要对集群进行比较复杂的监控设置，并且，在不同的集群上，其名字可能不一样。
 
-***Pod metrics*** 是用来描述 Pod 的度量值，HPA 控制器对所有 Pod metrics 求平均值后再与目标值进行对比，以此决定最终的伸缩目标副本数。***Pod metrics*** 的工作方式与资源度量非常相似，不同的是，***pod metrics*** 对应的 `.spec.metrics[*].pods.target` 字段只支持 `AverageValue` 这个取值。
+* ***Pod metrics*** 是用来描述 Pod 的度量值，HPA 控制器对所有 Pod metrics 求平均值后再与目标值进行对比，以此决定最终的伸缩目标副本数。***Pod metrics*** 的工作方式与资源度量非常相似，不同的是，***pod metrics*** 对应的 `.spec.metrics[*].pods.target` 字段只支持 `AverageValue` 这个取值。
 
-例如：
+  例如：
+  ``` yaml
+  type: Pods
+  pods:
+    metric:
+      name: packets-per-second
+    target:
+      type: AverageValue
+      averageValue: 1k
+  ```
+
+* ***Object metrics*** 是一种描述了同一名称空间中 Pod 以外的某种对象的度量值，这些度量信息并不一定从该对象本身获得。***Object metrics*** 的 `.spec.metrics[*].object.target` 支持 `Value` 和 `AverageValue` 两个选项：
+  * `Value`： HPA 控制器将 `.spec.metrics[*].object.target.value` 字段的取值直接和 API 中获得的度量值进行比较；
+  * `AverageValue`： HPA 控制器将 API 中获得的自定义度量值除以 Pod 的总数，然后在和 `.spec.metrics[*].object.target.averageValue` 字段的取值进行比较。
+  
+  下面的 YAML 示例了如何使用 `requests-per-second` 度量值进行自动伸缩：
+  ``` yaml
+  type: Object
+  object:
+    metric:
+      name: requests-per-second
+    describedObject:
+      apiVersion: networking.k8s.io/v1beta1
+      kind: Ingress
+      name: main-route
+    target:
+      type: Value
+      value: 2k
+  ```
+
+* 如果 HorizontalPodAutoscaler 中提供了多个 metrics 区块，则 HPA 控制器将会逐个考察每一个度量信息。具体来说，HPA 控制器将会依据每一种度量信息计算出建议的目标伸缩副本数，并最终选取数值最高的一个。
+  
+  例如：如果您的监控系统可以收集网络流量的度量信息，您可以使用 `kubectl edit` 编辑上述的 HorizontalPodAutoscaler 为如下 YAML：
+  
+  ``` yaml
+  apiVersion: autoscaling/v2beta2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    name: php-apache
+  spec:
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: php-apache
+    minReplicas: 1
+    maxReplicas: 10
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Pods
+      pods:
+        metric:
+          name: packets-per-second
+        target:
+          type: AverageValue
+          averageValue: 1k
+    - type: Object
+      object:
+        metric:
+          name: requests-per-second
+        describedObject:
+          apiVersion: networking.k8s.io/v1beta1
+          kind: Ingress
+          name: main-route
+        target:
+          type: Value
+          value: 10k
+  status:
+    observedGeneration: 1
+    lastScaleTime: <some-time>
+    currentReplicas: 1
+    desiredReplicas: 1
+    currentMetrics:
+    - type: Resource
+      resource:
+        name: cpu
+      current:
+        averageUtilization: 0
+        averageValue: 0
+    - type: Object
+      object:
+        metric:
+          name: requests-per-second
+        describedObject:
+          apiVersion: networking.k8s.io/v1beta1
+          kind: Ingress
+          name: main-route
+        current:
+          value: 10k
+  ```
+  此时，HorizontalPodAutoscaler 将会尝试确保：
+  * 每个 Pod 大致消耗 50% 的已请求的 CPU；
+  * 每秒钟处理 1000 个数据包；
+  * `main-route` Ingress 后的所有 Pod 每秒总共处理 10000 个请求。
+
+### 基于特定度量的自动伸缩
+
+许多度量信息源允许用户通过名称和一组额外的标签（labels）描述度量信息。对于非资源度量（pod metrics / object metrics / external metrics 等）来说，用户可以指定一个额外的标签选择器作为查询度量信息时的参数。例如，您的监控系统采集了带 `verb` 标签的 `http_requests` 度量，您可以通过下述 YAML 样例指定 HPA 基于 `verb` 标签值为 `GET` 的度量值进行伸缩：
+
 ``` yaml
-type: Pods
-pods:
+type: Object
+object:
   metric:
-    name: packets-per-second
-  target:
-    type: AverageValue
-    averageValue: 1k
+    name: http_requests
+    selector: {matchLabels: {verb: GET}}
 ```
+
+此处的选择器 `selector` 使用与 Kubernetes [标签选择器](/learning/k8s-intermediate/obj/labels.html) 一样的语法。如果此处指定的名字和标签选择器最终匹配了度量信息源中的多个序列（series），则由度量信息源决定如何将多个序列（series）合并成单个数值。
+
+### 基于与 Kubernetes 对象无关的度量信息的自动伸缩
