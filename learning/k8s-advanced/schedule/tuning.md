@@ -29,7 +29,7 @@ meta:
 
 在 Kubernetes v1.12 版本之前，kube-scheduler 检查集群中的所有节点是否对 Pod 可选，并对 ***可选节点*** 进行评分。在 Kubernetes v1.12 中，添加了一个新的特性，使得 kube-scheduler 在找到了一定数量的 ***可选节点*** 后，变停止继续寻找更多 ***可选节点***。 这个特性可以显著提高 kube-scheduler 在大规模 Kubernetes 集群中的性能。通过 `percentageOfNodesToScore` 这个配置参数，我们可以控制 kube-scheduler 在找到多少 ***可用节点*** 之后变停止继续寻找。该参数的可选值为 1 - 100 之间的数字，大于 100 的将被认为是 100%，0 代表忽略该配置。
 
-在 Kubernetes v1.14 中，如果不定义 `percentageOfNodesToScore`，kube-scheduler 将按照一个线性公式来确定该餐朱的取值。按照该公式：
+在 Kubernetes v1.14 中，如果不定义 `percentageOfNodesToScore`，kube-scheduler 将按照一个线性公式来确定该参数的取值。按照该公式：
 * 100节点集群，`percentageOfNodesToScore` 为 50%
 * 5000节点集群，`percentageOfNodesToScore` 为 10%
 * `percentageOfNodesToScore` 的最小值为 5%；（即，不论集群规模有多大，按照该公式，`percentageOfNodesToScore` 最终取值为 5%，除非集群管理员将该参数配置为小于 5% 的值）
