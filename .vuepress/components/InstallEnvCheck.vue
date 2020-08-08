@@ -13,7 +13,7 @@
       <b-form>
         <b-form-group label="选中后显示 安装 docker/kubelet 的文档">
           <b-form-checkbox-group id="checkbox-group-2" v-model="form.checked" name="flavour-2">
-            <b-form-checkbox value="centos">我的任意节点 centos 版本为 7.6 或 7.7</b-form-checkbox><br/>
+            <b-form-checkbox value="centos">我的任意节点 centos 版本为 7.6 / 7.7 或 7.8</b-form-checkbox><br/>
             <b-form-checkbox value="cpu">我的任意节点 CPU 内核数量大于等于 2，且内存大于等于 4G</b-form-checkbox><br/>
             <b-form-checkbox value="hostname">我的任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</b-form-checkbox><br/>
             <b-form-checkbox value="ipaddress">我的任意节点都有固定的内网 IP 地址</b-form-checkbox><br/>
