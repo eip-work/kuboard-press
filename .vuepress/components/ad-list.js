@@ -8,14 +8,6 @@ module.exports = [
   //   weight: 50
   // },
   {
-    name: 'Google 文档查看',
-    description: '搜索第一手技术资料必备工具',
-    strong: '亲测好用',
-    action: '打开页面后点击页头的 "Order"',
-    url: 'https://aff.gae1s.com/aff.php?aff=10455',
-    weight: 50
-  },
-  {
     name: '免费教程',
     description: '廖雪峰研发 Java 进阶教程',
     strong: '原价2580元，限时免费',
