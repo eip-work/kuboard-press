@@ -85,7 +85,7 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.y
 
 ``` sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard-arm.yaml
-kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server-arm.yaml
+kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server-arm.yaml
 ```
 
 </b-tab>
