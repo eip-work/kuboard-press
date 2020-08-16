@@ -730,4 +730,4 @@ data:
     jdbc:mysql://db-log-center:3306/log-center?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
   spring.redis.host: cloud-redis
 kind: ConfigMap
-
+apiVersion: v1
