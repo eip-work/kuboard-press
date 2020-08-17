@@ -1,20 +1,20 @@
 module.exports = [
-  // {
-  //   name: 'Sealyun',
-  //   description: 'Kubernetes，',
-  //   strong: '一键离线安装',
-  //   action: '去看看',
-  //   url: 'https://github.com/fanux/sealos',
-  //   weight: 50
-  // },
   {
-    name: '免费教程',
-    description: '廖雪峰研发 Java 进阶教程',
-    strong: '原价2580元，限时免费',
-    action: '立即学习',
-    url: 'https://datayi.cn/w/GR4bGZ3o',
-    weight: 100
+    name: 'Sealyun',
+    description: 'Kubernetes，',
+    strong: '一键离线安装',
+    action: '去看看',
+    url: 'https://github.com/fanux/sealos',
+    weight: 50
   },
+  // {
+  //   name: '免费教程',
+  //   description: '廖雪峰研发 Java 进阶教程',
+  //   strong: '原价2580元，限时免费',
+  //   action: '立即学习',
+  //   url: 'https://datayi.cn/w/GR4bGZ3o',
+  //   weight: 100
+  // },
   // {
   //   name: 'SOCK BOOM',
   //   description: '我在这里 Fan Qiang 查阅 Kubernetes 第一手资料',
@@ -37,7 +37,7 @@ module.exports = [
     strong: '1核2G云服务器，首年99元',
     action: '去抢',
     url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1053&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
-    weight: 50
+    weight: 100
   },
   // {
   //   name: '阿里云',
