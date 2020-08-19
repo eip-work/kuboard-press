@@ -23,14 +23,14 @@ module.exports = [
   //   url: 'https://sockboom.tel/auth/register?affid=182351',
   //   weight: 100
   // },
-  // {
-  //   name: '华为云',
-  //   description: '【2核4G云服务器低至331元/年，限时抢购】华为云开年回馈用户，产品低至1折',
-  //   strong: '限时抢购',
-  //   action: '立享优惠',
-  //   url: 'https://activity.huaweicloud.com/2020feb_promotion/index.html?&fromuser=a3Vib2FyZA==&utm_source=a3Vib2FyZA==&utm_medium=cps&utm_campaign=201905',
-  //   weight: 60
-  // },
+  {
+    name: '华为云',
+    description: '828企业上云节，亿元上云补贴',
+    strong: '限时抢购',
+    action: '立享优惠',
+    url: 'https://activity.huaweicloud.com/828_promotion/index.html?fromacct=36cf686d-2650-4107-baa4-f0dc3c860df4&utm_source=V1g3MDY4NTY=&utm_medium=cps&utm_campaign=201905',
+    weight: 60
+  },
   {
     name: '腾讯云',
     description: '【腾讯云】云产品采购季，助力行业复工。',
