@@ -27,9 +27,30 @@ lvm2
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 # 安装并启动 docker
-yum install -y docker-ce-19.03.8 docker-ce-cli-19.03.8 containerd.io
+yum install -y docker-ce-19.03.11 docker-ce-cli-19.03.11 containerd.io-1.2.13
+
+mkdir /etc/docker || true
+
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2",
+  "storage-opts": [
+    "overlay2.override_kernel_check=true"
+  ]
+}
+EOF
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+# Restart Docker
+systemctl daemon-reload
 systemctl enable docker
-systemctl start docker
+systemctl restart docker
 
 # 安装 nfs-utils
 # 必须先安装 nfs-utils 才能挂载 nfs 网络存储
@@ -85,16 +106,8 @@ EOF
 yum remove -y kubelet kubeadm kubectl
 
 # 安装kubelet、kubeadm、kubectl
-# 将 ${1} 替换为 kubernetes 版本号，例如 1.17.2
+# 将 ${1} 替换为 kubernetes 版本号，例如 1.19.0
 yum install -y kubelet-${1} kubeadm-${1} kubectl-${1}
-
-# 修改docker Cgroup Driver为systemd
-# # 将/usr/lib/systemd/system/docker.service文件中的这一行 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-# # 修改为 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd
-# 如果不修改，在添加 worker 节点时可能会碰到如下错误
-# [WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". 
-# Please follow the guide at https://kubernetes.io/docs/setup/cri/
-sed -i "s#^ExecStart=/usr/bin/dockerd.*#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd#g" /usr/lib/systemd/system/docker.service
 
 # 设置 docker 镜像，提高 docker 镜像下载速度和稳定性
 # 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤
