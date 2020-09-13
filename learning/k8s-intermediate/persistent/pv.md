@@ -126,7 +126,7 @@ PersistentVolumeClaim 将始终停留在 ***未绑定 unbound*** 状态，直到
 
 ### 扩展 Expanding Persistent Volumes Claims
 
-  Kubernetes 中，该特性处于 beta 状态 <Badge text="Kuboard 暂不支持" type="warn"/>
+  Kubernetes v1.15 及以上版本 <Badge text="Kuboard 支持 CephFS 的扩容" type="success"/>
   该特性只针对极少数的 PersistentVolume 类型有效。请参考 [Expanding Persistent Volumes Claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 
 ## 存储卷类型
@@ -160,13 +160,14 @@ Kubernetes 支持 20 种存储卷类型（可参考 [Types of Persistent Volumes
 
 针对自建 Kubernetes 集群的情况，Kuboard 支持如下几种存储卷类型：
   * NFS <Badge text="Kuboard 已支持" type="success"/>
-  * CephFS <Badge text="Kuboard 正在计划中" type="warn"/>
+  * CephFS <Badge text="Kuboard 已支持" type="success"/>
+    * Kuboard 版本不低于 v2.0.5-beta.5
 
 ## 存储卷 PersistentVolume
 
 在 Kuboard 中查看 PersistentVolume 的界面如下图所示：
 
-![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看](./pv.assets/image-20190905221422172.png)
+![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看](./pv.assets/image-20200913194907655.png)
 
 
 PersistentVolume 字段描述如下表所示：
@@ -186,14 +187,14 @@ PersistentVolume 字段描述如下表所示：
 
 在 Kuboard 中查看存储卷声明的界面如下图所示：
 
-![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看存储卷声明PersistentVolumeClaims](./pv.assets/image-20190906070246134.png)
+![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看存储卷声明PersistentVolumeClaims](pv.assets/image-20200913195026464.png)
 
 | 字段名称              | 可选项/备注                                                  |
 | --------------------- | ------------------------------------------------------------ |
 | 存储类                | 只有该 StorageClass 存储类的 PV 才可以绑定到此 PVC           |
 | 读写模式 Access Modes | <li>可被单节点读写-ReadWriteOnce </li><li>可被多节点只读-ReadOnlyMany </li><li>可被多节点读写-ReadWriteMany</li> |
 | Volume Modes          | <li>block</li><li>filesystem - default</li>                  |
-| 总量                  | 请求存储空间的大小                                           |
+| 总量                  | 请求存储空间的大小。Kuboard 支持 CephFS 类型存储卷声明的扩容。 |
 
 
 
@@ -201,4 +202,4 @@ PersistentVolume 字段描述如下表所示：
 
 在您完成存储卷声明的定义后，您可以在 Kuboard 工作复杂编辑器的 ***数据卷 Volume*** 区域引用该存储卷声明，如下图所示：
 
-![Kubernetes教程：存储卷PersistentVolume-使用存储卷声明](./pv.assets/image-20190906072544024.png)
+![Kubernetes教程：存储卷PersistentVolume-使用存储卷声明](./pv.assets/image-20200913195201062.png)

@@ -50,3 +50,7 @@ https://github.com/NVIDIA/k8s-device-plugin#enabling-gpu-support-in-kubernetes @
 
 
 * 增加 PodSecurityPolicy 列表
+
+
+* CephFS cleanup pvc
+* CephFS expand pvc

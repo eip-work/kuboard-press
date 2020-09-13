@@ -28,7 +28,8 @@ Kubernetes 自身对存储类所代表的含义并无感知，由集群管理员
 
 Kuboard 支持的存储类的种类如下：
 * NFS <Badge text="Kuboard 已支持" type="success"/>
-* CephFS <Badge text="Kuboard 正在计划中" type="warn"/>
+* CephFS <Badge text="Kuboard 已支持" type="success"/> 
+  * Kuboard 版本不低于 v2.0.5-beta.5
 
 ::: tip 使用Kuboard “不支持”的存储类
 对于那些目前Kuboard不支持的存储类：
@@ -46,7 +47,7 @@ Kuboard 支持的存储类的种类如下：
 
 在 Kuboard 中查看存储类，如下图所示：
 
-![Kubernetes教程：在Kuboard中查看存储类](./storage-class.assets/image-20190906080746368.png)
+![Kubernetes教程：在Kuboard中查看存储类](./storage-class.assets/image-20200913194251730.png)
 
 
 
