@@ -82,10 +82,9 @@
                         <div>
                           <div style="text-align: center;">
                             <!-- <Qq><Qq></Qq></p> -->
-                            <img src="/images/kuboard_qq.png" alt="Kubernetes安装：QQ群在线答疑" style="width: 120px;"/>
+                            <img src="https://addons.kuboard.cn/downloads/qr_code.jpg" alt="Kubernetes安装：微信群在线答疑" style="width: 120px;"/>
                           </div>
                         </div>
-
                     </div>
                     <!-- InfoBox Center </End> -->
                 </div>
