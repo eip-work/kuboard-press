@@ -7,14 +7,14 @@ module.exports = [
     url: 'https://github.com/fanux/sealos',
     weight: 50
   },
-  // {
-  //   name: '免费教程',
-  //   description: '廖雪峰研发 Java 进阶教程',
-  //   strong: '原价2580元，限时免费',
-  //   action: '立即学习',
-  //   url: 'https://datayi.cn/w/GR4bGZ3o',
-  //   weight: 100
-  // },
+  {
+    name: '视频教程',
+    description: 'K8S 实战课程',
+    strong: '5 分好评',
+    action: '免费试听',
+    url: 'https://edu.51cto.com/sd/518e5',
+    weight: 100
+  },
   // {
   //   name: 'SOCK BOOM',
   //   description: '我在这里 Fan Qiang 查阅 Kubernetes 第一手资料',
@@ -33,10 +33,10 @@ module.exports = [
   },
   {
     name: '腾讯云',
-    description: '【腾讯云】云产品采购季，助力行业复工。',
+    description: '【腾讯云】云产品限时秒杀。',
     strong: '1核2G云服务器，首年99元',
-    action: '去抢',
-    url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1053&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
+    action: '立即抢购',
+    url: 'https://cloud.tencent.com/act/cps/redirect?redirect=1062&cps_key=2ee6baa049659f4713ddc55a51314372&from=console',
     weight: 100
   },
   // {

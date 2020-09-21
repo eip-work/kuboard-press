@@ -19,6 +19,10 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
   <InstallDashboardPreview/>
 </div>
 
+## 视频介绍
+
+点击查看 [10 分钟的视频介绍](https://edu.51cto.com/center/course/lesson/index?id=642025)
+
 ## 前提
 
 安装 Kuboard 时，假设您已经有一个 Kubernetes 集群，以下任何形式安装的集群都可以：
