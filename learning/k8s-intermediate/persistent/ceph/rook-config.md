@@ -147,7 +147,7 @@ meta:
 
 完成上述初始化快照 CRD 的操作以后，您就可以创建 CephFS Rook StorageClass 了，具体步骤如下图所示：
 
-![image-20201006185624187](rook-config.assets/image-20201006185624187.png)
+![Kubernetes CephFS StorageClass](./rook-config.assets/image-20201006185624187.png)
 
 ## 创建 PVC
 
