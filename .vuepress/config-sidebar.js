@@ -280,6 +280,8 @@ let sidebar = {
             'k8s-intermediate/persistent/volume-mount-point.html',
             'k8s-intermediate/persistent/pv',
             'k8s-intermediate/persistent/storage-class',
+            'k8s-intermediate/persistent/ceph/k8s-config',
+            'k8s-intermediate/persistent/ceph/rook-config',
             'k8s-intermediate/persistent/nfs',
             'k8s-intermediate/persistent/limits',
           ]

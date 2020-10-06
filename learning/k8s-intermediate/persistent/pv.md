@@ -124,7 +124,7 @@ PersistentVolumeClaim 将始终停留在 ***未绑定 unbound*** 状态，直到
 动态提供的 PersistentVolume 将从其对应的 StorageClass 继承回收策略的属性。
 :::
 
-### 扩展 Expanding Persistent Volumes Claims
+### 扩容 Expanding Persistent Volumes Claims
 
   Kubernetes v1.15 及以上版本 <Badge text="Kuboard 支持 CephFS 的扩容" type="success"/>
   该特性只针对极少数的 PersistentVolume 类型有效。请参考 [Expanding Persistent Volumes Claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
@@ -187,7 +187,7 @@ PersistentVolume 字段描述如下表所示：
 
 在 Kuboard 中查看存储卷声明的界面如下图所示：
 
-![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看存储卷声明PersistentVolumeClaims](pv.assets/image-20200913195026464.png)
+![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看存储卷声明PersistentVolumeClaims](./pv.assets/image-20200913195026464.png)
 
 | 字段名称              | 可选项/备注                                                  |
 | --------------------- | ------------------------------------------------------------ |
