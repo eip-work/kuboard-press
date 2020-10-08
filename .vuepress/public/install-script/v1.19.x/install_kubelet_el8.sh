@@ -20,14 +20,17 @@ docker-selinux \
 docker-engine-selinux \
 docker-engine
 
-# 设置 yum repository
+
 yum install -y yum-utils \
 device-mapper-persistent-data \
 lvm2
-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+wget https://mirrors.huaweicloud.com/docker-ce/linux/centos/8/x86_64/stable/Packages/containerd.io-1.3.7-3.1.el8.x86_64.rpm
+wget https://mirrors.huaweicloud.com/docker-ce/linux/centos/8/x86_64/stable/Packages/docker-ce-19.03.13-3.el8.x86_64.rpm
+wget https://mirrors.huaweicloud.com/docker-ce/linux/centos/8/x86_64/stable/Packages/docker-ce-cli-19.03.13-3.el8.x86_64.rpm
 
 # 安装并启动 docker
-yum install -y docker-ce-19.03.11 docker-ce-cli-19.03.11 containerd.io-1.2.13
+yum install -y containerd.io-1.3.7-3.1.el8.x86_64.rpm docker-ce-19.03.13-3.el8.x86_64.rpm docker-ce-cli-19.03.13-3.el8.x86_64.rpm
 
 mkdir /etc/docker || true
 
