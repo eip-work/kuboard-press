@@ -226,7 +226,7 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 <<< @/.vuepress/public/install-script/v1.19.x/install_kubelet.sh {79}
 
 ::: warning
-如果此时执行 `service status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
+如果此时执行 `systemctl status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
 :::
 
   </b-tab>
