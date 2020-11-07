@@ -53,9 +53,9 @@ spec:
   - Ingress
 ```
 
-## 默认拒绝所有出方向流量
+## 默认允许所有出方向流量
 
-在名称空间中创建下面的 NetworkPolicy，该 NetworkPolicy 禁止名称空间中所有 Pod 的所有出方向网络流量
+在名称空间中创建下面的 NetworkPolicy，该 NetworkPolicy 允许名称空间中所有 Pod 的所有出方向网络流量
 
 ``` yaml
 apiVersion: networking.k8s.io/v1
