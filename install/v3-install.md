@@ -74,4 +74,4 @@ Kuboard 在添加被纳管的 Kubernetes 集群时，需要向集群中安装 Ku
 
 关于 Kuboard v3.0.0-alpha 版本的问题反馈，请加 QQ 群：656520037
 
-<img style="padding: 10px; width: 200px; border: 1px solid #eee; border-radius: 5px;" src="http://localhost:8080/images/kuboard_qq.png"/>
+<img style="padding: 10px; width: 200px; border: 1px solid #eee; border-radius: 5px;" src="https://kuboard.cn/images/kuboard_qq.png"/>
