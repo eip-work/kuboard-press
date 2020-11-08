@@ -46,10 +46,11 @@ let sidebar = {
       title: '安装 Kubernetes 管理工具',
       collapsable: false,
       children: [
+        'v3-install',
         'install-dashboard',
         'install-dashboard-offline',
         {
-          title: '配置Kuboard',
+          title: '配置 Kuboard v2',
           collapsable: true,
           children: [
             // 'install-dashboard-upgrade',

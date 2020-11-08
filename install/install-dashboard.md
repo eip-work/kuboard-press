@@ -7,7 +7,7 @@ meta:
     content: Kubernetes Dashboard安装,Kuboard安装,K8S Dashboard安装
 ---
 
-# 安装Kuboard
+# 安装 Kuboard v2
 
 <AdSenseTitle/>
 

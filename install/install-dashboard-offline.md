@@ -6,7 +6,7 @@ meta:
     content: Kuboard离线安装
 ---
 
-# 安装Kuboard（离线）
+# 安装 Kuboard v2（离线）
 
 <AdSenseTitle/>
 
