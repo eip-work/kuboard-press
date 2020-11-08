@@ -18,8 +18,8 @@ Kuboard v3.0 支持 Kubernetes 多集群管理。当前为 alpha 内测版本，
 * Kuboard 套件
 
 如果您从 Kuboard v1.0.x 或者 Kuboard v2.0.x 升级到 Kuboard，请注意：
-* 您可以同时使用 Kuboard v3.0.x 和 Kuboard v2.0.x
-* Kuboard v2.0.x 时购买的授权文件，可以在 Kuboard v3.0.0 正式发布后迁移到 Kuboard v3.0.x
+* 您可以同时使用 Kuboard v3.0.x 和 Kuboard v2.0.x；
+* Kuboard v3.0.x 在正式发布时，考虑将 Kuboard 相关的所有组件从 kube-system 名称空间迁移到 kuboard 名称空间；
 
 Alpha 版本为早期内测版本，预计 Kuboard v3.0.0 的正式发布时间在 2021 年元旦前后
 
