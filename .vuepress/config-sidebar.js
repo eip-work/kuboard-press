@@ -46,7 +46,25 @@ let sidebar = {
       title: '安装 Kubernetes 管理工具',
       collapsable: false,
       children: [
-        'v3-install',
+        {
+          title: '安装 Kuboard v3',
+          collapsable: true,
+          children: [
+            'v3/install-built-in',
+            'v3/install-gitlab',
+            'v3/install-github',
+            'v3/install-ldap',
+          ]
+        },
+        {
+          title: '配置 Kuboard v3',
+          collapsable: true,
+          children: [
+            'v3/proxy',
+            'v3/tls',
+            'v3-upgrade',
+          ]
+        },
         'install-dashboard',
         'install-dashboard-offline',
         {
@@ -659,10 +677,12 @@ let sidebar = {
       title: '更新说明',
       collapsable: false,
       children: [
+        'change-log/v3.0.x',
         'change-log/v2.0.x',
         'change-log/v1.0.x',
+        'change-log/upgrade-2-3',
         'change-log/upgrade-1-2',
-        'change-log/upgrade-2-from-beta',
+        // 'change-log/upgrade-2-from-beta',
         'known-issue',
       ]
     }
