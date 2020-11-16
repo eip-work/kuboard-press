@@ -190,7 +190,7 @@ sudo docker run -d \
   | Agent Server TCP 端口                                | 10081                                                        | 此端口必须与 docker run 命令中映射的 10081/tcp 端口一致      |
   
   
-  ![image-20201115230236714](install-gitlab.assets/image-20201115230236714.png)
+  ![image-20201115230236714](./install-gitlab.assets/image-20201115230236714.png)
   
 * 点击上图中的 ***保存*** 按钮，您将进入 Kuboard 集群列表页，此时，您可以向 Kuboard 添加 Kubernetes 集群，如下图所示：
 

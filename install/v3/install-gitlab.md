@@ -38,7 +38,7 @@ Kuboard 支持多种认证方式：
 * 安装在 Kubernetes 中的 Kuboard Agent 通过 `kuboard.mycompany.com` 访问 Kuboard 的 Web 服务端口 80 / 443 和 Kuboard Agent Server 端口 10081。
 
 
-![image-20201115223736418](install-gitlab.assets/image-20201115223736418.png)
+![image-20201115223736418](./install-gitlab.assets/image-20201115223736418.png)
 
 本例子中，假设：
 
