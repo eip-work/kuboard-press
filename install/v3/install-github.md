@@ -89,6 +89,8 @@ sudo docker run -d \
   -v /root/kuboard-data:/data \
   -e KUBOARD_LOGIN_TYPE="github" \
   -e KUBOARD_ENDPOINT="http://kuboard.mycompany.com" \
+  -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
+  -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -e KUBOARD_ROOT_USER="shaohq" \
   -e GITHUB_CLIENT_ID="17577d45e4de7dad88e0" \
   -e GITHUB_CLIENT_SECRET="ff738553a8c7e9ad39569c8d02c1d85ec19115a7" \
@@ -102,9 +104,10 @@ sudo docker run -d \
 * 第 7 行，Kuboard v3.0 的持久化数据存储在 `/data` 目录，默认映射到了宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况进行调整；
 * 第 8 行，将 Kuboard v3.0 与 GitHub 进行单点登录集成时，必须指定环境变量 `KUBOARD_LOGIN_TYPE` 为 `github` （适用于 github.com / github-ee）；
 * 第 9 行，必须指定 `KUBOARD_ENDPOINT` 环境变量为访问 Kuboard 界面的 URL；（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://kuboard.mycompany.com` 作为通过执行此命令启动的 Kuboard 的访问 URL）；此参数不能以 `/` 结尾；
-* 第 10 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitHub 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
-* 第 11 行，必须指定 `GITHUB_CLIENT_ID`，该参数来自于 [准备 GitHub](#准备-github) 步骤中创建的 GitHub OAuth Application 的 `Client ID` 字段
-* 第 12 行，必须指定 `GITHUB_CLIENT_SECRET`，该参数来自于 [准备 GitHub](#准备-github) 步骤中创建的 GitHub OAuth Application 的 `Client Secret` 字段
+* 第 10、11 行，指定 KUBOARD_AGENT_SERVER 的端口为 `10081`，此参数与第 5、6 行中的宿主机端口应保持一致，修改此参数不会改变容器内监听的端口 `10081`；
+* 第 12 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitHub 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
+* 第 13 行，必须指定 `GITHUB_CLIENT_ID`，该参数来自于 [准备 GitHub](#准备-github) 步骤中创建的 GitHub OAuth Application 的 `Client ID` 字段
+* 第 14 行，必须指定 `GITHUB_CLIENT_SECRET`，该参数来自于 [准备 GitHub](#准备-github) 步骤中创建的 GitHub OAuth Application 的 `Client Secret` 字段
 :::
 
 ::: tip GitHub EE
@@ -128,23 +131,7 @@ sudo docker run -d \
 
   ![image-20201113215827177](./install-gitlab.assets/image-20201113215827177.png)
 
-* 点击上图中的 ***Authorize*** 按钮后，您将成功登录 Kuboard 界面，第一次登录时，界面显示如下所示：
-
-  根据 [部署计划](#部署计划) 的设想，如下表单的填写内容为：
-
-  | 参数名称                                             | 参数值                                                       | 参数说明                                                     |
-  | ---------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | <div style="width: 170px;">Kuboard UI 访问地址</div> | <div style="width: 130px;">http://kuboard.mycompany.com</div> | 根据 [部署计划](#部署计划) ，安装在 Kubernetes 中的 Kuboard Agent 通过 http://kuboard.mycompany.com 这个 URL 访问 Kuboard Web 界面，此处为 Kubernetes 集群和 Kuboard 浏览器端用户设定了不同的访问域名（在 docker run 命令的 `KUBOARD_ENDPOINT` 参数指定）。 |
-  | Agent Server Host                                    | kuboard.mycompany.com                                        | 根据 [部署计划](#部署计划) ，安装在 Kubernetes 中的 Kuboard Agent 通过 kuboard.mycompany.com 解析到 Kuboard 所在宿主机的 IP 地址 |
-  | Agent Server UDP 端口                                | 10081                                                        | 此端口必须与 docker run 命令中映射的 10081/udp 端口一致      |
-  | Agent Server TCP 端口                                | 10081                                                        | 此端口必须与 docker run 命令中映射的 10081/tcp 端口一致      |
-  
-  
-  ![image-20201115230236714](install-gitlab.assets/image-20201115230236714.png)
-  
-* 点击上图中的 ***保存*** 按钮，您将进入 Kuboard 集群列表页，此时，您可以向 Kuboard 添加 Kubernetes 集群，如下图所示：
-
-  ![image-20201113221543277](./install-gitlab.assets/image-20201113221543277.png)
+* 点击上图中的 ***Authorize*** 按钮后，您将成功登录 Kuboard 界面。
 
 ## 授权用户访问 Kuboard
 

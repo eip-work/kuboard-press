@@ -139,14 +139,16 @@ sudo docker run -d \
   -v /Users/shaohuanqing/temp/kuboard-data:/data \
   -e KUBOARD_LOGIN_TYPE="ldap" \
   -e KUBOARD_ENDPOINT="http://kuboard.mycompany.com" \
+  -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
+  -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -e KUBOARD_ROOT_USER="shaohq" \
   -e LDAP_HOST="host.docker.internal:389" \
   -e LDAP_BIND_DN="cn=admin,dc=example,dc=org" \
   -e LDAP_BIND_PASSWORD="admin" \
   -e LDAP_BASE_DN="dc=example,dc=org" \
   -e LDAP_FILTER="(objectClass=posixAccount)" \
-  -e LDAP_USER_NAME="uid" \
   -e LDAP_ID_ATTRIBUTE="uid" \
+  -e LDAP_USER_NAME_ATTRIBUTE="uid" \
   -e LDAP_EMAIL_ATTRIBUTE="mail" \
   -e LDAP_DISPLAY_NAME_ATTRIBUTE="cn" \
   -e LDAP_GROUP_SEARCH_BASE_DN="dc=example,dc=org" \
@@ -165,11 +167,34 @@ sudo docker run -d \
 * 第 7 行，Kuboard v3.0 的持久化数据存储在 `/data` 目录，默认映射到了宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况进行调整；
 * 第 8 行，将 Kuboard v3.0 与 GitLab 进行单点登录集成时，必须指定环境变量 `KUBOARD_LOGIN_TYPE` 为 `gitlab` （适用于 gitlab.com / gitlab-ee / gitlab-ce）；
 * 第 9 行，必须指定 `KUBOARD_ENDPOINT` 环境变量为访问 Kuboard 界面的 URL；（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://kuboard.mycompany.com` 作为通过执行此命令启动的 Kuboard 的访问 URL）；此参数不能以 `/` 结尾；
-* 第 10 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitLab 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
-* 第 11 行，指定 `GIBLAB_BASE_URL`，（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://gitlab.mycompany.com` 作为通过作为 GitLab 的访问 URL，并假设 GitLab 已经事先准备就绪，如果不指定，该参数默认值为 `https://gitlab.com`）；此参数不能以 `/` 结尾；
-* 第 12 行，必须指定 `GITLAB_APPLICATION_ID`，该参数来自于 [准备 GitLab](#准备-gitlab) 步骤中创建的 GitLab  Application 的 `Application ID` 字段
-* 第 13 行，必须指定 `GITLAB_CLIENT_SECRET`，该参数来自于 [准备 GitLab](#准备-gitlab) 步骤中创建的 GitLab  Application 的 `Secret` 字段
+* 第 10、11 行，指定 KUBOARD_AGENT_SERVER 的端口为 `10081`，此参数与第 5、6 行中的宿主机端口应保持一致，修改此参数不会改变容器内监听的端口 `10081`；
+* 第 12 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitLab 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
 :::
+
+### LDAP 相关参数
+
+LDAP 相关的参数相对复杂，本章节以 Kuboard 集成 LDAP 时，对 LDAP 的查询顺序作为主线索，详细讲解 LDAP 的各个参数。
+
+<p>
+ <img src="./install-ldap.assets/image-20201117223418738.png" style="max-width:800px;"/>
+</p>
+
+如上图所示：
+* 第一步：连接 LDAP
+  * 通过第 13 行 `LDAP_HOST` 参数找到 LDAP 服务器的地址；
+  * 通过第 14、15 行 `LDAP_BIND_DN`、`LDAP_BIND_PASSWORD` 两个参数作为用户名密码创建与 LDAP 的连接；
+* 第二步：查询用户信息
+  * 通过第 16、17 行 `LDAP_BASE_DN`、`LDAP_FILTER`以及登录界面中输入的用户名，共三个参数查询到唯一的一个用户对象；
+  * 其中，登录界面中输入的用户名将必须与第 18行 `LDAP_ID_ATTRIBUTE` 指定的 LDAP 对象中用户 ID 的字段名称项匹配；
+* 第三步：映射用户信息
+  * 将第 19、20、21 行 `LDAP_USER_NAME_ATTRIBUTE`、`LDAP_EMAIL_ATTRIBUTE`、`LDAP_DISPLAY_NAME_ATTRIBUTE` 所指定对象字段的取值作为用户名、电子邮件地址、用户全名的信息；
+* 第四步：查询用户组信息
+  * 将第 22、23 行 `LDAP_GROUP_SEARCH_BASE_DN`、`LDAP_GROUP_SEARCH_FILTER` 指定的参数用作检索用户组的条件；
+  * 检索用户组时，第二步所得用户信息的 `LDAP_USER_MACHER_USER_ATTRIBUTE`（第 24 行） 所指定字段的值必须与 `LDAP_USER_MACHER_GROUP_ATTRIBUTE`（第 25 行） 所指定的用户组字段的取值相匹配；
+* 第五步：映射用户组信息
+  * 将第 26 行 `LDAP_GROUP_NAME_ATTRIBUTE` 所指定的用户组字段映射为用户组名称
+
+通过上述五个步骤，Kuboard 可以从 LDAP 中检索到用户的基本信息，以及用户组信息，密码字段默认使用用户信息中的 `password` 字段。获得这些信息后，用户可以使用 LDAP 中的信息登录 Kuboard。
 
 ## 访问 Kuboard 界面
 
@@ -178,23 +203,7 @@ sudo docker run -d \
 
   ![image-20201113215827177](./install-gitlab.assets/image-20201113215827177.png)
 
-* 点击上图中的 ***Authorize*** 按钮后，您将成功登录 Kuboard 界面，第一次登录时，界面显示如下所示：
-
-  根据 [部署计划](#部署计划) 的设想，如下表单的填写内容为：
-
-  | 参数名称                                             | 参数值                                                       | 参数说明                                                     |
-  | ---------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | <div style="width: 170px;">Kuboard UI 访问地址</div> | <div style="width: 130px;">http://kuboard.mycompany.com</div> | 根据 [部署计划](#部署计划) ，安装在 Kubernetes 中的 Kuboard Agent 通过 http://kuboard.mycompany.com 这个 URL 访问 Kuboard Web 界面，此处为 Kubernetes 集群和 Kuboard 浏览器端用户设定了不同的访问域名（在 docker run 命令的 `KUBOARD_ENDPOINT` 参数指定）。 |
-  | Agent Server Host                                    | kuboard.mycompany.com                                        | 根据 [部署计划](#部署计划) ，安装在 Kubernetes 中的 Kuboard Agent 通过 kuboard.mycompany.com 解析到 Kuboard 所在宿主机的 IP 地址 |
-  | Agent Server UDP 端口                                | 10081                                                        | 此端口必须与 docker run 命令中映射的 10081/udp 端口一致      |
-  | Agent Server TCP 端口                                | 10081                                                        | 此端口必须与 docker run 命令中映射的 10081/tcp 端口一致      |
-  
-  
-  ![image-20201115230236714](./install-gitlab.assets/image-20201115230236714.png)
-  
-* 点击上图中的 ***保存*** 按钮，您将进入 Kuboard 集群列表页，此时，您可以向 Kuboard 添加 Kubernetes 集群，如下图所示：
-
-  ![image-20201113221543277](./install-gitlab.assets/image-20201113221543277.png)
+* 点击上图中的 ***Authorize*** 按钮后，您将成功登录 Kuboard 界面。
 
 ## 授权用户访问 Kuboard
 
