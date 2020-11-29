@@ -53,9 +53,9 @@ meta:
 * 执行如下命令安装 Rook - Ceph 集群
 
   ``` sh
-  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.5/common.yaml
-  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.5/operator.yaml
-  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.5/cluster.yaml
+  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.7/common.yaml
+  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.7/operator.yaml
+  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.7/cluster.yaml
   ```
 
   在执行上述指令之前，可以使用 [docker-image-loader](https://github.com/eip-work/docker-image-loader) 提前将所需要的镜像加载到所有节点机器上，相比较每个节点分别从公网抓取镜像会更快一些；如果您的集群在内网环境，也可以使用 docker-image-loader 加载镜像到集群节点。需要加载的镜像如下：

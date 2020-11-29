@@ -27,7 +27,7 @@ Alpha 版本为早期内测版本，预计 Kuboard v3.0.0 的正式发布时间�
 
 在正式安装 kuboard v3 之前，需做好一个简单的部署计划的设计，在本例中，各组件之间的连接方式，如下图所示：
 
-* 用户通过 http://kuboard.mycompany.com 访问 Kuboard v3；
+* 假设用户通过 http://kuboard.mycompany.com 访问 Kuboard v3；
 
 * 安装在 Kubernetes 中的 Kuboard Agent 通过 `kuboard.mycompany.com` 访问 Kuboard 的 Web 服务端口 80 / 443 和 Kuboard Agent Server 端口 10081。
 

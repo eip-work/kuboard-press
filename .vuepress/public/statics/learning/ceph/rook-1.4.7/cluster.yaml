@@ -1,0 +1,237 @@
+#################################################################################################################
+# Define the settings for the rook-ceph cluster with common settings for a production cluster.
+# All nodes with available raw devices will be used for the Ceph cluster. At least three nodes are required
+# in this example. See the documentation for more details on storage settings available.
+
+# For example, to create the cluster:
+#   kubectl create -f common.yaml
+#   kubectl create -f operator.yaml
+#   kubectl create -f cluster.yaml
+#################################################################################################################
+
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  cephVersion:
+    # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
+    # v13 is mimic, v14 is nautilus, and v15 is octopus.
+    # RECOMMENDATION: In production, use a specific version tag instead of the general v14 flag, which pulls the latest release and could result in different
+    # versions running within the cluster. See tags available at https://hub.docker.com/r/ceph/ceph/tags/.
+    # If you want to be more precise, you can always use a timestamp tag such ceph/ceph:v15.2.4-20200630
+    # This tag might not contain a new Ceph version, just security fixes from the underlying operating system, which will reduce vulnerabilities
+    image: ceph/ceph:v15.2.4
+    # Whether to allow unsupported versions of Ceph. Currently `nautilus` and `octopus` are supported.
+    # Future versions such as `pacific` would require this to be set to `true`.
+    # Do not set to true in production.
+    allowUnsupported: false
+  # The path on the host where configuration files will be persisted. Must be specified.
+  # Important: if you reinstall the cluster, make sure you delete this directory from each host or else the mons will fail to start on the new cluster.
+  # In Minikube, the '/data' directory is configured to persist across reboots. Use "/data/rook" in Minikube environment.
+  dataDirHostPath: /var/lib/rook
+  # Whether or not upgrade should continue even if a check fails
+  # This means Ceph's status could be degraded and we don't recommend upgrading but you might decide otherwise
+  # Use at your OWN risk
+  # To understand Rook's upgrade process of Ceph, read https://rook.io/docs/rook/master/ceph-upgrade.html#ceph-version-upgrades
+  skipUpgradeChecks: false
+  # Whether or not continue if PGs are not clean during an upgrade
+  continueUpgradeAfterChecksEvenIfNotHealthy: false
+  # set the amount of mons to be started
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+  mgr:
+    modules:
+    # Several modules should not need to be included in this list. The "dashboard" and "monitoring" modules
+    # are already enabled by other settings in the cluster CR and the "rook" module is always enabled.
+    - name: pg_autoscaler
+      enabled: true
+  # enable the ceph dashboard for viewing cluster status
+  dashboard:
+    enabled: true
+    # serve the dashboard under a subpath (useful when you are accessing the dashboard via a reverse proxy)
+    # urlPrefix: /ceph-dashboard
+    # serve the dashboard at the given port.
+    # port: 8443
+    # serve the dashboard using SSL
+    ssl: true
+  # enable prometheus alerting for cluster
+  monitoring:
+    # requires Prometheus to be pre-installed
+    enabled: false
+    # namespace to deploy prometheusRule in. If empty, namespace of the cluster will be used.
+    # Recommended:
+    # If you have a single rook-ceph cluster, set the rulesNamespace to the same namespace as the cluster or keep it empty.
+    # If you have multiple rook-ceph clusters in the same k8s cluster, choose the same namespace (ideally, namespace with prometheus
+    # deployed) to set rulesNamespace for all the clusters. Otherwise, you will get duplicate alerts with multiple alert definitions.
+    rulesNamespace: rook-ceph
+  network:
+    # enable host networking
+    #provider: host
+    # EXPERIMENTAL: enable the Multus network provider
+    #provider: multus
+    #selectors:
+      # The selector keys are required to be `public` and `cluster`.
+      # Based on the configuration, the operator will do the following:
+      #   1. if only the `public` selector key is specified both public_network and cluster_network Ceph settings will listen on that interface
+      #   2. if both `public` and `cluster` selector keys are specified the first one will point to 'public_network' flag and the second one to 'cluster_network'
+      #
+      # In order to work, each selector value must match a NetworkAttachmentDefinition object in Multus
+      #
+      #public: public-conf --> NetworkAttachmentDefinition object name in Multus
+      #cluster: cluster-conf --> NetworkAttachmentDefinition object name in Multus
+    # Provide internet protocol version. IPv6, IPv4 or empty string are valid options. Empty string would mean IPv4
+    #ipFamily: "IPv6"
+  # enable the crash collector for ceph daemon crash collection
+  crashCollector:
+    disable: false
+  cleanupPolicy:
+    # cleanup should only be added to the cluster when the cluster is about to be deleted.
+    # After any field of the cleanup policy is set, Rook will stop configuring the cluster as if the cluster is about
+    # to be destroyed in order to prevent these settings from being deployed unintentionally.
+    # To signify that automatic deletion is desired, use the value "yes-really-destroy-data". Only this and an empty
+    # string are valid values for this field.
+    confirmation: ""
+    # sanitizeDisks represents settings for sanitizing OSD disks on cluster deletion
+    sanitizeDisks:
+      # method indicates if the entire disk should be sanitized or simply ceph's metadata
+      # in both case, re-install is possible
+      # possible choices are 'complete' or 'quick' (default)
+      method: quick
+      # dataSource indicate where to get random bytes from to write on the disk
+      # possible choices are 'zero' (default) or 'random'
+      # using random sources will consume entropy from the system and will take much more time then the zero source
+      dataSource: zero
+      # iteration overwrite N times instead of the default (1)
+      # takes an integer value
+      iteration: 1
+    # allowUninstallWithVolumes defines how the uninstall should be performed
+    # If set to true, cephCluster deletion does not wait for the PVs to be deleted.
+    allowUninstallWithVolumes: false
+  # To control where various services will be scheduled by kubernetes, use the placement configuration sections below.
+  # The example under 'all' would have all services scheduled on kubernetes nodes labeled with 'role=storage-node' and
+  # tolerate taints with a key of 'storage-node'.
+#  placement:
+#    all:
+#      nodeAffinity:
+#        requiredDuringSchedulingIgnoredDuringExecution:
+#          nodeSelectorTerms:
+#          - matchExpressions:
+#            - key: role
+#              operator: In
+#              values:
+#              - storage-node
+#      podAffinity:
+#      podAntiAffinity:
+#      topologySpreadConstraints:
+#      tolerations:
+#      - key: storage-node
+#        operator: Exists
+# The above placement information can also be specified for mon, osd, and mgr components
+#    mon:
+# Monitor deployments may contain an anti-affinity rule for avoiding monitor
+# collocation on the same node. This is a required rule when host network is used
+# or when AllowMultiplePerNode is false. Otherwise this anti-affinity rule is a
+# preferred rule with weight: 50.
+#    osd:
+#    mgr:
+#    cleanup:
+  annotations:
+#    all:
+#    mon:
+#    osd:
+#    cleanup:
+#    prepareosd:
+# If no mgr annotations are set, prometheus scrape annotations will be set by default.
+#    mgr:
+  labels:
+#    all:
+#    mon:
+#    osd:
+#    cleanup:
+#    mgr:
+#    prepareosd:
+  resources:
+# The requests and limits set here, allow the mgr pod to use half of one CPU core and 1 gigabyte of memory
+#    mgr:
+#      limits:
+#        cpu: "500m"
+#        memory: "1024Mi"
+#      requests:
+#        cpu: "500m"
+#        memory: "1024Mi"
+# The above example requests/limits can also be added to the mon and osd components
+#    mon:
+#    osd:
+#    prepareosd:
+#    crashcollector:
+#    cleanup:
+  # The option to automatically remove OSDs that are out and are safe to destroy.
+  removeOSDsIfOutAndSafeToRemove: false
+#  priorityClassNames:
+#    all: rook-ceph-default-priority-class
+#    mon: rook-ceph-mon-priority-class
+#    osd: rook-ceph-osd-priority-class
+#    mgr: rook-ceph-mgr-priority-class
+  storage: # cluster level storage configuration and selection
+    useAllNodes: true
+    useAllDevices: true
+    #deviceFilter:
+    config:
+      # metadataDevice: "md0" # specify a non-rotational storage so ceph-volume will use it as block db device of bluestore.
+      # databaseSizeMB: "1024" # uncomment if the disks are smaller than 100 GB
+      # journalSizeMB: "1024"  # uncomment if the disks are 20 GB or smaller
+      # osdsPerDevice: "1" # this value can be overridden at the node or device level
+      # encryptedDevice: "true" # the default value for this option is "false"
+# Individual nodes and their config can be specified as well, but 'useAllNodes' above must be set to false. Then, only the named
+# nodes below will be used as storage resources.  Each node's 'name' field should match their 'kubernetes.io/hostname' label.
+#    nodes:
+#    - name: "172.17.4.201"
+#      devices: # specific devices to use for storage can be specified for each node
+#      - name: "sdb"
+#      - name: "nvme01" # multiple osds can be created on high performance devices
+#        config:
+#          osdsPerDevice: "5"
+#      - name: "/dev/disk/by-id/ata-ST4000DM004-XXXX" # devices can be specified using full udev paths
+#      config: # configuration can be specified at the node level which overrides the cluster level config
+#        storeType: filestore
+#    - name: "172.17.4.301"
+#      deviceFilter: "^sd."
+  # The section for configuring management of daemon disruptions during upgrade or fencing.
+  disruptionManagement:
+    # If true, the operator will create and manage PodDisruptionBudgets for OSD, Mon, RGW, and MDS daemons. OSD PDBs are managed dynamically
+    # via the strategy outlined in the [design](https://github.com/rook/rook/blob/master/design/ceph/ceph-managed-disruptionbudgets.md). The operator will
+    # block eviction of OSDs by default and unblock them safely when drains are detected.
+    managePodBudgets: false
+    # A duration in minutes that determines how long an entire failureDomain like `region/zone/host` will be held in `noout` (in addition to the
+    # default DOWN/OUT interval) when it is draining. This is only relevant when  `managePodBudgets` is `true`. The default value is `30` minutes.
+    osdMaintenanceTimeout: 30
+    # If true, the operator will create and manage MachineDisruptionBudgets to ensure OSDs are only fenced when the cluster is healthy.
+    # Only available on OpenShift.
+    manageMachineDisruptionBudgets: false
+    # Namespace in which to watch for the MachineDisruptionBudgets.
+    machineDisruptionBudgetNamespace: openshift-machine-api
+
+  # healthChecks
+  # Valid values for daemons are 'mon', 'osd', 'status'
+  healthCheck:
+    daemonHealth:
+      mon:
+        disabled: false
+        interval: 45s
+      osd:
+        disabled: false
+        interval: 60s
+      status:
+        disabled: false
+        interval: 60s
+    # Change pod liveness probe, it works for all mon,mgr,osd daemons
+    livenessProbe:
+      mon:
+        disabled: false
+      mgr:
+        disabled: false
+      osd:
+        disabled: false

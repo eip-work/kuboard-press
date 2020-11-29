@@ -6,7 +6,7 @@ description: 修改 Kubernetes apiserver 启动参数
 
 本文描述了修改 Kubernetes apiserver 启动参数的步骤。
 
-如果您使用 kubeadm 安装 Kubernetes 集群，Kubernetes apiserver 通过 static pod 启动，其 yaml 文件的位置在 `/etc/kubernetes/manifest/kube-apiserver.yaml` 这个路径下，如下所示：（其中第 14 行到第 39 行，都是 kube-apiserver 的启动参数）
+如果您使用 kubeadm 安装 Kubernetes 集群，Kubernetes apiserver 通过 static pod 启动，其 yaml 文件的位置在 `/etc/kubernetes/manifests/kube-apiserver.yaml` 这个路径下，如下所示：（其中第 14 行到第 39 行，都是 kube-apiserver 的启动参数）
 
 ``` yaml {14-39}
 apiVersion: v1
