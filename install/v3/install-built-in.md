@@ -10,18 +10,18 @@ meta:
 
 <AdSenseTitle/>
 
-## Alpha 版本说明
+## beta 版本说明
 
-Kuboard v3.0 支持 Kubernetes 多集群管理。当前为 alpha 内测版本，已经完成了多集群管理的主要特性，有如下功能尚未验证：
-* Kuboard Proxy
+Kuboard v3.0 支持 Kubernetes 多集群管理。当前为 beta 版本，已经验证了大部分 v2 版本中的功能，有如下功能尚未验证：
 * Kuboard PortForward
-* Kuboard 套件
+
+Kuboard v3.0 正式发布时间预计在 2021 年元旦节前后。
 
 如果您从 Kuboard v1.0.x 或者 Kuboard v2.0.x 升级到 Kuboard，请注意：
 * 您可以同时使用 Kuboard v3.0.x 和 Kuboard v2.0.x；
 * Kuboard v3.0.x 在正式发布时，考虑将 Kuboard 相关的所有组件从 kube-system 名称空间迁移到 kuboard 名称空间；
 
-Alpha 版本为早期内测版本，预计 Kuboard v3.0.0 的正式发布时间在 2021 年元旦前后
+beta 版本为早期内测版本，预计 Kuboard v3.0.0 的正式发布时间在 2021 年元旦前后
 
 ## 部署计划
 
@@ -44,7 +44,7 @@ Alpha 版本为早期内测版本，预计 Kuboard v3.0.0 的正式发布时间�
 
 ## 安装
 
-安装 Kuboard v3.0 alpha 版本的指令如下：
+安装 Kuboard v3.0 beta 版本的指令如下：
 
 ``` sh {10}
 sudo docker run -d \
@@ -57,7 +57,7 @@ sudo docker run -d \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
-  eipwork/kuboard:v3-alpha
+  eipwork/kuboard:v3-beta
 ```
 
 ::: tip 参数解释
@@ -78,6 +78,6 @@ sudo docker run -d \
 
 ## 问题反馈
 
-关于 Kuboard v3.0.0-alpha 版本的问题反馈，请加 QQ 群：656520037
+关于 Kuboard v3.0.0-beta 版本的问题反馈，请加 QQ 群：656520037
 
 <img style="padding: 10px; width: 200px; border: 1px solid #eee; border-radius: 5px;" src="https://kuboard.cn/images/kuboard_qq.png"/>

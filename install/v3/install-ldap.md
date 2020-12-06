@@ -156,7 +156,7 @@ sudo docker run -d \
   -e LDAP_USER_MACHER_USER_ATTRIBUTE="gidNumber" \
   -e LDAP_USER_MACHER_GROUP_ATTRIBUTE="gidNumber" \
   -e LDAP_GROUP_NAME_ATTRIBUTE="cn" \
-  eipwork/kuboard:v3-alpha
+  eipwork/kuboard:v3-beta
 ```
 
 

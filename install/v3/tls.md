@@ -47,7 +47,7 @@ sudo docker run -d \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
-  eipwork/kuboard:v3-alpha
+  eipwork/kuboard:v3-beta
 ```
 
 其中：
@@ -75,7 +75,7 @@ sudo docker run -d \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
-  eipwork/kuboard:v3-alpha
+  eipwork/kuboard:v3-beta
 ```
 
 其中：

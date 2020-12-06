@@ -19,9 +19,9 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
   <InstallDashboardPreview/>
 </div>
 
-## 视频介绍
+## v3 版本介绍
 
-点击查看 [10 分钟的视频介绍](https://edu.51cto.com/center/course/lesson/index?id=642025)
+Kuboard v3.0 已经进入 beta 阶段，预计正式发布时间点为 2021 年元旦前后。相较于 Kuboard v2.0.x， Kuboard v3 最大的特点是支持多 Kubernetes 集群管理。如果您的投产计划在 2021 年元旦之后，建议您选择 [Kuboard v3](./v3/install-built-in.html)。
 
 ## 前提
 

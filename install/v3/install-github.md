@@ -94,7 +94,7 @@ sudo docker run -d \
   -e KUBOARD_ROOT_USER="shaohq" \
   -e GITHUB_CLIENT_ID="17577d45e4de7dad88e0" \
   -e GITHUB_CLIENT_SECRET="ff738553a8c7e9ad39569c8d02c1d85ec19115a7" \
-  eipwork/kuboard:v3-alpha
+  eipwork/kuboard:v3-beta
 ```
 
 ::: tip 参数说明
