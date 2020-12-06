@@ -26,9 +26,11 @@ meta:
 
 ### Nginx 配置
 
-如果您使用 nginx 作为反向代理，配置文件样例如下所示：
+当前情况下 Kuboard v3.0.0 如果运行在反向代理之后，会出现日志、终端界面不可用的情况，此问题还在解决。
 
-``` nginx {7-9,14-16}
+<!-- 如果您使用 nginx 作为反向代理，配置文件样例如下所示：
+
+``` nginx {7-10,17-19}
 server {
   listen  80;
   server_name kuboard.yourdomain.com;   # 替换成你的域名
@@ -40,13 +42,14 @@ server {
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
+    gzip on;
   }
-  location /k8s-ws/ {
+  location /k8s {
     proxy_pass  http://192.168.2.39:80;  # 替换成你的宿主机地址
     proxy_http_version 1.1;
     proxy_pass_header Authorization;
-    proxy_set_header Upgrade "websocket";
-    proxy_set_header Connection "upgrade";
+    proxy_pass_header Upgrade;
+    proxy_pass_header Connection;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -54,4 +57,4 @@ server {
   }
   gzip on;
 }
-```
+``` -->
