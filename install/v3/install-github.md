@@ -38,6 +38,10 @@ Kuboard 支持多种认证方式：
 
 * 安装在 Kubernetes 中的 Kuboard Agent 通过 `kuboard.mycompany.com` 访问 Kuboard 的 Web 服务端口 80 / 443 和 Kuboard Agent Server 端口 10081。
 
+  ::: tip 域名解析
+  * 必须能够通过 DNS 正确解析到该域名，如果直接在宿主机配置 `/etc/hosts` 文件，将不能正常运行；
+  * 如果不方便配置 DNS，也可以直接使用 IP 地址。
+  :::
 
 ![image-20201115230700829](./install-github.assets/image-20201115230700829.png)
 
@@ -95,6 +99,7 @@ sudo docker run -d \
   -e GITHUB_CLIENT_ID="17577d45e4de7dad88e0" \
   -e GITHUB_CLIENT_SECRET="ff738553a8c7e9ad39569c8d02c1d85ec19115a7" \
   eipwork/kuboard:v3-beta
+  # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3-beta ，可以更快地完成镜像下载。
 ```
 
 ::: tip 参数说明

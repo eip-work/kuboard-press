@@ -31,6 +31,10 @@ beta 版本为早期内测版本，预计 Kuboard v3.0.0 的正式发布时间�
 
 * 安装在 Kubernetes 中的 Kuboard Agent 通过 `kuboard.mycompany.com` 访问 Kuboard 的 Web 服务端口 80 / 443 和 Kuboard Agent Server 端口 10081。
 
+  ::: tip 域名解析
+  * 必须能够通过 DNS 正确解析到该域名，如果直接在宿主机配置 `/etc/hosts` 文件，将不能正常运行；
+  * 如果不方便配置 DNS，也可以直接使用 IP 地址。
+  :::
 
 <p>
 <img src="./install-built-in.assets/image-20201117194202143.png" style="max-width: 600px; margin-left: 20px;"/>
@@ -58,6 +62,7 @@ sudo docker run -d \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
   eipwork/kuboard:v3-beta
+  # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3-beta ，可以更快地完成镜像下载。
 ```
 
 ::: tip 参数解释
