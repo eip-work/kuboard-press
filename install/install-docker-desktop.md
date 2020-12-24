@@ -18,7 +18,7 @@ meta:
 
 ## 下载 docker-desktop
 
-从 docker 官网下载 [docker-desktop](https://hub.docker.com/?overlay=onboarding)，并完成安装
+从 docker 下载 [docker-desktop](https://hub.docker.com/?overlay=onboarding)，并完成安装
 
 ## 启用 Kubernetes 集群
 

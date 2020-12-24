@@ -12,7 +12,7 @@ meta:
 
 <AdSenseTitle/>
 
-> 参考文档：Kubernetes 官网文档 [Configure a Security Context for a Pod or Container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#assign-selinux-labels-to-a-container)
+> 参考文档：Kubernetes 文档 [Configure a Security Context for a Pod or Container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#assign-selinux-labels-to-a-container)
 
 Security Context（安全上下文）用来限制容器对宿主节点的可访问范围，以避免容器非法操作宿主节点的系统级别的内容，使得节点的系统或者节点上其他容器组受到影响。
 

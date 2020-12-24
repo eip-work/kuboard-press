@@ -12,7 +12,7 @@ meta:
 
 <AdSenseTitle>
 
-> 参考文档： Kubernetes 官网 [Debug Init Containers](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers/)
+> 参考文档： Kubernetes  [Debug Init Containers](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers/)
 
 本文描述了如何诊断初始化容器InitContainer在执行过程中的问题_本文中的命令行使用 `<pod-name>` 来指代Pod的名称_使用 `<init-container-1>` 和 `<init-container-2>` 来指代初始化容器的名称。
 
@@ -103,4 +103,3 @@ kubectl logs <pod-name> -c <init-container-1>
 | `Init:CrashLoopBackOff`        | Pod 中有一个初始化容器反复执行失败                         |
 | `Pending`                      | Pod 还未开始执行初始化容器                                 |
 | `PodInitializing` or `Running` | Pod 已经完成初始化容器的执行                               |
-

@@ -11,7 +11,7 @@ meta:
 
 <AdSenseTitle/>
 
-本文翻译自 Kubernetes 官网 [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) ，并有所改写
+本文翻译自 Kubernetes  [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) ，并有所改写
 
 ## 目标
 

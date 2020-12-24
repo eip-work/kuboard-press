@@ -12,7 +12,7 @@ meta:
 
 <AdSenseTitle>
 
-> 参考文档： Kubernetes 官网 [Configure Pod Initialization](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/)
+> 参考文档： Kubernetes  [Configure Pod Initialization](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/)
 
 本文描述了如何为Pod配置初始化容器InitContainer。
 
@@ -70,6 +70,6 @@ wget -O /work-dir/index.html https://kuboard.cn
   <!DOCTYPE html>
   <html lang="en" style="margin-right: 0px;"><head>
     <meta charset="utf-8">
-    <title>Kuboard官网_Kubernetes教程_管理界面</title>
+    <title>Kuboard_Kubernetes教程_管理界面</title>
     ...
   ```

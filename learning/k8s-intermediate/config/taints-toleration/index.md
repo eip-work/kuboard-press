@@ -12,7 +12,7 @@ meta:
 
 <AdSenseTitle/>
 
-> 参考文档： Kubernetes 官网文档 [Taints and Tolerations](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+> 参考文档： Kubernetes 文档 [Taints and Tolerations](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 
 Pod 中存在属性 [Node selector / Node affinity](/learning/k8s-intermediate/config/assign-pod-node.html)，用于将 Pod 指定到合适的节点。
 

@@ -517,7 +517,7 @@ kubectl delete node demo-worker-x-x
 
 <!-- > Ingress官方文档：https://kubernetes.io/docs/concepts/services-networking/ingress/
 >
-> Ingress Controllers官网介绍：https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
+> Ingress Controllers介绍：https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 >
 > 本文中使用如下部署方式：https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#using-a-self-provisioned-edge
 >

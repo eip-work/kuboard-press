@@ -11,7 +11,7 @@ meta:
 
 <AdSenseTitle/>
 
-本文翻译自 Kubernetes 官网文档 [Horizontal Pod Autoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+本文翻译自 Kubernetes 文档 [Horizontal Pod Autoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
 
 HorizontalPodAutoscaler 可以根据观察到的 CPU 利用率（或者 beta 阶段的其他应用程序提供的度量值）对 ReplicationController、Deployment、ReplicaSet、StatefulSet 中的 Pod 副本数执指定自动伸缩操作。
 

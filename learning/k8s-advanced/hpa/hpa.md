@@ -11,7 +11,7 @@ meta:
 
 <AdSenseTitle/>
 
-本文翻译自 Kubernetes 官网 [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。
+本文翻译自 Kubernetes  [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。
 
 Horizontal Pod Autoscaler 根据观察到的 CPU 利用率（或某些由应用程序提供的 [custom metrics](https://git.k8s.io/community/contributors/design-proposals/instrumentation/custom-metrics-api.md)）自动调整控制器（Replication Controller / Deployment / ReplicaSet / StatefulSet）的 Pod 的数量。Horizontal Pod Autoscaler 不能应用于不可伸缩的对象，例如 DaemonSet。
 

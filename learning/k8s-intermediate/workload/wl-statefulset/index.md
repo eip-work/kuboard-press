@@ -9,7 +9,7 @@ meta:
 
 # StatefulSet 的使用场景
 
-> 参考文档： Kubernetes 官网文档 [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+> 参考文档： Kubernetes 文档 [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 
 <AdSenseTitle/>
 

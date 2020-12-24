@@ -68,7 +68,7 @@ yum install java-1.8.0-openjdk\* -y
 
 ## 在 master 节点上安装 maven
 
-* 在 [maven 官网](http://maven.apache.org/download.cgi) 获取最新版 maven 的 binary 文件下载链接，例如 apache-maven-3.6.2-bin.tar.gz 的下载地址为 `http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz`
+* 在 [maven ](http://maven.apache.org/download.cgi) 获取最新版 maven 的 binary 文件下载链接，例如 apache-maven-3.6.2-bin.tar.gz 的下载地址为 `http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz`
 
 * 以 root 身份在 master 节点上执行：
   ```sh

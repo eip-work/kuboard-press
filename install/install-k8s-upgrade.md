@@ -13,7 +13,7 @@ meta:
 参考文档：Info Q 文章 [Kubernetes 爆发严重漏洞：可能影响所有开源版本](https://www.infoq.cn/article/2lxylPOCU4cf9MR2S5fp)
 参考文档：51CTO 安全频道 [Kubernetes的严重漏洞将所有服务器暴露在DoS攻击面前!](http://netsecurity.51cto.com/art/201908/601671.htm)
 
-参考文档： kubernetes 官网文档 [kubeadm upgrade](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
+参考文档： kubernetes 文档 [kubeadm upgrade](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
 
 ::: danger 严重漏洞
 * CVE-2019-9512 Ping Flood：攻击者向 HTTP/2 对等体 (peer) 发送连续 ping，导致对等体建立内部响应队列。这可能消耗过多 CPU 和内存——这取决于该数据的队列多高效，从而可能导致拒绝服务攻击。
@@ -35,7 +35,7 @@ Kubernetes 已经发布补丁以修复漏洞，建议所有管理员尽快升级
 * 您想要将其升级到最新的版本 kubernetes v1.15.3
 
 ::: tip
-www.kuboard.cn 是一款免费的基于 Kubernetes 的微服务管理界面，目前只能提供 kubernetes v1.15.0 / v1.15.1 / v1.15.2 到 kubernetes v1.15.3 的升级文档，其他版本的集群，请参考 kubernetes 官网文档 [kubeadm upgrade](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
+www.kuboard.cn 是一款免费的基于 Kubernetes 的微服务管理界面，目前只能提供 kubernetes v1.15.0 / v1.15.1 / v1.15.2 到 kubernetes v1.15.3 的升级文档，其他版本的集群，请参考 kubernetes 文档 [kubeadm upgrade](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
 :::
 
 ## 升级 kubeadm/kubelet/kubectl

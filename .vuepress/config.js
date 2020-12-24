@@ -5,7 +5,7 @@ module.exports = {
   //   devtool: 'source-map'
   // }),
   modules: ['bootstrap-vue/nuxt'],
-  title: 'Kuboard官网',
+  title: 'Kuboard',
   description: '一款Kubernetes_Dashboard_简化Kubernetes的学习和使用_帮助您快速落地Kubernetes_提供_Kubernetes_免费中文教程_国内安装文档',
   head: [
     // ['meta', {name: 'keywords', content: 'Kubernetes教程,Kubernetes安装,K8S教程,K8S安装,Kubernetes管理界面'}],
@@ -61,7 +61,7 @@ module.exports = {
     //   // popupComponent: 'KbSWUpdatePopup',
     //   updatePopup: {
     //     '/': {
-    //       message: "Kuboard官网已更新",
+    //       message: "Kuboard已更新",
     //       buttonText: "点击刷新"
     //     }
     //   }

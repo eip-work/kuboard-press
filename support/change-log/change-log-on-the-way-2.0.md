@@ -53,4 +53,30 @@ https://github.com/NVIDIA/k8s-device-plugin#enabling-gpu-support-in-kubernetes @
 
 
 * CephFS cleanup pvc
-* CephFS expand pvc
+
+
+
+* 事件列表新增加按事件类型查找的功能
+
+
+
+
+
+已知问题：
+
+* 当 K8S 环境中禁用了 annonymous 用户时，登陆界面不能查询到 kuboard-authenticate-config 信息，因此无法执行第三方认证的问题；
+
+
+
+# 待探索
+
+Prometheus Operator
+Ingress / Service 可视化
+MetaLB 负载均衡
+BGP
+Portainer for K8S
+
+
+
+
+* DeploymentProcessing 的 最小就绪时间和处理超时时间

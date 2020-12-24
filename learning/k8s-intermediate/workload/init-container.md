@@ -9,7 +9,7 @@ meta:
 
 # 容器组_初始化容器
 
-参考文档： Kubernetes 官网 [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
+参考文档： Kubernetes  [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
 
 <AdSenseTitle/>
 

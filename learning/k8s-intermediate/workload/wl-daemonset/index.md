@@ -9,7 +9,7 @@ meta:
 
 # 介绍 DaemonSet
 
-> 参考文档： Kubernetes 官网文档 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+> 参考文档： Kubernetes 文档 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
 <AdSenseTitle/>
 

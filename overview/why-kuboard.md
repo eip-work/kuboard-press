@@ -99,7 +99,7 @@ Kuboard 提供批量修改容器镜像版本的功能，轻松升级应用程序
 
 ## 更多资料
 
-Kuboard 官网  http://kuboard.cn
+Kuboard   http://kuboard.cn
 
 Kuboard QQ 群
 

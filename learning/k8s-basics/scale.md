@@ -11,7 +11,7 @@ meta:
 
 <AdSenseTitle/>
 
-本文翻译自 Kubernetes 官网 [Running Multiple Instances of Your App](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-intro/) ，并有所改写
+本文翻译自 Kubernetes  [Running Multiple Instances of Your App](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-intro/) ，并有所改写
 
 ## 目标
 

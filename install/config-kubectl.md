@@ -10,7 +10,7 @@ meta:
 
 <AdSenseTitle/>
 
-> 参考文档： Kubernetes官网文档 [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)、[Configure Access to Multiple Clusters](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+> 参考文档： Kubernetes文档 [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)、[Configure Access to Multiple Clusters](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
 
 `kubectl` 命令行工具从配置文件kubeconfig中查找用于调用 API Server 接口的信息：
 * 集群 cluster

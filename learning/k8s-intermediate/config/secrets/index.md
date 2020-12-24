@@ -11,7 +11,7 @@ meta:
 
 <AdSenseTitle/>
 
-参考文档： Kubernetes 官网文档 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+参考文档： Kubernetes 文档 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
 
 ## 概述
 

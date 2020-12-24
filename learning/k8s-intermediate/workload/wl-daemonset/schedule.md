@@ -9,7 +9,7 @@ meta:
 
 # DaemonSet 是如何调度的
 
-> 参考文档 Kubernetes 官网文档 [How Daemon Pods are Scheduled](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#how-daemon-pods-are-scheduled)
+> 参考文档 Kubernetes 文档 [How Daemon Pods are Scheduled](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#how-daemon-pods-are-scheduled)
 
 <AdSenseTitle/>
 

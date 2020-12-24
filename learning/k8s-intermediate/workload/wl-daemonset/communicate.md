@@ -9,7 +9,7 @@ meta:
 
 # 与 DaemonSet 通信
 
-> 参考文档 Kubernetes 官网文档 [Communicating with Daemon Pods](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods)
+> 参考文档 Kubernetes 文档 [Communicating with Daemon Pods](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods)
 
 <AdSenseTitle/>
 

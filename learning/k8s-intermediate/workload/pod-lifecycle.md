@@ -9,7 +9,7 @@ meta:
 
 # 容器组_生命周期
 
-参考文档： Kubernetes 官网文档 [Pod Lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
+参考文档： Kubernetes 文档 [Pod Lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
 
 <AdSenseTitle/>
 

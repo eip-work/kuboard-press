@@ -9,7 +9,7 @@ meta:
 
 # 介绍 Deployment
 
-参考文档： Kubernetes 官网 [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)、 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
+参考文档： Kubernetes  [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)、 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
 
 <AdSenseTitle/>
 
@@ -63,7 +63,7 @@ ReplicaSet 副本集的主要几个字段有：
 
 副本集将通过创建、删除 Pod 容器组来确保符合 selector 选择器的 Pod 数量等于 replicas 指定的数量。当符合 selector 选择器的 Pod 数量不够时，副本集通过使用 template 中的定义来创建 Pod。
 
-在 Kubernetes 中，并不建议您直接使用 ReplicaSet，推荐使用 Deployment，由 Deployment 创建和管理 ReplicaSet。 关于副本集的更多信息，请参考 Kubernetes 官网文档 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
+在 Kubernetes 中，并不建议您直接使用 ReplicaSet，推荐使用 Deployment，由 Deployment 创建和管理 ReplicaSet。 关于副本集的更多信息，请参考 Kubernetes 文档 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
 
 ## Deployment 概述
 

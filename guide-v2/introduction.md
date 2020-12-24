@@ -151,7 +151,7 @@ http://任意一个Worker节点的IP地址:32567/
 
 ### 进一步使用
 
-请访问 Kuboard 官网，了解如何：
+请访问 Kuboard ，了解如何：
 * 利用 Kuboard 管理 Kubernetes 集群；
 * 授权用户访问指定的名称空间；
 * 让多个团队协作使用 Kuboard 管理 Kubernetes 集群；

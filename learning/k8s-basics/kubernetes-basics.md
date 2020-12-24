@@ -11,7 +11,7 @@ meta:
 
 <AdSenseTitle/>
 
-本文翻译自 Kubernetes 官网 [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) ，并有所改写
+本文翻译自 Kubernetes  [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) ，并有所改写
 
 相信很多初学者在入门 Kubernetes (以下简称k8s)时，都会被各种英文单词所困扰(例如：Deployment、Pod、Service等)，这些名词在被翻译后也往往失去了原意，更不能体现出他们的相互关系。笔者在刚开始学习k8s时也遭遇到这种困境。但是，任何复杂的系统都是发源于最基本的公式或定理，k8s虽然庞大且复杂，不过只要抓住一些基本的脉络(一些最基本的组件的定义及使用)，入门便也是毫不费劲。
 

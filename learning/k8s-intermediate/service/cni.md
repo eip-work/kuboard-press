@@ -119,7 +119,7 @@ Calico是Kubernetes生态系统中另一种流行的网络选择。虽然Flannel
 
 
 
-[weave 官网](https://www.weave.works/oss/net/)
+[weave ](https://www.weave.works/oss/net/)
 
 
 Weave是由Weaveworks提供的一种Kubernetes CNI网络选项，它提供的模式和我们目前为止讨论的所有网络方案都不同。Weave在集群中的每个节点之间创建网状Overlay网络，参与者之间可以灵活路由。这一特性再结合其他一些独特的功能，在某些可能导致问题的情况下，Weave可以智能地路由。

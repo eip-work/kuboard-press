@@ -9,7 +9,7 @@ meta:
 
 # 更新 DaemonSet
 
-> 参考文档 Kubernetes 官网文档 [Updating a DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#updating-a-daemonset)
+> 参考文档 Kubernetes 文档 [Updating a DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#updating-a-daemonset)
 
 <AdSenseTitle/>
 

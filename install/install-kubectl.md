@@ -19,7 +19,7 @@ meta:
 
 ## 在客户端电脑安装 kubectl
 
-Kubernetes 官网文档参照 [安装 kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 安装时，经常会失败，因为国内访问 google 的镜像仓库存在问题。
+Kubernetes 文档参照 [安装 kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 安装时，经常会失败，因为国内访问 google 的镜像仓库存在问题。
 
 请参考下述内容，完成 kubectl 的安装
 

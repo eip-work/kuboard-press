@@ -7,7 +7,7 @@
   
   http://mirrors.huaweicloud.com/centos-altarch/7.7.1908/isos/armhfp/CentOS-Userland-7-armv7hl-RaspberryPI-Minimal-4-1908-sda.raw.xz
 
-* 从 raspberrypi 官网下载镜像烧录工具 Raspberry Pi Imager
+* 从 raspberrypi 下载镜像烧录工具 Raspberry Pi Imager
 
   https://www.raspberrypi.org/downloads/
 

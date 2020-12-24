@@ -23,7 +23,7 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。目的是帮助用
 
 ## Kubernetes免费教程
 
-Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kuboard 落地 Spring Cloud 微服务的实战经验
+Kubernetes教程的主要依据是：Kubernetes 文档，以及使用 Kuboard 落地 Spring Cloud 微服务的实战经验
 
 ### **Kubernetes 入门**
   * [0. 学习Kubernetes基础知识](/learning/k8s-basics/kubernetes-basics.html) (10分钟)
@@ -193,4 +193,4 @@ Kubernetes教程的主要依据是：Kubernetes 官网文档，以及使用 Kubo
 * 多环境
   * [导出部署配置](/learning/k8s-practice/ocp/export.html)
   * [导入部署配置](/learning/k8s-practice/ocp/import.html)
-Kuboard官网免费提供Kubernetes教程、K8S教程、K8S安装文档、Kubernetes+SpringCloud实战文档，学习过程中如有疑问，请加QQ群在线答疑。
+Kuboard免费提供Kubernetes教程、K8S教程、K8S安装文档、Kubernetes+SpringCloud实战文档，学习过程中如有疑问，请加QQ群在线答疑。

@@ -13,8 +13,8 @@ meta:
 <AdSenseTitle/>
 
 参考文档：
-* Kubernetes 官网 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-* Kubernetes 官网 [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
+* Kubernetes  [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+* Kubernetes  [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
 * Kubernetes Nginx Ingress Controller [Bare-metal considerations](https://kubernetes.github.io/ingress-nginx/deploy/baremetal/)
 * nginxinc/kubernets-ingress [kubernetes-ingress](https://github.com/nginxinc/kubernetes-ingress)
 

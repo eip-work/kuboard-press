@@ -11,7 +11,7 @@ meta:
 
 <AdSenseTitle/>
 
-参考文档： Kubernetes 官网 [Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
+参考文档： Kubernetes  [Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
 
 ## 存储类概述
 

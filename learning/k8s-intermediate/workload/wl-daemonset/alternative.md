@@ -9,7 +9,7 @@ meta:
 
 # DaemonSet 的替代选项
 
-> 参考文档： Kubernetes 官网文档 [Alternatives to DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#alternatives-to-daemonset)
+> 参考文档： Kubernetes 文档 [Alternatives to DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#alternatives-to-daemonset)
 
 <AdSenseTitle/>
 
