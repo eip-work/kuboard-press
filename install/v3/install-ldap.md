@@ -161,6 +161,7 @@ sudo docker run -d \
   -e LDAP_USER_MACHER_GROUP_ATTRIBUTE="gidNumber" \
   -e LDAP_GROUP_NAME_ATTRIBUTE="cn" \
   eipwork/kuboard:v3-beta
+  # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3-beta ，可以更快地完成镜像下载。
 ```
 
 

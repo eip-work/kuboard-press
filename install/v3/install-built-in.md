@@ -62,6 +62,7 @@ sudo docker run -d \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
   eipwork/kuboard:v3-beta
+  # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3-beta ，可以更快地完成镜像下载。
 ```
 
 ::: tip 参数解释
