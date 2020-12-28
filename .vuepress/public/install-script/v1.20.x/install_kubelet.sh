@@ -43,6 +43,7 @@ sed -i "s#https://registry-1.docker.io#${REGISTRY_MIRROR}#g"  /etc/containerd/co
 
 
 systemctl daemon-reload
+systemctl enable containerd
 systemctl restart containerd
 
 
