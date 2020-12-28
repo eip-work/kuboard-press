@@ -19,7 +19,8 @@ meta:
   * Kuboard 需要使用根路径进行访问，即 https://kuboard.mycompany.com/，而不能是 https://mycompany.com/kuboard/ 这样的二级路径；
 * 启用 WebSocket
   * Kuboard 中终端和日志的功能需要用到 WebSocket，需要在您的反向代理中配置 WebSocket，才能正常使用 Kuboard 的终端和日志功能；
-<!-- * PassHeader
+  
+<!--  PassHeader
   * Kuboard v3 的 Portforward <Badge>v3.0.0</Badge> 功能需要用到 SPDY 协议，需要您的反向代理能够支持此协议，并将 Upgrade,Connection,Authorization 这几个 Header 传递给 Kuboard。 -->
 
 ## 配置样例
