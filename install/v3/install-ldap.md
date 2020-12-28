@@ -164,6 +164,9 @@ sudo docker run -d \
   # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3-beta ，可以更快地完成镜像下载。
 ```
 
+::: danger 
+kuboard.mycompany.com 是一个假想域名，请替换成您自己的域名（运行 Kuboard 的宿主机以及所有 Kubernetes 节点都可以解析该域名），或者使用 IP 地址；
+:::
 
 ::: tip 参数说明
 * 建议将此命令保存为一个 shell 脚本，例如 `start-kuboard.sh`，后续升级 Kuboard 或恢复 Kuboard 时，需要通过此命令了解到最初安装 Kuboard 时所使用的参数；
