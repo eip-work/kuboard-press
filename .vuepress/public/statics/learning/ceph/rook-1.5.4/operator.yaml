@@ -294,7 +294,7 @@ spec:
       serviceAccountName: rook-ceph-system
       containers:
       - name: rook-ceph-operator
-        image: rook/ceph:master
+        image: swr.cn-east-2.myhuaweicloud.com/kuboard-dependency/rook-ceph:v1.5.4
         args: ["ceph", "operator"]
         volumeMounts:
         - mountPath: /var/lib/rook
