@@ -1,0 +1,1371 @@
+###################################################################################################################
+# Create the CRDs that are necessary before creating your Rook cluster.
+# These resources *must* be created before the cluster.yaml or their variants.
+###################################################################################################################
+# OLM: BEGIN CEPH CRD
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephclusters.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephCluster
+    plural: cephclusters
+    singular: cephcluster
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                cephVersion:
+                  type: object
+                  properties:
+                    allowUnsupported:
+                      type: boolean
+                    image:
+                      type: string
+                dashboard:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    urlPrefix:
+                      type: string
+                    port:
+                      type: integer
+                      minimum: 0
+                      maximum: 65535
+                    ssl:
+                      type: boolean
+                dataDirHostPath:
+                  pattern: ^/(\S+)
+                  type: string
+                disruptionManagement:
+                  type: object
+                  properties:
+                    machineDisruptionBudgetNamespace:
+                      type: string
+                    managePodBudgets:
+                      type: boolean
+                    osdMaintenanceTimeout:
+                      type: integer
+                    pgHealthCheckTimeout:
+                      type: integer
+                    manageMachineDisruptionBudgets:
+                      type: boolean
+                skipUpgradeChecks:
+                  type: boolean
+                continueUpgradeAfterChecksEvenIfNotHealthy:
+                  type: boolean
+                mon:
+                  type: object
+                  properties:
+                    allowMultiplePerNode:
+                      type: boolean
+                    count:
+                      maximum: 9
+                      minimum: 0
+                      type: integer
+                    volumeClaimTemplate:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+                    stretchCluster:
+                      type: object
+                      nullable: true
+                      properties:
+                        failureDomainLabel:
+                          type: string
+                        subFailureDomain:
+                          type: string
+                        zones:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              arbiter:
+                                type: boolean
+                              volumeClaimTemplate:
+                                type: object
+                                x-kubernetes-preserve-unknown-fields: true
+                mgr:
+                  type: object
+                  properties:
+                    modules:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          enabled:
+                            type: boolean
+                crashCollector:
+                  type: object
+                  properties:
+                    disable:
+                      type: boolean
+                    daysToRetain:
+                      type: integer
+                network:
+                  type: object
+                  nullable: true
+                  properties:
+                    hostNetwork:
+                      type: boolean
+                    provider:
+                      type: string
+                    selectors:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    ipFamily:
+                      type: string
+                storage:
+                  type: object
+                  properties:
+                    disruptionManagement:
+                      type: object
+                      nullable: true
+                      properties:
+                        machineDisruptionBudgetNamespace:
+                          type: string
+                        managePodBudgets:
+                          type: boolean
+                        osdMaintenanceTimeout:
+                          type: integer
+                        pgHealthCheckTimeout:
+                          type: integer
+                        manageMachineDisruptionBudgets:
+                          type: boolean
+                    useAllNodes:
+                      type: boolean
+                    nodes:
+                      type: array
+                      nullable: true
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          config:
+                            type: object
+                            nullable: true
+                            properties:
+                              metadataDevice:
+                                type: string
+                              storeType:
+                                type: string
+                                pattern: ^(bluestore)$
+                              databaseSizeMB:
+                                type: string
+                              walSizeMB:
+                                type: string
+                              journalSizeMB:
+                                type: string
+                              osdsPerDevice:
+                                type: string
+                              encryptedDevice:
+                                type: string
+                                pattern: ^(true|false)$
+                          useAllDevices:
+                            type: boolean
+                          deviceFilter:
+                            type: string
+                            nullable: true
+                          devicePathFilter:
+                            type: string
+                          devices:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                config:
+                                  type: object
+                                  nullable: true
+                                  x-kubernetes-preserve-unknown-fields: true
+                          resources:
+                            type: object
+                            nullable: true
+                            x-kubernetes-preserve-unknown-fields: true
+                    useAllDevices:
+                      type: boolean
+                    deviceFilter:
+                      type: string
+                      nullable: true
+                    devicePathFilter:
+                      type: string
+                    config:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    storageClassDeviceSets:
+                      type: array
+                      nullable: true
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          count:
+                            type: integer
+                            format: int32
+                          portable:
+                            type: boolean
+                          tuneDeviceClass:
+                            type: boolean
+                          tuneFastDeviceClass:
+                            type: boolean
+                          encrypted:
+                            type: boolean
+                          schedulerName:
+                            type: string
+                          config:
+                            type: object
+                            nullable: true
+                            x-kubernetes-preserve-unknown-fields: true
+                          placement:
+                            type: object
+                            nullable: true
+                            x-kubernetes-preserve-unknown-fields: true
+                          preparePlacement:
+                            type: object
+                            nullable: true
+                            x-kubernetes-preserve-unknown-fields: true
+                          resources:
+                            type: object
+                            nullable: true
+                            x-kubernetes-preserve-unknown-fields: true
+                          volumeClaimTemplates:
+                            type: array
+                            items:
+                              type: object
+                              x-kubernetes-preserve-unknown-fields: true
+                driveGroups:
+                  type: array
+                  nullable: true
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      spec:
+                        type: object
+                        x-kubernetes-preserve-unknown-fields: true
+                      placement:
+                        type: object
+                        nullable: true
+                        x-kubernetes-preserve-unknown-fields: true
+                    required:
+                      - name
+                      - spec
+                monitoring:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    rulesNamespace:
+                      type: string
+                    externalMgrEndpoints:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          ip:
+                            type: string
+                    externalMgrPrometheusPort:
+                      type: integer
+                      minimum: 0
+                      maximum: 65535
+                removeOSDsIfOutAndSafeToRemove:
+                  type: boolean
+                external:
+                  type: object
+                  properties:
+                    enable:
+                      type: boolean
+                cleanupPolicy:
+                  type: object
+                  properties:
+                    allowUninstallWithVolumes:
+                      type: boolean
+                    confirmation:
+                      type: string
+                      pattern: ^$|^yes-really-destroy-data$
+                    sanitizeDisks:
+                      type: object
+                      properties:
+                        method:
+                          type: string
+                          pattern: ^(complete|quick)$
+                        dataSource:
+                          type: string
+                          pattern: ^(zero|random)$
+                        iteration:
+                          type: integer
+                          format: int32
+                security:
+                  type: object
+                  properties:
+                    kms:
+                      type: object
+                      properties:
+                        connectionDetails:
+                          type: object
+                          nullable: true
+                          x-kubernetes-preserve-unknown-fields: true
+                        tokenSecretName:
+                          type: string
+                logCollector:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    periodicity:
+                      type: string
+                annotations:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                placement:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                labels:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                resources:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                healthCheck:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                priorityClassNames:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      additionalPrinterColumns:
+        - name: DataDirHostPath
+          type: string
+          description: Directory used on the K8s nodes
+          jsonPath: .spec.dataDirHostPath
+        - name: MonCount
+          type: string
+          description: Number of MONs
+          jsonPath: .spec.mon.count
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+        - name: Phase
+          type: string
+          description: Phase
+          jsonPath: .status.phase
+        - name: Message
+          type: string
+          description: Message
+          jsonPath: .status.message
+        - name: Health
+          type: string
+          description: Ceph Health
+          jsonPath: .status.ceph.health
+      subresources:
+        status: {}
+# OLM: END CEPH CRD
+# OLM: BEGIN CEPH CLIENT CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephclients.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephClient
+    listKind: CephClientList
+    plural: cephclients
+    singular: cephclient
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                caps:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END CEPH CLIENT CRD
+# OLM: BEGIN CEPH RBD MIRROR CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephrbdmirrors.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephRBDMirror
+    listKind: CephRBDMirrorList
+    plural: cephrbdmirrors
+    singular: cephrbdmirror
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                peers:
+                  type: object
+                  properties:
+                    secretNames:
+                      type: array
+                      items:
+                        type: string
+                resources:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                priorityClassName:
+                  type: string
+                placement:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                annotations:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+
+# OLM: END CEPH RBD MIRROR CRD
+# OLM: BEGIN CEPH FS CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephfilesystems.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephFilesystem
+    listKind: CephFilesystemList
+    plural: cephfilesystems
+    singular: cephfilesystem
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                metadataServer:
+                  type: object
+                  properties:
+                    activeCount:
+                      minimum: 1
+                      maximum: 10
+                      type: integer
+                    activeStandby:
+                      type: boolean
+                    annotations:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    placement:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    resources:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    priorityClassName:
+                      type: string
+                    labels:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                metadataPool:
+                  type: object
+                  nullable: true
+                  properties:
+                    failureDomain:
+                      type: string
+                    deviceClass:
+                      type: string
+                    crushRoot:
+                      type: string
+                    replicated:
+                      type: object
+                      nullable: true
+                      properties:
+                        size:
+                          minimum: 0
+                          maximum: 10
+                          type: integer
+                        requireSafeReplicaSize:
+                          type: boolean
+                        replicasPerFailureDomain:
+                          type: integer
+                        subFailureDomain:
+                          type: string
+                    parameters:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+                    erasureCoded:
+                      type: object
+                      nullable: true
+                      properties:
+                        dataChunks:
+                          minimum: 0
+                          maximum: 10
+                          type: integer
+                        codingChunks:
+                          minimum: 0
+                          maximum: 10
+                          type: integer
+                    compressionMode:
+                      type: string
+                      enum:
+                        - ""
+                        - none
+                        - passive
+                        - aggressive
+                        - force
+                dataPools:
+                  type: array
+                  nullable: true
+                  items:
+                    type: object
+                    properties:
+                      failureDomain:
+                        type: string
+                      deviceClass:
+                        type: string
+                      crushRoot:
+                        type: string
+                      replicated:
+                        type: object
+                        nullable: true
+                        properties:
+                          size:
+                            minimum: 0
+                            maximum: 10
+                            type: integer
+                          requireSafeReplicaSize:
+                            type: boolean
+                          replicasPerFailureDomain:
+                            type: integer
+                          subFailureDomain:
+                            type: string
+                      erasureCoded:
+                        type: object
+                        nullable: true
+                        properties:
+                          dataChunks:
+                            minimum: 0
+                            maximum: 10
+                            type: integer
+                          codingChunks:
+                            minimum: 0
+                            maximum: 10
+                            type: integer
+                      compressionMode:
+                        type: string
+                        enum:
+                          - ""
+                          - none
+                          - passive
+                          - aggressive
+                          - force
+                      parameters:
+                        type: object
+                        nullable: true
+                        x-kubernetes-preserve-unknown-fields: true
+                preservePoolsOnDelete:
+                  type: boolean
+                preserveFilesystemOnDelete:
+                  type: boolean
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      additionalPrinterColumns:
+        - name: ActiveMDS
+          type: string
+          description: Number of desired active MDS daemons
+          jsonPath: .spec.metadataServer.activeCount
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+      subresources:
+        status: {}
+# OLM: END CEPH FS CRD
+# OLM: BEGIN CEPH NFS CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephnfses.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephNFS
+    listKind: CephNFSList
+    plural: cephnfses
+    singular: cephnfs
+    shortNames:
+      - nfs
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                rados:
+                  type: object
+                  properties:
+                    pool:
+                      type: string
+                    namespace:
+                      type: string
+                server:
+                  type: object
+                  properties:
+                    active:
+                      type: integer
+                    annotations:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    placement:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    resources:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    priorityClassName:
+                      type: string
+                    logLevel:
+                      type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END CEPH NFS CRD
+# OLM: BEGIN CEPH OBJECT STORE CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephobjectstores.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephObjectStore
+    listKind: CephObjectStoreList
+    plural: cephobjectstores
+    singular: cephobjectstore
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                gateway:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    sslCertificateRef:
+                      type: string
+                      nullable: true
+                    port:
+                      type: integer
+                      minimum: 0
+                      maximum: 65535
+                    securePort:
+                      type: integer
+                      minimum: 0
+                      maximum: 65535
+                    instances:
+                      type: integer
+                    externalRgwEndpoints:
+                      type: array
+                      nullable: true
+                      items:
+                        type: object
+                        properties:
+                          ip:
+                            type: string
+                    annotations:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    placement:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    resources:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    labels:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                    priorityClassName:
+                      type: string
+                metadataPool:
+                  type: object
+                  nullable: true
+                  properties:
+                    failureDomain:
+                      type: string
+                    crushRoot:
+                      type: string
+                    replicated:
+                      type: object
+                      nullable: true
+                      properties:
+                        size:
+                          type: integer
+                        requireSafeReplicaSize:
+                          type: boolean
+                        replicasPerFailureDomain:
+                          type: integer
+                        subFailureDomain:
+                          type: string
+                    erasureCoded:
+                      type: object
+                      nullable: true
+                      properties:
+                        dataChunks:
+                          type: integer
+                        codingChunks:
+                          type: integer
+                    compressionMode:
+                      type: string
+                      enum:
+                        - ""
+                        - none
+                        - passive
+                        - aggressive
+                        - force
+                    parameters:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                zone:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                dataPool:
+                  type: object
+                  nullable: true
+                  properties:
+                    failureDomain:
+                      type: string
+                    crushRoot:
+                      type: string
+                    replicated:
+                      type: object
+                      nullable: true
+                      properties:
+                        size:
+                          type: integer
+                        requireSafeReplicaSize:
+                          type: boolean
+                        replicasPerFailureDomain:
+                          type: integer
+                        subFailureDomain:
+                          type: string
+                    erasureCoded:
+                      type: object
+                      nullable: true
+                      properties:
+                        dataChunks:
+                          type: integer
+                        codingChunks:
+                          type: integer
+                    compressionMode:
+                      type: string
+                      enum:
+                        - ""
+                        - none
+                        - passive
+                        - aggressive
+                        - force
+                    parameters:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+                preservePoolsOnDelete:
+                  type: boolean
+                healthCheck:
+                  type: object
+                  nullable: true
+                  properties:
+                    bucket:
+                      type: object
+                      nullable: true
+                      properties:
+                        enabled:
+                          type: boolean
+                        interval:
+                          type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+
+# OLM: END CEPH OBJECT STORE CRD
+# OLM: BEGIN CEPH OBJECT STORE USERS CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephobjectstoreusers.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephObjectStoreUser
+    listKind: CephObjectStoreUserList
+    plural: cephobjectstoreusers
+    singular: cephobjectstoreuser
+    shortNames:
+      - rcou
+      - objectuser
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                store:
+                  type: string
+                displayName:
+                  type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END CEPH OBJECT STORE USERS CRD
+# OLM: BEGIN CEPH OBJECT REALM CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephobjectrealms.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephObjectRealm
+    listKind: CephObjectRealmList
+    plural: cephobjectrealms
+    singular: cephobjectrealm
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                pull:
+                  type: object
+                  properties:
+                    endpoint:
+                      type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END CEPH OBJECT REALM CRD
+# OLM: BEGIN CEPH OBJECT ZONEGROUP CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephobjectzonegroups.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephObjectZoneGroup
+    listKind: CephObjectZoneGroupList
+    plural: cephobjectzonegroups
+    singular: cephobjectzonegroup
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                realm:
+                  type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END CEPH OBJECT ZONEGROUP CRD
+# OLM: BEGIN CEPH OBJECT ZONE CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephobjectzones.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephObjectZone
+    listKind: CephObjectZoneList
+    plural: cephobjectzones
+    singular: cephobjectzone
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                zoneGroup:
+                  type: string
+                metadataPool:
+                  type: object
+                  nullable: true
+                  properties:
+                    failureDomain:
+                      type: string
+                    crushRoot:
+                      type: string
+                    replicated:
+                      type: object
+                      nullable: true
+                      properties:
+                        size:
+                          type: integer
+                        requireSafeReplicaSize:
+                          type: boolean
+                    erasureCoded:
+                      type: object
+                      nullable: true
+                      properties:
+                        dataChunks:
+                          type: integer
+                        codingChunks:
+                          type: integer
+                    compressionMode:
+                      type: string
+                      enum:
+                        - ""
+                        - none
+                        - passive
+                        - aggressive
+                        - force
+                    parameters:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                dataPool:
+                  type: object
+                  properties:
+                    failureDomain:
+                      type: string
+                    crushRoot:
+                      type: string
+                    replicated:
+                      type: object
+                      nullable: true
+                      properties:
+                        size:
+                          type: integer
+                        requireSafeReplicaSize:
+                          type: boolean
+                    erasureCoded:
+                      type: object
+                      nullable: true
+                      properties:
+                        dataChunks:
+                          type: integer
+                        codingChunks:
+                          type: integer
+                    compressionMode:
+                      type: string
+                      enum:
+                        - ""
+                        - none
+                        - passive
+                        - aggressive
+                        - force
+                    parameters:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                preservePoolsOnDelete:
+                  type: boolean
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END CEPH OBJECT ZONE CRD
+# OLM: BEGIN CEPH BLOCK POOL CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cephblockpools.ceph.rook.io
+spec:
+  group: ceph.rook.io
+  names:
+    kind: CephBlockPool
+    listKind: CephBlockPoolList
+    plural: cephblockpools
+    singular: cephblockpool
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                failureDomain:
+                  type: string
+                deviceClass:
+                  type: string
+                crushRoot:
+                  type: string
+                replicated:
+                  type: object
+                  nullable: true
+                  properties:
+                    size:
+                      type: integer
+                      minimum: 0
+                      maximum: 9
+                    targetSizeRatio:
+                      type: number
+                    requireSafeReplicaSize:
+                      type: boolean
+                    replicasPerFailureDomain:
+                      type: integer
+                    subFailureDomain:
+                      type: string
+                erasureCoded:
+                  type: object
+                  nullable: true
+                  properties:
+                    dataChunks:
+                      type: integer
+                      minimum: 0
+                      maximum: 9
+                    codingChunks:
+                      type: integer
+                      minimum: 0
+                      maximum: 9
+                compressionMode:
+                  type: string
+                  enum:
+                    - ""
+                    - none
+                    - passive
+                    - aggressive
+                    - force
+                enableRBDStats:
+                  description:
+                    EnableRBDStats is used to enable gathering of statistics
+                    for all RBD images in the pool
+                  type: boolean
+                parameters:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                mirroring:
+                  type: object
+                  nullable: true
+                  properties:
+                    enabled:
+                      type: boolean
+                    mode:
+                      type: string
+                      enum:
+                        - image
+                        - pool
+                    snapshotSchedules:
+                      type: array
+                      items:
+                        type: object
+                        nullable: true
+                        properties:
+                          interval:
+                            type: string
+                          startTime:
+                            type: string
+                statusCheck:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                annotations:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+
+# OLM: END CEPH BLOCK POOL CRD
+# OLM: BEGIN CEPH VOLUME POOL CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: volumes.rook.io
+spec:
+  group: rook.io
+  names:
+    kind: Volume
+    listKind: VolumeList
+    plural: volumes
+    singular: volume
+    shortNames:
+      - rv
+  scope: Namespaced
+  versions:
+    - name: v1alpha2
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            attachments:
+              type: array
+              items:
+                type: object
+                properties:
+                  node:
+                    type: string
+                  podNamespace:
+                    type: string
+                  podName:
+                    type: string
+                  clusterName:
+                    type: string
+                  mountDir:
+                    type: string
+                  readOnly:
+                    type: boolean
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END CEPH VOLUME POOL CRD
+# OLM: BEGIN OBJECTBUCKET CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: objectbuckets.objectbucket.io
+spec:
+  group: objectbucket.io
+  names:
+    kind: ObjectBucket
+    listKind: ObjectBucketList
+    plural: objectbuckets
+    singular: objectbucket
+    shortNames:
+      - ob
+      - obs
+  scope: Cluster
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                storageClassName:
+                  type: string
+                endpoint:
+                  type: object
+                  nullable: true
+                  properties:
+                    bucketHost:
+                      type: string
+                    bucketPort:
+                      type: integer
+                      format: int32
+                    bucketName:
+                      type: string
+                    region:
+                      type: string
+                    subRegion:
+                      type: string
+                    additionalConfig:
+                      type: object
+                      nullable: true
+                      x-kubernetes-preserve-unknown-fields: true
+                authentication:
+                  type: object
+                  nullable: true
+                  items:
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                additionalState:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                reclaimPolicy:
+                  type: string
+                claimRef:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END OBJECTBUCKET CRD
+# OLM: BEGIN OBJECTBUCKETCLAIM CRD
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: objectbucketclaims.objectbucket.io
+spec:
+  group: objectbucket.io
+  names:
+    kind: ObjectBucketClaim
+    listKind: ObjectBucketClaimList
+    plural: objectbucketclaims
+    singular: objectbucketclaim
+    shortNames:
+      - obc
+      - obcs
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                storageClassName:
+                  type: string
+                bucketName:
+                  type: string
+                generateBucketName:
+                  type: string
+                additionalConfig:
+                  type: object
+                  nullable: true
+                  x-kubernetes-preserve-unknown-fields: true
+                objectBucketName:
+                  type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}
+# OLM: END OBJECTBUCKETCLAIM CRD

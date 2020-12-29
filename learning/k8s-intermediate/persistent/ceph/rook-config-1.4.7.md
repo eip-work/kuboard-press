@@ -48,15 +48,27 @@ meta:
 
 ## 安装 Rook - Ceph
 
-本章节参考 [Rook Ceph Storage Quickstart](https://rook.io/docs/rook/v1.5/ceph-quickstart.html) 在 Kubernetes 集群上快速安装了一个 Ceph 集群。
+本章节参考 [Rook Ceph Storage Quickstart](https://rook.io/docs/rook/v1.4/ceph-quickstart.html) 在 Kubernetes 集群上快速安装了一个 Ceph 集群。
 
 * 执行如下命令安装 Rook - Ceph 集群
 
   ``` sh
-  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.5.4/crds.yaml
-  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.5.4/common.yaml
-  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.5.4/operator.yaml
-  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.5.4/cluster.yaml
+  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.7/common.yaml
+  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.7/operator.yaml
+  kubectl create -f https://kuboard.cn/statics/learning/ceph/rook-1.4.7/cluster.yaml
+  ```
+
+  在执行上述指令之前，可以使用 [docker-image-loader](https://github.com/eip-work/docker-image-loader) 提前将所需要的镜像加载到所有节点机器上，相比较每个节点分别从公网抓取镜像会更快一些；如果您的集群在内网环境，也可以使用 docker-image-loader 加载镜像到集群节点。需要加载的镜像如下：
+
+  ```
+  quay.io/cephcsi/cephcsi:v3.1.1
+  quay.io/k8scsi/csi-node-driver-registrar:v1.2.0
+  quay.io/k8scsi/csi-attacher:v2.1.0
+  quay.io/k8scsi/csi-snapshotter:v2.1.1
+  quay.io/k8scsi/csi-resizer:v0.4.0
+  quay.io/k8scsi/csi-provisioner:v1.6.0
+  rook/ceph:v1.4.5
+  ceph/ceph:v15.2.4
   ```
 
 * 执行 `watch kubectl get pods -n rook-ceph` 指令，直到所有的 Pod 处于 `Running` 或者 `Completed` 状态，如下所示：
@@ -92,7 +104,7 @@ meta:
 
 * Ceph 集群部署好以后，可以通过 Ceph 提供 块存储、文件存储和对象存储。此处，我们通过如下指令来创建文件存储服务：
 
-  > 参考文档 [Rook Ceph-FileSystem](https://rook.io/docs/rook/v1.5/ceph-filesystem.html)
+  > 参考文档 [Rook Ceph-FileSystem](https://rook.io/docs/rook/v1.4/ceph-filesystem.html)
 
   ``` sh
   cat > myfs.yaml <<EOF
