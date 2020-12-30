@@ -1776,7 +1776,7 @@ spec:
     spec:
       serviceAccountName: nginx-ingress
       containers:
-      - image: nginx/nginx-ingress:1.9.1
+      - image: swr.cn-east-2.myhuaweicloud.com/kuboard-dependency/nginx-ingress:1.9.1
         imagePullPolicy: IfNotPresent
         name: nginx-ingress
         ports:

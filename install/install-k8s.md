@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.20.x" updateCount="92"/>
+  <InstallBanner version="v1.20.x" updateCount="93"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -28,6 +28,7 @@ meta:
 对于 Kubernetes 初学者，在搭建K8S集群时，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
 
 * 至少2台 **2核4G** 的服务器
+* 本文档中，CPU 必须为 x86 架构，暂时未适配 arm 架构的 CPU
 * **CentOS 7.8** 或 **CentOS Stream 8**
 
 <!-- <grid :rwd="{compact: 'stack'}">
