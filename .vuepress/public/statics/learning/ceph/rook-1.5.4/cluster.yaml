@@ -21,7 +21,8 @@ spec:
     # versions running within the cluster. See tags available at https://hub.docker.com/r/ceph/ceph/tags/.
     # If you want to be more precise, you can always use a timestamp tag such ceph/ceph:v15.2.8-20201217
     # This tag might not contain a new Ceph version, just security fixes from the underlying operating system, which will reduce vulnerabilities
-    image: ceph/ceph:v15.2.8
+    # image: ceph/ceph:v15.2.8
+    image: swr.cn-east-2.myhuaweicloud.com/kuboard-dependency/ceph:v15.2.8
     # Whether to allow unsupported versions of Ceph. Currently `nautilus` and `octopus` are supported.
     # Future versions such as `pacific` would require this to be set to `true`.
     # Do not set to true in production.
