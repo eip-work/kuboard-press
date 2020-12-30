@@ -61,6 +61,10 @@ meta:
 
 * 执行 `watch kubectl get pods -n rook-ceph` 指令，直到所有的 Pod 处于 `Running` 或者 `Completed` 状态，如下所示：
 
+  > * 根据网速不同，完成 rook ceph 的安装部署可能需要 6 - 10 分钟；
+  > * 相较于 [Rook Ceph Storage Quickstart](https://rook.io/docs/rook/v1.5/ceph-quickstart.html) 提供的脚本，您现在使用的脚本所做的唯一更改是：将 `k8s.gcr.io` 的镜像地址替换成了 `swr.cn-east-2.myhuaweicloud.com/kuboard-dependency`，以解决国内不能下载 k8s.gcr.io 镜像的问题；
+
+
   ```sh {1}
   watch kubectl get pods -n rook-ceph
   NAME                                                    READY   STATUS      RESTARTS   AGE
