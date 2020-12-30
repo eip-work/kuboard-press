@@ -4317,7 +4317,8 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: tigera-operator
-          image: quay.io/tigera/operator:v1.13.2
+          # image: quay.io/tigera/operator:v1.13.2
+          image: swr.cn-east-2.myhuaweicloud.com/kuboard-dependency/tigera-operator:v1.13.2
           imagePullPolicy: IfNotPresent
           command:
             - operator

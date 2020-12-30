@@ -6,6 +6,8 @@ metadata:
   name: default
 spec:
   # Configures Calico networking.
+  registry: swr.cn-east-2.myhuaweicloud.com
+  imagePath: kuboard-dependency
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
     ipPools:
