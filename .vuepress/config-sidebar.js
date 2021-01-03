@@ -50,10 +50,12 @@ let sidebar = {
           title: '安装 Kuboard v3',
           collapsable: true,
           children: [
+            'v3/install',
             'v3/install-built-in',
             'v3/install-gitlab',
             'v3/install-github',
             'v3/install-ldap',
+            'v3/install-in-k8s'
           ]
         },
         {

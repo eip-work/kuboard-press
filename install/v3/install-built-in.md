@@ -10,19 +10,6 @@ meta:
 
 <AdSenseTitle/>
 
-## beta 版本说明
-
-Kuboard v3.0 支持 Kubernetes 多集群管理。当前为 beta 版本，已经验证了大部分 v2 版本中的功能，有如下功能尚未验证：
-* Kuboard PortForward
-
-Kuboard v3.0 正式发布时间预计在 2021 年元旦节前后。
-
-如果您从 Kuboard v1.0.x 或者 Kuboard v2.0.x 升级到 Kuboard，请注意：
-* 您可以同时使用 Kuboard v3.0.x 和 Kuboard v2.0.x；
-* Kuboard v3.0.x 在正式发布时，考虑将 Kuboard 相关的所有组件从 kube-system 名称空间迁移到 kuboard 名称空间；
-
-beta 版本为早期内测版本，预计 Kuboard v3.0.0 的正式发布时间在 2021 年元旦前后
-
 ## 部署计划
 
 在正式安装 kuboard v3 之前，需做好一个简单的部署计划的设计，在本例中，各组件之间的连接方式，如下图所示：
