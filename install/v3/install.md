@@ -14,7 +14,23 @@ meta:
 
 Kuboard v3.0 支持 Kubernetes 多集群管理。如果您从 Kuboard v1.0.x 或者 Kuboard v2.0.x 升级到 Kuboard，请注意：
 * 您可以同时使用 Kuboard v3.0.x 和 Kuboard v2.0.x；
-* Kuboard v3.0.x 在正式发布时，考虑将 Kuboard 相关的所有组件从 kube-system 名称空间迁移到 kuboard 名称空间；
+* Kuboard v3.0.x 支持 amd64 (x86) 架构和 arm68 (armv8) 架构的 CPU；
+
+## 兼容性
+
+
+| Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
+| --------------- | -------------- | ------ | ------------------------------------------------------------ |
+| v1.20           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.19           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.18           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.17           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.16           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.15           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.14           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.13           | v3.0.x | <span style="font-size: 24px;">😄</span>      | 已验证                       |
+| v1.12           | v3.0.x | <span style="font-size: 24px;">😐</span>      | Kubernetes Api v1.12 不支持 dryRun，<br />Kuboard 不支持 Kubernetes v1.12 |
+| v1.11           | v3.0.x | <span style="font-size: 24px;">😐</span>      | Kuboard 不支持 Kubernetes v1.11                                                         |
 
 ## 安装方式
 
