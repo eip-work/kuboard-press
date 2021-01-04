@@ -11,4 +11,6 @@ description: 本文描述了Kuboard_v3.0.x版本的升级方法
 
   请参考 [安装 Kuboard v3](/install/v3/install.html)
 
-* Kuboard v3.0.x 计划将 Kuboard 部署的内容全部从 kube-system 名称空间迁移到 kuboard 名称空间，这也使得两个版本能够同时存在于同一个 Kubernetes 集群。建议用户在 Kuboard v3.0 版本正式发布后，将使用 Kuboard v2.0.x 安装的 Kuboard 套件卸载，并在 Kuboard v3.0.x 中重新安装这些套件。
+* Kuboard v3.0.x 将 Kuboard 部署的大部分内容从 kube-system 名称空间迁移到 kuboard 名称空间，这也使得两个版本能够同时存在于同一个 Kubernetes 集群。
+
+* 如果您最终决定从 Kuboard v2.0.x 迁移到 Kuboard v3，请在 Kuboard v2.0.x 的界面中卸载掉 Kuboard 套件，并在 Kuboard v3 中重新安装 Kuboard 套件。
