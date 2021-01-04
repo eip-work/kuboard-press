@@ -35,7 +35,7 @@ meta:
 
 ## 安装
 
-安装 Kuboard v3.0 beta 版本的指令如下：
+安装 Kuboard v3.0 版本的指令如下：
 
 ``` sh {10}
 sudo docker run -d \
@@ -48,8 +48,8 @@ sudo docker run -d \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
-  eipwork/kuboard:v3-beta
-  # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3-beta ，可以更快地完成镜像下载。
+  eipwork/kuboard:v3
+  # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3 ，可以更快地完成镜像下载。
 ```
 
 ::: danger 
@@ -74,6 +74,6 @@ kuboard.mycompany.com 是一个假想域名，请替换成您自己的域名（�
 
 ## 问题反馈
 
-关于 Kuboard v3.0.0-beta 版本的问题反馈，请加 QQ 群：656520037
+关于 Kuboard v3.0.0 版本的问题反馈，请加 QQ 群：656520037
 
 <img style="padding: 10px; width: 200px; border: 1px solid #eee; border-radius: 5px;" src="https://kuboard.cn/images/kuboard_qq.png"/>
