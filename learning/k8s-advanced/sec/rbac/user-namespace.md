@@ -37,7 +37,7 @@ meta:
 
   此界面中显示了该用户关联的 RoleBinding 及 ClusterRoleBinding。
 
-  ![image-20200726215955407](user-namespace.assets/image-20200726215955407.png)
+  ![image-20200726215955407](./user-namespace.assets/image-20200726215955407.png)
 
   ::: tip RoleBinding v.s. ClusterRoleBinding
 
