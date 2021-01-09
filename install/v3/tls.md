@@ -39,11 +39,11 @@ sudo docker run -d \
   -v /hostpath/to/your/server.key:/etc/certs/my.company.com/server.key \
   -e KUBOARD_TLS_CERT=/etc/certs/my.company.com/server.crt \
   -e KUBOARD_TLS_KEY=/etc/certs/my.company.com/server.key \
-  -p 80:80/tcp \
+  -p 10080:80/tcp \
   -p 443:443/tcp \
   -p 10081:10081/tcp \
   -p 10081:10081/udp \
-  -e KUBOARD_ENDPOINT="http://kuboard.mycompany.com" \
+  -e KUBOARD_ENDPOINT="http://kuboard.this-is-a-sample.com:10080" \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
@@ -65,13 +65,13 @@ Lets Encrypt 是一个开源免费的证书颁发机构，如果您直接在公�
 ```sh {4,7,8}
 sudo docker run -d \
   --restart=unless-stopped \
-  -p 80:80/tcp \
+  -p 10080:80/tcp \
   -p 443:443/tcp \
   -p 10081:10081/tcp \
   -p 10081:10081/udp \
   -e KUBOARD_TLS_AUTOCERT=true \
-  -e KUBOARD_TLS_DOMAIN=kuboard.mycompany.com \
-  -e KUBOARD_ENDPOINT="http://kuboard.mycompany.com" \
+  -e KUBOARD_TLS_DOMAIN=kuboard.this-is-a-sample.com \
+  -e KUBOARD_ENDPOINT="http://kuboard.this-is-a-sample.com:10080" \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -v /root/kuboard-data:/data \
@@ -83,4 +83,4 @@ sudo docker run -d \
 * 第 7 行激活 Kuboard 中的 Lets Encrypt 客户端；
 * 第 8 行指定 Lets Encrypt 颁发证书时对应的域名；
 
-> 使用 Lets Encrypt 时，请将 `kuboard.mycompany.com` 域名指向您的 Kuboard 所在宿主机的公网 IP，并且确保 80, 443 端口开放。Kuboard 启动后，在您第一次访问 `https://kuboard.mycompany.com` 时，Lets Encrypt 将自动申请证书（浏览器上显示第一次访问将失败）。等候 1-5 分钟时间，再次访问 `https://kuboard.mycompany.com` 时，您将能够成功访问，证书也已经颁发并且自动配置好；通常免费证书有效期是一年时间，证书到期前一个月，系统会自动为您更新证书，无需您额外做任何操作。
+> 使用 Lets Encrypt 时，请将 `kuboard.this-is-a-sample.com` 域名指向您的 Kuboard 所在宿主机的公网 IP，并且确保 80, 443 端口开放。Kuboard 启动后，在您第一次访问 `https://kuboard.this-is-a-sample.com` 时，Lets Encrypt 将自动申请证书（浏览器上显示第一次访问将失败）。等候 1-5 分钟时间，再次访问 `https://kuboard.this-is-a-sample.com` 时，您将能够成功访问，证书也已经颁发并且自动配置好；通常免费证书有效期是一年时间，证书到期前一个月，系统会自动为您更新证书，无需您额外做任何操作。

@@ -16,7 +16,7 @@ meta:
 
 在为 Kuboard 配置反向代理时，需要注意：
 * WebContextRoot
-  * Kuboard 需要使用根路径进行访问，即 https://kuboard.mycompany.com/，而不能是 https://mycompany.com/kuboard/ 这样的二级路径；
+  * Kuboard 需要使用根路径进行访问，即 https://kuboard.this-is-a-sample.com/，而不能是 https://this-is-a-sample.com/kuboard/ 这样的二级路径；
 * 启用 WebSocket
   * Kuboard 中终端和日志的功能需要用到 WebSocket，需要在您的反向代理中配置 WebSocket，才能正常使用 Kuboard 的终端和日志功能；
   
@@ -42,7 +42,7 @@ http {
 
   server {
     listen       80; 
-    server_name  kuboard.mycompany.com; # 替换成你的域名，应该与 KUBOARD_ENDPOINT 中的域名部分保持一致
+    server_name  kuboard.this-is-a-sample.com; # 替换成你的域名
 
     location / {
       proxy_pass http://192.168.32.205:10080/;  # 替换成你的 Kuboard IP 地址和端口，应该是 IP 地址，而不是 KUBOARD_ENDPOINT 参数的值
