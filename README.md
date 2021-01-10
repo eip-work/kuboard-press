@@ -10,16 +10,16 @@ Kuboard 是一款基于 Kubernetes 的微服务管理界面。目的是帮助用
 * 免费的 Kubernetes 图形化管理界面 Kuboard
 * 在 Kubernetes 上部署 Spring Cloud 的实战分享
 
-![集群概览页](./overview.png)
+![image-20210110214422748](./README.assets/image-20210110214422748.png)
 
 ## Kubernetes安装文档
 
-* <a href="https://kuboard.cn/install/install-k8s.html">Kubernetes (K8S)v1.16.3 安装文档</a>
+* <a href="https://kuboard.cn/install/install-k8s.html">Kubernetes (K8S)v1.20.1 安装文档</a>
   * 每天超过 300 名网友参考此文档完成Kubernetes安装
   * QQ群在线答疑
 * <a href="https://kuboard.cn/install/install-kubernetes.html">Kubernetes 高可用安装文档</a>
 * <a href="https://kuboard.cn/install/upgrade-k8s/1.15.x-1.16.x.html">Kubernetes升级到1.16.x</a>
-* <a href="https://kuboard.cn/install/install-dashboard.html">Kuboard 安装文档</a>
+* <a href="https://kuboard.cn/install/v3/install.html">Kuboard 安装文档</a>
 
 ## Kubernetes免费教程
 
@@ -77,7 +77,7 @@ Kubernetes教程的主要依据是：Kubernetes 文档，以及使用 Kuboard �
     * 增加、删除节点
     * 备份恢复 etcd
     * 故障排除
-  :::
+    :::
 
 </div>
 
@@ -160,6 +160,7 @@ Kubernetes教程的主要依据是：Kubernetes 文档，以及使用 Kuboard �
 
     <!-- <Course courseId="484058" /> -->
   * 监控
+    
     * [kube-prometheus](/learning/k8s-advanced/observe/kube-prometheus.html)
   * 联邦
 
