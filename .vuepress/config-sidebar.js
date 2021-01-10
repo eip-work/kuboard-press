@@ -497,9 +497,10 @@ let sidebar = {
       collapsable: true,
       children: [
         {
-          title: '练习',
+          title: '实战',
           collapsable: true,
           children: [
+            'k8s-practice/gpu/gpu',
             'k8s-practice/access/port-forward',
             'k8s-practice/admin/list-images',
           ]
