@@ -88,7 +88,8 @@ sudo docker run -d \
   -v /root/kuboard-data:/data \
   -e KUBOARD_LOGIN_TYPE="github" \
   -e KUBOARD_ENDPOINT="http://内网IP:10080" \
-  # 内网 IP 不能是 127.0.0.1 或者 localhost \
+  # 请不要使用 127.0.0.1 或者 localhost 作为内网 IP \
+  # Kuboard 不需要和 K8S 在同一个网段，Kuboard Agent 甚至可以通过代理访问 Kuboard Server \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -e KUBOARD_ROOT_USER="shaohq" \
@@ -101,6 +102,7 @@ sudo docker run -d \
 ::: danger 
 * KUBOARD_ENDPOINT 参数的作用是，让部署到 Kubernetes 中的 `kuboard-agent` 知道如何访问 Kuboard Server；
 * KUBOARD_ENDPOINT 中也可以使用外网 IP；
+* Kuboard 不需要和 K8S 在同一个网段，Kuboard Agent 甚至可以通过代理访问 Kuboard Server；
 * 建议在 KUBOARD_ENDPOINT 中使用域名；
 * 如果使用域名，必须能够通过 DNS 正确解析到该域名，如果直接在宿主机配置 `/etc/hosts` 文件，将不能正常运行；
 :::
