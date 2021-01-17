@@ -139,8 +139,6 @@ sudo docker run -d \
   -v /Users/shaohuanqing/temp/kuboard-data:/data \
   -e KUBOARD_LOGIN_TYPE="ldap" \
   -e KUBOARD_ENDPOINT="http://内网IP:10080" \
-  # 请不要使用 127.0.0.1 或者 localhost 作为内网 IP \
-  # Kuboard 不需要和 K8S 在同一个网段，Kuboard Agent 甚至可以通过代理访问 Kuboard Server \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -e KUBOARD_ROOT_USER="shaohq" \
@@ -160,6 +158,8 @@ sudo docker run -d \
   -e LDAP_GROUP_NAME_ATTRIBUTE="cn" \
   eipwork/kuboard:v3
   # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3 ，可以更快地完成镜像下载。
+  # 请不要使用 127.0.0.1 或者 localhost 作为内网 IP \
+  # Kuboard 不需要和 K8S 在同一个网段，Kuboard Agent 甚至可以通过代理访问 Kuboard Server \
 ```
 
 ::: danger 

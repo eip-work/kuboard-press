@@ -184,7 +184,7 @@ default via 172.21.0.1 dev eth0
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
 
-**请将脚本最后的 1.20.1 替换成您需要的版本号，**
+**请将脚本最后的 1.20.1 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
 <font color="red">脚本中间的 v1.20.x 不要替换</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
@@ -257,7 +257,7 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 <b-tab title="快速初始化" active>
 
 
-**请将脚本最后的 1.20.1 替换成您需要的版本号，**
+**请将脚本最后的 1.20.1 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
 <font color="red">脚本中间的 v1.20.x 不要替换</font>
 
 ``` sh {10}
