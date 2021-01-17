@@ -30,7 +30,7 @@ meta:
     -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
     -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
     -v /root/kuboard-data:/data \
-    eipwork/kuboard:v3.0.0-beta.5
+    eipwork/kuboard:v3.0.0.3
   ```
 
   ::: danger 请注意
