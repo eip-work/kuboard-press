@@ -31,13 +31,11 @@ Kuboard 支持多种认证方式：
 
 
 * 用户通过 http://外网IP:10080 访问 Kuboard v3；
-
 * Kuboard 通过 `localhost:389` 和 `localhost:636` 访问 LDAP；
-
 * 安装在 Kubernetes 中的 Kuboard Agent 通过 `内网IP:10080` 访问 Kuboard 的 Web 服务端口 10080 和 Kuboard Agent Server 端口 10081。
 
 
-![image-20210109231936944](./install-ldap.assets/image-20210109231936944.png)
+![image-20210109231936944](./install-ldap.assets/image-20210120224708873.png)
 
 本例子中，假设：
 

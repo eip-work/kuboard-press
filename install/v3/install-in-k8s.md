@@ -10,6 +10,11 @@ meta:
 
 <AdSenseTitle/>
 
+::: danger
+
+刚接触 K8S 的同学，强烈建议您使用 [内建用户库](./install-built-in.html) 的方式安装 Kuboard-v3，在 K8S 中安装 Kuboard v3 时，需要理解更复杂的端口映射方式、存储卷声明/存储类等概念。
+
+:::
 ## 安装步骤
 
 * 获取部署 Kuboard 所需的 YAML 文件：

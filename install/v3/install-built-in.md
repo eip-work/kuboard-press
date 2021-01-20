@@ -15,12 +15,12 @@ meta:
 在正式安装 kuboard v3 之前，需做好一个简单的部署计划的设计，在本例中，各组件之间的连接方式，如下图所示：
 
 * 假设用户通过 http://外网IP:10080 访问 Kuboard v3；
-
 * 安装在 Kubernetes 中的 Kuboard Agent 通过 `内网IP` 访问 Kuboard 的 Web 服务端口 10080 和 Kuboard Agent Server 端口 10081。
 
 <p>
-<img src="./install-built-in.assets/image-20210109213231697.png" style="max-width: 600px; margin-left: 20px;"/>
+<img src="./install-built-in.assets/image-20210120224243165.png" style="max-width: 600px; margin-left: 20px;"/>
 </p>
+
 
 
 安装 Kuboard 之前，假设：

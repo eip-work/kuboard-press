@@ -31,14 +31,11 @@ Kuboard 支持多种认证方式：
 在正式安装 kuboard v3 之前，需做好一个简单的部署计划的设计，在本例中，各组件之间的连接方式，如下图所示：
 
 * 用户通过 https://github.com 访问 github.com；
-
 * 用户通过 `http://外网IP:10080` 访问 Kuboard v3；
-
 * Kuboard 通过 https://github.com 访问 GitHub API；
-
 * 安装在 Kubernetes 中的 Kuboard Agent 通过 `内网IP:10080` 访问 Kuboard 的 Web 服务端口 80 / 443 和 Kuboard Agent Server 端口 10081。
 
-![image-20210109224747134](./install-github.assets/image-20210109224747134.png)
+![image-20210109224747134](./install-github.assets/image-20210120224541968.png)
 
 本例子中，假设：
 
