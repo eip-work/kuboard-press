@@ -3,7 +3,7 @@
     <div class="copyright">
       Copyright © 2019-present 邵欢庆 
       <span>
-        <a href="https://beian.miit.gov.cn" target="_blank">京ICP备19008693号</a>
+        <a href="https://beian.miit.gov.cn" target="_blank">京ICP备19008693号-2</a>
       </span>
     </div>
     <div style="margin-top: 20px;">
