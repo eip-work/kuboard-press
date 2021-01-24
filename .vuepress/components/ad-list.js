@@ -1,18 +1,18 @@
 module.exports = [
-  {
-    name: 'Sealyun',
-    description: 'Kubernetes，',
-    strong: '一键离线安装',
-    action: '去看看',
-    url: 'https://github.com/fanux/sealos',
-    weight: 50
-  },
+  // {
+  //   name: 'Sealyun',
+  //   description: 'Kubernetes，',
+  //   strong: '一键离线安装',
+  //   action: '去看看',
+  //   url: 'https://github.com/fanux/sealos',
+  //   weight: 50
+  // },
   {
     name: '视频教程',
-    description: 'K8S 实战课程',
-    strong: '5 分好评',
+    description: 'Kubernetes入门学习到企业实战的方方面面',
+    strong: 'Kuboard',
     action: '免费试听',
-    url: 'https://edu.51cto.com/sd/518e5',
+    url: 'https://ke.qq.com/course/package/32328?flowToken=1031971',
     weight: 100
   },
   // {
