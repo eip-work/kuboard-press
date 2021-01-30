@@ -134,6 +134,7 @@ module.exports = {
       { text: '教程', link: '/learning/' },
       { text: '使用', link: '/guide/' },
       { text: '支持', link: '/support/' },
+      { text: '论坛', link: 'https://forum.kuboard.cn/'},
       // { text: '培训', link: 'https://kubetrain.cn/?from=kuboard', target: '_blank' },
       // { text: '博客', link: 'http://k8s.kubetrain.cn/' },
       // { text: '论坛', link: 'http://bbs.kuboard.cn/', target: '_blank' },
