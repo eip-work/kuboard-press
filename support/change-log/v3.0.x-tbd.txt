@@ -1,0 +1,76 @@
+<!-- Kuboard v3.0.x 的更新说明
+
+
+* 工作负载编辑页应该可以快速创建 pvc
+
+* 列表分组
+* 补充 hostPort 相关的文档
+
+* 从 YAML 内容创建时，如果末尾存在多余的 ---，将不能成功创建；
+
+* 显示集群的证书过期时间；
+
+* 仿 flarum 的授权界面重构第二阶段授权；
+
+* 允许用户强制绕过 Dry Run
+* nfs-client 的镜像
+* 上传文件时，如果超过 4K，最终的结果不正确。
+* 上传文件夹；
+
+* 编辑名称空间布局
+
+* top pods 页面没有左侧菜单栏的问题；
+
+* 安装监控套件后， metrics-server 出现问题；
+
+参考 Kubernetes Dashboard，实现列表的分页查询
+显示 Service 列表及详情页
+优化工作负载详情页
+显示工作负载的 ownerReferences
+
+---
+
+使用用户自己的 dex 服务，而不是 Kuboard 内嵌的 dex 服务作为认证；
+
+https://www.zhouxin.vip/.well-known/openid-configuration
+
+CLIENT_ID=605F3BCB811A47B6A6885DCDFBCEA5FD
+CLIENT_SECRET=17D6C40663154814A3732CC09EF74782
+测试账号：
+test@test.com
+test
+
+ca
+-----BEGIN CERTIFICATE-----
+MIIFODCCAyCgAwIBAgIJALZoaQJ4cb4IMA0GCSqGSIb3DQEBBQUAMBcxFTATBgNV
+BAMMDHpob3V4aW4ncyBDQTAeFw0yMDEyMjQxMzA1MTNaFw0zMDEyMjIxMzA1MTNa
+MBcxFTATBgNVBAMMDHpob3V4aW4ncyBDQTCCAiIwDQYJKoZIhvcNAQEBBQADggIP
+ADCCAgoCggIBAPfYLmPaRSAY6x+DmA0d3K/IfeqVof3SuktjvdhybYeKRbZyTlpG
+fYi8Ecd6dbkTH8ERzy5w1rAKNv1fC3/fmLnpdrNbYkKftrzkaghlhBTP80I+l5y8
+ZomNQsNPbf7I9Usz3pQllVb0TJof8xMyu2J7QD7reQEa9tQf3oXg2o74OPBFdkQT
+UHsK0XDnU9alG9SM+pe4RKppPPtyrHs+ELPRm62Tj4OWJ+ADa72qRrCLbTlrJIDj
+Ys2uWCkrxtL2BJh9JQyG1tXLyzVjttY6LKkm/Rhq6Oj5rmSE6si0SslZ4cK8Wzou
+PMlAV4VKzxiLFAKdPdjXIcLUIAipupULw7SVw3en2sTjVTjWirRJsbbJ0mccHKhB
+Y+Vw7on0KV1Uq9pFTN1l9g0PbzPXYl17aMypWnELFnD05TNUsUxVsVJsXMACOedk
+7fBnk6GfqrVQn/Ab5ioTZrubaY5OewiaHrjKohDzsjDV5M3bH0O3ByntJwvJib4B
+zLZDkDj2ygIlqMHp1KwI7fKWD4p+qXgH+Vu8lA5qoImUGEiJpawPnJo+pskn9ljw
+Lysbsl3S3Z8Rg81l8o04bqyYACo50N/ymlnv7SFYV7UORY+T3HbMmCnzoG7O4Y+f
+8sWjzEJcjElMXQPEjoT/+qC0oEnMuHm1c2yWHwMz6YpN5kXBfujGXS1NAgMBAAGj
+gYYwgYMwHQYDVR0OBBYEFAuFNGb4ISaGp8DfD1GNWftTKnxEMEcGA1UdIwRAMD6A
+FAuFNGb4ISaGp8DfD1GNWftTKnxEoRukGTAXMRUwEwYDVQQDDAx6aG91eGluJ3Mg
+Q0GCCQC2aGkCeHG+CDAMBgNVHRMEBTADAQH/MAsGA1UdDwQEAwIB/jANBgkqhkiG
+9w0BAQUFAAOCAgEAB+XwxrWrodCMNodnMknRK8RnNzJc+XqV3DC+GI08r6uzDh/O
+VR3XjvGRA6swOGKPhExmLNhCnB2lXbWFS68bTCUfqGVGe/N+oi/CiNiyCEHQeWSM
+sF08VL1kxMq2f6Gko+rJj7iJ/Z2YrvzxjoqzuX7usE5OteA9wPjWs9NtxsNKp9Ye
+fIojI0XHjDJP9cBOkILaTz0Di2YYf9HYusbgWLEdRmWb1Dzqg9jSLW8kXeeeO5AZ
+nLbMvgAp1XQ+YVbtNTkZm/Nl6dsz3JqywL9/cCQ47VuU2b3LKG5wkasN+42KvUfR
+FlmEeXIKOb5cMWTdgc/o6cx11t9uaWoXTiGJ2+zX7Uhl/Y5jUPAPat2ObrGCEq+l
+nZMfc4+2XDBMSl+W4RwVeILEIJSF3tXTDdDM9xnSiwOT7GqLWqyA1OlOmEcV5mNn
+W6K4egZ/nunGMPJrURHVulCGKN1pCu9Rzqs/PDXZ48i5K8ViEXsZ5Zh2JXgiZeA3
+zLM0UWQJN5OC/0nc2gFgL3GFn1yS5oKKjRBN02XBaIuPgcVH37+Id+hmyoUFYUYN
+Fqkk9967ZfRKHznVDya2U33fSQ8M9pbs54lPNw6CK/SiSuYqREt8fYlCaQxOdGeo
++mZbvIkY6hdnt8I+ppsssyNJk6It72XKDA6SUoLEYaLAMI0qcjSVw/AxQg0=
+-----END CERTIFICATE-----
+
+
+-->
