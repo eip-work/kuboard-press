@@ -32,7 +32,7 @@ yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 # 安装 containerd
-yum update -y && sudo yum install -y containerd.io-1.4.3
+yum install -y containerd.io-1.4.3
 
 mkdir -p /etc/containerd
 containerd config default > /etc/containerd/config.toml
