@@ -507,6 +507,8 @@ demo-worker-a-2   Ready    <none>   3m56s   v1.20.x
 
 **在 master 节点上执行**
 
+部分情况下，下面的这条指令，您需要执行两次才能成功。
+
 ``` sh
 # 只在 master 节点执行
 kubectl apply -f https://kuboard.cn/install-script/v1.20.x/nginx-ingress.yaml
