@@ -16,7 +16,7 @@ Kubernetes [v1.20](https://kubernetes.io/docs/setup/release/notes/) 开始，默
 
 请参考 [kube-apiserver 参数配置](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
 
-具体来说，如果您使用 kubeadm 安装 Kubernetes，请修改 `/etc/kubernetes/manifest/kube-apiserver.yaml` 文件，并在其启动参数中增加一行 `- --feature-gates=RemoveSelfLink=false`，如下第 44 行所示：
+具体来说，如果您使用 kubeadm 安装 Kubernetes，请修改 `/etc/kubernetes/manifests/kube-apiserver.yaml` 文件，并在其启动参数中增加一行 `- --feature-gates=RemoveSelfLink=false`，如下第 44 行所示：
 
 ```yaml {44}
 apiVersion: v1
