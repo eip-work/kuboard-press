@@ -136,7 +136,7 @@ metadata:
 
 ## 获取Non-Template Pod
 
-由于您可以直接创建 Pod，Kubernetes 中强烈建议在您直接创建的 Pod 中，其标签不会与任何一个 ReplicaSet 的标签匹配。原因在于，ReplicaSet 不仅仅只管理通过其 podTemplate（`.spec.template`字段）创建的Pod，ReplicaSet 也可能将不是尤其创建的 Pod 纳入到自己的管理中。
+由于您可以直接创建 Pod，Kubernetes 中强烈建议在您直接创建的 Pod 中，其标签不会与任何一个 ReplicaSet 的标签匹配。原因在于，ReplicaSet 不仅仅只管理通过其 podTemplate（`.spec.template`字段）创建的Pod，ReplicaSet 也可能将不是由其创建的 Pod 纳入到自己的管理中。
 
 假设有两个 Pod，其 YAML 文件如下所示：
 
