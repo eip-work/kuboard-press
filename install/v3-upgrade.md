@@ -10,6 +10,10 @@ meta:
 
 <AdSenseTitle/>
 
+点击此处，查看 [版本更新说明](/support/change-log/v3.0.x.html)
+
+按照如下步骤，可以将 kuboard v3 更新到最新版本。
+
 1. 停止已有 kuboard 容器
 
   ``` sh
@@ -30,7 +34,7 @@ meta:
     -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
     -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
     -v /root/kuboard-data:/data \
-    eipwork/kuboard:v3.0.0.3
+    eipwork/kuboard:v3.1.0.3
   ```
 
   ::: danger 请注意
