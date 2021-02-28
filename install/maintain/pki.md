@@ -44,7 +44,7 @@ Kubernetes 需要以下 PKI 才能执行对应的操作：
 * Apiserver 访问 etcd 的客户度证书，用于 apiserver 访问 etcd 时的会话
 * Kube-controller 访问 apiserver 的客户端证书（存储在对应的 kubeconfig 文件中），当 kube-controller 访问 apiserver 时，用作身份认证
 * Kube-scheduler 访问 apiserver 的客户端证书（存储在对应的 kubeconfig 文件中），当 kube-scheduler 访问 apiserver 时，用作身份认证
-* [前端代理](/docs/tasks/extend-kubernetes/configure-aggregation-layer/) 的客户端及服务端证书
+* [前端代理](https://kubernetes.io/docs/tasks/extend-kubernetes/configure-aggregation-layer/) 的客户端及服务端证书
 
 <!--
 `front-proxy` certificates are required only if you run kube-proxy to support [an extension API server](/docs/tasks/access-kubernetes-api/setup-extension-api-server/).
@@ -187,7 +187,7 @@ Certificates should be placed in a recommended path (as used by [kubeadm](/docs/
 -->
 ### 证书路径
 
-下表罗列了证书存放的推荐路径（以便 [kubeadm](/docs/reference/setup-tools/kubeadm/kubeadm/) 使用），同时也罗列了通过什么参数可以自定义证书的存放路径。
+下表罗列了证书存放的推荐路径（以便 [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/) 使用），同时也罗列了通过什么参数可以自定义证书的存放路径。
 
 | 默认 CN                   | 建议的密钥路径         | 建议的证书路径       | 命令        | 密钥参数               | 证书参数                             |
 |------------------------------|------------------------------|-----------------------------|----------------|------------------------------|-------------------------------------------|
@@ -237,7 +237,7 @@ The value of `<nodeName>` for `kubelet.conf` **must** match precisely the value 
 -->
 ::: tip 注释
 `kubelet.conf` 中 `<nodeName>` 的值 **必须** 与 kubelet 向 apiserver 注册时提供的节点名称的值完全匹配。
-有关更多详细信息，请阅读[节点授权](/docs/reference/access-authn-authz/node/)。
+有关更多详细信息，请阅读[节点授权](https://kubernetes.io/docs/reference/access-authn-authz/node/)。
 :::
 
 <!--
