@@ -57,7 +57,7 @@ TokenController 作为 controller-manager 的一部分运行。以异步的方�
 * 监听 Secret 的添加，确保其引用的 ServiceAccount 以存在，并在需要时向 Secret 添加 Token
 * 监听 Secret 的删除，并在需要的情况下将对应 ServiceAccount 中对 Secret 的引用也删除掉
 
-启动 controller-manager 时，必须通过 `--service-account-private-key-file` 参数，向 token controller 传递一个 service account private key 文件。该 private key 将用来为沈城的 service account token 签名。类似的，也必须为通过 `--service-account-key-file` 将其对应的 public key 传递给 kube-apiserver。该 public key 将被用来在认证时验证 token。
+启动 controller-manager 时，必须通过 `--service-account-private-key-file` 参数，向 token controller 传递一个 service account private key 文件。该 private key 将用来为生成的 service account token 签名。类似的，也必须为通过 `--service-account-key-file` 将其对应的 public key 传递给 kube-apiserver。该 public key 将被用来在认证时验证 token。
 
 #### 创建额外的 API token
 
