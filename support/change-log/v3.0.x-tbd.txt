@@ -8,14 +8,12 @@
 
 * 仿 flarum 的授权界面重构第二阶段授权；
 
-* 允许用户强制绕过 Dry Run
 * 上传文件夹；
 
 
 * 安装监控套件后， metrics-server 出现问题；
 
 参考 Kubernetes Dashboard，实现列表的分页查询
-显示 Service 列表及详情页
 
 优化导出工作负载的过程
 
