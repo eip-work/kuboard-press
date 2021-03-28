@@ -121,6 +121,14 @@ sudo docker run -d \
 
 * 点击上图中的 ***Authorize*** 按钮后，您将成功登录 Kuboard 界面。
 
+::: tip 浏览器兼容性
+
+<li>请使用 Chrome / FireFox / Safari 等浏览器</li>
+<li>不兼容 IE 以及以 IE 为内核的浏览器</li>
+
+:::
+
+
 ## 授权用户访问 Kuboard
 
 默认情况下，只有 `KUBOARD_ROOT_USER` 参数指定的用户可以执行 Kuboard 中的所有操作，其他用户通过单点登录进入 Kuboard 系统后，除了退出系统，几乎什么事情也做不了。为了让单点登录的用户获得合适的权限，您需要在 Kuboard 中为对应的用户/用户组授权。请参考 [为单点登录的用户/用户组授权](./auth-user-sso.html)

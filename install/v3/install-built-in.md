@@ -72,3 +72,10 @@ sudo docker run -d \
 在浏览器输入 `http://your-host-ip:10080` 即可访问 Kuboard v3.0 的界面，登录方式：
 * 用户名： `admin`
 * 密 码： `Kuboard123`
+
+::: tip 浏览器兼容性
+
+<li>请使用 Chrome / FireFox / Safari 等浏览器</li>
+<li>不兼容 IE 以及以 IE 为内核的浏览器</li>
+
+:::

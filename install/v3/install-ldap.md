@@ -208,6 +208,14 @@ LDAP 相关的参数相对复杂，本章节以 Kuboard 集成 LDAP 时，对 LD
 
 * 在浏览器中输入 `http://外网IP:10080`，将进入登录界面；
 * 在登录界面中输入您在 LDAP 中的用户名、密码，并点击登录按钮，您将可以成功登录 Kuboard。
+
+::: tip 浏览器兼容性
+
+<li>请使用 Chrome / FireFox / Safari 等浏览器</li>
+<li>不兼容 IE 以及以 IE 为内核的浏览器</li>
+
+:::
+
 ## 授权用户访问 Kuboard
 
 默认情况下，只有 `KUBOARD_ROOT_USER` 参数指定的用户可以执行 Kuboard 中的所有操作，其他用户通过单点登录进入 Kuboard 系统后，除了退出系统，几乎什么事情也做不了。为了让单点登录的用户获得合适的权限，您需要在 Kuboard 中为对应的用户/用户组授权。请参考 [为单点登录的用户/用户组授权](./auth-user-sso.html)

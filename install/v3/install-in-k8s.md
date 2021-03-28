@@ -70,6 +70,14 @@ meta:
   * 用户名： `admin`
   * 密码：  `Kuboard123`
 
+::: tip 浏览器兼容性
+
+<li>请使用 Chrome / FireFox / Safari 等浏览器</li>
+<li>不兼容 IE 以及以 IE 为内核的浏览器</li>
+
+:::
+
+
 ## 备注
 
 此 YAML 文件向 Kubernetes 中部署了一个三副本的 StatefulSet `kuboard-etcd` 和一个单副本的 Deployment `kuboard-v3`；其中 Deployment `kuboard-v3` 暂时不支持多副本，请保持其 replicas 字段为 1，将在后续的版本升级中解决 `kuboard-v3` 多副本部署的问题。
