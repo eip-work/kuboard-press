@@ -23,7 +23,7 @@ meta:
   * 可参考 [安装Kubernetes单Master节点](/install/install-k8s.html)
 * 您已经安装了 Kuboard
   * 版本不低于 Kuboard v1.0.6-beta.7
-  * 可参考 [安装Kuboard](/install/install-dashboard.html)
+  * 可参考 [安装Kuboard](/install/v3/install.html)
 
 ## Kubernetes认证模块安装向导
 

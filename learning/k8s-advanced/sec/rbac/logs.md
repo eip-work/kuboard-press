@@ -14,13 +14,13 @@ meta:
 ## 前提
 
 * 您已经安装了 kubernetes
-* 您已经安装了 [Kuboard](/install/install-dashboard.html)，版本号不低于 v1.0.9.3
+* 您已经安装了 [Kuboard](/install/v3/install.html)，版本号不低于 v1.0.9.3
 
 ## 步骤
 
 * 以 kuboard-user 用户登录 Kuboard 界面；
   
-  参考 [获取Token并访问Kuboard](/install/install-dashboard.html#获取Token)
+  参考 [获取Token并访问Kuboard](/install/v3/install.html#获取Token)
   
 * 进入 `kube-system` 名称空间页面（或任意名称空间）；
 
@@ -52,7 +52,7 @@ meta:
 
 * 点击 ***保存*** 按钮，退出后，以 `kuboard-viewer` 的身份登录 Kuboard
 
-  参考 [获取Token并访问Kuboard](/install/install-dashboard.html#获取Token)
+  参考 [获取Token并访问Kuboard](/install/v3/install.html#获取Token)
 
   此时，`kuboard-viewer` 将具备权限访问 Pod 的日志；
 

@@ -48,7 +48,7 @@ spec:
 
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用kubectl" active>
+<b-tab title="使用kubectl">
 
 **修改 nginx-deployment.yaml 文件**
 
@@ -91,23 +91,15 @@ watch kubectl get pods -o wide
 ```
 
 </b-tab>
-<b-tab title="使用Kuboard">
+<b-tab title="使用Kuboard" active>
 
 * 在 default 名称空间 点击 ***展现层 --> Nginx部署***
 
-* 点击 ***伸缩*** 按钮
+* 点击下图中红色箭头按钮，可以执行伸缩操作，没点击一次，副本数加 `1`；
 
-  填写表单
+  该页面中还可以观察到工作负载伸缩的过程。
 
-  副本数： 4
-
-![Kubernetes教程：伸缩应用-Scaling](./scale.assets/image-20190822213532132.png)
-
-* 点击 ***确定*** 按钮
-
-  等待新增的容器组完成初始化，如下图所示：
-
-![Kubernetes教程：伸缩应用-Scaling](./scale.assets/image-20190822213709967.png)
+  ![Kubernetes教程：伸缩应用-Scaling](./scale.assets/image-20210403203909667.png)
 
 </b-tab>
 </b-tabs>

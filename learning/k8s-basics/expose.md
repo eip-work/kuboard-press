@@ -81,7 +81,7 @@ Labels（标签）可以在创建 Kubernetes 对象时附加上去，也可以�
 
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用kubectl" active>
+<b-tab title="使用kubectl">
 
 创建nginx的Deployment中定义了Labels，如下：
 
@@ -168,31 +168,31 @@ curl <任意节点的 IP>:32600
 > 如果您的集群在云上，您可能通过云服务商的安全组开放 32600 端口的访问
 
 </b-tab>
-<b-tab title="使用Kuboard">
+<b-tab title="使用Kuboard" active>
 
-* 在 default 名称空间 点击 ***展现层 --> Nginx部署***
+* 在上一个步骤中创建的工作负载查看界面点击 ***编辑*** 按钮，该按钮的位置如下图所示：
 
-* 点击 ***编辑*** 按钮
+  ![Kuboard-工作负载-编辑](./expose.assets/image-20210403203205997.png)
 
-* 填写表单如下：
+* 在工作负载编辑页切换到 ***服务/应用路由*** 标签，如下图所示：
 
-​		访问方式 Service 选择 ***NodePort（VPC内访问）***
+  ![Kuboard-Service](./expose.assets/image-20210403203348389.png)
 
-​		填写一条记录：
+​		填写表单如下：
 
-| 协议 | 服务端口 | 节点端口 | 容器端口 |
-| ---- | -------- | -------- | -------- |
-| TCP  | 80       | 32601    | 80       |
+​		服务类型： **NodePort**
 
-如下图所示：
+| 协议 | 服务端口（port） | 节点端口（nodePort） | 容器端口（targetPort） |
+| ---- | ---------------- | -------------------- | ---------------------- |
+| TCP  | 80               | 32601                | 80                     |
 
-![Kubernetes教程：公布应用程序](./expose.assets/image-20190822211807469.png)
+
 
 * 点击 **保存**
 
 * **访问服务**
 
-  在浏览器打开 `http://<任意节点的 IP>:32601
+  在浏览器打开 `http://<任意节点的 IP>:32601`
 
 </b-tab>
 </b-tabs>

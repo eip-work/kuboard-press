@@ -118,7 +118,7 @@ Kubernetes 启动容器时，自动将该 DNS 服务器加入到容器的 DNS �
 
 ### Kuboard
 
-[Kuboard](/install/install-dashboard.html) 是一款基于Kubernetes的微服务管理界面，相较于 Dashboard，Kuboard 强调：
+[Kuboard](/install/v3/install.html) 是一款基于Kubernetes的微服务管理界面，相较于 Dashboard，Kuboard 强调：
 * 无需手工编写 YAML 文件
 * 微服务参考架构
 * 上下文相关的监控

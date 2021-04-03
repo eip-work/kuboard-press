@@ -57,7 +57,7 @@ meta:
 
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用kubectl" active>
+<b-tab title="使用kubectl">
 
 **修改 nginx-deployment.yaml 文件**
 
@@ -101,20 +101,16 @@ watch kubectl get pods -l app=nginx
 ```
 
 </b-tab>
-<b-tab title="使用Kuboard">
+<b-tab title="使用Kuboard" active>
 
-* **进入 default 名称空间**
-
-* 点击 ***调整镜像版本***
-
-  勾选展现层，并刷新，可找到 ***Nginx部署***
+* 点击左侧菜单中的 ***调整镜像版本*** 按钮
 
 * 针对 ***Nginx部署*** 点击修改
 
   填写新的 nginx 版本号： 1.8， 如下图所示：
-
-![Kubernetes教程：执行滚动更新](./update.assets/image-20190822214324429.png)
-
+  
+  ![Kubernetes教程：执行滚动更新](./update.assets/image-20210403204908592.png)
+  
 * 点击 ***变更***
 
 * 点击 ***应用***
@@ -123,7 +119,7 @@ watch kubectl get pods -l app=nginx
 
   可观察到 Kubernetes 对 ***Nginx部署*** 执行滚动更新的过程，如下图所示
 
-![Kubernetes教程：执行滚动更新-过程](./update.assets/image-20190822214503847.png)
+  ![Kubernetes教程：执行滚动更新-过程](./update.assets/image-20210403205053379.png)
 
 </b-tab>
 </b-tabs>

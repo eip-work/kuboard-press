@@ -76,7 +76,7 @@
           <li>Kubernetes 管理界面</li>
           <li>微服务参考架构</li>
           <li>无需手写 YAML</li>
-          <li><a href="/install/install-dashboard.html">安装Kuboard</a></li>
+          <li><a href="/install/v3/install.html">安装Kuboard</a></li>
         </p>
       </b-card>
       <div class="intro_picture">
@@ -138,7 +138,7 @@ export default {
           {
               title: 'Kubernetes管理界面',
               details: 'Kubernetes图形化管理界面，无需编写 yaml 文件即可完成应用程序在 Kubernetes 上的部署和维护',
-              link: '/install/install-dashboard.html'
+              link: '/install/v3/install.html'
           },
           {
               title: 'Kubernetes + Spring Cloud实战',

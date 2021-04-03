@@ -66,7 +66,7 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
 </b-card>
 </div>
 
-<div style="flex-grow: 1; flex-basis: 20%; min-width: 200px; cursor: pointer; padding: 1rem 0.5rem;" @click="$router.push({path: '/install/install-dashboard.html'})">
+<div style="flex-grow: 1; flex-basis: 20%; min-width: 200px; cursor: pointer; padding: 1rem 0.5rem;" @click="$router.push({path: '/install/v3/install.html'})">
 <b-card shadow="hover" style="height: 225px;">
   <h2 style="font-size: 1.1rem; font-weight: 500; border-bottom: none; padding-bottom: 0; color: #3a5169;">
   Kubernetes管理界面

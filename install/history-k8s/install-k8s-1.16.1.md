@@ -449,7 +449,7 @@ kubectl delete -f https://kuboard.cn/install-script/v1.16.1/nginx-ingress.yaml
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[安装 Kuboard - 微服务管理界面](/install/install-dashboard.html)
+[安装 Kuboard - 微服务管理界面](/install/v3/install.html)
 
 安装 Kuboard 之前先
   <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">

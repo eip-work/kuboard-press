@@ -13,7 +13,7 @@ description: 使用Kuboard在Kubernetes上安装监控套件，并对example微�
 
 * 已完成 [导入 example 微服务](/guide/example/import.html)
 * 已配置了 NFS [StorageClass](/learning/k8s-intermediate/persistent/storage-class.html)
-* 使用 kuboard-user 这个 ServiceAccount 登录 Kuboard 界面，[kuboard-user](/install/install-dashboard.html#获取token)
+* 使用 kuboard-user 这个 ServiceAccount 登录 Kuboard 界面，[kuboard-user](/install/v3/install.html#获取token)
 
 ## 安装监控套件
 

@@ -30,7 +30,7 @@ meta:
 ## 前提
 
 * 您已经 [安装了 Kuboard](/install/install-dashboard-upgrade.html) <Badge>Kuboard v2.0.0-beta.2</Badge>
-* 使用 [管理员用户 ](/install/install-dashboard.html#获取token)登录 Kuboard
+* 使用 [管理员用户 ](/install/v3/install.html#获取token)登录 Kuboard
 * 已经为某一个用户 [授权访问指定名称空间](../kuboard.html)
 
 
@@ -41,7 +41,7 @@ meta:
 
   > 必须使用具备 cluster-admin 权限的用户才能完成此授权操作。
 
-  [了解如何使用 kuboard-user 登录 Kuboard](/install/install-dashboard.html#获取token)
+  [了解如何使用 kuboard-user 登录 Kuboard](/install/v3/install.html#获取token)
 
   ![Kubernetes集群概览页](./list-namespace.assets/image-20200524093144670.png)
 
@@ -80,4 +80,3 @@ meta:
 
 
 ::tada: :tada: :tada: 您已可以通过列表选择的形式切换名称空间了。
-

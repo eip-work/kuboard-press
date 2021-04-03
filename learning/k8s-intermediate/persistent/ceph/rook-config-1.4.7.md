@@ -44,7 +44,7 @@ meta:
 
     如果 `FSTYPE` 字段不为空，则表示该磁盘上已经被格式化。在上面的例子中，可以将磁盘 `vdb` 用于 Ceph 的 OSD，而磁盘 `vda` 及其分区则不能用做 Ceph 的 OSD。
 
-* 您已经安装了 Kuboard，且 Kuboard 版本不低于 v2.0.5，安装方法请参考 [安装 Kuboard](/install/install-dashboard.html)；
+* 您已经安装了 Kuboard，且 Kuboard 版本不低于 v2.0.5，安装方法请参考 [安装 Kuboard](/install/v3/install.html)；
 
 ## 安装 Rook - Ceph
 

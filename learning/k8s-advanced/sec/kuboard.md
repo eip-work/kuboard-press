@@ -17,7 +17,7 @@ meta:
 ## 前提
 
 * 您已经 [安装了 Kuboard](/install/install-dashboard-upgrade.html) <Badge>Kuboard v1.0.9.3</Badge>
-* 使用 [管理员用户 ](/install/install-dashboard.html#获取token)登录 Kuboard
+* 使用 [管理员用户 ](/install/v3/install.html#获取token)登录 Kuboard
 
 
 ## 为名称空间创建管理员用户

@@ -34,7 +34,7 @@ meta:
 Kuboard 为初学者学习 Kubernetes 时设计了如下学习路径：
 
 * 跟随文档 [安装 Kubernetes 单Master节点](/install/install-k8s.html) 快速安装一个可以练习使用的 Kubernetes 环境，（初学者也许要花费2小时或更多）
-* 跟随文档 [安装 Kuboard](/install/install-dashboard.html) （5分钟）
+* 跟随文档 [安装 Kuboard](/install/v3/install.html) （5分钟）
 * 使用 Kuboard 工作负载编辑器 [创建 busybox](/guide/example/busybox.html) （10分钟）
 * 尝试 Kuboard 设计的其他 example [使用 Kuboard](/guide/index.html)
 

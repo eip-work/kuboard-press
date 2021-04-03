@@ -475,4 +475,4 @@ kubectl apply -f https://raw.githubusercontent.com/eip-work/eip-monitor-reposito
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-[安装 Kuboard](/install/install-dashboard.html)
+[安装 Kuboard](/install/v3/install.html)

@@ -25,7 +25,7 @@ meta:
 
 * 您已经安装了 Kubernetes 集群，且集群版本不低于 v1.17.0，安装方法请参考 [安装 Kubernetes 集群](/install/install-k8s.html)；
 
-* 您已经安装了 Kuboard，且 Kuboard 版本不低于 v2.0.5，安装方法请参考 [安装 Kuboard](/install/install-dashboard.html)；
+* 您已经安装了 Kuboard，且 Kuboard 版本不低于 v2.0.5，安装方法请参考 [安装 Kuboard](/install/v3/install.html)；
 
 * 您已经安装了 Ceph 集群， Ceph 集群版本不低于 v15.2.3，且已经在集群中创建了一个 FileSystem，安装方法请参考 [Deploying a new Ceph Cluster with cephadm](https://docs.ceph.com/en/latest/cephadm/install/)
 

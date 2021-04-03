@@ -13,7 +13,7 @@ v2.0.0 中，由于为了给套件增加授权相关的功能，对套件的 CRD
 
 * 以 **kuboard-user** 这个 ServiceAccount 登录 Kuboard；
 
-  参考 [获取 **kuboard-user** 的登录 Token](/install/install-dashboard.html#获取token)。
+  参考 [获取 **kuboard-user** 的登录 Token](/install/v3/install.html#获取token)。
 
 * 点击 Kuboard 右上角的 **设置** 按钮，并在左侧菜单中导航到 **Kubernetes --> CRD** 子菜单，如下图所示：
 

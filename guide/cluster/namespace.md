@@ -15,7 +15,7 @@ description: 使用Kuboard管理Kubernetes名称空间。
 
 * Kubernetes 集群
 * 已在集群中安装 Kuboard
-* 已进入 Kuboard 操作界面 [安装并进入 Kuboard](/install/install-dashboard.html)
+* 已进入 Kuboard 操作界面 [安装并进入 Kuboard](/install/v3/install.html)
 
 
 

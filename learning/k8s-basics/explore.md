@@ -64,7 +64,7 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
 
 <b-card>
 <b-tabs content-class="mt-3">
-  <b-tab title="使用kubectl" active>
+  <b-tab title="使用kubectl">
 
 在[部署第一个应用程序](./deploy-app.html) 中，我们使用了 kubectl 命令行界面部署了 nginx 并且查看了 Deployment 和 Pod。kubectl 还有如下四个常用命令，在我们排查问题时可以提供帮助：
 
@@ -129,16 +129,19 @@ Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是
 请尝试在您的集群中执行一下上述的几个命令，了解如何通过 kubectl 操作 kubernetes 集群中的 Node、Pod、Container。
 
   </b-tab>
-  <b-tab title="使用Kuboard">
+  <b-tab title="使用Kuboard" active>
 
 **在名称空间中查看部署**
 
-![Kubernetes教程：查看 Pods/Nodes](./explore.assets/image-20190822172329141.png)
+Kuboard 中的名称空间首页如下图所示，在右上角的 ***自定义名称空间布局*** 按钮，可以调整名称空间的布局结构。
+
+左侧 ***工作负载*** 菜单，可以按列表的形式展示 ***Deployment***、***StatefulSet***、***DaemonSet*** 等工作负载。
+
+![Kuboard-Namespace-Overview](./explore.assets/image-20210403202748257.png)
 
 **查看部署及其容器组**
 
-![Kubernetes教程：查看 Pods/Nodes](./explore.assets/image-20190822172457417.png)
-
+![Kuboard-查看 Pod](./explore.assets/image-20210403203009581.png)
 
   </b-tab>
 </b-tabs>
