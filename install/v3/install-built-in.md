@@ -26,13 +26,13 @@ meta:
 安装 Kuboard 之前，假设：
 
 * 您已经准备好了一个 Linux 服务器用于安装 Kuboard-V3，并且该机器上的 docker 版本不低于 19.03
-* 用于安装 Kuboard v3.0 的机器已经安装了 docker，并且版本不低于 docker 19.03
+* 用于安装 Kuboard v3.x 的机器已经安装了 docker，并且版本不低于 docker 19.03
 * 您已经有自己的 Kubernetes 集群，并且版本不低于 Kubernetes v1.13
 
 点击此处可以查看 <KuboardDemo suffix="install" label="在线演示" color="#007af5"/>
 ## 安装
 
-安装 Kuboard v3.0 版本的指令如下：
+安装 Kuboard v3.x 版本的指令如下：
 
 ``` sh {10}
 sudo docker run -d \
@@ -68,9 +68,9 @@ sudo docker run -d \
 * 第 10 行，将持久化数据 `/data` 目录映射到宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况调整宿主机路径；
 :::
 
-## 访问 Kuboard v3.0
+## 访问 Kuboard v3.x
 
-在浏览器输入 `http://your-host-ip:10080` 即可访问 Kuboard v3.0 的界面，登录方式：
+在浏览器输入 `http://your-host-ip:10080` 即可访问 Kuboard v3.x 的界面，登录方式：
 * 用户名： `admin`
 * 密 码： `Kuboard123`
 

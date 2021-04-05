@@ -22,7 +22,7 @@ Kuboard 支持多种认证方式：
 
 ## 前提条件
 
-* 用于安装 Kuboard v3.0 的机器已经安装了 docker，并且版本不低于 docker 19.03
+* 用于安装 Kuboard v3.x 的机器已经安装了 docker，并且版本不低于 docker 19.03
 * 您已经有自己的 Kubernetes 集群，并且版本不低于 Kubernetes v1.13
 * 您已经安装好了 github ee 或者您打算直接使用 github.com 中的账号
 
@@ -61,7 +61,7 @@ Kuboard 支持多种认证方式：
   | -------------------------- | ----------------------------------------- | ------------------------------------------------------------ |
   | Application name           | kuboard-v3                                | 标识用，填写任意名称即可                                     |
   | Homepage URL               | http://外网IP:10080              | 根据 [部署计划](#部署计划)，此处应该填写 http://外网IP:10080 |
-  | Application description    | Kuboard v3.0.0                            | 描述，可以为空                                               |
+  | Application description    | Kuboard v3.x                            | 描述，可以为空                                               |
   | Authorization callback URL | http://外网IP:10080/sso/callback | 根据 [部署计划](#部署计划)，此处应该填写 http://外网IP:10080/sso/callback，`/sso/callback` 为 Kuboard 中处理 OAuth 回调的 URL 路径 |
 
   ![image-20210109221355583](./install-github.assets/image-20210109221355583.png)
@@ -106,10 +106,10 @@ sudo docker run -d \
 
 ::: tip 参数说明
 * 建议将此命令保存为一个 shell 脚本，例如 `start-kuboard.sh`，后续升级 Kuboard 或恢复 Kuboard 时，需要通过此命令了解到最初安装 Kuboard 时所使用的参数；
-* 第 4 行，Kuboard v3.0 需要暴露 `80` 端口，如安装指令的第三行所示，默认映射到了宿主机的 `10080` 端口，您可以根据自己的情况选择宿主机的其他端口；
-* 第 5、6 行，Kuboard v3.0 需要暴露 `10081` 端口 TCP / UDP，默认映射到了宿主机的 `10081` 端口，您可以根据自己的情况选择宿主机的其他端口；
-* 第 7 行，Kuboard v3.0 的持久化数据存储在 `/data` 目录，默认映射到了宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况进行调整；
-* 第 8 行，将 Kuboard v3.0 与 GitHub 进行单点登录集成时，必须指定环境变量 `KUBOARD_LOGIN_TYPE` 为 `github` （适用于 github.com / github-ee）；
+* 第 4 行，Kuboard v3.x 需要暴露 `80` 端口，如安装指令的第三行所示，默认映射到了宿主机的 `10080` 端口，您可以根据自己的情况选择宿主机的其他端口；
+* 第 5、6 行，Kuboard v3.x 需要暴露 `10081` 端口 TCP / UDP，默认映射到了宿主机的 `10081` 端口，您可以根据自己的情况选择宿主机的其他端口；
+* 第 7 行，Kuboard v3.x 的持久化数据存储在 `/data` 目录，默认映射到了宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况进行调整；
+* 第 8 行，将 Kuboard v3.x 与 GitHub 进行单点登录集成时，必须指定环境变量 `KUBOARD_LOGIN_TYPE` 为 `github` （适用于 github.com / github-ee）；
 * 第 9 行，必须指定 `KUBOARD_ENDPOINT` 环境变量为访问 Kuboard 界面的 URL；（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://内网IP:10080` 作为通过执行此命令启动的 Kuboard 的访问 URL）；此参数不能以 `/` 结尾；
 * 第 10、11 行，指定 KUBOARD_AGENT_SERVER 的端口为 `10081`，此参数与第 5、6 行中的宿主机端口应保持一致，修改此参数不会改变容器内监听的端口 `10081`；
 * 第 12 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitHub 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
