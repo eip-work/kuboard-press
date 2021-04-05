@@ -31,6 +31,7 @@ export default {
   data () {
     return {
       urls: [
+        {name: 'Linux Foundation 开源软件大学', url: 'https://training.linuxfoundation.cn', icon: 'https://training.linuxfoundation.cn/assets/img/logo.svg'},
         {name: 'sealos', url: 'http://store.lameleg.com?referrer=shaohq', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/blog/2019-08-27-044824.jpg'},
         {name: '云原生实验室', url: 'https://fuckcloudnative.io/', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/favicon-32x32.png'},
       ]
@@ -80,7 +81,7 @@ export default {
 }
 
 .friend-name {
-  width: 100px;
+  width: 240px;
   text-align: left;
   display: inline-block;
 }

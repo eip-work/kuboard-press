@@ -8,6 +8,14 @@ module.exports = [
   //   weight: 50
   // },
   {
+    name: 'CKA 考试',
+    description: '九五折优惠申请 CKA 考试，优惠码为：',
+    strong: 'Affkub95-268483',
+    action: '现在报名',
+    url: 'https://training.linuxfoundation.cn/certificates/1',
+    weight: 100,
+  },
+  {
     name: '视频教程',
     description: 'Kubernetes入门学习到企业实战的方方面面',
     strong: 'Kuboard',

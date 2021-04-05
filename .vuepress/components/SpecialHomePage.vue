@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div class="intro">
+    <!-- <div class="intro">
       <b-card class="intro_text" shadow="hover">
         <p>
           <h2>Kuboard</h2>
@@ -84,7 +84,7 @@
           <FancyImage src="/images/preview.gif" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
         </a>
       </div>
-    </div>
+    </div> -->
 
     <Content></Content>
 
@@ -123,7 +123,7 @@ export default {
         ],
         actionText: '在线体验',
         actionText2: '开始使用 →',
-        actionLink2: '/overview/',
+        actionLink2: '/install/v3/install.html',
         features:[
           {
               title: 'Kubernetes安装文档',
@@ -153,7 +153,7 @@ export default {
 
     actionLink () {
       return {
-        link: `http://demo.kuboard.cn/dashboard?k8sToken=${this.$site.themeConfig.kuboardToken}`,
+        link: `http://demo.kuboard.cn:10080`,
         text: this.data.actionText
       }
     },
