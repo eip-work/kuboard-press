@@ -93,11 +93,9 @@ meta:
 
 ## 执行伸缩
 
-* 在 Deployment 详情页面，点击 ***伸缩*** 按钮，调整副本数并保存，如下图所示：
+* 在 Deployment 详情页面，点击下图中 `向左箭头` 或 `向右箭头` 即可完成对 Deployment 的伸缩操作；
 
-  即可完成对 Deployment 的伸缩操作；
-
-  ![Kubernetes-教程-伸缩](./scale.assets/image-20200315133044513.png)
+  ![Kubernetes-教程-伸缩](./scale.assets/image-20210404184116094.png)
 
 * `kubectl autoscale` 指令可以执行对 Deployment 的自动伸缩，目前 Kuboard 界面还不支持此操作。
 
@@ -119,29 +117,29 @@ meta:
 
   修改后保存。
 
-  ![Kubernetes-教程](./scale.assets/image-20200315135123901.png)
+  ![Kubernetes-教程](./scale.assets/image-20210404184525753.png)
 
 * 确认当前 10 个副本正在运行，如下图所示：
 
-  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315135701001.png)
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20210404184759213.png)
 
 * 点击 ***调整镜像标签*** 按钮，将容器镜像更新到一个不存在的标签，例如 `sometag`，如下图所示：
 
-  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315135949626.png)
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20210404184712639.png)
 
 * 此时，Deployment 将新建一个副本集，并且其期望的副本数为 `5`，原来的副本集的期望副本数被调整为 `8`，如下图所示：
 
   由于新副本集中的 Pod 不能获取到镜像，因此滚动更新将卡在这个位置。
 
-  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315140245614.png)
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20210404184920104.png)
 
 * 点击 ***伸缩*** 按钮，将期望副本数调整为 `15`，如下图所示：
 
-  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315140447782.png)
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20210404185426429.png)
 
-* 此时，由于比原来期望的副本数增加了 5，新增副本数将按比例增加到新、旧两个副本集，最终结果如下图所示：
+* 此时，由于比原来期望的副本数增加了 5，新增副本数将增加到旧副本集，最终结果如下图所示：（不同 Kubernetes 版本中，行为并不完全一致，比如，某些版本中，会将新增副本数按比例增加到新、旧副本集中，而截图中使用 Kubernetes v1.18，将所有新增副本数都增加到了旧副本集）
 
-  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20200315140740451.png)
+  ![Kubernetes-教程-按比例伸缩](./scale.assets/image-20210404185157096.png)
 
 
 

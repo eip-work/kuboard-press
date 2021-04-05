@@ -49,59 +49,49 @@ docker pull my-registry.example.com:5000/example/web-example:v1.0.1
 
 :::
 
-## 配置 Secrets
-
-* 打开 Kuboard 界面
-
-* 进入您要工作的 **名称空间** 界面
-
-* 点击 ***Secrets*** --> ***创建*** 按钮
-
-  填写表单：
-
-  | 字段名称        | 填写内容                     | 备注                         |
-  | --------------- | ---------------------------- | ---------------------------- |
-  | 名称            | my-registry-secret      | 可以使用便于您自己记忆的名字 |
-  | 类型            | docker仓库密码               |                              |
-  | docker server   | my-registry.example.com:5000 |                              |
-  | docker username | myusername                   |                              |
-  | docker password | mypassword                   |                              |
-
-  如下图所示
-
-  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190923164105388.png)
-
-
-* 点击 **保存** 按钮
-
 
 
 ## 创建工作负载
 
 * 此处省略创建工作负载的详细描述，请参考 [部署 busybox](/guide/example/busybox.html)
 
-* 如果要使用私有 registry 中的 docker 镜像，请正确填写如下两个字段：
+* 在 ***容器信息*** 标签页，为容器选择镜像仓库类型为 `docker private`，如下图所示：
 
-  * **Docker仓库的用户名密码**：请选择刚才创建的 `my-registry-secret`
+  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20210404220002414.png)
 
-  * **镜像**：请填写 `my-registry.example.com:5000/example/web-example:v1.0.1`
+* 点击图中的创建镜像仓库密码，如下图所示：
 
-    该字段由如下几个部分组成：
+  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20210404220248314.png)
 
-    <font color="blue" weight="500">my-registry.example.com</font>:<font color="green" weight="500">5000</font>/<font color="purple" weight="500">example</font>/<font color="red" weight="500">web-example</font>:<font color="brown" weight="500">v1.0.1</font>
-    
-    * 蓝色部分：registry 地址
-    * 绿色部分：registry 端口
-    * 紫色部分：repository 名字
-    * 红色部分：image 名字
-    * 棕色部分：image 标签
+  填写表单：
 
-![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20190923164229519.png)
+  | 字段名称        | 填写内容                     | 备注                         |
+  | --------------- | ---------------------------- | ---------------------------- |
+  | 名称            | my-registry-secret           | 可以使用便于您自己记忆的名字 |
+  | 类型            | docker仓库密码               |                              |
+  | docker server   | my-registry.example.com:5000 |                              |
+  | docker username | myusername                   |                              |
+  | docker password | mypassword                   |                              |
+  
+  
+  
+* 在上图中点击保存后，选择刚创建的 ***Secret*** ，如下图所示：
+
+  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20210404220355442.png)
+
+* 填写镜像的 ***路径*** 以及 ***标签***，如下图所示：
+
+  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20210404220517307.png)
+
+  
 
 
 ::: tip
 
 * 工作负载只能引用同名称空间下的 Secrets
-* 如果你想使用 hub.docker.com 上的私有 repository，您在填写 ***镜像*** 这个字段时，只要省略 ***registry 地址*** 和 ***registry 端口*** 这两部分即可
+
+* 可以在 ***配置中心*** / ***密 文*** 菜单中管理已经创建的 ***Secret*** 列表，如下图所示：
+
+  ![Kubernetes教程：使用私有仓库中的 docker 镜像](./private-registry.assets/image-20210404220855655.png)
 
 :::

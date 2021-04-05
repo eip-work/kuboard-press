@@ -151,13 +151,13 @@ meta:
 
 1. 进入 Deployment 查看界面，如下图所示：
 
-   ![Kubernetes-教程](./update.assets/image-20200315111231323.png)
+   ![Kubernetes-教程-更新Deployment](./update.assets/image-20210404182058429.png)
 
 2. 点击上图中的 ***调整镜像标签*** 按钮
 
    将新版本字段修改为 `1.9.1`，并点击 ***确定*** 按钮，如下图所示：
 
-   ![Kubernetes-教程](./update.assets/image-20200315111509644.png)
+   ![Kubernetes-教程-更新Deployment-版本](./update.assets/image-20210404182203934.png)
 
    
 
@@ -165,11 +165,11 @@ meta:
 
    更新过程中，截图如下：
 
-   ![Kubernetes-教程](./update.assets/image-20200315111838761.png)
+   ![Kubernetes-教程-更新Deployment-开始更新](./update.assets/image-20210404182350539.png)
 
    完成更新后，截图如下：
 
-   ![Kubernetes-教程](./update.assets/image-20200315113204869.png)
+   ![Kubernetes-教程-更新Deployment-更新完成](./update.assets/image-20210404183433437.png)
 
 
 

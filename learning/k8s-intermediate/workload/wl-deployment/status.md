@@ -20,7 +20,7 @@ Deployment 的生命周期中，将会进入不同的状态，这些状态可能
 
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用 kubectl 查看 Deployment 状态" active>
+<b-tab title="使用 kubectl 查看 Deployment 状态">
 
 <h2>Progressing 状态</h2>
 
@@ -162,13 +162,13 @@ $ echo $?
 * 暂停（pause）Deployment，以对 Deployment 的 Pod template 执行多处更新
 
 </b-tab>
-<b-tab title="使用 Kuboard 查看 Deployment 状态">
+<b-tab title="使用 Kuboard 查看 Deployment 状态" active>
 
 在前面的处理中，您已经熟悉了 Kuboard 界面中如何管理 Deployment 的滚动更新过程。此外，还有少许 Deployment 的状态信息显示在运行时信息这个区块，如下图所示：
 
 > 您也可以直接查看 Deployment 的 YAML 内容。
 
-![Kubernetes-教程-查看Deployment状态](./status.assets/image-20200315163007630.png)
+![Kubernetes-教程-查看Deployment状态](./status.assets/image-20210404190424295.png)
 
 
 

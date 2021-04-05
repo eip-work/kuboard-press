@@ -16,6 +16,8 @@ Kuboard v3.0 支持 Kubernetes 多集群管理。如果您从 Kuboard v1.0.x 或
 * 您可以同时使用 Kuboard v3.0.x 和 Kuboard v2.0.x；
 * Kuboard v3.0.x 支持 amd64 (x86) 架构和 arm68 (armv8) 架构的 CPU；
 
+点击此处可以查看 <KuboardDemo suffix="install" label="在线演示" color="#007af5"/>
+
 ## 兼容性
 
 

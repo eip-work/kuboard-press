@@ -1,0 +1,114 @@
+---
+apiVersion: kuboard.cn/v1
+kind: KuboardAddon
+metadata:
+  name: pv-browser.addons.kuboard.cn
+  namespace: kube-system
+spec:
+  scope: Cluster
+  extensions: []
+  info:
+    name: 存储卷浏览器
+    id: pv-browser.addons.kuboard.cn
+    version: v3.0.1
+    lastUpdate: '2020-11-26'
+    maintainer: shaohq@foxmail.com
+    scope: Cluster
+    description: 在集群概览页显示存储卷的利用率，查看存储卷内文件内容
+    document: 'https://addons.kuboard.cn/kuboard-pv-browser/v3.0.1/README.md'
+    addonUrl: 'https://addons.kuboard.cn/kuboard-pv-browser/v3.0.1/addon.yaml'
+    addonResourceUrl: 'https://addons.kuboard.cn/kuboard-pv-browser/v3.0.1/addonResource.yaml'
+status:
+  status: LOADED
+
+---
+apiVersion: kuboard.cn/v1
+k8sYamls:
+  kuboard-pv-browser: |-
+    apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      annotations:
+        k8s.kuboard.cn/ingress: 'false'
+        k8s.kuboard.cn/service: none
+        k8s.kuboard.cn/workload: kuboard-pv-browser
+      labels:
+        k8s.kuboard.cn/layer: monitor
+        k8s.kuboard.cn/name: kuboard-pv-browser
+      name: kuboard-pv-browser
+      namespace: kuboard
+    spec:
+      revisionHistoryLimit: 10
+      selector:
+        matchLabels:
+          k8s.kuboard.cn/layer: monitor
+          k8s.kuboard.cn/name: kuboard-pv-browser
+      template:
+        metadata:
+          labels:
+            k8s.kuboard.cn/layer: monitor
+            k8s.kuboard.cn/name: kuboard-pv-browser
+        spec:
+          containers:
+            - image: swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard-pv-browser:v3.0.1
+              imagePullPolicy: IfNotPresent
+              name: delegator
+              volumeMounts:
+                - mountPath: /var/lib/kubelet
+                  name: kubelet
+                - mountPath: /run/mount
+                  name: mounts
+            - command:
+                - sleep
+                - '360000'
+              image: swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard-pv-browser:v3.0.1
+              imagePullPolicy: IfNotPresent
+              name: pv-browser
+              volumeMounts:
+                - mountPath: /var/lib/kubelet
+                  name: kubelet
+                - mountPath: /run/mount
+                  name: mounts
+          dnsPolicy: ClusterFirst
+          tolerations:
+            - effect: ''
+              key: node-role.kubernetes.io/master
+              operator: Exists
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          terminationGracePeriodSeconds: 30
+          volumes:
+            - hostPath:
+                path: /var/lib/kubelet
+                type: DirectoryOrCreate
+              name: kubelet
+            - hostPath:
+                path: /run/mount
+                type: DirectoryOrCreate
+              name: mounts
+kind: KuboardAddonResource
+lifecycleHandler:
+  additionalStep: >-
+    <div style="font-size: 14px; color: red; font-weight: 500">请确认您的 Kuboard
+    版本不低于 v3.0.0-alpha.5</div>
+  beforeUninstall: JavaScriptToExecuteBeforeUninstall
+  disable: JavaScriptToExecuteBeforeDisable
+  initialize: >
+    import { startInitTasks, completeInitTask, failInitTask, KuboardProxy } from
+    '/addon-api/index.js'
+
+
+    export function initializeKuboardAddon (initContext) {
+      startInitTasks([
+        {name: 'pvbrowser', description: '初始化任务 pv-browser', descriptionEn: 'init task: pv-browser' },
+      ])
+      setTimeout(_ => {
+        completeInitTask('pvbrowser')
+      }, 1000)
+      console.log('finished')
+    }
+  install:
+    - kuboard-pv-browser
+metadata:
+  name: pv-browser.addons.kuboard.cn
+  namespace: kube-system

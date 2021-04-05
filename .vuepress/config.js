@@ -56,20 +56,6 @@ module.exports = {
       // selector: 'div[class*="language-"] pre'
       selector: 'div[class*="language-"] pre'
     },
-    // '@vuepress/pwa': {
-    //   serviceWorker: true,
-    //   // popupComponent: 'KbSWUpdatePopup',
-    //   updatePopup: {
-    //     '/': {
-    //       message: "Kuboard已更新",
-    //       buttonText: "点击刷新"
-    //     }
-    //   }
-    // },
-    // '@vuepress/pwa': {
-    //   serviceWorker: true,
-    //   updatePopup: true
-    // },
     '@vssue/vuepress-plugin-vssue': {
       // set `platform` rather than `api`
       platform: 'github-v4',
@@ -132,7 +118,7 @@ module.exports = {
       // { text: '简介', link: '/overview/' },
       { text: '安装', link: '/install/v3/install.html' },
       { text: '教程', link: '/learning/' },
-      { text: '使用', link: '/guide/' },
+      // { text: '使用', link: '/guide/' },
       { text: '支持', link: '/support/' },
       { text: '论坛', link: 'https://forum.kuboard.cn/'},
       // { text: '培训', link: 'https://kubetrain.cn/?from=kuboard', target: '_blank' },
@@ -147,13 +133,13 @@ module.exports = {
     },
     lastUpdated: '更新时间',
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-    repo: 'eip-work/kuboard-press',
+    // repo: 'eip-work/kuboard-press',
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
-    repoLabel: '文档仓库',
+    // repoLabel: '文档仓库',
 
     // 假如你的文档仓库和项目本身不在一个仓库：
-    docsRepo: 'eip-work/kuboard-press',
+    // docsRepo: 'eip-work/kuboard-press',
     // 假如文档不是放在仓库的根目录下：
     docsDir: '',
     // 假如文档放在一个特定的分支下：

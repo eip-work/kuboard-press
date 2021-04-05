@@ -103,7 +103,7 @@ Kubernetes 对 Pod 进行调度时，以当时集群中各节点的可用资源�
   | NFS Server | 172.17.216.82  | 请使用您自己的NFS服务的IP地址     |
   | NFS Path   | /root/nfs_root | 请使用您自己的NFS服务所共享的路径 |
   
-  ![Kubernetes教程_在Kuboard中创建NFS_StorageClass存储类](./nfs.assets/image-20191003183534076.png)
+  ![Kubernetes教程_在Kuboard中创建NFS_StorageClass存储类](./nfs.assets/image-20210404194644944.png)
 
 * 在场景中使用存储类
   

@@ -21,15 +21,13 @@ meta:
 
 ## 创建Secret
 
-* 在 Kuboard 界面中进入名称空间页，点击 **Secrets 创建** 按钮
-
-  填写表单，如下图所示：
+* 在 Kuboard 界面中进入 ***配置中心*** / ***密 文*** ，点击 ***创建 Secret*** 按钮，填写表单，如下图所示：
 
   * 选择类型为 TLS
   * 将 .key 文件中的内容填入 tls.key 字段
   * 将 .pem 文件中的内容填入 tls.crt 字段
-
-  ![Kubernetes教程_为Ingress创建Secret](./use-case-ingress-tls.assets/image-20191002145325899.png)
+  
+  ![Kubernetes教程_为Ingress创建Secret](./use-case-ingress-tls.assets/image-20210404221520087.png)
 
 * 点击 **保存** 按钮
 
@@ -37,11 +35,14 @@ meta:
 
 * 在 Kuboard 界面中，点击要激活 HTTPS 的工作负载，进入编辑页面，如下图所示：
 
-  在 **互联网入口 Ingress** 区域，勾选 HTTPS，并选择刚才创建好的 Secret
+  在 **应用路由** 区域，勾选 HTTPS，并选择刚才创建好的 Secret
 
-  ![Kubernetes教程_在Ingress中使用Secret](./use-case-ingress-tls.assets/image-20191002145717667.png)
+  ![Kubernetes教程_在Ingress中使用Secret](./use-case-ingress-tls.assets/image-20210404221914897.png)
+
+  ![Kubernetes教程_在Ingress中使用Secret](./use-case-ingress-tls.assets/image-20210404221803476.png)
 
 * 点击 **保存** 按钮
+
 * 在浏览器打开对应的域名，验证 HTTPS 是否生效
 
 ::: tip

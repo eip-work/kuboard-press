@@ -54,6 +54,7 @@
       />
       <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
       <NavLinks class="can-hide"/>
+      <KuboardDemo class="can-hide" style="margin-left: 20px;" suffix="navbar"></KuboardDemo>
     </div>
   </header>
 </template>

@@ -11,15 +11,9 @@ meta:
 
 <AdSenseTitle/>
 
-通过 Kuboard，可以直接设定 Deployment、StatefulSet、DaemonSet 等中容器的 securityContext 的内容。在 Kuboard 工作负载编辑器界面中点击 `容器` --> `安全设定` --> **编辑** 按钮，
+通过 Kuboard，可以直接设定 Deployment、StatefulSet、DaemonSet 等中容器的 securityContext 的内容。在 Kuboard 工作负载编辑器界面中切换到 ***容器信息*** 标签页，并勾选 ***容器安全上下文*** ，可查看到容器的 Security Context 设置界面，如下图所示：
 
-<p style="max-width: 300px;">
-  <img src="./con-kuboard.assets/image-20191129162033296.png" alt="Kubernetes教程_Kuboard中设置容器的SecurityContext"/>
-</p>
-
-可查看到容器的 Security Context 设置界面，如下图所示：
-
-![Kubernetes教程_Kuboard中设置容器的SecurityContext](./con-kuboard.assets/image-20191005230605496.png)
+![Kubernetes教程_Kuboard中设置容器的SecurityContext](./con-kuboard.assets/image-20210404222940340.png)
 
 
 

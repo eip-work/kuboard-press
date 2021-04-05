@@ -29,6 +29,7 @@ meta:
 * 用于安装 Kuboard v3.0 的机器已经安装了 docker，并且版本不低于 docker 19.03
 * 您已经有自己的 Kubernetes 集群，并且版本不低于 Kubernetes v1.13
 
+点击此处可以查看 <KuboardDemo suffix="install" label="在线演示" color="#007af5"/>
 ## 安装
 
 安装 Kuboard v3.0 版本的指令如下：

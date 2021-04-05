@@ -111,25 +111,24 @@ meta:
 
 
 
-* 在 Deployment 详情页中点击 ***处理状态*** 的开关，可以暂停 Deployment 处理，修改后如下图所示：
+* 在 Deployment 详情页中点击 ***暂停更新*** 的开关，可以暂停 Deployment 处理，修改后如下图所示：
 
-  ![Kubernetes-教程-暂停Deployment](./pause.assets/image-20200315161430483.png)
+  ![Kubernetes-教程-暂停Deployment](./pause.assets/image-20210404185743940.png)
 
 * 点击 ***调整镜像标签*** 按钮，设置新版本为 `1.15.8`，如下图所示：
 
   保存后，可以看到 Deployment 中已经将容器镜像版本修改为 `nginx:1.15.8`，然而，Deployment 控制器此时并未执行滚动更新的过程，因为 Deployment 的处理已经被暂停。
 
-  ![Kubernetes-教程-暂停Deployment](./pause.assets/image-20200315161646155.png)
+  ![Kubernetes-教程-暂停Deployment](./pause.assets/image-20210404185840034.png)
 
-* 点击 ***处理状态*** 的开关，将其设定为 `已继续`，Deployment 将立刻开始执行滚动更新，最终结果如下图所示：
+* 点击 ***继续更新*** 的开关，Deployment 将立刻开始执行滚动更新，如下图所示：
 
-  ![Kubernetes-教程-暂停Deployment](./pause.assets/image-20200315162152085.png)
+  ![Kubernetes-教程-暂停Deployment](./pause.assets/image-20210404190223597.png)
 
 
 
 </b-tab>
 </b-tabs>
 </b-card>
-
 
 [返回 Deployment](./#deployment-概述)

@@ -167,7 +167,7 @@ Kubernetes 支持 20 种存储卷类型（可参考 [Types of Persistent Volumes
 
 在 Kuboard 中查看 PersistentVolume 的界面如下图所示：
 
-![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看](./pv.assets/image-20200913194907655.png)
+![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看](./pv.assets/image-20210404180415333.png)
 
 
 PersistentVolume 字段描述如下表所示：
@@ -187,7 +187,7 @@ PersistentVolume 字段描述如下表所示：
 
 在 Kuboard 中查看存储卷声明的界面如下图所示：
 
-![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看存储卷声明PersistentVolumeClaims](./pv.assets/image-20200913195026464.png)
+![Kubernetes教程：存储卷PersistentVolume-在Kuboard中查看存储卷声明PersistentVolumeClaims](./pv.assets/image-20210404180516539.png)
 
 | 字段名称              | 可选项/备注                                                  |
 | --------------------- | ------------------------------------------------------------ |
@@ -202,4 +202,4 @@ PersistentVolume 字段描述如下表所示：
 
 在您完成存储卷声明的定义后，您可以在 Kuboard 工作复杂编辑器的 ***数据卷 Volume*** 区域引用该存储卷声明，如下图所示：
 
-![Kubernetes教程：存储卷PersistentVolume-使用存储卷声明](./pv.assets/image-20200913195201062.png)
+![Kubernetes教程：存储卷PersistentVolume-使用存储卷声明](./pv.assets/image-20210404180628506.png)

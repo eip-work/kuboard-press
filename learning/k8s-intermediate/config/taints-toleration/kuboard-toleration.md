@@ -12,15 +12,11 @@ meta:
 
 <AdSenseTitle/>
 
-> Kuboard v-1.0.5-beta.3 中增加了容忍的功能
+> 下面的截图基于 `Kuboard v3.1.1.0`
 
-在 Kubobard 工作负载编辑界面中点击 ***容器组的更多设定*** 按钮（下图左下角），
+在 Kubobard 工作负载编辑界面中切换到 ***高级设置*** 标签页，可为工作负载设置容忍，如下图所示：
 
-![Kubernetes教程_使用Kuboard配置容忍](./kuboard-toleration.assets/image-20191130215407308.png)
-
-可为工作负载设置容忍，如下图所示：
-
-![Kubernetes教程_在Kuboard中设置容忍](./kuboard-toleration.assets/image-20191130215717584.png)
+![Kubernetes教程_在Kuboard中设置容忍](./kuboard-toleration.assets/image-20210404211633381.png)
 
 
 

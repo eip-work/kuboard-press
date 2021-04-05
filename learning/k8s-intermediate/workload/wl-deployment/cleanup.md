@@ -21,7 +21,9 @@ meta:
 
 Kuboard 中，可以通过如下界面调整 `.spec.revisionHistoryLimit` 字段，如下所示：
 
-![Kubernetes Deployment revisionHistoryLimit](./cleanup.assets/image-20200315164731927.png)
+![Kubernetes Deployment revisionHistoryLimit](./cleanup.assets/image-20210404191001116.png)
+
+![Kubernetes Deployment revisionHistoryLimit](./cleanup.assets/image-20210404191039298.png)
 
 
 

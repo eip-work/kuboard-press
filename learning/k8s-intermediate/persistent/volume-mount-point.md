@@ -60,9 +60,9 @@ spec:
 
 同一个 volumeMounts 中 `subPath` 字段和 `subPathExpr` 字段不能同时使用。
 
-> 在Kuboard界面中，如果工作负载编辑器中挂载点的 subPath/subPathExpr 字段中包含 `$`，则 Kuboard 认为该字段为 subPathExpr，否则被认为是 subPath。例如，下图中的 $(podName) 将被认为是 subPathExpr ：<Badge type="default">Kuboard v1.0.6-beta.1</Badge>
+> 在Kuboard界面中，如果工作负载编辑器中挂载点的 subPath/subPathExpr 字段中包含 `$`，则 Kuboard 认为该字段为 subPathExpr，否则被认为是 subPath。例如，下图中的 $(podName) 将被认为是 subPathExpr ：<Badge type="default">Kuboard v3.1.1.0</Badge>
 >
-> ![./image-20200101173914313](./volume-mount-point.assets/image-20200101173914313.png)
+> ![image-20210404194435754](./volume-mount-point.assets/image-20210404194435754.png)
 
 如下面的例子，该 Pod 使用 `subPathExpr` 在 hostPath 数据卷 `/var/log/pods` 中创建了一个目录 `pod1`（该参数来自于Pod的名字）。此时，宿主机目录 `/var/log/pods/pod1` 挂载到了容器的 `/logs` 路径：
 

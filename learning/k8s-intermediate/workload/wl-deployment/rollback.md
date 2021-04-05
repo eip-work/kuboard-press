@@ -230,21 +230,21 @@ meta:
 
 * 假设您更新 Deployment 的时候，犯了一个拼写错误，将 `1.9.1` 写成了 `1.91`，如下图所示：
 
-  ![Kubernetes-教程](./rollback.assets/image-20200315114441313.png)
+  ![Kuboard-教程-Deployment-回滚](./rollback.assets/image-20210404183613285.png)
 
 * 该更新将卡住，新的副本集中的 Pod 将因为抓取不到镜像而不能启动，并陷入不断抓取镜像的死循环当中，如下图所示：
 
-  ![Kubernetes-教程](./rollback.assets/image-20200315114807304.png)
+  ![Kuboard-教程-Deployment-回滚](./rollback.assets/image-20210404183808138.png)
 
 
 
 ## 检查 Deployment 的更新历史，并回滚
 
-* 上图中，显示了该 Deployment 有三个副本集，分别对应 Deployment 的版本 `1`、`2`、`3`。点击某一个副本集上的 ***回滚*** 按钮，Kuboard 将为您对比两个版本之间的差异，如下图所示：
+* 上图中，显示了该 Deployment 有三个副本集，分别对应 Deployment 的版本 `1`、`2`、`3`。点击某一个副本集上的 ***回滚到*** 按钮，Kuboard 将为您对比两个版本之间的差异，如下图所示：
 
-  ![Kubernetes-教程](./rollback.assets/image-20200315115224518.png)
+  ![Kuboard-教程-Deployment-回滚](./rollback.assets/image-20210404183911945.png)
 
-* 点击 **确认回滚** 按钮，将回滚到选定的版本
+* 点击 **确认** 按钮，将回滚到选定的版本
 
 
 

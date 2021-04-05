@@ -60,7 +60,9 @@ Docker 里同样也存在一个 volume（数据卷）的概念，但是 docker �
 
 :::
 
-![Kubernetes教程：数据卷Volume-概念结构](./volume.assets/image-20190904194501941.png)
+
+
+![Kubernetes教程：数据卷Volume-概念结构](./volume.assets/image-20210404180050704.png)
 
 ## 数据卷的类型
 

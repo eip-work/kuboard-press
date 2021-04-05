@@ -139,13 +139,11 @@ pod-template-hash 标签是 Deployment 创建 ReplicaSet 时添加到 ReplicaSet
 
 
 
-1. 进入 Kuboard 名称空间页面，并点击页头上的 ***创建工作负载*** 按钮；
+1. 进入 Kuboard 名称空间页面，点击左侧菜单中的 ***创建工作负载*** 按钮；
 
-   截图如下所示：
+   ![Kuboard-创建Deployment](./create.assets/image-20210404181251603.png)
 
-   ![Kubernetes-教程](./create.assets/image-20200315103827631.png)
-
-2. 在工作负载创建页面填写表单如下：
+   并填写如下表单：
 
    | 区域              | 字段名称 | 填写内容     | 字段说明                                                     |
    | ----------------- | -------- | ------------ | ------------------------------------------------------------ |
@@ -153,27 +151,28 @@ pod-template-hash 标签是 Deployment 创建 ReplicaSet 时添加到 ReplicaSet
    |                   | 服务分层 | 展现层       | Kuboard 特性的字段，用于表示该工作复杂显示在名称空间的哪一个分层 |
    |                   | 服务名称 | web-nginx    |                                                              |
    |                   | 副本数量 | 3            |                                                              |
-   | 容器组-->工作容器 | 容器名称 | nginx        |                                                              |
-   |                   | 镜像     | nginx:1.7.9  |                                                              |
-   |                   | Ports    | TCP   :   80 | 容器组暴露的端口                                             |
 
-   截图如下图所示：
+   
 
-   ![Kubernetes-教程](./create.assets/image-20200315103300026.png)
+2. 切换到 ***容器信息*** Tab 页，如下图所示：
+
+    ![Kuboard-创建Deployment-容器信息](./create.assets/image-20210404181616368.png)
+
+    并填写如下表单：
+
+    | 区域                    | 字段名称 | 填写内容     | 字段说明         |
+    | ----------------------- | -------- | ------------ | ---------------- |
+    | 容器信息-->添加工作容器 | 容器名称 | nginx        |                  |
+    |                         | 镜像     | nginx:1.7.9  |                  |
+    |                         | Ports    | TCP   :   80 | 容器组暴露的端口 |
 
 3. 点击保存后，可以看到 Deployment 的更新界面，如下图所示：
 
-   
+     
 
    Kuboard 在界面中显示了 ReplicaSets、Pods 的动态变化过程。
 
-   > 显示 ReplicaSets 的特性要求 Kuboard 版本不低于 v1.0.8
-
-   
-
-   ![Kubernetes-教程](./create.assets/image-20200315105410219.png)
-
-   ![Kubernetes-教程](./create.assets/image-20200315110103544.png)
+   ![Kuboard-创建Deployment-已创建](./create.assets/image-20210404181829648.png)
 
 4. 对于每一个 Pod，Kuboard 提供了如下几个功能可以便捷的与容器内应用进行交互：
 

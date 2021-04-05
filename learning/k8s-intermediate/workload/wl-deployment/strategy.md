@@ -17,7 +17,7 @@ meta:
 
 Kuboard 中，可以通过如下界面编辑部署策略。
 
-![Kubernetes-Deployment Strategy部署策略](./strategy.assets/image-20200315163608635.png)
+![Kubernetes-Deployment Strategy部署策略](./strategy.assets/image-20210404191259449.png)
 
 其中字段的含义如下：
 

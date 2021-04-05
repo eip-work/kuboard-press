@@ -98,14 +98,22 @@ meta:
 </b-tab>
 <b-tab title="使用 Kuboard 执行金丝雀发布">
 
-在 Kuboard 执行金丝雀发布的过程，与使用 kubectl 的过程相同，此处特别说明的一点是，当使用 Kuboard 创建 `web-nginx-canary` Deployment时，如何解决其Pod 的标签被 `web-nginx` 的Service包含的问题：
+在 Kuboard 执行金丝雀发布的过程，与使用 kubectl 的过程相同，此处特别说明的一点是，当使用 Kuboard 创建 `web-nginx-canary` Deployment时，可以在原工作负载上点击 ***复制*** 按钮，如下图所示：
+
+![Kubernetes教程_在Kuboard中执行金丝雀发布](./canary.assets/image-20210404191658446.png)
+
+在弹出对话框的 ***名称*** 字段中填写 `web-nginx-canary`，如下图所示：
+
+![Kubernetes教程_在Kuboard中执行金丝雀发布](./canary.assets/image-20210404191758533.png)
+
+如何解决其Pod 的标签被 `web-nginx` 的Service包含的问题：
 
 * 当填写部署的名称 `web-nginx-canary` 之后，将默认创建两个标签，且不可修改：`k8s.eip.work/layer:web` 和 `k8s.eip.work/name:web-nginx-canary`
 * 此时，手工创建标签 `k8s.eip.work/name:web-nginx`，可以覆盖原默认创建的标签
 * 完成创建后，`web-nginx-canary` 的 Pod 也包含标签 `k8s.eip.work/layer:web` 和 `k8s.eip.work/name:web-nginx`，可以被 `web-nginx` 的Service选中
 * 通过 Kuboard 创建 `web-nginx-canary` 部署时，无需配置 Service 和 Ingress
 
-![Kubernetes教程_在Kuboard中执行金丝雀发布](./canary.assets/image-20191013204426338.png)
+![Kubernetes教程_在Kuboard中执行金丝雀发布](./canary.assets/image-20210404192020345.png)
 
 </b-tab>
 </b-tabs>

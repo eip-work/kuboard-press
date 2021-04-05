@@ -14,42 +14,30 @@
       <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
         <a :href="`/learning/${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">教程</a>
       </div>
-      <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
+      <!-- <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
         <a :href="`/guide/${urlSurfix}`" class="nav-link">使用</a>
-      </div>
+      </div> -->
       <div class="side-nav-item" :style="activeLinkStyle('/support/')">
         <a :href="`/support/${urlSurfix}`" class="nav-link">支持</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/forum/')">
         <a :href="`https://forum.kuboard.cn`" target="_blank" class="nav-link">论坛</a>
       </div>
-      <!-- <div class="side-nav-item" :style="activeLinkStyle('/training/')">
-        <a :href="`https://kubetrain.cn/?from=kuboard`" class="nav-link" target="_blank">培训</a>
-      </div> -->
-      <!-- <div class="side-nav-item">
-        <a href="http://k8s.kubetrain.cn" class="nav-link" target="_blank">博客</a>
-      </div> -->
-      <!-- <div class="side-nav-item">
-        <a href="http://bbs.kuboard.cn" class="nav-link" target="_blank">论坛</a>
-      </div> -->
+      <KuboardDemo class="side-nav-item" suffix="sidebar"></KuboardDemo>
     </div>
     <slot name="top"/>
     <SidebarLinks :depth="0" :items="items"/>
     <slot name="bottom"/>
     <div style="text-align: center; margin-top: 5vh;">
-      <!-- <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-        <img style="width: 242px; border: 1px solid #d7dae2;" src="/images/logo-main.png" alt="Kuboard_快速在Kubernetes上落地微服务"/>
-      </a> -->
-
       <p>
-        <strong>
-          <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">在线体验</a>
-        </strong>
+        <KuboardDemo suffix="sidebar2" label="在线演示" color="#007af5"></KuboardDemo>
       </p>
       <div>
-        <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-          <FancyImage style="width: 242px;" src="/images/preview.png" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="快速在 Kubernetes 上落地微服务"></FancyImage>
-        </a>
+        <KuboardDemo suffix="sidebar3">
+          <a target="_blank" href="http://demo.kuboard.cn:10080">
+            <FancyImage style="width: 242px;" src="/images/preview.png" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="http://demo.kuboard.cn:10080"></FancyImage>
+          </a>
+        </KuboardDemo>
       </div>
       <p>
       </p>
@@ -145,7 +133,7 @@ export default {
 }
 .side-nav-item {
   margin-bottom: -2px;
-  margin-left: 3px;
+  margin-left: 10px;
   display: inline-block;
   line-height: 1.4rem;
   white-space: nowrap;

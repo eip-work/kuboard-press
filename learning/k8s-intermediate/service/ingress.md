@@ -134,7 +134,7 @@ spec:
 
 <b-card>
 <b-tabs content-class="mt-3">
-<b-tab title="使用kubectl" active>
+<b-tab title="使用kubectl">
 
 **创建文件 nginx-deployment.yaml**
 ``` sh
@@ -239,9 +239,11 @@ curl a.demo.kuboard.cn
 ```
 
 </b-tab>
-<b-tab title="使用Kuboard">
+<b-tab title="使用Kuboard" active>
 
-* 在 default 名称空间 点击 ***创建工作负载***
+* 在 default 名称空间 点击左侧菜单栏中的 ***创建工作负载***，如下图所示：
+
+    ![Kubernetes教程：创建工作负载并配置Ingress](./ingress.assets/image-20210404192614291.png)
 
     填写表单如下：
 
@@ -252,18 +254,34 @@ curl a.demo.kuboard.cn
     | 服务名称   | web-nginx                                                    |                                                              |
     | 服务描述   | nginx部署                                                    |                                                              |
     | 副本数量   | 1                                                            | 可以填写其他正整数                                           |
-    | 工作容器   | 容器名称：nginx<br />镜像：nginx:1.7.9<br />抓取策略：Always |                                                              |
-    | 访问方式   | NodePort（VPC内访问）<br />协议: TCP，服务端口: 80，节点端口: 32601，容器端口: 80 | 访问方式对应 Kubernetes Service对象，<br />工作负载编辑器为其使用与 Deployment 相同的名字 web-nginx |
-    | 互联网入口 | 域名: a.demo.kuboard.cn<br />映射URL： /<br />服务端口：80   | 互联网入口对应 Kubernetes Ingress对象，<br />工作负载编辑器为其使用与 Deployment 相同的名字 web-nginx |
+
+* 切换到 ***容器信息*** Tab 页，如下图所示：
+
+    ![Kubernetes教程：创建工作负载并配置Ingress](./ingress.assets/image-20210404193105147.png)
+
+    填写表单如下：
+
+    | 字段名称 | 填写内容    | 备注 |
+    | -------- | ----------- | ---- |
+    | 容器名称 | nginx       |      |
+    | 镜像     | nginx:1.7.9 |      |
+    | 抓取策略 | Always      |      |
+
+* 切换到 ***服务/应用路由*** Tab 页，如下图所示：
+
+    ![Kubernetes教程：创建工作负载并配置Ingress](./ingress.assets/image-20210404193435776.png)
+
+    填写表单如下：
+
+    | 字段名称 | 填写内容                                                     | 备注                                                         |
+    | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | 服务     | NodePort（VPC内访问）<br />协议: TCP，port: 80，nodePort: 32601，targetPort: 80 | 服务对应 Kubernetes Service对象，<br />工作负载编辑器为其使用与 Deployment 相同的名字 web-nginx |
+    | 应用路由 | 域名: a.demo.kuboard.cn<br />映射URL： /<br />服务端口：80   | 应用路由对应 Kubernetes Ingress对象，<br />工作负载编辑器为其使用与 Deployment 相同的名字 web-nginx |
 
     
 
-* **如下图所示：**
-
-![Kubernetes教程：创建工作负载并配置Ingress](./ingress.assets/image-20190910225225179.png)
-
 ::: tip
-Kuboard 工作负载编辑器将 kubernetes 中三个主要对象 Deployment/Service/Ingress 放在同一个编辑器界面中处理。
+Kuboard 工作负载编辑器假设 kubernetes 中三个主要对象 Deployment/Service/Ingress 名称相同，并放在同一个编辑器界面中处理。
 :::
 
 * 点击 **保存**
