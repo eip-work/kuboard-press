@@ -54,8 +54,8 @@ meta:
     * 参照经过众多网友验证，不断优化的安装文档，迅速完成 Kubernetes 安装，拥有属于自己的 Kubernetes 集群。
   * [安装微服务管理界面](/install/v3/install.html) （5分钟）
     * 使用 Kuboard，无需编写复杂冗长的 YAML 文件，就可以轻松管理 Kubernetes 集群。
-  * [创建 busybox](/guide/example/busybox.html) （10分钟）
-    * 快速在 Kubernetes 集群中安装一个部署，并与当中的容器组交互。
+  <!-- * [创建 busybox](/guide/example/busybox.html) （10分钟）
+    * 快速在 Kubernetes 集群中安装一个部署，并与当中的容器组交互。 -->
 
 <Course courseId="477593" />
 
@@ -97,7 +97,7 @@ meta:
     * [实现Kubernetes与GitLab/GitHub的单点登录](/learning/k8s-advanced/sec/authenticate/install.html)
     * [了解日志聚合](/learning/k8s-advanced/logs/)
     * [了解Kubernetes的监控](/guide/example/monitor-v2.html)
-    * [免费获得Kuboard授权](/support/)
+    <!-- * [免费获得Kuboard授权](/support/) -->
   * 按教程章节顺序对 Kubernetes 各种概念进行深入理解
   * CI/CD 工具链
     * 私有 Docker 镜像仓库

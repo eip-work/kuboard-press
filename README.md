@@ -13,7 +13,7 @@ Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernet
 
 </p>
 
-点击这里可以查看 [Kuboard 的安装文档](/install/v3/install.html)
+点击这里可以查看 [Kuboard 的安装文档](https://kuboard.cn/install/v3/install.html)
 
 ## 在线演示
 
@@ -22,9 +22,9 @@ Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernet
 </div>
 <div style="padding: 10px; border: 1px solid #eee; border-radius: 10px; margin: 10px 0px; background-color: #fafafa;">
   <a href="http://demo.kuboard.cn:10080" target="_blank">http://demo.kuboard.cn:10080</a> <br/>
-  <div style="width: 60px; display: inline-block;margin-top: 5px;">用&nbsp;户</div>
+  <div style="width: 60px; display: inline-block; margin-top: 5px;">用&nbsp;户</div>
   demo <br/>
-  <div style="width: 60px; display: inline-block">密&nbsp;码</div>
+  <div style="width: 60px; display: inline-block;">密&nbsp;码</div>
   demo123
 </div>
 
