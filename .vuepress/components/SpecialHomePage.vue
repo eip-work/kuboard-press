@@ -40,6 +40,7 @@
       </span>
       <p>
         <StarCount></StarCount>
+        <StarCountDockerPulls style="display: inline-block;"></StarCountDockerPulls>
       </p>
     </header>
 
