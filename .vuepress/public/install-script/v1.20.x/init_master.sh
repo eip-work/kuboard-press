@@ -26,6 +26,10 @@ networking:
   serviceSubnet: "10.96.0.0/16"
   podSubnet: "${POD_SUBNET}"
   dnsDomain: "cluster.local"
+dns:
+  type: CoreDNS
+  imageRepository: swr.cn-east-2.myhuaweicloud.com
+  imageTag: 1.8.0
 
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
