@@ -2,20 +2,20 @@
 vssueId: 15
 # layout: StepLayout
 sharingTitle: K8S入门第一步---安装，装不好还有人免费远程协助，更有K8S免费教程提供，你还在等什么？
-description: Kubernete安装文档_Kubernetes最新稳定版v1.21.x的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
+description: Kubernete安装文档_Kubernetes最新稳定版v1.20.x的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords
     content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装,k8s搭建
 ---
 
-# 使用kubeadm安装kubernetes_v1.21.x
+# 使用kubeadm安装kubernetes_v1.20.x
 
 <AdSenseTitle/>
 
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.21.x" updateCount="95"/>
+  <InstallBanner version="v1.20.x" updateCount="93"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -45,7 +45,7 @@ meta:
 
 **安装后的软件版本为**
 
-* Kubernetes v1.21.x
+* Kubernetes v1.20.x
   * calico 3.17.1
   * nginx-ingress 1.9.1
 * Containerd.io 1.4.3
@@ -75,7 +75,7 @@ meta:
 
 ::: tip Container Runtime
 
-* Kubernetes v1.21 开始，默认移除 docker 的依赖，如果宿主机上安装了 docker 和 containerd，将优先使用 docker 作为容器运行引擎，如果宿主机上未安装 docker 只安装了 containerd，将使用 containerd 作为容器运行引擎；
+* Kubernetes v1.20 开始，默认移除 docker 的依赖，如果宿主机上安装了 docker 和 containerd，将优先使用 docker 作为容器运行引擎，如果宿主机上未安装 docker 只安装了 containerd，将使用 containerd 作为容器运行引擎；
 * 本文使用 containerd 作为容器运行引擎；
 
 :::
@@ -116,7 +116,7 @@ lscpu
 
 | CentOS 版本 | 本文档是否兼容                          | 备注                                |
 | ----------- | --------------------------------------- | ----------------------------------- |
-| CentOS Stream 8    | <span style="font-size: 24px;">😄</span> | 已验证                              |
+| CentOS Stream 8  | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | CentOS 7.8         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | CentOS 7.7         | <span style="font-size: 24px;">😞</span> | 未验证                              |
 | CentOS 7.6         | <span style="font-size: 24px;">😞</span> | 未验证                              |
@@ -184,8 +184,8 @@ default via 172.21.0.1 dev eth0
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
 
-**请将脚本最后的 1.21.0 替换成您需要的版本号（必须是 1.21 的小版本，不能是 1.19.1 等），**
-<font color="red">脚本中间的 v1.21.x 不要替换</font>
+**请将脚本最后的 1.20.1 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
+<font color="red">脚本中间的 v1.20.x 不要替换</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
 > * 第四行为腾讯云 docker hub 镜像
@@ -194,7 +194,7 @@ default via 172.21.0.1 dev eth0
 > * 第十行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.21.0 用于指定 kubenetes 版本，支持所有 1.21.x 版本的安装
+# 最后一个参数 1.20.1 用于指定 kubenetes 版本，支持所有 1.20.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -203,13 +203,13 @@ default via 172.21.0.1 dev eth0
 # export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # 阿里云 docker hub 镜像
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
-curl -sSL https://kuboard.cn/install-script/v1.21.x/install_kubelet.sh | sh -s 1.21.0
+curl -sSL https://kuboard.cn/install-script/v1.20.x/install_kubelet.sh | sh -s 1.20.1
 ```
 
   </b-tab>
   <b-tab title="手动安装">
 
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.21.0***</font>
+手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.20.1***</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
 > * 第四行为腾讯云 docker hub 镜像
@@ -217,7 +217,7 @@ curl -sSL https://kuboard.cn/install-script/v1.21.x/install_kubelet.sh | sh -s 1
 > * 第八行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.21.0 用于指定 kubenetes 版本，支持所有 1.21.x 版本的安装
+# 最后一个参数 1.20.1 用于指定 kubenetes 版本，支持所有 1.20.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -226,7 +226,7 @@ curl -sSL https://kuboard.cn/install-script/v1.21.x/install_kubelet.sh | sh -s 1
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 ```
 
-<<< @/.vuepress/public/install-script/v1.21.x/install_kubelet.sh {79}
+<<< @/.vuepress/public/install-script/v1.20.x/install_kubelet.sh {79}
 
 ::: warning
 如果此时执行 `systemctl status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
@@ -257,8 +257,8 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 <b-tab title="快速初始化" active>
 
 
-**请将脚本最后的 1.21.0 替换成您需要的版本号（必须是 1.21 的小版本，不能是 1.19.1 等），**
-<font color="red">脚本中间的 v1.21.x 不要替换</font>
+**请将脚本最后的 1.20.1 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
+<font color="red">脚本中间的 v1.20.x 不要替换</font>
 
 ``` sh {10}
 # 只在 master 节点执行
@@ -270,13 +270,13 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.0
+curl -sSL https://kuboard.cn/install-script/v1.20.x/init_master.sh | sh -s 1.20.1
 ```
 
 </b-tab>
 <b-tab title="手动初始化">
 
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.21.0***</font>
+手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.20.1***</font>
 
 ``` sh
 # 只在 master 节点执行
@@ -290,7 +290,7 @@ export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
-<<< @/.vuepress/public/install-script/v1.21.x/init_master.sh {21}
+<<< @/.vuepress/public/install-script/v1.20.x/init_master.sh {21}
 
 </b-tab>
 </b-tabs>
@@ -489,9 +489,9 @@ kubectl get nodes -o wide
 ```sh
 [root@demo-master-a-1 ~]# kubectl get nodes
 NAME     STATUS   ROLES    AGE     VERSION
-demo-master-a-1   Ready    master   5m3s    v1.21.x
-demo-worker-a-1   Ready    <none>   2m26s   v1.21.x
-demo-worker-a-2   Ready    <none>   3m56s   v1.21.x
+demo-master-a-1   Ready    master   5m3s    v1.20.x
+demo-worker-a-1   Ready    <none>   2m26s   v1.20.x
+demo-worker-a-2   Ready    <none>   3m56s   v1.20.x
 ```
 
 
@@ -511,7 +511,7 @@ demo-worker-a-2   Ready    <none>   3m56s   v1.21.x
 
 ``` sh
 # 只在 master 节点执行
-kubectl apply -f https://kuboard.cn/install-script/v1.21.x/nginx-ingress.yaml
+kubectl apply -f https://kuboard.cn/install-script/v1.20.x/nginx-ingress.yaml
 ```
 
   </b-tab>
@@ -524,13 +524,13 @@ kubectl apply -f https://kuboard.cn/install-script/v1.21.x/nginx-ingress.yaml
 
 ``` sh
 # 只在 master 节点执行
-kubectl delete -f https://kuboard.cn/install-script/v1.21.x/nginx-ingress.yaml
+kubectl delete -f https://kuboard.cn/install-script/v1.20.x/nginx-ingress.yaml
 ```
 
   </b-tab>
   <b-tab title="YAML文件">
 
-<<< @/.vuepress/public/install-script/v1.21.x/nginx-ingress.yaml
+<<< @/.vuepress/public/install-script/v1.20.x/nginx-ingress.yaml
 
 
   </b-tab>
