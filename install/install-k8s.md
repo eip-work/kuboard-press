@@ -51,6 +51,7 @@ meta:
 * Containerd.io 1.4.3
 
 > 如果要安装 Kubernetes 历史版本，请参考：
+> * [安装 Kubernetes v1.20.x 单Master节点](/install/history-k8s/install-k8s-1.20.x.html)
 > * [安装 Kubernetes v1.19.x 单Master节点](/install/history-k8s/install-k8s-1.19.x.html)
 > * [安装 Kubernetes v1.18.x 单Master节点](/install/history-k8s/install-k8s-1.18.x.html)
 > * [安装 Kubernetes v1.17.x 单Master节点](/install/history-k8s/install-k8s-1.17.x.html)
