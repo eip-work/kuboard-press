@@ -298,6 +298,21 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 > 感谢 [https://github.com/zhangguanzhang/google_containers](https://github.com/zhangguanzhang/google_containers) 提供最新的 google_containers 国内镜像
 
+如果出现如下错误：
+``` {5,6}
+[config/images] Pulled registry.aliyuncs.com/k8sxio/pause:3.2
+[config/images] Pulled registry.aliyuncs.com/k8sxio/etcd:3.4.13-0
+failed to pull image "swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0": output: time="2021-04-30T13:26:14+08:00" level=fatal 
+msg="pulling image failed: rpc error: code = NotFound desc = failed to pull and unpack image \"swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0\": 
+failed to resolve reference \"swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0\": 
+swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0: not found", error: exit status 1
+To see the stack trace of this error execute with --v=5 or higher
+```
+请执行如下命令：
+``` sh
+curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.0 /coredns
+```
+
 </b-card>
 
 <b-button v-b-toggle.collapse-init-error variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-error', 'error-init-master', '查看初始化时的错误解决办法')">如果出错点这里</b-button>

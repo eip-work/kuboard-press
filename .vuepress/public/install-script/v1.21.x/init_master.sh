@@ -28,7 +28,7 @@ networking:
   dnsDomain: "cluster.local"
 dns:
   type: CoreDNS
-  imageRepository: swr.cn-east-2.myhuaweicloud.com
+  imageRepository: swr.cn-east-2.myhuaweicloud.com${2}
   imageTag: 1.8.0
 
 ---
