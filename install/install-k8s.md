@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.21.x" updateCount="95"/>
+  <InstallBanner version="v1.21.x" updateCount="96"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -309,6 +309,7 @@ swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0: not found", error: exit status 1
 To see the stack trace of this error execute with --v=5 or higher
 ```
 请执行如下命令：
+> 在原命令的最后增加参数 `/coredns`
 ``` sh
 curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.0 /coredns
 ```

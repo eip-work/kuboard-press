@@ -184,7 +184,7 @@ default via 172.21.0.1 dev eth0
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
 
-**请将脚本最后的 1.20.1 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
+**请将脚本最后的 1.20.6 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
 <font color="red">脚本中间的 v1.20.x 不要替换</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
@@ -194,7 +194,7 @@ default via 172.21.0.1 dev eth0
 > * 第十行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.20.1 用于指定 kubenetes 版本，支持所有 1.20.x 版本的安装
+# 最后一个参数 1.20.6 用于指定 kubenetes 版本，支持所有 1.20.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -203,13 +203,13 @@ default via 172.21.0.1 dev eth0
 # export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # 阿里云 docker hub 镜像
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
-curl -sSL https://kuboard.cn/install-script/v1.20.x/install_kubelet.sh | sh -s 1.20.1
+curl -sSL https://kuboard.cn/install-script/v1.20.x/install_kubelet.sh | sh -s 1.20.6
 ```
 
   </b-tab>
   <b-tab title="手动安装">
 
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.20.1***</font>
+手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.20.6***</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
 > * 第四行为腾讯云 docker hub 镜像
@@ -217,7 +217,7 @@ curl -sSL https://kuboard.cn/install-script/v1.20.x/install_kubelet.sh | sh -s 1
 > * 第八行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.20.1 用于指定 kubenetes 版本，支持所有 1.20.x 版本的安装
+# 最后一个参数 1.20.6 用于指定 kubenetes 版本，支持所有 1.20.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -257,7 +257,7 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 <b-tab title="快速初始化" active>
 
 
-**请将脚本最后的 1.20.1 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
+**请将脚本最后的 1.20.6 替换成您需要的版本号（必须是 1.20 的小版本，不能是 1.19.1 等），**
 <font color="red">脚本中间的 v1.20.x 不要替换</font>
 
 ``` sh {10}
@@ -270,13 +270,13 @@ export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=10.100.0.1/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.20.x/init_master.sh | sh -s 1.20.1
+curl -sSL https://kuboard.cn/install-script/v1.20.x/init_master.sh | sh -s 1.20.6
 ```
 
 </b-tab>
 <b-tab title="手动初始化">
 
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.20.1***</font>
+手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.20.6***</font>
 
 ``` sh
 # 只在 master 节点执行
@@ -296,6 +296,22 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 </b-tabs>
 
 > 感谢 [https://github.com/zhangguanzhang/google_containers](https://github.com/zhangguanzhang/google_containers) 提供最新的 google_containers 国内镜像
+
+如果出现如下错误：
+``` {5,6}
+[config/images] Pulled registry.aliyuncs.com/k8sxio/pause:3.2
+[config/images] Pulled registry.aliyuncs.com/k8sxio/etcd:3.4.13-0
+failed to pull image "swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0": output: time="2021-04-30T13:26:14+08:00" level=fatal 
+msg="pulling image failed: rpc error: code = NotFound desc = failed to pull and unpack image \"swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0\": 
+failed to resolve reference \"swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0\": 
+swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0: not found", error: exit status 1
+To see the stack trace of this error execute with --v=5 or higher
+```
+请执行如下命令：
+> 在原命令的最后增加参数 `/coredns`
+``` sh
+curl -sSL https://kuboard.cn/install-script/v1.20.x/init_master.sh | sh -s 1.20.6 /coredns
+```
 
 </b-card>
 
