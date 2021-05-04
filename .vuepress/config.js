@@ -127,7 +127,7 @@ module.exports = {
       // { text: 'DevOps', link: '/devops/' }
     ],
     displayAllHeaders: false,
-    sidebarDepth: 2,
+    sidebarDepth: 5,
     serviceWorker: {
       updatePopup: true
     },

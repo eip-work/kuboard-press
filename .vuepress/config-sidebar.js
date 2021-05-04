@@ -522,6 +522,76 @@ let sidebar = {
           ]
         },
         {
+          title: 'Spring Blade',
+          collapsable: true,
+          children: [
+            ['k8s-practice/spring-blade/', '介绍'],
+            {
+              title: '准备',
+              collapsable: true,
+              path: '/learning/k8s-practice/spring-blade/prepare/prepare',
+              children: [
+                'k8s-practice/spring-blade/prepare/prepare',
+                'k8s-practice/spring-blade/prepare/build'
+              ]
+            },
+            {
+              title: '部署',
+              collapsable: true,
+              path: '/learning/k8s-practice/spring-blade/deploy/',
+              children: [
+                'k8s-practice/spring-blade/deploy/',
+                {
+                  title: '部署 Nacos',
+                  collapsable: true,
+                  path: '/learning/k8s-practice/spring-blade/deploy/nacos',
+                  children: [
+                    'k8s-practice/spring-blade/deploy/nacos',
+                    'k8s-practice/spring-blade/deploy/nacos-mysql',
+                    'k8s-practice/spring-blade/deploy/nacos-install',
+                    'k8s-practice/spring-blade/deploy/nacos-config',
+                  ]
+                },
+                {
+                  title: '部署其他基础软件',
+                  collapsable: true,
+                  path: '/learning/k8s-practice/spring-blade/deploy/m',
+                  children: [
+                    'k8s-practice/spring-blade/deploy/m',
+                    'k8s-practice/spring-blade/deploy/m-redis',
+                    'k8s-practice/spring-blade/deploy/m-sentinel',
+                    'k8s-practice/spring-blade/deploy/m-saber-db',
+                    'k8s-practice/spring-blade/deploy/m-gateway',
+                    'k8s-practice/spring-blade/deploy/m-swagger',
+                  ]
+                },
+                {
+                  title: '部署微服务层',
+                  collapsable: true,
+                  path: '/learning/k8s-practice/spring-blade/deploy/blade-svc',
+                  children: [
+                    'k8s-practice/spring-blade/deploy/blade-svc',
+                    'k8s-practice/spring-blade/deploy/blade-admin',
+                    'k8s-practice/spring-blade/deploy/blade-others',
+                  ]
+                },
+                'k8s-practice/spring-blade/deploy/saber-web',
+                'k8s-practice/spring-blade/deploy/validate',
+              ],
+            },
+            {
+              title: '导入导出',
+              collapsable: true,
+              path: '/learning/k8s-practice/spring-blade/import/index',
+              children: [
+                'k8s-practice/spring-blade/import/',
+                'k8s-practice/spring-blade/import/export',
+                'k8s-practice/spring-blade/import/import',
+              ]
+            },
+          ]
+        },
+        {
           title: 'Open Capacity Platform',
           collapsable: true,
           children: [
@@ -530,7 +600,7 @@ let sidebar = {
               collapsable: false,
               path: '/learning/k8s-practice/ocp/',
               children: [
-                ['k8s-practice/ocp/', 'OCP介绍'],
+                ['k8s-practice/ocp/', 'OCP 介绍'],
                 'k8s-practice/ocp/prepare',
                 'k8s-practice/ocp/build',
               ]
