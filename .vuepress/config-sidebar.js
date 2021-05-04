@@ -589,6 +589,17 @@ let sidebar = {
                 'k8s-practice/spring-blade/import/import',
               ]
             },
+            {
+              title: '监控及日志',
+              collapsable: true,
+              path: '/learning/k8s-practice/spring-blade/monitor/',
+              children: [
+                'k8s-practice/spring-blade/monitor/',
+                'k8s-practice/spring-blade/monitor/monitor',
+                'k8s-practice/spring-blade/monitor/logs'
+              ]
+            },
+
           ]
         },
         {

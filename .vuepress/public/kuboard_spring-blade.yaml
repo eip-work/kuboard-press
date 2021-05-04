@@ -1,0 +1,4576 @@
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-admin
+  namespace: spring-blade
+  uid: dcccfdff-6d7d-4de8-897c-e5567d059db7
+  resourceVersion: '257497'
+  generation: 2
+  creationTimestamp: '2021-05-04T05:10:51Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-admin
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T05:10:51Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-admin"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:58:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-admin
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-admin
+    spec:
+      containers:
+        - name: blade-admin
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-admin:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T05:17:29Z'
+      lastTransitionTime: '2021-05-04T05:10:51Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-admin-54c5d4ff49" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:58:19Z'
+      lastTransitionTime: '2021-05-04T07:58:19Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-auth
+  namespace: spring-blade
+  uid: 6df4a628-e52a-4029-b26e-3ad5db02aa69
+  resourceVersion: '257507'
+  generation: 2
+  creationTimestamp: '2021-05-04T07:32:42Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-auth
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    k8s.kuboard.cn/workload: blade-auth
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:32:42Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-auth"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:59:02Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-auth
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-auth
+    spec:
+      containers:
+        - name: blade-auth
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-auth:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:33:33Z'
+      lastTransitionTime: '2021-05-04T07:32:42Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-auth-78fc8bfd98" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:59:02Z'
+      lastTransitionTime: '2021-05-04T07:59:02Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-desk
+  namespace: spring-blade
+  uid: 3b4073a7-9808-4fc7-8fe6-b8ae492fbff0
+  resourceVersion: '257519'
+  generation: 3
+  creationTimestamp: '2021-05-04T07:50:51Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-desk
+  annotations:
+    deployment.kubernetes.io/revision: '2'
+    k8s.kuboard.cn/workload: blade-desk
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:06:55Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:annotations':
+                .: {}
+                'f:kubectl.kubernetes.io/restartedAt': {}
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-desk"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:07:55Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-desk
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-desk
+      annotations:
+        kubectl.kubernetes.io/restartedAt: '2021-05-04T16:06:55+08:00'
+    spec:
+      containers:
+        - name: blade-desk
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-desk:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 3
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:07:55Z'
+      lastTransitionTime: '2021-05-04T08:07:55Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:07:55Z'
+      lastTransitionTime: '2021-05-04T07:50:51Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-desk-6cd55955f6" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-develop
+  namespace: spring-blade
+  uid: 057472ce-f78f-4fc6-8101-2605ff68dfab
+  resourceVersion: '257531'
+  generation: 3
+  creationTimestamp: '2021-05-04T07:51:38Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-develop
+  annotations:
+    deployment.kubernetes.io/revision: '2'
+    k8s.kuboard.cn/workload: blade-develop
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:07:08Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:annotations':
+                .: {}
+                'f:kubectl.kubernetes.io/restartedAt': {}
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-develop"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:08:18Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-develop
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-develop
+      annotations:
+        kubectl.kubernetes.io/restartedAt: '2021-05-04T16:07:08+08:00'
+    spec:
+      containers:
+        - name: blade-develop
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-develop:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 3
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:08:18Z'
+      lastTransitionTime: '2021-05-04T08:08:18Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:08:18Z'
+      lastTransitionTime: '2021-05-04T07:51:38Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-develop-5784fd7449" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-gateway
+  namespace: spring-blade
+  uid: 329cf005-bd37-4471-9a9d-df981ff7d502
+  resourceVersion: '257544'
+  generation: 2
+  creationTimestamp: '2021-05-03T13:54:21Z'
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: blade-gateway
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-03T13:54:21Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-gateway"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:56:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: gateway
+      k8s.kuboard.cn/name: blade-gateway
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: gateway
+        k8s.kuboard.cn/name: blade-gateway
+    spec:
+      containers:
+        - name: blade-gateway
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-gateway:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-03T13:55:11Z'
+      lastTransitionTime: '2021-05-03T13:54:21Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-gateway-56b5f6f4ff" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:56:01Z'
+      lastTransitionTime: '2021-05-04T07:56:01Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-log
+  namespace: spring-blade
+  uid: 42f28811-bf90-465c-b092-7197607779e1
+  resourceVersion: '257554'
+  generation: 2
+  creationTimestamp: '2021-05-04T07:52:11Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-log
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    k8s.kuboard.cn/workload: blade-log
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:52:11Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-log"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:57:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-log
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-log
+    spec:
+      containers:
+        - name: blade-log
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-log:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:57:01Z'
+      lastTransitionTime: '2021-05-04T07:57:01Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:57:01Z'
+      lastTransitionTime: '2021-05-04T07:52:11Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-log-f88788d8d" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-report
+  namespace: spring-blade
+  uid: 89e6ff7b-9529-496f-9f1c-c6d67484c414
+  resourceVersion: '257572'
+  generation: 2
+  creationTimestamp: '2021-05-04T07:54:18Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-report
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    k8s.kuboard.cn/workload: blade-report
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:54:18Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-report"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:55:58Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-report
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-report
+    spec:
+      containers:
+        - name: blade-report
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-report:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:55:58Z'
+      lastTransitionTime: '2021-05-04T07:55:58Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:55:58Z'
+      lastTransitionTime: '2021-05-04T07:54:18Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-report-75b5fc4d98" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-resource
+  namespace: spring-blade
+  uid: 46c66fb6-f27f-4bdb-8060-5d8188868588
+  resourceVersion: '257582'
+  generation: 2
+  creationTimestamp: '2021-05-04T08:05:01Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-resource
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    k8s.kuboard.cn/workload: blade-resource
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:05:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-resource"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:05:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-resource
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-resource
+    spec:
+      containers:
+        - name: blade-resource
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-resource:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:05:41Z'
+      lastTransitionTime: '2021-05-04T08:05:41Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:05:41Z'
+      lastTransitionTime: '2021-05-04T08:05:01Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-resource-58bdcf78f6" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-system
+  namespace: spring-blade
+  uid: b70b9c4a-2794-4a69-b0bc-471ecf6ee4bc
+  resourceVersion: '257593'
+  generation: 2
+  creationTimestamp: '2021-05-04T08:05:33Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-system
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    k8s.kuboard.cn/workload: blade-system
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:05:33Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-system"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:06:23Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-system
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-system
+    spec:
+      containers:
+        - name: blade-system
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-system:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:06:23Z'
+      lastTransitionTime: '2021-05-04T08:06:23Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:06:23Z'
+      lastTransitionTime: '2021-05-04T08:05:33Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-system-8dd57fd47" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-user
+  namespace: spring-blade
+  uid: 597b4693-e9a6-4d56-b040-84839e6e760e
+  resourceVersion: '257611'
+  generation: 2
+  creationTimestamp: '2021-05-04T08:05:59Z'
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-user
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    k8s.kuboard.cn/workload: blade-user
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:05:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-user"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:06:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-user
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-user
+    spec:
+      containers:
+        - name: blade-user
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-user:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:06:59Z'
+      lastTransitionTime: '2021-05-04T08:06:59Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:06:59Z'
+      lastTransitionTime: '2021-05-04T08:05:59Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blade-user-795df5c657" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: saber-web
+  namespace: spring-blade
+  uid: 08fa376e-dbdd-4684-8cb5-0fd478e1a0c2
+  resourceVersion: '257630'
+  generation: 2
+  creationTimestamp: '2021-05-04T08:55:21Z'
+  labels:
+    k8s.kuboard.cn/layer: web
+    k8s.kuboard.cn/name: saber-web
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:55:21Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"saber-web"}':
+                  .: {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T08:57:10Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: web
+      k8s.kuboard.cn/name: saber-web
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: web
+        k8s.kuboard.cn/name: saber-web
+    spec:
+      containers:
+        - name: saber-web
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/saber-web:3.0.3'
+          ports:
+            - name: web
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 100Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:57:10Z'
+      lastTransitionTime: '2021-05-04T08:57:10Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-04T08:57:10Z'
+      lastTransitionTime: '2021-05-04T08:55:21Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "saber-web-775f6b6dc" has successfully progressed.
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: swagger
+  namespace: spring-blade
+  uid: d6ef6c76-2135-4340-b9b5-1d8f9c247912
+  resourceVersion: '257644'
+  generation: 2
+  creationTimestamp: '2021-05-03T14:45:05Z'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: swagger
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    k8s.kuboard.cn/workload: swagger
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-03T14:45:05Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:k8s.kuboard.cn/workload': {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blade-swagger"}':
+                  .: {}
+                  'f:args': {}
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:54:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: cloud
+      k8s.kuboard.cn/name: swagger
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: cloud
+        k8s.kuboard.cn/name: swagger
+    spec:
+      containers:
+        - name: blade-swagger
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-swagger:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-05-03T14:45:55Z'
+      lastTransitionTime: '2021-05-03T14:45:05Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "swagger-666f768bd9" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-05-04T07:54:00Z'
+      lastTransitionTime: '2021-05-04T07:54:00Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: nacos
+  namespace: spring-blade
+  uid: 6adec24a-ef33-401c-8bdd-ea29334bd4bf
+  resourceVersion: '212196'
+  generation: 8
+  creationTimestamp: '2021-05-02T12:08:02Z'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: nacos
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-02T12:17:56Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          .: {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:podManagementPolicy': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:serviceName': {}
+          'f:template':
+            'f:metadata':
+              .: {}
+              'f:creationTimestamp': {}
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"nacos"}':
+                  .: {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"MODE"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_SERVICE_DB_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_SERVICE_HOST"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_SERVICE_PASSWORD"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_SERVICE_PORT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_SERVICE_USER"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"PREFER_HOST_MODE"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_DATASOURCE_PLATFORM"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8848,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                    'k:{"containerPort":9848,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                    'k:{"containerPort":9849,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/home/nacos/init.d/custom.properties"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+                      'f:subPath': {}
+                    'k:{"mountPath":"/home/nacos/logs"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:volumes':
+                .: {}
+                'k:{"name":"volume-6aidn"}':
+                  .: {}
+                  'f:configMap':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:items': {}
+                    'f:name': {}
+                  'f:name': {}
+          'f:updateStrategy':
+            .: {}
+            'f:rollingUpdate':
+              .: {}
+              'f:partition': {}
+            'f:type': {}
+          'f:volumeClaimTemplates': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:53:48Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:collisionCount': {}
+          'f:currentReplicas': {}
+          'f:currentRevision': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updateRevision': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: cloud
+      k8s.kuboard.cn/name: nacos
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: cloud
+        k8s.kuboard.cn/name: nacos
+    spec:
+      volumes:
+        - name: volume-6aidn
+          configMap:
+            name: nacos-config
+            items:
+              - key: custom.properties
+                path: custom.properties
+            defaultMode: 420
+      containers:
+        - name: nacos
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/nacos-server:2.0.0'
+          ports:
+            - name: client
+              containerPort: 8848
+              protocol: TCP
+            - name: client-rpc
+              containerPort: 9848
+              protocol: TCP
+            - name: raft-rpc
+              containerPort: 9849
+              protocol: TCP
+          env:
+            - name: MODE
+              value: standalone
+            - name: PREFER_HOST_MODE
+              value: hostname
+            - name: SPRING_DATASOURCE_PLATFORM
+              value: mysql
+            - name: MYSQL_SERVICE_HOST
+              value: nacos-mysql-0.nacos-mysql
+            - name: MYSQL_SERVICE_DB_NAME
+              value: nacos_test
+            - name: MYSQL_SERVICE_PORT
+              value: '3306'
+            - name: MYSQL_SERVICE_USER
+              value: nacos
+            - name: MYSQL_SERVICE_PASSWORD
+              value: nacos
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          volumeMounts:
+            - name: logs
+              mountPath: /home/nacos/logs
+            - name: volume-6aidn
+              readOnly: true
+              mountPath: /home/nacos/init.d/custom.properties
+              subPath: custom.properties
+          livenessProbe:
+            httpGet:
+              path: /nacos/v1/ns/instance/list?serviceName=nacos
+              port: 8848
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /nacos/v1/ns/instance/list?serviceName=nacos
+              port: 8848
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 2
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /nacos/v1/ns/instance/list?serviceName=nacos
+              port: 8848
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: logs
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: ceph-raspberry
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: nacos
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+status:
+  observedGeneration: 8
+  replicas: 1
+  readyReplicas: 1
+  currentReplicas: 1
+  updatedReplicas: 1
+  currentRevision: nacos-5c86cb4d97
+  updateRevision: nacos-5c86cb4d97
+  collisionCount: 0
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: nacos-mysql
+  namespace: spring-blade
+  uid: b22d717f-3063-46da-92eb-1f5a5db96524
+  resourceVersion: '212334'
+  generation: 1
+  creationTimestamp: '2021-05-02T11:48:41Z'
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: nacos-mysql
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-02T11:48:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:podManagementPolicy': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:serviceName': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"mysql"}':
+                  .: {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"MYSQL_ALLOW_EMPTY_PASSWORD"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_DATABASE"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_PASSWORD"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_USER"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:exec':
+                      .: {}
+                      'f:command': {}
+                    'f:failureThreshold': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":3306,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:exec':
+                      .: {}
+                      'f:command': {}
+                    'f:failureThreshold': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:exec':
+                      .: {}
+                      'f:command': {}
+                    'f:failureThreshold': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/var/lib/mysql"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+          'f:updateStrategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:partition': {}
+            'f:type': {}
+          'f:volumeClaimTemplates': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:53:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:collisionCount': {}
+          'f:currentReplicas': {}
+          'f:currentRevision': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updateRevision': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: nacos-mysql
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: nacos-mysql
+    spec:
+      containers:
+        - name: mysql
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/nacos-mysql:5.7'
+          ports:
+            - name: mysql
+              containerPort: 3306
+              protocol: TCP
+          env:
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: '1'
+            - name: MYSQL_DATABASE
+              value: nacos_test
+            - name: MYSQL_USER
+              value: nacos
+            - name: MYSQL_PASSWORD
+              value: nacos
+          resources:
+            limits:
+              memory: 1000Mi
+            requests:
+              memory: 100Mi
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            exec:
+              command:
+                - mysql
+                - '-h'
+                - 127.0.0.1
+                - '-e'
+                - select 1
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 2
+            failureThreshold: 3
+          startupProbe:
+            exec:
+              command:
+                - mysql
+                - '-h'
+                - 127.0.0.1
+                - '-e'
+                - "select 1\t"
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: data
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: ceph-raspberry
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: nacos-mysql
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+status:
+  observedGeneration: 1
+  replicas: 1
+  readyReplicas: 1
+  currentReplicas: 1
+  updatedReplicas: 1
+  currentRevision: nacos-mysql-79c55668c9
+  updateRevision: nacos-mysql-79c55668c9
+  collisionCount: 0
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: redis
+  namespace: spring-blade
+  uid: 7bd408b4-59fb-48f8-bac9-690be8b1e825
+  resourceVersion: '165975'
+  generation: 1
+  creationTimestamp: '2021-05-03T01:38:30Z'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: redis
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-03T01:38:30Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:podManagementPolicy': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:serviceName': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"redis"}':
+                  .: {}
+                  'f:command': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:tcpSocket':
+                      .: {}
+                      'f:port': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":6379,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:tcpSocket':
+                      .: {}
+                      'f:port': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:tcpSocket':
+                      .: {}
+                      'f:port': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/data"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+          'f:updateStrategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:partition': {}
+            'f:type': {}
+          'f:volumeClaimTemplates': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T03:22:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:collisionCount': {}
+          'f:currentReplicas': {}
+          'f:currentRevision': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updateRevision': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: cloud
+      k8s.kuboard.cn/name: redis
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: cloud
+        k8s.kuboard.cn/name: redis
+    spec:
+      containers:
+        - name: redis
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/redis:5.0.2-alpine'
+          command:
+            - redis-server
+            - '--appendonly'
+            - 'yes'
+          ports:
+            - name: redis
+              containerPort: 6379
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 100Mi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          livenessProbe:
+            tcpSocket:
+              port: 6379
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 6379
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            tcpSocket:
+              port: 6379
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: data
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: ceph-raspberry
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: redis
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+status:
+  observedGeneration: 1
+  replicas: 1
+  readyReplicas: 1
+  currentReplicas: 1
+  updatedReplicas: 1
+  currentRevision: redis-cd959c6c9
+  updateRevision: redis-cd959c6c9
+  collisionCount: 0
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: saber-db
+  namespace: spring-blade
+  uid: ea58a737-0d64-4674-8023-9eb2c2c54b8e
+  resourceVersion: '212326'
+  generation: 6
+  creationTimestamp: '2021-05-03T12:09:25Z'
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-db
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-03T12:19:36Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:podManagementPolicy': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:serviceName': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"mysql"}':
+                  .: {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"MYSQL_ALLOW_EMPTY_PASSWORD"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"MYSQL_ROOT_PASSWORD"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:exec':
+                      .: {}
+                      'f:command': {}
+                    'f:failureThreshold': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":3306,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:exec':
+                      .: {}
+                      'f:command': {}
+                    'f:failureThreshold': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:exec':
+                      .: {}
+                      'f:command': {}
+                    'f:failureThreshold': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/var/lib/mysql"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+          'f:updateStrategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:partition': {}
+            'f:type': {}
+          'f:volumeClaimTemplates': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T07:53:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:collisionCount': {}
+          'f:currentReplicas': {}
+          'f:currentRevision': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updateRevision': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: saber-db
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: saber-db
+    spec:
+      containers:
+        - name: mysql
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/saber-db:v3.0.3'
+          ports:
+            - name: mysql
+              containerPort: 3306
+              protocol: TCP
+          env:
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: '1'
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - '-uroot'
+                - '-proot'
+                - ping
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            exec:
+              command:
+                - mysql
+                - '-uroot'
+                - '-proot'
+                - '-e'
+                - "select 1\t"
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            exec:
+              command:
+                - mysql
+                - '-uroot'
+                - '-proot'
+                - '-e'
+                - "select 1\t"
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: data
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: cephfs-raspberry
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: saber-db
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+status:
+  observedGeneration: 6
+  replicas: 1
+  readyReplicas: 1
+  currentReplicas: 1
+  updatedReplicas: 1
+  currentRevision: saber-db-769778997c
+  updateRevision: saber-db-769778997c
+  collisionCount: 0
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: sentinel
+  namespace: spring-blade
+  uid: bc116cc8-bb25-47a9-8170-9b40ce91d429
+  resourceVersion: '165619'
+  generation: 3
+  creationTimestamp: '2021-05-03T11:34:07Z'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: sentinel
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-03T11:34:07Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:podManagementPolicy': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:serviceName': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s.kuboard.cn/layer': {}
+                'f:k8s.kuboard.cn/name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"sentinel"}':
+                  .: {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8858,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:startupProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+          'f:updateStrategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:partition': {}
+            'f:type': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-05-04T03:21:16Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:collisionCount': {}
+          'f:currentReplicas': {}
+          'f:currentRevision': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updateRevision': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: cloud
+      k8s.kuboard.cn/name: sentinel
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: cloud
+        k8s.kuboard.cn/name: sentinel
+    spec:
+      containers:
+        - name: sentinel
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/sentinel-dashboard:1.8.0'
+          ports:
+            - name: web
+              containerPort: 8858
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8858
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8858
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: 8858
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  serviceName: sentinel
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+status:
+  observedGeneration: 3
+  replicas: 1
+  readyReplicas: 1
+  currentReplicas: 1
+  updatedReplicas: 1
+  currentRevision: sentinel-7c869554fc
+  updateRevision: sentinel-7c869554fc
+  collisionCount: 0
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: blade-gateway
+  namespace: spring-blade
+  uid: 8842546b-e82b-416d-87ec-14b7eb1471d3
+  resourceVersion: '125452'
+  creationTimestamp: '2021-05-03T13:58:42Z'
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: blade-gateway
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-03T13:58:42Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:ports':
+            .: {}
+            'k:{"port":80,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+          'f:sessionAffinity': {}
+          'f:sessionAffinityConfig':
+            .: {}
+            'f:clientIP':
+              .: {}
+              'f:timeoutSeconds': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: server
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: blade-gateway
+  clusterIP: 10.96.85.70
+  clusterIPs:
+    - 10.96.85.70
+  type: ClusterIP
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nacos
+  namespace: spring-blade
+  uid: a5ec2331-0183-403f-8aef-d6ae72682de5
+  resourceVersion: '12005'
+  creationTimestamp: '2021-05-02T12:08:02Z'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: nacos
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-02T12:08:02Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          .: {}
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:clusterIP': {}
+          'f:clusterIPs': {}
+          'f:externalTrafficPolicy': {}
+          'f:ipFamilies': {}
+          'f:ipFamilyPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8848,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+          'f:sessionAffinity': {}
+          'f:sessionAffinityConfig':
+            .: {}
+            'f:clientIP':
+              .: {}
+              'f:timeoutSeconds': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: nacos-client
+      protocol: TCP
+      port: 8848
+      targetPort: 8848
+      nodePort: 32000
+  selector:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: nacos
+  clusterIP: 10.96.108.68
+  clusterIPs:
+    - 10.96.108.68
+  type: NodePort
+  sessionAffinity: ClientIP
+  externalTrafficPolicy: Cluster
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nacos-mysql
+  namespace: spring-blade
+  uid: da272de2-14f1-4d61-962b-bfa8f92fe448
+  resourceVersion: '8348'
+  creationTimestamp: '2021-05-02T11:48:41Z'
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: nacos-mysql
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-02T11:48:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:clusterIP': {}
+          'f:ports':
+            .: {}
+            'k:{"port":3306,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: nacos-mysql
+  clusterIP: None
+  clusterIPs:
+    - None
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+  namespace: spring-blade
+  uid: 3fa1762f-cba5-413e-a620-f0cee40f8fb7
+  resourceVersion: '70917'
+  creationTimestamp: '2021-05-03T01:38:31Z'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: redis
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-03T01:38:31Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:clusterIP': {}
+          'f:ports':
+            .: {}
+            'k:{"port":6379,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: redis
+      protocol: TCP
+      port: 6379
+      targetPort: 6379
+  selector:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: redis
+  clusterIP: None
+  clusterIPs:
+    - None
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: saber-db
+  namespace: spring-blade
+  uid: 7408f9c1-4db4-4ba1-84b0-3837b6ca5cd2
+  resourceVersion: '106701'
+  creationTimestamp: '2021-05-03T12:09:25Z'
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-db
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-03T12:09:25Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:clusterIP': {}
+          'f:ports':
+            .: {}
+            'k:{"port":3306,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-db
+  clusterIP: None
+  clusterIPs:
+    - None
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: saber-web
+  namespace: spring-blade
+  uid: 9fcb108d-470c-412d-b378-eba5c1bcecb0
+  resourceVersion: '223410'
+  creationTimestamp: '2021-05-04T08:55:21Z'
+  labels:
+    k8s.kuboard.cn/layer: web
+    k8s.kuboard.cn/name: saber-web
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-04T08:55:21Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:externalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":80,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+          'f:sessionAffinity': {}
+          'f:sessionAffinityConfig':
+            .: {}
+            'f:clientIP':
+              .: {}
+              'f:timeoutSeconds': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: web
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 32102
+  selector:
+    k8s.kuboard.cn/layer: web
+    k8s.kuboard.cn/name: saber-web
+  clusterIP: 10.96.23.131
+  clusterIPs:
+    - 10.96.23.131
+  type: NodePort
+  sessionAffinity: ClientIP
+  externalTrafficPolicy: Cluster
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sentinel
+  namespace: spring-blade
+  uid: e0a446ec-ff59-4622-91cf-0a79a31a52fc
+  resourceVersion: '100599'
+  creationTimestamp: '2021-05-03T11:34:07Z'
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: sentinel
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-03T11:34:07Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+        'f:spec':
+          'f:externalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8858,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s.kuboard.cn/layer': {}
+            'f:k8s.kuboard.cn/name': {}
+          'f:sessionAffinity': {}
+          'f:sessionAffinityConfig':
+            .: {}
+            'f:clientIP':
+              .: {}
+              'f:timeoutSeconds': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: web
+      protocol: TCP
+      port: 8858
+      targetPort: 8858
+      nodePort: 32100
+  selector:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: sentinel
+  clusterIP: 10.96.213.78
+  clusterIPs:
+    - 10.96.213.78
+  type: NodePort
+  sessionAffinity: ClientIP
+  externalTrafficPolicy: Cluster
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: blade-config
+  namespace: spring-blade
+  uid: ac725821-bcd5-4e58-a0c8-00735d304b1b
+  resourceVersion: '185305'
+  creationTimestamp: '2021-05-03T13:25:44Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-03T13:25:44Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:NACOS_SERVER_ADDR': {}
+          'f:PROFILE': {}
+          'f:SENTINEL_DASHBOARD_ADDR': {}
+data:
+  NACOS_SERVER_ADDR: 'nacos-0.nacos:8848'
+  PROFILE: test
+  SENTINEL_DASHBOARD_ADDR: 'sentinel-0.sentinel:8858'
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nacos-config
+  namespace: spring-blade
+  uid: 4b911330-5b49-4c22-a8c3-6aee1e44dff6
+  resourceVersion: '1790'
+  creationTimestamp: '2021-05-02T10:57:33Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2021-05-02T10:57:33Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:custom.properties': {}
+data:
+  custom.properties: |-
+    #spring.security.enabled=false
+    #management.security=false
+    #security.basic.enabled=false
+    #nacos.security.ignore.urls=/**
+    #management.metrics.export.elastic.host=http://localhost:9200
+    # metrics for prometheus
+    management.endpoints.web.exposure.include=*
+
+    # metrics for elastic search
+    #management.metrics.export.elastic.enabled=false
+    #management.metrics.export.elastic.host=http://localhost:9200
+
+    # metrics for influx
+    #management.metrics.export.influx.enabled=false
+    #management.metrics.export.influx.db=springboot
+    #management.metrics.export.influx.uri=http://localhost:8086
+    #management.metrics.export.influx.auto-create-db=true
+    #management.metrics.export.influx.consistency=one
+    #management.metrics.export.influx.compressed=true
+
