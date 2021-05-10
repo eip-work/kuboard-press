@@ -89,8 +89,7 @@ meta:
 
 * 趋势图
 
-  <a href="https://whnb.wang/smallc/SpringBlade" rel="nofollow"><img src="index.assets/SpringBlade.png" alt="Stargazers over time"></a>
-
+  <a href="https://whnb.wang/smallc/SpringBlade" rel="nofollow"><img src="https://whnb.wang/img/smallc/SpringBlade" alt="Stargazers over time"></a>
 
 
 * 项目地址

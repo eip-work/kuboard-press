@@ -85,19 +85,17 @@ meta:
     * [Deployment故障排除](/learning/k8s-advanced/ts/deployment.html)
     * [数据卷 Volume](/learning/k8s-intermediate/persistent/volume.html)
     * [使用KuboardProxy](/guide/proxy/)
-    * [使用port-forward访问集群中的应用程序](/learning/k8s-practice/access/port-forward.html)
+    <!-- * [使用port-forward访问集群中的应用程序](/learning/k8s-practice/access/port-forward.html) -->
     * [Kubernetes网络模型](/learning/k8s-intermediate/service/network.html)
     * [容器应用的设计原则、模式和反模式](/learning/k8s-practice/micro-service/design-pattern.html)
-    * [尝试部署完整的微服务](/learning/k8s-practice/ocp/)
+    * [尝试部署完整的微服务](/learning/k8s-practice/spring-blade/)
     * [自动伸缩](/learning/k8s-advanced/hpa/hpa.html)
     * [自动伸缩-例子](/learning/k8s-advanced/hpa/walkthrough.html)
   * 完善工具配置
     * [掌握快速部署高可用Kubernetes集群的窍门](https://github.com/fanux/sealos)
-    * [自定义Kuboard名称空间布局](/install/install-kuboard-layout.html)
-    * [创建ServiceAccount并授权其访问指定的名称空间](/learning/k8s-advanced/sec/kuboard.html)
-    * [实现Kubernetes与GitLab/GitHub的单点登录](/learning/k8s-advanced/sec/authenticate/install.html)
+    * [授权用户访问指定的名称空间](/learning/k8s-advanced/sec/rbac/auth-namespace.html)
     * [了解日志聚合](/learning/k8s-advanced/logs/)
-    * [了解Kubernetes的监控](/guide/example/monitor-v2.html)
+    * [了解Kubernetes的监控](/learning/k8s-practice/spring-blade/monitor/monitor.html)
     <!-- * [免费获得Kuboard授权](/support/) -->
   * 按教程章节顺序对 Kubernetes 各种概念进行深入理解
   * CI/CD 工具链
@@ -210,6 +208,25 @@ meta:
   * 导入一个完整的 example 微服务应用，体验 Spring Cloud 在 Kubernetes 上的部署过程。
 * [在微服务上下文中监控 example](/guide/example/monitor-v2.html) 
   * 根据微服务上下文查看监控结果
+
+在 Kubernetes 上部署 Spring Cloud 微服务：（Spring Blade）
+
+* 准备
+  * [环境准备](/learning/k8s-practice/spring-blade/prepare/prepare.html)
+  * [构建镜像](/learning/k8s-practice/spring-blade/prepare/build.html)
+* [部署](/learning/k8s-practice/spring-blade/deploy/)
+  * [部署 Nacos](/learning/k8s-practice/spring-blade/deploy/nacos.html)
+  * [部署其他基础软件](/learning/k8s-practice/spring-blade/deploy/m.html)
+  * [部署微服务层](/learning/k8s-practice/spring-blade/deploy/blade-svc.html)
+  * [部署 saber-web](/learning/k8s-practice/spring-blade/deploy/saber-web.html)
+  * [验证 SpringBlade 部署结果](/learning/k8s-practice/spring-blade/deploy/validate.html)
+* [导入导出](/learning/k8s-practice/spring-blade/import/)
+  * [导出 yaml](/learning/k8s-practice/spring-blade/import/export.html)
+  * [导入 yaml](/learning/k8s-practice/spring-blade/import/import.html)
+* [监控及日志](/learning/k8s-practice/spring-blade/monitor/)
+  * [监控](/learning/k8s-practice/spring-blade/monitor/monitor.html)
+  * [聚合日志](/learning/k8s-practice/spring-blade/monitor/logs.html)
+
 
 在 Kubernetes 上部署 Spring Cloud 微服务：(Open Capacity Platform)
 

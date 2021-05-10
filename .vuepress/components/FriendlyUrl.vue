@@ -6,10 +6,10 @@
         <a href="https://beian.miit.gov.cn" target="_blank">京ICP备19008693号-2</a>
       </span>
     </div>
-    <div style="margin-top: 20px;">
+    <div style="margin-top: 20px; text-align: center;">
+    <div>友情链接：</div>
     </div>
     <div class="friend-section" v-show="!$isSharing">
-      友情链接：
       <div v-for="(item, index) in urls" class="friend-a" :key="'u' + index">
         <a target="_blank" :href="item.url + ( item.url.indexOf('?') > 0 ?  '&utm_source=kuboard.cn' : '?utm_source=kuboard.cn')"
           @click="$sendGaEvent('友情链接', '友情链接: ' + item.name, '友情链接:' + item.name + ' --- ' + $page.path)">
@@ -31,7 +31,9 @@ export default {
   data () {
     return {
       urls: [
-        {name: 'Linux Foundation 开源软件大学', url: 'https://training.linuxfoundation.cn', icon: 'https://training.linuxfoundation.cn/assets/img/logo.svg'},
+        {name: '仁聚汇通', url: 'http://www.eigpay.com/', icon: 'http://www.eigpay.com/images/site-logo.png'},
+        {name: 'SpringBlade', url: 'https://bladex.vip/', icon: '/images/ads/spring-blade.png'},
+        {name: 'Linux Foundation', url: 'https://training.linuxfoundation.cn', icon: 'https://training.linuxfoundation.cn/assets/img/logo.svg'},
         {name: 'sealos', url: 'http://store.lameleg.com?referrer=shaohq', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/blog/2019-08-27-044824.jpg'},
         {name: '云原生实验室', url: 'https://fuckcloudnative.io/', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/favicon-32x32.png'},
       ]
@@ -48,6 +50,8 @@ export default {
 
 .friend-section {
   margin-top: 10px; text-align: center; margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .friend-link {
@@ -81,7 +85,7 @@ export default {
 }
 
 .friend-name {
-  width: 240px;
+  min-width: 120px;
   text-align: left;
   display: inline-block;
 }
