@@ -48,7 +48,7 @@ SpringBlade 使用 nacos 作为微服务配置中心，按照本文描述的步�
   | Data ID  | `blade-test.yaml`                                            | <div style="color: red; font-weight: bold;">此处为 `blade-test.yaml` 不要写错</div> |
   | Group    | `DEFAULT_GROUP`                                              |                                                              |
   | 配置格式 | `YAML`                                                       |                                                              |
-  | 配置内容 <div style="width: 80px;"></div> | 链接 <a href="https://gitee.com/smallc/SpringBlade/raw/v3.0.3/doc/nacos/blade-k8s.yaml" target="_blank">https://gitee.com/smallc/SpringBlade/raw/v3.0.3/doc/nacos/blade-k8s.yaml</a> | 在浏览器打开该链接，并将其内容复制粘贴到 ***配置内容*** 字段；<br /><div style="color: red; font-weight: bold;">此处使用 `blade-k8s.yaml` 文件中的内容，不要弄错</div> |
+  | 配置内容 <div style="width: 80px;"></div> | 链接 <a href="https://gitee.com/smallc/SpringBlade/raw/v3.0.3/script/kuboard/blade-k8s.yaml" target="_blank">https://gitee.com/smallc/SpringBlade/raw/v3.0.3/script/kuboard/blade-k8s.yaml</a> | 在浏览器打开该链接，并将其内容复制粘贴到 ***配置内容*** 字段；<br /><div style="color: red; font-weight: bold;">此处使用 `blade-k8s.yaml` 文件中的内容，不要弄错</div> |
 
 
 
