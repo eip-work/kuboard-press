@@ -116,3 +116,35 @@ Kuboard v3 中，采用两阶段授权的方式控制用户/用户组在 Kuboard
 完成前述 第一阶段授权、第二阶段 两个步骤后，以 `test` 用户登录 Kuboard 界面，并点击首页的 `k8s-21` 集群，在弹出框中可以看到 `default` 名称空间已经变成了已授权的状态，点击 `default` 可以进入该名称空间，如下图所示：
 
 ![image-20210418160920808](./auth-namespace.assets/image-20210418160920808.png)
+
+## selfsubjectaccessreviews
+
+Kuboard 客户端需要调用 Kubernetes 的 `/apis/authorization.k8s.io/v1/selfsubjectrulesreviews` 接口用于确定界面上哪些菜单显示，哪些菜单不显示。极少部分情况下，您的集群可能没有授予 `system:authenticated` 用户组该权限，例如阿里云托管的 K8S 集群。
+
+在这种情况下，Kuboard （v3.1.1.8及以上版本）将在界面上做出如下提示：
+
+![缺少权限](./auth-namespace.assets/selfsubjectaccessreviews-00.png)
+
+解决此问题的办法是，将 `system:basic-user`、`system:discover`、`system:public-info-viewer` 这三个 ClusterRole 绑定到您的用户或者用户组，步骤如下：
+
+* 点击右上角的用户名，确认当前用户所属的用户组，如下图所示：
+
+  图中，用户属于 `administrators` 用户组。如果您的界面上显示，当前用户属于多个用户组，您只需要挑选其中一个用户组与 `system:basic-user`、`system:discover`、`system:public-info-viewer` 这三个 ClusterRole 绑定。
+
+  ![确认当前用户所属的用户组](./auth-namespace.assets/ssrr_01.png)
+
+* 使用 Serviceaccount kuboard-admin 的身份切换到菜单 ***访问控控制*** --> ***用户组***，如下图所示：
+
+  ![Group授权列表](./auth-namespace.assets/ssrr_02.png)
+
+* 在上图中，点击 ***为新 Group 授权*** 并填写 Group Name `administrators`，然后点击确定，将跳转到如下界面：
+
+  ![Group授权页面](./auth-namespace.assets/ssrr_03.png)
+
+* 点击上图中 ***ClusterRoleBinding*** 后面的 ***添加*** 按钮，如下图所示：
+
+  在关联的 ClusterRole 里选择名称为 `system:basic-user` 的 ClusterRole，并点击 ***保存*** 按钮，此步骤将创建一个 ClusterRoleBinding，将用户组 `administrators` 与 ClusterRole `system:basic-user` 关联到一起。
+
+  ![创建ClusterRoleBinding](./auth-namespace.assets/ssrr_04.png)
+
+* 重复上述步骤，再创建两个 ClusterRoleBinding，并将 `administrators` 与 `system:discover` 以及 `system:public-info-viewer` 关联起来。
