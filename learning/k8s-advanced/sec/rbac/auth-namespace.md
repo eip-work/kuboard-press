@@ -148,3 +148,5 @@ Kuboard 客户端需要调用 Kubernetes 的 `/apis/authorization.k8s.io/v1/self
   ![创建ClusterRoleBinding](./auth-namespace.assets/ssrr_04.png)
 
 * 重复上述步骤，再创建两个 ClusterRoleBinding，并将 `administrators` 与 `system:discover` 以及 `system:public-info-viewer` 关联起来。
+
+完成上述步骤后，您在使用被授权用户访问 Kuboard 界面就可以正常了。
