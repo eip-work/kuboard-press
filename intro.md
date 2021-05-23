@@ -8,12 +8,14 @@ description: Kubernetes教程_本文简要介绍了Kuboard
 Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernetes 版本 1.13 及以上。Kuboard 每周发布一个 beta 版本，最长每月发布一个正式版本，经过两年的不断迭代和优化，已经具备多集群管理、权限管理、监控套件、日志套件等丰富的功能，并且有 1000+ 的企业将 Kuboard 应用于其生产环境。Kuboard 自 2019年8月发布第一个版本以来，得到了众多用户的认可，目前已经获得了 9300+ GitHub Star
 
 <p>
-
-<a aria-label="github" href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
-  <img src="https://badgen.net/github/stars/eip-work/kuboard-press?label=github stars" style="height: 320px; width: 540px;"/>
-</a>
-
+  <a aria-label="github" href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
+    <img src="https://badgen.net/github/stars/eip-work/kuboard-press?label=github stars"/>
+  </a>
 </p>
+
+<a href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
+  <img src="https://starchart.cc/eip-work/kuboard-press.svg" alt="Kubernetes教程_Kuboard_Github_Star" style="height: 320px; width: 540px;">
+</a>
 
 点击这里可以查看 [Kuboard 的安装文档](https://kuboard.cn/install/v3/install.html)
 
