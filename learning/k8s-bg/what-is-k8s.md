@@ -101,5 +101,5 @@ Kubernetes：
 * 不提供或者限定配置语言（例如，jsonnet）。Kubernetes提供一组声明式的 API，您可以按照自己的方式定义部署信息。
   > 译者注：可选的有 helm/kustomize/kubectl/kubernetes dashboard/kuboard/octant/k9s 等
 * 不提供或限定任何机器的配置、维护、管理或自愈的系统。
-  > 译者注：在这个级别上，可选的组件有 puppet、ansible、open stack 等
+  > 译者注：在这个级别上，可选的组件有 puppet、ansible、salt stack 等
 * 此外，Kubernetes不是一个纯粹意义上的容器编排系统。事实上，Kubernetes 消除了容器编排的需求。容器编排的技术定义是`预定义流程的执行`（先做A、再做B、然后做C）。与此相对应，Kubernetes构建了一系列相互独立、可预排的控制过程，以持续不断地将系统从当前状态调整到声明的目标状态。如何从 A 达到 C，并不重要。集中化的控制也就不需要了。这个设计思想使得Kubernetes使用更简单、更强大、稳健、反脆弱和可扩展。
