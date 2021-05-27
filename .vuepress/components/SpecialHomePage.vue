@@ -154,7 +154,7 @@ export default {
 
     actionLink () {
       return {
-        link: `http://demo.kuboard.cn:10080`,
+        link: `http://demo.kuboard.cn`,
         text: this.data.actionText
       }
     },
