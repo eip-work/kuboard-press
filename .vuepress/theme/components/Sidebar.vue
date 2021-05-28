@@ -34,8 +34,8 @@
       </p>
       <div>
         <KuboardDemo suffix="sidebar3">
-          <a target="_blank" href="http://demo.kuboard.cn">
-            <FancyImage style="width: 242px;" src="/images/preview.png" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="http://demo.kuboard.cn"></FancyImage>
+          <a target="_blank" href="https://demo.kuboard.cn">
+            <FancyImage style="width: 242px;" src="/images/preview.png" alt="Kubernetes教程_Kuboard在线体验" title="Kuboard" description="https://demo.kuboard.cn"></FancyImage>
           </a>
         </KuboardDemo>
       </div>

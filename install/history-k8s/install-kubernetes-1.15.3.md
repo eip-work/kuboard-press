@@ -508,9 +508,7 @@ kubectl apply -f https://kuboard.cn/install-script/v1.15.3/nginx-ingress.yaml
 [安装 Kuboard](/install/v3/install.html)
 
 安装 Kuboard 之前先
-  <a target="_blank" :href="`http://demo.kuboard.cn/dashboard?k8sToken=${$site.themeConfig.kuboardToken}`">
-    在线体验 Kuboard
-  </a>
+  <KuboardDemo suffix="install" label="在线体验 Kuboard" color="#007af5"/>
 
 <!-- </div>
 

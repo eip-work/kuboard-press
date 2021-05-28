@@ -19,7 +19,7 @@
         在线演示环境中，您具备 <span style="color: red; font-weight: bold">只读</span> 权限，只能体验 Kuboard 的一部分功能。<br/>
       </div>
       <div style="padding: 10px; border: 1px solid #eee; border-radius: 10px; margin: 10px 0px; background-color: #fafafa;">
-        <a href="http://demo.kuboard.cn" target="_blank">http://demo.kuboard.cn</a> <br/>
+        <a href="https://demo.kuboard.cn" target="_blank">https://demo.kuboard.cn</a> <br/>
         <div style="width: 60px; display: inline-block;margin-top: 5px;">用&nbsp;户</div>
         demo <br/>
         <div style="width: 60px; display: inline-block">密&nbsp;码</div>
