@@ -4,6 +4,7 @@ module.exports = {
   // configureWebpack: () => ({
   //   devtool: 'source-map'
   // }),
+  port: 8000,
   modules: ['bootstrap-vue/nuxt'],
   title: 'Kuboard',
   description: '一款Kubernetes_Dashboard_简化Kubernetes的学习和使用_帮助您快速落地Kubernetes_提供_Kubernetes_免费中文教程_国内安装文档',
