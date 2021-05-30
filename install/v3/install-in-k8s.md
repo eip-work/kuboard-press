@@ -14,9 +14,8 @@ meta:
 
 刚接触 K8S 的同学，强烈建议您使用 [内建用户库](./install-built-in.html) 的方式安装 Kuboard-v3，在 K8S 中安装 Kuboard v3 时，需要理解更复杂的端口映射方式、存储卷声明/存储类等概念。
 
-因为在 K8S 中安装 Kuboard 的出错率高，作者只对已经购买了 Kuboard 增强版 99 年授权的用户提供与此相关的答疑。
-
 :::
+
 ## 安装步骤
 
 * 获取部署 Kuboard 所需的 YAML 文件：
