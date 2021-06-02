@@ -36,10 +36,10 @@ export default {
   props: {
   },
   data() {
-    console.log(location.search, 'search')
+    console.log(window.location.search, 'search')
     return {
       showLogout: false,
-      isdebugging: location.search === '?showLogin=true'
+      isdebugging: window.location.search === '?showLogin=true'
     }
   },
   computed: {
