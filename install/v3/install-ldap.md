@@ -30,9 +30,9 @@ Kuboard 支持多种认证方式：
 在正式安装 kuboard v3 之前，需做好一个简单的部署计划的设计，在本例中，各组件之间的连接方式，如下图所示：
 
 
-* 用户通过 http://外网IP:10080 访问 Kuboard v3；
+* 用户通过 http://外网IP:80 访问 Kuboard v3；
 * Kuboard 通过 `localhost:389` 和 `localhost:636` 访问 LDAP；
-* 安装在 Kubernetes 中的 Kuboard Agent 通过 `内网IP:10080` 访问 Kuboard 的 Web 服务端口 10080 和 Kuboard Agent Server 端口 10081。
+* 安装在 Kubernetes 中的 Kuboard Agent 通过 `内网IP:80` 访问 Kuboard 的 Web 服务端口 80 和 Kuboard Agent Server 端口 10081。
 
 
 ![image-20210109231936944](./install-ldap.assets/image-20210120224708873.png)
@@ -131,12 +131,12 @@ Kuboard 支持多种认证方式：
 sudo docker run -d \
   --restart=unless-stopped \
   --name=kuboard \
-  -p 10080:80/tcp \
+  -p 80:80/tcp \
   -p 10081:10081/udp \
   -p 10081:10081/tcp \
   -v /Users/shaohuanqing/temp/kuboard-data:/data \
   -e KUBOARD_LOGIN_TYPE="ldap" \
-  -e KUBOARD_ENDPOINT="http://内网IP:10080" \
+  -e KUBOARD_ENDPOINT="http://内网IP:80" \
   -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -e KUBOARD_ROOT_USER="shaohq" \
@@ -170,11 +170,11 @@ sudo docker run -d \
 
 ::: tip 参数说明
 * 建议将此命令保存为一个 shell 脚本，例如 `start-kuboard.sh`，后续升级 Kuboard 或恢复 Kuboard 时，需要通过此命令了解到最初安装 Kuboard 时所使用的参数；
-* 第 4 行，Kuboard v3.x 需要暴露 `80` 端口，如安装指令的第三行所示，默认映射到了宿主机的 `10080` 端口，您可以根据自己的情况选择宿主机的其他端口；
+* 第 4 行，Kuboard v3.x 需要暴露 `80` 端口，如安装指令的第三行所示，默认映射到了宿主机的 `80` 端口，您可以根据自己的情况选择宿主机的其他端口；
 * 第 5、6 行，Kuboard v3.x 需要暴露 `10081` 端口 TCP / UDP，默认映射到了宿主机的 `10081` 端口，您可以根据自己的情况选择宿主机的其他端口；
 * 第 7 行，Kuboard v3.x 的持久化数据存储在 `/data` 目录，默认映射到了宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况进行调整；
 * 第 8 行，将 Kuboard v3.x 与 GitLab 进行单点登录集成时，必须指定环境变量 `KUBOARD_LOGIN_TYPE` 为 `gitlab` （适用于 gitlab.com / gitlab-ee / gitlab-ce）；
-* 第 9 行，必须指定 `KUBOARD_ENDPOINT` 环境变量为访问 Kuboard 界面的 URL；（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://内网IP:10080` 作为通过执行此命令启动的 Kuboard 的访问 URL）；此参数不能以 `/` 结尾；
+* 第 9 行，必须指定 `KUBOARD_ENDPOINT` 环境变量为访问 Kuboard 界面的 URL；（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://内网IP:80` 作为通过执行此命令启动的 Kuboard 的访问 URL）；此参数不能以 `/` 结尾；
 * 第 10、11 行，指定 KUBOARD_AGENT_SERVER 的端口为 `10081`，此参数与第 5、6 行中的宿主机端口应保持一致，修改此参数不会改变容器内监听的端口 `10081`；
 * 第 12 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitLab 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
 :::
@@ -206,7 +206,7 @@ LDAP 相关的参数相对复杂，本章节以 Kuboard 集成 LDAP 时，对 LD
 
 ## 访问 Kuboard 界面
 
-* 在浏览器中输入 `http://外网IP:10080`，将进入登录界面；
+* 在浏览器中输入 `http://外网IP:80`，将进入登录界面；
 * 在登录界面中输入您在 LDAP 中的用户名、密码，并点击登录按钮，您将可以成功登录 Kuboard。
 
 ::: tip 浏览器兼容性

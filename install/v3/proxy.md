@@ -45,12 +45,12 @@ http {
     server_name  kuboard.this-is-a-sample.com; # 替换成你的域名
 
     location / {
-      proxy_pass http://192.168.32.205:10080/;  # 替换成你的 Kuboard IP 地址和端口，应该是 IP 地址，而不是 KUBOARD_ENDPOINT 参数的值
+      proxy_pass http://192.168.32.205:80/;  # 替换成你的 Kuboard IP 地址和端口，应该是 IP 地址，而不是 KUBOARD_ENDPOINT 参数的值
       gzip on;
     }
 
     location /k8s-ws/ {
-      proxy_pass  http://192.168.32.205:10080/k8s-ws/;  # 替换成你的 Kuboard IP 地址和端口
+      proxy_pass  http://192.168.32.205:80/k8s-ws/;  # 替换成你的 Kuboard IP 地址和端口
       proxy_http_version 1.1;
       proxy_pass_header Authorization;
       proxy_set_header Upgrade "websocket";
@@ -62,7 +62,7 @@ http {
     }
 
     location /k8s-proxy/ {
-      proxy_pass  http://192.168.32.205:10080/k8s-proxy/;  # 替换成你的 Kuboard IP 地址和端口
+      proxy_pass  http://192.168.32.205:80/k8s-proxy/;  # 替换成你的 Kuboard IP 地址和端口
       proxy_http_version 1.1;
       proxy_pass_header Authorization;
       proxy_set_header Upgrade $http_upgrade;
