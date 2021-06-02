@@ -170,7 +170,7 @@ export default {
         this.$login(resp.data.data)
         this.loginLoading = false
         console.log(this.goStandAlone)
-        if (this.goStandAlone) {
+        if (this.goStandAlone && typeof window !== 'undefined') {
           window.location.href = '/chat/'
         } else {
           this.$emit('loginSuccess')

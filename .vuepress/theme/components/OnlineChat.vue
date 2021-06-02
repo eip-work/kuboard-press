@@ -15,37 +15,45 @@ import axios from 'axios'
 import {format} from 'date-fns'
 import Cookies from 'js-cookie'
 
-(function(a, b, c, d, e, j, s) {
-    a[d] = a[d] || function() {
-        (a[d].a = a[d].a || []).push(arguments)
-    };
-    j = b.createElement(c),
-        s = b.getElementsByTagName(c)[0];
-    j.async = true;
-    j.charset = 'UTF-8';
-    j.src = 'https://static.meiqia.com/widget/loader.js';
-    s.parentNode.insertBefore(j, s);
-})(window, document, 'script', '_MEIQIA');
-_MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0');
-_MEIQIA('manualInit');
-_MEIQIA('withoutBtn');
-
 let TOKEN_KEY = 'kb-user-center-token'
 
 export default {
   props: {
   },
   data() {
-    console.log(window.location.search, 'search')
-    return {
-      showLogout: false,
-      isdebugging: window.location.search === '?showLogin=true'
+    if (typeof window !== 'undefined') {
+      console.log(window.location.search, 'search')
+      return {
+        showLogout: false,
+        isdebugging: window.location.search === '?showLogin=true'
+      }
+    } else {
+      return {
+        showLogout: false,
+        isdebugging: false
+      }
     }
   },
   computed: {
   },
   components: { OnlineChatLogin },
   mounted () {
+    if (typeof window !== 'undefined') {
+      (function(a, b, c, d, e, j, s) {
+          a[d] = a[d] || function() {
+              (a[d].a = a[d].a || []).push(arguments)
+          };
+          j = b.createElement(c),
+              s = b.getElementsByTagName(c)[0];
+          j.async = true;
+          j.charset = 'UTF-8';
+          j.src = 'https://static.meiqia.com/widget/loader.js';
+          s.parentNode.insertBefore(j, s);
+      })(window, document, 'script', '_MEIQIA');
+      _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0');
+      _MEIQIA('manualInit');
+      _MEIQIA('withoutBtn');
+    }
   },
   methods: {
     showChat () {
