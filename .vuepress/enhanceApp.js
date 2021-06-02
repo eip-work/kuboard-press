@@ -13,6 +13,7 @@ import Container from './grid/Container'
 import Grid from './grid/Grid'
 import GridItem from './grid/GridItem'
 import defaults from './grid/utils/defaults'
+import './login-manager.js'
 
 import Comp from './comp/index'
 

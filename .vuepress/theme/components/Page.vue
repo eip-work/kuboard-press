@@ -58,6 +58,7 @@
     <LazyLoad :noAdsOnSharing="true">
       <AdSenseRightSide v-show="!$isSharing"/>
     </LazyLoad>
+    <OnlineChat></OnlineChat>
   </main>
 </template>
 
@@ -65,9 +66,10 @@
 import PageEdit from '@theme/components/PageEdit.vue'
 import PageNav from '@theme/components/PageNav.vue'
 import JoinCommunity from './JoinCommunity'
+import OnlineChat from './OnlineChat.vue'
 
 export default {
-  components: { PageEdit, PageNav, JoinCommunity },
+  components: { PageEdit, PageNav, JoinCommunity, OnlineChat },
   props: ['sidebarItems'],
   data () {
     return {

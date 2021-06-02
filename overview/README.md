@@ -101,7 +101,6 @@ Kuboard，是一款免费的 Kubernetes 图形化管理工具，Kuboard 力图�
       <b-card style="height: 100%; color: #2c3e50; line-height: 1.7;" shadow="hover">
         <p>
            <KuboardDemo suffix="install" label="在线体验 Kuboard" color="#007af5"/>
-
         </p>
         <p>
         为保证环境的稳定性，在线 Demo 中只提供只读权限。<span style="color: #F56C6C; font-weight: 500;">（请在PC浏览器中打开）</span>

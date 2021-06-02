@@ -31,6 +31,7 @@
     <main class="page" style="padding-top: 2rem;">
       <Content class="theme-default-content" style="padding-top: 0; margin-top: 0; padding-bottom: 1rem;"/>
       <PageVssue style="max-width: 1000px; margin: auto; padding: 0 2.5rem;"></PageVssue>
+      <OnlineChat></OnlineChat>
     </main>
   </div>
 </template>
@@ -41,9 +42,10 @@ import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
 import { resolveSidebarItems } from '../theme/util'
+import OnlineChat from '../theme/components/OnlineChat.vue'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar },
+  components: { Home, Page, Sidebar, Navbar, OnlineChat },
 
   data () {
     return {

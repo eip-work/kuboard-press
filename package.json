@@ -14,6 +14,7 @@
     "animated-number-vue": "^1.0.0",
     "aos": "^2.3.4",
     "axios": "^0.19.2",
+    "js-cookie": "^2.2.1",
     "babel-plugin-component": "^1.1.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",

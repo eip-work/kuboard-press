@@ -13,7 +13,7 @@
                 <!-- <span>微信扫码</span> -->
                 <p style="margin-top: 10px; margin-bottom: 0; text-align: center;">
                   <!-- <img src="/images/dz.png" style="width: 150px;"></img> -->
-                  <img src="./JoinCKACommunity.jpeg" style="width: 150px; padding: 10px;"></img>
+                  <img src="./JoinCKACommunity.jpeg" style="width: 150px; padding: 10px;"/>
                 </p>
               </div>
             </div>
