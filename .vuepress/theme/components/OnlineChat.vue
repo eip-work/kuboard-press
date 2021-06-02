@@ -36,6 +36,7 @@ export default {
   props: {
   },
   data() {
+    console.log(location.search, 'search')
     return {
       showLogout: false,
       isdebugging: location.search === '?showLogin=true'
