@@ -3,7 +3,10 @@ import Cookies from 'js-cookie'
 
 let TOKEN_KEY = 'kb-user-center-token'
 
-let domain = window.location.hostname
+let domain = ''
+if (typeof window !== 'undefined') {
+  domain = window.location.hostname
+}
 if (domain.indexOf('kuboard.cn') >= 0) {
   domain = 'kuboard.cn'
 }

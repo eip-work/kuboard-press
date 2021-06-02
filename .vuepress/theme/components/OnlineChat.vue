@@ -129,7 +129,7 @@ export default {
     logout () {
       this.showLogout = false
       _MEIQIA('hidePanel')
-      localStorage.removeItem(TOKEN_KEY)
+      this.$logout()
     }
   },
 }
