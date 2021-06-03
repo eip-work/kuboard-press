@@ -130,7 +130,7 @@
       if (!getCookie(TOKEN_KEY)) {
         let target = '/support/?showLogin=true'
         if (data.kuboard) {
-          target = '/support/?kuboard-data=' + data.kuboard
+          target = '/support/?kuboard=' + data.kuboard
         } else {
           window.alert('请先登录')
         }
