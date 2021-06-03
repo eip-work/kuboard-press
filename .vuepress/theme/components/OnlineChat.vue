@@ -1,8 +1,10 @@
 <template>
   <div v-if="isdebugging">
     <OnlineChatLogin ref="loginWindow" @loginSuccess="loginSuccess"></OnlineChatLogin>
-    <b-button variant="outline-primary" size="sm" class="logout" v-if="showLogout" @click="logout">退出登录</b-button>
-    <b-button variant="primary" size="sm" class="openChatWindow" v-if="showLogout" @click="openChatWindow">打开单独的聊天窗口</b-button>
+    <template v-if="$route.path.indexOf('/install/v3/') < 0">
+      <b-button variant="outline-primary" size="sm" class="logout" v-if="showLogout" @click="logout">退出登录</b-button>
+      <b-button variant="primary" size="sm" class="openChatWindow" v-if="showLogout" @click="openChatWindow">打开单独的聊天窗口</b-button>
+    </template>
     <div class="frameButton" @click="showChat">
       <span class="ecMDHC"></span>
     </div>
@@ -52,11 +54,26 @@ export default {
       _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0');
       _MEIQIA('manualInit');
       _MEIQIA('withoutBtn');
+
+      if (this.$route.path.indexOf('/install/v3/') === 0) {
+        setTimeout(_ => {
+          this.loginSuccess()
+        }, 3000)
+      }
+    }
+  },
+  watch: {
+    '$route.path': function (newValue, oldValue) {
+      if (newValue.indexOf('/install/v3/') === 0) {
+        this.loginSuccess()
+      }
+      if (newValue.indexOf('/install/v3/') !== 0 && !Cookies.get(TOKEN_KEY)) {
+        _MEIQIA('hidePanel')
+      }
     }
   },
   methods: {
     showChat () {
-      console.log(Cookies.get(TOKEN_KEY))
       if (Cookies.get(TOKEN_KEY)) {
         this.loginSuccess()
         // _MEIQIA('showPanel');
@@ -65,57 +82,57 @@ export default {
       }
     },
     async loginSuccess () {
-      this.showLogout = true
       let ax = axios.create({
         baseURL: '/uc-api',
-        // headers: {
-        //   common: {
-        //     Authorization: localStorage.getItem(TOKEN_KEY)
-        //   }
-        // }
       })
       let orders = []
       let user = undefined
-      await ax.get(`/orders/list`, {params: {
-        status: 'PAID',
-        pageNum: 1,
-        pageSize: 1000
-      }}).then(resp => {
-        orders = resp.data.items
-      }).catch(e => {
-        console.log(e)
-      })
-      await ax.get('/users/selfInfo').then(resp => {
-        user = resp.data.data
-      }).catch(e => {
-        console.log(e)
-      })
-
-      _MEIQIA('clientId', user.id)
-
-      let totalAmount = 0
-      for (let order of orders) {
-        totalAmount += order.totalPrice
-      }
-      totalAmount = Math.round(totalAmount)
 
       let metadata = {
-        name: user.name, // 美洽默认字段
-        email: user.email,
-        tel: user.mobile,
-        Count: orders.length,
-        Amount: totalAmount,
-        uc_id: user.id,
+        name: '匿名用户'
       }
-      for (let i in orders) {
-        let order = orders[i]
-        let prefix = 'r' + (parseInt(i) + 1)
-        if (i >= 5) {
-          break
+      if (Cookies.get(TOKEN_KEY)) {
+        this.showLogout = true
+        await ax.get('/users/selfInfo').then(resp => {
+          user = resp.data.data
+        }).catch(e => {
+          console.log(e)
+        })
+        await ax.get(`/orders/list`, {params: {
+          status: 'PAID',
+          pageNum: 1,
+          pageSize: 1000
+        }}).then(resp => {
+          orders = resp.data.items
+        }).catch(e => {
+          console.log(e)
+        })
+        _MEIQIA('clientId', user.id)
+
+        let totalAmount = 0
+        for (let order of orders) {
+          totalAmount += order.totalPrice
         }
-        metadata[prefix + '_id'] = order.id //`${order.id} -- ${order.description} -- ${format(order.createTime, 'YYYY-MM-DD HH:mm')}`
-        metadata[prefix + '_desc'] = order.description
-        metadata[prefix + '_time'] = format(order.createTime, 'YYYY-MM-DD HH:mm')
+        totalAmount = Math.round(totalAmount)
+
+        metadata = {
+          name: user.name, // 美洽默认字段
+          email: user.email,
+          tel: user.mobile,
+          Count: orders.length,
+          Amount: totalAmount,
+          uc_id: user.id,
+        }
+        for (let i in orders) {
+          let order = orders[i]
+          let prefix = 'r' + (parseInt(i) + 1)
+          if (i >= 5) {
+            break
+          }
+          metadata[prefix + '_id'] = order.id //`${order.id} -- ${order.description} -- ${format(order.createTime, 'YYYY-MM-DD HH:mm')}`
+          metadata[prefix + '_desc'] = order.description
+          metadata[prefix + '_time'] = format(order.createTime, 'YYYY-MM-DD HH:mm')
+        }
       }
 
       _MEIQIA('metadata', metadata);
