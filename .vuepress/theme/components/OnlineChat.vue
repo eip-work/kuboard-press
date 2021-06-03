@@ -5,7 +5,15 @@
       <b-button variant="outline-primary" size="sm" class="logout" v-if="showLogout" @click="logout">退出登录</b-button>
       <b-button variant="primary" size="sm" class="openChatWindow" v-if="showLogout" @click="openChatWindow">打开单独的聊天窗口</b-button>
     </template>
-    <div class="frameButton" @click="showChat">
+    <b-popover v-if="unreadMsgs !== 'hasBeenRead'" :show.sync="showUnread" target="chat-button" :title="`您有 ${unreadMsgs.length} 条未读消息`" placement="lefttop">
+      <div @click="loginSuccess()">
+        <b-alert v-for="(msg, index) in unreadMsgs" :key="index + 'msg'" 
+          style="font-size: 12px; font-weight: bold; width: 240px; cursor: pointer;" variant="info" class="m-1" show>
+          {{msg.content}}
+        </b-alert>
+      </div>
+    </b-popover>
+    <div id="chat-button" class="frameButton" @click="showChat">
       <span class="ecMDHC"></span>
     </div>
   </div>
@@ -26,12 +34,16 @@ export default {
     if (typeof window !== 'undefined') {
       return {
         showLogout: false,
-        isdebugging: true, //window.location.search === '?showLogin=true'
+        isdebugging: true, //window.location.search === '?showLogin=true',
+        showUnread: false,
+        unreadMsgs: []
       }
     } else {
       return {
         showLogout: false,
-        isdebugging: false
+        isdebugging: false,
+        showUnread: false,
+        unreadMsgs: []
       }
     }
   },
@@ -54,6 +66,12 @@ export default {
       _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0');
       _MEIQIA('manualInit');
       _MEIQIA('withoutBtn');
+      _MEIQIA('getUnreadMsg', msgs => {
+        this.unreadMsgs = msgs
+        this.showUnread = true
+      });
+      _MEIQIA('fallback', 1);
+      _MEIQIA('init');
 
       if (this.$route.path.indexOf('/install/v3/') === 0) {
         setTimeout(_ => {
@@ -74,7 +92,7 @@ export default {
   },
   methods: {
     showChat () {
-      if (Cookies.get(TOKEN_KEY)) {
+      if (Cookies.get(TOKEN_KEY) || this.$route.path.indexOf('/install/v3/') === 0) {
         this.loginSuccess()
         // _MEIQIA('showPanel');
       } else {
@@ -136,7 +154,6 @@ export default {
       }
 
       _MEIQIA('metadata', metadata);
-      _MEIQIA('init');
       _MEIQIA('showPanel')
     },
     openChatWindow () {
@@ -175,10 +192,11 @@ export default {
   border-radius: 50%;
   box-shadow: rgb(0 0 0 / 16%) 0px 5px 14px;
   position: fixed;
-  bottom: 100px;
+  bottom: 15vh;
   right: 25px;
   text-align: center;
   cursor: pointer;
+  z-index: 1000;
 }
 .logout {
   position: fixed;
