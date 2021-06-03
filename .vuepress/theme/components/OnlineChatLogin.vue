@@ -173,7 +173,7 @@ export default {
         this.loginLoading = false
         console.log(this.goStandAlone)
         if (this.goStandAlone && typeof window !== 'undefined') {
-          if (location.search.indexOf('?kuboard=')) {
+          if (location.search.indexOf('?kuboard=') === 0) {
             window.location.href = '/chat/' + location.search
           } else {
             window.location.href = '/chat/'
