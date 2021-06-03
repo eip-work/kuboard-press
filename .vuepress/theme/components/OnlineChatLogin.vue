@@ -121,7 +121,7 @@ export default {
   },
   mounted () {
     // console.log(location)
-    if (location.search === '?showLogin=true' || location.search.indexOf('?kuboard=')) {
+    if (location.search === '?showLogin=true' || location.search.indexOf('?kuboard=') === 0) {
       this.goStandAlone = true
       this.show()
     }

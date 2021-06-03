@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isdebugging">
+  <div>
     <OnlineChatLogin ref="loginWindow" @loginSuccess="loginSuccess"></OnlineChatLogin>
     <template v-if="$route.path.indexOf('/install/v3/') < 0">
       <b-button variant="outline-primary" size="sm" class="logout" v-if="showLogout" @click="logout">退出登录</b-button>
@@ -9,7 +9,7 @@
       <div @click="loginSuccess()">
         <b-alert v-for="(msg, index) in unreadMsgs" :key="index + 'msg'" 
           style="font-size: 12px; font-weight: bold; width: 240px; cursor: pointer;" variant="info" class="m-1" show>
-          {{msg.content}}
+          {{msg.content === '[推广消息]' ? '点击此处查看' : msg.content}}
         </b-alert>
       </div>
     </b-popover>
@@ -34,14 +34,12 @@ export default {
     if (typeof window !== 'undefined') {
       return {
         showLogout: false,
-        isdebugging: true, //window.location.search === '?showLogin=true',
         showUnread: false,
         unreadMsgs: []
       }
     } else {
       return {
         showLogout: false,
-        isdebugging: false,
         showUnread: false,
         unreadMsgs: []
       }
