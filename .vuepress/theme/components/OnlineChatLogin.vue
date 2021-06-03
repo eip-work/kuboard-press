@@ -6,7 +6,9 @@
       </div>
       <div class="thanks2">
         如果您已付费，请继续登录；如果您尚未付费，也可以登录后咨询付费方式。
-        <router-link to="/support/#订阅">查看定价</router-link>
+        <span @click="$refs.loginModel.hide()">
+          <router-link to="/support/#订阅">查看定价</router-link>
+        </span>
       </div>
       <b-form label-position="left" label-width="100px" :model="form" :rules="rules" size="large">
         <b-form-group label="手机号" prop="mobile">
@@ -14,17 +16,17 @@
         </b-form-group>
         <b-form-group label="验证码" prop="capture">
           <div style="display: flex;">
-            <b-form-input placeholder="请输入图片验证码" v-model="form.capture" style="width: calc(100% - 190px)"></b-form-input>
+            <b-form-input placeholder="请输入图片验证码" v-model="form.capture" style="width: calc(100% - 190px); min-width: 120px;"></b-form-input>
             <img v-if="showCapture" class="capture" :src="captureUrl" @click="loadCapture"/>
           </div>
         </b-form-group>
         <b-form-group label="短信验证码" prop="smsCode" required>
           <div style="display: flex;">
-            <b-form-input placeholder="请输入短信验证码" v-model="form.smsCode" style="width: calc(100% - 190px)"></b-form-input>
+            <b-form-input placeholder="请输入短信验证码" v-model="form.smsCode" style="width: calc(100% - 190px); min-width: 120px;"></b-form-input>
             <b-button variant="primary" style="margin-left: 10px; width: 180px;" @click="getSmsCode"
               :loading="smsLoading"
               :disabled="countDown > 0 || !form.capture || !form.mobile">
-              <span v-if="countDown" style="color: red;">{{countDown}}</span> 获取短信验证码
+              <span v-if="countDown" style="color: red;">{{countDown}}</span> 短信验证码
             </b-button>
           </div>
         </b-form-group>
@@ -187,6 +189,7 @@ export default {
 <style lang="stylus" scoped>
 .login {
   width: 450px;
+  max-width: calc(100vw - 60px);
   margin: auto;
 }
 .capture {

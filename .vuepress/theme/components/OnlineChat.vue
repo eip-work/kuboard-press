@@ -22,10 +22,9 @@ export default {
   },
   data() {
     if (typeof window !== 'undefined') {
-      console.log(window.location.search, 'search')
       return {
         showLogout: false,
-        isdebugging: window.location.search === '?showLogin=true'
+        isdebugging: true, //window.location.search === '?showLogin=true'
       }
     } else {
       return {

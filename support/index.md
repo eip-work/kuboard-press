@@ -30,7 +30,7 @@ Kuboard 是 [北京仁聚汇通信息科技有限责任公司](http://www.eigpay
   * 节点管理
   * 名称空间管理
   * 存储类/存储卷管理
-  * 控制器（Deployment/StatefulSet/DaemonSet/CronJob/Job/ReplicaSet）管理
+  * 控制器（Deployment / StatefulSet / DaemonSet / CronJob / Job / ReplicaSet）管理
   * Service/Ingress 管理
   * ConfigMap/Secret 管理
   * CustomerResourceDefinition 管理
