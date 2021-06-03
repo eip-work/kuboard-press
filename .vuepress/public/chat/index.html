@@ -179,7 +179,7 @@
         data.kuboard = Base64.decode(data.kuboard)
         data.kuboard = JSON.parse(data.kuboard)
         data.metadata = Object.assign(data.metadata, data.kuboard)
-        data.greeting = `用户所在的链接: ` + data.kuboard.fromUrl
+        data.greeting = `【${data.kuboard.K_title}】所在的链接: ` + data.kuboard.fromUrl
         document.title = 'Kuboard 技术支持'
       }
 
