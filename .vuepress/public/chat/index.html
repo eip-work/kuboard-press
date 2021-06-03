@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible " content="IE=edge" />
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Kuboard 在线支持</title>
+  <title>Kuboard 技术支持</title>
   <style>
     html,
     body {
@@ -19,6 +19,23 @@
 <body>
   <script src="./axios.min.js"></script>
   <script type="text/javascript">
+    let Base64 = {
+        encode(str) {
+            // first we use encodeURIComponent to get percent-encoded UTF-8,
+            // then we convert the percent encodings into raw bytes which
+            // can be fed into btoa.
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+                function toSolidBytes(match, p1) {
+                    return String.fromCharCode('0x' + p1);
+                }));
+        },
+        decode(str) {
+            // Going backwards: from bytestream, to percent-encoding, to original string.
+            return decodeURIComponent(atob(str).split('').map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+        }
+    };
     function getCookie(cname) {
       var name = cname + "=";
       var ca = document.cookie.split(';');
@@ -29,7 +46,7 @@
       }
       return "";
     }
-    Date.prototype.format = function(fmt) { 
+    Date.prototype.format = function(fmt) {
       var o = { 
       "M+" : this.getMonth()+1,                 //月份 
       "d+" : this.getDate(),                    //日 
@@ -95,6 +112,7 @@
       } else {
         entId = +entId;
       }
+
       _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0' || entId);
       _MEIQIA('standalone', function (config) {
         if (config.color) {
@@ -107,10 +125,17 @@
         }
       });
       _MEIQIA('withoutBtn');
+      _MEIQIA('fallback', 1);
 
       if (!getCookie(TOKEN_KEY)) {
-        window.alert('请先登录')
-        window.location.href = '/support/?showLogin=true'
+        let target = '/support/?showLogin=true'
+        if (data.kuboard) {
+          target = '/support/?kuboard-data=' + data.kuboard
+        } else {
+          window.alert('请先登录')
+        }
+        window.location.href = target
+        return
       }
 
       // Kuboard Logic
@@ -150,6 +175,14 @@
         Amount: totalAmount,
         uc_id: user.id,
       }
+      if (data.kuboard) {
+        data.kuboard = Base64.decode(data.kuboard)
+        data.kuboard = JSON.parse(data.kuboard)
+        data.metadata = Object.assign(data.metadata, data.kuboard)
+        data.greeting = `用户所在的链接: ` + data.kuboard.fromUrl
+        document.title = 'Kuboard 技术支持'
+      }
+
       for (let i in orders) {
         let order = orders[i]
         let prefix = 'r' + (parseInt(i) + 1)
@@ -160,12 +193,12 @@
         data.metadata[prefix + '_desc'] = order.description
         data.metadata[prefix + '_time'] = new Date(order.createTime).format("yyyy-MM-dd hh:mm") //format(order.createTime, 'YYYY-MM-DD HH:mm')
       }
-      // Kuboard Logic
+      // Kuboard Logic end
 
 
       if (data.metadata) {
         try {
-          _MEIQIA('metadata', metadata);
+          _MEIQIA('metadata', data.metadata);
         } catch (e) { }
       }
       if (data.language) {

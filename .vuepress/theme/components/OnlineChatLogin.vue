@@ -121,7 +121,7 @@ export default {
   },
   mounted () {
     // console.log(location)
-    if (location.search === '?showLogin=true') {
+    if (location.search === '?showLogin=true' || location.search.indexOf('?kuboard-data=')) {
       this.goStandAlone = true
       this.show()
     }
@@ -173,7 +173,11 @@ export default {
         this.loginLoading = false
         console.log(this.goStandAlone)
         if (this.goStandAlone && typeof window !== 'undefined') {
-          window.location.href = '/chat/'
+          if (location.search.indexOf('?kuboard-data=')) {
+            window.location.href = '/chat/' + location.search
+          } else {
+            window.location.href = '/chat/'
+          }
         } else {
           this.$emit('loginSuccess')
         }
