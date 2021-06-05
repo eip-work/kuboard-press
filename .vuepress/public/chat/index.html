@@ -179,7 +179,7 @@
         data.kuboard = Base64.decode(data.kuboard)
         data.kuboard = JSON.parse(data.kuboard)
         data.metadata = Object.assign(data.metadata, data.kuboard)
-        if (data.kuboard.K_title.indexOf('Kuboard') < 0) {
+        if (data.kuboard.K_title.indexOf('Kuboard') != 0) {
           data.greeting = `Hi，Kuboard，我是 ${data.kuboard.K_title} 的 ${user.name}，有问题想要找你帮忙看看。`
         } else {
           data.greeting = `Hi，Kuboard，我是 ${user.name}，有问题想要找你帮忙看看。`
