@@ -57,7 +57,7 @@ meta:
   | 名称                                      | `swagger`                                                    |                                                              |
   | 容器镜像                                  | `从其他镜像仓库加载镜像（不使用用户名密码）`                 |                                                              |
   | 容器镜像-->镜像仓库                       | `swr.cn-east-2.myhuaweicloud.com`                            |                                                              |
-  | 容器镜像-->镜像路径                       | `blade/swagger`                                              |                                                              |
+  | 容器镜像-->镜像路径                       | `blade/blade-swagger`                                              |                                                              |
   | 容器镜像-->镜像标签                       | `3.0.3`                                                      |                                                              |
   | 镜像拉取策略                              | `始终拉取新镜像（Always）`                                   |                                                              |
   | 命令参数<div style="width: 120px;"></div> | 参数<div style="width: 450px;"> `--spring.profiles.active=${PROFILE} --spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR} --spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR} --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR} --server.port=80` </div> | 通过启动参数指定：<li>spring的 profile</li><li>Nacos配置中心地址</li><li>Nacos服务发现地址</li><li>Sentinel地址</li><li>服务端口</li><div style="width: 150px;"></div> |
