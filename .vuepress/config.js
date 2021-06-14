@@ -4,12 +4,12 @@ module.exports = {
   // configureWebpack: () => ({
   //   devtool: 'source-map'
   // }),
-  host: 'kuboard-develop',
+  host: 'kb',
   port: 8000,
   devServer: {
     proxy: {
       '/uc-api/': {
-        target: 'http://kuboard-develop:8080',
+        target: 'http://kb:8080',
         changeOrigin: true,
         pathRewrite: {
           '^/uc-api': '/'
