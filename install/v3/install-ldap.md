@@ -132,12 +132,10 @@ sudo docker run -d \
   --restart=unless-stopped \
   --name=kuboard \
   -p 80:80/tcp \
-  -p 10081:10081/udp \
   -p 10081:10081/tcp \
   -v /Users/shaohuanqing/temp/kuboard-data:/data \
   -e KUBOARD_LOGIN_TYPE="ldap" \
   -e KUBOARD_ENDPOINT="http://内网IP:80" \
-  -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -e KUBOARD_ROOT_USER="shaohq" \
   -e LDAP_HOST="host.docker.internal:389" \
@@ -171,12 +169,12 @@ sudo docker run -d \
 ::: tip 参数说明
 * 建议将此命令保存为一个 shell 脚本，例如 `start-kuboard.sh`，后续升级 Kuboard 或恢复 Kuboard 时，需要通过此命令了解到最初安装 Kuboard 时所使用的参数；
 * 第 4 行，Kuboard v3.x 需要暴露 `80` 端口，如安装指令的第三行所示，默认映射到了宿主机的 `80` 端口，您可以根据自己的情况选择宿主机的其他端口；
-* 第 5、6 行，Kuboard v3.x 需要暴露 `10081` 端口 TCP / UDP，默认映射到了宿主机的 `10081` 端口，您可以根据自己的情况选择宿主机的其他端口；
-* 第 7 行，Kuboard v3.x 的持久化数据存储在 `/data` 目录，默认映射到了宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况进行调整；
-* 第 8 行，将 Kuboard v3.x 与 GitLab 进行单点登录集成时，必须指定环境变量 `KUBOARD_LOGIN_TYPE` 为 `gitlab` （适用于 gitlab.com / gitlab-ee / gitlab-ce）；
-* 第 9 行，必须指定 `KUBOARD_ENDPOINT` 环境变量为访问 Kuboard 界面的 URL；（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://内网IP:80` 作为通过执行此命令启动的 Kuboard 的访问 URL）；此参数不能以 `/` 结尾；
-* 第 10、11 行，指定 KUBOARD_AGENT_SERVER 的端口为 `10081`，此参数与第 5、6 行中的宿主机端口应保持一致，修改此参数不会改变容器内监听的端口 `10081`；
-* 第 12 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitLab 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
+* 第 5 行，Kuboard v3.x 需要暴露 `10081` 端口 TCP，默认映射到了宿主机的 `10081` 端口，您可以根据自己的情况选择宿主机的其他端口；
+* 第 6 行，Kuboard v3.x 的持久化数据存储在 `/data` 目录，默认映射到了宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况进行调整；
+* 第 7 行，将 Kuboard v3.x 与 GitLab 进行单点登录集成时，必须指定环境变量 `KUBOARD_LOGIN_TYPE` 为 `gitlab` （适用于 gitlab.com / gitlab-ee / gitlab-ce）；
+* 第 8 行，必须指定 `KUBOARD_ENDPOINT` 环境变量为访问 Kuboard 界面的 URL；（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://内网IP:80` 作为通过执行此命令启动的 Kuboard 的访问 URL）；此参数不能以 `/` 结尾；
+* 第 9 行，指定 KUBOARD_AGENT_SERVER 的端口为 `10081`，此参数与第 5 行中的宿主机端口应保持一致，修改此参数不会改变容器内监听的端口 `10081`，例如，如果第 5 行为 `-p 30081:10081/tcp` 则第 9 行应该修改为 `-e KUBOARD_AGENT_SERVER_TCP_PORT="30081"`；
+* 第 10 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitLab 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
 :::
 
 ### LDAP 相关参数
@@ -189,18 +187,18 @@ LDAP 相关的参数相对复杂，本章节以 Kuboard 集成 LDAP 时，对 LD
 
 如上图所示：
 * 第一步：连接 LDAP
-  * 通过第 13 行 `LDAP_HOST` 参数找到 LDAP 服务器的地址；
-  * 通过第 14、15 行 `LDAP_BIND_DN`、`LDAP_BIND_PASSWORD` 两个参数作为用户名密码创建与 LDAP 的连接；
+  * 通过第 11 行 `LDAP_HOST` 参数找到 LDAP 服务器的地址；
+  * 通过第 12、13 行 `LDAP_BIND_DN`、`LDAP_BIND_PASSWORD` 两个参数作为用户名密码创建与 LDAP 的连接；
 * 第二步：查询用户信息
-  * 通过第 16、17 行 `LDAP_BASE_DN`、`LDAP_FILTER`以及登录界面中输入的用户名，共三个参数查询到唯一的一个用户对象；
+  * 通过第 14、15 行 `LDAP_BASE_DN`、`LDAP_FILTER`以及登录界面中输入的用户名，共三个参数查询到唯一的一个用户对象；
   * 其中，登录界面中输入的用户名将必须与第 18行 `LDAP_ID_ATTRIBUTE` 指定的 LDAP 对象中用户 ID 的字段名称项匹配；
 * 第三步：映射用户信息
-  * 将第 19、20、21 行 `LDAP_USER_NAME_ATTRIBUTE`、`LDAP_EMAIL_ATTRIBUTE`、`LDAP_DISPLAY_NAME_ATTRIBUTE` 所指定对象字段的取值作为用户名、电子邮件地址、用户全名的信息；
+  * 将第 17、18、19 行 `LDAP_USER_NAME_ATTRIBUTE`、`LDAP_EMAIL_ATTRIBUTE`、`LDAP_DISPLAY_NAME_ATTRIBUTE` 所指定对象字段的取值作为用户名、电子邮件地址、用户全名的信息；
 * 第四步：查询用户组信息
-  * 将第 22、23 行 `LDAP_GROUP_SEARCH_BASE_DN`、`LDAP_GROUP_SEARCH_FILTER` 指定的参数用作检索用户组的条件；
+  * 将第 20、21 行 `LDAP_GROUP_SEARCH_BASE_DN`、`LDAP_GROUP_SEARCH_FILTER` 指定的参数用作检索用户组的条件；
   * 检索用户组时，第二步所得用户信息的 `LDAP_USER_MACHER_USER_ATTRIBUTE`（第 24 行） 所指定字段的值必须与 `LDAP_USER_MACHER_GROUP_ATTRIBUTE`（第 25 行） 所指定的用户组字段的取值相匹配；
 * 第五步：映射用户组信息
-  * 将第 26 行 `LDAP_GROUP_NAME_ATTRIBUTE` 所指定的用户组字段映射为用户组名称
+  * 将第 24 行 `LDAP_GROUP_NAME_ATTRIBUTE` 所指定的用户组字段映射为用户组名称
 
 通过上述五个步骤，Kuboard 可以从 LDAP 中检索到用户的基本信息，以及用户组信息，密码字段默认使用用户信息中的 `password` 字段。获得这些信息后，用户可以使用 LDAP 中的信息登录 Kuboard。
 

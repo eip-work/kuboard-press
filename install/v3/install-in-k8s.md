@@ -25,9 +25,7 @@ meta:
   ```
 
   ::: tip 定制参数
-  * 如果您想要定制 Kuboard 的启动参数，请将该 YAML 文件下载到本地，并修改其中的 ConfigMap
-  * 具体可以修改的参数，请参考
-    * [安装 Kuboard v3 - 内建用户库](https://kuboard.cn/install/v3/install-built-in.html)、[安装 Kuboard v3 - gitlab](https://kuboard.cn/install/v3/install-gitlab.html)、[安装 Kuboard v3 - github](https://kuboard.cn/install/v3/install-github.html)、[安装 Kuboard v3 - ldap](https://kuboard.cn/install/v3/install-ldap.html)
+  如果您想要定制 Kuboard 的启动参数，请将该 YAML 文件下载到本地，并修改其中的 ConfigMap
   :::
 
 * 等待 Kuboard v3 就绪
@@ -46,7 +44,7 @@ meta:
   ```
 
   ::: tip CrashLoopBackOff
-  过程中 kuboard-agent 可能出现 CrashLoopBackOff 的状态，这是因为其依赖的 kuboard-v3 尚未就绪，请耐心等候一会儿即可。
+  过程中 kuboard-agent 可能出现 CrashLoopBackOff 的状态，这是因为其依赖的 kuboard-v3 尚未就绪，请耐心等候一会儿即可（大约 3-5 分钟）。
   :::
 
   ::: tip etcd
