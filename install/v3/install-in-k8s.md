@@ -21,9 +21,9 @@ meta:
 * 执行 Kuboard v3 在 K8S 中的安装
 
   ```sh
-  kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3-hostpath.yaml
+  kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
   # 您也可以使用下面的指令，唯一的区别是，该指令使用华为云的镜像仓库替代 docker hub 分发 Kuboard 所需要的镜像
-  # kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3-hostpath-swr.yaml
+  # kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3-swr.yaml
   ```
 
   ::: tip 定制参数
@@ -46,7 +46,7 @@ meta:
   ```
 
   ::: tip CrashLoopBackOff
-  过程中 kuboard-agent 可能出现 CrashLoopBackOff 的状态，这是因为其依赖的 kuboard-v3 尚未就绪，请耐心等候一会儿即可（大约 3-5 分钟）。
+  过程中 kuboard-agent 可能出现 CrashLoopBackOff 的状态，这是因为其依赖的 kuboard-v3 尚未就绪，请耐心等候一会儿即可（根据您的服务器下载镜像速度的不同，大约 3-5 分钟）。
   :::
 
   ::: tip etcd
@@ -86,7 +86,7 @@ meta:
 * 执行 Kuboard v3 的卸载
 
   ```sh
-  kubectl delete -f https://addons.kuboard.cn/kuboard/kuboard-v3-hostpath.yaml
+  kubectl delete -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
   ```
 * 清理遗留数据
 
@@ -108,7 +108,7 @@ meta:
 * 获取部署 Kuboard 所需的 YAML 文件：
 
   ```sh
-  curl -o kuboard-v3.yaml https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
+  curl -o kuboard-v3.yaml https://addons.kuboard.cn/kuboard/kuboard-v3-storage-class.yaml
   ```
 
 * 编辑 `kuboard-v3.yaml` 文件中的配置，该部署文件中，有两处配置必须修改：
@@ -171,7 +171,7 @@ meta:
 * 执行 Kuboard v3 的卸载
 
   ```sh
-  kubectl delete -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
+  kubectl delete -f https://addons.kuboard.cn/kuboard/kuboard-v3-storage-class.yaml
   ```
 
 ### 备注
