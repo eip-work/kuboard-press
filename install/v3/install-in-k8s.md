@@ -22,6 +22,8 @@ meta:
 
   ```sh
   kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3-hostpath.yaml
+  # 您也可以使用下面的指令，唯一的区别是，该指令使用华为云的镜像仓库替代 docker hub 分发 Kuboard 所需要的镜像
+  # kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3-hostpath-swr.yaml
   ```
 
   ::: tip 定制参数

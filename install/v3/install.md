@@ -37,14 +37,19 @@ Kuboard v3.x 支持 Kubernetes 多集群管理。如果您从 Kuboard v1.0.x 或
 
 ## 安装方式
 
-在安装 Kuboard 之前，您需要确定登录 Kuboard 时的认证方式，Kuboard 当前提供如下几种认证方式：
+通过一行命令，即可 [将 Kuboard 安装到 Kubernetes 集群中](./install-in-k8s.html) <badge>推荐</badge>
+
+有如下原因，您可能想要以 docker run 的方式运行 Kuboard（而不是安装在 Kubernetes 集群中）：
+* 结构更清晰（Kuboard 作为多个集群的管理界面应该独立于任何集群之外，虽然安装在 Kubernetes 集群中的 Kuboard 也可以管理多个集群）；
+* 登录 Kuboard 时使用不同的认证方式；
+
+请参考：
 
 * [内建用户库认证](./install-built-in.html)
 * [GitLab 单点登录](./install-gitlab.html)
 * [GitHub 单点登录](./install-github.html)
 * [LDAP 认证](./install-ldap.html)
 
-Kuboard 作为一个管理界面，通常单节点部署就可以满足可用性方面的要求，如果您期望您安装的 Kuboard 获得更高的可用性，请考虑：[将 Kuboard 安装到 Kubernetes 集群中](./install-in-k8s.html)
 
 ## 从 v2.0.x 升级到 v3.x
 
