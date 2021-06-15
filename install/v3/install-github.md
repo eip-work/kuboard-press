@@ -88,6 +88,7 @@ sudo docker run -d \
   -e KUBOARD_ROOT_USER="shaohq" \
   -e GITHUB_CLIENT_ID="17577d45e4de7dad88e0" \
   -e GITHUB_CLIENT_SECRET="ff738553a8c7e9ad39569c8d02c1d85ec19115a7" \
+  -e SSO_REDIRECT_URI="http://外网IP:80/sso/callback" \
   eipwork/kuboard:v3
   # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3 ，可以更快地完成镜像下载。
   # 请不要使用 127.0.0.1 或者 localhost 作为内网 IP \
@@ -113,6 +114,7 @@ sudo docker run -d \
 * 第 10 行，必须指定 `KUBOARD_ROOT_USER`，使用该 GitHub 用户登录到 Kuboard 以后，该用户具备 Kuboard 的所有权限；
 * 第 11 行，必须指定 `GITHUB_CLIENT_ID`，该参数来自于 [准备 GitHub](#准备-github) 步骤中创建的 GitHub OAuth Application 的 `Client ID` 字段
 * 第 12 行，必须指定 `GITHUB_CLIENT_SECRET`，该参数来自于 [准备 GitHub](#准备-github) 步骤中创建的 GitHub OAuth Application 的 `Client Secret` 字段
+* 第 13 行，必须指定 `SSO_REDIRECT_URI`，该参数用于从 github 回调到 Kuboard
 :::
 
 ::: tip GitHub EE

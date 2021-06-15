@@ -82,6 +82,7 @@ sudo docker run -d \
   -e GITLAB_BASE_URL="http://gitlab.my-company.com" \
   -e GITLAB_APPLICATION_ID="7c10882aa46810a0402d17c66103894ac5e43d6130b81c17f7f2d8ae182040b5" \
   -e GITLAB_CLIENT_SECRET="77c149bd3a4b6870bffa1a1afaf37cba28a1817f4cf518699065f5a8fe958889" \
+  -e SSO_REDIRECT_URI="http://kuboard.my-company.com/sso/callback" \
   eipwork/kuboard:v3
   # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3 ，可以更快地完成镜像下载。
   # 请不要使用 127.0.0.1 或者 localhost 作为内网 IP \
@@ -108,6 +109,7 @@ sudo docker run -d \
 * 第 11 行，指定 `GIBLAB_BASE_URL`，（如 [部署计划](#部署计划) 中所描述，本例子中，使用 `http://gitlab.my-company.com` 作为通过作为 GitLab 的访问 URL，并假设 GitLab 已经事先准备就绪，如果不指定，该参数默认值为 `https://gitlab.com`）；此参数不能以 `/` 结尾；
 * 第 12 行，必须指定 `GITLAB_APPLICATION_ID`，该参数来自于 [准备 GitLab](#准备-gitlab) 步骤中创建的 GitLab  Application 的 `Application ID` 字段
 * 第 13 行，必须指定 `GITLAB_CLIENT_SECRET`，该参数来自于 [准备 GitLab](#准备-gitlab) 步骤中创建的 GitLab  Application 的 `Secret` 字段
+* 第 14 行，必须指定 `SSO_REDIRECT_URI`，该参数用于从 gitlab 回调到 Kuboard
 :::
 
 ## 访问 Kuboard 界面
