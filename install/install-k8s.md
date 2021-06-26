@@ -15,7 +15,7 @@ meta:
 ## 文档特点
 
 <div style="min-height: 612px;">
-  <InstallBanner version="v1.21.x" updateCount="96"/>
+  <InstallBanner version="v1.21.x" updateCount="98"/>
 </div>
 
 参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
@@ -185,7 +185,7 @@ default via 172.21.0.1 dev eth0
 <b-tabs content-class="mt-3">
   <b-tab title="快速安装" active>
 
-**请将脚本最后的 1.21.0 替换成您需要的版本号（必须是 1.21 的小版本，不能是 1.19.1 等），**
+**请将脚本最后的 1.21.2 替换成您需要的版本号（必须是 1.21 的小版本，不能是 1.19.1 等），**
 <font color="red">脚本中间的 v1.21.x 不要替换</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
@@ -195,7 +195,7 @@ default via 172.21.0.1 dev eth0
 > * 第十行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.21.0 用于指定 kubenetes 版本，支持所有 1.21.x 版本的安装
+# 最后一个参数 1.21.2 用于指定 kubenetes 版本，支持所有 1.21.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -204,13 +204,13 @@ default via 172.21.0.1 dev eth0
 # export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # 阿里云 docker hub 镜像
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
-curl -sSL https://kuboard.cn/install-script/v1.21.x/install_kubelet.sh | sh -s 1.21.0
+curl -sSL https://kuboard.cn/install-script/v1.21.x/install_kubelet.sh | sh -s 1.21.2
 ```
 
   </b-tab>
   <b-tab title="手动安装">
 
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.21.0***</font>
+手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.21.2***</font>
 
 > docker hub 镜像请根据自己网络的情况任选一个
 > * 第四行为腾讯云 docker hub 镜像
@@ -218,7 +218,7 @@ curl -sSL https://kuboard.cn/install-script/v1.21.x/install_kubelet.sh | sh -s 1
 > * 第八行为阿里云 docker hub 镜像
 ``` sh
 # 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.21.0 用于指定 kubenetes 版本，支持所有 1.21.x 版本的安装
+# 最后一个参数 1.21.2 用于指定 kubenetes 版本，支持所有 1.21.x 版本的安装
 # 腾讯云 docker hub 镜像
 # export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
 # DaoCloud 镜像
@@ -250,7 +250,7 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 ::: danger 关于初始化时用到的环境变量
 * **APISERVER_NAME** 不能是 master 的 hostname
 * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
-* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改
+* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.0/16 命令，不做修改
 :::
 
 <b-card>
@@ -258,7 +258,7 @@ export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 <b-tab title="快速初始化" active>
 
 
-**请将脚本最后的 1.21.0 替换成您需要的版本号（必须是 1.21 的小版本，不能是 1.19.1 等），**
+**请将脚本最后的 1.21.2 替换成您需要的版本号（必须是 1.21 的小版本，不能是 1.19.1 等），**
 <font color="red">脚本中间的 v1.21.x 不要替换</font>
 
 ``` sh {10}
@@ -269,15 +269,15 @@ export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
-export POD_SUBNET=10.100.0.1/16
+export POD_SUBNET=10.100.0.0/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.0
+curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.2
 ```
 
 </b-tab>
 <b-tab title="手动初始化">
 
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.21.0***</font>
+手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.21.2***</font>
 
 ``` sh
 # 只在 master 节点执行
@@ -287,7 +287,7 @@ export MASTER_IP=x.x.x.x
 # 替换 apiserver.demo 为 您想要的 dnsName
 export APISERVER_NAME=apiserver.demo
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
-export POD_SUBNET=10.100.0.1/16
+export POD_SUBNET=10.100.0.0/16
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 ```
 
@@ -311,7 +311,7 @@ To see the stack trace of this error execute with --v=5 or higher
 请执行如下命令：
 > 在原命令的最后增加参数 `/coredns`
 ``` sh
-curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.0 /coredns
+curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.2 /coredns
 ```
 
 </b-card>
@@ -330,7 +330,7 @@ curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.
   * 环境变量 ***MASTER_IP*** 的值应该为 master 节点的 **内网IP**，如果不是，请重新 export
   * **APISERVER_NAME** 不能是 master 的 hostname
   * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
-  * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改
+  * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.0/16 命令，不做修改
 * 重新初始化 master 节点前，请先执行 `kubeadm reset -f` 操作
 
 </b-card>
@@ -375,7 +375,44 @@ kubectl get nodes -o wide
 
 <!-- </div>
 
+
 <div slot="step4"> -->
+
+## 安装网络插件
+
+网络插件可以选择 calico 或者 flannel（任意选择其一即可）。
+
+<b-card>
+<b-tabs content-class="mt-3">
+<b-tab title="Calico" active>
+
+::: danger 阿里云
+如果您在阿里云上安装 K8S，建议使用 flannel，有多个案例表明 calico 与阿里云存在兼容性问题。
+:::
+
+``` sh
+export POD_SUBNET=10.100.0.0/16
+kubectl apply -f https://kuboard.cn/install-script/v1.21.x/calico-operator.yaml
+wget https://kuboard.cn/install-script/v1.21.x/calico-custom-resources.yaml
+sed -i "s#192.168.0.0/16#${POD_SUBNET}#" calico-custom-resources.yaml
+kubectl apply -f calico-custom-resources.yaml
+```
+
+</b-tab>
+<b-tab title="Flannel">
+
+``` sh
+export POD_SUBNET=10.100.0.0/16
+kubectl apply -f https://kuboard.cn/install-script/v1.21.x/calico-operator.yaml
+wget https://kuboard.cn/install-script/flannel/flannel-v0.14.0.yaml
+sed -i "s#10.244.0.0/16#${POD_SUBNET}#" flannel-v0.14.0.yaml
+kubectl apply -f https://kuboard.cn/install-script/flannel/flannel-v0.14.0.yaml
+```
+
+</b-tab>
+</b-tabs>
+</b-card>
+
 
 ## 初始化 worker节点
 
@@ -510,69 +547,6 @@ demo-master-a-1   Ready    master   5m3s    v1.21.x
 demo-worker-a-1   Ready    <none>   2m26s   v1.21.x
 demo-worker-a-2   Ready    <none>   3m56s   v1.21.x
 ```
-
-
-<!-- </div>
-
-<div slot="step5"> -->
-
-## 安装 Ingress Controller
-
-<b-card>
-<b-tabs content-class="mt-3">
-  <b-tab title="快速初始化" active>
-
-**在 master 节点上执行**
-
-部分情况下，下面的这条指令，您需要执行两次才能成功。
-
-``` sh
-# 只在 master 节点执行
-kubectl apply -f https://kuboard.cn/install-script/v1.21.x/nginx-ingress.yaml
-```
-
-  </b-tab>
-  <b-tab title="卸载IngressController">
-
-
-**在 master 节点上执行**
-
-只在您想选择其他 Ingress Controller 的情况下卸载
-
-``` sh
-# 只在 master 节点执行
-kubectl delete -f https://kuboard.cn/install-script/v1.21.x/nginx-ingress.yaml
-```
-
-  </b-tab>
-  <b-tab title="YAML文件">
-
-<<< @/.vuepress/public/install-script/v1.21.x/nginx-ingress.yaml
-
-
-  </b-tab>
-</b-tabs>
-</b-card>
-
-**配置域名解析**
-
-将域名 *.demo.yourdomain.com 解析到 demo-worker-a-2 的 IP 地址 z.z.z.z （也可以是 demo-worker-a-1 的地址 y.y.y.y）
-
-**验证配置**
-
-在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面
-
-::: tip 提示
-
-许多初学者在安装 Ingress Controller 时会碰到问题，请不要灰心，可暂时跳过 ***安装 Ingress Controller*** 这个部分，等您学完 www.kuboard.cn 上 [Kubernetes 入门](/learning/k8s-basics/kubernetes-basics.html) 以及 [通过互联网访问您的应用程序](/learning/k8s-intermediate/service/ingress.html) 这两部分内容后，再来回顾 Ingress Controller 的安装。
-
-也可以参考 [Install Nginx Ingress](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)
-
-:::
-
-::: warning
-如果您打算将 Kubernetes 用于生产环境，请参考此文档 [Installing Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)，完善 Ingress 的配置
-:::
 
 
 <!-- </div>

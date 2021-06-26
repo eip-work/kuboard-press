@@ -50,13 +50,3 @@ kubeadm init --config=kubeadm-config.yaml --upload-certs
 rm -rf /root/.kube/
 mkdir /root/.kube/
 cp -i /etc/kubernetes/admin.conf /root/.kube/config
-
-# 安装 calico 网络插件
-# 参考文档 https://docs.projectcalico.org/v3.13/getting-started/kubernetes/self-managed-onprem/onpremises
-echo ""
-echo "安装calico-3.17.1"
-rm -f calico-3.17.1.yaml
-kubectl create -f https://kuboard.cn/install-script/v1.21.x/calico-operator.yaml
-wget https://kuboard.cn/install-script/v1.21.x/calico-custom-resources.yaml
-sed -i "s#192.168.0.0/16#${POD_SUBNET}#" calico-custom-resources.yaml
-kubectl create -f calico-custom-resources.yaml
