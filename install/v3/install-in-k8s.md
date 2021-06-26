@@ -53,6 +53,10 @@ meta:
   * Kuboard V3 依赖于 etcd 提供数据的持久化服务，在当前的安装方式下，kuboard-etcd 的存储卷被映射到宿主机节点的 hostPath (/usr/share/kuboard/etcd 目录)；
   * 为了确保每次重启，etcd 能够加载到原来的数据，以 DaemonSet 的形式部署 kuboard-etcd，并且其容器组将始终被调度到 master 节点，因此，您有多少个 master 节点，就会调度多少个 kuboard-etcd 的实例；
   * 某些情况下，您的 master 节点只有一个或者两个，却仍然想要保证 kubuoard-etcd 的高可用，此时，您可以通过为一到两个 worker 节点添加 `k8s.kuboard.cn/role=etcd` 的标签，来增加 kuboard-etcd 的实例数量；
+    * 如果您已经安装了 Kuboard V3，通过此方式调整 etcd 数量时，需要按照如下步骤执行，否则 etcd 将不能正常启动：
+      1. 执行 `kubectl delete daemonset kuboard-etcd -n kuboard` 
+      2. 为节点添加标签
+      3. 执行 `kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml`
   * 建议 etcd 部署的数量为 [奇数](https://etcd.io/docs/v3.4/faq/#what-is-failure-tolerance)
   :::
   ::: danger 阿里云托管 K8S
