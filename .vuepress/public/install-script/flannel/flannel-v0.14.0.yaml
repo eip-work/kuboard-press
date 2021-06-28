@@ -184,7 +184,7 @@ spec:
         command:
         - /opt/bin/flanneld
         args:
-        - --ip-masq
+        - --ip-masq=false
         - --kube-subnet-mgr
         resources:
           requests:
