@@ -49,6 +49,14 @@ meta:
   过程中 kuboard-agent 可能出现 CrashLoopBackOff 的状态，这是因为其依赖的 kuboard-v3 尚未就绪，请耐心等候一会儿即可（根据您的服务器下载镜像速度的不同，大约 3-5 分钟）。
   :::
 
+  ::: danger 托管的 K8S
+  * 当您在 ***阿里云、腾讯云（以及其他云）托管*** 的 K8S 集群中以此方式安装 Kuboard 时，您的集群中将 ***看不到 master 节点***，此时，您也可以为一个或者三个 worker 节点添加 `k8s.kuboard.cn/role=etcd` 的标签，来增加 kuboard-etcd 的实例数量；
+  * 执行如下指令，可以为 `your-node-name` 节点添加所需要的标签
+    ```sh
+    kubectl label nodes your-node-name k8s.kuboard.cn/role=etcd
+    ```
+  :::
+
   ::: tip etcd
   * Kuboard V3 依赖于 etcd 提供数据的持久化服务，在当前的安装方式下，kuboard-etcd 的存储卷被映射到宿主机节点的 hostPath (/usr/share/kuboard/etcd 目录)；
   * 为了确保每次重启，etcd 能够加载到原来的数据，以 DaemonSet 的形式部署 kuboard-etcd，并且其容器组将始终被调度到 master 节点，因此，您有多少个 master 节点，就会调度多少个 kuboard-etcd 的实例；
@@ -58,9 +66,6 @@ meta:
       2. 为节点添加标签
       3. 执行 `kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml`
   * 建议 etcd 部署的数量为 [奇数](https://etcd.io/docs/v3.4/faq/#what-is-failure-tolerance)
-  :::
-  ::: danger 阿里云托管 K8S
-  * 当您在 ***阿里云（以及其他云）托管*** 的 K8S 集群中以此方式安装 Kuboard 时，您的集群中将 ***看不到 master 节点***，此时，您也可以为一个或者三个 worker 节点添加 `k8s.kuboard.cn/role=etcd` 的标签，来增加 kuboard-etcd 的实例数量；
   :::
 
 ### 访问 Kuboard
