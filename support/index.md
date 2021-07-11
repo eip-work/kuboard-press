@@ -53,6 +53,8 @@ Kuboard 是 [北京仁聚汇通信息科技有限责任公司](http://www.eigpay
 | <div class="tap"></div>自定义名称空间布局（以分层的方式展示名称空间中的微服务）     | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>导出工作负载 YAML 文件、导入 YAML 文件（可以快速将微服务部署到新的集群或名称空间） | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>持续部署对接接口                                                | :white_check_mark: | :white_check_mark: |
+| <div class="tap"></div>可以查看当天的审计日志                         | :white_check_mark: | :white_check_mark: |
+| <div class="tap"></div>可以查看历史审计日志                         | :x: | :white_check_mark: |
 | <div class="tap"></div>多集群管理（一个 Kuboard 实例可以管理不超过三个 K8S 集群）                         | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>多集群管理（一个 Kuboard 实例可以管理超过三个 K8S 集群）                       | :x: | :white_check_mark: |
 | **服务与支持**                                               |                    |                    |
