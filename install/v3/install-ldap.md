@@ -156,7 +156,6 @@ sudo docker run -d \
   # 也可以使用镜像 swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v3 ，可以更快地完成镜像下载。
   # 请不要使用 127.0.0.1 或者 localhost 作为内网 IP \
   # Kuboard 不需要和 K8S 在同一个网段，Kuboard Agent 甚至可以通过代理访问 Kuboard Server \
-  # LDAP_USER_MACHER_USER_ATTRIBUTE 的正确单词拼写应该为 LDAP_USER_MATCHER_USER_ATTRIBUTE，但是代码里的拼写错了，为了保持兼容性，智能暂时忍下了这个拼写错误。
 ```
 
 ::: danger 
