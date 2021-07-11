@@ -50,6 +50,26 @@ Kuboard v3.x 支持 Kubernetes 多集群管理。如果您从 Kuboard v1.0.x 或
 * [GitHub 单点登录](./install-github.html)
 * [LDAP 认证](./install-ldap.html)
 
+## 安全提示
+
+如果您的服务器有主机安全扫描，在安装 kuboard-agent 以后，您可能会碰到类似如下的提示信息：
+
+![安全提示](./security-scan.jpg)
+
+这是因为 kuboard-agent 这个程序是由 [https://github.com/fatedier/frp](https://github.com/fatedier/frp) 编译而来，frp 是的内网穿透工具，Kuboard 使用此工具将 k8s-apiserver 的端口映射到 kuboard 所在容器的内部端口（绑定到 127.0.0.1，对外不可访问），以实现 kuboard-agent 可以通过代理服务器与 kuboard 连接的效果。
+
+
+与此相关的配置，您可以具体参考
+* kuboard-agent 容器的 `/etc/kuboard/kuboard-agent.ini` 文件
+* kuboard 容器的 `/etc/kuboard/kuboard-agent-server.ini` 文件
+
+frp 作为一个广泛被认可（github 46800+ star）的内网穿透工具，并不存在恶意代码，只是因为其作为`内网穿透工具`的性质，才被主机安全扫描工具提示。由于 Kuboard 中 frp 端口映射并没有离开您自己掌控的网络环境，因此，您可以忽略这个安全扫描提示。
+
+::: tip
+Kuboard 将在 v3.2.0.0 中提供通过 kubeconfig 文件导入集群的方法，使用此方法，将不需要用到 kuboard-agent 这个进程。
+:::
+
+
 
 ## 从 v2.0.x 升级到 v3.x
 
