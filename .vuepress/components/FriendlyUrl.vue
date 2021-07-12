@@ -31,7 +31,6 @@ export default {
   data () {
     return {
       urls: [
-        {name: '仁聚汇通', url: 'http://www.eigpay.com/', icon: 'http://www.eigpay.com/images/site-logo.png'},
         {name: 'SpringBlade', url: 'https://bladex.vip/', icon: '/images/ads/spring-blade.png'},
         {name: 'Linux Foundation', url: 'https://training.linuxfoundation.cn', icon: 'https://training.linuxfoundation.cn/assets/img/logo.svg'},
         {name: 'sealos', url: 'http://store.lameleg.com?referrer=shaohq', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/blog/2019-08-27-044824.jpg'},
