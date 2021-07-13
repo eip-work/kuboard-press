@@ -7,7 +7,7 @@
       </span>
     </div>
     <div style="margin-top: 20px; text-align: center;">
-    <div>友情链接：</div>
+    <!-- <div>友情链接：</div>
     </div>
     <div class="friend-section" v-show="!$isSharing">
       <div v-for="(item, index) in urls" class="friend-a" :key="'u' + index">
@@ -21,7 +21,7 @@
             </div>
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
