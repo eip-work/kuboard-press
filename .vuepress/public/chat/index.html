@@ -19,210 +19,210 @@
 <body>
   <script src="./axios.min.js"></script>
   <script type="text/javascript">
-    let Base64 = {
-        encode(str) {
-            // first we use encodeURIComponent to get percent-encoded UTF-8,
-            // then we convert the percent encodings into raw bytes which
-            // can be fed into btoa.
-            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-                function toSolidBytes(match, p1) {
-                    return String.fromCharCode('0x' + p1);
-                }));
-        },
-        decode(str) {
-            // Going backwards: from bytestream, to percent-encoding, to original string.
-            return decodeURIComponent(atob(str).split('').map(function (c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
-        }
-    };
-    function getCookie(cname) {
-      var name = cname + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0; i<ca.length; i++) 
-      {
-        var c = ca[i].trim();
-        if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-      }
-      return "";
-    }
-    Date.prototype.format = function(fmt) {
-      var o = { 
-      "M+" : this.getMonth()+1,                 //月份 
-      "d+" : this.getDate(),                    //日 
-      "h+" : this.getHours(),                   //小时 
-      "m+" : this.getMinutes(),                 //分 
-      "s+" : this.getSeconds(),                 //秒 
-      "q+" : Math.floor((this.getMonth()+3)/3), //季度 
-      "S" : this.getMilliseconds()             //毫秒 
-      }; 
-      if(/(y+)/.test(fmt)) {
-      fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
-      }
-      for(var k in o) {
-      if(new RegExp("("+ k +")").test(fmt)){
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-      }
-      }
-      return fmt; 
-    }
-    let TOKEN_KEY = 'kb-user-center-token'
-    function parse(query) {
-      var qs = {};
-      var i = query.indexOf('?');
-      if (i < 0 && query.indexOf('=') < 0) {
-        return qs;
-      } else if (i >= 0) {
-        query = query.substring(i + 1);
-      }
-      var parts = query.split('&');
-      for (var n = 0; n < parts.length; n++) {
-        var part = parts[n];
-        var key = part.split('=')[0];
-        var val = part.split('=')[1];
-        key = key.toLowerCase();
-        if (typeof qs[key] === 'undefined') {
-          qs[key] = decodeURIComponent(val);
-        } else if (typeof qs[key] === 'string') {
-          var arr = [qs[key], decodeURIComponent(val)];
-          qs[key] = arr;
-        } else {
-          qs[key].push(decodeURIComponent(val));
-        }
-      }
-      return qs;
-    }
-    async function init() {
-      (function (m, ei, q, i, a, j, s) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        (j = ei.createElement(q)), (s = ei.getElementsByTagName(q)[0]);
-        j.async = true;
-        j.charset = 'UTF-8';
-        j.src = 'https://static.meiqia.com/widget/loader.js';
-        s.parentNode.insertBefore(j, s);
-      })(window, document, 'script', '_MEIQIA');
-      var data = parse(window.location.search);
-      var entId = data.entid || data.eid;
-      if (Object.prototype.toString.call(entId) === '[object Array]') {
-        entId = +entId[0];
-      } else {
-        entId = +entId;
-      }
+    // let Base64 = {
+    //     encode(str) {
+    //         // first we use encodeURIComponent to get percent-encoded UTF-8,
+    //         // then we convert the percent encodings into raw bytes which
+    //         // can be fed into btoa.
+    //         return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+    //             function toSolidBytes(match, p1) {
+    //                 return String.fromCharCode('0x' + p1);
+    //             }));
+    //     },
+    //     decode(str) {
+    //         // Going backwards: from bytestream, to percent-encoding, to original string.
+    //         return decodeURIComponent(atob(str).split('').map(function (c) {
+    //             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    //         }).join(''));
+    //     }
+    // };
+    // function getCookie(cname) {
+    //   var name = cname + "=";
+    //   var ca = document.cookie.split(';');
+    //   for(var i=0; i<ca.length; i++) 
+    //   {
+    //     var c = ca[i].trim();
+    //     if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+    //   }
+    //   return "";
+    // }
+    // Date.prototype.format = function(fmt) {
+    //   var o = { 
+    //   "M+" : this.getMonth()+1,                 //月份 
+    //   "d+" : this.getDate(),                    //日 
+    //   "h+" : this.getHours(),                   //小时 
+    //   "m+" : this.getMinutes(),                 //分 
+    //   "s+" : this.getSeconds(),                 //秒 
+    //   "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+    //   "S" : this.getMilliseconds()             //毫秒 
+    //   }; 
+    //   if(/(y+)/.test(fmt)) {
+    //   fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+    //   }
+    //   for(var k in o) {
+    //   if(new RegExp("("+ k +")").test(fmt)){
+    //   fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+    //   }
+    //   }
+    //   return fmt; 
+    // }
+    // let TOKEN_KEY = 'kb-user-center-token'
+    // function parse(query) {
+    //   var qs = {};
+    //   var i = query.indexOf('?');
+    //   if (i < 0 && query.indexOf('=') < 0) {
+    //     return qs;
+    //   } else if (i >= 0) {
+    //     query = query.substring(i + 1);
+    //   }
+    //   var parts = query.split('&');
+    //   for (var n = 0; n < parts.length; n++) {
+    //     var part = parts[n];
+    //     var key = part.split('=')[0];
+    //     var val = part.split('=')[1];
+    //     key = key.toLowerCase();
+    //     if (typeof qs[key] === 'undefined') {
+    //       qs[key] = decodeURIComponent(val);
+    //     } else if (typeof qs[key] === 'string') {
+    //       var arr = [qs[key], decodeURIComponent(val)];
+    //       qs[key] = arr;
+    //     } else {
+    //       qs[key].push(decodeURIComponent(val));
+    //     }
+    //   }
+    //   return qs;
+    // }
+    // async function init() {
+    //   (function (m, ei, q, i, a, j, s) {
+    //     m[i] =
+    //       m[i] ||
+    //       function () {
+    //         (m[i].a = m[i].a || []).push(arguments);
+    //       };
+    //     (j = ei.createElement(q)), (s = ei.getElementsByTagName(q)[0]);
+    //     j.async = true;
+    //     j.charset = 'UTF-8';
+    //     j.src = 'https://static.meiqia.com/widget/loader.js';
+    //     s.parentNode.insertBefore(j, s);
+    //   })(window, document, 'script', '_MEIQIA');
+    //   var data = parse(window.location.search);
+    //   var entId = data.entid || data.eid;
+    //   if (Object.prototype.toString.call(entId) === '[object Array]') {
+    //     entId = +entId[0];
+    //   } else {
+    //     entId = +entId;
+    //   }
 
-      _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0' || entId);
-      _MEIQIA('standalone', function (config) {
-        if (config.color) {
-          document.body.style['background-color'] = '#' + config.color;
-        }
-        if (config.url) {
-          document.body.style['background-image'] = 'url(' + config.url + ')';
-          document.body.style['background-repeat'] = 'no-repeat';
-          document.body.style['background-size'] = '100% 100%';
-        }
-      });
-      _MEIQIA('withoutBtn');
-      _MEIQIA('fallback', 1);
+    //   _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0' || entId);
+    //   _MEIQIA('standalone', function (config) {
+    //     if (config.color) {
+    //       document.body.style['background-color'] = '#' + config.color;
+    //     }
+    //     if (config.url) {
+    //       document.body.style['background-image'] = 'url(' + config.url + ')';
+    //       document.body.style['background-repeat'] = 'no-repeat';
+    //       document.body.style['background-size'] = '100% 100%';
+    //     }
+    //   });
+    //   _MEIQIA('withoutBtn');
+    //   _MEIQIA('fallback', 1);
 
-      if (!getCookie(TOKEN_KEY)) {
-        let target = '/support/?showLogin=true'
-        if (data.kuboard) {
-          target = '/support/?kuboard=' + data.kuboard
-        } else {
-          window.alert('请先登录')
-        }
-        window.location.href = target
-        return
-      }
+    //   if (!getCookie(TOKEN_KEY)) {
+    //     let target = '/support/?showLogin=true'
+    //     if (data.kuboard) {
+    //       target = '/support/?kuboard=' + data.kuboard
+    //     } else {
+    //       window.alert('请先登录')
+    //     }
+    //     window.location.href = target
+    //     return
+    //   }
 
-      // Kuboard Logic
-      let ax = axios.create({
-        baseURL: '/uc-api',
-      })
-      let orders = []
-      let user = undefined
-      await ax.get(`/orders/list`, {params: {
-        status: 'PAID',
-        pageNum: 1,
-        pageSize: 1000
-      }}).then(resp => {
-        orders = resp.data.items
-      }).catch(e => {
-        console.log(e)
-      })
-      await ax.get('/users/selfInfo').then(resp => {
-        user = resp.data.data
-      }).catch(e => {
-        console.log(e)
-      })
+    //   // Kuboard Logic
+    //   let ax = axios.create({
+    //     baseURL: '/uc-api',
+    //   })
+    //   let orders = []
+    //   let user = undefined
+    //   await ax.get(`/orders/list`, {params: {
+    //     status: 'PAID',
+    //     pageNum: 1,
+    //     pageSize: 1000
+    //   }}).then(resp => {
+    //     orders = resp.data.items
+    //   }).catch(e => {
+    //     console.log(e)
+    //   })
+    //   await ax.get('/users/selfInfo').then(resp => {
+    //     user = resp.data.data
+    //   }).catch(e => {
+    //     console.log(e)
+    //   })
 
-      data.clientid = user.id
+    //   data.clientid = user.id
 
-      let totalAmount = 0
-      for (let order of orders) {
-        totalAmount += order.totalPrice
-      }
-      totalAmount = Math.round(totalAmount)
+    //   let totalAmount = 0
+    //   for (let order of orders) {
+    //     totalAmount += order.totalPrice
+    //   }
+    //   totalAmount = Math.round(totalAmount)
 
-      data.metadata = {
-        name: user.name, // 美洽默认字段
-        email: user.email,
-        tel: user.mobile,
-        Count: orders.length,
-        Amount: totalAmount,
-        uc_id: user.id,
-      }
-      if (data.kuboard) {
-        data.kuboard = Base64.decode(data.kuboard)
-        data.kuboard = JSON.parse(data.kuboard)
-        data.metadata = Object.assign(data.metadata, data.kuboard)
-        if (data.kuboard.K_title.indexOf('Kuboard') != 0) {
-          data.greeting = `Hi，Kuboard，我是 ${data.kuboard.K_title} 的 ${user.name}，有问题想要找你帮忙看看。`
-        } else {
-          data.greeting = `Hi，Kuboard，我是 ${user.name}，有问题想要找你帮忙看看。`
-        }
-      }
+    //   data.metadata = {
+    //     name: user.name, // 美洽默认字段
+    //     email: user.email,
+    //     tel: user.mobile,
+    //     Count: orders.length,
+    //     Amount: totalAmount,
+    //     uc_id: user.id,
+    //   }
+    //   if (data.kuboard) {
+    //     data.kuboard = Base64.decode(data.kuboard)
+    //     data.kuboard = JSON.parse(data.kuboard)
+    //     data.metadata = Object.assign(data.metadata, data.kuboard)
+    //     if (data.kuboard.K_title.indexOf('Kuboard') != 0) {
+    //       data.greeting = `Hi，Kuboard，我是 ${data.kuboard.K_title} 的 ${user.name}，有问题想要找你帮忙看看。`
+    //     } else {
+    //       data.greeting = `Hi，Kuboard，我是 ${user.name}，有问题想要找你帮忙看看。`
+    //     }
+    //   }
 
-      for (let i in orders) {
-        let order = orders[i]
-        let prefix = 'r' + (parseInt(i) + 1)
-        if (i >= 5) {
-          break
-        }
-        data.metadata[prefix + '_id'] = order.id //`${order.id} -- ${order.description} -- ${format(order.createTime, 'YYYY-MM-DD HH:mm')}`
-        data.metadata[prefix + '_desc'] = order.description
-        data.metadata[prefix + '_time'] = new Date(order.createTime).format("yyyy-MM-dd hh:mm") //format(order.createTime, 'YYYY-MM-DD HH:mm')
-      }
-      // Kuboard Logic end
+    //   for (let i in orders) {
+    //     let order = orders[i]
+    //     let prefix = 'r' + (parseInt(i) + 1)
+    //     if (i >= 5) {
+    //       break
+    //     }
+    //     data.metadata[prefix + '_id'] = order.id //`${order.id} -- ${order.description} -- ${format(order.createTime, 'YYYY-MM-DD HH:mm')}`
+    //     data.metadata[prefix + '_desc'] = order.description
+    //     data.metadata[prefix + '_time'] = new Date(order.createTime).format("yyyy-MM-dd hh:mm") //format(order.createTime, 'YYYY-MM-DD HH:mm')
+    //   }
+    //   // Kuboard Logic end
 
 
-      if (data.metadata) {
-        try {
-          _MEIQIA('metadata', data.metadata);
-        } catch (e) { }
-      }
-      if (data.language) {
-        _MEIQIA('language', data.language);
-      }
-      if (data.fallback) {
-        _MEIQIA('fallback', +data.fallback);
-      }
-      if (data.clientid) {
-        _MEIQIA('clientId', data.clientid);
-      }
-      if (data.agentid || data.groupid) {
-        _MEIQIA('assign', { agentToken: data.agentid || null, groupToken: data.groupid || null });
-      }
-      _MEIQIA('showPanel', {
-        greeting: data.greeting || '',
-        agentToken: data.agentid || null,
-        groupToken: data.groupid || null
-      });
-    }
-    init();
+    //   if (data.metadata) {
+    //     try {
+    //       _MEIQIA('metadata', data.metadata);
+    //     } catch (e) { }
+    //   }
+    //   if (data.language) {
+    //     _MEIQIA('language', data.language);
+    //   }
+    //   if (data.fallback) {
+    //     _MEIQIA('fallback', +data.fallback);
+    //   }
+    //   if (data.clientid) {
+    //     _MEIQIA('clientId', data.clientid);
+    //   }
+    //   if (data.agentid || data.groupid) {
+    //     _MEIQIA('assign', { agentToken: data.agentid || null, groupToken: data.groupid || null });
+    //   }
+    //   _MEIQIA('showPanel', {
+    //     greeting: data.greeting || '',
+    //     agentToken: data.agentid || null,
+    //     groupToken: data.groupid || null
+    //   });
+    // }
+    // init();
     </script>
     </body >
   </html >
