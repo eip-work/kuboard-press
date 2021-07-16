@@ -49,44 +49,44 @@ export default {
   },
   components: { OnlineChatLogin },
   mounted () {
-    if (typeof window !== 'undefined') {
-      (function(a, b, c, d, e, j, s) {
-          a[d] = a[d] || function() {
-              (a[d].a = a[d].a || []).push(arguments)
-          };
-          j = b.createElement(c),
-              s = b.getElementsByTagName(c)[0];
-          j.async = true;
-          j.charset = 'UTF-8';
-          j.src = 'https://static.meiqia.com/widget/loader.js';
-          s.parentNode.insertBefore(j, s);
-      })(window, document, 'script', '_MEIQIA');
-      _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0');
-      _MEIQIA('manualInit');
-      _MEIQIA('withoutBtn');
-      _MEIQIA('getUnreadMsg', msgs => {
-        this.unreadMsgs = msgs
-        this.showUnread = true
-      });
-      _MEIQIA('fallback', 1);
-      _MEIQIA('init');
+    // if (typeof window !== 'undefined') {
+    //   (function(a, b, c, d, e, j, s) {
+    //       a[d] = a[d] || function() {
+    //           (a[d].a = a[d].a || []).push(arguments)
+    //       };
+    //       j = b.createElement(c),
+    //           s = b.getElementsByTagName(c)[0];
+    //       j.async = true;
+    //       j.charset = 'UTF-8';
+    //       j.src = 'https://static.meiqia.com/widget/loader.js';
+    //       s.parentNode.insertBefore(j, s);
+    //   })(window, document, 'script', '_MEIQIA');
+    //   _MEIQIA('entId', '961dff7f89ddc015ac1f8e193bf774d0');
+    //   _MEIQIA('manualInit');
+    //   _MEIQIA('withoutBtn');
+    //   _MEIQIA('getUnreadMsg', msgs => {
+    //     this.unreadMsgs = msgs
+    //     this.showUnread = true
+    //   });
+    //   _MEIQIA('fallback', 1);
+    //   _MEIQIA('init');
 
-      if (this.$route.path.indexOf('/install/v3/') === 0) {
-        setTimeout(_ => {
-          this.loginSuccess()
-        }, 3000)
-      }
-    }
+    //   if (this.$route.path.indexOf('/install/v3/') === 0) {
+    //     setTimeout(_ => {
+    //       this.loginSuccess()
+    //     }, 3000)
+    //   }
+    // }
   },
   watch: {
-    '$route.path': function (newValue, oldValue) {
-      if (newValue.indexOf('/install/v3/') === 0) {
-        this.loginSuccess()
-      }
-      if (newValue.indexOf('/install/v3/') !== 0 && !Cookies.get(TOKEN_KEY)) {
-        _MEIQIA('hidePanel')
-      }
-    }
+    // '$route.path': function (newValue, oldValue) {
+    //   if (newValue.indexOf('/install/v3/') === 0) {
+    //     this.loginSuccess()
+    //   }
+    //   if (newValue.indexOf('/install/v3/') !== 0 && !Cookies.get(TOKEN_KEY)) {
+    //     _MEIQIA('hidePanel')
+    //   }
+    // }
   },
   methods: {
     showChat () {
