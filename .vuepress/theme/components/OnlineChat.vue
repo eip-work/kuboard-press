@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="false">
     <OnlineChatLogin ref="loginWindow" @loginSuccess="loginSuccess"></OnlineChatLogin>
     <template v-if="$route.path.indexOf('/install/v3/') < 0">
       <b-button variant="outline-primary" size="sm" class="logout" v-if="showLogout" @click="logout">退出登录</b-button>
