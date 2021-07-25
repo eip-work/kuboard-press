@@ -9,7 +9,7 @@ Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernet
 
 <p>
   <a aria-label="github" href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
-    <img src="https://badgen.net/github/stars/eip-work/kuboard-press?label=github stars"/>
+    <img src="https://addons.kuboard.cn/downloads/github-star.png"/>
   </a>
 </p>
 
