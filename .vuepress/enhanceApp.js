@@ -16,6 +16,7 @@ import defaults from './grid/utils/defaults'
 
 import Comp from './comp/index'
 import Cookies from 'js-cookie'
+import VueClipboard from 'vue-clipboard2'
 
 const VueFractionGrid = {
   install (Vue, options) {
@@ -33,7 +34,7 @@ export default ({
   router, // 当前应用的路由实例
   siteData // 站点元数据
 }) => {
-  
+  Vue.use(VueClipboard)
   Vue.use(BootstrapVue)
   Vue.use(VueFractionGrid, {
     approach: 'desktop-first',

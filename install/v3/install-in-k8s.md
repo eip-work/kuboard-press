@@ -20,6 +20,10 @@ meta:
 
 * 执行 Kuboard v3 在 K8S 中的安装
 
+  <b-card no-body>
+  <b-tabs content-class="mt-3" card pills>
+  <b-tab title="在线安装" active>
+
   ```sh
   kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
   # 您也可以使用下面的指令，唯一的区别是，该指令使用华为云的镜像仓库替代 docker hub 分发 Kuboard 所需要的镜像
@@ -29,6 +33,122 @@ meta:
   ::: tip 定制参数
   如果您想要定制 Kuboard 的启动参数，请将该 YAML 文件下载到本地，并修改其中的 ConfigMap
   :::
+
+  </b-tab>
+  <b-tab title="离线安装（K8S服务器不能访问公网）">
+
+  * 在您的镜像仓库服务中创建一个名为 `kuboard` 的 repository（harbor 中称之为项目、华为镜像仓库中称之为组织）
+  * 输入您镜像仓库地址及 repository 名称（替换输入框中 `registry.mycompayn.com` 为你的镜像仓库服务地址即可）：
+    <b-input size="sm" v-model="privateRegistry" placeholder="例如：registry.mycompany.com/kuboard"></b-input>
+  * 将所需镜像导入到您的私有镜像仓库
+    <div class="language-sh line-numbers-mode" v-if="privateRegistry">
+      <pre class="language-sh">
+        <code>{{dockerPull}}</code>
+      </pre> 
+      <div class="line-numbers-wrapper">
+        <span class="line-number">1</span><br>
+        <span class="line-number">2</span><br>
+        <span class="line-number">3</span><br>
+        <span class="line-number">4</span><br>
+        <span class="line-number">5</span><br>
+        <span class="line-number">6</span><br>
+        <span class="line-number">7</span><br>
+        <span class="line-number">8</span><br>
+        <span class="line-number">9</span><br>
+        <span class="line-number">10</span><br>
+        <span class="line-number">11</span><br>
+        <span class="line-number">12</span><br>
+      </div>
+    </div>
+    <b-alert v-else show variant="warning">请先输入私有镜像仓库</b-alert>
+
+  * 在您的镜像仓库设置导入的镜像为公开可访问（无需镜像仓库的用户名密码）
+  * 获取 YAML 文件，并将该文件保存到集群 master 节点（或者 kubectl 客户端所在机器，假设文件名为 `kuboard-v3.yaml`）
+
+    <b-button variant="primary" @click="save">保存 YAML 到文件</b-button>
+    <b-button variant="outline-primary" v-clipboard:copy="resultYaml"
+      v-clipboard:success="onCopy">复制 YAML 到粘贴板</b-button>
+  * 执行安装指令
+    ```sh
+    kubectl apply -f kuboard-v3.yaml
+    ```
+
+  </b-tab>
+  </b-tabs>
+  </b-card>
+
+<script>
+import axios from 'axios'
+
+function fakeClick(obj) {
+   var ev = document.createEvent("MouseEvents");
+   ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+   obj.dispatchEvent(ev);
+}
+
+function exportRaw(name, data) {
+  var urlObject = window.URL || window.webkitURL || window;
+  var export_blob = new Blob([data]);
+  var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+  save_link.href = urlObject.createObjectURL(export_blob);
+  save_link.download = name;
+  fakeClick(save_link);
+}
+
+export default {
+  data () {
+    return {
+      privateRegistry: 'registry.mycompany.com/kuboard',
+      originalYaml: '',
+    }
+  },
+  computed: {
+    dockerPull () {
+      return `docker pull eipwork/kuboard-agent:v3
+docker pull eipwork/etcd-host:3.4.16-1
+docker pull eipwork/kuboard:v3
+docker pull questdb/questdb:6.0.4
+docker tag eipwork/kuboard-agent:v3 ${this.privateRegistry}/kuboard-agent:v3
+docker tag eipwork/etcd-host:3.4.16-1 ${this.privateRegistry}/etcd-host:3.4.16-1
+docker tag eipwork/kuboard:v3 ${this.privateRegistry}/kuboard:v3
+docker tag questdb/questdb:6.0.4 ${this.privateRegistry}/questdb:6.0.4
+docker push ${this.privateRegistry}/kuboard-agent:v3
+docker push ${this.privateRegistry}/etcd-host:3.4.16-1
+docker push ${this.privateRegistry}/kuboard:v3
+docker push ${this.privateRegistry}/questdb:6.0.4
+`
+    },
+    resultYaml () {
+      let result = ''
+      result = this.originalYaml.replaceAll('eipwork/', this.privateRegistry + '/')
+      result = result.replaceAll('questdb/', this.privateRegistry + '/')
+      return result
+    }
+  },
+  mounted () {
+    axios.get('https://addons.kuboard.cn/kuboard/kuboard-v3.yaml', {}).then(resp => {
+      this.originalYaml = resp.data
+    }).catch(e => {
+      console.log(e)
+    })
+  },
+  methods: {
+    save () {
+      exportRaw('kuboard-v3.yaml', this.resultYaml)
+    },
+    onCopy () {
+      this.$bvToast.toast(`已将 YAML 复制到粘贴板`, {
+          title: '已复制',
+          variant: 'success',
+          autoHideDelay: 5000,
+          solid: true,
+          append: true,
+          toaster: 'b-toaster-top-center'
+        })
+    }
+  }
+}
+</script>
 
 * 等待 Kuboard v3 就绪
 
