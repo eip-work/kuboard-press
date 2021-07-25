@@ -120,17 +120,21 @@ docker push ${this.privateRegistry}/questdb:6.0.4
     },
     resultYaml () {
       let result = ''
-      result = this.originalYaml.replaceAll('eipwork/', this.privateRegistry + '/')
-      result = result.replaceAll('questdb/', this.privateRegistry + '/')
+      if (typeof window !== 'undefined') {
+        result = this.originalYaml.replaceAll('eipwork/', this.privateRegistry + '/')
+        result = result.replaceAll('questdb/', this.privateRegistry + '/')
+      }
       return result
     }
   },
   mounted () {
-    axios.get('https://addons.kuboard.cn/kuboard/kuboard-v3.yaml', {}).then(resp => {
-      this.originalYaml = resp.data
-    }).catch(e => {
-      console.log(e)
-    })
+    if (typeof window !== 'undefined') {
+      axios.get('https://addons.kuboard.cn/kuboard/kuboard-v3.yaml', {}).then(resp => {
+        this.originalYaml = resp.data
+      }).catch(e => {
+        console.log(e)
+      })
+    }
   },
   methods: {
     save () {
