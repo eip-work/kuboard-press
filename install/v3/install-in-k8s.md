@@ -121,8 +121,8 @@ docker push ${this.privateRegistry}/questdb:6.0.4
     resultYaml () {
       let result = ''
       if (typeof window !== 'undefined') {
-        result = this.originalYaml.replaceAll('eipwork/', this.privateRegistry + '/')
-        result = result.replaceAll('questdb/', this.privateRegistry + '/')
+        result = this.originalYaml.replace(/eipwork\//g, this.privateRegistry + '/')
+        result = result.replaceAll(/questdb\//g, this.privateRegistry + '/')
       }
       return result
     }

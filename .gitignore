@@ -32,3 +32,5 @@ HELP.md
 /node_modules/
 /.vuepress/dist/
 /docs/
+
+__v3.md
