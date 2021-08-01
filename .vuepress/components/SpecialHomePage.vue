@@ -38,10 +38,13 @@
           :item="actionLink2"
         />
       </span>
-      <p>
-        <StarCount></StarCount>
-        <StarCountDockerPulls style="display: inline-block;"></StarCountDockerPulls>
-      </p>
+      <div>
+
+        <div class="home-link noselect" style="line-height: 28px; font-size: 1em; font-weight: 400; height: 100px; padding-top: 42px;">
+          <StarCount style="margin: 0 0px 0 10px; vertical-align: bottom; height: 28px;"></StarCount>
+          <StarCountDockerPulls style="display: inline-block; vertical-align: bottom; height: 28px;" class="docker-pull-specialpage"></StarCountDockerPulls>
+        </div>
+      </div>
     </header>
 
     <div
@@ -169,6 +172,10 @@ export default {
 </script>
 
 <style lang="stylus">
+.docker-pull-specialpage
+  img
+    margin: 6px 0 !important;
+
 .home
   padding $navbarHeight 2rem 0
   max-width 960px

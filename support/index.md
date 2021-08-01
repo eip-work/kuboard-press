@@ -48,7 +48,8 @@ Kuboard 是一款免费的 Kubernetes 管理工具，提供了丰富的功能，
 | <div class="tap"></div>Grafana + Prometheus 资源监控套件                            | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>Grafana + Loki + Promtail 日志聚合套件                       | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>ElasticSearch + Filebeat + Kibana 日志聚合套件               | :white_check_mark: | :white_check_mark: |
-| <div class="tap"></div>文件浏览器（可查看/编辑/上传/下载容器中的文件）              | :white_check_mark: | :white_check_mark: |
+| <div class="tap"></div>文件浏览器（可查看/编辑容器中的文件）              | :white_check_mark: | :white_check_mark: |
+| <div class="tap"></div>文件浏览器（可上传/下载容器中的文件）              | :x: | :white_check_mark: |
 | <div class="tap"></div>Kuboard Proxy（kubectl proxy 的在线版本）                    | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>自定义名称空间布局（以分层的方式展示名称空间中的微服务）     | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>导出工作负载 YAML 文件、导入 YAML 文件（可以快速将微服务部署到新的集群或名称空间） | :white_check_mark: | :white_check_mark: |
@@ -85,9 +86,7 @@ Kuboard 是一款免费的 Kubernetes 管理工具，提供了丰富的功能，
 <grid :rwd="{compact: 'stack'}">
 <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}">
 <b-card style="height: calc(100% - 2rem); margin-top: 1rem;">
-  <a href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
-    <img src="https://starchart.cc/eip-work/kuboard-press.svg" alt="Kubernetes教程_Kuboard_Github_Star" style="height: 320px;">
-  </a>
+  <img src="https://addons.kuboard.cn/downloads/kuboard-press.svg" alt="Kubernetes教程_Kuboard_Github_Star" style="height: 320px;">
       
 <!-- [![Stargazers over time](https://starchart.cc/eip-work/kuboard-press.svg)](https://starchart.cc/eip-work/kuboard-press) -->
 

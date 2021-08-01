@@ -5,11 +5,14 @@ description: Kubernetes教程_本文简要介绍了Kuboard
 
 # Kuboard for Kubernetes
 
-Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernetes 版本 1.13 及以上。Kuboard 每周发布一个 beta 版本，最长每月发布一个正式版本，经过两年的不断迭代和优化，已经具备多集群管理、权限管理、监控套件、日志套件等丰富的功能，并且有 1000+ 的企业将 Kuboard 应用于其生产环境。Kuboard 自 2019年8月发布第一个版本以来，得到了众多用户的认可，目前已经获得了 9300+ GitHub Star
+Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernetes 版本 1.13 及以上。Kuboard 每周发布一个 beta 版本，最长每月发布一个正式版本，经过两年的不断迭代和优化，已经具备多集群管理、权限管理、监控套件、日志套件等丰富的功能，并且有 1000+ 的企业将 Kuboard 应用于其生产环境。Kuboard 自 2019年8月发布第一个版本以来，得到了众多用户的认可，目前已经获得了 10000+ GitHub Star
+
+<StarCount></StarCount>
+<StarCountDockerPulls></StarCountDockerPulls>
 
 <p>
 
-<img src="./intro.assets/kuboard-press.svg" style="height: 320px; width: 540px;"/>
+<img src="https://addons.kuboard.cn/downloads/kuboard-press.svg" style="height: 320px; width: 540px;"/>
 
 </p>
 

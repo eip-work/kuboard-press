@@ -1,10 +1,9 @@
 <template>
-  <div style="display: inline-block; width: 120px;">
+  <div style="display: inline-block; width: 110px;">
     <LazyLoad>
       <a aria-label="github" @click="$sendGaEvent('ViewGitHubStar', 'ViewGitHubStarNav', 'ViweGitHubStar:' + $page.path)"
         href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
-        <!-- <iframe style="display:inline-block;vertical-align:middle;" src="https://ghbtns.com/github-btn.html?user=eip-work&amp;repo=kuboard-press&amp;type=star&amp;count=true&amp;size=small" frameborder="0" scrolling="0" width="100px" height="20px"></iframe> -->
-        <img src="https://addons.kuboard.cn/downloads/github-star.png"/>
+        <iframe style="display:inline-block;vertical-align:middle;" src="https://addons.kuboard.cn/downloads/github-star.html" frameborder="0" scrolling="0" width="120" height="20" title="GitHub"></iframe>
       </a>
     </LazyLoad>
   </div>

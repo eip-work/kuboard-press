@@ -29,7 +29,7 @@
         >Kuboard - </span>
       </a>
       <span class="home-link noselect" style="line-height: 2.2em; font-size: 1em; font-weight: 400;">
-        <StarCount style="margin: 0 10px;"></StarCount>
+        <StarCount style="margin: 0 0px 0 10px;"></StarCount>
         <StarCountDockerPulls></StarCountDockerPulls>
         <!-- <a href="/learning/">
           <span style="color: #42b983;">免费提供K8S教程</span>
