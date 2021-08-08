@@ -14,9 +14,9 @@
       <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
         <a :href="`/learning/${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">教程</a>
       </div>
-      <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
+      <!-- <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
         <a :href="`/guide/${urlSurfix}`" class="nav-link">使用</a>
-      </div>
+      </div> -->
       <div class="side-nav-item" :style="activeLinkStyle('/support/')">
         <a :href="`/support/${urlSurfix}`" class="nav-link">支持</a>
       </div>
