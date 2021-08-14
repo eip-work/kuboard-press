@@ -12,6 +12,9 @@ meta:
 
 点击此处，查看 [版本更新说明](/support/change-log/v3.0.x.html)
 
+
+## 如果以 docker run 运行 Kuboard
+
 按照如下步骤，可以将 kuboard v3 更新到最新版本。
 
 1. 停止已有 kuboard 容器
@@ -34,7 +37,7 @@ meta:
     -e KUBOARD_AGENT_SERVER_UDP_PORT="10081" \
     -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
     -v /root/kuboard-data:/data \
-    eipwork/kuboard:v3.1.1.10
+    eipwork/kuboard:v3.1.4.3
   ```
 
   ::: danger 请注意
@@ -42,3 +45,7 @@ meta:
   * 如果您修改此处宿主机端口号，则需要您在 Kuboard 中删除已经导入了的 Kubernetes 集群，并重新导入。
   * 从 kuboard-v3.0.0.alpha.3 及以下版本升级过来的用户，请留意第 7、8、9 三行，是 v3.0.0.alpha.4 版本开始必须设置的新增参数；
   :::
+
+## 如果将 kuboard 安装在 K8S 中
+
+直接修改 `kuboard` 名称空间下名称为 `kuboard-v3` 的 Deployment 的镜像版本号为最新的版本号，然后等待片刻即可。
