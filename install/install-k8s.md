@@ -338,6 +338,8 @@ curl -sSL https://kuboard.cn/install-script/v1.21.x/init_master.sh | sh -s 1.21.
 
 **检查 master 初始化结果**
 
+`coredns` 将处于启动失败的状态，请继续下一步，完成 [安装网络插件](#安装网络插件) 这个步骤后，coredns 将正常启动。
+
 ``` sh
 # 只在 master 节点执行
 
