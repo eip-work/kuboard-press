@@ -46,6 +46,7 @@ http {
 
     location / {
       proxy_pass http://192.168.32.205:80/;  # 替换成你的 Kuboard IP 地址和端口，应该是 IP 地址，而不是 KUBOARD_ENDPOINT 参数的值
+      client_max_body_size 10m;
       gzip on;
     }
 
