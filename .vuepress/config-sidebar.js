@@ -478,17 +478,18 @@ let sidebar = {
           ]
         },
         {
-          title: '监控',
+          title: '监控及告警',
           collapsable: true,
           children: [
-            'k8s-advanced/observe/kube-prometheus.html',
+            'k8s-advanced/observe/monitor.html',
+            'k8s-advanced/observe/alert.html',
           ]
         },
         {
           title: '扩展Kubernetes',
           collapsable: true,
           children: [
-            'k8s-advanced/extend/aggregation',
+            'k8s-advanced/extend/aggregation.html',
           ]
         },
       ]

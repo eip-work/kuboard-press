@@ -158,6 +158,8 @@ docker push ${this.privateRegistry}/questdb:6.0.4
 
   执行指令 `watch kubectl get pods -n kuboard`，等待 kuboard 名称空间中所有的 Pod 就绪，如下所示，
 
+  > 如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `托管的 K8S` 的描述。
+
   ```sh
   [root@node1 ~]# kubectl get pods -n kuboard
   NAME                               READY   STATUS    RESTARTS   AGE
