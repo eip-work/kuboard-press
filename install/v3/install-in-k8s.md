@@ -161,6 +161,8 @@ docker push ${this.privateRegistry}/questdb:6.0.4
   > 如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `托管的 K8S` 的描述。
 
   ```sh
+  再说一遍：如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `托管的 K8S` 的描述。
+  
   [root@node1 ~]# kubectl get pods -n kuboard
   NAME                               READY   STATUS    RESTARTS   AGE
   kuboard-agent-2-65bc84c86c-r7tc4   1/1     Running   2          28s
