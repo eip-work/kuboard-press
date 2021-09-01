@@ -15,7 +15,7 @@ meta:
 
 Kubernetes Job 对象可以用来支持 Pod 的并发执行，但是：
 * Job 对象并非设计为支持需要紧密相互通信的Pod的并发执行，例如科学计算
-* Job 对象不支持并发处理一系列相互独立但是又相互关联的工作任务，例如：
+* Job 对象支持并发处理一系列相互独立但是又相互关联的工作任务，例如：
   * 发送邮件
   * 渲染页面
   * 转码文件
@@ -38,7 +38,7 @@ Kubernetes Job 对象可以用来支持 Pod 的并发执行，但是：
 
 他们的优缺点归纳如下表所示，其中第二列到第四列罗列了主要考虑的对比因素：
 
-| 模式                                                         | 单个Job对象 | Pod的数量少于工作任务？ | 是否修改已有代码？ | 是否可兼容kube1.1 |
+| 模式                                                         | 单个Job对象 | Pod的数量少于工作任务？ | 是否无需修改已有代码？ | 是否可兼容kube1.1 |
 | ------------------------------------------------------------ | ----------- | ----------------------- | ------------------ | ----------------- |
 | [Job Template Expansion](https://kubernetes.io/docs/tasks/job/parallel-processing-expansion/) |             |                         | ✓                  | ✓                 |
 | [Queue with Pod Per Work Item](https://kubernetes.io/docs/tasks/job/coarse-parallel-processing-work-queue/) | ✓           |                         | 有时候             | ✓                 |
