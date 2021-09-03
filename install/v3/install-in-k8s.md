@@ -158,10 +158,10 @@ docker push ${this.privateRegistry}/questdb:6.0.4
 
   执行指令 `watch kubectl get pods -n kuboard`，等待 kuboard 名称空间中所有的 Pod 就绪，如下所示，
 
-  > 如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `托管的 K8S` 的描述。
+  > 如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `缺少 Master Role` 的描述。
 
   ```sh
-  再说一遍：如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `托管的 K8S` 的描述。
+  再说一遍：如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `缺少 Master Role` 的描述。
   
   [root@node1 ~]# kubectl get pods -n kuboard
   NAME                               READY   STATUS    RESTARTS   AGE
@@ -174,15 +174,31 @@ docker push ${this.privateRegistry}/questdb:6.0.4
   ```
 
   ::: tip CrashLoopBackOff
-  过程中 kuboard-agent 可能出现 CrashLoopBackOff 的状态，这是因为其依赖的 kuboard-v3 尚未就绪，请耐心等候一会儿即可（根据您的服务器下载镜像速度的不同，大约 3-5 分钟）。
+  * kuboard-v3-xxxxx 的容器出现 CrashLoopBackOff 的状态，可能的原因有：
+    * 缺少 kuboard-etcd-xxxx 容器，请查看本章节后面关于 `缺少 Master Role` 的描述;
+    * kuboard-etcd-xxxx 容器未就绪，请查看 kuboard-etcd-xxxx 容器的日志，解决其不能启动的问题；
+  * kuboard-agent-xxxxx 出现 CrashLoopBackOff 的状态，可能的原因有：
+    * 其依赖的 kuboard-v3 尚未就绪，请耐心等候一会儿即可（根据您的服务器下载镜像速度的不同，大约 3-5 分钟）；
+    * kuboard-v3 已经处于 READY （1/1）状态，但是集群的网络插件配置错误或者其他的网络因素，导致 kuboard-agent 的容器不能访问到 kuboard-v3 的容器；
   :::
 
-  ::: danger 托管的 K8S
-  * 当您在 ***阿里云、腾讯云（以及其他云）托管*** 的 K8S 集群中以此方式安装 Kuboard 时，您的集群中将 ***看不到 master 节点***，此时，您也可以为一个或者三个 worker 节点添加 `k8s.kuboard.cn/role=etcd` 的标签，来增加 kuboard-etcd 的实例数量；
-  * 执行如下指令，可以为 `your-node-name` 节点添加所需要的标签
-    ```sh
-    kubectl label nodes your-node-name k8s.kuboard.cn/role=etcd
-    ```
+  ::: danger 缺少 Master Role
+  * 可能缺少 Master Role 的情况有：
+    * 当您在 ***阿里云、腾讯云（以及其他云）托管*** 的 K8S 集群中以此方式安装 Kuboard 时，您执行 `kubectl get nodes` 将 ***看不到 master 节点***；
+    * 当您的集群是通过二进制方式安装时，您的集群中可能缺少 Master Role，或者当您删除了 Master 节点的 `node-role.kubernetes.io/master=` 标签时，此时执行 `kubectl get nodes`，结果如下所示：
+      ```sh
+      [root@k8s-19-master-01 ~]# kubectl get nodes
+      NAME               STATUS   ROLES    AGE   VERSION
+      k8s-19-master-01   Ready    <none>   19d   v1.19.11
+      k8s-19-node-01     Ready    <none>   19d   v1.19.11
+      k8s-19-node-02     Ready    <none>   19d   v1.19.11
+      k8s-19-node-03     Ready    <none>   19d   v1.19.11
+      ```
+  * 在集群中缺少 Master Role 节点时，您也可以为一个或者三个 worker 节点添加 `k8s.kuboard.cn/role=etcd` 的标签，来增加 kuboard-etcd 的实例数量；
+    * 执行如下指令，可以为 `your-node-name` 节点添加所需要的标签
+      ```sh
+      kubectl label nodes your-node-name k8s.kuboard.cn/role=etcd
+      ```
   :::
 
   ::: tip etcd
