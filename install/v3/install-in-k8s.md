@@ -158,11 +158,12 @@ docker push ${this.privateRegistry}/questdb:6.0.4
 
   执行指令 `watch kubectl get pods -n kuboard`，等待 kuboard 名称空间中所有的 Pod 就绪，如下所示，
 
-  > 如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `缺少 Master Role` 的描述。
+  如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看 
+  <b-button v-b-toggle.collapse-init-pending variant="danger" size="sm" style="margin-top: -5px;" v-on:click="$sendGaEvent('install-in-k8s', 'error-install-in-k8s', '查看等待 Kuboard 就绪时的常见问题')">
+    <b-icon icon="circle-fill" animation="throb" font-scale="1"></b-icon> 常见错误 </b-button>
+  中关于 `缺少 Master Role` 的描述。
 
   ```sh
-  再说一遍：如果结果中没有出现 `kuboard-etcd-xxxxx` 的容器，请查看本章节稍后面的内容中关于 `缺少 Master Role` 的描述。
-  
   [root@node1 ~]# kubectl get pods -n kuboard
   NAME                               READY   STATUS    RESTARTS   AGE
   kuboard-agent-2-65bc84c86c-r7tc4   1/1     Running   2          28s
@@ -172,7 +173,9 @@ docker push ${this.privateRegistry}/questdb:6.0.4
   kuboard-etcd-ader3                 1/1     Running   0          67s
   kuboard-v3-645bdffbf6-sbdxb        1/1     Running   0          67s
   ```
-
+  <b-button v-b-toggle.collapse-init-pending variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-in-k8s', 'error-install-in-k8s', '查看等待 Kuboard 就绪时的常见问题')">
+    <b-icon icon="circle-fill" animation="throb" font-scale="1"></b-icon> 常见错误 </b-button>
+  <b-collapse id="collapse-init-pending" class="mt-2">
   ::: tip CrashLoopBackOff
   * kuboard-v3-xxxxx 的容器出现 CrashLoopBackOff 的状态，可能的原因有：
     * 缺少 kuboard-etcd-xxxx 容器，请查看本章节后面关于 `缺少 Master Role` 的描述;
@@ -211,6 +214,7 @@ docker push ${this.privateRegistry}/questdb:6.0.4
       3. 执行 `kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml`
   * 建议 etcd 部署的数量为 [奇数](https://etcd.io/docs/v3.4/faq/#what-is-failure-tolerance)
   :::
+  </b-collapse>
 
 ### 访问 Kuboard
 
