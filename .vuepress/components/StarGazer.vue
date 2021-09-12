@@ -14,7 +14,7 @@
             一个 Github Star
             <OutboundLink/>
           </a>
-          是您对 Kuboard 最大的鼓励
+          激励 Kuboard 继续前行。
         </div>
         <a href="https://github.com/eip-work/kuboard-press" target="_blank" @click="linkToStar">
           <div style="border: solid 1px #ddd;">
@@ -54,6 +54,10 @@ export default {
   },
   methods: {
     checkDuration() {
+      if (localStorage.getItem('stared') === 'true') {
+        console.log('已经去过 GITHUB')
+        return
+      }
       let firstAccess = localStorage.getItem('FIRST_ACCESS')
       // console.log(new Date(), new Date(firstAccess))
       if (!firstAccess) {
