@@ -49,7 +49,7 @@ Kuboard 是一款免费的 Kubernetes 管理工具，提供了丰富的功能，
 | <div class="tap"></div>Grafana + Loki + Promtail 日志聚合套件                       | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>ElasticSearch + Filebeat + Kibana 日志聚合套件               | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>文件浏览器（可查看/编辑容器中的文件）              | :white_check_mark: | :white_check_mark: |
-| <div class="tap"></div>文件浏览器（可上传/下载容器中的文件）              | :x: | :white_check_mark: |
+| <div class="tap"></div>文件浏览器（可上传/下载容器中的文件）              | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>Kuboard Proxy（kubectl proxy 的在线版本）                    | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>自定义名称空间布局（以分层的方式展示名称空间中的微服务）     | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>导出工作负载 YAML 文件、导入 YAML 文件（可以快速将微服务部署到新的集群或名称空间） | :white_check_mark: | :white_check_mark: |
