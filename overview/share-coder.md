@@ -22,159 +22,111 @@ Kubernetes 容器编排已越来越被大家关注，然而学习 Kubernetes 的
 * Kuboard 提供 Spring Cloud 等微服务参考架构在 K8S 上的详细部署文档和步骤，是 Spring Cloud 用户将自己的应用迁移到 K8S 部署环境的非常好的参考资料。
 
 
+Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernetes 版本 1.13 及以上。Kuboard 每周发布一个 beta 版本，最长每月发布一个正式版本，经过两年的不断迭代和优化，已经具备多集群管理、权限管理、监控套件、日志套件等丰富的功能，并且有 1000+ 的企业将 Kuboard 应用于其生产环境。Kuboard 自 2019年8月发布第一个版本以来，得到了众多用户的认可，目前已经获得了 10000+ GitHub Star
 
-Kuboard 地址：[https://kuboard.cn](https://kuboard.cn/)
+<StarCount></StarCount>
+<StarCountDockerPulls></StarCountDockerPulls>
 
-Kuboard 在 github 已获得 1867 star，获得了许多用户的喜爱。
+<p>
 
-![image-20191217133227879](./share-coder.assets/image-20191217133227879.png)
+<img src="https://addons.kuboard.cn/downloads/kuboard-press.svg" style="height: 320px; width: 540px;"/>
+
+</p>
+
+点击这里可以查看 [Kuboard 的安装文档](https://kuboard.cn/install/v3/install.html)
+
+## 在线演示
+
+<div>
+  在线演示环境中，您具备 <span style="color: red; font-weight: bold">只读</span> 权限，只能体验 Kuboard 的一部分功能。<br/>
+</div>
+<div style="padding: 10px; border: 1px solid #eee; border-radius: 10px; margin: 10px 0px; background-color: #fafafa;">
+  <a href="https://demo.kuboard.cn" target="_blank">https://demo.kuboard.cn</a> <br/>
+  <div style="width: 60px; display: inline-block; margin-top: 5px;">用&nbsp;户</div>
+  demo <br/>
+  <div style="width: 60px; display: inline-block;">密&nbsp;码</div>
+  demo123
+</div>
+
+## 特点介绍
+
+相较于 Kubernetes Dashboard 等其他 Kubernetes 管理界面，Kuboard 的主要特点有：
+
+* 多种认证方式
+
+  Kuboard 可以使用内建用户库、gitlab / github 单点登录或者 LDAP 用户库进行认证，避免管理员将 ServiceAccount 的 Token 分发给普通用户而造成的麻烦。使用内建用户库时，管理员可以配置用户的密码策略、密码过期时间等安全设置。
+
+  ![Kuboard登录界面](../intro.assets/image-20210405162940278.png)
+
+* 多集群管理
+
+  管理员可以将多个 Kubernetes 集群导入到 Kuboard 中，并且通过权限控制，将不同集群/名称空间的权限分配给指定的用户或用户组。
+
+  ![Kuboard集群列表页](../intro.assets/image-20210405164029151.png)
+
+* 微服务分层展示
+
+  在 Kuboard 的名称空间概要页中，以经典的微服务分层方式将工作负载划分到不同的分层，更加直观地展示微服务架构的结构，并且可以为每一个名称空间自定义名称空间布局。
+
+  ![Kuboard-微服务分层](../intro.assets/image-20210405164532452.png)
+
+* 工作负载的直观展示
+
+  Kuboard 中将 Deployment 的历史版本、所属的 Pod 列表、Pod 的关联事件、容器信息合理地组织在同一个页面中，可以帮助用户最快速的诊断问题和执行各种相关操作。
+
+  ![Kuboard-工作负载详情](../intro.assets/image-20210405180147614.png)
+
+* 工作负载编辑
+
+  Kuboard 提供了图形化的工作负载编辑界面，用户无需陷入繁琐的 YAML 文件细节中，即可轻松完成对容器的编排任务。支持的 Kubernetes 对象类型包括：Node、Namespace、Deployment、StatefulSet、DaemonSet、Secret、ConfigMap、Service、Ingress、StorageClass、PersistentVolumeClaim、LimitRange、ResourceQuota、ServiceAccount、Role、RoleBinding、ClusterRole、ClusterRoleBinding、CustomResourceDefinition、CustomResource 等各类常用 Kubernetes 对象，
+
+  ![Kuboard-工作负载编辑](../intro.assets/image-20210405180800712.png)
+
+* 存储类型支持
+
+  在 Kuboard 中，可以方便地对接 NFS、CephFS 等常用存储类型，并且支持对 CephFS 类型的存储卷声明执行扩容和快照操作。
+
+  ![Kuboard-存储类](../intro.assets/image-20210405181928653.png)
+
+* 丰富的互操作性
+
+  可以提供许多通常只在 `kubectl` 命令行界面中才提供的互操作手段，例如：
+
+  * Top Nodes / Top Pods
+  * 容器的日志、终端
+  * 容器的文件浏览器（支持从容器中下载文件、上传文件到容器）
+  * KuboardProxy（在浏览器中就可以提供 `kubectl proxy` 的功能）
+
+  ![Kuboard-文件浏览器](../intro.assets/image-20210405182805543.png)
+
+* 套件扩展
+
+  Kuboard 提供了必要的套件库，使得用户可以根据自己的需要扩展集群的管理能力。当前提供的套件有：
+
+  * 资源层监控套件，基于 Prometheus / Grafana 提供 K8S 集群的监控能力，可以监控集群、节点、工作负载、容器组等各个级别对象的 CPU、内存、网络、磁盘等资源的使用情况；
+  * 日志聚合套件，基于 Grafana / Loki / Promtail 实现日志聚合；
+  * 存储卷浏览器，查看和操作存储卷中的内容；
+
+  ![Kuboard-套件扩展](../intro.assets/image-20210405183652378.png)
+
+* 告警配置
+  
+  可以通过界面直接配置资源层监控套件发送告警消息：
+
+  * 支持邮件、微信发送告警消息；
+  * 支持告警路由配置；
+  * 支持告警规则配置等；
+
+  ![Kuboard-告警配置](../intro.assets/alert-config.png)
 
 
+* 操作审计
 
-## 安装Kuboard
+  Kuboard 支持操作审计的功能：
 
-如果您已经有了 Kubernetes 集群，只需要一行命令即可安装 Kuboard：
+  * 审计用户通过 Kuboard 界面和 Kuboard API 执行的操作；
+  * 自定义审计规则；
 
-``` sh
-kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
-```
+  ![Kuboard-操作审计](../intro.assets/audit.png)
 
-然后访问您集群中任意节点的 32567 端口（http://any-of-your-node-ip:32567），即可打开 Kuboard 界面。
-
-
-
-## 使用Kuboard
-
-Kuboard 通过三层界面来管理 Kubernetes 以及部署在其上的微服务应用，使得一个非常复杂的系统变得易于理解：
-
-1. 集群概览层
-
-   Kuboard 中查看集群概览的界面如下图所示，下层由 Kubernetes 的计算资源和存储资源组成，上层则是应用的名称空间。
-
-   ![kuboard_demo](./share-coder.assets/kuboard.demo.eip.work.png)
-
-2. 名称空间层
-
-   进入 Kuboard 名称空间界面后，可以看到该名称空间下部署的所有应用、配置信息、存储卷声明，以及在名称空间内可执行的操作，例如创建工作负载、导出工作负载、导入工作负载、容器组列表、调整镜像版本等。
-
-   这里比较特殊的一点是，Kuboard 以分层的方式展现微服务架构的经典分层，包括展现层、API网关层、微服务层、持久层、中间件层和监控层。
-
-   ![Kubernetes 教程](./share-coder.assets/image-20191002073210761.png)
-
-3. 工作负载层
-
-   从名称空间点击某一个应用模块后，可进入到工作负载的详情页。在这里可以看到控制器（Deployment、StatefulSet、DaemonSet等）的详细信息，也可以看到其管理的 Pod 的详情、监控、Pod 的日志、Pod的命令行控制台等。
-
-   在 Kuboard 工作负载编辑器里，可以通过图形界面完成应用的部署和管理、伸缩、卸载等操作，而无需编写复杂的 yaml 文件。
-
-   ![Kubernetes 教程](./share-coder.assets/image-20191002073245932.png)
-
-
-
-## Kubernetes免费教程
-
-### **Kubernetes 体验**
-
-* 安装 Kubernetes 单Master节点（30分钟，初学者也许需要更多）
-
-* 安装微服务管理界面（5分钟）
-
-* 创建 busybox（10分钟）
-
-* 导入 example 微服务应用（15分钟）
-
-### **Kubernetes 入门**
-
-* 0. 学习Kubernetes基础知识 (10分钟)
-
-* 1. 部署一个应用程序 (5分钟)
-
-* 2. 查看 Pods / Nodes (10分钟)
-
-* 3. 公布应用程序 (10分钟)
-
-* 4. 伸缩应用程序 (10分钟)
-
-* 5. 执行滚动更新 (10分钟)
-
-* 6. 复习Kubernetes核心概念 (10分钟)
-
-### **Kubernetes 进阶**
-
-* 使用私有 registry 中的 docker 镜像
-
-* 工作负载
-  * 容器组 - 概述
-  * 容器组 - 生命周期
-  * 容器组 - 初始化容器
-  * 控制器 - 概述
-  * 控制器 - Deployment
-  * 控制器 - StatefulSet
-  * 控制器 - DaemonSet
-  * 控制器 - Job
-  * 控制器 - CronJob
-
-* 服务发现、负载均衡、网络
-  * Service 概述
-  * Service 详细描述
-  * Service/Pod 的 DNS
-  * Service 连接应用程序
-  * Ingress 通过互联网访问您的应用
-  * 如何选择网络插件
-
-* 存储
-  * 数据卷 Volume
-  * 存储卷 PV 和存储卷声明 PVC
-  * 存储类 StorageClass
-  * 自建 NFS 服务
-
-* 配置
-  * 使用 ConfigMap 配置您的应用程序
-  * 管理容器的计算资源
-  * 将容器调度到指定的节点
-  * 污点和容忍 taints and toleration
-  * Secrets
-
-### **Kubernetes 高级**
-
-* 问题诊断
-  - [诊断应用程序](https://kuboard.cn/learning/k8s-advanced/ts/application.html)
-  - [诊断集群问题](https://kuboard.cn/learning/k8s-advanced/ts/cluster.html)
-  - [Deployment故障排除图解](https://kuboard.cn/learning/k8s-advanced/ts/deployment.html)
-* 日志
-  - [日志](https://kuboard.cn/learning/k8s-advanced/logs/)
-* 调度
-  - [调度](https://kuboard.cn/learning/k8s-advanced/schedule/)
-  - [调度调优](https://kuboard.cn/learning/k8s-advanced/schedule/tuning.html)
-  - [调度框架](https://kuboard.cn/learning/k8s-advanced/schedule/framework.html)
-* 策略
-  - [Limit Range](https://kuboard.cn/learning/k8s-advanced/policy/lr.html)
-  - [Resource Quota](https://kuboard.cn/learning/k8s-advanced/policy/rq.html)
-* 安全
-  - [RBAC 授权接口](https://kuboard.cn/learning/k8s-advanced/sec/rbac/api.html)
-  - [RBAC Example](https://kuboard.cn/learning/k8s-advanced/sec/rbac/example.html)
-* 监控
-* 联邦
-
-## Spring Cloud在Kubernetes上的部署实战
-
-在 Kubernetes 上部署 Spring Cloud 微服务
-
-* 准备
-  * 准备OCP的构建环境和部署环境
-  * 构建docker镜像并推送到仓库
-
-* 部署
-  * 部署顺序
-  * 在K8S上部署eureka-server
-  * 在K8S上部署mysql
-  * 在K8S上部署redis
-  * 在K8S上部署auth-server
-  * 在K8S上部署user-center
-  * 在K8S上部署api-gateway
-  * 在K8S上部署back-center
-  * 重新审视配置信息
-
-* 多环境
-  * 导出部署配置
-  * 导入部署配置
+访问 Kuboard 网站 https://kuboard.cn 可以加入 Kuboard 社群，并获得帮助。
