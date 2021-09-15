@@ -4,7 +4,7 @@ module.exports = {
   // configureWebpack: () => ({
   //   devtool: 'source-map'
   // }),
-  host: 'kb',
+  host: 'localhost',
   port: 8000,
   devServer: {
     proxy: {
