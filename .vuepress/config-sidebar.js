@@ -62,6 +62,7 @@ let sidebar = {
           title: '配置 Kuboard v3',
           collapsable: true,
           children: [
+            'v3/mfa',
             'v3/reset-password',
             'v3/proxy',
             'v3/tls',
