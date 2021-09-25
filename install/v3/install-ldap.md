@@ -49,14 +49,16 @@ Kuboard 支持多种认证方式：
 
   > 下面启动 Open LDAP 的脚本仅用于测试，未考虑如何持久化，如何设置 TLS 等，更多信息请参考该脚本中所用容器的 [帮助文档](https://github.com/osixia/docker-openldap)
   ``` sh
-  docker run -p 389:389 -p 636:636 --name my-openldap-container --detach osixia/openldap:1.4.0
+  docker run -p 389:389 -p 636:636 --name openldap --detach osixia/openldap:1.4.0
   ```
   
 * 启动 phpLDAPadmin
 
   ```sh
   docker run -p 6443:443 \
-    --env PHPLDAPADMIN_LDAP_HOSTS=host.docker.internal \
+    --name ldapadmin \
+    --link openldap:ldap \
+    --env PHPLDAPADMIN_LDAP_HOSTS=ldap \
     --detach osixia/phpldapadmin:0.9.0
   ```
   
@@ -138,7 +140,9 @@ sudo docker run -d \
   -e KUBOARD_ENDPOINT="http://内网IP:80" \
   -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
   -e KUBOARD_ROOT_USER="shaohq" \
-  -e LDAP_HOST="host.docker.internal:389" \
+  --link openldap:ldap \
+  -e LDAP_HOST="ldap:389" \
+  -e LDAP_SKIP_SSL_VERIFY="true"
   -e LDAP_BIND_DN="cn=admin,dc=example,dc=org" \
   -e LDAP_BIND_PASSWORD="admin" \
   -e LDAP_BASE_DN="dc=example,dc=org" \
@@ -188,18 +192,19 @@ LDAP 相关的参数相对复杂，本章节以 Kuboard 集成 LDAP 时，对 LD
 
 如上图所示：
 * 第一步：连接 LDAP
-  * 通过第 11 行 `LDAP_HOST` 参数找到 LDAP 服务器的地址；
-  * 通过第 12、13 行 `LDAP_BIND_DN`、`LDAP_BIND_PASSWORD` 两个参数作为用户名密码创建与 LDAP 的连接；
+  * 第 11 行，使得 `kuboard` 容器可以访问到 `openldap` 容器，如果您的 LDAP 通过 IP 地址访问，可以省略这一行；
+  * 通过第 12 行 `LDAP_HOST` 参数找到 LDAP 服务器的地址；
+  * 通过第 14、15 行 `LDAP_BIND_DN`、`LDAP_BIND_PASSWORD` 两个参数作为用户名密码创建与 LDAP 的连接；
 * 第二步：查询用户信息
-  * 通过第 14、15 行 `LDAP_BASE_DN`、`LDAP_FILTER`以及登录界面中输入的用户名，共三个参数查询到唯一的一个用户对象；
+  * 通过第 16、17 行 `LDAP_BASE_DN`、`LDAP_FILTER`以及登录界面中输入的用户名，共三个参数查询到唯一的一个用户对象；
   * 其中，登录界面中输入的用户名将必须与第 18行 `LDAP_ID_ATTRIBUTE` 指定的 LDAP 对象中用户 ID 的字段名称项匹配；
 * 第三步：映射用户信息
-  * 将第 17、18、19 行 `LDAP_USER_NAME_ATTRIBUTE`、`LDAP_EMAIL_ATTRIBUTE`、`LDAP_DISPLAY_NAME_ATTRIBUTE` 所指定对象字段的取值作为用户名、电子邮件地址、用户全名的信息；
+  * 将第 19、20、21 行 `LDAP_USER_NAME_ATTRIBUTE`、`LDAP_EMAIL_ATTRIBUTE`、`LDAP_DISPLAY_NAME_ATTRIBUTE` 所指定对象字段的取值作为用户名、电子邮件地址、用户全名的信息；
 * 第四步：查询用户组信息
-  * 将第 20、21 行 `LDAP_GROUP_SEARCH_BASE_DN`、`LDAP_GROUP_SEARCH_FILTER` 指定的参数用作检索用户组的条件；
-  * 检索用户组时，第二步所得用户信息的 `LDAP_USER_MACHER_USER_ATTRIBUTE`（第 24 行） 所指定字段的值必须与 `LDAP_USER_MACHER_GROUP_ATTRIBUTE`（第 25 行） 所指定的用户组字段的取值相匹配；
+  * 将第 22、23 行 `LDAP_GROUP_SEARCH_BASE_DN`、`LDAP_GROUP_SEARCH_FILTER` 指定的参数用作检索用户组的条件；
+  * 检索用户组时，第二步所得用户信息的 `LDAP_USER_MACHER_USER_ATTRIBUTE`（第 26 行） 所指定字段的值必须与 `LDAP_USER_MACHER_GROUP_ATTRIBUTE`（第 27 行） 所指定的用户组字段的取值相匹配；
 * 第五步：映射用户组信息
-  * 将第 24 行 `LDAP_GROUP_NAME_ATTRIBUTE` 所指定的用户组字段映射为用户组名称
+  * 将第 26 行 `LDAP_GROUP_NAME_ATTRIBUTE` 所指定的用户组字段映射为用户组名称
 
 通过上述五个步骤，Kuboard 可以从 LDAP 中检索到用户的基本信息，以及用户组信息，密码字段默认使用用户信息中的 `password` 字段。获得这些信息后，用户可以使用 LDAP 中的信息登录 Kuboard。
 
