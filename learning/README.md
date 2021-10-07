@@ -194,7 +194,8 @@ meta:
 
     <!-- <Course courseId="484058" /> -->
   * 监控
-    * [kube-prometheus](/learning/k8s-advanced/observe/kube-prometheus.html)
+    * [监控套件](/learning/k8s-advanced/observe/monitor.html)
+    * [告警][/learning/k8s-advanced/observe/alert.html]
   * 联邦
 
 ## **Kubernetes 实战**
@@ -204,7 +205,7 @@ meta:
 在 Kubernetes 上部署 Spring Cloud 微服务：
 
 * [概述](/learning/k8s-practice/spring-cloud/)
-* [导入 example 微服务应用](/guide/example/import.html) （15分钟）
+* [导入 example 微服务应用](/learning/k8s-practice/import/import.html) （15分钟）
   * 导入一个完整的 example 微服务应用，体验 Spring Cloud 在 Kubernetes 上的部署过程。
 * [在微服务上下文中监控 example](/guide/example/monitor-v2.html) 
   * 根据微服务上下文查看监控结果
