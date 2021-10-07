@@ -46,6 +46,8 @@ Kuboard 是一款免费的 Kubernetes 管理工具，提供了丰富的功能，
 | <div class="tap"></div>Kubernetes RBAC 授权                                         | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>双因子认证                                                    | :white_check_mark: | :white_check_mark: |
 | **Kuboard 特色功能**                                         |                    |                    |
+| <div class="tap"></div>通过 kubeconfig 导入集群     | :white_check_mark: | :white_check_mark: |
+| <div class="tap"></div>通过 kuboard-agent 导入集群     | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>Grafana + Prometheus 资源监控套件                            | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>Grafana + Loki + Promtail 日志聚合套件                       | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>ElasticSearch + Filebeat + Kibana 日志聚合套件               | :white_check_mark: | :white_check_mark: |
