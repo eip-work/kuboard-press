@@ -410,7 +410,15 @@ let sidebar = {
           children: [
             'k8s-advanced/ts/application',
             'k8s-advanced/ts/cluster',
-            'k8s-advanced/ts/deployment'
+            'k8s-advanced/ts/deployment',
+            {
+              title: 'KuboardProxy',
+              collapsable: true,
+              children: [
+                'k8s-advanced/proxy/',
+                'k8s-advanced/proxy/rebase',
+              ]
+            }
           ]
         },
         {
@@ -503,6 +511,7 @@ let sidebar = {
           title: '实战',
           collapsable: true,
           children: [
+            'k8s-practice/import/import',
             'k8s-practice/gpu/gpu',
             'k8s-practice/access/port-forward',
             'k8s-practice/admin/list-images',
