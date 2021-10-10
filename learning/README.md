@@ -195,7 +195,7 @@ meta:
     <!-- <Course courseId="484058" /> -->
   * 监控
     * [监控套件](/learning/k8s-advanced/observe/monitor.html)
-    * [告警][/learning/k8s-advanced/observe/alert.html]
+    * [告警](/learning/k8s-advanced/observe/alert.html)
   * 联邦
 
 ## **Kubernetes 实战**
