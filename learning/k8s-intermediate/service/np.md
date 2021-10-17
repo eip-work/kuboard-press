@@ -15,7 +15,10 @@ meta:
 
 Kubernetes 中，Network Policy（网络策略）定义了一组 Pod 是否允许相互通信，或者与网络中的其他端点 endpoint 通信。
 
-`NetworkPolicy` 对象使用标签选择Pod，并定义规则指定选中的Pod可以执行什么样的网络通信
+`NetworkPolicy` 对象使用标签选择Pod，并定义规则指定选中的Pod可以执行什么样的网络通信，规则通常由如下三类信息组合而成：
+1. 允许访问的其他容器组（容器组不能阻止其访问自己的端口）
+2. 允许访问的名称空间
+3. 允许访问的 IP 段（例外：从容器组所在的节点访问容器组，或者从容器组访问其所在的节点都是始终被允许的）
 
 [[TOC]]
 
@@ -32,6 +35,8 @@ Network Policy 由网络插件实现，因此，您使用的网络插件必须�
 如果一个 NetworkPolicy 的标签选择器选中了某个 Pod，则该 Pod 将变成隔离的（isolated），并将拒绝任何不被 NetworkPolicy 许可的网络连接。（名称空间中其他未被 NetworkPolicy 选中的 Pod 将认可接受来自任何请求方的网络请求。）
 
 Network Police 不会相互冲突，而是相互叠加的。如果多个 NetworkPolicy 选中了同一个 Pod，则该 Pod 可以接受这些 NetworkPolicy 当中任何一个 NetworkPolicy 定义的（入口/出口）规则，是所有NetworkPolicy规则的并集，因此，NetworkPolicy 的顺序并不重要，因为不会影响到最终的结果。
+
+为了使两个容器组之间的网络能够连通，源容器组的出方向网络策略和目标容器组的入方向无网络策略必须同时允许该网络连接。只要其中的任何一方拒绝了该连接，该连接都不能创建成功。
 
 ## NetworkPolicy对象
 
