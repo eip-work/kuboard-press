@@ -1,5 +1,5 @@
 <template>
-  <a style="vertical-align: top;" @click="sendGaEvent" target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=Pm3XTP87T-t4yJWr3YEsIs46fEwhp9G2&jump_from=webapi"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="kuboard for kubernetes (k8s)" title="kuboard for kubernetes (k8s)"></a>
+  <a style="vertical-align: top;" @click="sendGaEvent" target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=DysHZJwzXSMFiWregLeqxZZwcU6SZlGr&jump_from=webapi"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="kuboard for kubernetes (k8s)" title="kuboard 4 K8s 三群"></a>
 </template>
 
 <script>
