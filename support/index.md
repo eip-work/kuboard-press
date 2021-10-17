@@ -26,6 +26,7 @@ Kuboard 是一款免费的 Kubernetes 管理工具，提供了丰富的功能，
 | <div class="tap"></div>Service / Ingress 管理                                       | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>ConfigMap / Secret 管理                                      | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>CustomerResourceDefinition 管理                              | :white_check_mark: | :white_check_mark: |
+| <div class="tap"></div>网络策略（NetworkPolicy） 管理                              | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>自动伸缩（Horizontal Pod Autoscaler）管理                    | :white_check_mark: | :white_check_mark: |
 | **Kubernetes 存储管理**                                      |                    |                    |
 | <div class="tap"></div>通过 ceph-csi 对接 CephFS 存储类                             | :white_check_mark: | :white_check_mark: |
