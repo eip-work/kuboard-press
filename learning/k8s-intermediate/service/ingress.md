@@ -8,7 +8,7 @@ meta:
     content: Kubernetes Ingress,Ingress
 ---
 
-# Ingress通过互联网访问您的应用
+# 通过 Ingress 访问您的应用
 
 <AdSenseTitle/>
 
