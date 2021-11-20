@@ -26,7 +26,9 @@ description: 通过Kuboard将一个预先定义好的SpringCloud微服务样例�
 
 ## 导入 example
 
-* 下载 <a :href="$withBase('/kuboard_example_v3.yaml')" download="kuboard_example.yaml">kuboard_example.yaml</a> 文件
+* 下载 `kuboard_example.yaml` 文件
+  * 如果您的 k8s 集群版本低于 1.19 点击此处下载 <a :href="$withBase('/kuboard_example_v3.yaml')" download="kuboard_example.yaml">kuboard_example.yaml</a>
+  * 如果您的 k8s 集群版本大于等于 1.19 点击此处下载 <a :href="$withBase('/kuboard_example_v3_119.yaml')" download="kuboard_example.yaml">kuboard_example.yaml</a>
 
 * 在完成 `example` 名称空间的创建以后，导航到菜单项 `名称空间` --> `example` --> `常用操作` --> `导入工作负载`，如下图所示：
 
