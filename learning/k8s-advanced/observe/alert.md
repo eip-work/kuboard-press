@@ -7,7 +7,7 @@ meta:
     content: Kubernetes教程, Kubernetes监控
 ---
 
-# 告警
+# 告警（邮件）
 
 Kuboard 监控套件已经支持如下配置：
 * 配置 Email、WeChat 作为消息发送渠道；
