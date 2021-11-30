@@ -492,6 +492,7 @@ let sidebar = {
           children: [
             'k8s-advanced/observe/monitor.html',
             'k8s-advanced/observe/alert.html',
+            'k8s-advanced/observe/alert-dingtalk.html',
           ]
         },
         {
@@ -539,13 +540,13 @@ let sidebar = {
           children: [
             ['k8s-practice/spring-blade/', '介绍'],
             {
-              title: '准备',
-              collapsable: true,
+              title: '环境准备',
+              // collapsable: true,
               path: '/learning/k8s-practice/spring-blade/prepare/prepare',
-              children: [
-                'k8s-practice/spring-blade/prepare/prepare',
-                'k8s-practice/spring-blade/prepare/build'
-              ]
+              // children: [
+              //   'k8s-practice/spring-blade/prepare/prepare',
+              //   'k8s-practice/spring-blade/prepare/build'
+              // ]
             },
             {
               title: '部署',
