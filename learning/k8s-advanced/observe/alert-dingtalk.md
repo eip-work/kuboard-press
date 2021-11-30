@@ -128,4 +128,4 @@ Kuboard 监控套件已经支持如下配置：
     <img src="./alert-dingtalk/alert-06.jpg" style="max-width: 240px;"/>
   </p>
 
-至此，我们已经完成了告警功能的最基本配置。
+::tada:: ::tada:: 至此，我们已经完成了告警功能的最基本配置。
