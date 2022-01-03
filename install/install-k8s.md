@@ -15,7 +15,7 @@ meta:
 ## Kuboard-Spray
 
 
-Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用集群离线安装的工具，开源仓库的地址为 [Kuboard-Spray](https://github.com/eip-work/kuboard-spary) 
+Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用集群离线安装的工具，开源仓库的地址为 [Kuboard-Spray](https://github.com/eip-work/kuboard-spray) 
 <span><iframe style="display:inline-block;vertical-align:middle;" src="https://addons.kuboard.cn/downloads/github-star-kuboard-spray.html" frameborder="0" scrolling="0" width="120" height="20" title="GitHub"></iframe></span>
 
 **安装后的集群版本为**
@@ -99,7 +99,9 @@ Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用
     -p 80:80/tcp \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /root/kuboard-spray-data:/data \
-    eipwork/kuboard-spray:v1.0.0-alpha.1-amd64
+    eipwork/kuboard-spray:latest-amd64
+    # 如果抓不到这个镜像，可以尝试一下这个备用地址：
+    # swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard-spray:latest-amd64
   ```
   ::: tip 持久化
 
@@ -140,6 +142,8 @@ Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用
 
   ::: tip 注意事项
 
+  * 最少的节点数量是 1 个；
+  * ETCD 节点、控制节点的总数量必须为奇数；
   * 在 `全局设置` 标签页，可以设置节点的通用连接参数，例如所有的节点都使用相同的 ssh 端口、用户名、密码，则共同的参数只在此处设置即可；
   * 在节点标签页，如果该节点的角色包含 `etcd` 则必须填写 `ETCD 成员名称` 这个字段；
   * 如果您 KuboardSpray 所在节点不能直接访问到 Kubernetes 集群的节点，您可以设置跳板机参数，使 KuboardSpray 可以通过 ssh 访问集群节点。
