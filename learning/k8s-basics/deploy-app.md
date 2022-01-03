@@ -17,7 +17,7 @@ meta:
 
 假设您已经
 
-* 完成 Kubernetes 集群的安装，请参考文档 [安装 Kubernetes 单Master节点](/install/install-k8s.html)
+* 完成 Kubernetes 集群的安装，请参考文档 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)
 * 完成 Kuboard 的安装，请参考文档 [安装 Kuboard](/install/v3/install.html) 
   * 版本不低于 `v3.1.1.0`
 
@@ -27,7 +27,7 @@ meta:
 
 ::: tip
 * kubectl 是 k8s 的客户端工具，可以使用命令行管理集群。
-* 如果参考文档 [安装 Kubernetes 单Master节点](/install/install-k8s.html)，您可以在 master 节点的 root 用户使用 kubectl 操作您的集群
+* 如果参考文档 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)，您可以在 master 节点的 root 用户使用 kubectl 操作您的集群
 * 您也可以尝试 [从客户端电脑远程管理 Kubernetes](/install/install-kubectl.html)
 :::
 

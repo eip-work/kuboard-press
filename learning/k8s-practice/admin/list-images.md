@@ -23,7 +23,7 @@ meta:
 ## 前提条件
 
 * 您必须有一个K8S集群
-  * 可参考 [安装Kubernetes单Master节点集群](/install/install-k8s.html)
+  * 可参考 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)
   * kubectl 版本不低于 1.14，可参考 [安装kubectl](/install/install-kubectl.html)
 * 在执行 kubectl 命令的机器上任意位置创建一个空白目录用于本例子的执行。本文假设后续所有命令的当前目录都是此时创建的这个目录。
 

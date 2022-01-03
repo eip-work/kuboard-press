@@ -66,4 +66,4 @@ sysctl -p
 ## 解决办法
 
 * 在每一个节点上（包括Master、Worker）补充执行上述步骤，然后重新启动节点机器。
-* 或者按照 [安装 Kubernetes 单Master节点](/install/install-k8s.html) 的描述重新安装集群
+* 或者按照 [离线安装高可用的Kubernetes集群](/install/install-k8s.html) 的描述重新安装集群

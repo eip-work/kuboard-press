@@ -20,7 +20,7 @@ HorizontalPodAutoscaler 可以根据观察到的 CPU 利用率（或者 beta 阶
 ## 前提条件
 
 如运行本文中的例子，必须满足以下条件：
-* Kubernetes 集群，版本不低于 v1.6；可以参考 [安装 Kubernetes 单节点](/install/install-k8s.html) 完成集群的安装；
+* Kubernetes 集群，版本不低于 v1.6；可以参考 [离线安装高可用的Kubernetes集群](/install/install-k8s.html) 完成集群的安装；
 * Kubernetes 集群中已安装 [metrics-server](https://github.com/kubernetes-incubator/metrics-server/)，用于提供资源度量的 API 接口，可以使用 `kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.yaml` 指令完成 metrics-server 的安装；
 * 如果想要使用自定义度量值，您的集群必须能够和这些度量值接口的服务进行通信；
 * 如果想要使用与 Kubernetes Object 无关的度量值（External metrics API），Kubernetes 集群版本必须不低于 v1.10，并且集群必须能够与提供外部度量值的 API 服务进行通信。

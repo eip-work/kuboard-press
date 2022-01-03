@@ -1,560 +1,179 @@
 ---
 vssueId: 15
 # layout: StepLayout
-sharingTitle: K8S入门第一步---安装，装不好还有人免费远程协助，更有K8S免费教程提供，你还在等什么？
+sharingTitle: Kuboard 带给大家的2022年新年礼物：离线安装高可用的 Kubernetes 集群 v1.23.1
 description: Kubernete安装文档_Kubernetes最新稳定版v1.22.x的快速安装文档_该文档由众多网友验证并在线提出修改意见_持续不断地更新和完善_并且通过QQ群提供免费在线答疑的服务
 meta:
   - name: keywords
     content: Kubernetes安装,K8S安装,kubeadm,Kubernetes 安装,K8S 安装,k8s搭建
 ---
 
-# 使用kubeadm安装kubernetes_v1.22.x
+# 使用 KuboardSpray 安装kubernetes_v1.23.1
 
 <AdSenseTitle/>
 
-## 文档特点
-
-<div style="min-height: 612px;">
-  <InstallBanner version="v1.22.x" updateCount="98"/>
-</div>
-
-参考此免费文档，98%以上的概率，您能够顺利完成 K8S 安装，极个别的问题可以到QQ群里免费答疑。
-
-<Course courseId="477593" />
+## Kuboard-Spray
 
 
-## 配置要求
+Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用集群离线安装的工具，开源仓库的地址为 [Kuboard-Spray](https://github.com/eip-work/kuboard-spary) 
+<span><iframe style="display:inline-block;vertical-align:middle;" src="https://addons.kuboard.cn/downloads/github-star-kuboard-spray.html" frameborder="0" scrolling="0" width="120" height="20" title="GitHub"></iframe></span>
+
+**安装后的集群版本为**
+
+* Kubernetes v1.23.1
+
+### 社区
+
+对此项目感兴趣的同学，请点击此处 <span><iframe style="display:inline-block;vertical-align:middle;" src="https://addons.kuboard.cn/downloads/github-star-kuboard-spray.html" frameborder="0" scrolling="0" width="100" height="20" title="GitHub"></iframe></span> 在 GitHub 添加本项目的 Star 以后，扫码加入群聊（提供 star 截图才会被拉入群聊哦！）
+
+<p>
+  <img src="https://addons.kuboard.cn/downloads/qr_code_kuboard-spray.jpg" style="width: 150px; height: 150px;"/>
+</p>
+
+### 配置要求
 
 对于 Kubernetes 初学者，在搭建K8S集群时，推荐在阿里云或腾讯云采购如下配置：（您也可以使用自己的虚拟机、私有云等您最容易获得的 Linux 环境）
 
-* 至少2台 **2核4G** 的服务器
+* 至少 2 台 **2核4G** 的服务器
 * 本文档中，CPU 必须为 x86 架构，暂时未适配 arm 架构的 CPU
-* **CentOS 7.8** 或 **CentOS Stream 8**
+* **CentOS 7.8**、 **CentOS 7.9** 或 **Ubuntu 20.04**
 
-<!-- <grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-
-<div> -->
-
-[【云上优选 特惠来袭】华为云回馈用户，产品低至2折](https://activity.huaweicloud.com/discount_area_v5/index.html?fromacct=36cf686d-2650-4107-baa4-f0dc3c860df4&utm_source=V1g3MDY4NTY=&utm_medium=cps&utm_campaign=201905)
 
 [【腾讯云】云产品限时秒杀，爆款1核2G云服务器，首年99元](https://cloud.tencent.com/act/cps/redirect?redirect=1062&cps_key=2ee6baa049659f4713ddc55a51314372&from=console)
 
 
-<!-- [阿里云，双十二主会场，低至一折](https://www.aliyun.com/1212/2019/home?userCode=obezo3pg) -->
+<b-button v-b-toggle.collapse-1 variant="outline-info" size="sm">历史安装文档</b-button>
+<b-collapse id="collapse-1" class="mt-2">
+<b-card>
+  
+**本站提供的历史 Kubernetes 安装文档，请参考：**
 
-**安装后的软件版本为**
+历史安装文档基于 kubeadm 命令行方式安装集群。
 
-* Kubernetes v1.22.x
-  * calico 3.17.1
-  * nginx-ingress 1.9.1
-* Containerd.io 1.4.3
+ * [安装 Kubernetes v1.22.x 单Master节点](/install/history-k8s/install-k8s-1.22.x.html)
+ * [安装 Kubernetes v1.21.x 单Master节点](/install/history-k8s/install-k8s-1.21.x.html)
+ * [安装 Kubernetes v1.20.x 单Master节点](/install/history-k8s/install-k8s-1.20.x.html)
+ * [安装 Kubernetes v1.19.x 单Master节点](/install/history-k8s/install-k8s-1.19.x.html)
+ * [安装 Kubernetes v1.18.x 单Master节点](/install/history-k8s/install-k8s-1.18.x.html)
+ * [安装 Kubernetes v1.17.x 单Master节点](/install/history-k8s/install-k8s-1.17.x.html)
+ * [安装 Kubernetes v1.16.3 单Master节点](/install/history-k8s/install-k8s-1.16.3.html)
+ * [安装 Kubernetes v1.15.4 单Master节点](/install/history-k8s/install-k8s-1.15.4.html)
 
-> 如果要安装 Kubernetes 历史版本，请参考：
-> * [安装 Kubernetes v1.21.x 单Master节点](/install/history-k8s/install-k8s-1.21.x.html)
-> * [安装 Kubernetes v1.20.x 单Master节点](/install/history-k8s/install-k8s-1.20.x.html)
-> * [安装 Kubernetes v1.19.x 单Master节点](/install/history-k8s/install-k8s-1.19.x.html)
-> * [安装 Kubernetes v1.18.x 单Master节点](/install/history-k8s/install-k8s-1.18.x.html)
-> * [安装 Kubernetes v1.17.x 单Master节点](/install/history-k8s/install-k8s-1.17.x.html)
-> * [安装 Kubernetes v1.16.3 单Master节点](/install/history-k8s/install-k8s-1.16.3.html)
-> * [安装 Kubernetes v1.15.4 单Master节点](/install/history-k8s/install-k8s-1.15.4.html)
+</b-card>
+</b-collapse>
 
-<!-- </div>
 
-  </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
+<!-- 
     <AdSenseVertical/>
-  </grid-item>
-</grid> -->
-
-安装后的拓扑图如下：<span v-on:click="$sendGaEvent('下载拓扑图-kubernetes', '下载拓扑图-kubernetes', 'Download-install-kubernetes.html')"><a :href="$withBase('/kuboard.rp')" download="www.kuboard.cn.rp">下载拓扑图源文件</a></span> <font color="#999">使用Axure RP 9.0可打开该文件</font>
-
-强烈建议初学者先按照此文档完成安装，在对 K8S 有更多理解后，再参考文档 [安装Kubernetes高可用](./install-kubernetes.html)
-
-<p style="max-width: 720px;">
-<img src="/images/topology/k8s.png" style="max-width: 100%;" alt="Kubernetes安装：Kubernetes安装拓扑图">
-</p>
-
-::: tip Container Runtime
-
-* Kubernetes v1.22 开始，默认移除 docker 的依赖，如果宿主机上安装了 docker 和 containerd，将优先使用 docker 作为容器运行引擎，如果宿主机上未安装 docker 只安装了 containerd，将使用 containerd 作为容器运行引擎；
-* 本文使用 containerd 作为容器运行引擎；
-
-:::
+ -->
 
 
-::: tip 关于二进制安装
-
-* kubeadm 是 Kubernetes 官方支持的安装方式，“二进制” 不是。本文档采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。
-
-:::
-
-
-<!-- </div>
-<div slot="step1"> -->
-
-## 检查 centos / hostname
-
-``` sh
-# 在 master 节点和 worker 节点都要执行
-cat /etc/redhat-release
-
-# 此处 hostname 的输出将会是该机器在 Kubernetes 集群中的节点名字
-# 不能使用 localhost 作为节点的名字
-hostname
-
-# 请使用 lscpu 命令，核对 CPU 信息
-# Architecture: x86_64    本安装文档不支持 arm 架构
-# CPU(s):       2         CPU 内核数量不能低于 2
-lscpu
-```
 
 **操作系统兼容性**
 
-<grid :rwd="{compact: 'stack'}">
-  <grid-item size="2/3" :rwd="{tablet: '1/1', compact: '1/1'}" style="padding: 1rem 0 1rem 1rem;">
-
-<div>
-
 | CentOS 版本 | 本文档是否兼容                          | 备注                                |
 | ----------- | --------------------------------------- | ----------------------------------- |
-| CentOS Stream 8    | <span style="font-size: 24px;">😄</span> | 已验证                              |
+| CentOS 7.9         | <span style="font-size: 24px;">😄</span> | 已验证                              |
 | CentOS 7.8         | <span style="font-size: 24px;">😄</span> | 已验证                              |
-| CentOS 7.7         | <span style="font-size: 24px;">😞</span> | 未验证                              |
-| CentOS 7.6         | <span style="font-size: 24px;">😞</span> | 未验证                              |
+| Ubuntu 20.04       | <span style="font-size: 24px;">😄</span> | 已验证                              |
 
+## 安装 Kuboard-Spray
 
-</div>
-  </grid-item>
-  <grid-item size="1/3" :rwd="{tablet: '1/1', compact: '0/1'}" style="padding: 2rem 1rem 1rem 1rem;">
-    <AdSenseVertical/>
-  </grid-item>
-</grid>
+* 取一台服务器或虚拟机，执行一条命令，即可完成 Kuboard-Spray 的安装。
 
-::: tip 修改 hostname
-如果您需要修改 hostname，可执行如下指令：
-``` sh
-# 修改 hostname
-hostnamectl set-hostname your-new-host-name
-# 查看修改结果
-hostnamectl status
-# 设置 hostname 解析
-echo "127.0.0.1   $(hostname)" >> /etc/hosts
-```
-:::
+  对这台服务器的最低要求为：
+  <div style="font-size: 13px;margin-left: 40px;">
 
-## 检查网络
+  * 1核2G
+  * 不少于 10G 磁盘空余空间
+  * 已经安装好 docker
 
-在所有节点执行命令
-``` {2,11,13}
-[root@demo-master-a-1 ~]$ ip route show
-default via 172.21.0.1 dev eth0 
-169.254.0.0/16 dev eth0 scope link metric 1002 
-172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 
+  </div>
 
-[root@demo-master-a-1 ~]$ ip address
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 00:16:3e:12:a4:1b brd ff:ff:ff:ff:ff:ff
-    inet 172.17.216.80/20 brd 172.17.223.255 scope global dynamic eth0
-       valid_lft 305741654sec preferred_lft 305741654sec
-```
-::: tip kubelet使用的IP地址
-* `ip route show` 命令中，可以知道机器的默认网卡，通常是 `eth0`，如 ***default via 172.21.0.23 dev <font color="blue" weight="500">eth0</font>***
-* `ip address` 命令中，可显示默认网卡的 IP 地址，Kubernetes 将使用此 IP 地址与集群内的其他节点通信，如 `172.17.216.80`
-* 所有节点上 Kubernetes 所使用的 IP 地址必须可以互通（无需 NAT 映射、无安全组或防火墙隔离）
-:::
+  待执行的命令如下：
 
-
-## 安装containerd/kubelet/kubeadm/kubectl
-
-<!-- <SharingBlock> -->
-
-<InstallEnvCheck20 type="k8s">
-
-使用 root 身份在所有节点执行如下代码，以安装软件：
-- containerd
-- nfs-utils
-- kubectl / kubeadm / kubelet
-
-
-
-<b-card>
-<b-tabs content-class="mt-3">
-  <b-tab title="快速安装" active>
-
-**请将脚本最后的 1.22.3 替换成您需要的版本号（必须是 1.22 的小版本，不能是 1.19.1 等），**
-<font color="red">脚本中间的 v1.22.x 不要替换</font>
-
-> docker hub 镜像请根据自己网络的情况任选一个
-> * 第四行为腾讯云 docker hub 镜像
-> * 第六行为DaoCloud docker hub 镜像
-> * 第八行为华为云 docker hub 镜像
-> * 第十行为阿里云 docker hub 镜像
-``` sh
-# 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.22.3 用于指定 kubenetes 版本，支持所有 1.22.x 版本的安装
-# 腾讯云 docker hub 镜像
-# export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
-# DaoCloud 镜像
-# export REGISTRY_MIRROR="http://f1361db2.m.daocloud.io"
-# 华为云镜像
-# export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
-# 阿里云 docker hub 镜像
-export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
-curl -sSL https://kuboard.cn/install-script/v1.22.x/install_kubelet.sh | sh -s 1.22.3
-```
-
-  </b-tab>
-  <b-tab title="手动安装">
-
-手动执行以下代码，结果与快速安装相同。<font color="red">***请将脚本第79行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.22.3***</font>
-
-> docker hub 镜像请根据自己网络的情况任选一个
-> * 第四行为腾讯云 docker hub 镜像
-> * 第六行为DaoCloud docker hub 镜像
-> * 第八行为阿里云 docker hub 镜像
-``` sh
-# 在 master 节点和 worker 节点都要执行
-# 最后一个参数 1.22.3 用于指定 kubenetes 版本，支持所有 1.22.x 版本的安装
-# 腾讯云 docker hub 镜像
-# export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
-# DaoCloud 镜像
-# export REGISTRY_MIRROR="http://f1361db2.m.daocloud.io"
-# 阿里云 docker hub 镜像
-export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
-```
-
-<<< @/.vuepress/public/install-script/v1.22.x/install_kubelet.sh {79}
-
-::: warning
-如果此时执行 `systemctl status kubelet` 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动
-:::
-
-  </b-tab>
-</b-tabs>
-</b-card>
-
-</InstallEnvCheck20>
-
-<!-- </SharingBlock> -->
-
-<!-- </div>
-
-<div slot="step3"> -->
-
-## 初始化 master 节点
-
-::: danger 关于初始化时用到的环境变量
-* **APISERVER_NAME** 不能是 master 的 hostname
-* **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
-* **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.0/16 命令，不做修改
-:::
-
-<b-card>
-<b-tabs content-class="mt-3">
-<b-tab title="快速初始化" active>
-
-
-**请将脚本最后的 1.22.3 替换成您需要的版本号（必须是 1.22 的小版本，不能是 1.19.1 等），**
-<font color="red">脚本中间的 v1.22.x 不要替换</font>
-
-``` sh {10}
-# 只在 master 节点执行
-# 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
-# export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
-export MASTER_IP=x.x.x.x
-# 替换 apiserver.demo 为 您想要的 dnsName
-export APISERVER_NAME=apiserver.demo
-# Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
-export POD_SUBNET=10.100.0.0/16
-echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://kuboard.cn/install-script/v1.22.x/init_master.sh | sh -s 1.22.3
-```
-
-</b-tab>
-<b-tab title="手动初始化">
-
-手动执行以下代码，结果与快速初始化相同。<font color="red">***请将脚本第21行（已高亮）的 ${1} 替换成您需要的版本号，例如 1.22.3***</font>
-
-``` sh
-# 只在 master 节点执行
-# 替换 x.x.x.x 为 master 节点的内网IP
-# export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
-export MASTER_IP=x.x.x.x
-# 替换 apiserver.demo 为 您想要的 dnsName
-export APISERVER_NAME=apiserver.demo
-# Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
-export POD_SUBNET=10.100.0.0/16
-echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-```
-
-<<< @/.vuepress/public/install-script/v1.22.x/init_master.sh {21}
-
-</b-tab>
-</b-tabs>
-
-> 感谢 [https://github.com/zhangguanzhang/google_containers](https://github.com/zhangguanzhang/google_containers) 提供最新的 google_containers 国内镜像
-
-如果出现如下错误：
-``` {5,6}
-[config/images] Pulled registry.aliyuncs.com/k8sxio/pause:3.2
-[config/images] Pulled registry.aliyuncs.com/k8sxio/etcd:3.4.13-0
-failed to pull image "swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0": output: time="2021-04-30T13:26:14+08:00" level=fatal 
-msg="pulling image failed: rpc error: code = NotFound desc = failed to pull and unpack image \"swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0\": 
-failed to resolve reference \"swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0\": 
-swr.cn-east-2.myhuaweicloud.com/coredns:1.8.0: not found", error: exit status 1
-To see the stack trace of this error execute with --v=5 or higher
-```
-请执行如下命令：
-> 在原命令的最后增加参数 `/coredns`
-``` sh
-curl -sSL https://kuboard.cn/install-script/v1.22.x/init_master.sh | sh -s 1.22.3 /coredns
-```
-
-</b-card>
-
-<b-button v-b-toggle.collapse-init-error variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-error', 'error-init-master', '查看初始化时的错误解决办法')">如果出错点这里</b-button>
-<b-collapse id="collapse-init-error" class="mt-2">
-<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
-
-* 请确保您的环境符合 [安装containerd/kubelet/kubeadm/kubectl](#安装containerd-kubelet-kubeadm-kubectl) 中所有勾选框的要求
-* 请确保您使用 root 用户执行初始化命令
-* 检查环境变量，执行如下命令
-  ``` sh
-  echo MASTER_IP=${MASTER_IP} && echo APISERVER_NAME=${APISERVER_NAME} && echo POD_SUBNET=${POD_SUBNET}
+  ```sh {4,5,6}
+  docker run -d \
+    --restart=unless-stopped \
+    --name=kuboard-spray \
+    -p 80:80/tcp \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /root/kuboard-spray-data:/data \
+    eipwork/kuboard-spray:v1.0.0-alpha.1-amd64
   ```
-  请验证如下几点：
-  * 环境变量 ***MASTER_IP*** 的值应该为 master 节点的 **内网IP**，如果不是，请重新 export
-  * **APISERVER_NAME** 不能是 master 的 hostname
-  * **APISERVER_NAME** 必须全为小写字母、数字、小数点，不能包含减号
-  * **POD_SUBNET** 所使用的网段不能与 ***master节点/worker节点*** 所在的网段重叠。该字段的取值为一个 <a href="/glossary/cidr.html" target="_blank">CIDR</a> 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.0/16 命令，不做修改
-* 重新初始化 master 节点前，请先执行 `kubeadm reset -f` 操作
+  ::: tip 持久化
 
-</b-card>
-</b-collapse>
+  * KuboardSpray 的信息保存在容器的 `/data` 路径，请将其映射到一个您认为安全的地方，上面的命令中，将其映射到了 `/root/kuboard-spray-data` 路径；
+  * 只要此路径的内容不受损坏，重启、升级、重新安装 Kuboard-Spray，或者将数据及 Kuboard-Spray 迁移到另外一台机器上，您都可以找回到原来的信息。
 
-**检查 master 初始化结果**
-
-`coredns` 将处于启动失败的状态，请继续下一步，完成 [安装网络插件](#安装网络插件) 这个步骤后，coredns 将正常启动。
-
-``` sh
-# 只在 master 节点执行
-
-# 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
-watch kubectl get pod -n kube-system -o wide
-
-# 查看 master 节点初始化结果
-kubectl get nodes -o wide
-```
-
-<b-button v-b-toggle.collapse-init-pending variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-pending', 'error-init-master', '查看初始化时的镜像下载错误的解决办法')">如果出错点这里</b-button>
-<b-collapse id="collapse-init-pending" class="mt-2">
-<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
-
-* ImagePullBackoff / Pending
-  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中出现 ImagePullBackoff 或者长时间处于 Pending 的情况
-* ContainerCreating
-  * 如果 `kubectl get pod -n kube-system -o wide` 的输出结果中某个 Pod 长期处于 ContainerCreating、PodInitializing 或 Init:0/3 的状态，可以尝试：
-    * 查看该 Pod 的状态，例如：
-      ``` sh
-      kubectl describe pod kube-flannel-ds-amd64-8l25c -n kube-system
-      ```
-      如果输出结果中，最后一行显示的是 Pulling image，请耐心等待
-      ```
-      Normal  Pulling    44s   kubelet, k8s-worker-02  Pulling image "quay.io/coreos/flannel:v0.12.0-amd64"
-      ```
-    * 将该 Pod 删除，系统会自动重建一个新的 Pod，例如：
-      ``` sh
-      kubectl delete pod kube-flannel-ds-amd64-8l25c -n kube-system
-      ```
-
-
-</b-card>
-</b-collapse>
-
-<!-- </div>
-
-
-<div slot="step4"> -->
-
-## 安装网络插件
-
-网络插件可以选择 calico 或者 flannel（任意选择其一即可）。
-
-<b-card>
-<b-tabs content-class="mt-3">
-<b-tab title="Calico" active>
-
-::: danger 阿里云
-如果您在阿里云上安装 K8S，建议使用 flannel，有多个案例表明 calico 与阿里云存在兼容性问题。
-:::
-
-``` sh
-export POD_SUBNET=10.100.0.0/16
-kubectl apply -f https://kuboard.cn/install-script/v1.22.x/calico-operator.yaml
-wget https://kuboard.cn/install-script/v1.22.x/calico-custom-resources.yaml
-sed -i "s#192.168.0.0/16#${POD_SUBNET}#" calico-custom-resources.yaml
-kubectl apply -f calico-custom-resources.yaml
-```
-
-</b-tab>
-<b-tab title="Flannel">
-
-``` sh
-export POD_SUBNET=10.100.0.0/16
-wget https://kuboard.cn/install-script/flannel/flannel-v0.14.0.yaml
-sed -i "s#10.244.0.0/16#${POD_SUBNET}#" flannel-v0.14.0.yaml
-kubectl apply -f ./flannel-v0.14.0.yaml
-```
-
-</b-tab>
-</b-tabs>
-</b-card>
-
-
-## 初始化 worker节点
-
-### 获得 join命令参数
-
-**在 master 节点上执行**
-
-``` sh
-# 只在 master 节点执行
-kubeadm token create --print-join-command
-```
-
-可获取kubeadm join 命令及参数，如下所示
-
-``` sh
-# kubeadm token create 命令的输出
-kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
-```
-
-::: tip 有效时间
-该 token 的有效时间为 2 个小时，2小时内，您可以使用此 token 初始化任意数量的 worker 节点。
-:::
-
-
-### 初始化worker
-
-**针对所有的 worker 节点执行**
-
-``` sh
-# 只在 worker 节点执行
-# 替换 x.x.x.x 为 master 节点的内网 IP
-export MASTER_IP=x.x.x.x
-# 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME
-export APISERVER_NAME=apiserver.demo
-echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-
-# 替换为 master 节点上 kubeadm token create 命令的输出
-kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
-```
-
-<b-button v-b-toggle.collapse-join-error variant="danger" size="sm" style="margin-top: 1rem;" v-on:click="$sendGaEvent('install-k8s-error', 'error-init-worker', '查看初始化worker时的错误解决办法')">如果出错点这里</b-button>
-<b-collapse id="collapse-join-error" class="mt-2">
-<b-card style="background-color: rgb(254, 240, 240); border: solid 1px #F56C6C;">
-
-### 常见错误原因
-
-经常在群里提问为什么 join 不成功的情况大致有这几种：
-
-#### worker 节点不能访问 apiserver
-
-  在worker节点执行以下语句可验证worker节点是否能访问 apiserver
-  ``` sh
-  curl -ik https://apiserver.demo:6443
-  ```
-  如果不能，请在 master 节点上验证
-  ``` sh
-  curl -ik https://localhost:6443
-  ```
-  正常输出结果如下所示：
-  ``` {1}
-  HTTP/1.1 403 Forbidden
-  Cache-Control: no-cache, private
-  Content-Type: application/json
-  X-Content-Type-Options: nosniff
-  Date: Fri, 15 Nov 2019 04:34:40 GMT
-  Content-Length: 233
-
-  {
-    "kind": "Status",
-    "apiVersion": "v1",
-    "metadata": {
-  ...
-  ```
-  ::: tip 可能原因
-  * 如果 master 节点能够访问 apiserver、而 worker 节点不能，则请检查自己的网络设置
-    * /etc/hosts 是否正确设置？
-    * 是否有安全组或防火墙的限制？
   :::
 
-#### worker 节点默认网卡
+
+
+* 在浏览器打开地址 `http://这台机器的IP`，输入默认密码 `Kuboard123`，即可登录 Kuboard-Spray 界面。
+
+## 加载离线资源包
+
+* 在 Kuboard-Spray 界面中，导航到 `系统设置` --> `资源包管理` 界面，可以看到已经等候您多时的 `Kuboard-Spray 离线资源包`，如下图所示：
+
+  ![加载 Kuboard-Spray 资源包](./install-k8s.assets/kuboard-spray-01.png)
+
+* 点击 `导 入` 按钮，在界面的引导下完成资源包的加载。
+
+  ::: tip 离线导入
+
+  如果您处在内网环境，上图中的列表默认将是空的，请注意其中的 `离线加载资源包` 按钮，它可以引导您轻松完成资源包的离线加载过程。
+
+  :::
+
+## 规划并安装集群
+
+* 在 Kuboard-Spray 界面中，导航到 `集群管理` 界面，点击界面中的 `添加集群安装计划` 按钮，填写表单如下：
+  * 集群名称： 自定义名称，本文中填写为 kuboard123，此名称不可以修改；
+  * 资源包：选择前面步骤中导入的离线资源包。
+
+  ![创建集群安装计划](./install-k8s.assets/kuboard-spray-02.png)
+
+* 点击上图对话框中的 `确定` 按钮后，将进入集群规划页面，在该界面中添加您每个集群节点的连接参数并设置节点的角色，如下图所示：
+    
+    ![集群规划](./install-k8s.assets/kuboard-spray-03.png)
+
+  ::: tip 注意事项
+
+  * 在 `全局设置` 标签页，可以设置节点的通用连接参数，例如所有的节点都使用相同的 ssh 端口、用户名、密码，则共同的参数只在此处设置即可；
+  * 在节点标签页，如果该节点的角色包含 `etcd` 则必须填写 `ETCD 成员名称` 这个字段；
+  * 如果您 KuboardSpray 所在节点不能直接访问到 Kubernetes 集群的节点，您可以设置跳板机参数，使 KuboardSpray 可以通过 ssh 访问集群节点。
+  * 集群安装过程中，除了已经导入的资源包以外，还需要使用 yum 或 apt 指令安装一些系统软件，例如 curl, rsync, ipvadm, ipset, ethtool 等，此时要用到操作系统的 apt 软件源或者 yum 软件源。`全局设置` 标签页中，可以引导您完成 apt / yum 软件源的设置，您可以：
+    * 使用节点操作系统已经事先配置的 apt / yum 源，或者
+    * 在安装过程中自动配置节点的操作系统使用指定的软件源
+  * 如果您使用 docker 作为集群的容器引擎，还需要在 `全局设置` 标签页指定安装 docker 用的 apt / yum 源。
+    > 如果您使用 containerd 作为容器引擎，则无需配置 docker 的 apt / yum 源，containerd 的安装包已经包含在 KuboardSpray 离线资源包中。
+
+  :::
+
+* 点击上图的 `保存` 按钮，再点击 `执行` 按钮，可以启动集群的离线安装过程，如下图所示：
+
+    ![集群安装](./install-k8s.assets/kuboard-spray-04.png)
+
+
+* 取决于您机器的性能和网络访问速度，大概喝一杯茶的功夫，集群就安装好了，安装成功时，日志界面的显示如下图所示：
+
+    ![集群日志](./install-k8s.assets/kuboard-spray-05.png)
+
+## 访问集群
+
+* 如果集群日志界面提示您集群已经安装成功，此时您可以返回到集群规划页面，此界面将自动切换到 `访问集群` 标签页，如下图所示：
   
-  * [Kubelet使用的 IP 地址](#检查网络) 与 master 节点可互通（无需 NAT 映射），且没有防火墙、安全组隔离
-    * 如果你使用 vmware 或 virtualbox 创建虚拟机用于 K8S 学习，可以尝试 NAT 模式的网络，而不是桥接模式的网络
+  界面给出了三种方式可以访问 kubernetes 集群：
+  <div style="font-size: 13px;margin-left: 40px;">
 
-### 移除worker节点并重试
+  * 在集群主节点上执行 kubectl 命令
+  * 获取集群的 .kubeconfig 文件
+  * 将集群导入到 kuboard管理界面
 
-::: warning
-正常情况下，您无需移除 worker 节点，如果添加到集群出错，您可以移除 worker 节点，再重新尝试添加
-:::
+  </div>
 
-在准备移除的 worker 节点上执行
-
-``` sh
-# 只在 worker 节点执行
-kubeadm reset -f
-```
-
-在 master 节点 demo-master-a-1 上执行
-
-```sh
-# 只在 master 节点执行
-kubectl get nodes -o wide
-```
-如果列表中没有您要移除的节点，则忽略下一个步骤
-
-``` sh
-# 只在 master 节点执行
-kubectl delete node demo-worker-x-x
-```
-
-::: tip
-* 将 demo-worker-x-x 替换为要移除的 worker 节点的名字
-* worker 节点的名字可以通过在节点 demo-master-a-1 上执行 kubectl get nodes 命令获得
-:::
-
-</b-card>
-</b-collapse>
-
-### 检查初始化结果
-
-在 master 节点上执行
-
-``` sh
-# 只在 master 节点执行
-kubectl get nodes -o wide
-```
-输出结果如下所示：
-```sh
-[root@demo-master-a-1 ~]# kubectl get nodes
-NAME     STATUS   ROLES    AGE     VERSION
-demo-master-a-1   Ready    master   5m3s    v1.22.x
-demo-worker-a-1   Ready    <none>   2m26s   v1.22.x
-demo-worker-a-2   Ready    <none>   3m56s   v1.22.x
-```
-
-
-<!-- </div>
-
-<div slot="step6"> -->
-
+  ![访问集群](./install-k8s.assets/kuboard-spray-06.png)
 
 ## 下一步
 
@@ -564,12 +183,11 @@ demo-worker-a-2   Ready    <none>   3m56s   v1.22.x
 
 您已经完成了 Kubernetes 集群的安装，下一步请：
 
-<Course courseId="477593" />
 
 <!-- <span v-on:click="$sendGaEvent('安装后求GitHub Star','安装后求GitHub Star','安装后求GitHub Star')"><a href="https://github.com/eip-work/kuboard-press" target="_blank">点击此处，给个GitHub Star</a></span>
 支持一下吧，<StarCount></StarCount>这么多人都 star 了呢，怎么能少得了您呢？ -->
 
-[安装 Kuboard - 微服务管理界面](/install/v3/install-built-in.html)
+[安装 Kuboard - K8s 集群管理界面](/install/v3/install-built-in.html)
 
 [获取 Kubernetes 免费教程](/learning/)
 

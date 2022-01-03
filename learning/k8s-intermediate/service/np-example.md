@@ -21,13 +21,13 @@ meta:
 
 ## 前提条件
 
-您已经安装了 Kubernetes 集群，如果没有，请参考文档 [安装Kubernetes单Master节点](/install/install-k8s.html)
+您已经安装了 Kubernetes 集群，如果没有，请参考文档 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)
 
 您可以使用 kubectl 访问您的集群，请参考文档 [安装Kubectl](/install/install-kubectl.html)
 
 请确保您使用的网络插件支持 Network Policy，如下的网络插件都是可以的：
 
-* [Calico](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/calico-network-policy/) 如果您按照 [安装Kubernetes单Master节点](/install/install-k8s.html) 安装的集群，默认是 calico 网络插件
+* [Calico](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/calico-network-policy/) 如果您按照 [离线安装高可用的Kubernetes集群](/install/install-k8s.html) 安装的集群，默认是 calico 网络插件
 * [Cilium](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/cilium-network-policy/)
 * [Kube-router](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/kube-router-network-policy/)
 * [Romana](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/romana-network-policy/)

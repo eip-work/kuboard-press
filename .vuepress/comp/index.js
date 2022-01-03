@@ -4,6 +4,7 @@ let components = [
   { name: 'CurrentVersion', component: () => import(`./CurrentVersion.vue`) },
   { name: 'CurrentVersionV3', component: () => import(`./CurrentVersionV3.vue`) },
   { name: 'KuboardDemo', component: () => import(`./KuboardDemo.vue`) },
+  { name: 'KuboardSprayResources', component: () => import(`./kuboard-spray/Resources.vue`)},
 ]
 
 export default function (Vue) {

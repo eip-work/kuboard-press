@@ -34,9 +34,8 @@ let sidebar = {
       collapsable: false,
       children: [
         // 'install-docker-desktop',
-        ['install-k8s', '安装Kubernetes单Master节点'],
-        'install-kubernetes',
-        'sealos/',
+        ['install-k8s', '安装高可用的 Kubernetes 集群'],
+        // 'install-kubernetes',
         'install-node-port-range',
         'docker-mirror',
         'k8s-restart',
@@ -769,6 +768,7 @@ let sidebar = {
       collapsable: false,
       children: [
         '',
+        'kuboard-spray/'
       ]
     },
     {

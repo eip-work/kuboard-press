@@ -21,7 +21,7 @@ Kubernetes 中支持容器的 postStart 和 preStop 事件，本文阐述了如�
 
 您已经有一个安装好的 Kubernetes 集群，并且可以通过 kubectl 访问该集群。请参考：
 
-[安装Kubernetes单Master节点](/install/install-k8s.html)
+[离线安装高可用的Kubernetes集群](/install/install-k8s.html)
 
 ## 定义postStart和preStop处理程序
 

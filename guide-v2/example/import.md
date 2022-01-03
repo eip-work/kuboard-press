@@ -12,7 +12,7 @@ description: 通过Kuboard将一个预先定义好的SpringCloud微服务样例�
 必须具备如下条件：
 
 * Kubernetes 集群，版本不低于 v1.13.0
-  * 如果您还没有 Kubernetes 集群，请参考 [安装Kubernetes单Master节点集群](/install/install-k8s.html)
+  * 如果您还没有 Kubernetes 集群，请参考 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)
 * Kuboard 微服务管理界面，版本不低于 v2.0.0-beta.3
   * 请参考 [安装 Kuboard](/install/v3/install.html)
 

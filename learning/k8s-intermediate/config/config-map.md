@@ -19,7 +19,7 @@ Kubernetes ConfigMap 可以将配置信息和容器镜像解耦，以使得容�
 
 您已经安装了 Kubernetes 集群，并且已经在集群中安装了 Kuboard，如果尚未安装，请参考：
 
-* [安装 Kubernetes 单Master节点](/install/install-k8s.html)
+* [离线安装高可用的Kubernetes集群](/install/install-k8s.html)
 * [安装 Kuboard](/install/v3/install.html)
 
 ## 创建 ConfigMap

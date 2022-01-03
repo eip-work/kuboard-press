@@ -69,7 +69,7 @@ cloud-controller-manager 使得云供应商的代码和 Kubernetes 的代码可�
 * 节点控制器：当某一个节点停止响应时，调用云供应商的接口，以检查该节点的虚拟机是否已经被云供应商删除
   > 译者注：私有化部署Kubernetes时，我们不知道节点的操作系统是否删除，所以在移除节点后，要自行通过 `kubectl delete node` 将节点对象从 Kubernetes 中删除
 * 路由控制器：在云供应商的基础设施中设定网络路由
-  > 译者注：私有化部署Kubernetes时，需要自行规划Kubernetes的拓扑结构，并做好路由配置，例如 [安装Kubernetes单Master节点](/install/install-k8s.html) 中所作的
+  > 译者注：私有化部署Kubernetes时，需要自行规划Kubernetes的拓扑结构，并做好路由配置，例如 [离线安装高可用的Kubernetes集群](/install/install-k8s.html) 中所作的
 * 服务（Service）控制器：创建、更新、删除云供应商提供的负载均衡器
   > 译者注：私有化部署Kubernetes时，不支持 LoadBalancer 类型的 Service，如需要此特性，需要创建 NodePort 类型的 Service，并自行配置负载均衡器
 * 数据卷（Volume）控制器：创建、绑定、挂载数据卷，并协调云供应商编排数据卷

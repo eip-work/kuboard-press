@@ -21,7 +21,7 @@ Kuboard Proxy 提供了 Auth Proxy 的功能，本文以 Grafana 为例，介绍
 
 ## 前提
 
-* 您已经安装了 Kubernetes 集群（不低于 v1.13），如果没有，请参考 [安装 Kubernetes 单 Master 节点](/install/install-k8s.html)；
+* 您已经安装了 Kubernetes 集群（不低于 v1.13），如果没有，请参考 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)；
 * 您已经安装了 Kuboard （不低于 v1.0.7.1），如果没有，请参考 [安装 Kuboard](/install/v3/install.html)
 
 ## 安装 Grafana

@@ -24,7 +24,7 @@ meta:
 
 ## 前提条件
 
-* 您已经安装了 Kubernetes 集群，且集群版本不低于 v1.17.0，安装方法请参考 [安装 Kubernetes 集群](/install/install-k8s.html)；
+* 您已经安装了 Kubernetes 集群，且集群版本不低于 v1.17.0，安装方法请参考 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)；
 
   * Kubernetes 集群有至少 3 个工作节点，且每个工作节点都有一块初系统盘以外的 **未格式化** 的裸盘（工作节点是虚拟机时，未格式化的裸盘可以是虚拟磁盘），用于创建 3 个 Ceph OSD；
 

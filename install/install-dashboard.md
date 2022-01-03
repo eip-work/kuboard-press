@@ -38,7 +38,7 @@ Kuboard 是 Kubernetes 的一款图形化管理界面。
 
 * 初学者，请参考 
   * [在 Windows/Mac 安装 Kubernetes 测试集群](install-docker-desktop.html) <Badge type="error">不推荐</Badge>
-  * [安装 Kubernetes 单Master节点](install-k8s.html) <Badge type="success">推荐</Badge>
+  * [离线安装高可用的Kubernetes集群](install-k8s.html) <Badge type="success">推荐</Badge>
 * 用于生产，请参考 [安装 Kubernetes 高可用](install-kubernetes.html)
 
 ## 兼容性

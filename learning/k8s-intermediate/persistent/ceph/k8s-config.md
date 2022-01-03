@@ -23,7 +23,7 @@ meta:
 
 ## 前提条件
 
-* 您已经安装了 Kubernetes 集群，且集群版本不低于 v1.17.0，安装方法请参考 [安装 Kubernetes 集群](/install/install-k8s.html)；
+* 您已经安装了 Kubernetes 集群，且集群版本不低于 v1.17.0，安装方法请参考 [离线安装高可用的Kubernetes集群](/install/install-k8s.html)；
 
 * 您已经安装了 Kuboard，且 Kuboard 版本不低于 v2.0.5，安装方法请参考 [安装 Kuboard](/install/v3/install.html)；
 

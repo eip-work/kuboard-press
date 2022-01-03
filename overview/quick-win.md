@@ -33,7 +33,7 @@ Kuboard 从以下几方面解决 Kubernetes 落地的难题：
 
 ### Kubernetes 安装手册
 
-通过对 Kubernetes 安装步骤的反复研究，提供了精简的 Kubernetes 安装手册，并且听取网友实际安装过程中的反馈，多次修改和优化，逐渐形成经过检验的、简洁的 Kubernetes 安装手册。请参考 [安装 Kubernetes 单Master节点](/install/install-k8s.html) ， [安装 Kubernetes 高可用](/install/install-kubernetes.html)。
+通过对 Kubernetes 安装步骤的反复研究，提供了精简的 Kubernetes 安装手册，并且听取网友实际安装过程中的反馈，多次修改和优化，逐渐形成经过检验的、简洁的 Kubernetes 安装手册。请参考 [离线安装高可用的Kubernetes集群](/install/install-k8s.html) ， [安装 Kubernetes 高可用](/install/install-kubernetes.html)。
 
 ![Kubernetes安装：](./quick-win.assets/image-20190731135811556.089b0e53.png)
 
