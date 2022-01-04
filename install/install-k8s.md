@@ -98,14 +98,14 @@ Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用
     --name=kuboard-spray \
     -p 80:80/tcp \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /root/kuboard-spray-data:/data \
+    -v ~/kuboard-spray-data:/data \
     eipwork/kuboard-spray:latest-amd64
     # 如果抓不到这个镜像，可以尝试一下这个备用地址：
     # swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard-spray:latest-amd64
   ```
   ::: tip 持久化
 
-  * KuboardSpray 的信息保存在容器的 `/data` 路径，请将其映射到一个您认为安全的地方，上面的命令中，将其映射到了 `/root/kuboard-spray-data` 路径；
+  * KuboardSpray 的信息保存在容器的 `/data` 路径，请将其映射到一个您认为安全的地方，上面的命令中，将其映射到了 `~/kuboard-spray-data` 路径；
   * 只要此路径的内容不受损坏，重启、升级、重新安装 Kuboard-Spray，或者将数据及 Kuboard-Spray 迁移到另外一台机器上，您都可以找回到原来的信息。
 
   :::
