@@ -13,14 +13,14 @@
         </template>
         <template #cell(container_engine)="data">
           <div v-if="data.item.package">
-            <div v-for="(engine, key) in data.item.package.container_engine" :key="`c${data.index}_${key}`">
+            <div v-for="(engine, key) in data.item.package.data.container_engine" :key="`c${data.index}_${key}`">
               <b-badge>{{ engine.container_manager }}_{{ engine.params[engine.container_manager + '_version'] }}</b-badge>
             </div>
           </div>
         </template>
         <template #cell(supported_os)="data">
           <div v-if="data.item.package">
-            <div v-for="(os, key) in data.item.package.supported_os" :key="`os${data.index}_${key}`">
+            <div v-for="(os, key) in data.item.package.metadata.supported_os" :key="`os${data.index}_${key}`">
               <b-badge>
                 {{ os.distribution }}<span 
                 v-for="(v, i) in os.versions" :key="key + 'v' + i">_{{v}}</span>
@@ -75,8 +75,8 @@ export default {
       importedPackageMap: {},
       fields: [
         { key: 'version', label: '版 本' },
-        { key: 'package.metadata.kubespray_version', label: 'Kubespray' },
-        { key: 'package.kubernetes.kube_version', label: 'Kubernetes' },
+        { key: 'package.data.kubespray_version', label: 'Kubespray' },
+        { key: 'package.data.kubernetes.kube_version', label: 'Kubernetes' },
         { key: 'container_engine', label: '容器引擎'},
         { key: 'supported_os', label: '操作系统'},
         { key: 'action', label: '操 作'},
@@ -109,7 +109,7 @@ export default {
       this.importedPackageMap = {}
       this.packageMap = {}
       this.availablePackageList = undefined
-      await axios.get('https://addons.kuboard.cn/v-kuboard-spray-resources/package-list.yaml?nocache=' + new Date().getTime()).then(resp => {
+      await axios.get('https://addons.kuboard.cn/v-kuboard-spray/package-list.yaml?nocache=' + new Date().getTime()).then(resp => {
         this.availablePackageList = yaml.load(resp.data).items
       }).catch(e => {
         console.log(e)
@@ -122,7 +122,7 @@ export default {
       }
     },
     loadPackageFromRepository (packageVersion) {
-      axios.get(`https://addons.kuboard.cn/v-kuboard-spray-resources/${packageVersion.version}/package.yaml?nocache=${new Date().getTime()}`).then(resp => {
+      axios.get(`https://addons.kuboard.cn/v-kuboard-spray/${packageVersion.version}/package.yaml?nocache=${new Date().getTime()}`).then(resp => {
         setTimeout(() => {
           this.$set(packageVersion, 'package', yaml.load(resp.data))
           this.$set(packageVersion, 'loaded', true)

@@ -94,10 +94,11 @@ docker load < /root/kuboard-spray-resource.tar
     },
     loadYaml: {
       get () {
-        return yaml.dump({
+        let temp = {
           downloadFrom: this.downloadFrom,
-          package: this.resourcePackage,
-        })
+        }
+        temp = Object.assign(temp, this.resourcePackage)
+        return yaml.dump(temp)
       },
       set () {},
     }
