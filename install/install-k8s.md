@@ -137,6 +137,8 @@ Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用
   ![创建集群安装计划](./install-k8s.assets/kuboard-spray-02.png)
 
 * 点击上图对话框中的 `确定` 按钮后，将进入集群规划页面，在该界面中添加您每个集群节点的连接参数并设置节点的角色，如下图所示：
+
+  重要： kuboard-spray 所在机器不能当做 K8S 集群的一个节点，因为安装过程中会重启集群节点的容器引擎，这会导致 kuboard-spray 被重启掉。
     
     ![集群规划](./install-k8s.assets/kuboard-spray-03.png)
 
