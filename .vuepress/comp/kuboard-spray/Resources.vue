@@ -79,6 +79,7 @@ export default {
         { key: 'package.data.kubernetes.kube_version', label: 'Kubernetes' },
         { key: 'container_engine', label: '容器引擎'},
         { key: 'supported_os', label: '操作系统'},
+        { key: 'package.metadata.kuboard_spray_version.min', label: 'KuboardSpray最低版本'},
         { key: 'action', label: '操 作'},
       ],
       currentVersion: undefined,
