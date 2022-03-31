@@ -372,36 +372,45 @@ let sidebar = {
       collapsable: true,
       children: [
         {
-          title: '认证及授权',
+          title: '安全',
           collapsable: true,
           children: [
+            'k8s-advanced/sec/overview',
+            'k8s-advanced/sec/pss',
+            'k8s-advanced/sec/psa',
             {
-              title: '用户认证',
+              title: '认证及授权',
               collapsable: true,
               children: [
-                'k8s-advanced/sec/authenticate/',
-                'k8s-advanced/sec/sa-admin',
-                // 'k8s-advanced/sec/authenticate/install',
-                // 'k8s-advanced/sec/authenticate/ldap',
-              ]
-            }, {
-              title: '用户授权',
-              collapsable: true,
-              children: [
-                // 'k8s-advanced/sec/kuboard',
-                'k8s-advanced/sec/rbac/auth-namespace.html',
-                // 'k8s-advanced/sec/rbac/list-namespace.html',
-                // 'k8s-advanced/sec/rbac/logs.html',
-                'k8s-advanced/sec/rbac/api',
-                'k8s-advanced/sec/rbac/default',
-                'k8s-advanced/sec/rbac/escalation',
-                'k8s-advanced/sec/rbac/cmd',
-                'k8s-advanced/sec/rbac/sa',
-                'k8s-advanced/sec/rbac/permissive',
-                'k8s-advanced/sec/rbac/example',
+                {
+                  title: '用户认证',
+                  collapsable: true,
+                  children: [
+                    'k8s-advanced/sec/authenticate/',
+                    'k8s-advanced/sec/sa-admin',
+                    // 'k8s-advanced/sec/authenticate/install',
+                    // 'k8s-advanced/sec/authenticate/ldap',
+                  ]
+                }, {
+                  title: '用户授权',
+                  collapsable: true,
+                  children: [
+                    // 'k8s-advanced/sec/kuboard',
+                    'k8s-advanced/sec/rbac/auth-namespace.html',
+                    // 'k8s-advanced/sec/rbac/list-namespace.html',
+                    // 'k8s-advanced/sec/rbac/logs.html',
+                    'k8s-advanced/sec/rbac/api',
+                    'k8s-advanced/sec/rbac/default',
+                    'k8s-advanced/sec/rbac/escalation',
+                    'k8s-advanced/sec/rbac/cmd',
+                    'k8s-advanced/sec/rbac/sa',
+                    'k8s-advanced/sec/rbac/permissive',
+                    'k8s-advanced/sec/rbac/example',
+                  ]
+                },
               ]
             },
-          ]
+          ],
         },
         {
           title: '问题诊断',
@@ -432,18 +441,18 @@ let sidebar = {
           ]
         },
         {
-          title: '调度',
-          collapsable: true,
-          children: [
-            'k8s-advanced/schedule/',
-            'k8s-advanced/schedule/tuning',
-            'k8s-advanced/schedule/framework',
-          ]
-        },
-        {
           title: '策略',
           collapsable: true,
           children: [
+            {
+              title: '调度',
+              collapsable: true,
+              children: [
+                'k8s-advanced/schedule/',
+                'k8s-advanced/schedule/tuning',
+                'k8s-advanced/schedule/framework',
+              ]
+            },
             {
               title: 'Limit Range',
               collapsable: true,
