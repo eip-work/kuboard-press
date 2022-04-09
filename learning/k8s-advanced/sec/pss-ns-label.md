@@ -87,6 +87,8 @@ kubectl label --overwrite ns my-existing-namespace \
 
 ## 使用 Kuboard 设置名称空间 `pod-security`
 
+Kuboard 版本不低于 `v3.4.0.0`
+
 在 Kuboard 界面中，导航到集群名称空间的 `名称空间` --> `名称空间设置` 菜单项，点击 `编辑` 按钮，可以设置 Pod Security Admission 的参数，如下图所示：
 
 ![Pod Security Admission - Namespace](./pss-ns-label.assets/pod-security-namespace.png)
