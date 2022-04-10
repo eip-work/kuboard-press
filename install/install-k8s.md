@@ -113,7 +113,7 @@ Kuboard-Spray 是一款可以在图形界面引导下完成 Kubernetes 高可用
 
 
 
-* 在浏览器打开地址 `http://这台机器的IP`，输入默认密码 `Kuboard123`，即可登录 Kuboard-Spray 界面。
+* 在浏览器打开地址 `http://这台机器的IP`，输入用户名 `admin`，默认密码 `Kuboard123`，即可登录 Kuboard-Spray 界面。
 
 ## 加载离线资源包
 
