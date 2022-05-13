@@ -66,6 +66,10 @@ sudo docker run -d \
 * 第 8 行，将持久化数据 `/data` 目录映射到宿主机的 `/root/kuboard-data` 路径，请根据您自己的情况调整宿主机路径；
 :::
 
+::: tip 其他参数
+* 在启动命令行中增加环境变量 `KUBOARD_ADMIN_DERAULT_PASSWORD`，可以设置 `admin` 用户的初始默认密码。
+:::
+
 ## 访问 Kuboard v3.x
 
 在浏览器输入 `http://your-host-ip:80` 即可访问 Kuboard v3.x 的界面，登录方式：
