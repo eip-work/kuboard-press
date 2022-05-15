@@ -3,7 +3,7 @@
     <LazyLoad>
       <a aria-label="github" @click="$sendGaEvent('ViewGitHubStar', 'ViewGitHubStarNav', 'ViweGitHubStar:' + $page.path)"
         href="https://starchart.cc/eip-work/kuboard-press" target="_blank">
-        <iframe style="display:inline-block;vertical-align:middle;" src="https://addons.kuboard.cn/downloads/github-star.html" frameborder="0" scrolling="0" width="120" height="20" title="GitHub"></iframe>
+        <iframe style="display:inline-block;vertical-align:middle;" :src="`https://addons.kuboard.cn/downloads/github-star.html?nocache=${Date.now()}`" frameborder="0" scrolling="0" width="120" height="20" title="GitHub"></iframe>
       </a>
     </LazyLoad>
   </div>

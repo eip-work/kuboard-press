@@ -7,9 +7,9 @@
       </div>
     </b-alert>
     <div class="contentList">
-      <b-table striped hover v-if="mergedPackageList" :items="mergedPackageList" :fields="fields" head-variant="dark" table-variant="light">
+      <b-table striped hover v-if="mergedPackageList" :items="mergedPackageList" :fields="fields" head-variant="dark" table-variant="light" small>
         <template #cell(version)="data">
-          <span class="app_text_mono">{{data.item.version}}</span>
+          <div class="app_text_mono">{{data.item.version}}</div>
         </template>
         <template #cell(container_engine)="data">
           <div v-if="data.item.package">
@@ -28,8 +28,11 @@
             </div>
           </div>
         </template>
+        <template #cell(package.metadata.kuboard_spray_version.min)="data">
+          <div v-if="data.item.package" class="app_text_mono">{{data.item.package.metadata.kuboard_spray_version.min}}</div>
+        </template>
         <template #cell(action)="data">
-          <b-button variant="primary" @click="showVersion(data.item)">离线导入</b-button>
+          <b-button variant="primary" size="sm" @click="showVersion(data.item)">离线导入</b-button>
         </template>
       </b-table>
     </div>
@@ -75,7 +78,7 @@ export default {
       importedPackageMap: {},
       fields: [
         { key: 'version', label: '版 本' },
-        { key: 'package.data.kubespray_version', label: 'Kubespray' },
+        // { key: 'package.data.kubespray_version', label: 'Kubespray' },
         { key: 'package.data.kubernetes.kube_version', label: 'Kubernetes' },
         { key: 'container_engine', label: '容器引擎'},
         { key: 'supported_os', label: '操作系统'},

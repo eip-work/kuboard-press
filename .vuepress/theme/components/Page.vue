@@ -58,7 +58,7 @@
     <LazyLoad :noAdsOnSharing="true">
       <AdSenseRightSide v-show="!$isSharing"/>
     </LazyLoad>
-    <OnlineChat></OnlineChat>
+    <!-- <OnlineChat></OnlineChat> -->
   </main>
 </template>
 

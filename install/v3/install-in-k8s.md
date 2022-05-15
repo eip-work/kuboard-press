@@ -6,7 +6,7 @@ meta:
     content: Kubernetes Dashboard安装,Kuboard安装,K8S Dashboard安装
 ---
 
-# 在 K8S 中安装 Kuboard v3
+# 安装 Kuboard v3 - kubernetes
 
 <AdSenseTitle/>
 

@@ -54,7 +54,8 @@ let sidebar = {
             'v3/install-gitlab',
             'v3/install-github',
             'v3/install-ldap',
-            'v3/install-in-k8s'
+            'v3/install-in-k8s',
+            'v3/install-ha',
           ]
         },
         {
@@ -790,7 +791,7 @@ let sidebar = {
         'change-log/upgrade-2-3',
         'change-log/upgrade-1-2',
         // 'change-log/upgrade-2-from-beta',
-        'known-issue',
+        // 'known-issue',
       ]
     }
   ],

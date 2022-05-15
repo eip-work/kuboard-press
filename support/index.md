@@ -62,6 +62,7 @@ Kuboard 是一款免费的 Kubernetes 管理工具，提供了丰富的功能，
 | <div class="tap"></div>可以查看历史审计日志                         | :x: | :white_check_mark: |
 | <div class="tap"></div>多集群管理（一个 Kuboard 实例可以管理不超过三个 K8S 集群）                         | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>多集群管理（一个 Kuboard 实例可以管理超过三个 K8S 集群）                       | :x: | :white_check_mark: |
+| <div class="tap"></div> [Kuboard 高可用部署模式](/install/v3/install-ha.html)                       | :x: | :white_check_mark: |
 | **服务与支持**                                               |                    |                    |
 | <div class="tap"></div>微信/QQ 社群免费答疑                                         | :white_check_mark: | :white_check_mark: |
 | <div class="tap"></div>付费用户专属答疑通道                                         | :x: | :white_check_mark: |
