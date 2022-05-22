@@ -20,7 +20,7 @@ meta:
 * [安装 Kuboard v3 - gitlab](./install-github.html)
 * [安装 Kuboard v3 - github](./install-gitlab.html)
 * [安装 Kuboard v3 - ldap](./install-ldap.html)
-* [安装 Kuboard v3 - kubernetes](./install-k8s.html)
+* [安装 Kuboard v3 - kubernetes](./install-in-k8s.html)
 
 在普通部署模式下 Kuboard 通常只部署了一个容器实例，存在单点故障，因此 Kuboard 本身并不能保证高可用。但是在 Kuboard 出现故障时，并不影响 Kubernetes 的正常，因此，普通部署模式下安装的 Kuboard 是可以满足绝大部分用户的需求的。普通部署模式下，当 Kuboard 出现故障时，可以重新部署一个 Kuboard，并导入 Kubernetes 到新的 Kuboard 实例，即可恢复故障。
 
