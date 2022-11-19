@@ -14,6 +14,8 @@ meta:
 1. 使用 hostPath 提供持久化存储，将 kuboard 所依赖的 Etcd 部署到 Master 节点，并将 etcd 的数据目录映射到 Master 节点的本地目录；<badge>推荐</badge>
 2. 使用 StorageClass 动态创建 PV 为 etcd 提供数据卷；<badge type="error">不推荐</badge>
 
+<strong>如果使用此方法安装 Kuboard 碰到问题，强烈建议您使用 [docker run](./install-built-in.html) 或者 [static-pod](./install-static-pod.html) 的方式安装 kuboard .</strong>
+
 ## 方法一：使用 hostPath 提供持久化
 
 ### 安装

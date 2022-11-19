@@ -54,7 +54,7 @@ Kuboard v3.x 支持 Kubernetes 多集群管理。如果您从 Kuboard v1.0.x 或
 * [LDAP 认证](./install-ldap.html)
 * [高可用](./install-ha.html)
 
-此外，您也可以通过一行命令，即可 [将 Kuboard 安装到 Kubernetes 集群中](./install-in-k8s.html) 
+此外，您也可以通过一行命令，即可 [将 Kuboard 安装到 Kubernetes 集群中](./install-in-k8s.html)，或者 [作为 static pod 运行](./install-static-pod.html)。
 
 ## 安全提示
 

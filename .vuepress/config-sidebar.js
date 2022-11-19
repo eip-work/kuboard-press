@@ -55,6 +55,7 @@ let sidebar = {
             'v3/install-github',
             'v3/install-ldap',
             'v3/install-in-k8s',
+            'v3/install-static-pod',
             'v3/install-ha',
           ]
         },
