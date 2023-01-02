@@ -146,8 +146,9 @@ export default {
 }
 </script>
 
+<!--
 ## 已采纳用户
 
-<!-- 只要您在此处留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
+只要您在此处留下公司名字，您就已经 **取得将 Kuboard 用于生产环境的授权** 
 
 > 如果列表不能显示，请直接到这个链接留言 [Kuboard 授权列表](https://github.com/eip-work/kuboard-press/issues/71) -->
