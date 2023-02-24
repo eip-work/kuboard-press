@@ -56,7 +56,7 @@ Kubernetes教程的主要依据是：Kubernetes 文档，以及使用 Kuboard �
     * [自动伸缩](/learning/k8s-advanced/hpa/hpa.html)
     * [自动伸缩-例子](/learning/k8s-advanced/hpa/walkthrough.html)
   * 完善工具配置
-    * [掌握快速部署高可用Kubernetes集群的窍门](https://github.com/fanux/sealos)
+    * [掌握快速部署高可用Kubernetes集群的窍门](https://kuboard-spray.cn)
     * [自定义Kuboard名称空间布局](/install/install-kuboard-layout.html)
     * [创建ServiceAccount并授权其访问指定的名称空间](/learning/k8s-advanced/sec/kuboard.html)
     * [实现Kubernetes与GitLab/GitHub的单点登录](/learning/k8s-advanced/sec/authenticate/install.html)

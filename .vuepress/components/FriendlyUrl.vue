@@ -33,8 +33,8 @@ export default {
       urls: [
         {name: 'SpringBlade', url: 'https://bladex.vip/', icon: '/images/ads/spring-blade.png'},
         {name: 'Linux Foundation', url: 'https://training.linuxfoundation.cn', icon: 'https://training.linuxfoundation.cn/assets/img/logo.svg'},
-        {name: 'sealos', url: 'http://store.lameleg.com?referrer=shaohq', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/blog/2019-08-27-044824.jpg'},
-        {name: '云原生实验室', url: 'https://fuckcloudnative.io/', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/favicon-32x32.png'},
+        // {name: 'sealos', url: 'http://store.lameleg.com?referrer=shaohq', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/blog/2019-08-27-044824.jpg'},
+        // {name: '云原生实验室', url: 'https://fuckcloudnative.io/', icon: 'https://hugo-picture.oss-cn-beijing.aliyuncs.com/favicon-32x32.png'},
       ]
     }
   }
