@@ -4,21 +4,19 @@
 
     <div>
       <div class="row" style="margin-top: 1rem;">
-        <div class="col-md-4 col-sm-12">
+        <!-- <div class="col-md-4 col-sm-12">
           <b-card style="height: 100%; " shadow="none" :body-style="{padding: '0rem 1.5rem'}"
           data-aos="fade-up" data-aos-duration="800">
             <h4>QQ群</h4>
             <div>
-              <!-- 一键进群 -->
               <Qq/>
-              <!-- 808894550 -->
             </div>
             <p style="margin-bottom: 0; margin-top: 10px;">
               <img style="margin: auto; width: 150px; padding: 10px;" src="/images/kuboard_qq.png" alt="Kubernetes教程：QQ群在线答疑"/>
             </p>
           </b-card>
-        </div>
-        <div class="col-md-4 col-sm-12">
+        </div> -->
+        <div class="col-md-6 col-sm-12">
           <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; " shadow="none" :body-style="{padding: '0rem 1.5rem'}"
           data-aos="fade-up" data-aos-duration="1000">
             <h4>微信群</h4>
@@ -33,7 +31,7 @@
             </div>
           </b-card>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-6 col-sm-12">
           <b-card style="height: 100%; color: #2c3e50; line-height: 1.7; border-color: #f2be45; background-color: rgba(242, 190, 69, 0.1)" shadow="none" :body-style="{padding: '0rem 1.5rem'}"
           data-aos="fade-up" data-aos-duration="1200">
             <h4>赞赏</h4>
