@@ -25,7 +25,7 @@ export default {
     items () {
       let items = []
       items.push({ channel: 'v3', dockerTag: 'eipwork/kuboard:v3', version: this.currentVersion.latest.version, buildDate: this.currentVersion.latest.buildDate })
-      items.push({ channel: 'beta', dockerTag: 'eipwork/kuboard:v3-beta', version: this.currentVersion.beta.version, buildDate: this.currentVersion.beta.buildDate })
+      // items.push({ channel: 'beta', dockerTag: 'eipwork/kuboard:v3-beta', version: this.currentVersion.beta.version, buildDate: this.currentVersion.beta.buildDate })
       // items.push({ channel: 'arm', dockerTag: 'eipwork/kuboard:arm', version: this.currentVersion.arm.version, buildDate: this.currentVersion.arm.buildDate })
       return items
     }
