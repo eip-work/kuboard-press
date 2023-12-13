@@ -82,3 +82,11 @@ sudo docker run -d \
 <li>不兼容 IE 以及以 IE 为内核的浏览器</li>
 
 :::
+
+### 使用 sealos 一键部署
+
+> Sealos 是一款以 Kubernetes 为内核的云操作系统发行版。它以云原生的方式，抛弃了传统的云计算架构，转向以 Kubernetes 为云内核的新架构，使企业能够像使用个人电脑一样简单地使用云。
+
+点击以下按钮一键部署（部署后访问出现 404 请等待 3~5 分钟）：
+
+[![Deploy-on-Sealos.svg](https://raw.githubusercontent.com/labring-actions/templates/main/Deploy-on-Sealos.svg)](https://cloud.sealos.io/?openapp=system-fastdeploy?templateName=kuboard)
