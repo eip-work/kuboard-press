@@ -10,6 +10,14 @@ meta:
 
 <AdSenseTitle/>
 
+## Kuboard v4.0 版本说明
+
+当前 Kuboard v4.0 处于 alpha 测试阶段，感兴趣的用户可以体验尝试，也可以在用户群里反馈问题。
+
+Kuboard v4 的安装文档请参考：
+* [快速体验 Kuboard v4](/v4/install/quickstart.html)
+* [安装 Kubernetes 多集群管理工具 - Kuboard v4](/v4/install/)
+
 ## Kuboard v3.x 版本说明
 
 Kuboard v3.x 支持 Kubernetes 多集群管理。如果您从 Kuboard v1.0.x 或者 Kuboard v2.0.x 升级到 Kuboard，请注意：
