@@ -28,6 +28,19 @@ let sidebar = {
     }
   ],
 
+  '/v4/': [
+    {
+      title: 'V4',
+      collapsable: false,
+      children: [
+        'install/quickstart',
+        'install/',
+        'change-log/v4.x',
+        'webhook/user'
+      ]
+    }
+  ],
+
   '/install/': [
     {
       title: '安装 Kubernetes',

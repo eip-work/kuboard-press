@@ -8,6 +8,9 @@
       <!-- <div class="side-nav-item" :style="activeLinkStyle('/overview/') + 'margin-left: 0;'">
         <a :href="`/overview/${urlSurfix}`" class="nav-link">简介</a>
       </div> -->
+      <div class="side-nav-item" :style="activeLinkStyle('/v4/')">
+        <a :href="`/v4/install/quickstart.html${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">V4</a>
+      </div>
       <div class="side-nav-item" :style="activeLinkStyle('/install/')">
         <a :href="`/install/v3/install.html${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">安装</a>
       </div>
