@@ -1,7 +1,7 @@
 {
   "scripts": {
     "docs:dev": "vuepress dev .",
-    "docs:build": "export NODE_OPTIONS=--openssl-legacy-provider && vuepress build ."
+    "docs:build": "vuepress build ."
   },
   "dependencies": {
     "@vssue/api-github-v4": "^1.4.7",

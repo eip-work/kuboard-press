@@ -22,7 +22,9 @@
 
   services:
     db:
-      image: mariadb:11.3.2-jammy
+      image: swr.cn-east-2.myhuaweicloud.com/kuboard/mariadb:11.3.2-jammy
+      # image: mariadb:11.3.2-jammy  
+      # swr.cn-east-2.myhuaweicloud.com/kuboard/mariadb:11.3.2-jammy 与 mariadb:11.3.2-jammy 镜像完全一致
       environment:
         MARIADB_ROOT_PASSWORD: kuboardpwd
         MYSQL_ROOT_PASSWORD: kuboardpwd
@@ -38,7 +40,8 @@
           aliases:
             - db
     kuboard:
-      image: eipwork/kuboard:v4
+      image: swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
+      # image: eipwork/kuboard:v4
       environment:
         - DB_DRIVER=org.mariadb.jdbc.Driver
         - DB_URL=jdbc:mariadb://db:3306/kuboard?serverTimezone=Asia/Shanghai
