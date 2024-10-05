@@ -799,6 +799,7 @@ let sidebar = {
       title: '更新说明',
       collapsable: false,
       children: [
+        '/v4/change-log/v4.x.html',
         'change-log/v3.0.x',
         'change-log/v2.0.x',
         'change-log/v1.0.x',
