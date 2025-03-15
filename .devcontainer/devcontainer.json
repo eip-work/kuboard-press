@@ -1,0 +1,6 @@
+{
+  "name": "Sigong Docs Development",
+  "image": "gplane/pnpm:node21",
+  "remoteUser": "root"
+  // Required for DinD
+}
