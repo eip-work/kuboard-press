@@ -1,6 +1,12 @@
 {
   "name": "Docs Development",
-  "image": "gplane/pnpm:node21",
-  "remoteUser": "root"
-  // Required for DinD
+  "remoteUser": "root",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=maven-local-repository,target=/root/.m2,type=volume,consistency=cached"
+  ]
 }

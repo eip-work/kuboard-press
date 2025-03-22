@@ -3,10 +3,10 @@ datetime=`date +%Y%m%d-%H%M%S`
 echo $datetime
 tag=swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard-press
 
-yarn install
-yarn docs:build
+pnpm install
+pnpm docs:build
 
-docker build -t $tag:latest .
+docker buildx build --platform linux/amd64 -t $tag:latest .
 
 
 if test $datetime != ""; then
