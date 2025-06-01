@@ -3,14 +3,16 @@
 完整的安装文档请参考 [安装 Kubernetes 多集群管理工具 - Kuboard v4](/v4/install/)
 
 前提条件：
-* docker engine
-* amd64 或 arm64 CPU
+
+- docker engine
+- amd64 或 arm64 CPU
 
 步骤：
 
-* 在本地目录创建 `kuboard-v4`
+- 在本地目录创建 `kuboard-v4`
 
-* 在该目录下创建文件 `docker-compose.yaml`，内容如下：
+- 在该目录下创建文件 `docker-compose.yaml`，内容如下：
+
   ```yaml
   configs:
     create_db_sql:
@@ -23,7 +25,7 @@
   services:
     db:
       image: swr.cn-east-2.myhuaweicloud.com/kuboard/mariadb:11.3.2-jammy
-      # image: mariadb:11.3.2-jammy  
+      # image: mariadb:11.3.2-jammy
       # swr.cn-east-2.myhuaweicloud.com/kuboard/mariadb:11.3.2-jammy 与 mariadb:11.3.2-jammy 镜像完全一致
       environment:
         MARIADB_ROOT_PASSWORD: kuboardpwd
@@ -48,7 +50,7 @@
         - DB_USERNAME=kuboard
         - DB_PASSWORD=kuboardpwd
       ports:
-        - '8000:80'
+        - "8000:80"
       depends_on:
         - db
       networks:
@@ -61,29 +63,30 @@
       driver: bridge
   ```
 
-* 在 `kuboard-v4` 目录下执行指令：
+- 在 `kuboard-v4` 目录下执行指令：
+
   ```sh
   docker compose up -d
   ```
 
-* 在浏览器打开 Kuboard 的地址，例如：
+- 在浏览器打开 Kuboard 的地址，例如：
 
-  `http://localhost:8000`
+  `http://localhost:8000/login`
 
   Kuboard 的登录界面如下图所示：
 
   ![Kuboard登录界面](./install.assets/kuboard_login.png)
 
-* 登录 Kuboard 界面：
+- 登录 Kuboard 界面：
 
-  * 管理员用户为： `admin`
-  * 默认密码为 ： `Kuboard123`
+  - 管理员用户为： `admin`
+  - 默认密码为 ： `Kuboard123`
 
   **此时您已完成了 Kuboard v4 的安装**。后续请在 Kuboard 界面上执行如下操作：
 
-  * 修改 `admin` 的密码
-  * 创建普通用户并授权
-  * 导入 Kubernetes 集群
+  - 修改 `admin` 的密码
+  - 创建普通用户并授权
+  - 导入 Kubernetes 集群
 
 ## 集成外部用户库
 
