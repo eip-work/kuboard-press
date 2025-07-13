@@ -1,0 +1,31 @@
+# Kuboard v4 环境变量
+
+ 部署 Kuboard v4 时，主要使用环境变量对其进行配置。Kuboard v4 支持的环境变量如下所示：
+
+### TZ
+
+### DB_DRIVER
+
+### DB_URL
+
+### DB_USERNAME
+
+### DB_PASSWORD
+
+
+### KUBOARD_SWAGGER_ENABLED
+
+
+### KUBOARD_CACHE_PROVIDER
+
+
+### KUBOARD_CACHE_REDIS_MODE
+
+
+### KUBOARD_CACHE_REDIS_NODES
+
+### KUBOARD_CACHE_REDIS_SENTINEL_MASTER
+
+### KUBOARD_CACHE_REDIS_PASSWORD
+
+### KUBOARD_CACHE_REDIS_DATABASE

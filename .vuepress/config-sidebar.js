@@ -34,7 +34,17 @@ let sidebar = {
       collapsable: false,
       children: [
         'install/quickstart',
-        'install/',
+        {
+          title: "安装 Kuboard v4",
+          path: 'install/',
+        },
+        {
+          title: "Reference",
+          collapsable: false,
+          children: [
+            "reference/kuboard-env.md"
+          ]
+        },
         'change-log/v4.x',
         'webhook/user'
       ]
