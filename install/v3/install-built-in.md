@@ -37,6 +37,7 @@ meta:
 ``` sh {10}
 sudo docker run -d \
   --restart=unless-stopped \
+  --privileged \
   --name=kuboard \
   -p 80:80/tcp \
   -p 10081:10081/tcp \
