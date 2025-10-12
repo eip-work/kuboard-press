@@ -31,6 +31,11 @@ Kuboard v3.x 支持 Kubernetes 多集群管理。如果您从 Kuboard v1.0.x 或
 
 | Kubernetes 版本 | Kuboard 版本   | 兼容性 | 说明                                                         |
 | --------------- | -------------- | ------ | ------------------------------------------------------------ |
+| v1.33           | v3.5.2.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.32           | v3.5.2.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.31           | v3.5.2.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.30           | v3.5.2.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
+| v1.29           | v3.5.2.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.28           | v3.5.2.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.27           | v3.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |
 | v1.26           | v3.x | <span style="font-size: 24px;">😄</span>      | 已验证                            |

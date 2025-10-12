@@ -12,11 +12,26 @@ meta:
 
 兼容性
 
-- 您可以安装一套 Kuboard v4，并将同一个集群同时导入到 Kuboard v3 和 Kuboard v4。此时 Kuboard v3 / v4 都可以有效管理该集群。
 - Kuboard v4 使用了与 Kuboard v3 不同的技术架构，不能直接从 Kuboard v3 升级到 Kuboard v4；
-  - v3 使用 etcd 作为持久化存储器，v4 使用 MySQL / MariaDB 作为持久化存储器；
-  - v3 使用 golang 语言开发，v4 使用 Java 语言开发；
-- Kuboard v3 中提供的各类套件（监控套件、日志套件等），需等到 v4 版本正式发布时才能在 v4 版本中提供。
+- 您可以将同一个集群同时导入到 Kuboard v3 和 Kuboard v4。此时 Kuboard v3 / v4 都可以有效管理该集群。
+  - 如果集群在 v3 以及 v4 中的名字相同，Kuboard 套件不受影响，在 V3 / V4 中都可以正常使用。
+
+Kuboard v4 相较于 v3 主要差异如下：
+- Kubernetes 版本适配范围：
+  - v3 支持 Kubernetes 1.13 - 1.33
+  - v4 支持 Kubernetes 1.15 - 1.34（持续跟进 Kubernetes 最新版本）
+- 用户体验提升
+  - Kuboard v4 覆盖 v3 的所有主要功能
+  - Kuboard v4 兼容 v3 的主要套件，升级到 V4 时，已安装套件不受影响
+  - Kuboard v4 将常用 Kubernetes 对象缓存到本地，支持模糊查询，支持更快的检索速度
+  - Kuboard v4 可以在一个列表中同时显示多个集群、名称空间的对象，查询操作更快捷
+  - Kuboard v4 提供更简洁更清晰的授权模型，给用户授权时更灵活更方便
+- 技术架构
+  - 技术栈差异：
+    - Kuboard v3 技术栈： vue 2.7 + golang 1.18 + etcd 3.4
+    - Kuboard v4 技术栈： vue 3.5 + java 1.17 + MySQL/MariaDB/Postgre（三种数据库选一）
+  - Kuboard v4 支持高可用部署
+  - Kuboard v4 提供更丰富的 API 供用户调用
 
 ## 依赖条件
 
