@@ -51,6 +51,8 @@
         - DB_PASSWORD=kuboardpwd
       ports:
         - "8000:80"
+      volumes:
+        - ./kuboard-log:/app/logs:Z
       depends_on:
         - db
       networks:

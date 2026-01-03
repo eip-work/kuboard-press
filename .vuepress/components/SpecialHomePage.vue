@@ -127,7 +127,7 @@ export default {
         ],
         actionText: '在线体验',
         actionText2: '开始使用 →',
-        actionLink2: '/install/v3/install.html',
+        actionLink2: '/v4/install/quickstart.html',
         features:[
           {
               title: 'Kubernetes安装文档',

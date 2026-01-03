@@ -76,7 +76,7 @@ Kuboard v4 需要使用数据库作为存储，支持的数据库类型有：
   - 使用 MYSQL 时，启动 Kuboard 的脚本如下：
 
     ```sh
-    sudo docker run -d \
+    docker run -d \
       --restart=unless-stopped \
       --name=kuboard \
       -p 80:80/tcp \
@@ -85,6 +85,7 @@ Kuboard v4 需要使用数据库作为存储，支持的数据库类型有：
       -e DB_URL="jdbc:mysql://10.99.0.8:3306/kuboard?serverTimezone=Asia/Shanghai" \
       -e DB_USERNAME=kuboard \
       -e DB_PASSWORD=Kuboard123 \
+      -v ./kuboard-log:/app/logs \
       swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
       # eipwork/kuboard:v4
     ```
@@ -92,7 +93,7 @@ Kuboard v4 需要使用数据库作为存储，支持的数据库类型有：
   - 使用 MariaDB 时，启动 Kuboard 的脚本如下：
 
     ```sh
-    sudo docker run -d \
+    docker run -d \
       --restart=unless-stopped \
       --name=kuboard \
       -p 80:80/tcp \
@@ -101,6 +102,7 @@ Kuboard v4 需要使用数据库作为存储，支持的数据库类型有：
       -e DB_URL="jdbc:mariadb://10.99.0.8:3306/kuboard?&timezone=Asia/Shanghai" \
       -e DB_USERNAME=kuboard \
       -e DB_PASSWORD=Kuboard123 \
+      -v ./kuboard-log:/app/logs \
       swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
       # eipwork/kuboard:v4
     ```
@@ -108,15 +110,16 @@ Kuboard v4 需要使用数据库作为存储，支持的数据库类型有：
   - 使用 OpenGauss 时，启动 Kuboard 的脚本如下：
 
     ```sh
-    sudo docker run -d \
+    docker run -d \
       --restart=unless-stopped \
       --name=kuboard \
       -p 80:80/tcp \
       -e TZ="Asia/Shanghai" \
       -e DB_DRIVER=org.postgresql.Driver \
-      -e DB_URL="jdbc:postgresql://localhost:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8" \
+      -e DB_URL="jdbc:postgresql://10.99.0.8:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8" \
       -e DB_USERNAME=kuboard \
       -e DB_PASSWORD=Kuboard123 \
+      -v ./kuboard-log:/app/logs \
       swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
       # eipwork/kuboard:v4
     ```

@@ -12,20 +12,14 @@
         <a :href="`/v4/install/quickstart.html${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">V4</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/install/')">
-        <a :href="`/install/v3/install.html${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">安装</a>
+        <a :href="`/install/v3/install.html${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">V3</a>
       </div>
       <div class="side-nav-item" :style="activeLinkStyle('/learning/')">
         <a :href="`/learning/${urlSurfix}`" class="nav-link router-link-exact-active router-link-active">教程</a>
       </div>
-      <!-- <div class="side-nav-item" :style="activeLinkStyle('/guide/')">
-        <a :href="`/guide/${urlSurfix}`" class="nav-link">使用</a>
-      </div> -->
       <div class="side-nav-item" :style="activeLinkStyle('/support/')">
         <a :href="`/support/${urlSurfix}`" class="nav-link">支持</a>
       </div>
-      <!-- <div class="side-nav-item" :style="activeLinkStyle('/forum/')">
-        <a :href="`https://forum.kuboard.cn`" target="_blank" class="nav-link">论坛</a>
-      </div> -->
       <KuboardDemo class="side-nav-item" suffix="sidebar"></KuboardDemo>
     </div>
     <slot name="top"/>
@@ -44,13 +38,7 @@
       </div>
       <p>
       </p>
-      <!-- <strong>在线答疑</strong>
-      <Qq/>
-      <p>
-        <img src="/images/kuboard_qq.png" style="width: 120px;" alt="Kubernetes教程：QQ群在线答疑"/>
-      </p> -->
     </div>
-    <!-- <el-divider >Kuboard</el-divider> -->
     <div style="height: 2rem;"></div>
   </aside>
 </template>

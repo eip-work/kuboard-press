@@ -16,7 +16,7 @@ Kuboard 是一款专为 Kubernetes 设计的免费管理界面，兼容 Kubernet
 
 </p>
 
-点击这里可以查看 [Kuboard 的安装文档](https://kuboard.cn/install/v3/install.html)
+点击这里可以查看 [Kuboard 的安装文档](https://kuboard.cn/v4/install/quickstart.html)
 
 ## 在线演示
 
