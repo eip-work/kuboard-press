@@ -33,7 +33,7 @@ let sidebar = {
         {
           title: "配置 Kuboard v4",
           collapsable: false,
-          children: ["reference/kuboard-env.md", "reference/reverse-proxy.md", "webhook/user", "reference/trace.md"],
+          children: ["reference/kuboard-env.md", "reference/reverse-proxy.md", "webhook/user", "reference/trace.md", "mcp/"],
         },
         "change-log/v4.x",
         // "webhook/user",
