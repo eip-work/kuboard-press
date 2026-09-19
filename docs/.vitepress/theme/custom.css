@@ -1,0 +1,23 @@
+:root {
+  --vp-c-brand-1: #007af5;
+  --vp-c-brand-2: #0e89ff;
+  --vp-c-brand-3: #0071e1;
+  --vp-c-brand-soft: rgba(0, 122, 245, 0.14);
+  --vp-layout-max-width: 1680px;
+  --vp-sidebar-width: 300px;
+}
+
+.dark {
+  --vp-c-brand-1: #4da3ff;
+  --vp-c-brand-2: #2f94ff;
+  --vp-c-brand-3: #007af5;
+  --vp-c-brand-soft: rgba(0, 122, 245, 0.2);
+}
+
+:root .content-container {
+  max-width: 960px !important;
+}
+
+.VPImage.logo {
+  border-radius: 4px;
+}

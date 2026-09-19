@@ -1,0 +1,8 @@
+services:
+  docs:
+    build: .
+    image: kuboard-press-v4:latest
+    container_name: kuboard-press-v4
+    ports:
+      - "80:80"
+    restart: unless-stopped

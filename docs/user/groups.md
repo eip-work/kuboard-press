@@ -1,0 +1,7 @@
+---
+description: 用户与认证 - groups (占位 stub)
+---
+
+# user/groups
+
+本页面将在 Phase 2 写入完整内容。

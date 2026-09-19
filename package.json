@@ -1,0 +1,17 @@
+{
+  "name": "kuboard-press-v4",
+  "version": "1.0.0",
+  "description": "Kuboard V4 documentation site (zh/en)",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": ["kuboard", "kubernetes", "docs"],
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@11.27.0",
+  "type": "module",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
