@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/mermaid@12.0.0/node_modules/mermaid/dist/chunks/mermaid.core/chunk-5VM5RSS4.mjs"],
+  "sourcesContent": ["import {\n  __name\n} from \"./chunk-Y2CYZVJY.mjs\";\n\n// src/diagrams/globalStyles.ts\nvar getIconStyles = /* @__PURE__ */ __name(() => `\n  /* Font Awesome icon styling - consolidated */\n  .label-icon {\n    display: inline-block;\n    height: 1em;\n    overflow: visible;\n    vertical-align: -0.125em;\n  }\n  \n  .node .label-icon path {\n    fill: currentColor;\n    stroke: revert;\n    stroke-width: revert;\n  }\n`, \"getIconStyles\");\n\nexport {\n  getIconStyles\n};\n"],
+  "mappings": ";;;;;AAKA,IAAI,gBAAgC,OAAO,MAAM;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,GAc9C,eAAe;",
+  "names": []
+}

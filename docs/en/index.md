@@ -5,8 +5,8 @@ hero:
   text: Multi-cluster container management platform based on Kubernetes
   tagline: Free · Fast track to Kubernetes · Unified management across clusters
   image:
-    src: /kuboard-logo.png
-    alt: Kuboard
+    src: /kuboard-hero.svg
+    alt: Kuboard multi-cluster management
   actions:
     - theme: brand
       text: Quick Start
@@ -14,6 +14,9 @@ hero:
     - theme: alt
       text: Installation Guide
       link: /en/install/
+    - theme: alt
+      text: Live Demo →
+      link: https://demo.kuboard.cn
     - theme: alt
       text: 中文
       link: /
@@ -37,3 +40,16 @@ features:
     title: High Availability
     details: Multi-node deployment with load balancers, HA databases, and Redis distributed cache.
 ---
+
+## Live Demo
+
+<div>
+  The online demo environment grants you <span style="color: red; font-weight: bold">read-only</span> access — only a subset of Kuboard's features is available.
+</div>
+<div style="padding: 10px; border: 1px solid var(--vp-c-divider); border-radius: 10px; margin: 10px 0px; background-color: var(--vp-c-bg-soft);">
+  <a href="https://demo.kuboard.cn" target="_blank" rel="noopener">https://demo.kuboard.cn</a> <br/>
+  <div style="width: 60px; display: inline-block; margin-top: 5px;">Username</div>
+  demo <br/>
+  <div style="width: 60px; display: inline-block;">Password</div>
+  demo123
+</div>

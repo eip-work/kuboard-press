@@ -21,3 +21,30 @@
 .VPImage.logo {
   border-radius: 4px;
 }
+
+.VPHero .image-container,
+.VPHero .image-container .VPImage,
+.VPHero .image-container .VPImage .image {
+  max-width: none !important;
+}
+
+.VPHero .image-container .VPImage {
+  filter: drop-shadow(0 20px 40px rgba(52, 87, 213, 0.18));
+}
+
+@media (min-width: 1280px) {
+  .VPHero .image,
+  .VPHero .image-container,
+  .VPHero .image-container .VPImage,
+  .VPHero .image-container .VPImage .image {
+    width: 600px !important;
+    max-width: 600px !important;
+  }
+  .VPHero .image-container .VPImage .image {
+    aspect-ratio: 600 / 376 !important;
+    height: auto !important;
+  }
+  .VPHero .image {
+    padding-top: 54px !important;
+  }
+}

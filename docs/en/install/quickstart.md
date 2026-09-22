@@ -93,3 +93,59 @@ Steps:
 ## Integrate an External User Repository
 
 Kuboard v4 integrates with external user repositories (e.g. LDAP) through a webhook interface. See [https://github.com/eip-work/kuboard-v4-ldap-example](https://github.com/eip-work/kuboard-v4-ldap-example)
+
+## Ports
+
+The official Kuboard image exposes only one permanent entry port for the browser: the front-end, the API, and Swagger all come in through the same port. There is no need to access 9090 / 9091 separately.
+
+| Deployment | Browser access | Port mapping |
+|---|---|---|
+| Docker Compose example | `http://<server-ip>:8000` | Host `8000` → container `80` |
+| Kubernetes (NodePort example) | `http://<node-ip>:30080` | Service `30080` → container `80` |
+| docker run -p | `http://<server-ip>:<your mapped port>` | Any host port → container `80` |
+| High availability (nginx load balancer) | `http://<server-ip>:9001` | Host `9001` → nginx `80` → replicas `80` |
+| Helm / Ingress | Determined by the Ingress domain | Points to the Service's `80` |
+
+Apart from the browser entry port, all other ports are either process-internal or optional management ports; none of them needs to be exposed to the host in the official orchestration examples.
+
+| Port | Purpose | When it is used |
+|---|---|---|
+| `80` | Browser access entry (front-end pages + API + Swagger) | Production deployment |
+| `9090` | Default backend service port | Local source-code runs; overridden by `80` inside the image |
+| `9091` | Management endpoints (health checks, etc.) | Only when you integrate monitoring |
+| `9092` | Spring Boot Admin | Only when this feature is enabled |
+| `8848` | Front-end local development (Vite dev server) | Not related to deployment |
+
+The following are dependency component ports of external components such as databases / caches. Kuboard connects to them through environment variables; they do not expose any Kuboard functionality:
+
+| Port | Component |
+|---|---|
+| `3306` | MySQL / MariaDB |
+| `5432` | PostgreSQL / OpenGauss |
+| `6379` | Redis (single node) |
+| `7001`–`7006` | Redis cluster (HA example) |
+| `1389` | OpenLDAP |
+
+### How to Change the Ports
+
+- **Docker Compose**: change only the host mapping; keep port 80 inside the container:
+
+  ```yaml
+  ports:
+    - "8080:80"
+  ```
+
+- **Kubernetes**: modify the Service's `port` / `nodePort` (`targetPort` stays `80`)
+- **Local source-code runs**: set the `SERVER_PORT` / `SERVER_MGMT_PORT` environment variables
+
+::: tip Do not change port 80 inside the container
+Port mapping happens at the orchestration layer: change the host port and keep port 80 inside the container.
+:::
+
+::: warning Health checks go through 80, not 9091
+The health checks in the official orchestration examples probe the main port 80; unless you integrate monitoring yourself, there is no need to expose 9091.
+:::
+
+### Related Documentation
+
+For the full list of environment variables used during deployment, see [Kuboard Environment Variables](../reference/kuboard-env); for HTTPS / WebSocket reverse proxy configuration, see [Reverse Proxy](./reverse-proxy).

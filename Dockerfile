@@ -7,10 +7,11 @@ ARG NPM_REGISTRY=https://registry.npmjs.org/
 FROM ${NODE_IMAGE} AS build
 WORKDIR /app
 RUN apk add --no-cache git
-COPY package.json package-lock.json ./
-RUN npm ci --no-audit --no-fund --registry=${NPM_REGISTRY}
+RUN npm install -g pnpm@11.27.0 --registry=${NPM_REGISTRY} --no-audit --no-fund
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+RUN pnpm install --frozen-lockfile --registry=${NPM_REGISTRY}
 COPY docs ./docs
-RUN npx vitepress build docs
+RUN pnpm docs:build
 
 FROM ${NGINX_IMAGE}
 COPY --from=build /app/docs/.vitepress/dist /usr/share/nginx/html

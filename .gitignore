@@ -2,3 +2,4 @@ node_modules/
 .pnpm-store/
 docs/.vitepress/dist/
 *.log
+docs/.vitepress/cache/

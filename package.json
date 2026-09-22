@@ -7,11 +7,18 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "keywords": ["kuboard", "kubernetes", "docs"],
+  "keywords": [
+    "kuboard",
+    "kubernetes",
+    "docs"
+  ],
   "license": "UNLICENSED",
   "packageManager": "pnpm@11.27.0",
   "type": "module",
   "devDependencies": {
-    "vitepress": "^1.6.4"
+    "dayjs": "^1.11.23",
+    "mermaid": "^12.0.0",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17"
   }
 }

@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-label="Kuboard 多集群管理示意图" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EEF2FF"/>
+      <stop offset="60%" stop-color="#DCE5FF"/>
+      <stop offset="100%" stop-color="#C7D3FF"/>
+    </linearGradient>
+    <linearGradient id="panelHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3457D5"/>
+      <stop offset="100%" stop-color="#5B7BFF"/>
+    </linearGradient>
+    <linearGradient id="panelBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F4F7FF"/>
+    </linearGradient>
+    <linearGradient id="clusterA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3457D5"/>
+      <stop offset="100%" stop-color="#6A8AFF"/>
+    </linearGradient>
+    <linearGradient id="clusterB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E3FB8"/>
+      <stop offset="100%" stop-color="#3457D5"/>
+    </linearGradient>
+    <linearGradient id="clusterC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5B7BFF"/>
+      <stop offset="100%" stop-color="#8FA8FF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="8" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.18"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="620" rx="24" fill="url(#bg)"/>
+
+  <g opacity="0.45" stroke="#3457D5" stroke-width="1" fill="none">
+    <path d="M0,90 L960,90" stroke-dasharray="2 8"/>
+    <path d="M0,530 L960,530" stroke-dasharray="2 8"/>
+    <path d="M120,0 L120,620" stroke-dasharray="2 10"/>
+    <path d="M840,0 L840,620" stroke-dasharray="2 10"/>
+  </g>
+
+  <g opacity="0.6" fill="#3457D5">
+    <circle cx="90" cy="70" r="4"/>
+    <circle cx="900" cy="110" r="4"/>
+    <circle cx="60" cy="560" r="4"/>
+    <circle cx="920" cy="540" r="4"/>
+    <circle cx="480" cy="40" r="3"/>
+    <circle cx="40" cy="320" r="3"/>
+    <circle cx="950" cy="320" r="3"/>
+    <circle cx="500" cy="590" r="3"/>
+  </g>
+
+  <g transform="translate(70,110)">
+    <rect x="-12" y="-12" width="464" height="424" rx="22" fill="#3457D5" opacity="0.18" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="440" height="400" rx="18" fill="url(#panelBody)" stroke="#D6DFFB" stroke-width="2"/>
+
+    <rect x="0" y="0" width="440" height="56" rx="18" fill="url(#panelHeader)"/>
+    <rect x="0" y="20" width="440" height="36" fill="url(#panelHeader)"/>
+    <circle cx="24" cy="28" r="6" fill="#FF6B6B"/>
+    <circle cx="44" cy="28" r="6" fill="#FFD166"/>
+    <circle cx="64" cy="28" r="6" fill="#06D6A0"/>
+    <text x="220" y="34" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700" letter-spacing="1">Kuboard · 多集群管理</text>
+
+    <g transform="translate(28,82)">
+      <rect x="0" y="0" width="384" height="48" rx="10" fill="#EEF2FF" stroke="#D6DFFB" stroke-width="1"/>
+      <circle cx="24" cy="24" r="9" fill="url(#clusterA)"/>
+      <text x="42" y="22" fill="#1E3FB8" font-size="14" font-weight="700">prod-cluster</text>
+      <text x="42" y="38" fill="#6B7AB0" font-size="11">生产环境 · 12 节点</text>
+      <circle cx="320" cy="24" r="7" fill="#06D6A0"/>
+      <text x="334" y="28" fill="#06D6A0" font-size="13" font-weight="700">Healthy</text>
+    </g>
+
+    <g transform="translate(28,142)">
+      <rect x="0" y="0" width="384" height="48" rx="10" fill="#EEF2FF" stroke="#D6DFFB" stroke-width="1"/>
+      <circle cx="24" cy="24" r="9" fill="url(#clusterB)"/>
+      <text x="42" y="22" fill="#1E3FB8" font-size="14" font-weight="700">staging-cluster</text>
+      <text x="42" y="38" fill="#6B7AB0" font-size="11">预发布 · 5 节点</text>
+      <circle cx="320" cy="24" r="7" fill="#06D6A0"/>
+      <text x="334" y="28" fill="#06D6A0" font-size="13" font-weight="700">Healthy</text>
+    </g>
+
+    <g transform="translate(28,202)">
+      <rect x="0" y="0" width="384" height="48" rx="10" fill="#EEF2FF" stroke="#D6DFFB" stroke-width="1"/>
+      <circle cx="24" cy="24" r="9" fill="url(#clusterC)"/>
+      <text x="42" y="22" fill="#1E3FB8" font-size="14" font-weight="700">dev-cluster</text>
+      <text x="42" y="38" fill="#6B7AB0" font-size="11">开发测试 · 3 节点</text>
+      <circle cx="320" cy="24" r="7" fill="#FFD166"/>
+      <text x="334" y="28" fill="#FFA500" font-size="13" font-weight="700">Syncing</text>
+    </g>
+
+    <g transform="translate(28,278)">
+      <rect x="0" y="0" width="118" height="38" rx="8" fill="#3457D5"/>
+      <text x="59" y="24" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">工作负载</text>
+
+      <rect x="130" y="0" width="118" height="38" rx="8" fill="#FFFFFF" stroke="#3457D5" stroke-width="1.5"/>
+      <text x="189" y="24" text-anchor="middle" fill="#3457D5" font-size="13" font-weight="700">命名空间</text>
+
+      <rect x="260" y="0" width="124" height="38" rx="8" fill="#FFFFFF" stroke="#D6DFFB" stroke-width="1.5"/>
+      <text x="322" y="24" text-anchor="middle" fill="#3457D5" font-size="13" font-weight="700">存储卷 / 配置</text>
+    </g>
+
+    <g transform="translate(28,338)">
+      <rect x="0" y="0" width="384" height="40" rx="10" fill="#F4F7FF" stroke="#D6DFFB" stroke-width="1"/>
+      <circle cx="20" cy="20" r="5" fill="#3457D5"/>
+      <text x="34" y="25" fill="#3457D5" font-size="12" font-weight="600">MCP 接入</text>
+      <line x1="100" y1="20" x2="130" y2="20" stroke="#D6DFFB" stroke-width="1"/>
+      <circle cx="146" cy="20" r="5" fill="#5B7BFF"/>
+      <text x="160" y="25" fill="#3457D5" font-size="12" font-weight="600">审计日志</text>
+      <line x1="234" y1="20" x2="264" y2="20" stroke="#D6DFFB" stroke-width="1"/>
+      <circle cx="280" cy="20" r="5" fill="#06D6A0"/>
+      <text x="294" y="25" fill="#3457D5" font-size="12" font-weight="600">MFA</text>
+    </g>
+  </g>
+
+  <g transform="translate(600,90)">
+    <g transform="translate(0,0)">
+      <rect x="-10" y="-10" width="280" height="160" rx="22" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="260" height="140" rx="18" fill="url(#clusterA)"/>
+      <circle cx="220" cy="20" r="60" fill="url(#glow)"/>
+      <g transform="translate(130,70)">
+        <polygon points="0,-38 33,-19 33,19 0,38 -33,19 -33,-19" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="0" cy="0" r="11" fill="#FFFFFF"/>
+        <line x1="0" y1="0" x2="0" y2="-32" stroke="#FFFFFF" stroke-width="2"/>
+        <line x1="0" y1="0" x2="26" y2="-15" stroke="#FFFFFF" stroke-width="2"/>
+        <line x1="0" y1="0" x2="26" y2="15" stroke="#FFFFFF" stroke-width="2"/>
+      </g>
+      <text x="130" y="128" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">prod-cluster</text>
+    </g>
+
+    <g transform="translate(0,180)">
+      <rect x="-10" y="-10" width="280" height="160" rx="22" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="260" height="140" rx="18" fill="url(#clusterB)"/>
+      <circle cx="220" cy="20" r="60" fill="url(#glow)"/>
+      <g transform="translate(130,70)">
+        <polygon points="0,-38 33,-19 33,19 0,38 -33,19 -33,-19" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="0" cy="0" r="11" fill="#FFFFFF"/>
+        <line x1="0" y1="0" x2="0" y2="-32" stroke="#FFFFFF" stroke-width="2"/>
+        <line x1="0" y1="0" x2="26" y2="-15" stroke="#FFFFFF" stroke-width="2"/>
+        <line x1="0" y1="0" x2="26" y2="15" stroke="#FFFFFF" stroke-width="2"/>
+      </g>
+      <text x="130" y="128" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">staging-cluster</text>
+    </g>
+
+    <g transform="translate(0,360)">
+      <rect x="-10" y="-10" width="280" height="160" rx="22" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="260" height="140" rx="18" fill="url(#clusterC)"/>
+      <circle cx="220" cy="20" r="60" fill="url(#glow)"/>
+      <g transform="translate(130,70)">
+        <polygon points="0,-38 33,-19 33,19 0,38 -33,19 -33,-19" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="0" cy="0" r="11" fill="#FFFFFF"/>
+        <line x1="0" y1="0" x2="0" y2="-32" stroke="#FFFFFF" stroke-width="2"/>
+        <line x1="0" y1="0" x2="26" y2="-15" stroke="#FFFFFF" stroke-width="2"/>
+        <line x1="0" y1="0" x2="26" y2="15" stroke="#FFFFFF" stroke-width="2"/>
+      </g>
+      <text x="130" y="128" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">dev-cluster</text>
+    </g>
+  </g>
+
+  <g stroke="#3457D5" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="6 7">
+    <path d="M520,260 C 560,200 580,180 600,170"/>
+    <path d="M520,310 C 560,330 580,340 600,350"/>
+    <path d="M520,360 C 560,450 580,500 600,530"/>
+  </g>
+
+  <g fill="#3457D5">
+    <circle cx="520" cy="260" r="6"/>
+    <circle cx="520" cy="310" r="6"/>
+    <circle cx="520" cy="360" r="6"/>
+  </g>
+</svg>

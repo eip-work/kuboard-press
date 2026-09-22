@@ -1,47 +1,43 @@
 ---
-description: Kuboard free vs enhanced edition features, and how to get support
+description: "Learn the differences between Kuboard Free and Enhanced editions, how to obtain and install a License, and where to get technical support and product updates"
 ---
 
 # Kuboard License & Support
 
-## About Kuboard
+Kuboard is a Kubernetes-based container management platform. This page explains how to obtain a license, the differences between the Free and Enhanced editions, and where to get technical support and product updates.
 
-Kuboard V4 is a Kubernetes-based container management platform with an intuitive web UI for managing Kubernetes clusters. Kuboard pairs a Java 21 + Spring Boot 3 backend with a Vue 3 + TypeScript frontend, talks to the apiserver over the JDK-native HTTP/2 client, and supports Kubernetes 1.15+.
+## License
 
-## Feature Comparison
+The Free edition can manage up to 3 Kubernetes clusters; the Enhanced edition unlocks more capacity and exclusive services through a license file. The core features of both editions (cluster management, workloads, storage, networking, Helm, MCP, etc.) are identical. The main differences are:
 
-| Category | Free | Enhanced |
-| --- | :---: | :---: |
-| Node management, drain/uncordon, pod eviction | ✅ | ✅ |
-| Namespace, LimitRange, ResourceQuota | ✅ | ✅ |
-| Workloads (Deployment / StatefulSet / DaemonSet / CronJob / Job / Pod) | ✅ | ✅ |
-| Service / Ingress / IngressClass | ✅ | ✅ |
-| ConfigMap / Secret | ✅ | ✅ |
-| CRD / Custom Resources | ✅ | ✅ |
-| NetworkPolicy | ✅ | ✅ |
-| HPA | ✅ | ✅ |
-| Storage (StorageClass / PV / PVC / Snapshot / CSI) | ✅ | ✅ |
-| Gateway API (all 7 resources) | ✅ | ✅ |
-| RBAC (Role / RoleBinding / ClusterRole / ClusterRoleBinding) | ✅ | ✅ |
-| Audit logs (current day) | ✅ | ✅ |
-| Audit logs (history) | ❌ | ✅ |
-| More than three Kubernetes clusters | ❌ | ✅ |
-| MCP Server (AI agent integration) | ✅ | ✅ |
-| Kuboard HA deployment mode | ❌ | ✅ |
-| WeChat/QQ community support | ✅ | ✅ |
-| Dedicated support channel for paid users | ❌ | ✅ |
-| Remote assistance | ❌ | ✅ |
+| Capability | Free | Enhanced |
+| --- | --- | --- |
+| Number of managed clusters | Up to 3 | More than 3 |
+| Operation audit logs | Current day only | Full history retained |
+| High-availability deployment | Not supported | Supported |
+| Dedicated Q&A channel for paid users | Not supported | Supported |
+| Remote assistance | Not supported | Supported |
 
-## GitHub Star
+For how to obtain and import a license file, see [License Installation](./license-install).
 
-Kuboard has been publicly available since August 2019. If Kuboard helps you, please give it a [star on GitHub](https://github.com/eip-work/kuboard-press).
+::: tip Do you need a license?
+If you only use Free edition features and manage no more than 3 clusters, you can use Kuboard directly without a license. Import a license file when you need Enhanced edition capabilities.
+:::
 
-## Subscribe
+## Community & Commercial Support
 
-Subscribe to stay up to date with Kuboard releases and product news:
+Free edition users can get community support through WeChat/QQ communities and GitHub Issues; Enhanced edition users also enjoy a dedicated Q&A channel and remote assistance. See [Community & Commercial Support](./community).
+
+## Contact
+
+Kuboard has been publicly available since August 2019, and we thank every user for their support. If you find Kuboard helpful, feel free to give it a star on [GitHub](https://github.com/eip-work/kuboard-press).
+
+![Kuboard GitHub Star](https://addons.kuboard.cn/downloads/kuboard-press.svg)
+
+Want to stay up to date with Kuboard releases and product news? Subscribe here:
 
 <iframe
   src="https://uc-v3.kuboard.cn/public/home"
-  style="width: 100%; height: 480px; border: 1px solid var(--vp-c-divider); border-radius: 6px;"
+  style="width: 100%; height: 420px; border: none;"
   loading="lazy">
 </iframe>

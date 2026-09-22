@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/mermaid@12.0.0/node_modules/mermaid/dist/chunks/mermaid.core/chunk-JWPE2WC7.mjs"],
+  "sourcesContent": ["import {\n  __name\n} from \"./chunk-Y2CYZVJY.mjs\";\n\n// src/diagrams/common/populateCommonDb.ts\nfunction populateCommonDb(ast, db) {\n  if (ast.accDescr) {\n    db.setAccDescription?.(ast.accDescr);\n  }\n  if (ast.accTitle) {\n    db.setAccTitle?.(ast.accTitle);\n  }\n  if (ast.title) {\n    db.setDiagramTitle?.(ast.title);\n  }\n}\n__name(populateCommonDb, \"populateCommonDb\");\n\nexport {\n  populateCommonDb\n};\n"],
+  "mappings": ";;;;;AAKA,SAAS,iBAAiB,KAAK,IAAI;AALnC;AAME,MAAI,IAAI,UAAU;AAChB,aAAG,sBAAH,4BAAuB,IAAI;AAAA,EAC7B;AACA,MAAI,IAAI,UAAU;AAChB,aAAG,gBAAH,4BAAiB,IAAI;AAAA,EACvB;AACA,MAAI,IAAI,OAAO;AACb,aAAG,oBAAH,4BAAqB,IAAI;AAAA,EAC3B;AACF;AACA,OAAO,kBAAkB,kBAAkB;",
+  "names": []
+}
