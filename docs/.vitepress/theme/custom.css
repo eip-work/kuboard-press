@@ -48,3 +48,25 @@
     padding-top: 54px !important;
   }
 }
+
+/* 首页 features 卡片图标尺寸：64px */
+.VPFeature .icon {
+  width: 64px !important;
+  height: 64px !important;
+  background-color: transparent !important;
+  margin-bottom: 8px;
+}
+.VPFeature .icon .VPImage,
+.VPFeature .icon img,
+.VPFeature .icon svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  filter: drop-shadow(0 6px 14px rgba(52, 87, 213, 0.12));
+  transition: transform 0.25s ease;
+}
+.VPFeature:hover .icon .VPImage,
+.VPFeature:hover .icon img,
+.VPFeature:hover .icon svg {
+  transform: translateY(-2px);
+}
