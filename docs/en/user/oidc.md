@@ -1,127 +1,114 @@
 ---
-description: "Configure OIDC single sign-on (SSO): adding an IdP, claims mapping, MFA policy, and group sync; how users sign in and out with the Sign in with XXX button; OIDC user pre-binding and troubleshooting login failures."
+description: "Configure OIDC single sign-on (SSO): Issuer, Client, claims mapping, MFA policy and silent renewal; how users sign in and out with the Sign in with XXX button; OIDC user pre-binding and troubleshooting login failures."
 ---
 
 # Kuboard OIDC Single Sign-On (SSO)
 
 This page explains how to configure OIDC single sign-on (SSO, an identity authentication protocol based on OAuth 2.0), how users sign in and out with an IdP account, and how to troubleshoot login failures.
 
-**Applicable to**: administrators (configuring IdPs, managing OIDC users) and regular users (signing in with the "Sign in with XXX" button).
+**Applicable to**: administrators (configuring the IdP, managing OIDC users) and regular users (signing in with the "Sign in with XXX" button).
 
 ## Quick Start: Connect an IdP in 5 Minutes
 
-After the IdP is connected, users click "Sign in with XXX" on the login page, are redirected to the IdP to complete authentication, and on success automatically return to the Kuboard home page (the local user is auto-created on first login). Below, **Keycloak** is used as an example (standard OIDC, configured exactly like a generic IdP).
+After the IdP is connected, users select the OIDC source on the login page and click "Sign in with XXX", are redirected to the IdP to complete authentication, and on success automatically return to the Kuboard home page (the local user is auto-created on first login). Below, **Keycloak** is used as an example (standard OIDC, configured exactly like a generic IdP).
 
 ### Step 1: Create a Client in Keycloak
 
 Open the Keycloak admin console and create a client under **Clients → Create client**: choose **OpenID Connect** as the Client type, enter `kuboard` as the Client ID, and enable **Client authentication** and **Standard flow**. Note your Realm's issuer address, e.g. `https://sso.example.com/realms/kuboard`.
 
-In **Valid redirect URIs**, fill in Kuboard's callback address (all IdPs share this single address; the originating IdP is detected automatically), then copy the **Client secret** from the **Credentials** page for later use:
+In **Valid redirect URIs**, fill in Kuboard's callback address, then copy the **Client secret** from the **Credentials** page for later use:
 
 ```sh
 https://<kuboard-domain>/api/anonymous.kuboard.cn/v4/oidc/callback
 ```
 
-### Step 2: Add the IdP in Kuboard
+### Step 2: Enable OIDC in Kuboard
 
-Entry: **System Management → System Settings → User Authentication Settings → OIDC SSO** → **"Add OIDC IdP"** (wizard tabs: Basic Info → Discovery and Client → Claims & Advanced → Confirm and Save). Required fields: Display Name, Issuer URI, Client ID, Client Secret.
-
-<!-- screenshot-todo: the OIDC SSO section in User Authentication Settings (same as ./oidc.assets/user-oidc-1.png on the zh page, capture in English UI) -->
+Entry: **System Management → System Settings → User Login Settings → OIDC SSO** card. Turn on the **Enable OIDC Login** switch and fill in the fields as below:
 
 | Field | Example value | Description |
 | --- | --- | --- |
-| Display Name | `Keycloak SSO` | The login button text, visible to users |
-| Enabled | On | When off, not shown on the login page |
-| IdP Type | Keycloak / Red Hat SSO | See [Supported IdP Types](#supported-idp-types); choose **Generic OIDC** if unsure |
-| Issuer URI (backend) | `http://keycloak:8080/realms/kuboard` | Used by the backend to fetch discovery; fill in an address reachable on the internal network |
-| Issuer URI (browser) | `https://sso.example.com/realms/kuboard` | Used for the browser redirect; empty means the value on the left is used |
+| Backend Issuer URI | `http://keycloak:8080/realms/kuboard` | Used by the backend to fetch discovery / token / JWKS; fill in an address reachable on the internal network |
+| Browser-Facing Issuer URI | `https://sso.example.com/realms/kuboard` | Used for the browser redirect; fill in only when internal and external access addresses differ — empty means the value on the left is used |
+| Allowed Frontend Origins | `https://kuboard.example.com` | **Required.** Origin (scheme + host + port) of the page the callback may redirect back to; you can add multiple entries. If empty, all OIDC logins are rejected |
 | Client ID | `kuboard` | Same as in Keycloak |
 | Client Secret | The secret copied in the previous step | Encrypted at rest after saving |
-| Scopes | `openid profile email` | Default is fine; add `groups` for Group Sync |
+| Scopes | `openid profile email` | The default is fine; add `offline_access` if you need silent renewal |
+| Login Button Label | `Keycloak SSO` | The "Sign in with XXX" button text on the login page; default `OIDC` |
 
-After filling in, click **"Test Connection"**; once you see "Connection OK · latency · JWKS key count", click **Save**; on failure, check the network and the Issuer (see [Troubleshooting](#troubleshooting)).
+<!-- screenshot-todo: the OIDC SSO card (enabled, single-IdP flat form with fields filled in); capture as user-oidc-1.png on the en page using the local-auth env -->
 
-<!-- screenshot-todo: the Add OIDC IdP drawer form (same as ./oidc.assets/user-oidc-2.png on the zh page, capture in English UI) -->
+Click **Save** once done; the OIDC SSO card shows "Enabled" at the top. If login fails later, the usual causes are an unreachable Issuer or a missing whitelist entry (see [Troubleshooting](#troubleshooting)).
 
 ### Step 3: Verify the Login
 
-① On the login page, select **OIDC** as the user source and click **"Sign in with Keycloak SSO"**; ② the browser redirects to the Keycloak login page (a second-factor step if MFA is configured); ③ on success you automatically return to the Kuboard home page, where this user appears in the left sidebar (source: OIDC). Afterwards, in the OIDC SSO list you can **enable/disable, edit, or delete** this IdP (an enabled one must be disabled first).
+① On the login page, select **OIDC** as the user source and click **"Sign in with Keycloak SSO"**; ② the browser redirects to the Keycloak login page (a second-factor step if MFA is configured); ③ on success you automatically return to the Kuboard home page. Afterwards, turning off the **Enable OIDC Login** switch makes the OIDC login button disappear from the login page.
 
-## Supported IdP Types
+## Configuration Reference
 
-Almost any standard OIDC service can work with **Generic OIDC**:
-
-| Type | Target | Description |
+| Setting | Default | Description |
 | --- | --- | --- |
-| Generic OIDC | Any standard OIDC | Default; the most broadly compatible |
-| Keycloak / Red Hat SSO | Keycloak | Standard OIDC |
-| Authing / Alibaba Cloud IDaaS / Tencent Cloud CIAM | Chinese SaaS / IDaaS | — |
-| Microsoft Entra ID (Azure AD) | Formerly Azure AD | Some versions do not support redirecting back to the login page on logout |
-| Okta / Auth0 / GitLab | — | GitLab is standard OIDC |
-| WeCom (WeChat Work) / Feishu (Lark) | WeCom, Lark | OIDC discovery supported |
+| Enable OIDC Login | Off | Master switch; when off, no OIDC login button appears on the login page |
+| Backend Issuer URI | Empty | The address the backend uses to call the IdP (discovery / token / JWKS); must be reachable from the backend |
+| Browser-Facing Issuer URI | Empty | Browser redirect address; empty means the value on the left. The issuer returned by discovery is considered valid if it matches this value or the Backend Issuer URI **character for character** |
+| Allowed Frontend Origins | Empty (required) | Origins the callback may redirect back to (open-redirect protection); all callbacks are rejected when empty |
+| Client ID / Client Secret | Empty | Same as the client in the IdP; the Secret is encrypted at rest after saving |
+| Scopes | `openid profile email` | Scopes requested at authorization; add `offline_access` if you need silent renewal |
+| Login Button Label | `OIDC` | The XXX in "Sign in with XXX" on the login page |
+| Username Claim | `preferred_username` | Used as the Kuboard username |
+| Email Claim | `email` | Used as the email (pre-bind matching and account merge) |
+| Full Name Claim | `name` | Used as the display name |
+| Trust IdP Email (merge accounts) | On | When the email returned by the IdP matches a local user from another source, the logins are merged automatically; when off, every login is treated as a new identity |
 
-::: tip Only affects behavioral differences, not the structure of what you fill in
-No matter which type you choose, the fields you fill in (Issuer / Client ID / Client Secret / Claims) all follow the standard OIDC structure; the difference lies only in each vendor's adaptation. If a vendor behaves oddly, switching to **Generic OIDC** is the fastest way to compare.
-:::
+### OIDC MFA
 
-## Difference Between the Internal / External Issuer
-
-**Issuer URI (backend)** is used by the backend to fetch the discovery metadata and must be reachable from the backend; **Issuer URI (browser)** is used for the browser redirect and needs to be filled in only when the internal and external access addresses differ (e.g. internal DNS differs from the public domain) — empty means the former is used. Both must refer to the same realm; you can self-check with the command below:
-
-```sh
-# Self-check: the address the backend fetches discovery from
-curl -s http://keycloak:8080/realms/kuboard/.well-known/openid-configuration
-```
-
-## Claims Mapping
-
-Each vendor names the id_token claims slightly differently; map them with the following three fields. If your IdP uses other claims (e.g. `sub`, `upn`), just change the corresponding field to the claim that carries your local login name:
-
-| Field | Default claim | Purpose |
-| --- | --- | --- |
-| Username Claim | `preferred_username` | Kuboard username |
-| Email Claim | `email` | Email (used for pre-bind matching and merge) |
-| Full Name Claim | `name` | Display name |
-
-**Trust Email for Merge** (on by default): when the email returned by the IdP matches a local user from another source, the logins are merged automatically, giving "one person, multiple ways to log in"; when off, every login is treated as a new identity.
-
-## MFA Policy
-
-MFA for OIDC users is **handled by the IdP**. Kuboard decides whether this login completed MFA from the standard `amr`, `acr`, and `auth_time` claims in the id_token:
+MFA for OIDC users is **handled by the IdP**. Kuboard decides whether this login completed MFA from the `amr` and `auth_time` claims in the id_token:
 
 | Option | Default | Behavior |
 | --- | --- | --- |
-| Trust IdP MFA | On | Uses amr/acr/auth_time to decide whether this login completed MFA; when off, every login is treated as not MFA-verified |
-| Enforce IdP MFA | Off | Logins that did not complete MFA at the IdP are **rejected** (redirected back to the login page with an error code) |
-| MFA acr_values | `mfa` | Parameter carried on the authorization request, telling the IdP that this login requires MFA |
-| auth_time max interval (seconds) | `300` | If auth_time is older than this many seconds, MFA is treated as expired; 0 disables the check |
+| Trust IdP MFA | On | Uses amr / auth_time to decide whether this login completed MFA; when off, every login is treated as not MFA-verified |
+| Enforce MFA | Off | Logins that did not complete MFA at the IdP are **rejected** (redirected back to the login page with an error code) |
+| ACR Values for MFA | `mfa` | The acr parameter carried on the authorization request, telling the IdP that this login requires MFA |
+| Auth Time Max Age (seconds) | `300` | If auth_time is older than this many seconds, MFA is treated as expired; 0 disables the check |
 
 ::: warning Confirm the IdP issues the claims before enabling Enforce
-If the id_token lacks `auth_time` or `amr` (some IdPs do not issue them by default), logins will be rejected after you enable **Enforce IdP MFA**. Confirm on the IdP side that it can issue them first.
+If the id_token lacks `auth_time` or `amr` (some IdPs do not issue them by default), logins will be rejected after you enable **Enforce MFA**. Confirm on the IdP side that it can issue them first.
 :::
 
-## Group Sync (Optional)
+### Silent Renewal
 
-When enabled, the Group Claim issued by the IdP (default `groups`) is read at login, and users are automatically added to the corresponding user groups according to the **IdP Group → Kuboard Group** mapping table. Create the target user groups in Kuboard first; protected built-in groups are never modified by sync.
+| Option | Default | Behavior |
+| --- | --- | --- |
+| Enable Silent Renewal | On | When the IdP issues a refresh token (requires the `offline_access` scope), the local token is silently renewed in the background when it is about to expire, with no user-visible interruption |
+| Silent Renewal Threshold (seconds) | `300` | Renewal is triggered when the token's remaining lifetime falls below this value (minimum 30) |
 
 ## How Users Log In with OIDC
 
-**Signing in**: after selecting **OIDC** as the user source on the login page, the "Sign in with {display name}" button is shown directly when there is only one IdP; with multiple IdPs, pick one in the dropdown first. Clicking it redirects the whole page to the IdP, and once authentication succeeds you automatically return to the Kuboard home page (the browser remembers your last choice).
+**Signing in**: after switching the user source to **OIDC** on the login page, the **"Sign in with XXX"** button appears below the form (XXX is the "Login Button Label"); clicking it redirects the whole page to the IdP, and once authentication succeeds you automatically return to the Kuboard home page (the login page remembers your last user-source choice).
 
-**Single sign-out and silent renewal**: clicking Logout in the top-right first clears the local session, then redirects to the IdP's end-session endpoint to terminate the single sign-on session, and finally returns to the Kuboard login page; if the IdP provides no end-session endpoint, only local logout is performed. The first login auto-creates the Kuboard user (source: OIDC); if the IdP issues a refresh token (requires the `offline_access` scope), the local token is silently renewed in the background when it is about to expire, with no user-visible interruption.
+**Single sign-out**: clicking Logout in the top-right first clears the local session, then redirects to the IdP's end-session endpoint to terminate the single sign-on session, and finally returns to the Kuboard login page; if the IdP provides no end-session endpoint, only local logout is performed.
 
 ## Managing OIDC Users (Administrators)
 
-**Viewing the list**: open the user list and switch the **Source** filter to **OIDC** (this option appears only when OIDC is enabled); the list shows username, display name, email, and status, and supports search and bulk delete.
+**Viewing the list**: open **System Management → User Management** and switch the user-source filter to **OIDC** (this option appears only when OIDC is enabled); the list shows username, display name, email, and status, and supports search and bulk delete.
 
-**Pre-creating accounts (pre-bind)**: to settle an account (assign roles / groups) before the first login, click **"+ Pre-create OIDC User"** on the list page: ① fill in the **Email**, which must **exactly match** the user's email claim in the IdP; ② optionally fill in a display name — after saving, a "pending first login" placeholder row appears; ③ after the first login succeeds, the placeholder row is replaced by the real user, keeping the original roles / groups. If a new user appears after login instead of merging into the placeholder row, the email usually does not match the IdP — check case and domain suffix.
+**Pre-creating accounts (pre-bind)**: to settle an account (assign roles / groups) before the first login, switch the user source to **OIDC** in a screen where you pick a user (e.g. adding members to a user group), then click **"+ Pre-create OIDC User"** at the bottom of the user dropdown:
+
+1. Fill in the **Email**, which must **exactly match** the user's email claim in the IdP (it is normalized to lowercase when saved);
+2. Optionally fill in a display name — after saving, a "pending first login" placeholder row appears;
+3. After the first login succeeds, the placeholder row is replaced by the real user, keeping the original roles / groups.
+
+If a new user appears after login instead of merging into the placeholder row, the email usually does not match the IdP — check case and domain suffix.
+
+::: tip OIDC users have no Kuboard password
+The password and MFA of an OIDC user are managed by the identity provider; they cannot sign in with a username / password. After login they are not in any user group by default (only the home page is accessible) until an administrator adds them to groups.
+:::
 
 ## Troubleshooting
 
-### No "OIDC Login" Button on the Login Page / Test Connection Fails
+### No "Sign in with XXX" Button on the Login Page
 
-- No "OIDC Login" button: the user source area appears only when OIDC is enabled — check that the OIDC SSO list contains an **enabled** IdP and that **Test Connection** passed (the Issuer is reachable from the backend).
-- Test Connection fails / discovery cannot be fetched: for an internal address, confirm network connectivity with the IdP; for a public address, confirm DNS resolution and TLS. If `issuer mismatch` is reported, see the note below.
+Check that the **Enable OIDC Login** switch on the OIDC SSO card is on. If it still does not appear, confirm the **Allowed Frontend Origins** is not empty and contains the current page's origin (scheme + host + port).
 
 ### Login Fails and Returns to the Login Page with an Error Code
 
@@ -129,14 +116,14 @@ When the callback fails, the login page carries `?oidcError=error code`; handle 
 
 | Error code | Possible cause | Handling |
 | --- | --- | --- |
-| `state_invalid` | Callback URL rewritten; multi-IdP config inconsistent | Re-initiate the login; check the callback URL |
+| `state_invalid` | Callback URL rewritten; state replayed | Re-initiate the login; check the callback URL |
 | `code_exchange_failed` | Wrong Client ID / Secret; standard flow not enabled | Verify the Client configuration; regenerate the secret |
-| `id_token_invalid` | Signature verification failed, issuer / audience mismatch, or expired | Check whether the IdP type and Issuer are misconfigured |
-| `oidc_mfa_required` | MFA not completed but Enforce is on | See [MFA Policy](#mfa-policy) |
-| `oidc_mfa_stale` | MFA completed longer ago than the "auth_time max interval" | Log in again, or increase the interval |
+| `id_token_invalid` | Signature verification failed, issuer / audience mismatch, or expired | Check whether the Issuer is misconfigured; verify the client config on the IdP side |
+| `oidc_mfa_required` | MFA not completed but Enforce is on | See [OIDC MFA](#oidc-mfa) |
+| `oidc_mfa_stale` | MFA completed longer ago than the "Auth Time Max Age" | Log in again, or increase the interval |
 
 ::: danger issuer mismatch is the easiest mistake
-The issuer returned by discovery must **match character for character** with the configured Issuer URI; when the internal and external addresses differ, set **Issuer URI (backend)** to the value discovery actually returns.
+The issuer returned by discovery must **match character for character** with either the Backend Issuer URI or the Browser-Facing Issuer URI; when `issuer mismatch` is reported, set the Backend Issuer URI to the value discovery actually returns.
 :::
 
 ### Callback URL and Reverse Proxy

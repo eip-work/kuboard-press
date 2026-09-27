@@ -79,11 +79,14 @@ Entry: **Settings → System Settings → User Login Settings**, shown as cards 
 
 ### OIDC SSO
 
-The "OIDC SSO" card lets you maintain **multiple IdPs** (identity providers); add, edit, enable, or disable each one:
+The "OIDC SSO" card configures **a single IdP**. Turn on **Enable OIDC Login** and fill in:
 
-- Basic settings: display name, enable/disable, IdP type (Generic / Keycloak / Authing / Alibaba Cloud IDaaS / Tencent Cloud CIAM / Entra ID / Okta / Auth0 / GitLab / WeCom / Feishu);
-- Discovery and client: backend Issuer, browser Issuer, Client ID, Client Secret (leave blank to keep the current value); a connection test is provided;
-- Claims and advanced: username / email / display-name claim mapping, email trust, MFA policy, group sync.
+- Connection: Backend Issuer URI, Browser-Facing Issuer URI, Allowed Frontend Origins (required), Client ID, Client Secret, Scopes, Login Button Label;
+- Claims mapping: Username / Email / Full Name claim, Trust IdP Email (merge accounts);
+- OIDC MFA: Trust IdP MFA, Enforce MFA, ACR Values for MFA, Auth Time Max Age (seconds);
+- Silent renewal: Enable Silent Renewal, Silent Renewal Threshold (seconds).
+
+Changes take effect immediately after saving. Full configuration notes and default values are in [OIDC Single Sign-On](../user/oidc).
 
 ### External User Repository (Webhook)
 

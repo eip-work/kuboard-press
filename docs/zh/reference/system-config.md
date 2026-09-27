@@ -79,11 +79,14 @@ description: 系统配置各 Tab 的含义、入口、默认值与生效方式�
 
 ### OIDC SSO
 
-"OIDC SSO" 卡片可维护**多个 IdP**（身份提供方），逐个添加、编辑、启用或停用：
+「OIDC SSO」卡片配置**单一个 IdP**（单 IdP 形态），打开「启用 OIDC 登录」后填写：
 
-- 基本设置：显示名称、是否启用、IdP 类型（Generic / Keycloak / Authing / 阿里云 IDaaS / 腾讯云 CIAM / Entra ID / Okta / Auth0 / GitLab / 企业微信 / 飞书）；
-- Discovery 与客户端：后端 Issuer、浏览器 Issuer、Client ID、Client Secret（留空保持原值），提供连接测试；
-- Claims 与高级：用户名 / 邮箱 / 姓名 claim 映射、邮箱信任、MFA 策略、组同步。
+- 连接信息：后端 Issuer URI、浏览器 Issuer URI、前端 Origin 白名单（必填）、Client ID、Client Secret、Scopes、登录按钮文案；
+- Claims 映射：用户名 / 邮箱 / 姓名 Claim、信任 IdP 邮箱（合并账号）；
+- OIDC MFA：信任 IdP MFA、强制 MFA、MFA 对应 ACR Values、Auth Time 最大间隔（秒）；
+- 静默续期：启用静默续期、静默续期阈值（秒）。
+
+保存后立即生效。完整配置说明与默认值见 [OIDC 单点登录](../user/oidc)。
 
 ### 外部用户库（Webhook）
 
