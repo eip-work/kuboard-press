@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="快速安装">
+  <defs>
+    <linearGradient id="bg-install" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ECFDF5"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </linearGradient>
+  </defs>
+  <!-- 底板 -->
+  <rect x="2" y="2" width="92" height="92" rx="18" fill="url(#bg-install)"/>
+  <!-- 终端窗口主体 -->
+  <rect x="16" y="28" width="56" height="44" rx="6" fill="#FFFFFF" stroke="#10B981" stroke-width="2.5"/>
+  <!-- 标题栏 -->
+  <line x1="16" y1="40" x2="72" y2="40" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 三圆点 -->
+  <circle cx="22" cy="34" r="1.8" fill="#10B981"/>
+  <circle cx="28" cy="34" r="1.8" fill="#10B981"/>
+  <circle cx="34" cy="34" r="1.8" fill="#10B981"/>
+  <!-- prompt > -->
+  <path d="M26 50 L32 55 L26 60" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="36" y1="60" x2="48" y2="60" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 第二行光标 -->
+  <line x1="26" y1="66" x2="40" y2="66" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 上升箭头（右上） -->
+  <g transform="translate(70,16)">
+    <path d="M0 16 L0 4 M0 4 L-6 10 M0 4 L6 10" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="0" cy="4" r="2" fill="#10B981"/>
+  </g>
+</svg>

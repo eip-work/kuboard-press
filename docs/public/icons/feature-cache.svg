@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="高性能缓存">
+  <defs>
+    <linearGradient id="bg-cache" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FEF3C7"/>
+    </linearGradient>
+    <linearGradient id="card-cache" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <!-- 底板 -->
+  <rect x="2" y="2" width="92" height="92" rx="18" fill="url(#bg-cache)"/>
+  <!-- 三层错位缓存卡（底层） -->
+  <g>
+    <!-- 最底 -->
+    <rect x="14" y="58" width="50" height="22" rx="4" fill="url(#card-cache)" opacity="0.45"/>
+    <!-- 中间 -->
+    <rect x="14" y="42" width="50" height="22" rx="4" fill="url(#card-cache)" opacity="0.7"/>
+    <!-- 顶层 -->
+    <rect x="14" y="26" width="50" height="22" rx="4" fill="url(#card-cache)" stroke="#D97706" stroke-width="2"/>
+    <!-- 顶层里的行 -->
+    <line x1="20" y1="34" x2="42" y2="34" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <line x1="20" y1="40" x2="36" y2="40" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  </g>
+  <!-- 闪电（右上） -->
+  <g transform="translate(70,20)">
+    <path d="M4 0 L-8 18 L0 18 L-4 32 L12 12 L4 12 Z"
+          fill="#F59E0B" stroke="#D97706" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+</svg>

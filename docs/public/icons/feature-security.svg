@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="安全可控">
+  <defs>
+    <linearGradient id="bg-sec" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEF2F2"/>
+      <stop offset="100%" stop-color="#FEE2E2"/>
+    </linearGradient>
+    <linearGradient id="shield-sec" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+  </defs>
+  <!-- 底板 -->
+  <rect x="2" y="2" width="92" height="92" rx="18" fill="url(#bg-sec)"/>
+  <!-- 盾牌主体 -->
+  <path d="M48 10 L78 22 L78 50 Q78 72 48 84 Q18 72 18 50 L18 22 Z"
+        fill="url(#shield-sec)" stroke="#DC2626" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- 内层白色区域放对勾 -->
+  <path d="M48 18 L70 28 L70 50 Q70 66 48 76 Q26 66 26 50 L26 28 Z"
+        fill="#FFFFFF" opacity="0.18"/>
+  <!-- 对勾 -->
+  <path d="M36 50 L45 59 L62 40" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

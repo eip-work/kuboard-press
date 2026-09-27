@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="多集群管理">
+  <defs>
+    <linearGradient id="bg-cluster" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+  </defs>
+  <!-- 底板 -->
+  <rect x="2" y="2" width="92" height="92" rx="18" fill="url(#bg-cluster)"/>
+  <!-- 连线 -->
+  <g stroke="#3B82F6" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6">
+    <line x1="48" y1="48" x2="22" y2="24"/>
+    <line x1="48" y1="48" x2="74" y2="24"/>
+    <line x1="48" y1="48" x2="22" y2="72"/>
+    <line x1="48" y1="48" x2="74" y2="72"/>
+  </g>
+  <!-- 中心 hub -->
+  <circle cx="48" cy="48" r="10" fill="#3B82F6"/>
+  <circle cx="48" cy="48" r="4" fill="#FFFFFF"/>
+  <!-- 四个集群节点（圆角小卡片） -->
+  <g fill="#FFFFFF" stroke="#3B82F6" stroke-width="2.5">
+    <rect x="10" y="12" width="24" height="20" rx="4"/>
+    <rect x="62" y="12" width="24" height="20" rx="4"/>
+    <rect x="10" y="64" width="24" height="20" rx="4"/>
+    <rect x="62" y="64" width="24" height="20" rx="4"/>
+  </g>
+  <!-- 每个卡片里的小圆点表示集群状态 -->
+  <g fill="#3B82F6">
+    <circle cx="16" cy="18" r="2"/>
+    <circle cx="22" cy="18" r="2"/>
+    <circle cx="28" cy="18" r="2"/>
+    <circle cx="68" cy="18" r="2"/>
+    <circle cx="74" cy="18" r="2"/>
+    <circle cx="80" cy="18" r="2"/>
+    <circle cx="16" cy="70" r="2"/>
+    <circle cx="22" cy="70" r="2"/>
+    <circle cx="28" cy="70" r="2"/>
+    <circle cx="68" cy="70" r="2"/>
+    <circle cx="74" cy="70" r="2"/>
+    <circle cx="80" cy="70" r="2"/>
+  </g>
+  <!-- 每个集群指示灯 -->
+  <circle cx="22" cy="28" r="2.2" fill="#10B981"/>
+  <circle cx="74" cy="28" r="2.2" fill="#10B981"/>
+  <circle cx="22" cy="80" r="2.2" fill="#10B981"/>
+  <circle cx="74" cy="80" r="2.2" fill="#10B981"/>
+</svg>

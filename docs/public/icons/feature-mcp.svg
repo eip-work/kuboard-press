@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="MCP 集成">
+  <defs>
+    <linearGradient id="bg-mcp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F3FF"/>
+      <stop offset="100%" stop-color="#EDE9FE"/>
+    </linearGradient>
+    <linearGradient id="hex-mcp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <!-- 底板 -->
+  <rect x="2" y="2" width="92" height="92" rx="18" fill="url(#bg-mcp)"/>
+  <!-- 六边形外框（MCP 握手/协议） -->
+  <polygon points="48,12 78,28 78,68 48,84 18,68 18,28"
+           fill="#FFFFFF" stroke="url(#hex-mcp)" stroke-width="3" stroke-linejoin="round"/>
+  <!-- 内部小六边形 -->
+  <polygon points="48,28 64,37 64,57 48,66 32,57 32,37"
+           fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linejoin="round" opacity="0.5"/>
+  <!-- AI 星点（中心） -->
+  <g transform="translate(48,48)">
+    <circle cx="0" cy="0" r="8" fill="url(#hex-mcp)"/>
+    <!-- 四个触角表示"智能体向外联动" -->
+    <line x1="-14" y1="0" x2="-10" y2="0" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="10" y1="0" x2="14" y2="0" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="0" y1="-14" x2="0" y2="-10" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="0" y1="10" x2="0" y2="14" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- 中心点 -->
+    <circle cx="0" cy="0" r="3" fill="#FFFFFF"/>
+  </g>
+</svg>

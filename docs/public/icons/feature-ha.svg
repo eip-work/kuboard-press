@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="高可用部署">
+  <defs>
+    <linearGradient id="bg-ha" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ECFEFF"/>
+      <stop offset="100%" stop-color="#CFFAFE"/>
+    </linearGradient>
+    <linearGradient id="node-ha" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <!-- 底板 -->
+  <rect x="2" y="2" width="92" height="92" rx="18" fill="url(#bg-ha)"/>
+  <!-- 三节点围成的环（连线，浅色） -->
+  <g fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 4" opacity="0.6">
+    <path d="M30 26 Q48 38 66 26"/>
+    <path d="M66 26 Q70 48 48 70"/>
+    <path d="M48 70 Q26 48 30 26"/>
+  </g>
+  <!-- 三个节点 -->
+  <g>
+    <!-- 左上 -->
+    <circle cx="30" cy="26" r="11" fill="url(#node-ha)" stroke="#0891B2" stroke-width="2"/>
+    <!-- 右上 -->
+    <circle cx="66" cy="26" r="11" fill="url(#node-ha)" stroke="#0891B2" stroke-width="2"/>
+    <!-- 下 -->
+    <circle cx="48" cy="70" r="11" fill="url(#node-ha)" stroke="#0891B2" stroke-width="2"/>
+  </g>
+  <!-- 节点内部图标（小型数据库/容器） -->
+  <g fill="#FFFFFF">
+    <!-- 左上：堆叠 -->
+    <rect x="26" y="22" width="8" height="2" rx="0.5"/>
+    <rect x="26" y="26" width="8" height="2" rx="0.5"/>
+    <rect x="26" y="30" width="8" height="2" rx="0.5"/>
+    <!-- 右上：堆叠 -->
+    <rect x="62" y="22" width="8" height="2" rx="0.5"/>
+    <rect x="62" y="26" width="8" height="2" rx="0.5"/>
+    <rect x="62" y="30" width="8" height="2" rx="0.5"/>
+    <!-- 下：堆叠 -->
+    <rect x="44" y="66" width="8" height="2" rx="0.5"/>
+    <rect x="44" y="70" width="8" height="2" rx="0.5"/>
+    <rect x="44" y="74" width="8" height="2" rx="0.5"/>
+  </g>
+  <!-- 中心复制图标（环形箭头） -->
+  <g transform="translate(48,46)">
+    <path d="M-8 -2 A 8 8 0 1 1 6 6" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M6 6 L2 4 M6 6 L4 2" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
