@@ -38,6 +38,7 @@ onMounted(() => {
   align-items: center;
   gap: 6px;
   margin-right: auto;
+  margin-left: 16px;
   padding-right: 12px;
 }
 .nav-stats a {
