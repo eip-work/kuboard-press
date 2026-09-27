@@ -7,6 +7,7 @@ import NavStats from './components/NavStats.vue'
 import ImageLightbox from './components/ImageLightbox.vue'
 import SidebarDemo from './components/SidebarDemo.vue'
 import SidebarDemoEn from './components/SidebarDemoEn.vue'
+import JoinCommunity from './components/JoinCommunity.vue'
 
 const { Layout } = DefaultTheme
 const route = useRoute()
@@ -25,6 +26,9 @@ const isEn = computed(() => route.path.startsWith('/en'))
     <template #layout-bottom>
       <StarGazer />
       <ImageLightbox />
+    </template>
+    <template #doc-footer-before>
+      <JoinCommunity />
     </template>
   </Layout>
 </template>
