@@ -8,6 +8,7 @@ import ImageLightbox from './components/ImageLightbox.vue'
 import SidebarDemo from './components/SidebarDemo.vue'
 import SidebarDemoEn from './components/SidebarDemoEn.vue'
 import JoinCommunity from './components/JoinCommunity.vue'
+import SiteFooter from './components/SiteFooter.vue'
 
 const { Layout } = DefaultTheme
 const route = useRoute()
@@ -29,6 +30,9 @@ const isEn = computed(() => route.path.startsWith('/en'))
     </template>
     <template #doc-footer-before>
       <JoinCommunity />
+    </template>
+    <template #doc-after>
+      <SiteFooter />
     </template>
   </Layout>
 </template>

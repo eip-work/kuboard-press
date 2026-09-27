@@ -3,6 +3,21 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 import fs from 'node:fs'
 import path from 'node:path'
 
+// 站点域名（与 v3 站点一致，用于 canonical / og / sitemap）
+const SITE_HOST = 'https://kuboard.cn'
+
+// 将 VitePress 页面相对路径（如 'zh/guide/cluster/import.md'）换算为
+// cleanUrls 下的最终 URL（如 '/zh/guide/cluster/import'）：
+// - 去掉 .md 后缀
+// - 目录首页（xxx/index.md）映射为目录路径（/xxx/）
+function relPathToUrl(relativePath: string): string {
+  let url = '/' + relativePath.replace(/\.md$/, '')
+  if (url.endsWith('/index')) {
+    url = url.replace(/\/index$/, '/')
+  }
+  return url
+}
+
 const zhNav = [
   { text: '首页', link: '/zh/' },
   { text: '安装', link: '/zh/install/', activeMatch: '^/zh/install/' },
@@ -377,6 +392,28 @@ export default withMermaid(defineConfig({
   cleanUrls: true,
   lastUpdated: true,
 
+  transformHead({ pageData, siteData }) {
+    // 与 v3 站点保持一致：canonical + Open Graph + Twitter Card。
+    // 每个页面动态注入（页面标题/描述优先，站点级兜底），
+    // 语言区分 zh_CN / en_US。
+    const url = relPathToUrl(pageData.relativePath)
+    const canonical = `${SITE_HOST}${url}`
+    const title = pageData.title || siteData.title
+    const description = pageData.description || siteData.description
+    const isEn = pageData.relativePath.startsWith('en/')
+    const head = [
+      ['link', { rel: 'canonical', href: canonical }],
+      ['meta', { property: 'og:url', content: canonical }],
+      ['meta', { property: 'og:type', content: 'website' }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:locale', content: isEn ? 'en_US' : 'zh_CN' }],
+      ['meta', { property: 'og:image', content: `${SITE_HOST}/kuboard-logo.png` }],
+      ['meta', { name: 'twitter:card', content: 'summary' }],
+    ]
+    return head
+  },
+
   buildEnd(siteConfig) {
     // 站点根 / 使用 meta refresh 重定向到中文文档 /zh/，
     // 覆盖 VitePress 默认的语言选择页（/ 与 /zh/ 都指向中文）。
@@ -398,6 +435,38 @@ export default withMermaid(defineConfig({
 </html>
 `
     fs.writeFileSync(path.join(outDir, 'index.html'), redirectHtml)
+
+    // 生成 sitemap.xml：遍历 outDir 下全部页面 HTML，
+    // 排除 404.html 与根重定向页 index.html。
+    const pages: { url: string; lastmod: string }[] = []
+    const walk = (dir: string, base: string) => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, entry.name)
+        const rel = base ? `${base}/${entry.name}` : entry.name
+        if (entry.isDirectory()) {
+          walk(full, rel)
+        } else if (entry.name.endsWith('.html')) {
+          if (entry.name === '404.html' || rel === 'index.html') continue
+          let url = '/' + rel.replace(/\.html$/, '')
+          if (url.endsWith('/index')) url = url.replace(/\/index$/, '/')
+          const lastmod = fs.statSync(full).mtime.toISOString()
+          pages.push({ url, lastmod })
+        }
+      }
+    }
+    walk(outDir, '')
+    pages.sort((a, b) => a.url.localeCompare(b.url))
+    const sitemap =
+      `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+      pages
+        .map(
+          (p) =>
+            `  <url>\n    <loc>${SITE_HOST}${p.url}</loc>\n    <lastmod>${p.lastmod}</lastmod>\n  </url>\n`,
+        )
+        .join('') +
+      `</urlset>\n`
+    fs.writeFileSync(path.join(outDir, 'sitemap.xml'), sitemap)
   },
 
   locales: {
@@ -443,6 +512,7 @@ export default withMermaid(defineConfig({
 
   markdown: {
     image: { lazyLoading: true },
+    lineNumbers: true,
   },
 
   mermaid: {
