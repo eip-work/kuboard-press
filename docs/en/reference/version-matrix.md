@@ -11,9 +11,10 @@ This page answers two questions: Is your Kubernetes version within Kuboard's sup
 | Item | Value | Description |
 | --- | --- | --- |
 | Minimum supported version | **v1.15** | Below this version, capability decisions are not guaranteed to be correct |
-| Currently covering up to | **v1.34** | The latest capability boundary is at v1.34 (ReadWriteOncePod) |
+| Newest capability boundary | **v1.34** | The latest capability boundary is at v1.34 (ReadWriteOncePod); **this is not an upper limit** — cluster versions higher than v1.34 are handled per the newest band (≥1.34) |
+| Newest supported version | **v1.36** | Explicitly supported up to this version; even newer versions need no extra adaptation and are evaluated per the newest band (≥1.34) |
 | Version granularity | major.minor | e.g. `v1.31.2` is evaluated as `1.31`; patch versions do not affect capability boundaries |
-| Ongoing support | Versions only increase, never decrease | No upper version limit; each capability only changes at the boundaries where it is introduced/removed |
+| Ongoing support | Versions only increase, no upper limit | No upper version limit; new versions (e.g. v1.36) need no extra adaptation — capability decisions automatically use the newest band. The matrix gains new bands as future capability boundaries are introduced |
 
 ::: warning Confirm the version before installation
 Confirm that the cluster version is not lower than v1.15 before installing Kuboard; see [Install Kuboard](../install/index) for installation steps. After connecting the cluster, the cluster list page shows the Kubernetes version detected by Kuboard.
@@ -21,36 +22,31 @@ Confirm that the cluster version is not lower than v1.15 before installing Kuboa
 
 ## Capability × Version Matrix
 
-When connecting a cluster, Kuboard reads the cluster's Kubernetes version, compares only the **major and minor version numbers**, and looks up each capability's value in the table below; cluster versions higher than v1.34 are handled per the newest column (≥1.34). Cell meaning:
+When connecting a cluster, Kuboard reads the cluster's Kubernetes version, compares only the **major and minor version numbers**, and decides each capability per the table below; cluster versions higher than v1.34 are handled per the "≥ 1.34" band (see [Support Range Overview](#support-range-overview)). "→" means a new value applies from that boundary on; "available / not available" indicates whether a feature entry or form field exists.
 
-- `v1` / `v1beta1` / `websocket`, etc. → the API version or value used by this capability in this version band
-- `✓` / `✗` → available / not available
-- A note inside a cell such as "since 1.23" indicates a finer boundary inside that column
-
-| Capability | <1.16 | 1.16–1.20 | 1.21–1.24 | 1.25–1.29 | 1.30–1.31 | 1.32–1.33 | ≥1.34 | Which Kuboard UI/feature it affects |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Eviction (`policy.eviction`) | v1beta1 | v1beta1 | v1beta1 | v1 | v1 | v1 | v1 | Node drain, Pod eviction operations; eviction requests go through v1beta1 when < 1.25 |
-| Debug containers (`pod.ephemeralContainer`) | ✗ | ✗ | since 1.23 ✓ | ✓ | ✓ | ✓ | ✓ | Inject debug containers (Debug Container) into running Pods |
-| Service endpoints EndpointSlice (`discovery.k8s.io.endpointslice`) | None, falls back to v1/endpoints | None, falls back to v1/endpoints | discovery.k8s.io/v1 | discovery.k8s.io/v1 | discovery.k8s.io/v1 | discovery.k8s.io/v1 | discovery.k8s.io/v1 | Data source for the service/endpoint list; falls back to `v1/endpoints` when < 1.21 |
-| Node/Pod metrics (`metrics.k8s.io.node` / `.pod`) | v1beta1 | v1beta1 | v1beta1 | v1beta1 | v1beta1 | v1beta1 | v1beta1 | Node/Pod metric curves, HPA metric source; `metrics.k8s.io` is not GA yet and goes through v1beta1 on all versions |
-| FlowControl (`flowcontrol.flowschemas`) | v1beta2 | v1beta2 | v1beta2 | v1beta2 | v1 | v1 | v1 | Creation and display of the FlowSchema / PriorityLevelConfiguration resource pages; on clusters older than 1.30 this API may not exist, so rely on cluster detection |
-| Port-forward protocol (`portforward.protocol`) | spdy | spdy | spdy | spdy | spdy | websocket | websocket | Protocol used by terminal / port-forward channels; ≥ 1.32 uses websocket (depends on the PortForwardWebsockets FeatureGate, ultimately determined by detection) |
-| Built-in Helm version (`helm.binary`) | helm-3.13 | helm-3.13 | helm-3.13 | helm-3.16 | helm-3.18 | helm-3.18 | helm-3.18 | Version of the helm client binary actually invoked by the App Store / Helm install, upgrade, and rollback |
-| DRA dynamic resource allocation (`dra.enabled`) | ✗ | ✗ | ✗ | since 1.28 ✓ | ✓ | ✓ | ✓ | Entry points and editing for DRA resources such as ResourceClaim / ResourceClaimTemplate / ResourceSlice |
-| PodSchedulingReadiness (`scheduling.podschedulingreadiness`) | ✗ | ✗ | ✗ | since 1.26 ✓ | ✗ | ✗ | ✗ | PodSchedulingReadiness resource page (only shown when the DRA capability is also satisfied); introduced upstream in K8s 1.26 and removed in 1.30, and this table matches that |
-| ValidatingAdmissionPolicy (`admission.vap.enabled`) | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ValidatingAdmissionPolicy and its binding resource pages |
-| RuntimeClass scheduling (`runtimeclass.scheduling.ga`) | ✗ | ✗ | ✗ | since 1.27 ✓ | ✓ | ✓ | ✓ | Scheduling-related fields/capabilities on the RuntimeClass resource page |
-| PVC access mode ReadWriteOncePod (`storage.readWriteOncePod`) | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | Access mode options in PVC / PV editing |
-| Pod Security Admission PSA (`admission.psa`) | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | Pod security policy related UI (PSA/PSS label configuration, etc.) |
-| CRD API version (`apiextensions.crd.v1`) | v1beta1 | v1 | v1 | v1 | v1 | v1 | v1 | The apiVersion used for creating Kuboard built-in/plugin CRDs and by custom resource forms |
-| Service appProtocol (`service.appProtocol`) | ✗ | since 1.20 ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | The appProtocol (application-layer protocol) field in Service editing |
-| metrics-server version (`metrics.serverVersion`) | v1beta1 | v1beta1 | v1beta1 | v1beta1 | v1beta1 | v1beta1 | v1beta1 | Data source version for node / Pod real-time usage metrics, always `metrics.k8s.io/v1beta1` |
-| NetworkPolicy ipBlock except (`networkpolicy.ipBlockExceptCidrs`) | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | The ipBlock `except` CIDR list in NetworkPolicy rule editing |
-| Terminal close-frame protocol (`terminal.protocol.closeFrame`) | ✗ | ✗ | ✗ | since 1.29 ✓ | ✓ | ✓ | ✓ | WebSocket close-frame behavior when the Web terminal disconnects: Kuboard sends the close frame proactively when < 1.29, K8s sends it proactively when ≥ 1.29 |
-| Prometheus tool (`prometheus.installed`) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | Visibility of the MCP Prometheus tool (prometheus_query, etc.); it is treated as installable on any version, and whether it is actually available is determined by service discovery detection |
+| Capability | Version boundary and value | Kuboard UI / feature affected |
+| --- | --- | --- |
+| Eviction | `< 1.25` → `policy/v1beta1`; `≥ 1.25` → `policy/v1` | Node drain, Pod eviction operations |
+| Debug containers | Not available `< 1.23`; available `≥ 1.23` | "Pod Debug" entry; inject debug containers into running Pods |
+| Service endpoints EndpointSlice | Falls back to `v1/endpoints` `< 1.21`; `≥ 1.21` → `discovery.k8s.io/v1` | Data source for the service / endpoint list |
+| Node / Pod metrics | Always `metrics.k8s.io/v1beta1` (metrics.k8s.io is not GA yet) | Node / Pod metric curves, HPA metric source |
+| FlowControl | `< 1.30` → `v1beta2`; `≥ 1.30` → `v1` | FlowSchema / PriorityLevelConfiguration pages; the API may not exist on older clusters, so rely on detection |
+| Port-forward protocol | `< 1.32` → spdy; `≥ 1.32` → websocket (depends on the PortForwardWebsockets FeatureGate) | Protocol used by terminal / port-forward channels |
+| Built-in Helm version | `< 1.25` → helm-3.13; `1.25–1.30` → helm-3.16; `≥ 1.30` → helm-3.18 | The helm client actually invoked by App Store / Helm install, upgrade, rollback |
+| DRA dynamic resource allocation | Not available `< 1.28`; available `≥ 1.28` | Entry points and editing for DRA resources such as ResourceClaim / ResourceClaimTemplate / ResourceSlice |
+| PodSchedulingReadiness | Available only in `1.26–1.30` (introduced upstream in 1.26, removed in 1.30); not available otherwise | PodSchedulingReadiness resource page (shown only when the DRA capability is also satisfied) |
+| ValidatingAdmissionPolicy | Not available `< 1.30`; available `≥ 1.30` | ValidatingAdmissionPolicy and its binding resource pages |
+| RuntimeClass scheduling | Not available `< 1.27`; available `≥ 1.27` | Scheduling-related fields on the RuntimeClass resource page |
+| PVC access mode ReadWriteOncePod | Not available `< 1.34`; available `≥ 1.34` | Access mode options in PVC / PV editing |
+| Pod Security Admission (PSA) | Not available `< 1.25`; available `≥ 1.25` | Pod security (PSA/PSS label configuration) UI of namespaces / workloads |
+| CRD API version | `< 1.16` → `v1beta1`; `≥ 1.16` → `v1` | The apiVersion used for Kuboard built-in / plugin CRDs and by custom resource forms |
+| Service appProtocol | Not available `< 1.20`; available `≥ 1.20` | The appProtocol (application-layer protocol) field in Service editing |
+| NetworkPolicy ipBlock except | Not available `< 1.25`; available `≥ 1.25` | The ipBlock `except` CIDR list in NetworkPolicy rule editing |
+| Terminal close-frame protocol | `< 1.29` Kuboard sends the close frame; `≥ 1.29` K8s sends it | WebSocket close-frame behavior when the Web terminal disconnects |
+| Prometheus tool | Treated as installable on any version; actual availability is determined by service discovery detection | Visibility of MCP Prometheus tools (prometheus_query, etc.) |
 
 ::: tip Relationship with PSP (PodSecurityPolicy)
-PSP has been removed upstream since Kubernetes 1.25 and replaced by Pod Security Admission (PSA). Therefore the PSA capability (the `admission.psa` row in the matrix) has only been available since 1.25.
+PSP has been removed upstream since Kubernetes 1.25 and replaced by Pod Security Admission (PSA). Therefore the PSA capability (the "Pod Security Admission (PSA)" row in the matrix) has only been available since 1.25.
 :::
 
 ## When in Doubt, How to Judge
