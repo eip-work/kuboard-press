@@ -1,5 +1,5 @@
 ---
-description: 修改自己的登录密码、查看密码有效期；管理员如何重置其他用户的密码、解除账号锁定；忘记密码如何处置。
+description: 修改自己的登录密码、查看密码有效期；管理员如何重置其他用户的密码、解除账号锁定；忘记密码如何处置；所有管理员忘记密码时如何通过直接修改数据库恢复。
 ---
 
 # 修改与重置密码
@@ -61,6 +61,56 @@ Kuboard 不提供自助找回密码。请联系管理员：
 进入**用户管理 → 选中用户 → 重置密码**，密码会被重置为初始密码 `Kuboard123`，并清除错误计数与有效期计时。已被锁定的账号，重置操作也会自动解锁。
 
 如只需解除锁定、不重置密码，可点同一行的**解锁**按钮。
+
+## 所有管理员都忘记密码时（直接修改数据库）
+
+如果**所有**管理员都忘记了自己的密码，没有任何管理员账号可以登录，也就无法通过界面重置密码。此时只能由具备数据库访问权限的部署方，直接修改数据库中的密码字段来恢复管理员账号。
+
+::: danger 最后手段，操作前请备份
+直接修改数据库是最后手段，仅在无法通过界面登录时使用。执行前请先备份数据库（或至少记录 `kb_u_user` 表的当前内容）。错误操作可能导致账号无法登录或产生其他数据问题。
+:::
+
+**步骤**：
+
+1. 使用数据库客户端（如 mysql / psql / 图形客户端）连接到 Kuboard 的数据库（MySQL / MariaDB，或 PostgreSQL / OpenGauss）；
+2. 执行下面的 SQL，将内置管理员 `admin` 的密码恢复为初始密码 `Kuboard123`；
+3. 用 `admin` / `Kuboard123` 登录 Kuboard，登录后立即按[修改自己的密码](#修改自己的密码)改为强密码。
+
+**MySQL / MariaDB**：
+
+```sql
+UPDATE kb_u_user SET
+  password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
+  password_expiry_date = CURDATE() + INTERVAL 3 DAY,
+  password_try_count = 0,
+  status = 'enabled'
+WHERE username = 'admin' AND source = 'dao';
+```
+
+**PostgreSQL / OpenGauss**：
+
+```sql
+UPDATE kb_u_user SET
+  password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
+  password_expiry_date = CURRENT_DATE + INTERVAL '3 days',
+  password_try_count = 0,
+  status = 'enabled'
+WHERE username = 'admin' AND source = 'dao';
+```
+
+::: tip 密文说明
+`$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq` 是初始密码 `Kuboard123` 的 BCrypt 密文（与 Kuboard 全新安装时内置管理员的密文一致），可直接写入 `password` 字段。上述 SQL 同时把 `password_try_count` 清零（解除因多次错误导致的锁定）、把 `password_expiry_date` 设为 3 天后（与界面重置的行为一致，要求尽快改密）、把 `status` 置为 `enabled`。
+:::
+
+**补充说明**：
+
+- 内置管理员的用户名默认为 `admin`、`source` 为 `dao`；如果管理员用户名被改过，请把 SQL 中的 `username` 换成实际的用户名；
+- 该密文也可用于恢复任意内建用户的密码：把 WHERE 条件换成目标 `username` 即可；
+- 如果该账号绑定过 MFA（多因子认证），仅重置密码仍无法登录，还需一并清除其 `mfa_secret`（解除该账号的 MFA 绑定，登录后需重新绑定）：
+
+  ```sql
+  UPDATE kb_u_user SET mfa_secret = NULL WHERE username = 'admin' AND source = 'dao';
+  ```
 
 ## 接口文档
 

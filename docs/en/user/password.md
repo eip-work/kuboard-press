@@ -1,5 +1,5 @@
 ---
-description: "Change your own login password and check its expiry date; how administrators can reset another user's password and unlock accounts; what to do when you forget your password."
+description: "Change your own login password and check its expiry date; how administrators can reset another user's password and unlock accounts; what to do when you forget your password; how to recover an administrator account via direct database modification when all administrators forget their passwords."
 ---
 
 # Change and Reset Password
@@ -61,6 +61,56 @@ The default initial password is publicly known. Please change it to a strong pas
 Go to **User Management → select the user → Reset Password**. The password is reset to the initial password `Kuboard123`, and the failed-attempt counter and expiry timer are cleared. A locked account is also unlocked automatically by the reset.
 
 To only unlock an account without resetting the password, click the **Unlock** button in the same row.
+
+## When All Administrators Forget Their Passwords (Direct Database Modification)
+
+If **all** administrators have forgotten their passwords, no administrator account can log in, so passwords cannot be reset through the UI. In this case, only someone with database access (typically the deployment team) can recover an administrator account by modifying the password field directly in the database.
+
+::: danger Last resort — back up before operating
+Direct database modification is a last resort, only for when UI login is impossible. Back up the database (or at least the current content of `kb_u_user`) before running any statement. A mistake can leave accounts unable to log in or cause other data problems.
+:::
+
+**Steps**:
+
+1. Connect to the Kuboard database (MySQL / MariaDB, or PostgreSQL / OpenGauss) with a database client (mysql / psql / GUI client);
+2. Run the SQL below to restore the built-in administrator `admin` to the initial password `Kuboard123`;
+3. Log in with `admin` / `Kuboard123`, then immediately change it to a strong password per [Change Your Own Password](#change-your-own-password).
+
+**MySQL / MariaDB**:
+
+```sql
+UPDATE kb_u_user SET
+  password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
+  password_expiry_date = CURDATE() + INTERVAL 3 DAY,
+  password_try_count = 0,
+  status = 'enabled'
+WHERE username = 'admin' AND source = 'dao';
+```
+
+**PostgreSQL / OpenGauss**:
+
+```sql
+UPDATE kb_u_user SET
+  password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
+  password_expiry_date = CURRENT_DATE + INTERVAL '3 days',
+  password_try_count = 0,
+  status = 'enabled'
+WHERE username = 'admin' AND source = 'dao';
+```
+
+::: tip About the hash
+`$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq` is the BCrypt hash of the initial password `Kuboard123` (identical to the hash baked into the built-in administrator on a fresh install) and can be written directly into the `password` column. The SQL above also zeroes `password_try_count` (unlocks the account after repeated failures), sets `password_expiry_date` to 3 days from now (matching the UI reset behavior, so the password is changed promptly), and sets `status` to `enabled`.
+:::
+
+**Notes**:
+
+- The built-in administrator is `admin` with `source` = `dao` by default; if the username was renamed, replace `username` in the SQL accordingly;
+- The same hash can recover any built-in user: just change the WHERE condition to the target `username`;
+- If the account has MFA (multi-factor authentication) bound, resetting the password alone is not enough — you also need to clear its `mfa_secret` (this unbinds MFA; the user must re-enroll after logging in):
+
+  ```sql
+  UPDATE kb_u_user SET mfa_secret = NULL WHERE username = 'admin' AND source = 'dao';
+  ```
 
 ## API Reference
 
