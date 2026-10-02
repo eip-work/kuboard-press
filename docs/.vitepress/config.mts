@@ -47,8 +47,8 @@ const enNav = [
 const zhSidebar = {
   '/zh/install/': [
     { text: '快速上手', items: [
-      { text: '安装指南', link: '/zh/install/' },
       { text: '快速开始', link: '/zh/install/quickstart' },
+      { text: '安装指南', link: '/zh/install/' },
     ]},
     { text: '生产部署', items: [
       { text: '高可用部署', link: '/zh/install/ha' },
@@ -60,6 +60,10 @@ const zhSidebar = {
     ]},
   ],
   '/zh/guide/': [
+    { text: '界面共性', items: [
+      { text: '资源列表页', link: '/zh/guide/ui/object-list' },
+      { text: '资源详情页', link: '/zh/guide/ui/object-detail' },
+    ]},
     { text: '集群管理', items: [
       { text: '总览', link: '/zh/guide/' },
       { text: '导入集群', link: '/zh/guide/cluster/import' },
@@ -206,6 +210,10 @@ const zhSidebar = {
 }
 
 const enGuideSidebar = [
+  { text: 'UI Commonalities', items: [
+    { text: 'Resource List Pages', link: '/en/guide/ui/object-list' },
+    { text: 'Resource Detail Pages', link: '/en/guide/ui/object-detail' },
+  ]},
   { text: 'Cluster', items: [
     { text: 'Overview', link: '/en/guide/' },
     { text: 'Import Cluster', link: '/en/guide/cluster/import' },
@@ -256,8 +264,8 @@ const enGuideSidebar = [
 const enSidebar = {
   '/en/install/': [
     { text: 'Getting Started', items: [
-      { text: 'Installation Guide', link: '/en/install/' },
       { text: 'Quick Start', link: '/en/install/quickstart' },
+      { text: 'Installation Guide', link: '/en/install/' },
     ]},
     { text: 'Production Deployment', items: [
       { text: 'High Availability', link: '/en/install/ha' },

@@ -10,6 +10,7 @@ This section is organized around the journey of using a Kuboard instance on a da
 
 | Section | Content | Use case |
 | --- | --- | --- |
+| [UI Commonalities](./ui/object-list) | Common operations of resource list and detail pages | Get started quickly with viewing and operating any resource |
 | [Cluster Management](./cluster/import) | Import, edit, sync status, import/export resources | Connect the first cluster, maintain cluster connections |
 | [Workloads](./workload/) | Deployment / StatefulSet / DaemonSet / Job / CronJob / Pod, plus HPA and Continuous Deployment (CD) | Deploy and manage business applications |
 | [Config & Storage](./config-storage/configmaps-secrets) | ConfigMap / Secret / PVC / PV / StorageClass / CSI | Application configuration and persistent storage |

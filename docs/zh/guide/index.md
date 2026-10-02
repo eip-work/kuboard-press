@@ -10,6 +10,7 @@ description: Kuboard V4 使用指南总览：集群管理、工作负载、配�
 
 | 章节 | 内容 | 适用场景 |
 | --- | --- | --- |
+| [界面共性](./ui/object-list) | 资源列表页与详情页的通用操作 | 快速上手任意资源的查看与操作 |
 | [集群管理](./cluster/import) | 导入、编辑、同步状态、资源导入导出 | 接入第一个集群、维护集群连接 |
 | [工作负载](./workload/) | Deployment / StatefulSet / DaemonSet / Job / CronJob / Pod，以及 HPA 与持续部署（CD） | 发布与管理业务应用 |
 | [配置与存储](./config-storage/configmaps-secrets) | ConfigMap / Secret / PVC / PV / StorageClass / CSI | 应用配置与持久化存储 |
