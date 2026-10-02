@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="780" viewBox="0 0 940 780" role="img" aria-label="Kuboard V4 高可用部署架构" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <title>Kuboard V4 高可用部署架构</title>
+  <desc>用户经负载均衡器访问多副本 Kuboard，Kuboard 副本共享 Redis 分布式缓存与高可用数据库；负载均衡器、Redis、高可用数据库由用户自行提供</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EEF2FF"/>
+      <stop offset="60%" stop-color="#DCE5FF"/>
+      <stop offset="100%" stop-color="#C7D3FF"/>
+    </linearGradient>
+    <linearGradient id="panelHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3457D5"/>
+      <stop offset="100%" stop-color="#5B7BFF"/>
+    </linearGradient>
+    <linearGradient id="panelBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F4F7FF"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="6" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.16"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .flow {
+        stroke: #3457D5;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+        opacity: 0.55;
+        stroke-dasharray: 6 7;
+      }
+      .flow-anim { animation: flowMove 1.2s linear infinite; }
+      @keyframes flowMove { to { stroke-dashoffset: -26; } }
+      @media (prefers-reduced-motion: reduce) {
+        .flow-anim { animation: none; }
+      }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="940" height="780" rx="24" fill="url(#bg)"/>
+
+  <!-- 装饰虚线 -->
+  <g opacity="0.45" stroke="#3457D5" stroke-width="1" fill="none">
+    <path d="M40,120 L900,120" stroke-dasharray="2 8"/>
+    <path d="M40,700 L900,700" stroke-dasharray="2 8"/>
+    <path d="M60,40 L60,740" stroke-dasharray="2 10"/>
+    <path d="M880,40 L880,740" stroke-dasharray="2 10"/>
+  </g>
+  <g opacity="0.6" fill="#3457D5">
+    <circle cx="86" cy="70" r="4"/>
+    <circle cx="854" cy="86" r="4"/>
+    <circle cx="80" cy="470" r="3"/>
+    <circle cx="860" cy="470" r="3"/>
+    <circle cx="470" cy="96" r="3"/>
+  </g>
+
+  <!-- 标题 -->
+  <text x="470" y="48" text-anchor="middle" fill="#1E3FB8" font-size="24" font-weight="700">Kuboard V4 高可用部署架构</text>
+  <text x="470" y="74" text-anchor="middle" fill="#6B7AB0" font-size="14">Kuboard V4 High-Availability Deployment Architecture</text>
+
+  <!-- ===================== 第 1 层：用户 ===================== -->
+  <g transform="translate(330,100)">
+    <rect x="-12" y="-12" width="324" height="120" rx="22" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="300" height="96" rx="18" fill="#FFFFFF" stroke="#D6DFFB" stroke-width="2"/>
+    <g transform="translate(70,48)" fill="#3457D5">
+      <circle cx="0" cy="-6" r="9"/>
+      <path d="M-15,26 Q-15,4 0,4 Q15,4 15,26 Z" opacity="0.8"/>
+      <g transform="translate(25,5)" opacity="0.6">
+        <circle cx="0" cy="-4" r="7"/>
+        <path d="M-11,20 Q-11,3 0,3 Q11,3 11,20 Z"/>
+      </g>
+    </g>
+    <text x="150" y="54" fill="#1E3FB8" font-size="20" font-weight="700">Users</text>
+    <text x="150" y="78" fill="#6B7AB0" font-size="13">用户 · 多用户同时访问</text>
+  </g>
+
+  <!-- ===================== 第 2 层：负载均衡器 ===================== -->
+  <g transform="translate(330,250)">
+    <rect x="-12" y="-12" width="324" height="112" rx="20" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="300" height="88" rx="18" fill="#FFFFFF" stroke="#D6DFFB" stroke-width="2"/>
+    <g stroke="#3457D5" stroke-width="2" fill="none">
+      <path d="M70,44 L44,22"/>
+      <path d="M70,44 L70,12"/>
+      <path d="M70,44 L96,22"/>
+    </g>
+    <g fill="#3457D5">
+      <circle cx="70" cy="44" r="6"/>
+      <circle cx="44" cy="22" r="3.5"/>
+      <circle cx="70" cy="12" r="3.5"/>
+      <circle cx="96" cy="22" r="3.5"/>
+    </g>
+    <text x="125" y="50" fill="#1E3FB8" font-size="18" font-weight="700">Load Balancer</text>
+    <text x="125" y="74" fill="#6B7AB0" font-size="13">负载均衡器 · Nginx / SLB / 云 LB</text>
+  </g>
+
+  <!-- ===================== 第 3 层：Kuboard 多副本 ===================== -->
+  <g transform="translate(90,400)">
+    <rect x="-12" y="-12" width="224" height="154" rx="22" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="200" height="130" rx="18" fill="url(#panelBody)" stroke="#D6DFFB" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="44" rx="18" fill="url(#panelHeader)"/>
+    <rect x="0" y="18" width="200" height="26" fill="url(#panelHeader)"/>
+    <rect x="12" y="8" width="28" height="28" rx="8" fill="#FFFFFF" opacity="0.92"/>
+    <text x="26" y="27" text-anchor="middle" fill="#3457D5" font-size="15" font-weight="700">K</text>
+    <text x="120" y="29" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="700">Replica 1</text>
+    <text x="100" y="76" text-anchor="middle" fill="#1E3FB8" font-size="14" font-weight="700">Kuboard 副本 1</text>
+    <text x="100" y="98" text-anchor="middle" fill="#6B7AB0" font-size="12">多副本 · 无状态 · 水平扩展</text>
+  </g>
+
+  <g transform="translate(370,400)">
+    <rect x="-12" y="-12" width="224" height="154" rx="22" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="200" height="130" rx="18" fill="url(#panelBody)" stroke="#D6DFFB" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="44" rx="18" fill="url(#panelHeader)"/>
+    <rect x="0" y="18" width="200" height="26" fill="url(#panelHeader)"/>
+    <rect x="12" y="8" width="28" height="28" rx="8" fill="#FFFFFF" opacity="0.92"/>
+    <text x="26" y="27" text-anchor="middle" fill="#3457D5" font-size="15" font-weight="700">K</text>
+    <text x="120" y="29" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="700">Replica 2</text>
+    <text x="100" y="76" text-anchor="middle" fill="#1E3FB8" font-size="14" font-weight="700">Kuboard 副本 2</text>
+    <text x="100" y="98" text-anchor="middle" fill="#6B7AB0" font-size="12">多副本 · 无状态 · 水平扩展</text>
+  </g>
+
+  <g transform="translate(650,400)">
+    <rect x="-12" y="-12" width="224" height="154" rx="22" fill="#3457D5" opacity="0.15" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="200" height="130" rx="18" fill="url(#panelBody)" stroke="#D6DFFB" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="44" rx="18" fill="url(#panelHeader)"/>
+    <rect x="0" y="18" width="200" height="26" fill="url(#panelHeader)"/>
+    <rect x="12" y="8" width="28" height="28" rx="8" fill="#FFFFFF" opacity="0.92"/>
+    <text x="26" y="27" text-anchor="middle" fill="#3457D5" font-size="15" font-weight="700">K</text>
+    <text x="120" y="29" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="700">Replica N</text>
+    <text x="100" y="76" text-anchor="middle" fill="#1E3FB8" font-size="14" font-weight="700">Kuboard 副本 N</text>
+    <text x="100" y="98" text-anchor="middle" fill="#6B7AB0" font-size="12">多副本 · 无状态 · 水平扩展</text>
+  </g>
+
+  <!-- ===================== 第 4 层：高可用基础设施（用户自行提供） ===================== -->
+  <rect x="70" y="588" width="800" height="172" rx="20" fill="#FFFFFF" fill-opacity="0.35" stroke="#3457D5" stroke-dasharray="6 6" stroke-width="1.5" opacity="0.6"/>
+  <text x="90" y="606" fill="#6B7AB0" font-size="12">高可用基础设施 · 由用户自行提供（HA infrastructure — provided by you）</text>
+
+  <!-- Redis -->
+  <g transform="translate(100,628)">
+    <rect x="-12" y="-12" width="284" height="134" rx="20" fill="#E8553F" opacity="0.10" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="260" height="110" rx="16" fill="#FFFFFF" stroke="#E8A79B" stroke-width="2"/>
+    <g>
+      <ellipse cx="54" cy="38" rx="15" ry="7" fill="#E8553F"/>
+      <rect x="39" y="38" width="30" height="24" fill="#E8553F"/>
+      <ellipse cx="54" cy="62" rx="15" ry="7" fill="#C8432F"/>
+    </g>
+    <text x="100" y="50" fill="#B03A2E" font-size="18" font-weight="700">Redis</text>
+    <text x="100" y="72" fill="#6B7AB0" font-size="13">分布式缓存</text>
+    <text x="100" y="92" fill="#8A9AC0" font-size="12">哨兵 / 集群模式</text>
+  </g>
+
+  <!-- 高可用数据库 -->
+  <g transform="translate(580,628)">
+    <rect x="-12" y="-12" width="284" height="134" rx="20" fill="#0E9F8A" opacity="0.10" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="260" height="110" rx="16" fill="#FFFFFF" stroke="#A9DCCF" stroke-width="2"/>
+    <g>
+      <ellipse cx="46" cy="40" rx="13" ry="6" fill="#0E9F8A"/>
+      <rect x="33" y="40" width="26" height="20" fill="#0E9F8A"/>
+      <ellipse cx="46" cy="60" rx="13" ry="6" fill="#0B7A6B"/>
+      <ellipse cx="72" cy="40" rx="13" ry="6" fill="#0E9F8A"/>
+      <rect x="59" y="40" width="26" height="20" fill="#0E9F8A"/>
+      <ellipse cx="72" cy="60" rx="13" ry="6" fill="#0B7A6B"/>
+      <line x1="59" y1="52" x2="59" y2="52" stroke="#0E9F8A" stroke-width="2"/>
+      <path d="M59,52 L65,52 M59,52 L65,48 M59,52 L65,56" stroke="#0E9F8A" stroke-width="1.5" fill="none"/>
+    </g>
+    <text x="100" y="50" fill="#0B7A6B" font-size="18" font-weight="700">HA Database</text>
+    <text x="100" y="72" fill="#6B7AB0" font-size="13">高可用数据库</text>
+    <text x="100" y="92" fill="#8A9AC0" font-size="12">MySQL / MariaDB / OpenGauss</text>
+  </g>
+
+  <!-- ===================== 流动连接线（动画） ===================== -->
+  <!-- 用户 → LB -->
+  <line class="flow flow-anim" x1="470" y1="196" x2="470" y2="250"/>
+  <!-- LB → 各副本 -->
+  <path class="flow flow-anim" d="M470,338 C 470,372 300,372 190,400"/>
+  <line class="flow flow-anim" x1="470" y1="338" x2="470" y2="400"/>
+  <path class="flow flow-anim" d="M470,338 C 470,372 640,372 750,400"/>
+  <!-- 副本 → 总线 -->
+  <line class="flow flow-anim" x1="190" y1="530" x2="190" y2="570"/>
+  <line class="flow flow-anim" x1="470" y1="530" x2="470" y2="570"/>
+  <line class="flow flow-anim" x1="750" y1="530" x2="750" y2="570"/>
+  <!-- 总线 -->
+  <line class="flow flow-anim" x1="190" y1="570" x2="750" y2="570"/>
+  <!-- 总线 → Redis / DB -->
+  <line class="flow flow-anim" x1="230" y1="570" x2="230" y2="628"/>
+  <line class="flow flow-anim" x1="710" y1="570" x2="710" y2="628"/>
+
+  <!-- 流向说明 -->
+  <text x="230" y="604" text-anchor="middle" fill="#6B7AB0" font-size="11">分布式缓存</text>
+  <text x="710" y="604" text-anchor="middle" fill="#6B7AB0" font-size="11">数据读写</text>
+  <text x="470" y="763" text-anchor="middle" fill="#8A9AC0" font-size="12">流动线条表示请求与数据流向 · Flowing lines show request &amp; data flow</text>
+
+  <!-- 箭头 -->
+  <g fill="#3457D5">
+    <path d="M465,244 L475,244 L470,254 Z"/>
+    <path d="M185,394 L195,394 L190,404 Z"/>
+    <path d="M465,394 L475,394 L470,404 Z"/>
+    <path d="M745,394 L755,394 L750,404 Z"/>
+    <path d="M225,622 L235,622 L230,632 Z"/>
+    <path d="M705,622 L715,622 L710,632 Z"/>
+  </g>
+
+  <!-- 连接点 -->
+  <g fill="#3457D5">
+    <circle cx="470" cy="338" r="4.5"/>
+    <circle cx="190" cy="530" r="4.5"/>
+    <circle cx="470" cy="530" r="4.5"/>
+    <circle cx="750" cy="530" r="4.5"/>
+    <circle cx="190" cy="570" r="4.5"/>
+    <circle cx="230" cy="570" r="4.5"/>
+    <circle cx="710" cy="570" r="4.5"/>
+    <circle cx="750" cy="570" r="4.5"/>
+  </g>
+</svg>

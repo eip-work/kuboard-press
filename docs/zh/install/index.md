@@ -174,29 +174,4 @@ Kuboard 默认使用 HTTP，便于快速试用。**生产环境请务必启用 H
 
 ## 高可用部署
 
-Kuboard V4 支持高可用部署时，需要增加 redis 分布式缓存，参考部署架构图如下所示：
-
-![Kuboard V4 高可用部署架构](./install.assets/kuboard-v4-ha.png)
-
-用户应该自行提供如下设施：
-
-- 负载均衡器
-- 高可用数据库（MySQL/MariaDB/OpenGauss 等常见数据库均支持高可用部署方式）
-- 分布式缓存 Redis（哨兵模式或集群模式）
-
-默认情况下，Kuboard 在单副本模式下使用 Caffeine 内存缓存，高可用部署模式下，通过如下环境变量可以指定 Kuboard 使用分布式 Redis 缓存。
-
-- `KUBOARD_CACHE_PROVIDER` 用于指定缓存提供方式，有如下可选值，非必填：
-  - `caffeine`，默认值，使用 Caffeine 内存缓存，只能用在 Kuboard 的单副本模式下；
-  - `redis`，使用分布式缓存 Redis
-- `KUBOARD_CACHE_REDIS_MODE` 用于指定 Redis 的连接模式，有如下可选值，非必填：
-  - `standalone`，默认值，Redis Standalone 模式
-  - `sentinel`，Redis 哨兵模式
-  - `cluster`，Redis 集群模式
-- `KUBOARD_CACHE_REDIS_SENTINEL_MASTER` 用于指定 Redis Sentinel 模式下 master 名称，非必填，默认值为 `master`
-- `KUBOARD_CACHE_REDIS_NODES` 用于指定 Redis 节点信息，多个节点时用 `,` 分割，非必填，默认值为 `localhost:6379`，如果填写，可参考如下例子：
-  - `standalone` 模式下，只填一个端口地址，例如 `10.99.0.8:6379`
-  - `sentinel` 模式下，填写 Redis 所有哨兵的端口地址，例如： `10.99.0.10:6379,10.99.0.11:6379,10.99.0.12:6379`
-  - `cluster` 模式下，填写 Redis 所有节点的端口地址，例如： `10.99.0.20:6379,10.99.0.21:6379,10.99.0.22:6379`
-- `KUBOARD_CACHE_REDIS_PASSWORD` 用于指定连接 Redis 时的密码，非必填，默认值为空字符串
-- `KUBOARD_CACHE_REDIS_DATABASE` 用于指定连接 Redis 时的 Redis 数据库编号，非必填，默认值为 `0`
+Kuboard V4 支持多副本高可用部署：多个 Kuboard 实例组成服务集群，由负载均衡器分发流量，并使用 Redis 分布式缓存共享跨实例状态。部署拓扑、Redis 环境变量、数据库高可用建议与故障切换行为等完整说明，请参考 [高可用部署](./ha)。

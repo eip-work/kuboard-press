@@ -14,6 +14,10 @@ Teams that have already completed a single-node deployment (see [Quick Start](./
 
 Kuboard v4 is a stateless Spring Boot service that scales horizontally into multiple replicas; the real cross-instance state lives in the database and Redis. The recommended topology is as follows:
 
+![Kuboard V4 HA architecture](./ha.assets/kuboard-v4-ha.svg)
+
+The load balancer, HA database and Redis distributed cache shown above are **external infrastructure that you provide and operate yourself**; Kuboard only runs the multi-replica application instances:
+
 - **Multiple Kuboard replicas**: 2 or more `kuboard-server` containers (`kuboard-1` / `kuboard-2` in the official orchestration);
 - **A load balancer in front**: Nginx or HAProxy distributes user requests to the replicas (the official orchestration uses Nginx `upstream` + reverse proxy);
 - **A highly available database**: MySQL master/slave replication, OpenGauss primary/standby, or PostgreSQL + Patroni. Kuboard points to the database HA connection address via `DB_URL`;

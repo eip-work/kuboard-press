@@ -14,6 +14,10 @@ description: Kuboard V4 高可用部署：多副本实例 + Redis 分布式缓�
 
 Kuboard V4 是无状态（stateless）的 Spring Boot 服务，可水平扩展为多个副本；真正的跨实例状态存放在数据库与 Redis 中。推荐拓扑如下：
 
+![Kuboard V4 高可用部署架构](./ha.assets/kuboard-v4-ha.svg)
+
+图示中的负载均衡器、高可用数据库与 Redis 分布式缓存属于**外部基础设施，由用户自行提供与运维**；Kuboard 只运行多副本应用实例：
+
 - **多副本 Kuboard 实例**：2 个及以上 `kuboard-server` 容器（官方编排中的 `kuboard-1` / `kuboard-2`）；
 - **前置负载均衡**：Nginx 或 HAProxy，将用户请求分发到各副本（官方编排使用 Nginx `upstream` + 反向代理）；
 - **高可用数据库**：MySQL 主从复制、OpenGauss 主备或 PostgreSQL + Patroni，Kuboard 通过 `DB_URL` 指向数据库高可用连接地址；

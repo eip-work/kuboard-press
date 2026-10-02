@@ -172,29 +172,4 @@ See [Reverse Proxy](./reverse-proxy) for complete Nginx and Ingress configuratio
 
 ## High Availability Deployment
 
-For HA deployment, Kuboard V4 needs Redis as the distributed cache:
-
-![Kuboard V4 HA architecture](./install.assets/kuboard-v4-ha.png)
-
-You are expected to provide:
-
-- A load balancer
-- An HA database (MySQL/MariaDB/OpenGauss etc. all support HA deployment)
-- A distributed Redis cache (sentinel or cluster mode)
-
-By default Kuboard uses Caffeine in-memory cache in single-replica mode. In HA mode, use these environment variables to switch to Redis:
-
-- `KUBOARD_CACHE_PROVIDER` — cache provider (optional):
-  - `caffeine` (default) — in-memory cache, single-replica mode only
-  - `redis` — distributed cache
-- `KUBOARD_CACHE_REDIS_MODE` — Redis connection mode (optional):
-  - `standalone` (default)
-  - `sentinel`
-  - `cluster`
-- `KUBOARD_CACHE_REDIS_SENTINEL_MASTER` — sentinel master name (optional, default `master`)
-- `KUBOARD_CACHE_REDIS_NODES` — Redis node addresses, comma-separated (optional, default `localhost:6379`):
-  - `standalone`: a single address, e.g. `10.99.0.8:6379`
-  - `sentinel`: all sentinel addresses, e.g. `10.99.0.10:6379,10.99.0.11:6379,10.99.0.12:6379`
-  - `cluster`: all node addresses, e.g. `10.99.0.20:6379,10.99.0.21:6379,10.99.0.22:6379`
-- `KUBOARD_CACHE_REDIS_PASSWORD` — Redis password (optional, default empty)
-- `KUBOARD_CACHE_REDIS_DATABASE` — Redis database number (optional, default `0`)
+Kuboard V4 supports multi-replica HA deployment: multiple Kuboard instances form a service cluster behind a load balancer, sharing cross-instance state through a Redis distributed cache. For the full details — deployment topology, Redis environment variables, database HA recommendations, and failover behavior — see [High Availability Deployment](./ha).
