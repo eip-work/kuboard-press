@@ -74,6 +74,14 @@ On startup, the new version automatically performs the database schema migration
 
 ### Back Up the Database
 
+::: danger Back up first, then upgrade
+
+- **A backup is a mandatory step before upgrading — do not skip it**: the database schema migration is not reversible (there are no downgrade scripts); once the upgrade starts, the old-version code may no longer be compatible with the migrated table structure;
+- **Without a pre-upgrade backup, rollback may fail**: if you need to revert to an older version after upgrading, the only reliable recovery path is to first **restore the pre-upgrade database backup** and then start the old-version image. Without such a backup, rollback loses its reliable data foundation and is likely to fail;
+- So run the backup commands below first, **confirm the backup file was created successfully**, and only then continue with the upgrade steps.
+
+:::
+
 - MySQL / MariaDB:
 
   ```sh
