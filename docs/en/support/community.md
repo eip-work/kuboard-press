@@ -10,9 +10,8 @@ This page summarizes Kuboard's free community channels and commercial support (f
 
 | Channel | Description | For |
 | --- | --- | --- |
-| **WeChat / QQ community** | Q&A and best-practice sharing | All users |
 | **GitHub** | Submit issues, report problems, or star the project in [kuboard-press](https://github.com/eip-work/kuboard-press) | All users |
-| **Email subscription** | Be the first to hear about releases and product news | All users |
+| **WeChat / QQ community** | Q&A and best-practice sharing | All users |
 
 The WeChat / QQ community and subscription entries are available on the [Kuboard License & Support](./index) page.
 

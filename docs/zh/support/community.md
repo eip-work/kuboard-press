@@ -10,9 +10,8 @@ description: Kuboard 社区与商业支持渠道：微信/QQ 社群免费答疑�
 
 | 渠道 | 说明 | 面向 |
 | --- | --- | --- |
-| **微信 / QQ 社群** | 使用问题答疑、最佳实践交流 | 所有用户 |
 | **GitHub** | 在 [kuboard-press](https://github.com/eip-work/kuboard-press) 提交 Issue、反馈问题或 Star 支持项目 | 所有用户 |
-| **订阅邮件** | 第一时间获得版本更新与产品资讯 | 所有用户 |
+| **微信 / QQ 社群** | 使用问题答疑、最佳实践交流 | 所有用户 |
 
 微信 / QQ 社群与订阅入口均可在 [Kuboard 授权与支持](./index) 页面找到。
 
