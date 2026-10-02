@@ -26,7 +26,7 @@ https://<kuboard域名>/api/anonymous.kuboard.cn/v4/oidc/callback
 
 入口：**系统管理 → 系统设置 → 用户登录设置 → OIDC SSO** 卡片。系统采用**单 IdP** 形态：所有 OIDC 字段集中在同一卡片下，无向导页签、无多 IdP 列表、无「测试连接」按钮。
 
-![用户登录设置中的 OIDC SSO 卡片](./oidc.assets/user-oidc-1.png)
+<!-- screenshot-todo: 用户登录设置中的 OIDC SSO 卡片（docs/zh/user/oidc.assets/user-oidc-1.png） -->
 
 | 字段 | 示例填写 | 说明 |
 | --- | --- | --- |

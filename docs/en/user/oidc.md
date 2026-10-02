@@ -28,7 +28,7 @@ In **Credentials**, copy the **Client secret** for the next step.
 
 Navigate: **System Admin → System Settings → User Login Settings → OIDC SSO** card. Kuboard uses a **single-IdP** shape: all OIDC fields live on the same card — no wizard tabs, no multi-IdP list, no **Test Connection** button.
 
-![OIDC SSO card in user login settings](./oidc.assets/user-oidc-1.png)
+<!-- screenshot-todo: OIDC SSO card in user login settings (docs/en/user/oidc.assets/user-oidc-1.png) -->
 
 | Field | Example | Notes |
 | --- | --- | --- |
