@@ -1,5 +1,5 @@
 ---
-description: Configure Kuboard OIDC single sign-on: single-IdP setup, issuer dual-value tolerance, mandatory callback whitelist, claims mapping, MFA policy, silent refresh, rate limits; user login / logout; error codes and troubleshooting.
+description: "Configure Kuboard OIDC single sign-on: single-IdP setup, issuer dual-value tolerance, mandatory callback whitelist, claims mapping, MFA policy, silent refresh, rate limits; user login / logout; error codes and troubleshooting."
 ---
 
 # Kuboard OIDC Single Sign-On
