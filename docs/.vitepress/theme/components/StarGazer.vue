@@ -7,7 +7,7 @@ const { lang } = useData()
 const STAR_REPO = 'https://github.com/eip-work/kuboard-press'
 const LS_STARRED = 'kuboard-press-starred'
 const LS_FIRST_ACCESS = 'kuboard-press-first-access'
-const SHOW_DELAY_MS = 10000
+const SHOW_DELAY_MS = 120000 // 打开页面 2 分钟后弹出
 
 const visible = ref(false)
 let timer: ReturnType<typeof setTimeout> | null = null
@@ -66,11 +66,9 @@ function goStar() {
 onMounted(() => {
   if (localStorage.getItem(LS_STARRED) === 'true') return
   const first = localStorage.getItem(LS_FIRST_ACCESS)
-  if (!first) {
-    localStorage.setItem(LS_FIRST_ACCESS, String(Date.now()))
-    return
-  }
-  const elapsed = Date.now() - Number(first)
+  const start = first ? Number(first) : Date.now()
+  if (!first) localStorage.setItem(LS_FIRST_ACCESS, String(start))
+  const elapsed = Date.now() - start
   if (elapsed >= SHOW_DELAY_MS) {
     show()
     return
