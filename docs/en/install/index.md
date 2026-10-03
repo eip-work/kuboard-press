@@ -40,11 +40,16 @@ Kuboard v4 uses a database for storage. Supported databases:
 
 You can also follow the [Quick Start](./quickstart.md) to spin up a Kuboard instance with docker compose for testing.
 
-## Prepare the Database
+## Prepare and Start Kuboard
 
-### MySQL / MariaDB
+Choose the tab that matches your database type; each tab contains two steps — **Prepare the Database** and **Start Kuboard**:
 
-Create the database with the following script:
+<KbTabs :tabs="['MySQL', 'MariaDB', 'OpenGauss']">
+  <template #mysql>
+
+### Prepare the Database
+
+Create the database and user in MySQL:
 
 ```sql
 CREATE DATABASE kuboard DEFAULT CHARACTER SET = 'utf8mb4' DEFAULT COLLATE = 'utf8mb4_unicode_ci';
@@ -53,7 +58,62 @@ grant all privileges on kuboard.* to 'kuboard'@'%';
 FLUSH PRIVILEGES;
 ```
 
-### OpenGauss
+### Start Kuboard
+
+Start the Kuboard container with `docker run`:
+
+```sh
+docker run -d \
+  --restart=unless-stopped \
+  --name=kuboard \
+  -p 80:80/tcp \
+  -e TZ="Asia/Shanghai" \
+  -e DB_DRIVER=com.mysql.cj.jdbc.Driver \
+  -e DB_URL="jdbc:mysql://10.99.0.8:3306/kuboard?serverTimezone=Asia/Shanghai" \
+  -e DB_USERNAME=kuboard \
+  -e DB_PASSWORD=Kuboard123 \
+  -v ./kuboard-log:/app/logs \
+  swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
+  # eipwork/kuboard:v4
+```
+
+  </template>
+  <template #mariadb>
+
+### Prepare the Database
+
+Create the database and user in MariaDB (same script as MySQL):
+
+```sql
+CREATE DATABASE kuboard DEFAULT CHARACTER SET = 'utf8mb4' DEFAULT COLLATE = 'utf8mb4_unicode_ci';
+create user 'kuboard'@'%' identified by 'Kuboard123';
+grant all privileges on kuboard.* to 'kuboard'@'%';
+FLUSH PRIVILEGES;
+```
+
+### Start Kuboard
+
+Start the Kuboard container with `docker run`:
+
+```sh
+docker run -d \
+  --restart=unless-stopped \
+  --name=kuboard \
+  -p 80:80/tcp \
+  -e TZ="Asia/Shanghai" \
+  -e DB_DRIVER=org.mariadb.jdbc.Driver \
+  -e DB_URL="jdbc:mariadb://10.99.0.8:3306/kuboard?&timezone=Asia/Shanghai" \
+  -e DB_USERNAME=kuboard \
+  -e DB_PASSWORD=Kuboard123 \
+  -v ./kuboard-log:/app/logs \
+  swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
+  # eipwork/kuboard:v4
+```
+
+  </template>
+  <template #opengauss>
+
+### Prepare the Database
 
 Create the database from the OpenGauss command line:
 
@@ -66,60 +126,27 @@ CREATE SCHEMA kuboard AUTHORIZATION kuboard;
 
 > With OpenGauss, Kuboard operates the database using PostgreSQL syntax.
 
-## Start Kuboard
+### Start Kuboard
 
 Start the Kuboard container with `docker run`:
 
-- With MySQL:
+```sh
+docker run -d \
+  --restart=unless-stopped \
+  --name=kuboard \
+  -p 80:80/tcp \
+  -e TZ="Asia/Shanghai" \
+  -e DB_DRIVER=org.postgresql.Driver \
+  -e DB_URL="jdbc:postgresql://10.99.0.8:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8" \
+  -e DB_USERNAME=kuboard \
+  -e DB_PASSWORD=Kuboard123 \
+  -v ./kuboard-log:/app/logs \
+  swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
+  # eipwork/kuboard:v4
+```
 
-  ```sh
-  docker run -d \
-    --restart=unless-stopped \
-    --name=kuboard \
-    -p 80:80/tcp \
-    -e TZ="Asia/Shanghai" \
-    -e DB_DRIVER=com.mysql.cj.jdbc.Driver \
-    -e DB_URL="jdbc:mysql://10.99.0.8:3306/kuboard?serverTimezone=Asia/Shanghai" \
-    -e DB_USERNAME=kuboard \
-    -e DB_PASSWORD=Kuboard123 \
-    -v ./kuboard-log:/app/logs \
-    swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
-    # eipwork/kuboard:v4
-  ```
-
-- With MariaDB:
-
-  ```sh
-  docker run -d \
-    --restart=unless-stopped \
-    --name=kuboard \
-    -p 80:80/tcp \
-    -e TZ="Asia/Shanghai" \
-    -e DB_DRIVER=org.mariadb.jdbc.Driver \
-    -e DB_URL="jdbc:mariadb://10.99.0.8:3306/kuboard?&timezone=Asia/Shanghai" \
-    -e DB_USERNAME=kuboard \
-    -e DB_PASSWORD=Kuboard123 \
-    -v ./kuboard-log:/app/logs \
-    swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
-    # eipwork/kuboard:v4
-  ```
-
-- With OpenGauss:
-
-  ```sh
-  docker run -d \
-    --restart=unless-stopped \
-    --name=kuboard \
-    -p 80:80/tcp \
-    -e TZ="Asia/Shanghai" \
-    -e DB_DRIVER=org.postgresql.Driver \
-    -e DB_URL="jdbc:postgresql://10.99.0.8:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8" \
-    -e DB_USERNAME=kuboard \
-    -e DB_PASSWORD=Kuboard123 \
-    -v ./kuboard-log:/app/logs \
-    swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
-    # eipwork/kuboard:v4
-  ```
+  </template>
+</KbTabs>
 
 ::: tip Parameter reference
 

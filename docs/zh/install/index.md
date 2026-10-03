@@ -40,98 +40,125 @@ Kuboard v4 需要使用数据库作为存储，支持的数据库类型有：
 
 您也可以参考 [快速开始](./quickstart.md) 使用 docker compose 迅速拉起一个 Kuboard 实例用于测试。
 
-## 准备数据库
+## 准备并启动 Kuboard
 
-### MySQL/MariaDB
+按你使用的数据库类型选择页签，每个页签内包含「准备数据库」与「启动 Kuboard」两步：
 
-- 在 MySQL（或者 MariaDB）中创建数据库，建库脚本如下：
+<KbTabs :tabs="['MySQL', 'MariaDB', 'OpenGauss']">
+  <template #mysql>
 
-  ```sql
-  CREATE DATABASE kuboard DEFAULT CHARACTER SET = 'utf8mb4' DEFAULT COLLATE = 'utf8mb4_unicode_ci';
-  create user 'kuboard'@'%' identified by 'Kuboard123';
-  grant all privileges on kuboard.* to 'kuboard'@'%';
-  FLUSH PRIVILEGES;
-  ```
+### 准备数据库
 
-### OpenGauss
+在 MySQL 中创建数据库与用户，建库脚本如下：
 
-- 在 OpenGauss 命令行中创建数据库，建库脚本如下：
+```sql
+CREATE DATABASE kuboard DEFAULT CHARACTER SET = 'utf8mb4' DEFAULT COLLATE = 'utf8mb4_unicode_ci';
+create user 'kuboard'@'%' identified by 'Kuboard123';
+grant all privileges on kuboard.* to 'kuboard'@'%';
+FLUSH PRIVILEGES;
+```
 
-  ```sql
-  CREATE USER kuboard PASSWORD 'Kuboard123';
-  CREATE DATABASE kuboard OWNER=kuboard ENCODING='UTF8' DBCOMPATIBILITY='PG';
-  \c kuboard
-  CREATE SCHEMA kuboard AUTHORIZATION kuboard;
-  ```
+### 启动 Kuboard
 
-  > 如果使用 OpenGauss 数据库，Kuboard 将使用 postgre SQL 语法操作数据库
+使用 `docker run` 启动 Kuboard 容器：
 
-## 启动 Kuboard
+```sh
+docker run -d \
+  --restart=unless-stopped \
+  --name=kuboard \
+  -p 80:80/tcp \
+  -e TZ="Asia/Shanghai" \
+  -e DB_DRIVER=com.mysql.cj.jdbc.Driver \
+  -e DB_URL="jdbc:mysql://10.99.0.8:3306/kuboard?serverTimezone=Asia/Shanghai" \
+  -e DB_USERNAME=kuboard \
+  -e DB_PASSWORD=Kuboard123 \
+  -v ./kuboard-log:/app/logs \
+  swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
+  # eipwork/kuboard:v4
+```
 
-- 使用 `docker run` 启动 Kuboard 容器：
+  </template>
+  <template #mariadb>
 
-  - 使用 MYSQL 时，启动 Kuboard 的脚本如下：
+### 准备数据库
 
-    ```sh
-    docker run -d \
-      --restart=unless-stopped \
-      --name=kuboard \
-      -p 80:80/tcp \
-      -e TZ="Asia/Shanghai" \
-      -e DB_DRIVER=com.mysql.cj.jdbc.Driver \
-      -e DB_URL="jdbc:mysql://10.99.0.8:3306/kuboard?serverTimezone=Asia/Shanghai" \
-      -e DB_USERNAME=kuboard \
-      -e DB_PASSWORD=Kuboard123 \
-      -v ./kuboard-log:/app/logs \
-      swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
-      # eipwork/kuboard:v4
-    ```
+在 MariaDB 中创建数据库与用户，建库脚本如下（与 MySQL 相同）：
 
-  - 使用 MariaDB 时，启动 Kuboard 的脚本如下：
+```sql
+CREATE DATABASE kuboard DEFAULT CHARACTER SET = 'utf8mb4' DEFAULT COLLATE = 'utf8mb4_unicode_ci';
+create user 'kuboard'@'%' identified by 'Kuboard123';
+grant all privileges on kuboard.* to 'kuboard'@'%';
+FLUSH PRIVILEGES;
+```
 
-    ```sh
-    docker run -d \
-      --restart=unless-stopped \
-      --name=kuboard \
-      -p 80:80/tcp \
-      -e TZ="Asia/Shanghai" \
-      -e DB_DRIVER=org.mariadb.jdbc.Driver \
-      -e DB_URL="jdbc:mariadb://10.99.0.8:3306/kuboard?&timezone=Asia/Shanghai" \
-      -e DB_USERNAME=kuboard \
-      -e DB_PASSWORD=Kuboard123 \
-      -v ./kuboard-log:/app/logs \
-      swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
-      # eipwork/kuboard:v4
-    ```
+### 启动 Kuboard
 
-  - 使用 OpenGauss 时，启动 Kuboard 的脚本如下：
+使用 `docker run` 启动 Kuboard 容器：
 
-    ```sh
-    docker run -d \
-      --restart=unless-stopped \
-      --name=kuboard \
-      -p 80:80/tcp \
-      -e TZ="Asia/Shanghai" \
-      -e DB_DRIVER=org.postgresql.Driver \
-      -e DB_URL="jdbc:postgresql://10.99.0.8:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8" \
-      -e DB_USERNAME=kuboard \
-      -e DB_PASSWORD=Kuboard123 \
-      -v ./kuboard-log:/app/logs \
-      swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
-      # eipwork/kuboard:v4
-    ```
+```sh
+docker run -d \
+  --restart=unless-stopped \
+  --name=kuboard \
+  -p 80:80/tcp \
+  -e TZ="Asia/Shanghai" \
+  -e DB_DRIVER=org.mariadb.jdbc.Driver \
+  -e DB_URL="jdbc:mariadb://10.99.0.8:3306/kuboard?&timezone=Asia/Shanghai" \
+  -e DB_USERNAME=kuboard \
+  -e DB_PASSWORD=Kuboard123 \
+  -v ./kuboard-log:/app/logs \
+  swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
+  # eipwork/kuboard:v4
+```
 
-  ::: tip 参数说明
+  </template>
+  <template #opengauss>
 
-  - 环境变量 `TZ` 指定 JDK 的时区；
-  - 环境变量 `DB_DRIVER` 指定数据库驱动类，可选值有三个：
-    - `com.mysql.cj.jdbc.Driver`
-    - `org.mariadb.jdbc.Driver`
-    - `org.postgresql.Driver`
-  - 环境变量 `DB_URL` 指定 JDBC 连接 url，参数中的主机地址不用写 `localhost`，应该直接指定数据库的 IP 地址，例如，样例中使用了数据库的 IP 地址 `10.99.0.8`；JDBC 连接 url 应与前一个步骤中创建的数据库相匹配；通常，您只需替换样例中的 IP 地址以及端口号即可；
-  - 环境变量 `DB_USERNAME` 指定数据库用户，应该与前一个步骤中创建的数据库用户名相同；
-  - 环境变量 `DB_PASSWORD` 指定数据库密码，应该与前一个步骤中创建的数据库密码相同；
-    :::
+### 准备数据库
+
+在 OpenGauss 命令行中创建数据库，建库脚本如下：
+
+```sql
+CREATE USER kuboard PASSWORD 'Kuboard123';
+CREATE DATABASE kuboard OWNER=kuboard ENCODING='UTF8' DBCOMPATIBILITY='PG';
+\c kuboard
+CREATE SCHEMA kuboard AUTHORIZATION kuboard;
+```
+
+> 如果使用 OpenGauss 数据库，Kuboard 将使用 postgre SQL 语法操作数据库
+
+### 启动 Kuboard
+
+使用 `docker run` 启动 Kuboard 容器：
+
+```sh
+docker run -d \
+  --restart=unless-stopped \
+  --name=kuboard \
+  -p 80:80/tcp \
+  -e TZ="Asia/Shanghai" \
+  -e DB_DRIVER=org.postgresql.Driver \
+  -e DB_URL="jdbc:postgresql://10.99.0.8:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8" \
+  -e DB_USERNAME=kuboard \
+  -e DB_PASSWORD=Kuboard123 \
+  -v ./kuboard-log:/app/logs \
+  swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard:v4
+  # eipwork/kuboard:v4
+```
+
+  </template>
+</KbTabs>
+
+::: tip 参数说明
+
+- 环境变量 `TZ` 指定 JDK 的时区；
+- 环境变量 `DB_DRIVER` 指定数据库驱动类，可选值有三个：
+  - `com.mysql.cj.jdbc.Driver`
+  - `org.mariadb.jdbc.Driver`
+  - `org.postgresql.Driver`
+- 环境变量 `DB_URL` 指定 JDBC 连接 url，参数中的主机地址不用写 `localhost`，应该直接指定数据库的 IP 地址，例如，样例中使用了数据库的 IP 地址 `10.99.0.8`；JDBC 连接 url 应与前一个步骤中创建的数据库相匹配；通常，您只需替换样例中的 IP 地址以及端口号即可；
+- 环境变量 `DB_USERNAME` 指定数据库用户，应该与前一个步骤中创建的数据库用户名相同；
+- 环境变量 `DB_PASSWORD` 指定数据库密码，应该与前一个步骤中创建的数据库密码相同；
+  :::
 
 ## 打开 Kuboard 界面
 
