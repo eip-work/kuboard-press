@@ -60,12 +60,13 @@ const zhSidebar = {
     ]},
   ],
   '/zh/guide/': [
+    { text: '使用指南', link: '/zh/guide/' },
     { text: '界面共性', items: [
       { text: '资源列表页', link: '/zh/guide/ui/object-list' },
       { text: '资源详情页', link: '/zh/guide/ui/object-detail' },
     ]},
     { text: '集群管理', items: [
-      { text: '总览', link: '/zh/guide/' },
+      { text: '总览', link: '/zh/guide/cluster/' },
       { text: '导入集群', link: '/zh/guide/cluster/import' },
       { text: '编辑集群', link: '/zh/guide/cluster/edit' },
       { text: '同步状态', link: '/zh/guide/cluster/sync-status' },
@@ -82,18 +83,22 @@ const zhSidebar = {
       { text: '持续部署（CD）', link: '/zh/guide/workload/cd' },
     ]},
     { text: '配置与存储', items: [
+      { text: '总览', link: '/zh/guide/config-storage/' },
       { text: 'ConfigMap / Secret', link: '/zh/guide/config-storage/configmaps-secrets' },
       { text: 'PVC / PV / StorageClass', link: '/zh/guide/config-storage/pvc-pv-storageclass' },
       { text: 'VolumeSnapshot / CSI', link: '/zh/guide/config-storage/snapshots-csi' },
     ]},
     { text: '服务与网络', items: [
+      { text: '总览', link: '/zh/guide/network/' },
       { text: 'Service / Ingress', link: '/zh/guide/network/services-ingress' },
       { text: 'NetworkPolicy', link: '/zh/guide/network/networkpolicy' },
       { text: 'Gateway API', link: '/zh/guide/network/gateway-api' },
     ]},
     { text: '集群资源', items: [
+      { text: '总览', link: '/zh/guide/cluster-resources/' },
       { text: 'Node', link: '/zh/guide/cluster-resources/nodes' },
       { text: 'Namespace', link: '/zh/guide/cluster-resources/namespaces' },
+      { text: '集群 RBAC', link: '/zh/guide/cluster-resources/rbac' },
       { text: 'ResourceQuota / LimitRange', link: '/zh/guide/cluster-resources/quota-limitrange' },
       { text: '调度 / PDB / Lease / RuntimeClass', link: '/zh/guide/cluster-resources/scheduling' },
       { text: 'Admission Webhook', link: '/zh/guide/cluster-resources/admission' },
@@ -101,10 +106,12 @@ const zhSidebar = {
       { text: 'DRA 动态资源分配', link: '/zh/guide/cluster-resources/dra' },
     ]},
     { text: '自定义资源', items: [
+      { text: '总览', link: '/zh/guide/crd/' },
       { text: 'CRD', link: '/zh/guide/crd/crds' },
       { text: '自定义资源实例', link: '/zh/guide/crd/custom-resources' },
     ]},
     { text: '运维可视化', items: [
+      { text: '总览', link: '/zh/guide/ops/' },
       { text: '事件', link: '/zh/guide/ops/events' },
       { text: '资源全景图', link: '/zh/guide/ops/resource-map' },
       { text: '套件市场', link: '/zh/guide/ops/addon-marketplace' },
@@ -128,6 +135,7 @@ const zhSidebar = {
       { text: '访问密钥', link: '/zh/user/access-keys' },
     ]},
     { text: '组织与权限', items: [
+      { text: '授权用户访问集群名称空间', link: '/zh/user/grant-cluster-namespace-access' },
       { text: '用户管理', link: '/zh/user/users' },
       { text: '用户组', link: '/zh/user/groups' },
       { text: '角色与权限', link: '/zh/user/roles' },
@@ -197,6 +205,7 @@ const zhSidebar = {
   // 由 docker/nginx.conf rewrite 到 /install/reverse-proxy 兼容。
   '/zh/changelog/': [
     { text: '更新日志', items: [
+      { text: '总览', link: '/zh/changelog/' },
       { text: 'V4.x 更新日志', link: '/zh/changelog/v4.x' },
     ]},
   ],
@@ -210,12 +219,13 @@ const zhSidebar = {
 }
 
 const enGuideSidebar = [
+  { text: 'Guide Overview', link: '/en/guide/' },
   { text: 'UI Commonalities', items: [
     { text: 'Resource List Pages', link: '/en/guide/ui/object-list' },
     { text: 'Resource Detail Pages', link: '/en/guide/ui/object-detail' },
   ]},
   { text: 'Cluster', items: [
-    { text: 'Overview', link: '/en/guide/' },
+    { text: 'Overview', link: '/en/guide/cluster/' },
     { text: 'Import Cluster', link: '/en/guide/cluster/import' },
     { text: 'Edit Cluster', link: '/en/guide/cluster/edit' },
     { text: 'Sync Status', link: '/en/guide/cluster/sync-status' },
@@ -232,18 +242,22 @@ const enGuideSidebar = [
     { text: 'Continuous Deployment', link: '/en/guide/workload/cd' },
   ]},
   { text: 'Config & Storage', items: [
+    { text: 'Overview', link: '/en/guide/config-storage/' },
     { text: 'ConfigMap / Secret', link: '/en/guide/config-storage/configmaps-secrets' },
     { text: 'PVC / PV / StorageClass', link: '/en/guide/config-storage/pvc-pv-storageclass' },
     { text: 'VolumeSnapshot / CSI', link: '/en/guide/config-storage/snapshots-csi' },
   ]},
   { text: 'Networking', items: [
+    { text: 'Overview', link: '/en/guide/network/' },
     { text: 'Service / Ingress', link: '/en/guide/network/services-ingress' },
     { text: 'NetworkPolicy', link: '/en/guide/network/networkpolicy' },
     { text: 'Gateway API', link: '/en/guide/network/gateway-api' },
   ]},
   { text: 'Cluster Resources', items: [
+    { text: 'Overview', link: '/en/guide/cluster-resources/' },
     { text: 'Node', link: '/en/guide/cluster-resources/nodes' },
     { text: 'Namespace', link: '/en/guide/cluster-resources/namespaces' },
+    { text: 'Kubernetes RBAC', link: '/en/guide/cluster-resources/rbac' },
     { text: 'Quota / LimitRange', link: '/en/guide/cluster-resources/quota-limitrange' },
     { text: 'Scheduling / PDB / Lease / RuntimeClass', link: '/en/guide/cluster-resources/scheduling' },
     { text: 'Admission Webhook', link: '/en/guide/cluster-resources/admission' },
@@ -251,10 +265,12 @@ const enGuideSidebar = [
     { text: 'DRA', link: '/en/guide/cluster-resources/dra' },
   ]},
   { text: 'Custom Resources', items: [
+    { text: 'Overview', link: '/en/guide/crd/' },
     { text: 'CRDs', link: '/en/guide/crd/crds' },
     { text: 'Custom Resources', link: '/en/guide/crd/custom-resources' },
   ]},
   { text: 'Operations', items: [
+    { text: 'Overview', link: '/en/guide/ops/' },
     { text: 'Events', link: '/en/guide/ops/events' },
     { text: 'Resource Map', link: '/en/guide/ops/resource-map' },
     { text: 'Addon Marketplace', link: '/en/guide/ops/addon-marketplace' },
@@ -297,6 +313,7 @@ const enSidebar = {
       { text: 'Access Keys', link: '/en/user/access-keys' },
     ]},
     { text: 'Org & Permissions', items: [
+      { text: 'Grant User Access to Cluster & Namespace', link: '/en/user/grant-cluster-namespace-access' },
       { text: 'Users', link: '/en/user/users' },
       { text: 'Groups', link: '/en/user/groups' },
       { text: 'Roles', link: '/en/user/roles' },
@@ -366,6 +383,7 @@ const enSidebar = {
   // 由 docker/nginx.conf rewrite 到 /en/install/reverse-proxy 兼容。
   '/en/changelog/': [
     { text: 'Changelog', items: [
+      { text: 'Overview', link: '/en/changelog/' },
       { text: 'V4.x Changelog', link: '/en/changelog/v4.x' },
     ]},
   ],
