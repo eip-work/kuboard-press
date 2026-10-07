@@ -218,7 +218,7 @@ Kuboard writes system configuration using the "insert a new version + current fl
 
 ## Official HA Orchestration Examples
 
-### Redis Cluster + OpenGauss + Nginx (docker-compose-ha-opengauss.yaml)
+### Redis Cluster + OpenGauss + Nginx (docker-compose-ha-opengauss.yaml) {#redis-cluster-opengauss-nginx-docker-compose-ha-opengaussyaml}
 
 The Redis cluster part (6 nodes, 3 masters and 3 replicas, password auth + AOF persistence):
 
@@ -270,10 +270,20 @@ requirepass Kuboard123
 masterauth Kuboard123
 ```
 
-The Nginx load balancer part (including the kuboard reverse proxy and WebSocket upgrades for cluster APIs):
+The Nginx load balancer part (including the kuboard reverse proxy, IP affinity, full WebSocket path coverage, and reasonable timeouts):
 
 ```nginx
+# http -> upstream WS upgrade mapping
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
 upstream kuboard_backend {
+  # HA multi-replica: ip_hash pins the same client to a fixed upstream,
+  # avoiding WebSocket / SSE long connections being round-robined across replicas.
+  # Best paired with kuboard-server's P2-5a log reconnect.
+  ip_hash;
   server kuboard-1:80;
   server kuboard-2:80;
 }
@@ -282,24 +292,69 @@ server {
   listen 80;
   server_name localhost;
 
+  gzip on;
+  gzip_min_length 1k;
+  gzip_buffers 4 16k;
+  gzip_comp_level 9;
+  gzip_types text/plain application/json application/javascript application/x-javascript text/css application/xml text/javascript;
+  gzip_vary on;
+
+  keepalive_timeout 65;
+
+  # Common proxy headers (reused by every location)
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $connection_upgrade;
+  # K8s watch / log stream / terminal / MCP SSE can all persist for hours.
+  # 24h timeout covers the vast majority of use cases.
+  proxy_read_timeout 86400;
+  proxy_send_timeout 86400;
+  client_max_body_size 10m;
+
+  # Frontend SPA
   location / {
     proxy_pass http://kuboard_backend;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
   }
 
-  location /api/k8s.kuboard.cn/v4/clusters/ {
+  # K8s API proxy (including WebSocket watch)
+  location /api/k8s.kuboard.cn/ {
     proxy_pass http://kuboard_backend;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_read_timeout 86400;
+  }
+  location /k8s-api/ {
+    proxy_pass http://kuboard_backend;
+  }
+  location /k8s-proxy/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # Terminal / log / attach / port-forward (WebSocket)
+  location /k8s-ws/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # MCP server endpoints (Streamable HTTP + SSE push)
+  location /mcp {
+    proxy_pass http://kuboard_backend;
+  }
+  location /mcp/ {
+    proxy_pass http://kuboard_backend;
+  }
+  location /mcp/message {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # MCP resource subscription SSE push
+  location /mcp-subscriptions/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # Remaining /api/ paths
+  location /api/ {
+    proxy_pass http://kuboard_backend;
   }
 }
 ```
@@ -319,6 +374,13 @@ services:
     networks:
       kuboard_v4_ha_opengauss:
 ```
+
+::: tip Critical configuration for the HA reverse proxy
+- **`ip_hash`**: a must-have for HA multi-replica. The default round-robin randomly switches WebSocket / SSE long connections between the two replicas, which causes the log stream, terminal, and MCP SSE push to disconnect repeatedly. `ip_hash` pins the same client to a fixed upstream so that the long connection stays on the same replica and avoids random disconnects caused by round-robin;
+- **Full WebSocket path coverage**: Kuboard's terminal uses `/k8s-ws/`, K8s watch uses `/k8s-api/` and `/api/k8s.kuboard.cn/`, and MCP SSE uses `/mcp` and `/mcp-subscriptions/`. The original official orchestration only configured the WebSocket upgrade on `/api/k8s.kuboard.cn/v4/clusters/`, which breaks terminal and log features in HA. You must cover all paths as shown in the snippet above;
+- **Timeouts**: WebSocket long connections can last for hours, and the default 60s `proxy_read_timeout` / `proxy_send_timeout` will cut the stream off. Set both to 86400s (24h) globally;
+- **P2-5a log reconnect**: in HA mode, when `ip_hash` is configured, kuboard-server keeps the vast majority of WebSocket / log streams connected across a rolling restart of a replica (a client pinned to the still-alive replica does not get disconnected). If a replica still goes down (for example, `ip_hash` is unavailable), the `K8sTerminalLogs` view already implements exponential backoff reconnect (1s → 30s, capped at 8 attempts) and restores log lines produced during the outage from a Redis stream buffer (5-minute window). See [Reverse Proxy](./reverse-proxy) and the source code comments for details.
+:::
 
 ### Redis Standalone + MySQL (docker-compose-mysql-redis.yaml)
 

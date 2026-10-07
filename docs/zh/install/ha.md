@@ -218,7 +218,7 @@ Kuboard 的系统配置写入采用"新版本插入 + current 标记"方式（�
 
 ## 官方 HA 编排示例
 
-### Redis Cluster + OpenGauss + Nginx（docker-compose-ha-opengauss.yaml）
+### Redis Cluster + OpenGauss + Nginx（docker-compose-ha-opengauss.yaml） {#redis-cluster-opengauss-nginx-docker-compose-ha-opengaussyaml}
 
 Redis 集群部分（6 节点 3 主 3 从，密码鉴权 + AOF 持久化）：
 
@@ -270,10 +270,20 @@ requirepass Kuboard123
 masterauth Kuboard123
 ```
 
-Nginx 负载均衡部分（含 kuboard 反向代理与集群 API 的 WebSocket 升级）：
+Nginx 负载均衡部分（含 kuboard 反向代理、IP 粘性、全路径 WebSocket 升级与合理超时）：
 
 ```nginx
+# http -> upstream WS upgrade 映射
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
 upstream kuboard_backend {
+  # HA 多副本：ip_hash 把同一客户端粘性到固定后端，
+  # 避免 WebSocket / SSE 长连接在两个实例之间被轮询切换。
+  # 配合 kuboard-server P2-5a 日志断线重连效果最佳。
+  ip_hash;
   server kuboard-1:80;
   server kuboard-2:80;
 }
@@ -282,24 +292,68 @@ server {
   listen 80;
   server_name localhost;
 
+  gzip on;
+  gzip_min_length 1k;
+  gzip_buffers 4 16k;
+  gzip_comp_level 9;
+  gzip_types text/plain application/json application/javascript application/x-javascript text/css application/xml text/javascript;
+  gzip_vary on;
+
+  keepalive_timeout 65;
+
+  # 通用代理头（被各 location 复用）
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $connection_upgrade;
+  # K8s watch / 日志流 / 终端 / MCP SSE 都可能持续数小时；24h 超时覆盖绝大多数场景
+  proxy_read_timeout 86400;
+  proxy_send_timeout 86400;
+  client_max_body_size 10m;
+
+  # 前端 SPA
   location / {
     proxy_pass http://kuboard_backend;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
   }
 
-  location /api/k8s.kuboard.cn/v4/clusters/ {
+  # K8s API 代理（包含 WebSocket watch）
+  location /api/k8s.kuboard.cn/ {
     proxy_pass http://kuboard_backend;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_read_timeout 86400;
+  }
+  location /k8s-api/ {
+    proxy_pass http://kuboard_backend;
+  }
+  location /k8s-proxy/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # 终端 / 日志 / attach / port-forward（WebSocket）
+  location /k8s-ws/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # MCP server 端点（Streamable HTTP + SSE 推送）
+  location /mcp {
+    proxy_pass http://kuboard_backend;
+  }
+  location /mcp/ {
+    proxy_pass http://kuboard_backend;
+  }
+  location /mcp/message {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # MCP 资源订阅 SSE 推送
+  location /mcp-subscriptions/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # 其余 /api/ 路径
+  location /api/ {
+    proxy_pass http://kuboard_backend;
   }
 }
 ```
@@ -319,6 +373,13 @@ services:
     networks:
       kuboard_v4_ha_opengauss:
 ```
+
+::: tip HA 反向代理的关键配置
+- **`ip_hash`**：HA 多副本的必备配置。轮询（默认）会让 WebSocket / SSE 长连接在两个副本之间被随机切换，导致日志流、终端、MCP SSE 推送频繁中断。`ip_hash` 把同一客户端粘性到固定后端，避免轮询引发的掉线；
+- **全路径 WebSocket 升级**：Kuboard 的终端走 `/k8s-ws/`，K8s watch 走 `/k8s-api/` 与 `/api/k8s.kuboard.cn/`，MCP SSE 走 `/mcp` 与 `/mcp-subscriptions/`。原官方编排仅配置 `/api/k8s.kuboard.cn/v4/clusters/` 一条 WS 路径，会导致终端与日志功能不可用——必须按上方样例把全部路径补齐；
+- **超时**：WebSocket 长连接可达小时级，`proxy_read_timeout` / `proxy_send_timeout` 默认 60s 会导致流被截断。建议全局设 86400s（24h）覆盖日常使用；
+- **P2-5a 日志断线重连**：kuboard-server 在 HA 模式下配合 `ip_hash` 即可让绝大多数 WebSocket / 日志流在副本滚动重启时不掉线（同一客户端固定到固定后端）。如果副本仍掉线（如 `ip_hash` 不可用），`K8sTerminalLogs` 视图已内置指数退避重连（1s → 30s，封顶 8 次）并通过 Redis stream buffer 恢复断线期间产生的日志（5min 窗口）。详见 [反向代理](./reverse-proxy) 与代码注释。
+:::
 
 ### Redis Standalone + MySQL（docker-compose-mysql-redis.yaml）
 

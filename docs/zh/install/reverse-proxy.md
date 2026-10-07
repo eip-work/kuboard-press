@@ -80,10 +80,39 @@ spec:
 
 - `nginx.org/websocket-services` 与 `nginx.org/proxy-pass-headers` 两个注解用于开启 WebSocket 与透传认证头（如需会话保持或显示名，可自行补充 `nginx.com/sticky-cookie-services`、`k8s.kuboard.cn/displayName` 注解）。
 
+## HA 多副本：粘性会话与 WebSocket 路径覆盖
+
+本页样例面向单机部署；如果你使用 Kuboard 的 [高可用部署](./ha)（多副本 + 负载均衡器），反向代理需要做三处额外调整，否则终端、日志、MCP SSE 等长连接功能会频繁断开：
+
+1. **`upstream` 加 `ip_hash`**：默认轮询会在两个副本之间随机切换 WebSocket / SSE 长连接，导致日志流、终端、MCP SSE 推送频繁中断。`ip_hash` 把同一客户端粘性到固定后端，配合 [kuboard-server P2-5a 日志断线重连](./ha) 即可在大多数副本滚动重启时不掉线：
+
+   ```nginx
+   upstream kuboard_backend {
+     ip_hash;
+     server kuboard-1:80;
+     server kuboard-2:80;
+   }
+   ```
+
+   Kubernetes Ingress 场景使用 `nginx.com/sticky-cookie-services` 或 nginx-ingress 内置的 session affinity（`nginx.org/affinity: cookie` + `nginx.org/affinity-cookie-name: SERVERID`）即可达到同样效果。
+
+2. **WebSocket 升级覆盖全路径**：Kuboard 的终端走 `/k8s-ws/`，K8s watch 走 `/k8s-api/` 与 `/api/k8s.kuboard.cn/`，MCP SSE 走 `/mcp` 与 `/mcp-subscriptions/`。原官方 HA 编排仅在 `/api/k8s.kuboard.cn/v4/clusters/` 上配了 WebSocket 升级，导致 HA 下终端与日志功能不可用。请参考 [高可用部署文档的 Nginx 完整样例](./ha#redis-cluster-opengauss-nginx-docker-compose-ha-opengaussyaml) 补齐全部路径。
+
+3. **合理超时**：WebSocket 长连接可达数小时（K8s watch 持续推送、日志流持续输出），`proxy_read_timeout` 与 `proxy_send_timeout` 默认 60s 会把流截断。建议全局设置 86400s（24h）覆盖日常使用：
+
+   ```nginx
+   proxy_read_timeout 86400;
+   proxy_send_timeout 86400;
+   ```
+
+::: tip 关于 P2-5a 日志断线重连
+当 `ip_hash` 不可用或后端副本确实掉线时（例如 nginx 重载、`ip_hash` hash key 不稳），kuboard-server 的 `K8sTerminalLogs` 视图会自动以指数退避（1s → 30s，封顶 8 次）重连 WebSocket，并通过 Redis stream buffer（TTL 5min）恢复断线期间产生的日志。该能力在 `KUBOARD_CACHE_PROVIDER=redis` 的 HA 模式下生效；caffeine 单机模式下由于没有跨实例需求，缓冲退化为 noop，重连后仅能读到重连点之后的日志。
+:::
+
 ## 相关文档
 
 - [快速开始](./quickstart) — 单机部署
-- [高可用部署](./ha) — 多副本部署与负载均衡
+- [高可用部署](./ha) — 多副本部署与负载均衡（含完整 nginx 样例）
 - [安装索引](./index) — 其他部署场景
 - [升级](./upgrade) — 版本升级与数据备份
 - [从 v3 迁移](./migration-from-v3) — v3 到 v4 的迁移说明
