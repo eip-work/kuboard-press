@@ -16,7 +16,7 @@ Kubernetes 的 **RBAC（Role-Based Access Control）** 对象在集群内定义�
 **主体（subject）**可以是用户（User）、用户组（Group）或服务账号（ServiceAccount）；绑定后，apiserver 依据角色规则（`apiGroups` / `resources` / `verbs`）授权。Kuboard 对这四类对象提供完整的列表 / 详情 / 创建 / 编辑 / 删除能力。
 
 ::: tip 与 Kuboard 自建授权模型的区别
-本菜单管理的是 **K8s 集群内的访问控制**，与 Kuboard 平台自建的授权（用户 → 用户组 → 角色 → 绑定作用域，见 [授权作用域](../reference/rbac-scopes)）**完全独立**：平台授权控制「谁能登录 Kuboard、能看到哪些集群 / 名称空间」，K8s RBAC 控制「用户在集群里能对资源做什么」。两者通常配合使用。
+本菜单管理的是 **K8s 集群内的访问控制**，与 Kuboard 平台自建的授权（用户 → 用户组 → 角色 → 绑定作用域，见 [授权作用域](../../reference/rbac-scopes)）**完全独立**：平台授权控制「谁能登录 Kuboard、能看到哪些集群 / 名称空间」，K8s RBAC 控制「用户在集群里能对资源做什么」。两者通常配合使用。
 :::
 
 ## 入口
@@ -92,5 +92,5 @@ kubectl auth can-i --as=alice list deployments -n dev
 
 ## 相关页面
 
-- [授权作用域（Kuboard 平台授权）](../reference/rbac-scopes)：与 K8s RBAC 的区别与配合
+- [授权作用域（Kuboard 平台授权）](../../reference/rbac-scopes)：与 K8s RBAC 的区别与配合
 - [资源列表页](../ui/object-list) / [资源详情页](../ui/object-detail)：列表与详情的通用操作

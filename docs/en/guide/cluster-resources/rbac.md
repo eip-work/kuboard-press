@@ -16,7 +16,7 @@ Kubernetes **RBAC (Role-Based Access Control)** objects define "who can do what 
 **Subjects** can be a user (User), a group (Group) or a service account (ServiceAccount); after binding, the apiserver authorizes based on the role's rules (`apiGroups` / `resources` / `verbs`). Kuboard provides full list / detail / create / edit / delete for all four.
 
 ::: tip Difference from Kuboard's own authorization model
-This menu manages **access control inside the Kubernetes cluster**, which is **fully independent** from Kuboard's own authorization (user → group → role → binding scope, see [Authorization Scopes](../reference/rbac-scopes)). Platform authorization controls "who can log in to Kuboard and which clusters / namespaces they see"; Kubernetes RBAC controls "what a user can do with cluster resources". The two are usually used together.
+This menu manages **access control inside the Kubernetes cluster**, which is **fully independent** from Kuboard's own authorization (user → group → role → binding scope, see [Authorization Scopes](../../reference/rbac-scopes)). Platform authorization controls "who can log in to Kuboard and which clusters / namespaces they see"; Kubernetes RBAC controls "what a user can do with cluster resources". The two are usually used together.
 :::
 
 ## Entry
@@ -92,5 +92,5 @@ kubectl auth can-i --as=alice list deployments -n dev
 
 ## Related Pages
 
-- [Authorization Scopes (Kuboard platform authorization)](../reference/rbac-scopes): the difference from, and interplay with, Kubernetes RBAC
+- [Authorization Scopes (Kuboard platform authorization)](../../reference/rbac-scopes): the difference from, and interplay with, Kubernetes RBAC
 - [Resource List Pages](../ui/object-list) / [Resource Detail Pages](../ui/object-detail): common operations on lists and details

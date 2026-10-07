@@ -1,5 +1,5 @@
 ---
-description: Step-by-step tutorial for granting a user access to a specific cluster and namespace: create users / groups / roles, bind roles to groups, add users to groups, verify access
+description: "Step-by-step tutorial for granting a user access to a specific cluster and namespace: create users / groups / roles, bind roles to groups, add users to groups, verify access"
 outline: [2, 3]
 ---
 
