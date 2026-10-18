@@ -18,6 +18,7 @@ description: 参考资料总览：环境变量与默认值、端口说明、系�
 | [资源可用性治理](./resource-availability) | 自动探测集群是否安装了某类资源 | 提前拦截不可用资源的创建入口 |
 | [K8s 能力检测](./k8s-capability) | 按集群版本探测可用能力 | 升级集群前评估受影响的功能 |
 | [K8s 版本矩阵](./version-matrix) | 与各 Kubernetes 版本的兼容关系 | 升级前确认可行性 |
+| [全量同步性能基准](./sync-performance) | 大规模集群全量同步的耗时与资源消耗 | 评估大集群部署规模 / 容量规划 |
 | [RBAC 权限作用域](./rbac-scopes) | 三种权限作用域 | 设计角色授权规则 |
 | [API 文档](./api) | Swagger UI 接口文档入口 | 二次开发与自动化集成 |
 | [术语表](./glossary) | 10 个核心术语速查 | 新用户理解文档用词 |
@@ -26,7 +27,7 @@ description: 参考资料总览：环境变量与默认值、端口说明、系�
 
 1. **部署 / 启动阶段**：先看[环境变量](./kuboard-env)；启动异常时按[排障](./kuboard-env#排障)查看日志；浏览器访问哪个端口见[端口说明](../install/quickstart#端口说明)
 2. **运行调优**：通过[系统配置项](./system-config)调整默认行为，用[菜单禁用](./menu-disable)简化终端用户视图
-3. **集群兼容**：升级 Kubernetes 前对照[版本矩阵](./version-matrix)与[能力检测](./k8s-capability)评估影响
+3. **集群兼容**：升级 Kubernetes 前对照[版本矩阵](./version-matrix)与[能力检测](./k8s-capability)评估影响；评估大规模集群部署时可参考[全量同步性能基准](./sync-performance)
 4. **权限设计**：先读[RBAC 权限作用域](./rbac-scopes)再设计角色
 5. **二次开发 / 自动化**：入口见[API 文档](./api)，生词查[术语表](./glossary)
 

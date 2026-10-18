@@ -18,6 +18,7 @@ This section collects system-level configuration, port documentation, version co
 | [Resource Availability](./resource-availability) | Auto-detect whether a resource type is installed in the cluster | Block creation entry points of unavailable resources early |
 | [K8s Capability Detection](./k8s-capability) | Probe available capabilities by cluster version | Assess affected features before a cluster upgrade |
 | [Version Matrix](./version-matrix) | Compatibility with each Kubernetes version | Confirm feasibility before an upgrade |
+| [Full Sync Performance](./sync-performance) | Full-sync duration and resource consumption on a large cluster | Assess large-cluster deployment scale / capacity planning |
 | [RBAC Scopes](./rbac-scopes) | The three permission scopes | Design role authorization rules |
 | [API Documentation](./api) | Swagger UI API entry | Secondary development and automation integration |
 | [Glossary](./glossary) | Quick reference of 10 core terms | New users understand documentation wording |
@@ -26,7 +27,7 @@ This section collects system-level configuration, port documentation, version co
 
 1. **Deployment / startup** — start with [Environment Variables](./kuboard-env); on startup issues, follow [Troubleshooting](./kuboard-env#troubleshooting) to view logs; which port to access in the browser is covered in [Ports](../install/quickstart#ports)
 2. **Runtime tuning** — adjust default behavior through [System Configuration](./system-config), and simplify the end-user view with [Menu Disable](./menu-disable)
-3. **Cluster compatibility** — before upgrading Kubernetes, assess the impact against the [Version Matrix](./version-matrix) and [Capability Detection](./k8s-capability)
+3. **Cluster compatibility** — before upgrading Kubernetes, assess the impact against the [Version Matrix](./version-matrix) and [Capability Detection](./k8s-capability); for large-cluster deployment sizing, refer to [Full Sync Performance](./sync-performance)
 4. **Permission design** — read [RBAC Scopes](./rbac-scopes) before designing roles
 5. **Secondary development / automation** — start from [API Documentation](./api), and look up unfamiliar terms in the [Glossary](./glossary)
 

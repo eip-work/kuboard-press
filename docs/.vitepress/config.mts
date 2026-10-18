@@ -191,6 +191,9 @@ const zhSidebar = {
       { text: 'K8s 版本矩阵', link: '/zh/reference/version-matrix' },
       { text: '资源可用性治理', link: '/zh/reference/resource-availability' },
     ]},
+    { text: '性能与容量', items: [
+      { text: '全量同步性能基准', link: '/zh/reference/sync-performance' },
+    ]},
     { text: '权限与菜单', items: [
       { text: 'RBAC 权限作用域', link: '/zh/reference/rbac-scopes' },
       { text: '菜单禁用', link: '/zh/reference/menu-disable' },
@@ -368,6 +371,9 @@ const enSidebar = {
       { text: 'K8sCapability', link: '/en/reference/k8s-capability' },
       { text: 'Version Matrix', link: '/en/reference/version-matrix' },
       { text: 'Resource Availability', link: '/en/reference/resource-availability' },
+    ]},
+    { text: 'Performance & Capacity', items: [
+      { text: 'Full Sync Performance', link: '/en/reference/sync-performance' },
     ]},
     { text: 'Permissions & Menus', items: [
       { text: 'RBAC Scopes', link: '/en/reference/rbac-scopes' },
