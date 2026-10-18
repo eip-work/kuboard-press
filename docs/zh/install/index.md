@@ -17,6 +17,9 @@ Kuboard v4 相较于 v3 主要差异如下：
 - Kubernetes 版本适配范围：
   - v3 支持 Kubernetes 1.13 - 1.33
   - v4 支持 Kubernetes 1.15 - 1.34（持续跟进 Kubernetes 最新版本）
+- 集群规模
+  - v3 更适合中小规模集群
+  - v4 支持超大规模 Kubernetes 集群，详细基准报告参考 [大规模集群全量同步性能基准](../reference/sync-performance)
 - 用户体验提升
   - Kuboard v4 覆盖 v3 的所有主要功能
   - Kuboard v4 兼容 v3 的主要套件，升级到 V4 时，已安装套件不受影响
