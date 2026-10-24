@@ -164,6 +164,9 @@ const zhSidebar = {
     { text: '总览', items: [
       { text: '总览', link: '/zh/ops/' },
     ]},
+    { text: '平台诊断', items: [
+      { text: '平台健康诊断', link: '/zh/ops/health-diagnostics' },
+    ]},
     { text: '审计', items: [
       { text: '审计日志', link: '/zh/ops/audit-log' },
       { text: '审计策略', link: '/zh/ops/audit-policy' },
@@ -345,6 +348,9 @@ const enSidebar = {
   '/en/ops/': [
     { text: 'Overview', items: [
       { text: 'Overview', link: '/en/ops/' },
+    ]},
+    { text: 'Platform Diagnostics', items: [
+      { text: 'Platform Health', link: '/en/ops/health-diagnostics' },
     ]},
     { text: 'Audit', items: [
       { text: 'Audit Log', link: '/en/ops/audit-log' },
