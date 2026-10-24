@@ -64,6 +64,7 @@ const zhSidebar = {
     { text: '界面共性', items: [
       { text: '资源列表页', link: '/zh/guide/ui/object-list' },
       { text: '资源详情页', link: '/zh/guide/ui/object-detail' },
+      { text: '全局搜索', link: '/zh/guide/ui/global-search' },
     ]},
     { text: '集群管理', items: [
       { text: '总览', link: '/zh/guide/cluster/' },
@@ -226,6 +227,7 @@ const enGuideSidebar = [
   { text: 'UI Commonalities', items: [
     { text: 'Resource List Pages', link: '/en/guide/ui/object-list' },
     { text: 'Resource Detail Pages', link: '/en/guide/ui/object-detail' },
+    { text: 'Global Search', link: '/en/guide/ui/global-search' },
   ]},
   { text: 'Cluster', items: [
     { text: 'Overview', link: '/en/guide/cluster/' },
