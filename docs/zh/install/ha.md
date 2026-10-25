@@ -306,6 +306,11 @@ server {
   proxy_set_header X-Real-IP $remote_addr;
   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   proxy_set_header X-Forwarded-Proto $scheme;
+  # $http_host 保留端口，供 OIDC 回调地址拼装；只用 $host 会丢掉端口，
+  # 导致回调地址与 IdP 中登记的不一致（400 Invalid parameter: redirect_uri）。
+  # proxy_set_header 会覆盖客户端自带的同名头，避免外部伪造。
+  proxy_set_header X-Forwarded-Host $http_host;
+  proxy_set_header X-Forwarded-Port $server_port;
   proxy_http_version 1.1;
   proxy_set_header Upgrade $http_upgrade;
   proxy_set_header Connection $connection_upgrade;
@@ -353,6 +358,13 @@ server {
 
   # 其余 /api/ 路径
   location /api/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # Swagger / OpenAPI 文档（KUBOARD_SWAGGER_ENABLED=true 时需要）
+  # 注意：location 不能带尾斜杠，否则 /v3/api-docs 会被 301 到 /v3/api-docs/，
+  # 完整描述与分组地址（/v3/api-docs/{分组名}）都会失效。
+  location /v3/api-docs {
     proxy_pass http://kuboard_backend;
   }
 }

@@ -306,6 +306,12 @@ server {
   proxy_set_header X-Real-IP $remote_addr;
   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   proxy_set_header X-Forwarded-Proto $scheme;
+  # $http_host keeps the port, needed to build the OIDC callback URL; $host alone
+  # drops it, so the callback URL no longer matches the one registered with the IdP
+  # (400 Invalid parameter: redirect_uri). proxy_set_header also overrides any
+  # client-supplied header of the same name, preventing spoofing.
+  proxy_set_header X-Forwarded-Host $http_host;
+  proxy_set_header X-Forwarded-Port $server_port;
   proxy_http_version 1.1;
   proxy_set_header Upgrade $http_upgrade;
   proxy_set_header Connection $connection_upgrade;
@@ -354,6 +360,14 @@ server {
 
   # Remaining /api/ paths
   location /api/ {
+    proxy_pass http://kuboard_backend;
+  }
+
+  # Swagger / OpenAPI docs (needed when KUBOARD_SWAGGER_ENABLED=true)
+  # Note: the location must NOT end with a slash, otherwise /v3/api-docs is
+  # 301-redirected to /v3/api-docs/ and both the complete description and the
+  # per-group paths (/v3/api-docs/{group-name}) break.
+  location /v3/api-docs {
     proxy_pass http://kuboard_backend;
   }
 }

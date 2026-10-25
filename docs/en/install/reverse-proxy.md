@@ -10,14 +10,15 @@ Configure HTTPS and WebSocket for Kuboard (via an Nginx reverse proxy or a Kuber
 
 Kuboard uses plain HTTP by default so that you can try it out quickly. In production, make sure HTTPS is enabled. You can either enable HTTPS directly on a Kubernetes Ingress and forward traffic to the Kuboard Service, or set up your own Nginx in front of Kuboard and configure HTTPS on it.
 
-## Two Things to Note
+## Three Things to Note
 
 - **WebContextRoot (root path)**: Kuboard must be served from the root path, e.g. `https://kuboard.yourcompany.com/`; sub-paths such as `https://yourcompany.com/kuboard/` are not supported.
 - **WebSocket must be enabled**: the terminal and log features rely on WebSocket, so the reverse proxy must allow WebSocket upgrade requests, otherwise the terminal and logs will not work.
+- **Forward `X-Forwarded-Host`**: when [OIDC single sign-on](../user/oidc) is enabled, the backend builds the callback URL from the `X-Forwarded-Proto` / `X-Forwarded-Host` headers. `X-Forwarded-Host` must be set from `$http_host` (which keeps the port); setting only `Host $host` drops the port, so the callback URL no longer matches the one registered with the IdP, which then rejects the login with `Invalid parameter: redirect_uri`. The directive is harmless when OIDC is off, so it is best added unconditionally.
 
 ## Nginx Configuration Example
 
-When using Nginx as the reverse proxy, replace the two addresses marked in the comments with your domain and Kuboard node address, then use it directly; if HTTPS is enabled on Nginx, also uncomment the `# proxy_set_header X-Forwarded-Proto https;` line in both `location` blocks.
+When using Nginx as the reverse proxy, replace the two addresses marked in the comments with your domain and Kuboard node address, then use it directly; if HTTPS is enabled on Nginx, also uncomment the `# proxy_set_header X-Forwarded-Proto https;` line in the `location` blocks.
 
 ```nginx
 server {
@@ -30,6 +31,9 @@ server {
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # $http_host keeps the port, needed to build the OIDC callback URL; $host alone drops it
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
     # proxy_set_header X-Forwarded-Proto https; # enable this if you have enabled HTTPS on the reverse proxy
   }
   location /k8s-ws/ {
@@ -41,11 +45,32 @@ server {
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    # proxy_set_header X-Forwarded-Proto https; # enable this if you have enabled HTTPS on the reverse proxy
+  }
+  # Swagger / OpenAPI docs (needed when KUBOARD_SWAGGER_ENABLED=true)
+  # Note: the location must NOT end with a slash. With /v3/api-docs/ nginx
+  # redirects /v3/api-docs to /v3/api-docs/ with a 301, breaking both the
+  # un-suffixed path and the per-group paths.
+  location /v3/api-docs {
+    proxy_pass  http://192.168.2.39:32567;  # replace with your node address
+    proxy_http_version 1.1;
+    proxy_pass_header Authorization;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
     # proxy_set_header X-Forwarded-Proto https; # enable this if you have enabled HTTPS on the reverse proxy
   }
   gzip on;
 }
 ```
+
+::: tip OpenAPI document URLs
+Once `/v3/api-docs` is proxied, both `/v3/api-docs` (the complete description) and `/v3/api-docs/{group-name}` (a single group, e.g. `/v3/api-docs/cluster.kuboard.cn`) are reachable from the browser; see [API Reference](../reference/api) for the list of group names. Swagger UI additionally needs the `/swagger/` path — add another `location /swagger/` block in the same way if you need it.
+:::
 
 ## Ingress Configuration Example
 

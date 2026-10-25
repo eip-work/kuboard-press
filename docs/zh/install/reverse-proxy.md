@@ -10,10 +10,11 @@ description: 通过 Nginx 反向代理 / Kubernetes Ingress 为 Kuboard 配置 H
 
 Kuboard 默认使用 HTTP 协议，方便快速试用；生产环境请务必启用 HTTPS。您可以使用 Kubernetes Ingress 直接启用 HTTPS 并转发到 Kuboard Service，也可以使用自建的 Nginx 反代 Kuboard 并在其上配置 HTTPS。
 
-## 两条注意事项
+## 三条注意事项
 
 - **WebContextRoot（根路径）**：Kuboard 必须挂在根路径访问，例如 `https://kuboard.yourcompany.com/`，不支持 `https://yourcompany.com/kuboard/` 这样的二级路径；
-- **启用 WebSocket**：终端和日志功能依赖 WebSocket，反向代理必须放行 WebSocket 升级请求，否则终端与日志无法正常使用。
+- **启用 WebSocket**：终端和日志功能依赖 WebSocket，反向代理必须放行 WebSocket 升级请求，否则终端与日志无法正常使用；
+- **转发 `X-Forwarded-Host`**：启用 [OIDC 单点登录](../user/oidc) 时，回调地址由后端依据 `X-Forwarded-Proto` / `X-Forwarded-Host` 拼出。`X-Forwarded-Host` 必须用 `$http_host`（保留端口），只设 `Host $host` 会丢掉端口，回调地址与 IdP 中登记的不一致，IdP 将拒绝登录并报 `Invalid parameter: redirect_uri`。未启用 OIDC 时这一行也无副作用，建议一律加上。
 
 ## Nginx 配置样例
 
@@ -30,6 +31,9 @@ server {
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # $http_host 保留端口，供 OIDC 回调地址拼装；只用 $host 会丢掉端口
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
     # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
   }
   location /k8s-ws/ {
@@ -41,11 +45,31 @@ server {
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
+  }
+  # Swagger / OpenAPI 文档（KUBOARD_SWAGGER_ENABLED=true 时需要）
+  # 注意：location 不能带尾斜杠。写成 /v3/api-docs/ 时 nginx 会把 /v3/api-docs
+  # 301 重定向到 /v3/api-docs/，而不带斜杠的地址与分组地址都会失效。
+  location /v3/api-docs {
+    proxy_pass  http://192.168.2.39:32567;  # 替换成你的节点地址
+    proxy_http_version 1.1;
+    proxy_pass_header Authorization;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
     # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
   }
   gzip on;
 }
 ```
+
+::: tip OpenAPI 文档地址
+放行 `/v3/api-docs` 后即可在浏览器访问 `/v3/api-docs`（完整描述）与 `/v3/api-docs/{分组名}`（单个分组，如 `/v3/api-docs/cluster.kuboard.cn`），分组名清单见 [API 文档](../reference/api)。Swagger UI 还需要 `/swagger/` 路径，如需使用请参照本页方式再补一个 `location /swagger/`。
+:::
 
 ## Ingress 配置样例
 
