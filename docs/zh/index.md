@@ -34,7 +34,7 @@ features:
       width: 64
       height: 64
     title: 多集群管理
-    details: 基于 Kubernetes 1.15 - 1.34，在一个界面中统一管理多个集群，支持跨集群查询与操作。
+    details: 基于 Kubernetes 1.15 - 1.37，在一个界面中统一管理多个集群，支持跨集群查询与操作。
   - icon:
       src: /icons/feature-mcp.svg
       alt: MCP 集成

@@ -16,7 +16,7 @@ Key differences between Kuboard v4 and v3:
 
 - Supported Kubernetes versions:
   - v3 supports Kubernetes 1.13 - 1.33
-  - v4 supports Kubernetes 1.15 - 1.34 (continuously tracking the latest Kubernetes releases)
+  - v4 supports Kubernetes 1.15 - 1.37 (continuously tracking the latest Kubernetes releases)
 - Cluster scale
   - v3 suits small / medium clusters
   - v4 supports ultra-large-scale Kubernetes clusters; see the [full-sync performance benchmark](../reference/sync-performance)

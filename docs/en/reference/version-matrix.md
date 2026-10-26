@@ -12,9 +12,9 @@ This page answers two questions: Is your Kubernetes version within Kuboard's sup
 | --- | --- | --- |
 | Minimum supported version | **v1.15** | Below this version, capability decisions are not guaranteed to be correct |
 | Newest capability boundary | **v1.34** | The latest capability boundary is at v1.34 (ReadWriteOncePod); **this is not an upper limit** — cluster versions higher than v1.34 are handled per the newest band (≥1.34) |
-| Newest supported version | **v1.36** | Explicitly supported up to this version; even newer versions need no extra adaptation and are evaluated per the newest band (≥1.34) |
+| Newest supported version | **v1.37** | Explicitly supported up to this version; even newer versions need no extra adaptation and are evaluated per the newest band (≥1.34) |
 | Version granularity | major.minor | e.g. `v1.31.2` is evaluated as `1.31`; patch versions do not affect capability boundaries |
-| Ongoing support | Versions only increase, no upper limit | No upper version limit; new versions (e.g. v1.36) need no extra adaptation — capability decisions automatically use the newest band. The matrix gains new bands as future capability boundaries are introduced |
+| Ongoing support | Versions only increase, no upper limit | No upper version limit; new versions (e.g. v1.37) need no extra adaptation — capability decisions automatically use the newest band. The matrix gains new bands as future capability boundaries are introduced |
 
 ::: warning Confirm the version before installation
 Confirm that the cluster version is not lower than v1.15 before installing Kuboard; see [Install Kuboard](../install/index) for installation steps. After connecting the cluster, the cluster list page shows the Kubernetes version detected by Kuboard.

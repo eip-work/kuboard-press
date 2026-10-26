@@ -34,7 +34,7 @@ features:
       width: 64
       height: 64
     title: Multi-cluster Management
-    details: Built on Kubernetes 1.15 - 1.34, manage multiple clusters from one interface with cross-cluster queries.
+    details: Built on Kubernetes 1.15 - 1.37, manage multiple clusters from one interface with cross-cluster queries.
   - icon:
       src: /icons/feature-mcp.svg
       alt: MCP Integration
