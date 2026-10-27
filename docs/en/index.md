@@ -19,7 +19,7 @@ hero:
       link: https://demo.kuboard.cn
     - theme: alt
       text: 中文
-      link: /
+      link: /zh/
 features:
   - icon:
       src: /icons/feature-install.svg
