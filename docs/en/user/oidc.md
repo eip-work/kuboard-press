@@ -223,7 +223,7 @@ The callback URL is built by the backend from `X-Forwarded-Proto` / `X-Forwarded
 
 ## Related documentation
 
-[Login page and authentication methods](./login) · [MFA multi-factor authentication](./mfa) · [User list and management](./users) · [Password policy and password change](./password)
+[Login page and authentication methods](./login) · [MFA multi-factor authentication](./mfa) · [User list and management](./users) · [Password policy and password change](./password) · [Integrate with GitLab](./oidc-gitlab)
 
 ## API reference
 

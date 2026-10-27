@@ -216,7 +216,7 @@ OIDC 用户的 MFA 由 **IdP 负责**，Kuboard 依据 id_token 中的 `amr` / `
 
 ## 相关文档
 
-[登录页与各认证方式的关系](./login) · [MFA 多因素认证](./mfa) · [用户列表与用户管理](./users) · [密码策略与修改密码](./password)
+[登录页与各认证方式的关系](./login) · [MFA 多因素认证](./mfa) · [用户列表与用户管理](./users) · [密码策略与修改密码](./password) · [与 GitLab 集成](./oidc-gitlab)
 
 ## 接口文档
 

@@ -143,6 +143,7 @@ const zhSidebar = {
     ]},
     { text: '外部身份对接', items: [
       { text: 'OIDC 单点登录', link: '/zh/user/oidc' },
+      { text: '与 GitLab 集成', link: '/zh/user/oidc-gitlab' },
       { text: 'Webhook 外部用户库', link: '/zh/user/webhook-users' },
     ]},
   ],
@@ -331,6 +332,7 @@ const enSidebar = {
     ]},
     { text: 'External Identity', items: [
       { text: 'OIDC SSO', link: '/en/user/oidc' },
+      { text: 'Integrate with GitLab', link: '/en/user/oidc-gitlab' },
       { text: 'Webhook Users', link: '/en/user/webhook-users' },
     ]},
   ],
