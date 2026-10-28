@@ -15,6 +15,7 @@ Kuboard 默认使用 HTTP 协议，方便快速试用；生产环境请务必启
 - **WebContextRoot（根路径）**：Kuboard 必须挂在根路径访问，例如 `https://kuboard.yourcompany.com/`，不支持 `https://yourcompany.com/kuboard/` 这样的二级路径；
 - **启用 WebSocket**：终端和日志功能依赖 WebSocket，反向代理必须放行 WebSocket 升级请求，否则终端与日志无法正常使用；
 - **转发 `X-Forwarded-Host`**：启用 [OIDC 单点登录](../user/oidc) 时，回调地址由后端依据 `X-Forwarded-Proto` / `X-Forwarded-Host` 拼出。`X-Forwarded-Host` 必须用 `$http_host`（保留端口），只设 `Host $host` 会丢掉端口，回调地址与 IdP 中登记的不一致，IdP 将拒绝登录并报 `Invalid parameter: redirect_uri`。未启用 OIDC 时这一行也无副作用，建议一律加上。
+- **页面缓存**：Kuboard 会自动为页面入口（`index.html`）下发"不缓存"策略，并为带哈希的静态资源（`/assets/`）下发长期缓存，升级后浏览器会立即加载新版页面。请勿在反向代理上再为 `location /` 统一添加 `expires` 或 `Cache-Control` 配置，也不要对入口页面开启 `proxy_cache` 或 CDN 缓存 —— 否则升级 Kuboard 后浏览器可能仍然加载旧页面（表现为界面功能无响应、布局错乱等）。如需缓存加速，只对 `/assets/` 路径配置长缓存即可。
 
 ## Nginx 配置样例
 
