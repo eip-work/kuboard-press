@@ -58,7 +58,7 @@ The default initial password is publicly known. Please change it to a strong pas
 
 ## Reset Another User's Password (Administrator)
 
-Go to **User Management → select the user → Reset Password**. The password is reset to the initial password `Kuboard123`, and the failed-attempt counter and expiry timer are cleared. A locked account is also unlocked automatically by the reset.
+Go to **User Management → select the user → Reset Password**. The password is reset to the initial password `Kuboard123`, and the failed-attempt counter and expiry timer are cleared. The reset does **not** automatically unlock an account — a locked account must be unlocked separately with the **Unlock** button.
 
 To only unlock an account without resetting the password, click the **Unlock** button in the same row.
 
@@ -83,6 +83,8 @@ UPDATE kb_u_user SET
   password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
   password_expiry_date = CURDATE() + INTERVAL 3 DAY,
   password_try_count = 0,
+  password_lock_count = 0,
+  password_lock_time = NULL,
   status = 'enabled'
 WHERE username = 'admin' AND source = 'dao';
 ```
@@ -94,12 +96,16 @@ UPDATE kb_u_user SET
   password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
   password_expiry_date = CURRENT_DATE + INTERVAL '3 days',
   password_try_count = 0,
+  password_lock_count = 0,
+  password_lock_time = NULL,
   status = 'enabled'
 WHERE username = 'admin' AND source = 'dao';
 ```
 
 ::: tip About the hash
-`$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq` is the BCrypt hash of the initial password `Kuboard123` (identical to the hash baked into the built-in administrator on a fresh install) and can be written directly into the `password` column. The SQL above also zeroes `password_try_count` (unlocks the account after repeated failures), sets `password_expiry_date` to 3 days from now (matching the UI reset behavior, so the password is changed promptly), and sets `status` to `enabled`.
+`$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq` is the BCrypt hash of the initial password `Kuboard123` (identical to the hash baked into the built-in administrator on a fresh install) and can be written directly into the `password` column. The SQL above also sets `password_lock_count` to 0 and `password_lock_time` to NULL (unlocks the account — **the lock state is determined by these two columns; zeroing `password_try_count` alone does NOT unlock it**), zeroes `password_try_count`, sets `password_expiry_date` to 3 days from now (matching the UI reset behavior, so the password is changed promptly), and sets `status` to `enabled`.
+
+If the account still reports as locked after running the SQL, confirm that the account you are logging in with matches the WHERE clause (`username` / `source`), and verify in `kb_u_user` that `password_lock_count` is 0 and `password_lock_time` is NULL for that row.
 :::
 
 **Notes**:

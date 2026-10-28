@@ -58,7 +58,7 @@ Kuboard 不提供自助找回密码。请联系管理员：
 
 ## 管理员重置他人密码
 
-进入**用户管理 → 选中用户 → 重置密码**，密码会被重置为初始密码 `Kuboard123`，并清除错误计数与有效期计时。已被锁定的账号，重置操作也会自动解锁。
+进入**用户管理 → 选中用户 → 重置密码**，密码会被重置为初始密码 `Kuboard123`，并清除错误计数与有效期计时。重置操作**不会**自动解除锁定——已锁定的账号需另行点击**解锁**按钮。
 
 如只需解除锁定、不重置密码，可点同一行的**解锁**按钮。
 
@@ -83,6 +83,8 @@ UPDATE kb_u_user SET
   password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
   password_expiry_date = CURDATE() + INTERVAL 3 DAY,
   password_try_count = 0,
+  password_lock_count = 0,
+  password_lock_time = NULL,
   status = 'enabled'
 WHERE username = 'admin' AND source = 'dao';
 ```
@@ -94,12 +96,16 @@ UPDATE kb_u_user SET
   password = '$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq',
   password_expiry_date = CURRENT_DATE + INTERVAL '3 days',
   password_try_count = 0,
+  password_lock_count = 0,
+  password_lock_time = NULL,
   status = 'enabled'
 WHERE username = 'admin' AND source = 'dao';
 ```
 
 ::: tip 密文说明
-`$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq` 是初始密码 `Kuboard123` 的 BCrypt 密文（与 Kuboard 全新安装时内置管理员的密文一致），可直接写入 `password` 字段。上述 SQL 同时把 `password_try_count` 清零（解除因多次错误导致的锁定）、把 `password_expiry_date` 设为 3 天后（与界面重置的行为一致，要求尽快改密）、把 `status` 置为 `enabled`。
+`$2a$10$RaZvDg8M4T8.MpUN4YCmPeuDE2bW9fwp7pjWqm5y8OvRIDeJizsaq` 是初始密码 `Kuboard123` 的 BCrypt 密文（与 Kuboard 全新安装时内置管理员的密文一致），可直接写入 `password` 字段。上述 SQL 同时把 `password_lock_count` 置 0、`password_lock_time` 置空（解除因连续错误导致的账号锁定——**锁定状态由这两个字段判定，仅清零 `password_try_count` 无法解锁**）、把 `password_try_count` 清零、把 `password_expiry_date` 设为 3 天后（与界面重置的行为一致，要求尽快改密）、把 `status` 置为 `enabled`。
+
+若执行后仍提示账号被锁定，请确认当前登录的账号名与 WHERE 条件一致（`username` / `source`），并检查 `kb_u_user` 中该行 `password_lock_count` 是否已为 0、`password_lock_time` 是否已为空。
 :::
 
 **补充说明**：
