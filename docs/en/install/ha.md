@@ -117,8 +117,22 @@ Cache-related configuration is defined in `kuboard-server/src/main/resources/app
 | `KUBOARD_CACHE_REDIS_MODE` | `standalone` | Redis access mode: `standalone` / `sentinel` / `cluster` |
 | `KUBOARD_CACHE_REDIS_NODES` | `localhost:6379` | Redis node list, comma-separated (multiple nodes in cluster / sentinel mode) |
 | `KUBOARD_CACHE_REDIS_SENTINEL_MASTER` | `master` | Sentinel master node name (only effective in `sentinel` mode) |
+| `KUBOARD_CACHE_REDIS_USERNAME` | empty | Redis 6+ ACL username (common to all three modes; empty means the `default` user) |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | empty | Redis password (common to all three modes) |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis logical database number (only effective in `standalone` / `sentinel` mode) |
+
+::: tip About the Redis 6+ ACL username
+Redis 6 and later support multi-user ACL (`AUTH <username> <password>`). If the target Redis disables the `default` user and only allows a custom user, set the username as well:
+
+```sh
+export KUBOARD_CACHE_REDIS_USERNAME=kuboard
+export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
+```
+
+- When the username is left empty (default), Kuboard only sends `AUTH <password>`, which is equivalent to the `default` user — same behavior as previous releases;
+- The username applies to **data nodes** (primary / replica) in all three modes; Sentinel is not included — Kuboard does not authenticate against Sentinel (no sentinel username / password is set), so Sentinel itself must not enable `requirepass`;
+- That user needs read / write / subscribe permissions on the key prefixes Kuboard uses (`kuboard:*`, `{kuboard:mcp}:*`, etc.) and the related Pub/Sub channels.
+:::
 
 Behavior per mode (see `RedisConfig.lettuceConnectionFactory()`):
 

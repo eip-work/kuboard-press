@@ -37,6 +37,7 @@ description: 部署 Kuboard v4 时所需环境变量的参考清单：数据库�
 | `KUBOARD_CACHE_REDIS_MODE` | `standalone` | Redis 连接模式：`standalone`、`sentinel` 或 `cluster` |
 | `KUBOARD_CACHE_REDIS_NODES` | `localhost:6379` | Redis 节点地址，多节点用逗号分隔，各模式示例见下方 |
 | `KUBOARD_CACHE_REDIS_SENTINEL_MASTER` | `master` | Sentinel 模式下的 master 名称 |
+| `KUBOARD_CACHE_REDIS_USERNAME` | 空 | Redis 6+ ACL 用户名，留空表示使用 `default` 用户（仅 `AUTH <password>`） |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | 空 | 连接 Redis 的密码 |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis 数据库编号 |
 

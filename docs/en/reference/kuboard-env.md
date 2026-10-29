@@ -37,6 +37,7 @@ Single-replica deployments do not need to configure this group of variables; for
 | `KUBOARD_CACHE_REDIS_MODE` | `standalone` | Redis connection mode: `standalone`, `sentinel` or `cluster` |
 | `KUBOARD_CACHE_REDIS_NODES` | `localhost:6379` | Redis node addresses, comma-separated for multiple nodes, mode examples below |
 | `KUBOARD_CACHE_REDIS_SENTINEL_MASTER` | `master` | Master name in Sentinel mode |
+| `KUBOARD_CACHE_REDIS_USERNAME` | empty | Redis 6+ ACL username; empty means the `default` user (`AUTH <password>` only) |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | empty | Password used to connect to Redis |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis database number |
 

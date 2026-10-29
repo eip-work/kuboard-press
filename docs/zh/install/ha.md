@@ -117,8 +117,22 @@ Kuboard 的缓存分为两类：**走 Spring CacheManager 的共享缓存**与**
 | `KUBOARD_CACHE_REDIS_MODE` | `standalone` | Redis 访问模式：`standalone` / `sentinel` / `cluster` |
 | `KUBOARD_CACHE_REDIS_NODES` | `localhost:6379` | Redis 节点列表，逗号分隔（cluster / sentinel 模式为多个节点） |
 | `KUBOARD_CACHE_REDIS_SENTINEL_MASTER` | `master` | Sentinel 主节点名称（仅 `sentinel` 模式生效） |
+| `KUBOARD_CACHE_REDIS_USERNAME` | 空 | Redis 6+ ACL 用户名（三模式通用，留空表示使用 `default` 用户） |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | 空 | Redis 密码（三模式通用） |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis 逻辑库编号（仅 `standalone` / `sentinel` 模式生效） |
+
+::: tip 关于 Redis 6+ ACL 用户名
+Redis 6 及以上支持多用户 ACL（`AUTH <username> <password>`）。如果目标 Redis 禁用了 `default` 用户、只允许以自定义用户登录，请同时设置用户名：
+
+```sh
+export KUBOARD_CACHE_REDIS_USERNAME=kuboard
+export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
+```
+
+- 用户名留空（默认）时只发送 `AUTH <password>`，等价于 `default` 用户，行为与旧版本一致；
+- 用户名作用于**数据节点**（主 / 从），三种模式通用；哨兵不在其列 —— Kuboard 不对 Sentinel 做 AUTH（不设置哨兵用户名 / 密码），因此哨兵自身不能开启 `requirepass`；
+- 该用户需要在 Kuboard 用到的 key 前缀（`kuboard:*`、`{kuboard:mcp}:*` 等）与 Pub/Sub channel 上具备读写 / 订阅权限。
+:::
 
 各模式的行为（见 `RedisConfig.lettuceConnectionFactory()`）：
 
