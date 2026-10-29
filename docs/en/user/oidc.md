@@ -175,6 +175,35 @@ Brute-force / callback-flood defense — three independent counters (no limit wh
 | callback rate limit (per minute) | `GET /oidc/callback` |
 | logout rate limit (per minute) | `POST /oidc/logout` |
 
+### IdP-initiated logout (Back-Channel Logout)
+
+**Disabled by default.** When enabled, the IdP (e.g. Corplink) sends Kuboard a logout notification per the **OIDC Back-Channel Logout 1.0** specification as soon as the user logs out on the IdP side. Kuboard then revokes the session that the IdP issued for that user — the **already-issued access token stops working immediately**, instead of waiting for it to expire.
+
+| Field | Default | Behaviour |
+| --- | --- | --- |
+| Enable IdP-initiated logout | Off | While off, the endpoint returns 404 and accepts no logout notification. Leave it off if your IdP does not support this specification. |
+
+**IdP-side setup**: put the following URL into the IdP's **Single Logout URL** field:
+
+```
+https://<kuboard-host>/api/anonymous.kuboard.cn/v4/oidc/backchannel-logout
+```
+
+Once the switch is on, **System Settings → Login → OIDC** shows this URL so you can copy it.
+
+**What Kuboard validates** (any failure returns 400; the response body carries only a generic reason code and leaks no internals):
+
+- the `logout_token` signature, against the IdP's JWKS;
+- `iss` / `aud` / `iat` (clock skew tolerated), and a mandatory `jti`;
+- that `events` contains `http://schemas.openid.net/event/backchannel-logout`;
+- **any token carrying a `nonce` claim is rejected** — an id_token always carries one, so accepting it would let a captured id_token be replayed to force other users offline.
+
+**How the session is located**: sessions are matched by the `sub` claim of the `logout_token`. When the IdP also sends `sid`, only the session with that `sid` is revoked. If the IdP sends `sid` solely in the logout notification and not in the id_token (the id_token's `sid` is optional in OIDC Core), Kuboard falls back to revoking every session of that `sub`, so the logout always takes effect.
+
+::: tip Scope
+This only affects **OIDC** sessions; the built-in user store / Webhook / LDAP logins are unaffected. An OIDC session that already existed before the upgrade and has not been silently refreshed since needs one re-login before it can be matched by an IdP-initiated logout (the session picks up its location information on silent refresh).
+:::
+
 ## Administrators: Manage OIDC Users
 
 **Listing**: switch the user list's **Source** filter to **OIDC** (only appears when enabled) to see username / display name / email / status; supports search and batch delete.

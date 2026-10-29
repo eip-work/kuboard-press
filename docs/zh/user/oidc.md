@@ -168,6 +168,35 @@ OIDC 用户的 MFA 由 **IdP 负责**，Kuboard 依据 id_token 中的 `amr` / `
 | callback 限流（次/分钟） | `GET /oidc/callback` |
 | logout 限流（次/分钟） | `POST /oidc/logout` |
 
+### IdP 主动登出（Back-Channel Logout）
+
+默认**关闭**。开启后，IdP（如飞连 Corplink）在用户于 IdP 侧登出时，会按 **OIDC Back-Channel Logout 1.0** 规范向 Kuboard 投递一条登出通知，Kuboard 随即注销该用户由 IdP 签发的会话——**已签发的 access token 立即失效**，不必等到令牌自然过期。
+
+| 字段 | 默认 | 行为 |
+| --- | --- | --- |
+| 启用 IdP 主动登出 | 关 | 关闭时该端点返回 404，不接受任何登出通知；IdP 不支持该规范时保持关闭即可 |
+
+**IdP 侧配置**：在 IdP 的「单点登出 url」（Single Logout URL）字段填：
+
+```
+https://<kuboard 域名>/api/anonymous.kuboard.cn/v4/oidc/backchannel-logout
+```
+
+打开开关后，「系统设置 → 登录 → OIDC」页面会直接显示这个地址，可复制粘贴。
+
+**Kuboard 侧的校验**（任一不通过即返回 400，响应体只含通用原因码，不暴露内部信息）：
+
+- 用 IdP 的 JWKS 对 `logout_token` 验签；
+- 校验 `iss` / `aud` / `iat`（允许时钟偏移）、且 `jti` 必填；
+- 要求 `events` 中包含 `http://schemas.openid.net/event/backchannel-logout`；
+- **拒绝携带 `nonce` 的令牌**——id_token 一定带 `nonce`，用它冒充登出通知可被拿到后重放，强制他人下线。
+
+**定位口径**：按 `logout_token` 的 `sub` 定位会话；IdP 额外下发 `sid` 时，只注销该 `sid` 对应的那条会话。若 IdP 只在登出通知里带 `sid`、而不在 id_token 里带（OIDC Core 中 id_token 的 `sid` 是可选的），Kuboard 会退回到注销该 `sub` 名下的全部会话，确保登出确实生效。
+
+::: tip 适用范围
+该功能只作用于 **OIDC 登录**的会话；自建用户库 / Webhook / LDAP 登录不受影响。升级前就已存在、且此后尚未发生过静默续期的 OIDC 会话，需要重新登录一次才能被主动登出命中（会话在静默续期时会自动补齐定位信息）。
+:::
+
 ## 管理员：管理 OIDC 用户
 
 **查看列表**：用户列表把「来源」筛选切到 **OIDC**（仅启用时出现），展示用户名、显示名、邮箱、状态，可搜索与批量删除。
