@@ -10,7 +10,7 @@ This page explains how to log in to Kuboard: what the login page consists of, ho
 
 ## Login Page
 
-The login form sits in the middle of the login page and consists of the username and password input fields; the top-right corner lets you switch the interface language and dark mode. When the administrator has enabled OIDC or the Webhook user repository, a **User Source** selector appears above the form; when OIDC is enabled, a **Sign in with XXX** button appears below the form.
+The login form sits in the middle of the login page and consists of the username and password input fields; the top-right corner lets you switch the interface language and dark mode. When the administrator has enabled OIDC or the Webhook user repository, a **User Source** selector appears above the form; when OIDC is enabled, a **Sign in with XXX** button replaces the username / password fields inside the form.
 
 The login page only shows the sign-in methods the administrator has **enabled**. When only the built-in user repository is enabled, the login page shows just the username/password form.
 
@@ -58,12 +58,14 @@ MFA binding, unbinding and recovery code management all happen after login; see 
 
 ## OIDC Single Sign-On (SSO)
 
-After the administrator has configured OIDC (OpenID Connect), a **Sign in with XXX** button appears on the login page. When multiple IdPs are connected, an **OIDC Provider** dropdown appears above the button — pick the enterprise identity system first, then click the button. Clicking it redirects the whole page to that identity system; after you complete authentication there (including the enterprise-side MFA), you are redirected back to Kuboard and logged in automatically.
+After the administrator has configured OIDC (OpenID Connect), a **Sign in with XXX** button appears on the login page. Kuboard connects to a single IdP, so clicking the button redirects the whole page to that identity system; after you complete authentication there (including the enterprise-side MFA), you are redirected back to Kuboard and logged in automatically.
 
 OIDC users have no Kuboard password; their account password and MFA are both managed by the identity provider (IdP). Kuboard only auto-creates the matching local account on the first authentication.
 
+Failed logins return to the login page with an actionable reason (e.g. "current address is not in the OIDC whitelist", "IdP did not complete MFA"). If the browser instead shows a page with only an error code, the failure happened before the IdP redirect (whitelist not configured, or the current address is not registered).
+
 ::: tip
-If clicking **Sign in with XXX** does nothing or reports an error, it is usually an IdP configuration issue — ask the administrator to check it. IdP integration settings are in [OIDC Single Sign-On (SSO)](./oidc).
+If clicking **Sign in with XXX** does nothing or reports an error, it is usually an IdP-side configuration issue — ask the administrator to check it. IdP integration settings are in [OIDC Single Sign-On (SSO)](./oidc).
 :::
 
 ## First Login
@@ -96,7 +98,7 @@ Accounts created by an administrator have the default password `Kuboard123`. Cha
 
 ## Related Pages and API Documentation
 
-- [OIDC Single Sign-On (SSO)](./oidc) — IdP configuration, multiple IdPs, OIDC MFA trust policy
+- [OIDC Single Sign-On (SSO)](./oidc) — IdP integration and self-check, OIDC MFA trust policy, IdP-initiated logout
 - [MFA Multi-Factor Authentication](./mfa) — TOTP binding/unbinding, recovery code management
 - [Changing and Resetting Passwords](./password) — password policy configuration, personal password changes
 - [Access Keys (Key/Secret)](./access-keys) — AK/SK authentication for MCP and automation scenarios

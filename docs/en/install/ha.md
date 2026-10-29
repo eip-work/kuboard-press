@@ -320,9 +320,8 @@ server {
   proxy_set_header X-Real-IP $remote_addr;
   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   proxy_set_header X-Forwarded-Proto $scheme;
-  # $http_host keeps the port, needed to build the OIDC callback URL; $host alone
-  # drops it, so the callback URL no longer matches the one registered with the IdP
-  # (400 Invalid parameter: redirect_uri). proxy_set_header also overrides any
+  # $http_host keeps the port, so the backend can reconstruct the address users
+  # actually visit; $host alone drops it. proxy_set_header also overrides any
   # client-supplied header of the same name, preventing spoofing.
   proxy_set_header X-Forwarded-Host $http_host;
   proxy_set_header X-Forwarded-Port $server_port;

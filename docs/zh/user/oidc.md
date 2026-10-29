@@ -1,247 +1,262 @@
 ---
-description: 配置 Kuboard OIDC 单点登录（SSO）：单 IdP 设置、Issuer 双值容忍、回调白名单（必填）、Claims 映射、MFA 策略、静默续期、限流；用户如何登录与单点登出；错误码与失败排查。
-outline: [2, 3]
+description: 为 Kuboard 接入 OIDC 单点登录（SSO）：在 IdP 登记回调地址、填写 OIDC 卡片、保存后自检；白名单与 Issuer 填写规则、Claims 映射、MFA 策略、静默续期、IdP 主动登出；用户登录 / 登出与失败排查。
 ---
 
 # Kuboard OIDC 单点登录（SSO）
 
-本页说明如何为 Kuboard 配置 OIDC 单点登录（基于 OAuth 2.0 的身份认证协议），用户如何使用 IdP 账号登录，以及登录失败时如何排查。
+本页说明管理员如何为 Kuboard 接入 OIDC 单点登录、接入后如何自检，用户如何用 IdP 账号登录与登出，以及登录失败时如何排查。
 
-本页按角色组织：
+**适用对象**：管理员（配置 OIDC、管理 OIDC 用户）与普通用户（点「使用 XXX 登录」）。
 
-- **普通用户**：阅读 [用户：登录与登出](#用户-登录与登出)；
-- **管理员**：阅读 [管理员：配置 OIDC](#管理员-配置-oidc)、[管理员：管理 OIDC 用户](#管理员-管理-oidc-用户) 与 [常见问题排查](#常见问题排查)。
+## 接入流程一览
 
-**适用对象**：管理员（配置 OIDC、管理 OIDC 用户）与普通用户（点击「使用 XXX 登录」按钮登录）。
+Kuboard 采用**单 IdP** 形态：所有 OIDC 字段集中在同一张卡片（**系统管理 → 设置 → 系统设置 → 用户登录设置 → OIDC SSO**），没有向导页签、没有多 IdP 列表。
 
-## OIDC 是什么
+| 步骤 | 谁做 | 在哪做 |
+|---|---|---|
+| ① 登记回调地址 | 管理员 | IdP 客户端的「有效重定向 URI / 回调地址」 |
+| ② 填写 OIDC 卡片 | 管理员 | Kuboard 系统设置 → 用户登录设置 |
+| ③ 保存后自检 | 管理员 | 同一张卡片上的「开始自检」 |
+| ④ 点按钮登录 | 用户 | 登录页「使用 XXX 登录」 |
 
-OIDC（OpenID Connect）是基于 OAuth 2.0 的身份认证协议。Kuboard 充当依赖方（Relying Party），把账号认证委托给身份提供方（IdP，如 Keycloak、Okta、Entra ID）：配置完成后，用户在登录页点击「使用 {显示名称} 登录」，跳转到 IdP 完成认证，通过后自动回到 Kuboard（首次登录自动创建本地用户）。
-
-Kuboard 采用**单 IdP** 形态：所有 OIDC 字段集中在同一张卡片（**系统管理 → 系统设置 → 用户登录设置 → OIDC SSO**）下，无向导页签、无多 IdP 列表、无「测试连接」按钮。
-
-接入流程分三步：**管理员配置 OIDC 卡片** → **登录页出现「使用 {显示名称} 登录」按钮** → **用户点击按钮用 IdP 账号登录**。下面按角色说明。
+打开「启用 OIDC 登录」后，卡片顶部会显示「**保存前请完成这 3 步**」引导，把 ① ② ③ 摆在配置项正上方：回调地址可一键复制，最后一步就是「开始自检」按钮。按引导顺序做即可，下面各节是逐步说明。
 
 ## 用户：登录与登出
 
 ### 登录
 
-启用 OIDC 后（且回调白名单非空），登录页自动选中 **OIDC** 并隐藏用户名 / 密码输入框。点击「使用 {显示名称} 登录」按钮，页面整页跳转到 IdP；在 IdP 完成认证（若有 MFA 则二次验证）后，自动回到 Kuboard 首页，首次登录自动创建本地用户。
+OIDC 启用且白名单非空时，登录页默认选中用户来源「OIDC」并隐藏用户名 / 密码输入框。点「使用 {显示名称} 登录」→ 整页跳转到 IdP → 在 IdP 完成认证（若 IdP 侧配了 MFA 则含二次验证）→ 自动回到 Kuboard 首页。首次登录会自动创建本地账号。
 
-登录令牌通过 URL fragment（`#token=...`）落地，不会进入浏览器历史记录或代理，安全可靠。
+### 登录失败时看到的提示
 
-若登录失败，登录页会跳回并提示**错误码**，对照处理见 [常见问题排查 → 登录失败错误码](#登录失败-跳回登录页并提示错误码)。
+失败会回到登录页并给出可直接处理的原因（不再只显示错误码）：
+
+| 页面提示 | 常见原因与处理 |
+|---|---|
+| 登录会话已过期或被重复使用 | 回到登录页重新点「使用 {显示名称} 登录」；反复出现请检查反向代理是否改写了回调地址 |
+| IdP 拒绝了令牌交换 | IdP 中登记的回调地址与当前访问地址不一致、Client Secret 不正确、或客户端在 IdP 侧被禁用 |
+| id_token 校验未通过 | 两个 Issuer URI 是否属于同一个 Realm、服务器时间是否准确 |
+| 当前访问 Kuboard 的地址不在 OIDC 白名单中 | 请管理员在 **系统设置 → 用户登录设置 → OIDC SSO** 把当前地址加入白名单 |
+| 已启用 OIDC 但回调白名单为空 | 请管理员先填写白名单，否则所有 OIDC 登录都会被拒绝 |
+| IdP 未完成 MFA / IdP MFA 已过期 | 到 IdP 重新完成 MFA 认证后重试 |
+
+个别失败发生在**跳转 IdP 之前**（白名单为空或当前地址不在白名单），此时浏览器会直接显示一个只带错误码的页面，不会回到登录页 —— 处理见 [常见问题排查](#点登录后浏览器直接显示错误页-而不是回到登录页)。
 
 ### 单点登出
 
-点击右上角**登出**：
+点右上角**登出**：
 
 1. Kuboard 删除本地会话；
-2. 跳转到 IdP 的登出端点（`end_session_endpoint`），注销单点会话；
+2. 浏览器跳到 IdP 的登出端点，注销单点会话；
 3. 回到 Kuboard 登录页。
 
-若 IdP 未提供登出端点，则只完成本地登出（后端日志会提示），用户需自行关闭 IdP 会话。
+若 IdP 没有提供登出端点，则只完成本地登出，需要用户自行关闭 IdP 会话。需要「在 IdP 侧登出后，Kuboard 会话立刻失效」的场景，见 [IdP 主动登出](#idp-主动登出-back-channel-logout)。
 
 ### 令牌续期
 
-无需用户操作：本地令牌临近过期时由系统自动续期，用户无感知。行为由管理员的「[静默续期](#静默续期-silent-refresh)」配置决定。
+无需用户操作：本地令牌临近过期时由系统自动续期，用户无感知。行为由管理员的[静默续期](#静默续期)配置决定。
 
 ## 管理员：配置 OIDC
 
-### 快速开始：5 分钟接入 Keycloak
+### 第一步：在 IdP 中登记回调地址
 
-接入后，用户在登录页点击「使用 {显示名称} 登录」，跳转 IdP 完成认证，通过后自动回到 Kuboard 首页。下面以 **Keycloak** 为例（标准 OIDC，与其它标准 IdP 配置一致）。
-
-#### 第一步：在 Keycloak 中创建客户端
-
-打开 Keycloak 管理台，在 **Clients → Create client** 创建客户端：Client type 选 **OpenID Connect**，Client ID 填 `kuboard`，勾选 **Client authentication** 与 **Standard flow**；记住你的 Realm issuer 地址，形如 `https://sso.example.com/realms/kuboard`。
-
-在 **Valid redirect URIs** 中填入 Kuboard 回调地址（仅需填这一个地址，由 `origin` 自动识别发起方），再到 **Credentials** 页复制 **Client secret** 留待填用：
+回调地址 = 用户访问 Kuboard 的地址 + 固定路径：
 
 ```sh
-https://<kuboard域名>/api/anonymous.kuboard.cn/v4/oidc/callback
+https://<kuboard 域名>/api/anonymous.kuboard.cn/v4/oidc/callback
 ```
 
-#### 第二步：在 Kuboard 中填写 OIDC 配置
+- 必须**逐字符一致**（协议 + 主机 + 端口 + 路径），否则 IdP 会以 `invalid redirect_uri` 拒绝登录；
+- 用户会从多个地址访问时（公网域名 + 内网域名 + 调试端口），**每个地址各登记一条**；
+- 卡片上的引导会按白名单逐条列出这些地址并支持复制，不必手工拼接。
 
-入口：**系统管理 → 系统设置 → 用户登录设置 → OIDC SSO** 卡片（整张卡片所有字段都配在这一处，形态见 [OIDC 是什么](#oidc-是什么)）。
+以 Keycloak 为例：**Clients → Create client**，Client type 选 **OpenID Connect**，Client ID 填 `kuboard`，勾选 **Client authentication** 与 **Standard flow**；把上面的回调地址填入 **Valid redirect URIs**；到 **Credentials** 页复制 **Client secret** 留待下一步；记下 Realm 的 issuer 地址（形如 `https://sso.example.com/realms/kuboard`）。
 
-<!-- screenshot-todo: 用户登录设置中的 OIDC SSO 卡片（docs/zh/user/oidc.assets/user-oidc-1.png） -->
+### 第二步：填写 OIDC 配置
 
-| 字段 | 示例填写 | 说明 |
-| --- | --- | --- |
-| 启用 | 开 | 关闭后登录页不出现 OIDC radio |
-| 显示名称 | `Keycloak SSO` | 登录按钮文案（`Login with {显示名称}`），用户可见 |
-| Issuer URI（后端内部） | `http://keycloak:8080/realms/kuboard` | 后端拉取 discovery 用，填后端可达地址（compose/k8s 内网或宿主机地址） |
-| Issuer URI（浏览器外部） | `https://sso.example.com/realms/kuboard` | 浏览器跳转用；内外网地址不同时填写，留空则取左侧值 |
-| **回调白名单** | `["https://kuboard.example.com"]` | **必填**，至少 1 个；登录页 origin 不在白名单内一律回 502 |
-| Client ID | `kuboard` | 与 Keycloak 中一致 |
-| Client Secret | 上一步复制的 secret | 保存后字段级加密落库 |
+入口：**系统管理 → 设置 → 系统设置 → 用户登录设置 → OIDC SSO**，打开「启用 OIDC 登录」后展开全部字段。
+
+![OIDC SSO 卡片：顶部是「保存前请完成这 3 步」引导，下方为 Issuer、白名单与各字段](./oidc.assets/oidc-1.png)
+
+| 字段 | 示例 | 说明 |
+|---|---|---|
+| 启用 OIDC 登录 | 开 | 关闭后登录页不再出现 OIDC 入口 |
+| 登录按钮文案 | `Keycloak SSO` | 登录按钮显示为「使用 Keycloak SSO 登录」 |
+| 后端 Issuer URI | `http://keycloak:8080/realms/kuboard` | Kuboard 后端访问 IdP 用，必须后端可达（集群内网或宿主机地址） |
+| 浏览器 Issuer URI | `https://sso.example.com/realms/kuboard` | 浏览器跳转与登出用；内外网地址不同时填写 |
+| **前端 Origin 白名单** | `https://kuboard.example.com` | **必填**，可多条，详见下节 |
+| Client ID | `kuboard` | 与 IdP 中一致 |
+| Client Secret | 上一步复制的 secret | 保存后以密文回显；轮换过 JWT 私钥需重新填写一次 |
 | Scopes | `openid profile email` | 默认即可；需要 refresh_token 续期时加 `offline_access` |
 | 用户名 Claim | `preferred_username` | Kuboard 用户名 |
-| Email Claim | `email` | 邮箱（预绑定匹配与合并） |
-| 全名 Claim | `name` | 显示名 |
-| 信任 Email 合并 | 开 | IdP 返回的 email 与本地用户相同时自动合并；关闭则视为新身份 |
+| 邮箱 Claim | `email` | 邮箱（预绑定匹配与合并） |
+| 姓名 Claim | `name` | 显示名 |
+| 信任 IdP 邮箱（合并账号） | 开 | IdP 返回的邮箱与本地用户相同时合并为同一账号；关闭则视为新身份 |
 
-填完**保存**后，登录页即可看到「使用 {显示名称} 登录」按钮（OIDC 启用且白名单非空时隐藏用户名/密码）。
+Issuer 两个字段有内置校验：必填、必须以 `http://` 或 `https://` 开头、不能以 `/` 结尾（失焦时会自动去掉结尾斜杠）。
 
-#### 第三步：验证登录
+#### 前端 Origin 白名单怎么填
 
-按 [用户：登录与登出](#用户-登录与登出) 的步骤验证：登录页自动选中 OIDC → 点「使用 Keycloak SSO 登录」→ 跳转 Keycloak 完成认证（有 MFA 则二次验证）→ 回到 Kuboard 首页，左侧用户列表出现该用户（来源 OIDC）。
+白名单是「用户可能从哪些地址打开 Kuboard」的清单，至少一条。填写方式：
 
-### 回调白名单（必填）
+1. 在输入框里输入完整 origin（协议 + 主机 + 端口，如 `https://kuboard.example.com`），回车添加；
+2. 或直接点「**填入当前访问地址**」，把浏览器正在访问的地址加进白名单（大多数部署就是这一条）。
 
-Kuboard 强制要求管理员预先声明「登录页可能出现的 origin」白名单，至少 1 条；为空时所有回调一律返回 502（防 open-redirect）。
+输入框下方会实时显示「当前访问地址：…」以及它是否已在白名单中：绿色「当前访问地址已在白名单中」表示可用；黄色「当前访问地址不在白名单中，从这里登录会被拒绝」表示还需要补一条。
 
-| 场景 | 应填入 |
-| --- | --- |
-| 单 Kuboard 实例 + 单域名 | `["https://kuboard.example.com"]` |
-| 同实例多端口（如 dev 8848 / staging 8849） | `["http://localhost:8848", "http://localhost:8849"]` |
-| 反向代理 + 根域 / 子域 | `["https://kuboard.example.com", "https://ui.kuboard.example.com"]` |
+| 场景 | 白名单应填 |
+|---|---|
+| 单实例 + 单域名 | `https://kuboard.example.com` |
+| 同实例多端口（开发 8848 / 预发 8849） | `http://localhost:8848`、`http://localhost:8849` |
+| 反向代理 + 根域 / 子域 | `https://kuboard.example.com`、`https://ui.kuboard.example.com` |
 
-**校验时机**：用户在登录页选 OIDC → 点登录 → 后端 `/oidc/login-start?origin=...`（origin 取 `location.origin` 经白名单消毒）→ IdP 登录 → 回调 `/oidc/callback`（再次校验 `Origin`/`Referer` 与白名单）。两道防线，攻击者无法通过伪造 `origin` query 强行跳转到攻击者控制的域名。
+条目会被自动规范化（去掉结尾 `/`、主机转小写、去重），并提示「已自动规范化部分条目，请确认后保存」。保存时还会校验：至少一条，每条必须是 `协议://主机[:端口]`（不能带路径、结尾斜杠或缺少协议）。
 
-::: warning 开发与生产同实例时
-本地调试（`http://localhost:8848`）与生产（`https://kuboard.example.com`）通常要同时加入白名单，否则本地无法发起 OIDC 登录或登录后被踢回登录页。
+::: warning 只填域名开头是不够的
+白名单比较的是**完整 origin**：`https://kuboard.example.com` 与 `https://kuboard.example.com:8443` 是两条不同的记录，端口不同必须分别登记。
 :::
 
-### Issuer 双值：内网 / 外网两个 URI 的区别
+### 第三步：保存后自检
 
-「Issuer URI（后端内部）」供后端拉取 discovery 元数据，必须后端可达；「Issuer URI（浏览器外部）」供浏览器跳转，仅在内外网访问地址不同时填写（如内网 DNS 与公网域名不一致），留空则取左侧值。
+**先保存**，再点卡片上的「**开始自检**」。自检读取的是已保存的配置，会实际拉取一次 IdP 的发现文档，并核对白名单与回调地址。
 
-**双值容忍**：后端同时接受 discovery 实际 issuer 等于内网 URI 或外网 URI 任一值。换言之，**当后端通过内网地址拉取 discovery，而 discovery 返回的 issuer 是外网地址时，仍可视为同一个 Realm；反之亦然**。自检命令：
+自检结果按严重程度分三类：
 
-```sh
-# 自检：后端拉取 discovery 的地址，以及它实际返回的 issuer
-curl -s http://keycloak:8080/realms/kuboard/.well-known/openid-configuration | jq .issuer
-```
+| 级别 | 含义 | 是否阻断登录 |
+|---|---|---|
+| 阻塞问题 | 必须修正 | 是，登录一定会失败 |
+| 风险 | 建议修正 | 否，但特定场景会失败 |
+| 提示 | 知会 | 否 |
 
-**唯一仍会被拒绝的情况**：上述两个值都不是 discovery 返回的 issuer（典型反例：discovery 返回 `https://sso.example.com/realms/kuboard`，而你两个 URI 都填了 `http://keycloak:8080/realms/kuboard`）。
+同时会列出「**需要在 IdP 登记的回调地址**」，可与 IdP 侧逐条比对。常见结论对照：
+
+| 自检提示 | 处理 |
+|---|---|
+| 白名单为空 | 至少填一条用户实际访问 Kuboard 的地址，否则登录在跳 IdP 之前就被拒绝 |
+| 白名单条目不是合法 origin | 改成 `协议://主机[:端口]`，去掉路径与结尾斜杠 |
+| 白名单条目存在多余字符 | 运行时按规范化后的值匹配，建议直接把配置改成规范化后的值 |
+| 白名单条目使用 http | 部分 IdP（Azure AD / Auth0 / Google 等）只接受 https 重定向地址 |
+| 当前访问地址不在白名单中 | 用当前地址登录会被拒绝，补一条或换用已登记的地址访问 |
+| 后端 Issuer URI 为空 | OIDC 接口不可用，补齐后重新保存 |
+| 后端 Issuer URI 以 `/` 结尾 | 发现文档地址会变成 `//.well-known/...`，多数 IdP 返回 404，去掉结尾斜杠 |
+| 浏览器 Issuer URI 为空 | 登出跳转与 issuer 双值校验不可用，补上浏览器可达的地址 |
+| Client Secret 为空 | 只有公共客户端可以留空，机密客户端会在令牌交换阶段失败 |
+| Client Secret 无法解密 | 通常是轮换过 JWT 私钥或 OIDC 加密密钥，重新填写一次 Client Secret 并保存 |
+| 拉取 discovery 失败 | 后端 Issuer URI 必须是 Kuboard 后端可达的地址，且与 IdP 通告的 issuer 一致 |
+| IdP 未提供 end_session_endpoint | 登出只清 Kuboard 会话，不注销 IdP 会话 |
+
+![自检通过：提示 discovery 可达、白名单与当前访问地址一致，并列出需在 IdP 登记的回调地址](./oidc.assets/oidc-2.png)
+
+自检通过后，按[用户：登录与登出](#用户-登录与登出)验证一次：登录页点「使用 {显示名称} 登录」→ 跳 IdP 认证 → 回到 Kuboard 首页 → 用户列表出现该用户（来源 OIDC）。
+
+## 配置参考
+
+### Issuer 双值：内网 / 外网两个 URI
+
+「后端 Issuer URI」供 Kuboard 后端访问 IdP（拉取发现文档、换令牌、取公钥），必须**后端可达**；「浏览器 Issuer URI」供浏览器跳转与登出，填浏览器看到的地址。内外网地址一致时两个字段填同一个值。
+
+Kuboard 同时接受发现文档返回的 issuer 等于这两个值中的**任意一个**，因此「后端走内网地址拉取，IdP 通告的是外网地址」也能正常工作。
+
+唯一会被拒绝的情况：两个 URI 都不是 IdP 通告的 issuer（典型反例：IdP 通告 `https://sso.example.com/realms/kuboard`，而你把两个字段都填成 `http://keycloak:8080/realms/kuboard`）。
 
 ### Claims 映射
 
-各 IdP 的 id_token claim 命名略有出入，三个字段做映射对照；如果 IdP 用其它 claim（如 `sub`、`upn`），把对应字段改成你本地登录名所在的 claim 即可：
+各 IdP 的 claim 命名略有出入，三个字段做映射对照；若你的 IdP 用其它 claim（如 `sub`、`upn`），把对应字段改成放登录名的 claim 即可。
 
 | 字段 | 默认 claim | 用途 |
-| --- | --- | --- |
+|---|---|---|
 | 用户名 Claim | `preferred_username` | Kuboard 用户名 |
-| Email Claim | `email` | 邮箱（预绑定匹配与合并） |
-| 全名 Claim | `name` | 显示名 |
+| 邮箱 Claim | `email` | 邮箱（预绑定匹配与合并） |
+| 姓名 Claim | `name` | 显示名 |
 
-**信任 Email 合并**（默认开启）：IdP 返回的 email 与本地其它来源用户相同时自动合并，实现「同一人多方式登录」；关闭则每次登录都视为新身份。
+**信任 IdP 邮箱（合并账号）**（默认开启）：IdP 返回的邮箱与本地其它来源用户相同时自动合并，实现「同一人多方式登录」；关闭则每次登录都视为新身份。
 
 ### MFA 策略
 
-OIDC 用户的 MFA 由 **IdP 负责**，Kuboard 依据 id_token 中的 `amr` / `acr` / `auth_time` 标准 claim 判断本次登录是否完成 MFA：
+OIDC 用户的 MFA 由 **IdP 负责**，Kuboard 依据 id_token 中的标准声明判断本次登录是否完成 MFA：
 
 | 字段 | 默认 | 行为 |
-| --- | --- | --- |
-| 信任 IdP MFA | 开 | 依据 amr/acr/auth_time 判断登录是否完成 MFA；关闭则一律视为未启用 |
-| 强制 IdP MFA | 关 | 未在 IdP 完成 MFA 的登录被**拒绝**（回登录页提示错误码） |
-| MFA acr_values | `mfa` | 发起授权时携带的参数，告知 IdP 此次登录要求 MFA |
-| auth_time 最大间隔（秒） | `300` | auth_time 距今超过该秒数视为「MFA 已过期」；0 关闭检查 |
+|---|---|---|
+| 信任 IdP MFA | 开 | 依据 IdP 下发的 MFA 相关声明判断；关闭则一律视为未启用 |
+| 强制 MFA | 关 | 未在 IdP 完成 MFA 的登录被**拒绝**（回登录页提示原因） |
+| MFA 对应 ACR Values | `mfa` | 发起授权时携带的参数，告知 IdP 此次登录要求 MFA |
+| Auth Time 最大间隔（秒） | `300` | 认证完成时间距现在超过该秒数视为「MFA 已过期」；0 关闭检查 |
 
-**启动校验**：当 OIDC 已启用且 `requireMfa=true && !trustIdpMfa` 时，后端启动日志会输出一条 WARN（仅配置互斥提示，不阻断启动）。
-
-::: warning 开启强制前先确认 IdP 下发 claim
-若 id_token 缺失 `auth_time` 或 `amr`（部分 IdP 默认不开），启用「强制 IdP MFA」后登录会被拒绝。请先在 IdP 侧确认能下发。
+::: warning 开启强制前先确认 IdP 下发相关声明
+部分 IdP 默认不下发认证时间或认证方式声明，此时启用「强制 MFA」会导致所有人登录被拒。请先在 IdP 侧确认能下发，再打开该开关。
 :::
 
-### 静默续期（Silent Refresh）
+### 静默续期
 
-若 IdP 下发 refresh_token（需 `offline_access` scope），本地令牌临近过期时会自动续期，**用户完全无感**（见 [用户：令牌续期](#令牌续期)）：
+IdP 下发 refresh_token（需 `offline_access` scope）时，本地令牌临近过期会自动续期，**用户完全无感**：
 
 | 字段 | 默认 | 行为 |
-| --- | --- | --- |
-| 启用静默续期 | 开 | JWT 过期前自动用 refresh_token 续期；关闭则到期跳回登录页 |
+|---|---|---|
+| 启用静默续期 | 开 | 令牌过期前自动用 refresh_token 续期；关闭则到期跳回登录页 |
 | 静默续期阈值（秒） | `300` | 距过期剩余时间小于该秒数时触发；最低 30 |
-
-**安全约束**：会话行以 Kuboard JWT 的 jti 为主键，IdP tokens 字段级加密落库；silent refresh 重签 JWT 后以新 jti 换行。
-
-### 限流（Rate Limit）
-
-防爆破/防回调洪水，3 个独立计数器（每个默认不限流；填正整数时按窗口去重）：
-
-| 字段 | 作用域 |
-| --- | --- |
-| login-start 限流（次/分钟） | `GET /oidc/login-start` |
-| callback 限流（次/分钟） | `GET /oidc/callback` |
-| logout 限流（次/分钟） | `POST /oidc/logout` |
 
 ### IdP 主动登出（Back-Channel Logout）
 
-默认**关闭**。开启后，IdP（如飞连 Corplink）在用户于 IdP 侧登出时，会按 **OIDC Back-Channel Logout 1.0** 规范向 Kuboard 投递一条登出通知，Kuboard 随即注销该用户由 IdP 签发的会话——**已签发的 access token 立即失效**，不必等到令牌自然过期。
+默认**关闭**。开启后，用户在 IdP 侧登出时，IdP 会向 Kuboard 投递一条登出通知（OIDC Back-Channel Logout 1.0 规范），Kuboard 随即注销该用户由 IdP 签发的会话 —— **已签发的访问令牌立即失效**，不必等它自然过期。
 
 | 字段 | 默认 | 行为 |
-| --- | --- | --- |
-| 启用 IdP 主动登出 | 关 | 关闭时该端点返回 404，不接受任何登出通知；IdP 不支持该规范时保持关闭即可 |
+|---|---|---|
+| 启用 IdP 主动登出 | 关 | 关闭时该地址不接受任何登出通知；IdP 不支持该规范时保持关闭即可 |
 
-**IdP 侧配置**：在 IdP 的「单点登出 url」（Single Logout URL）字段填：
+开启后卡片会显示「**单点登出地址**」，把它填到 IdP 侧的单点登出 / Single Logout URL 字段：
 
-```
+```sh
 https://<kuboard 域名>/api/anonymous.kuboard.cn/v4/oidc/backchannel-logout
 ```
 
-打开开关后，「系统设置 → 登录 → OIDC」页面会直接显示这个地址，可复制粘贴。
-
-**Kuboard 侧的校验**（任一不通过即返回 400，响应体只含通用原因码，不暴露内部信息）：
-
-- 用 IdP 的 JWKS 对 `logout_token` 验签；
-- 校验 `iss` / `aud` / `iat`（允许时钟偏移）、且 `jti` 必填；
-- 要求 `events` 中包含 `http://schemas.openid.net/event/backchannel-logout`；
-- **拒绝携带 `nonce` 的令牌**——id_token 一定带 `nonce`，用它冒充登出通知可被拿到后重放，强制他人下线。
-
-**定位口径**：按 `logout_token` 的 `sub` 定位会话；IdP 额外下发 `sid` 时，只注销该 `sid` 对应的那条会话。若 IdP 只在登出通知里带 `sid`、而不在 id_token 里带（OIDC Core 中 id_token 的 `sid` 是可选的），Kuboard 会退回到注销该 `sub` 名下的全部会话，确保登出确实生效。
+Kuboard 侧会校验通知的签名、签发方、受众、时间与事件类型，任一不通过即拒绝；普通 id_token 不能被当作登出通知重放。会话按通知中的用户标识定位，IdP 额外下发会话标识时只注销对应会话，否则注销该用户的全部 OIDC 会话。
 
 ::: tip 适用范围
-该功能只作用于 **OIDC 登录**的会话；自建用户库 / Webhook / LDAP 登录不受影响。升级前就已存在、且此后尚未发生过静默续期的 OIDC 会话，需要重新登录一次才能被主动登出命中（会话在静默续期时会自动补齐定位信息）。
+该功能只作用于 **OIDC 登录**的会话；内建用户库 / 外部用户库登录不受影响。升级前已存在、且此后未发生过静默续期的 OIDC 会话，需要重新登录一次才能被主动登出命中。
 :::
 
 ## 管理员：管理 OIDC 用户
 
 **查看列表**：用户列表把「来源」筛选切到 **OIDC**（仅启用时出现），展示用户名、显示名、邮箱、状态，可搜索与批量删除。
 
-**预创建账号（预绑定）**：想在首次登录前确定账号（分配角色 / 组），点列表页 **「+ 预创建 OIDC 用户」**：① 填 **Email**，必须与 IdP 的 email claim **完全一致**（大小写敏感）；② 可选填显示名，保存后出现「待首次登录」占位行；③ 首次登录成功后占位行替换为真实用户，原角色 / 组保留。若登录后出现的是新用户而非合并到占位行，通常是 email 与 IdP 不一致，请核对大小写与域名后缀。
+**预创建账号（预绑定）**：想在首次登录前确定账号（分配角色 / 组），点列表页 **「+ 预创建 OIDC 用户」**：① 填 **邮箱**，必须与 IdP 的邮箱 claim **完全一致**（大小写敏感）；② 可选填显示名，保存后出现「待首次登录」占位行；③ 首次登录成功后占位行替换为真实用户，原角色 / 组保留。若登录后出现的是新用户而非合并到占位行，通常是邮箱与 IdP 不一致，请核对大小写与域名后缀。
 
 ## 常见问题排查
 
-### 登录页没有「OIDC 登录」按钮
+### 登录页没有「OIDC 登录」入口
 
-- 用户来源区仅在启用 OIDC 时出现：检查 **系统设置 → 用户登录设置 → OIDC SSO → 启用** 开关。
-- OIDC 已启用但仍不出现：检查 **回调白名单** 是否为空（后端启动日志会输出 WARN：「OIDC 已启用但 oidcAllowedOrigins 未配置：所有 callback 将被拒绝」）。
-- 保存后未生效：`ConfigLogin` 是 `SystemConfigService` 缓存的，读端缓存替换原 CSV。配置后重启后端或调 `cn.kuboard.systemconfig.SystemConfigService.evictCache`。
+- 检查 **OIDC SSO → 启用 OIDC 登录** 是否打开，且白名单至少有一条；
+- 检查用户来源是否选在「OIDC」；
+- 保存后配置即时生效，无需重启；若页面仍无变化，刷新登录页重试。
 
-### Issuer discovery 拉取失败
+### 点登录后浏览器直接显示错误页（而不是回到登录页）
 
-- 内网地址确认与 IdP 网络互通；公网地址确认域名解析与 TLS 证书。
-- 报 `issuer mismatch`：见 [Issuer 双值](#issuer-双值-内网-外网两个-uri-的区别) 一节。两个 URI 至少要有一个等于 discovery 返回的 issuer。
-- 宿主机环境：local-auth（compose）后端为宿主机进程，Keycloak 域名必须用**宿主机 hostname**（`env-prepare.sh` 以 `hostname` 命令解析），宿主机端口 **9098**（容器内 8080）。`oidcIssuerUri` / `oidcIssuerExternalUri` 均指向 `http://{hostname}:9098/realms/kuboard`，而非 compose 内网 `keycloak:8080`，宿主机无法解析。
+这两种情况在**跳转 IdP 之前**就被拒绝，因此浏览器显示的是错误页：
 
-### 登录失败，跳回登录页并提示错误码
+| 浏览器显示 | 含义 | 处理 |
+|---|---|---|
+| 503（`oidc_allowed_origins_not_configured`） | 已启用 OIDC 但白名单为空 | 填写白名单并保存 |
+| 400（`oidc_origin_not_allowed`） | 当前访问地址不在白名单内 | 把当前地址加入白名单，或改用已登记的地址访问 |
 
-回调失败时登录页携带 `?oidcError=错误码`，对照处理：
+### 自检 / 健康诊断提示 OIDC 有问题
 
-| 错误码 | 可能原因 | 处理 |
-| --- | --- | --- |
-| `state_invalid` | state 不匹配 / 已消费；回调 URL 被改写 | 重新发起登录；检查回调 URL 是否被反代改写 |
-| `code_exchange_failed` | Client ID / Secret 错误；token_endpoint 调用失败；回调时白名单校验失败 | 核对 Client 配置；重新生成 secret；确认 origin 在白名单 |
-| `id_token_invalid` | 验签失败；issuer / audience 不符；已过期；nonce 不匹配 | 检查 IdP 类型与 Issuer 是否配错；确认 JWKS 可拉取 |
-| `oidc_mfa_required` | 未完成 MFA 但开启了强制 | 见 [MFA 策略](#mfa-策略) |
-| `oidc_mfa_stale` | MFA 完成时间超过「auth_time 最大间隔」 | 重新登录，或调大该间隔 |
-| `oidc_not_configured` | 后端未启用 OIDC 或 issuerUri 为空 | 确认配置 + 重启后端 |
-| `oidc_internal_error` | 后端异常（discovery 拉取、JWKS、字段加密等） | 看后端日志 WARN/ERROR 行 |
+- 卡片上的「开始自检」给出逐条结论，见[第三步：保存后自检](#第三步-保存后自检)；
+- **系统管理 → 设置 → 健康诊断**页在 OIDC 启用时会额外检查 4 项：白名单为空、Issuer 不完整或带结尾斜杠、Client Secret 无法解密、Client Secret 为空，并可直接跳到登录设置修改。
 
-::: warning callback?code=... 但浏览器收到 502
-白名单（`oidcAllowedOrigins`）为空或 origin 不在白名单内。补白名单后再次发起登录。
-:::
+### Issuer 发现文档拉取失败
+
+- 后端 Issuer URI 必须是 **Kuboard 后端进程**可达的地址；容器内与宿主机可达性不同，注意区分；
+- 公网地址确认域名解析与证书有效；
+- 自检报拉取失败时，先确认该地址能直接在浏览器打开 `.well-known/openid-configuration`；
+- 本地容器化调试时，Kuboard 后端若跑宿主机上，IdP 地址要用**宿主机可达的主机名与映射端口**，而不是容器内网名称。
 
 ### 登出后 IdP 会话未注销
 
-正常路径：本地会话删除 + 顶层跳转到 IdP `end_session_endpoint` → IdP 显示登出确认页 → 回到 `/login`。若仅本地登出且后端日志 WARN「no IdP end_session_endpoint available」：当前 IdP 的 discovery 未下发 `end_session_endpoint`（典型如部分老版本 Okta / Entra ID），属已知 gap-accepted；用户需手动关闭 IdP 会话。
+正常路径：本地会话删除 → 顶层跳转到 IdP 登出端点 → IdP 显示登出页 → 回到登录页。若只完成了本地登出，说明当前 IdP 的发现文档未提供登出端点（部分老版本 Okta / Entra ID），此时需要用户手动关闭 IdP 会话；需要「IdP 侧登出即刻踢掉 Kuboard 会话」时改用 [IdP 主动登出](#idp-主动登出-back-channel-logout)。
 
 ### 回调地址与反向代理
 
-回调地址由后端依据 `X-Forwarded-Proto` / `X-Forwarded-Host` 请求头拼出；反代未正确传递这两个头时会报 `redirect_uri` 不匹配。部署注意事项见 [反向代理](../install/reverse-proxy.md) 与 [Kuboard 代理](../ops/kuboard-proxy.md)。
+回调地址由白名单里的前端 origin 拼出，不再依赖代理透传的地址头，因此**白名单必须写用户浏览器实际访问的地址（含端口）**。反向代理的其它注意事项见 [反向代理](../install/reverse-proxy.md)。
 
 ## 相关文档
 
@@ -249,4 +264,4 @@ https://<kuboard 域名>/api/anonymous.kuboard.cn/v4/oidc/backchannel-logout
 
 ## 接口文档
 
-本节涉及的接口详见 [Swagger UI 的「权限管理接口」分组](../reference/api)。
+本节涉及的接口详见 [Swagger UI 的「OIDC」与「健康诊断」分组](../reference/api)。

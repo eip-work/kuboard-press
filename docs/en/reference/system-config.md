@@ -84,9 +84,12 @@ The "OIDC SSO" card configures **a single IdP**. Turn on **Enable OIDC Login** a
 - Connection: Backend Issuer URI, Browser-Facing Issuer URI, Allowed Frontend Origins (required), Client ID, Client Secret, Scopes, Login Button Label;
 - Claims mapping: Username / Email / Full Name claim, Trust IdP Email (merge accounts);
 - OIDC MFA: Trust IdP MFA, Enforce MFA, ACR Values for MFA, Auth Time Max Age (seconds);
-- Silent renewal: Enable Silent Renewal, Silent Renewal Threshold (seconds).
+- Silent renewal: Enable Silent Renewal, Silent Renewal Threshold (seconds);
+- IdP-initiated logout: once enabled, a **Single Logout URL** appears — paste it into the IdP.
 
-Changes take effect immediately after saving. Full configuration notes and default values are in [OIDC Single Sign-On](../user/oidc).
+Once enabled, the card shows a "Before you save, complete these 3 steps" guide (register the callback URL → fill both issuer URIs → save and run the self-check). The whitelist offers **Use current address** and shows in real time whether the current address is whitelisted. **Changes take effect immediately after saving.** **Start check** uses the saved configuration to fetch the IdP discovery document once and verify everything element by element.
+
+Full configuration notes, self-check findings and default values are in [OIDC Single Sign-On](../user/oidc).
 
 ### External User Repository (Webhook)
 

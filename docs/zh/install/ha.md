@@ -320,8 +320,7 @@ server {
   proxy_set_header X-Real-IP $remote_addr;
   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   proxy_set_header X-Forwarded-Proto $scheme;
-  # $http_host 保留端口，供 OIDC 回调地址拼装；只用 $host 会丢掉端口，
-  # 导致回调地址与 IdP 中登记的不一致（400 Invalid parameter: redirect_uri）。
+  # $http_host 保留端口，便于后端还原用户实际访问的地址；只用 $host 会丢掉端口。
   # proxy_set_header 会覆盖客户端自带的同名头，避免外部伪造。
   proxy_set_header X-Forwarded-Host $http_host;
   proxy_set_header X-Forwarded-Port $server_port;
