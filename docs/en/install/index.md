@@ -159,6 +159,8 @@ docker run -d \
 - `DB_USERNAME` must match the database user created in the previous step.
 - `DB_PASSWORD` must match the database password created in the previous step.
 
+These are only the variables required to start Kuboard. For **every configurable option and its default** — connection pool, high-availability cache, ports, logging and more — see [Environment Variables](../reference/kuboard-env).
+
 :::
 
 ## Open the Kuboard UI
