@@ -27,6 +27,22 @@ Fill in `DB_DRIVER` and `DB_URL` according to the database type:
 - MariaDB: driver `org.mariadb.jdbc.Driver`, connection string `jdbc:mariadb://10.99.0.8:3306/kuboard?&timezone=Asia/Shanghai`
 - OpenGauss: driver `org.postgresql.Driver`, connection string `jdbc:postgresql://localhost:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8`
 
+### Connection Pool Parameters
+
+Sync-task writes and all HTTP requests share the same connection pool, so when connections run short, requests queue and wait. The pool defaults suit a medium-sized deployment and usually needs no change; raise it when you run many clusters, hold large object counts (e.g. hundreds of thousands of Pods in one cluster), or have seen "failed to obtain a connection" on the database side.
+
+| Environment Variable | Default Value | Description |
+| --- | --- | --- |
+| `DB_POOL_MAX_SIZE` | `32` | Maximum number of connections in the pool. Under heavy sync writes the pool can fill up so that even the scheduler cannot get a connection — raise it if that happens |
+| `DB_POOL_MIN_IDLE` | `8` | Minimum number of idle connections kept in the pool |
+| `DB_POOL_CONNECTION_TIMEOUT_MS` | `30000` | Longest wait (ms) to obtain a connection from the pool; timing out fails fast instead of piling up threads |
+| `DB_POOL_IDLE_TIMEOUT_MS` | `600000` | How long (ms) an idle connection is kept before being reclaimed (10 minutes by default). Connections stay borrowed during bulk writes, so do not set it too short |
+| `DB_POOL_MAX_LIFETIME_MS` | `1800000` | Maximum lifetime (ms) of a connection (30 minutes by default) |
+
+::: tip Sizing the pool
+For multi-replica deployments the sum of all instances' connections must stay below the database's limit: keep **instances × `DB_POOL_MAX_SIZE`** under the database's `max_connections`, leaving headroom for admin tooling. For example, with a database limit of 500 and 3 replicas, keep each instance at 100 or below.
+:::
+
 ## High-Availability Cache Parameters
 
 Single-replica deployments do not need to configure this group of variables; for multi-replica (high-availability) deployments, set `KUBOARD_CACHE_PROVIDER` to `redis` and fill in the Redis connection information below.

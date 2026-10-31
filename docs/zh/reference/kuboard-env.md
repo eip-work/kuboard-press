@@ -27,6 +27,22 @@ description: 部署 Kuboard v4 时所需环境变量的参考清单：数据库�
 - MariaDB：驱动 `org.mariadb.jdbc.Driver`，连接串 `jdbc:mariadb://10.99.0.8:3306/kuboard?&timezone=Asia/Shanghai`
 - OpenGauss：驱动 `org.postgresql.Driver`，连接串 `jdbc:postgresql://localhost:5432/kuboard?currentSchema=kuboard&characterEncoding=UTF8`
 
+### 连接池参数
+
+同步任务写库与全部 HTTP 请求共用同一个连接池，连接不够时请求会排队等待。连接池默认按中等规模集群取值，一般无需修改；集群数量多、对象量大（例如单集群十几万容器组）或数据库侧出现过「拿不到连接」时再调大。
+
+| 环境变量 | 默认值 | 说明 |
+| --- | --- | --- |
+| `DB_POOL_MAX_SIZE` | `32` | 连接池最大连接数。大量同步写入时若被占满，连调度线程自己也会拿不到连接，可适当调大 |
+| `DB_POOL_MIN_IDLE` | `8` | 最小空闲连接数，池中保持的空闲连接 |
+| `DB_POOL_CONNECTION_TIMEOUT_MS` | `30000` | 从池中获取连接的最长等待（毫秒），超时即报错，避免线程无限堆积 |
+| `DB_POOL_IDLE_TIMEOUT_MS` | `600000` | 连接空闲多久后被回收（毫秒，默认 10 分钟）。批量写库期间连接会一直被借用，不宜设得过短 |
+| `DB_POOL_MAX_LIFETIME_MS` | `1800000` | 连接的最长存活时间（毫秒，默认 30 分钟） |
+
+::: tip 连接数怎么估算
+多副本部署时，所有实例的连接数之和不能超过数据库的最大连接数：保证「**实例数 × `DB_POOL_MAX_SIZE`**」小于数据库的 `max_connections`，并为运维工具留出余量。例如数据库上限 500、副本 3 个时，每个实例设 100 以内比较稳妥。
+:::
+
 ## 高可用缓存参数
 
 单副本部署无需配置本组变量；多副本（高可用）部署时，将 `KUBOARD_CACHE_PROVIDER` 设为 `redis`，并填写下方 Redis 连接信息。
