@@ -134,6 +134,40 @@ The terminal remembers the commands you executed separately for each "cluster/na
 Command history is only stored in the current browser and does not follow you across computers or browsers; although sensitive fields are filtered out automatically, please still avoid typing passwords, tokens, or other sensitive information in plain text in the terminal.
 :::
 
+## Batch Exec (Multiple Pods)
+
+Send **the same command** to **all replicas** of a workload in one go, then review the results grouped per Pod. Useful for troubleshooting cases like "only some replicas misbehave" or "confirm a configuration took effect everywhere".
+
+### Two Entry Points
+
+| Entry | Where | Characteristics |
+| --- | --- | --- |
+| Workload list page | **Workloads → Deployment** (or StatefulSet / DaemonSet) → the row's **Logs / Terminal** button → **Batch Exec** in the dialog | Targets are resolved automatically as all replicas of that workload |
+| Pod terminal page | Open a Pod terminal → the **Batch Exec** button in the toolbar, or the **Batch Exec** button at the end of the **Command History** row | Targets are pinned to the current revision; a command from the history can be reused directly |
+
+### Steps
+
+1. Click **Batch Exec** to open the dialog;
+2. Enter the command to run (executed through `/bin/sh -c` by default, suited to non-interactive read commands such as `grep`, `cat`, `ls`);
+3. The top shows a **Targets** summary: how many can run, how many are skipped;
+4. Click **Start** — the output is shown below in one tab per Pod, each tab corresponding to one Pod;
+5. When satisfied, click **Export Results** to copy them away, or just close the dialog.
+
+![Batch Exec: all 3 replicas succeeded, results shown in one tab per Pod](./terminal.assets/ops-terminal-batch-exec.png)
+
+Targets only include application containers that are "running and ready". Pods that have exited, are not ready, or are still initializing are skipped and the reason is shown — a skipped Pod does not run the command and produces no audit record.
+
+### Advanced Settings
+
+Click **Advanced Settings** to adjust the concurrency, the timeout, and the per-Pod output limit. With many Pods the work is executed in batches up to the concurrency limit, and the progress bar shows "Completed N / Total".
+
+::: warning Two usage constraints
+- **Only a single non-interactive read command is supported**; commands that hang waiting for input are not. The command and its results are recorded per Pod in the audit log.
+- When the output exceeds the per-Pod limit, only the beginning is displayed — raise the limit in Advanced Settings if needed.
+:::
+
+The entry is greyed out in two cases: ephemeral containers do not support batch exec, and neither do users without `pods/exec` permission in that namespace. Hovering the button explains which reason applies.
+
 ## Shortcut List
 
 | Operation | Windows / Linux | macOS |

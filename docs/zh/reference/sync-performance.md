@@ -15,7 +15,7 @@ description: 大规模集群（5 万 Deployment / 10 万 Pod）全量同步性�
 | Kubernetes 集群 | 测试集群，v1.35.6 |
 | 对象规模 | **Deployment 50,004 个、Pod 100,000 个**（缓存行合计 150,152） |
 | Kuboard backend | 单实例；**进程实际占用**：RSS 基线约 556 MB → 同步峰值约 757 MB，JVM 堆峰值约 313 MB，CPU 峰值约 168%（≈1.7 核） |
-| 数据库 | MariaDB 11.2（容器）；**进程实际占用**：RSS 基线约 716 MB → 峰值约 748 MB，CPU 峰值约 186%（≈1.9 核）；缓存落于 `kb_cluster_sync_data` |
+| 数据库 | MariaDB 11.2（容器）；**进程实际占用**：RSS 基线约 716 MB → 峰值约 748 MB，CPU 峰值约 186%（≈1.9 核）；缓存落在独立的缓存表中 |
 | 部署形态 | backend 与数据库运行于**同一台宿主**（16 核 / 11 GB 内存）上；本页资源数据均为进程 / 容器实际占用，不包含宿主整机配置 |
 | 同步任务数 | 32 个资源任务（除主任务外） |
 
@@ -27,7 +27,7 @@ description: 大规模集群（5 万 Deployment / 10 万 Pod）全量同步性�
 
 ### 部署拓扑
 
-被测系统为 **Kuboard Backend + MariaDB 数据库同机部署**：两者共用一台 16 vCPU / 11 GB 内存的宿主机器。Backend 以 Java JVM 进程运行（spring-boot 单实例，开发模式），数据库以 Docker 容器运行。同步时 Backend 通过 HTTP/2（经代理）从被测 Kubernetes 集群拉取对象清单，解析后以 `REPLACE INTO` 批量语句写入数据库缓存表。
+被测系统为 **Kuboard Backend + MariaDB 数据库同机部署**：两者共用一台 16 vCPU / 11 GB 内存的宿主机器。Backend 以 Java JVM 进程运行（spring-boot 单实例，开发模式），数据库以 Docker 容器运行。同步时 Backend 通过 HTTP/2（经代理）从被测 Kubernetes 集群拉取对象清单，解析后以批量 upsert 语句写入数据库缓存表。
 
 ```mermaid
 graph LR
@@ -37,7 +37,7 @@ graph LR
   end
   K["被测 Kubernetes 集群<br/>v1.35.6 · 50,004 Deployment / 100,000 Pod"]
   B -- "HTTP/2 拉取对象清单（经代理）" --> K
-  B -- "REPLACE INTO 批量写入缓存" --> M
+  B -- "批量 upsert 写入缓存" --> M
 ```
 
 ::: tip 同机部署的意义
@@ -62,7 +62,7 @@ Backend 与数据库共享宿主机器的 CPU 与内存，因此本页数据使�
 ## 测试方法与采集手段
 
 - **操作**：调用「重启全量同步」接口 `POST /api/cluster.kuboard.cn/v4/cluster/{uid}/restart-full-sync`。触发后调度器重新发现集群 `/apis`、重建各资源的同步任务，并逐个执行全量刷新。
-- **耗时口径**：以 `kb_cluster_sync_task` 中各资源任务的 `full_sync_start_time / full_sync_end_time` 为准。
+- **耗时口径**：以各资源同步任务记录的全量同步开始 / 结束时间为准（界面上对应「同步状态」页每行的「全量同步」列）。
 - **Backend 采样**：`/proc` 读取进程 CPU / RSS，`jstat` 读取 JVM 堆与 GC，2 秒粒度。
 - **数据库采样**：`/proc` 读取 CPU / RSS，cgroup `io.stat` 读取容器磁盘 IO，`information_schema.GLOBAL_STATUS` 读取 InnoDB 计数器。
 
@@ -120,7 +120,11 @@ Backend 与数据库共享宿主机器的 CPU 与内存，因此本页数据使�
 | `Innodb_log_writes` | +7,507 |
 | `Innodb_buffer_pool_reads` | +965 K |
 
-**写入形态**：15 万行缓存以 **1,525 条 `REPLACE INTO` 批量语句**落地（约 98 行/批）；`Threads_running` 峰值仅 3，无明显连接 / 锁等待。
+**写入形态**：15 万行缓存以 **1,525 条批量 upsert 语句**落地（约 98 行/批）；`Threads_running` 峰值仅 3，无明显连接 / 锁等待。
+
+::: warning 采集版本说明
+本页数据采集于修复「全量同步按固定页数截断」缺陷之前的版本。当时单资源超过 10 万条会被截断且仍记为「同步成功」，本例的 10 万 Pod 恰好贴着该上限，因此**数据完整性不保证**，耗时与资源曲线也可能因数据量不足而偏低。当前版本已取消页数上限并改为「连续无进展」判定，同步会一直翻到最后一页。请把本页数值当作**量级参考**，不要作为精确基准。
+:::
 
 ## 宿主机磁盘与整体评价
 

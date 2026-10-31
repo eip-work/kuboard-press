@@ -59,6 +59,7 @@ The table has one row per resource; main columns:
 | Column | Description |
 | --- | --- |
 | ApiVersion / Kind / resource name | The synchronized resource |
+| Update mode | The current sync mode of this resource (watch / polling / no cache) |
 | Items Count | Number of objects of this resource currently in the cache |
 | Full Sync | Start time, end time, and status |
 | Incremental Sync | Start time, end time, round, and status |
@@ -67,6 +68,18 @@ Sync status values are: `created` (task created, waiting to run), `processing` (
 
 - **Restart Full Sync** (dangerous operation): deletes all sync tasks of the cluster and regenerates them from the current cache settings, running a full sync for each resource — equivalent to rebuilding the cache once;
 - **Refresh**: reloads the table data.
+
+### What You See While a Sync Is Running
+
+A full sync of a large cluster can take a long time. During that period the page **refreshes automatically every 5 seconds**, and the Items Count column shows live progress:
+
+- For a resource being synced, Items Count reads "Synced N items (page P)" — N is the number of objects already written to the cache, P is the number of pages fetched;
+- The refresh pauses while the page sits in a background tab and resumes with an immediate refresh when you come back;
+- Once every resource has finished, the automatic refresh stops.
+
+::: tip Showing 0 items during a sync is normal
+Right at the start of a sync — or when another instance is the one running it — the progress numbers are not available yet, so Items Count shows a placeholder instead of 0. That is not a problem; wait for the numbers to appear.
+:::
 
 ::: warning About Restart Full Sync
 This operation changes the cluster import status back to "Importing"; each resource first deletes its old cache, then writes the new data, so the resource list may be briefly empty or incomplete. With many clusters or large amounts of data, avoid running it during business peaks.
@@ -77,6 +90,12 @@ This operation changes the cluster import status back to "Importing"; each resou
 ### A resource list is always empty
 
 Check in order: whether the resource is listed in **Cluster Cache Settings** (unconfigured resources use direct connection and have no local cache); whether the cluster health status is `ready` (unreachable clusters return empty query results); if the resource was newly added to the cache, click **Restart Full Sync** once on the **Sync Status** page.
+
+### The sync says "succeeded" but objects are missing from the list
+
+Older versions had a defect: full sync was truncated at a fixed page count, and a truncated sync was still recorded as "succeeded" — so the UI showed no problem while the cache was actually missing part of the objects. The current version fixes this: the sync keeps paging until the last page, and any error in between is recorded as a "failed" sync.
+
+If you synced on an older version and then kept using that cache, the missing objects are not added back automatically. Fix: click **Restart Full Sync** once on the **Sync Status** page to rebuild the cache.
 
 ### The cache does not work as expected after switching the sync mode
 
@@ -93,6 +112,10 @@ By default, events are kept for 168 hours after deletion so you can troubleshoot
 ### Prompt that the resourceVersion has expired (410 Gone)
 
 A 410 Gone means the version number carried by the watch has expired (e.g. after a cluster restart), which is normal. Kuboard re-establishes the watch automatically; no action is needed.
+
+::: tip A slow sync on a large cluster is normal
+With a large number of objects a full sync can take a dozen minutes or more; during that time the page refreshes itself and shows the number of items already synced. As long as the number keeps growing, the sync is making progress; only investigate if it stays still for a long time (see the "restart full sync after N minutes without progress" setting above).
+:::
 
 ## API Documentation
 

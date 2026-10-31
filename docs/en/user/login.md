@@ -75,12 +75,17 @@ Accounts created by an administrator have the default password `Kuboard123`. Cha
 - The default password is **valid for 3 days**; if you do not change it in time, you will not be able to log in;
 - After you change it yourself, the new password is **valid for 90 days**; when changing, you cannot keep using the default password or a recently used historical password (rules in [password](./password)).
 
-## Session Expiry
+## Session Expiry and Returning After Login
 
 - A login session expires by default after **30 minutes** (subject to system configuration); after that long without activity, you must log in again.
 - Before the session times out, the system **silently renews** it in the background, so normal operation is usually not interrupted.
-- Once the session has actually expired, you are sent back to the login page; after a successful re-login you are automatically returned to the page you were on.
+- Once the session has actually expired, you are sent back to the login page; **after a successful re-login you are automatically returned to the page you were on**, without navigating there a second time.
+- Visiting a protected address while logged out remembers the target address too, and you land there after logging in.
 - When the administrator has enabled "one account may only be logged in at a single location" (enabled by default), logging in on a new device/browser signs out the session on the old device. This is expected behavior, not a fault.
+
+::: tip
+The return only accepts addresses inside this site; external links are not followed.
+:::
 
 ## Frequently Asked Questions
 
@@ -94,7 +99,7 @@ Accounts created by an administrator have the default password `Kuboard123`. Cha
 
 **No "Sign in with XXX" button on the login page**: the administrator has not enabled or correctly configured OIDC — ask them to check.
 
-**Landing on an unexpected page after login**: just log in again — no other action needed.
+**Landing on an unexpected page after login**: just log in again — no other action needed. If you were signed out from a deep address, you should be returned to that address automatically; if not, navigate there again from the left menu.
 
 ## Related Pages and API Documentation
 

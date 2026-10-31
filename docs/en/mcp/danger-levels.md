@@ -25,12 +25,12 @@ Levels are assigned when the tools are registered: read tools default to LOW, wr
 | Danger level | Tools |
 |---|---|
 | LOW | Read tools: `list_clusters` / `list_k8s` / `get_k8s` / `get_pod` / Prometheus queries, etc. |
-| LOW | `restart_workload` / `update_image_tag` / `scale_workload` / `rollback_workload` |
+| LOW | `restart_workload` / `scale_workload` / `rollback_workload` |
 | MEDIUM | `apply_k8s` / `patch_k8s` / `delete_k8s` |
 | HIGH | `delete_k8s_collection` / `drain_node` / `evict_pod` |
 
 ::: warning LOW-labeled tools can still be write operations
-The 4 CD write tools such as `restart_workload` are labeled LOW but are real write operations. **Whether approval is required is decided by the write-tool whitelist, not the danger level** — a LOW label does not let you bypass approval. See the next section.
+The 3 CD write tools such as `restart_workload` are labeled LOW but are real write operations. **Whether approval is required is decided by the write-tool whitelist, not the danger level** — a LOW label does not let you bypass approval. See the next section.
 :::
 
 ## From Confirm Token to Approval Gate
@@ -39,11 +39,11 @@ The danger level mechanism has gone through two generations of control.
 
 **First generation · confirm token (deprecated)**: in the early days, HIGH-level operations were confirmed with a one-time token. The agent fetched a token and executed directly with it — the token traveled back and forth within the session, and once obtained it could apply immediately. You only noticed afterwards, and you could not vet the many changes in a single plan one by one.
 
-**Second generation · Agent Change Approval (current)**: the confirm token has been fully retired and replaced by "change plan + manual approval gate": the agent adds write operations to a plan one by one → you approve in the Kuboard UI → a one-time approval token is issued → the agent executes step by step with it.
+**Second generation · Agent Change Approval (current)**: the confirm token has been fully retired and replaced by "change plan + manual approval gate": the agent adds write operations to a plan one by one → you approve in the Kuboard UI → the approval result is returned to the agent → the agent executes step by step with a one-time approval token.
 
 ```text
 First generation: agent fetches the token itself → executes with it (passes as soon as it is obtained, you only know afterwards)
-Second generation: agent builds a plan → you approve in the UI → receives an approval token → only then can it execute (cannot bypass you)
+Second generation: agent builds a plan → you approve in the UI → the approval result is returned automatically → only then can it execute (cannot bypass you)
 ```
 
 ::: tip The difference between the two tokens
@@ -52,12 +52,12 @@ The confirm token was "the agent's self-confirmation"; the approval token is "th
 
 ## Danger Levels and the Approval Gate
 
-Whether approval is mandatory is decided by the **Force Agent Change Approval** switch (enabled by default, see [Server configuration](./server-config)) together with a **write-tool whitelist**. When enabled, the 10 write tools on the whitelist are completely invisible to the agent and cannot be called directly — they can only be executed through the plan flow; even if the agent bypasses enumeration and calls them directly, the call is rejected at call time.
+Whether approval is mandatory is decided by the **Force Agent Change Approval** switch (enabled by default, see [Server configuration](./server-config)) together with a **write-tool whitelist**. When enabled, the 9 write tools on the whitelist are completely invisible to the agent and cannot be called directly — they can only be executed through the plan flow; even if the agent bypasses enumeration and calls them directly, the call is rejected at call time.
 
 ```json
 ["apply_k8s", "patch_k8s", "delete_k8s", "delete_k8s_collection",
  "drain_node", "evict_pod",
- "restart_workload", "scale_workload", "update_image_tag", "rollback_workload"]
+ "restart_workload", "scale_workload", "rollback_workload"]
 ```
 
 **Danger level and whether approval is required are fully decoupled**: the criterion is the whitelist, not the danger level. `restart_workload` is labeled LOW but is still on the list and still requires approval.

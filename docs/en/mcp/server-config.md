@@ -42,10 +42,24 @@ The MCP endpoint authenticates with the same **Access Key** as Kuboard. Clients 
 |---|---|
 | Force agent change approval | `true` (production-safe default) |
 
-**Enabled (default)**: write operations by agents (`apply_k8s` / `delete_k8s` / `drain_node` / `evict_pod`, etc.) are first staged as a change plan, and only take effect on the cluster after you approve each one in the Kuboard UI and pass the one-time approval token (approvalToken) back to the agent. **Disabled**: write calls execute directly and immediately, and a red warning banner appears on the page.
+**Enabled (default)**: write operations by agents (`apply_k8s` / `delete_k8s` / `drain_node` / `evict_pod`, etc.) are first staged as a change plan, and only take effect on the cluster after you approve each one in the Kuboard UI. **Disabled**: write calls execute directly and immediately, and a red warning banner appears on the page.
 
 ::: danger
 Disabling "Force agent change approval" means giving up the human review of AI write operations; it is not recommended to disable it in production. For the full flow, see [Change Approval Flow](./approval-flow) and [Dangerous Operations and Confirmation Tokens](./danger-levels).
+:::
+
+### Auto-Continue After Approval
+
+| Setting | Default |
+|---|---|
+| Auto-continue after approval | `true` (enabled by default) |
+
+**Enabled (default)**: once you approve, the one-time approval token (approval token) is returned to the agent together with the approval result, and the agent continues execution on its own — you never have to copy and paste the token.
+
+**Disabled**: the approval result is still returned, but **without the token**. The agent must then wait for you to copy the token from the UI and pass it in explicitly.
+
+::: warning Approval itself always requires you
+This switch only controls whether the token is returned to the agent; it **does not affect the approval step itself**. Approving, rejecting, rolling back, and deleting plans always require a browser session — an agent using an access key is rejected, otherwise an agent could approve its own plan. Turning this switch off adds a manual copy step; it does not turn approval off.
 :::
 
 ## Transport & Limits

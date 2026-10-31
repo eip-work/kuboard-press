@@ -1,10 +1,10 @@
 ---
-description: "Complete list of all 34 Kuboard MCP Server tools — every tool's name, key parameters, and purpose grouped into read / write / approval categories, plus the change approval flow that write tools must go through"
+description: "Complete list of all 35 Kuboard MCP Server tools — every tool's name, key parameters, and purpose grouped into read / write / approval categories, plus the change approval flow that write tools must go through"
 ---
 
 # Kuboard MCP Tools
 
-The Kuboard MCP Server provides 34 tools in total, grouped into three categories by purpose: read, write, and change approval. This page lists every tool's name, key parameters, and purpose for reference when configuring your agent.
+The Kuboard MCP Server provides 35 tools in total, grouped into three categories by purpose: read, write, and change approval. This page lists every tool's name, key parameters, and purpose for reference when configuring your agent.
 
 **Audience**: operations / platform engineers who want to give an AI agent (Agent) access to Kuboard cluster operations.
 
@@ -21,11 +21,11 @@ All tools are grouped by their **real side effects** into three categories: read
 | Category | Count | Description | Approval needed |
 |---|---|---|---|
 | Read | 19 | Query clusters, workloads, Pods, logs, metrics, etc.; never modify any resource | No — returns on call |
-| Write | 10 | Create / modify / delete K8s resources, restart and scale, node drain, etc. | **Yes** — goes through change-plan approval first |
-| Change approval (Plan) | 5 | Submit the pending write operations to you for approval; executes after approval | The approval flow itself |
+| Write | 9 | Create / modify / delete K8s resources, restart and scale, node drain, etc. | **Yes** — goes through change-plan approval first |
+| Change approval (Plan) | 7 | Submit the pending write operations to you for approval; executes after approval | The approval flow itself |
 
 ::: warning Write tools require approval
-With "Force agent change approval" enabled, the 10 write tools are **invisible and not directly callable** by the agent. The agent must go through the change-plan flow: `create_plan` → `append_step_to_plan` → `finalize_plan` → you approve in the Kuboard UI → `apply_plan(planId, approvalToken)`. See [change approval flow](./approval-flow) and [dangerous operations and confirmation tokens](./danger-levels).
+With "Force agent change approval" enabled, the 9 write tools are **invisible and not directly callable** by the agent. The agent must go through the change-plan flow: `create_plan` → `append_step_to_plan` → `finalize_plan` → you approve in the Kuboard UI → `await_plan_result` to wait → `apply_plan_after_approval` to execute. See [change approval flow](./approval-flow) and [dangerous operations and confirmation tokens](./danger-levels).
 :::
 
 ::: warning Danger level markers
@@ -35,9 +35,9 @@ Write tools carry a danger level, treated differently by marker at approval time
 - **HIGH**: `delete_k8s_collection` (especially deleting PVCs), `drain_node`, `evict_pod` — prominently marked at approval time; double-check the impact scope of these
 :::
 
-With "Force agent change approval" disabled, the 5 change approval (Plan) tools are hidden and the write tools become directly callable by the agent again.
+With "Force agent change approval" disabled, the 7 change approval (Plan) tools are hidden and the write tools become directly callable by the agent again.
 
-## All Tools at a Glance (34)
+## All Tools at a Glance (35)
 
 The table below lists all tools by the read / write / approval categories. Only key parameters are shown; refer to each tool's actual schema when configuring your agent.
 
@@ -68,14 +68,15 @@ The table below lists all tools by the read / write / approval categories. Only 
 | `delete_k8s_collection` | Write · HIGH | `clusterId`, `apiGroup`, `resource`, `namespace` (optional), `propagationPolicy` (optional) | Delete an entire resource collection; pass `Foreground` explicitly when deleting a PVC collection |
 | `restart_workload` | Write | `clusterId`, `namespace`, `kind`, `name`, `dryRun` (optional) | Restart a workload (rollingly recreate Pods) |
 | `scale_workload` | Write | `clusterId`, `namespace`, `kind` (deployment / statefulset), `name`, `replicas`, `dryRun` (optional) | Change the replica count of a workload (scale up / down) |
-| `update_image_tag` | Write | `clusterId`, `namespace`, `kind`, `name`, `newImageTag`, `containerName` (optional) | Update the image tag; applies to all containers when `containerName` is omitted |
 | `rollback_workload` | Write | `clusterId`, `namespace`, `kind`, `name`, `revisionToRollback` (optional) | Roll back a workload; rolls back to the previous revision when the revision is omitted |
 | `drain_node` | Write · HIGH | `clusterId`, `nodeName`, `force` (optional), `gracePeriodSeconds` (optional), `dryRun` (optional) | Drain a node: mark it unschedulable first, then evict all its Pods; `force=true` ignores PodDisruptionBudget |
 | `evict_pod` | Write · HIGH | `clusterId`, `namespace`, `podName`, `force` (optional), `gracePeriodSeconds` (optional), `dryRun` (optional) | Evict a single Pod |
 | `create_plan` | Approval | `description` | Create an empty change plan; returns `planId` |
-| `append_step_to_plan` | Approval | `planId`, `tool`, `args`, `description` | Add an object to change into the plan; `tool` must be one of the 10 write tools and is dry-run validated before being added |
+| `append_step_to_plan` | Approval | `planId`, `tool`, `args`, `description` | Add an object to change into the plan; `tool` must be one of the 9 write tools and is dry-run validated before being added |
 | `finalize_plan` | Approval | `planId` | Submit the plan into pending-approval state; from then on it is visible and approvable in the Kuboard UI |
 | `get_plan_approve_status` | Approval | `planId` | After approval, query the result of each step and return the `approvalToken` |
+| `await_plan_result` | Approval | `planId`, `timeoutSeconds` (optional, 1~1800, default 25), `sinceSeq` (optional) | Block waiting for the approval result; every return carries a `nextAction` telling the agent what to do next |
+| `apply_plan_after_approval` | Approval | `planId`, `approvalToken` (optional) | Continue executing after approval; when the token is omitted the server reads the already-approved token of that plan |
 | `apply_plan` | Approval | `planId`, `approvalToken` | Consume the `approvalToken` to actually execute all changes in the plan |
 
 Log parameter notes: `container` is required for multi-container Pods and can be omitted for single-container ones; `previous` set to `true` returns logs from before the last restart (valid only for terminated containers); `sinceSeconds` returns only logs from the last N seconds — use it or `tailLines`, not both.
@@ -95,30 +96,33 @@ Both metrics tools return normalized values: CPU converted to cores, memory to M
 
 ## Typical Usage Flow
 
-Once your agent is connected, a conversation like "restart nginx for me" roughly goes through these steps; the only thing you need to do is the final approval:
+Once your agent is connected, a conversation like "restart nginx for me" roughly goes through these steps; the only thing you need to do is the approval in the middle:
 
 1. The agent first calls `list_clusters` / `list_workloads` to locate the cluster and workload — read tools return immediately, no involvement needed from you
 2. The agent calls `create_plan` to create a change plan, adds write operations such as `restart_workload` via `append_step_to_plan`, then submits with `finalize_plan`
-3. You see the plan in the pending list in the Kuboard UI, review the objects and parameters, approve, and receive the `approvalToken`
-4. The agent calls `apply_plan` to execute; you can watch the progress and final result in the UI (all succeeded or partial failure)
+3. The agent blocks on `await_plan_result` while you see the plan in the pending list in the Kuboard UI, review the objects and parameters, and approve
+4. The agent follows the returned `nextAction` and calls `apply_plan_after_approval` to execute; you can watch the progress and final result in the UI (all succeeded or partial failure)
 
 ## Change Plans: The Entry to Write Approval
 
-A change plan (Plan) is the only entry for submitting write operations to your approval, for the scenario where "the agent wants to change the cluster, but the change must be confirmed by you". The 5 tools are chained in a fixed order:
+A change plan (Plan) is the only entry for submitting write operations to your approval, for the scenario where "the agent wants to change the cluster, but the change must be confirmed by you". The 7 tools are chained in a fixed order:
 
 | Step | Tool | Parameters | Purpose |
 |---|---|---|---|
 | 1 | `create_plan` | `description` | Create an empty plan and return `planId`; `description` states the purpose of this operation |
 | 2 | `append_step_to_plan` | `planId`, `tool`, `args`, `description` | Append objects to change into the plan; callable multiple times to aggregate several changes; objects that fail dry-run never enter the plan |
-| 3 | `finalize_plan` | `planId` | Submit the plan into pending-approval; you see it in the Kuboard UI and approve / reject |
-| 4 | `get_plan_approve_status` | `planId` | After your approval, query each step's result; partial approval marks the skipped steps and returns the `approvalToken` |
-| 5 | `apply_plan` | `planId`, `approvalToken` | Execute all approved changes in the plan; `planId` and the token must belong to the same plan |
+| 3 | `finalize_plan` | `planId` | Submit the plan into pending-approval; returns `userNotice` (the approval prompt shown to the user) and `nextAction` (what to do next) |
+| 4 | `await_plan_result` | `planId`, `timeoutSeconds`, `sinceSeq` | Block waiting for your approval result; every return carries a `nextAction` — just follow it |
+| 5 | `apply_plan_after_approval` | `planId`, `approvalToken` (optional) | Execute all approved changes in the plan; when the token is omitted the server reads the already-approved token of that plan |
+| Auxiliary | `get_plan_approve_status` | `planId` | Query the approval result of each step at any time; partial approval marks the skipped steps |
+| Auxiliary | `apply_plan` | `planId`, `approvalToken` | Execute after copying the token from the UI by hand — shares the same execution path as `apply_plan_after_approval` |
 
 Plan status flow: `CREATED` (being built; visible in the list but not approvable) → `PENDING` (awaiting approval) → `APPROVED` → `APPLYING` → `APPLIED` / `PARTIAL_APPLIED` / `FAILED`, plus `REJECTED` (rejected), `CANCELED` (canceled), and `EXPIRED` (expired).
 
 ::: tip Usage suggestions
-- The `tool` whitelist of `append_step_to_plan` is exactly the 10 write tools; write operations must be added to a plan first
+- The `tool` whitelist of `append_step_to_plan` is exactly the 9 write tools; write operations must be added to a plan first
 - To reduce the number of approvals, combine the changes under the same purpose into a single plan
+- After the approval result arrives the agent should follow the returned `nextAction` rather than stopping to ask you
 :::
 
 ## Related Pages

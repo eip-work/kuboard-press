@@ -106,6 +106,16 @@ The following cannot be modified on the edit page:
 Because the server does not echo back the saved Token / kubeconfig and `importSecretInfo` is a `@NotNull` required field on the server side, **no matter what you change this time (even if it is only the cluster description)**, you must re-paste the token or kubeconfig content before clicking save, otherwise validation fails.
 :::
 
+## Deleting a Cluster
+
+Click **Delete Cluster** at the bottom of the **Basic Info** card on the cluster detail page and confirm in the dialog. Deletion also clears that cluster's cached data, sync tasks, and credentials, and **cannot be undone**.
+
+The UI gives clear feedback while the deletion runs: the button turns into a loading state and is disabled, so you cannot submit it twice. Deleting a large cluster takes a while (the cached data is cleared in batches), which can exceed the normal request wait time.
+
+::: tip A timed-out request does not mean the deletion failed
+If the wait time elapses and the UI says "the delete request is still running on the server", that **does not mean the deletion failed** — the backend is still executing. You are then taken back to the cluster list and it refreshes automatically: if the cluster is gone from the list, the deletion ultimately succeeded.
+:::
+
 ## Related pages
 
 - [Import cluster](./import): bring a cluster under Kuboard management for the first time

@@ -55,6 +55,30 @@ Every list page has the following common columns:
 - **Batch operations**: select rows and act on all of them, e.g. batch delete — the confirmation dialog distinguishes "items in the cluster" from "items in the cache" and handles them separately; workloads also support batch restart, etc.;
 - **Auto refresh**: the auto-refresh button in the toolbar; append `?autoRefresh=true` to the URL to enable it as soon as the page opens.
 
+## Filters Are Synced to the Address Bar
+
+The filter conditions of a list page (search keyword, cluster and namespace selection, page size) are **synced to the browser address bar**:
+
+- Changing a filter updates the address bar; a cleared condition is removed from it;
+- Copy the address-bar link and send it to a colleague — they open **the same set of data**;
+- Returning from a detail page to the list keeps your filters, so you do not have to pick them again.
+
+![A list filtered by a name keyword, with the share button next to the title (the address bar carries the same conditions)](./object-list.assets/object-list-share.png)
+
+The parameters that appear in the address bar:
+
+| Parameter | Meaning |
+| --- | --- |
+| `mode` | List mode: `search` (search mode) or `tree` (tree mode) |
+| `clusterId` / `namespace` | The cluster and namespace selected in search mode |
+| `scopes` | The cluster / namespace nodes selected in tree mode |
+| `pageSize` | Number of rows per page |
+| Filter conditions | One parameter per filter (e.g. name keyword, creation time range), named after the corresponding field in the table's filter boxes |
+
+::: tip Share button
+Both the list page and the resource detail page have a **Share** button next to the title — clicking it copies the current address-bar link (dropping parameters that only affect you, such as auto-refresh), with a confirmation toast. Use it instead of assembling a link by hand.
+:::
+
 ## Permissions
 
 - Every button on the list page is shown / hidden automatically according to the current user's RBAC permissions; unauthorized actions simply do not appear;

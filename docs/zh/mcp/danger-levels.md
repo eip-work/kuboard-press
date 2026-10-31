@@ -25,12 +25,12 @@ description: Kuboard MCP 工具的危险级别机制：LOW / MEDIUM / HIGH 三�
 | 危险等级 | 工具 |
 |---|---|
 | LOW | 读工具：`list_clusters` / `list_k8s` / `get_k8s` / `get_pod` / Prometheus 查询 等 |
-| LOW | `restart_workload` / `update_image_tag` / `scale_workload` / `rollback_workload` |
+| LOW | `restart_workload` / `scale_workload` / `rollback_workload` |
 | MEDIUM | `apply_k8s` / `patch_k8s` / `delete_k8s` |
 | HIGH | `delete_k8s_collection` / `drain_node` / `evict_pod` |
 
 ::: warning 标 LOW 的也可能是写操作
-`restart_workload` 等 4 个 CD 写工具虽然标了 LOW，但确实是写入操作。**是否走审批认的是写工具白名单，不认危险度**——不能因为标了 LOW 就绕过审批。详见下节。
+`restart_workload` 等 3 个 CD 写工具虽然标了 LOW，但确实是写入操作。**是否走审批认的是写工具白名单，不认危险度**——不能因为标了 LOW 就绕过审批。详见下节。
 :::
 
 ## 管控演进：从 confirmToken 到审批门
@@ -39,11 +39,11 @@ description: Kuboard MCP 工具的危险级别机制：LOW / MEDIUM / HIGH 三�
 
 **第一代 · 确认令牌（confirmToken，已废弃）**：早期 HIGH 级操作靠一次性令牌确认。智能体先取令牌、凭令牌直接执行——令牌在会话里来回传递，一旦拿到就能立即 apply，你事后才察觉，也无法对一次计划里的多处改动逐一把关。
 
-**第二代 · 变更审批（当前）**：确认令牌整体退役，换成「变更计划 + 人工审批门」：智能体把写操作逐条加入计划 → 你在 Kuboard UI 审批 → 通过后签发一次性审批令牌（approval token）→ 智能体凭它逐步执行。
+**第二代 · 变更审批（当前）**：确认令牌整体退役，换成「变更计划 + 人工审批门」：智能体把写操作逐条加入计划 → 你在 Kuboard UI 审批 → 审批结果回传给智能体 → 智能体凭一次性审批令牌（approval token）逐步执行。
 
 ```text
 第一代：智能体自己取令牌 → 凭令牌执行（拿到即可过，你事后才知道）
-第二代：智能体建计划 → 你在 UI 审批 → 拿到审批令牌 → 才能执行（绕不开你）
+第二代：智能体建计划 → 你在 UI 审批 → 审批结果自动回传 → 才能执行（绕不开你）
 ```
 
 ::: tip 两种 token 的区别
@@ -52,12 +52,12 @@ confirm token 是「智能体的自我确认」，approval token 是「你人工
 
 ## 危险度与审批门的关系
 
-是否强制审批由「Agent 操作强制审批」开关（默认开启，见 [服务端配置](./server-config)）和一张**写工具白名单**共同决定。开启后，白名单里的 10 个写工具对智能体完全不可见、不可直接调用，只能通过计划流程执行；即使智能体绕过枚举直接发起调用，也会在调用阶段被拒绝。
+是否强制审批由「Agent 操作强制审批」开关（默认开启，见 [服务端配置](./server-config)）和一张**写工具白名单**共同决定。开启后，白名单里的 9 个写工具对智能体完全不可见、不可直接调用，只能通过计划流程执行；即使智能体绕过枚举直接发起调用，也会在调用阶段被拒绝。
 
 ```json
 ["apply_k8s", "patch_k8s", "delete_k8s", "delete_k8s_collection",
  "drain_node", "evict_pod",
- "restart_workload", "scale_workload", "update_image_tag", "rollback_workload"]
+ "restart_workload", "scale_workload", "rollback_workload"]
 ```
 
 **危险度与是否审批完全解耦**：判定标准是白名单，不是危险度。`restart_workload` 虽标 LOW，一样在名单里、一样必须审批。

@@ -150,6 +150,10 @@ Entry: **Settings → System Settings → Cluster Cache Settings**. Kuboard sync
 | Retry validity (minutes) | 30 | No further retries after this period |
 | Incremental listen cycle (seconds) | 300 | Watch connection rebuilt after timeout |
 | Reset unfinished incremental task (minutes) | 10 | If an incremental task is stuck beyond this, restart a full sync |
+| Full sync max pages | 0 (unlimited) | Page-count guardrail for a single paging round; when hit with data still remaining it is treated as a **failure**, never a silent truncation of the cache |
+| Consecutive no-progress page threshold | 3 | How many pages in a row without new data count as a paging anomaly |
+| Restart full sync after N minutes without progress | 10 | A slow-but-progressing cluster is not interrupted repeatedly |
+| Watch resync timeout (seconds) | 1800 | The longest time allowed to fetch all existing objects |
 
 ### Cache Object Settings
 
@@ -176,6 +180,7 @@ Entry: **Settings → System Settings → MCP Server**. MCP Server exposes Kuboa
 |---|---|---|
 | Enable MCP Server | Off | When off, `/mcp` returns 404 |
 | Force approval for Agent write operations | On | Writes are first dry-run and staged as a plan, then executed after manual approval in the UI; when off they execute immediately — keep on in production |
+| Auto-continue after approval | On | The approval result is returned to the agent together with the one-time token, and the agent continues on its own; when off the token is not returned and must be copied from the UI by hand |
 | CORS allowed Origins | Empty (all cross-origin rejected) | Browser-side cross-origin allowlist, exact Origin match |
 | Max bytes per request body | 10MB | Requests over this are rejected |
 | Per-user rate limit | 50 per 60 seconds | Sliding window; returns HTTP 429 when exceeded |

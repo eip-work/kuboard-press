@@ -15,7 +15,7 @@ Audience: cluster operators / administrators and capacity planners. For how the 
 | Kubernetes cluster | Test cluster, v1.35.6 |
 | Object scale | **50,004 Deployments, 100,000 Pods** (150,152 cached rows in total) |
 | Kuboard backend | Single instance; **actual process usage**: RSS ~556 MB at baseline → ~757 MB at sync peak, JVM heap peak ~313 MB, CPU peak ~168% (~1.7 cores) |
-| Database | MariaDB 11.2 (container); **actual process usage**: RSS ~716 MB at baseline → ~748 MB at peak, CPU peak ~186% (~1.9 cores); cache is stored in `kb_cluster_sync_data` |
+| Database | MariaDB 11.2 (container); **actual process usage**: RSS ~716 MB at baseline → ~748 MB at peak, CPU peak ~186% (~1.9 cores); the cache is stored in a dedicated cache table |
 | Deployment | Backend and database run on the **same host** (16 cores / 11 GB RAM); all resource figures on this page are actual per-process / per-container usage, not host-machine specs |
 | Sync tasks | 32 resource tasks (excluding the manager task) |
 
@@ -27,7 +27,7 @@ Audience: cluster operators / administrators and capacity planners. For how the 
 
 ### Deployment Topology
 
-The system under test is a **co-located deployment of the Kuboard backend and the MariaDB database**, sharing one host machine with 16 vCPUs / 11 GB RAM. The backend runs as a Java JVM process (single spring-boot instance, dev mode), and the database runs as a Docker container. During a full sync, the backend fetches object lists from the Kubernetes cluster under test over HTTP/2 (through a proxy), parses them, and commits them to the database cache table via batched `REPLACE INTO` statements.
+The system under test is a **co-located deployment of the Kuboard backend and the MariaDB database**, sharing one host machine with 16 vCPUs / 11 GB RAM. The backend runs as a Java JVM process (single spring-boot instance, dev mode), and the database runs as a Docker container. During a full sync, the backend fetches object lists from the Kubernetes cluster under test over HTTP/2 (through a proxy), parses them, and commits them to the database cache table via batched upsert statements.
 
 ```mermaid
 graph LR
@@ -37,7 +37,7 @@ graph LR
   end
   K["Kubernetes cluster under test<br/>v1.35.6 · 50,004 Deployments / 100,000 Pods"]
   B -- "HTTP/2 fetch object lists (via proxy)" --> K
-  B -- "REPLACE INTO batched cache writes" --> M
+  B -- "batched upsert cache writes" --> M
 ```
 
 ::: tip Why co-location matters
@@ -62,7 +62,7 @@ During the test, the host machine also ran idle containers such as Redis and loc
 ## Method & Instrumentation
 
 - **Operation**: call "Restart Full Sync" — `POST /api/cluster.kuboard.cn/v4/cluster/{uid}/restart-full-sync`. The scheduler re-discovers cluster `/apis`, re-creates sync tasks for every resource, and performs a full refresh one resource at a time.
-- **Duration source**: `full_sync_start_time / full_sync_end_time` of each task in `kb_cluster_sync_task`.
+- **Duration source**: the full-sync start / end time recorded for each resource sync task (the "Full Sync" column of each row on the **Sync Status** page in the UI).
 - **Backend sampling**: process CPU / RSS from `/proc`, JVM heap & GC from `jstat`, at 2 s granularity.
 - **Database sampling**: CPU / RSS from `/proc`, container disk I/O from cgroup `io.stat`, InnoDB counters from `information_schema.GLOBAL_STATUS`.
 
@@ -120,7 +120,11 @@ The database is the other pressure point on par with the backend in this run: CP
 | `Innodb_log_writes` | +7,507 |
 | `Innodb_buffer_pool_reads` | +965 K |
 
-**Write shape**: 150K cached rows are committed via **1,525 batched `REPLACE INTO` statements** (~98 rows per statement); peak `Threads_running` was only 3, with no connection/lock-wait concerns.
+**Write shape**: 150K cached rows are committed via **1,525 batched upsert statements** (~98 rows per statement); peak `Threads_running` was only 3, with no connection/lock-wait concerns.
+
+::: warning About the version this data was collected on
+This data was collected before the defect "full sync truncates at a fixed page count" was fixed. Back then a single resource over 100,000 items was truncated yet still recorded as "succeeded"; this run's 100,000 Pods sat exactly at that limit, so **data completeness is not guaranteed** and the timings and resource curves may also be low because of the missing items. The current version has no page-count limit and uses a "consecutive pages without progress" criterion instead, so a sync keeps paging to the last page. Treat the numbers on this page as an **order-of-magnitude reference**, not an exact baseline.
+:::
 
 ## Host Disk & Overall Assessment
 
