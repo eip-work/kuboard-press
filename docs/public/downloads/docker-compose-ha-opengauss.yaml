@@ -1,0 +1,421 @@
+configs:
+  create_db_sql:
+    content: |
+      CREATE USER kuboard PASSWORD 'Kuboard@123';
+      CREATE DATABASE kuboard OWNER=kuboard ENCODING='UTF8' DBCOMPATIBILITY='PG';
+      \c kuboard
+      GRANT ALL ON SCHEMA public TO kuboard;
+  nginx_conf:
+    content: |
+      # ============================================================
+      # Kuboard HA 部署 nginx 配置（与单实例 docker/nginx.conf 对齐）
+      # 修复内容：
+      #   1. upstream 加 ip_hash（同一客户端粘性后端，降低 WebSocket 掉线概率）
+      #   2. 全路径 WS upgrade 头（/k8s-ws/、/k8s-proxy/、/k8s-api/、/mcp 等）
+      #   3. gzip / keepalive_timeout 与单实例配置一致
+      #   4. WebSocket proxy_read_timeout 86400s（24h，覆盖 K8s watch 长连接）
+      # ============================================================
+
+      # http -> upstream WS upgrade 映射（与单实例 docker/nginx.conf L22 一致）
+      # 注：compose configs.content 中 $$ 转义为 $（nginx 变量语法）；单 $ 会被 compose 解释为空
+      map $$http_upgrade $$connection_upgrade {
+          default upgrade;
+          '' close;
+      }
+
+      upstream kuboard_backend {
+        # P2-5a 兜底：ip_hash 保证同一客户端粘性到固定后端，避免 WebSocket 长连接
+        # 在两个实例间被轮询切换（单后端重启仍会掉线，但不会因为 RR 随机掉线）。
+        # 配合日志断线重连（resumeToken）效果最佳。
+        ip_hash;
+        server kuboard-1:80;
+        server kuboard-2:80;
+      }
+
+      server {
+        listen 80;
+        server_name localhost;
+
+        gzip on;
+        gzip_min_length 1k;
+        gzip_buffers 4 16k;
+        gzip_comp_level 9;
+        gzip_types text/plain application/json application/javascript application/x-javascript text/css application/xml text/javascript;
+        gzip_vary on;
+
+        keepalive_timeout 65;
+
+        # 通用代理头（被各 location 复用）
+        proxy_set_header Host $$host;
+        proxy_set_header X-Real-IP $$remote_addr;
+        proxy_set_header X-Forwarded-For $$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $$scheme;
+        # X-Forwarded-Host / X-Forwarded-Port：让后端能还原「用户实际访问的对外 host:port」。
+        #   - $http_host 保留端口（$host 会丢掉端口），后端据此拼出正确的 OIDC redirect_uri
+        #     （http://host:9002/...）；只用 $host 会拼成 http://host:80/...，与 IdP 登记值不匹配，
+        #     IdP 直接返回 400 Invalid parameter: redirect_uri。
+        #   - proxy_set_header 会覆盖客户端自带的同名头，避免外部伪造 X-Forwarded-Host。
+        proxy_set_header X-Forwarded-Host $$http_host;
+        proxy_set_header X-Forwarded-Port $$server_port;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $$http_upgrade;
+        proxy_set_header Connection $$connection_upgrade;
+        proxy_read_timeout 86400;
+        proxy_send_timeout 86400;
+        client_max_body_size 10m;
+
+        # ----- 前端 SPA -----
+        location / {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- K8s API WebSocket watch（/api/k8s.kuboard.cn 前缀是 K8s 直连代理路径） -----
+        location /api/k8s.kuboard.cn/ {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- K8s API 反向代理（HTTP + WS 双协议） -----
+        location /k8s-api/ {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- K8s 资源代理（HTTP + WS，含 watch/long-polling） -----
+        location /k8s-proxy/ {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- WebSocket 终端（exec/attach/port-forward） -----
+        location /k8s-ws/ {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- MCP server 端点（Streamable HTTP + SSE 推送） -----
+        location /mcp {
+          proxy_pass http://kuboard_backend;
+        }
+        location /mcp/ {
+          proxy_pass http://kuboard_backend;
+        }
+        location /mcp/message {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- MCP 资源订阅 SSE 推送 -----
+        location /mcp-subscriptions/ {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- Swagger / OpenAPI -----
+        location /swagger/ {
+          proxy_pass http://kuboard_backend;
+        }
+        # 注意：location 不能带尾斜杠。带尾斜杠时 nginx 会把 /v3/api-docs 301 重定向到
+        # /v3/api-docs/，而 SpringDoc 只提供不带尾斜杠的路径 → 外部访问恒为 404。
+        location /v3/api-docs {
+          proxy_pass http://kuboard_backend;
+        }
+
+        # ----- 其余 /api/ 路径 -----
+        location /api/ {
+          proxy_pass http://kuboard_backend;
+        }
+      }
+  redis_node_1_conf:
+    content: |
+      port 7001
+      cluster-enabled yes
+      cluster-config-file nodes.conf
+      cluster-node-timeout 5000
+      appendonly yes
+      user default off
+      user kuboard on >Kuboard123 ~* &* +@all
+      masteruser kuboard
+      masterauth Kuboard123
+  redis_node_2_conf:
+    content: |
+      port 7002
+      cluster-enabled yes
+      cluster-config-file nodes.conf
+      cluster-node-timeout 5000
+      appendonly yes
+      user default off
+      user kuboard on >Kuboard123 ~* &* +@all
+      masteruser kuboard
+      masterauth Kuboard123
+  redis_node_3_conf:
+    content: |
+      port 7003
+      cluster-enabled yes
+      cluster-config-file nodes.conf
+      cluster-node-timeout 5000
+      appendonly yes
+      user default off
+      user kuboard on >Kuboard123 ~* &* +@all
+      masteruser kuboard
+      masterauth Kuboard123
+  redis_node_4_conf:
+    content: |
+      port 7004
+      cluster-enabled yes
+      cluster-config-file nodes.conf
+      cluster-node-timeout 5000
+      appendonly yes
+      user default off
+      user kuboard on >Kuboard123 ~* &* +@all
+      masteruser kuboard
+      masterauth Kuboard123
+  redis_node_5_conf:
+    content: |
+      port 7005
+      cluster-enabled yes
+      cluster-config-file nodes.conf
+      cluster-node-timeout 5000
+      appendonly yes
+      user default off
+      user kuboard on >Kuboard123 ~* &* +@all
+      masteruser kuboard
+      masterauth Kuboard123
+  redis_node_6_conf:
+    content: |
+      port 7006
+      cluster-enabled yes
+      cluster-config-file nodes.conf
+      cluster-node-timeout 5000
+      appendonly yes
+      user default off
+      user kuboard on >Kuboard123 ~* &* +@all
+      masteruser kuboard
+      masterauth Kuboard123
+
+services:
+  db:
+    image: enmotech/opengauss:5.0.1
+    privileged: true
+    user: root
+    command: ["bash", "-c", "bash /opt/opengauss-init.sh && exec entrypoint.sh gaussdb"]
+    environment:
+      GS_PASSWORD: Kuboard@123
+      TZ: Asia/Shanghai
+    volumes:
+      - ./docker-compose-ha-postgres-data/kuboard-opengauss:/var/lib/opengauss:Z
+      - ./opengauss-init.sh:/opt/opengauss-init.sh:ro
+    configs:
+      - source: create_db_sql
+        target: /docker-entrypoint-initdb.d/create_db.sql
+        mode: 0777
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "gsql -U kuboard -W Kuboard@123 -d kuboard -c 'SELECT 1'"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 180s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  redis-node-1:
+    image: 192.168.3.109:5001/redis:7.2-alpine
+    configs:
+      - source: redis_node_1_conf
+        target: /redis/redis.conf
+    volumes:
+      - ./docker-compose-ha-postgres-data/redis-node-1:/data
+    command: redis-server /redis/redis.conf
+    ports:
+      - 7001:7001
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "7001", "--user", "kuboard", "--pass", "Kuboard123", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  redis-node-2:
+    image: 192.168.3.109:5001/redis:7.2-alpine
+    configs:
+      - source: redis_node_2_conf
+        target: /redis/redis.conf
+    volumes:
+      - ./docker-compose-ha-postgres-data/redis-node-2:/data
+    command: redis-server /redis/redis.conf
+    ports:
+      - 17002:7002
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "7002", "--user", "kuboard", "--pass", "Kuboard123", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  redis-node-3:
+    image: 192.168.3.109:5001/redis:7.2-alpine
+    configs:
+      - source: redis_node_3_conf
+        target: /redis/redis.conf
+    volumes:
+      - ./docker-compose-ha-postgres-data/redis-node-3:/data
+    command: redis-server /redis/redis.conf
+    ports:
+      - 7003:7003
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "7003", "--user", "kuboard", "--pass", "Kuboard123", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  redis-node-4:
+    image: 192.168.3.109:5001/redis:7.2-alpine
+    configs:
+      - source: redis_node_4_conf
+        target: /redis/redis.conf
+    volumes:
+      - ./docker-compose-ha-postgres-data/redis-node-4:/data
+    command: redis-server /redis/redis.conf
+    ports:
+      - 7004:7004
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "7004", "--user", "kuboard", "--pass", "Kuboard123", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  redis-node-5:
+    image: 192.168.3.109:5001/redis:7.2-alpine
+    configs:
+      - source: redis_node_5_conf
+        target: /redis/redis.conf
+    volumes:
+      - ./docker-compose-ha-postgres-data/redis-node-5:/data
+    command: redis-server /redis/redis.conf
+    ports:
+      - 7005:7005
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "7005", "--user", "kuboard", "--pass", "Kuboard123", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  redis-node-6:
+    image: 192.168.3.109:5001/redis:7.2-alpine
+    configs:
+      - source: redis_node_6_conf
+        target: /redis/redis.conf
+    volumes:
+      - ./docker-compose-ha-postgres-data/redis-node-6:/data
+    command: redis-server /redis/redis.conf
+    ports:
+      - 7006:7006
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "7006", "--user", "kuboard", "--pass", "Kuboard123", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  redis-cluster-creator:
+    image: 192.168.3.109:5001/redis:7.2-alpine
+    command: /bin/sh -c "sleep 10 && redis-cli -p 7001 --user kuboard --pass Kuboard123 --no-auth-warning --cluster check redis-node-1:7001 >/dev/null 2>&1 && echo 'Redis cluster already exists, skipping creation' && exit 0; redis-cli -p 7001 --user kuboard --pass Kuboard123 --no-auth-warning --cluster create redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005 redis-node-6:7006 --cluster-replicas 1 --cluster-yes; redis-cli -p 7001 --user kuboard --pass Kuboard123 --no-auth-warning --cluster check redis-node-1:7001 >/dev/null 2>&1"
+    depends_on:
+      redis-node-1:
+        condition: service_healthy
+      redis-node-2:
+        condition: service_healthy
+      redis-node-3:
+        condition: service_healthy
+      redis-node-4:
+        condition: service_healthy
+      redis-node-5:
+        condition: service_healthy
+      redis-node-6:
+        condition: service_healthy
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  kuboard-1:
+    image: ${KUBOARD_IMAGE_REPO}:${KUBOARD_VERSION}
+    environment:
+      - DB_DRIVER=org.opengauss.Driver
+      - DB_URL=jdbc:opengauss://db:5432/kuboard?serverTimezone=Asia/Shanghai
+      - DB_USERNAME=kuboard
+      - DB_PASSWORD=Kuboard@123
+      - KUBOARD_CACHE_PROVIDER=redis
+      - KUBOARD_CACHE_REDIS_MODE=cluster
+      - KUBOARD_CACHE_REDIS_NODES=redis-node-1:7001,redis-node-2:7002,redis-node-3:7003,redis-node-4:7004,redis-node-5:7005,redis-node-6:7006
+      - KUBOARD_CACHE_REDIS_USERNAME=kuboard
+      - KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
+    volumes:
+      - ./docker-compose-ha-postgres-data/kuboard-1-logs:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cluster-creator:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  kuboard-2:
+    image: ${KUBOARD_IMAGE_REPO}:${KUBOARD_VERSION}
+    environment:
+      - DB_DRIVER=org.opengauss.Driver
+      - DB_URL=jdbc:opengauss://db:5432/kuboard?serverTimezone=Asia/Shanghai
+      - DB_USERNAME=kuboard
+      - DB_PASSWORD=Kuboard@123
+      - KUBOARD_CACHE_PROVIDER=redis
+      - KUBOARD_CACHE_REDIS_MODE=cluster
+      - KUBOARD_CACHE_REDIS_NODES=redis-node-1:7001,redis-node-2:7002,redis-node-3:7003,redis-node-4:7004,redis-node-5:7005,redis-node-6:7006
+      - KUBOARD_CACHE_REDIS_USERNAME=kuboard
+      - KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
+    volumes:
+      - ./docker-compose-ha-postgres-data/kuboard-2-logs:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cluster-creator:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    networks:
+      kuboard_v4_ha_opengauss:
+
+  nginx:
+    image: 192.168.3.109:5001/nginx:1.25-alpine
+    configs:
+      - source: nginx_conf
+        target: /etc/nginx/conf.d/default.conf
+    ports:
+      - "9001:80"
+    depends_on:
+      - kuboard-1
+      - kuboard-2
+    networks:
+      kuboard_v4_ha_opengauss:
+
+networks:
+  kuboard_v4_ha_opengauss:
+    driver: bridge

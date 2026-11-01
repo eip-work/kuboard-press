@@ -4,11 +4,55 @@ description: "Deploy Kuboard v4 in high availability: multiple replicas, Redis d
 
 # High Availability Deployment
 
-This document describes the Kuboard v4 High Availability (HA) production deployment: multiple Kuboard instances form a service cluster, a load balancer in front distributes traffic, and the database and Redis provide high availability and cross-instance state sharing respectively. The content is based on the official orchestration file `deploy/docker-compose/docker-compose-ha-opengauss.yaml` and the kuboard-server source implementation.
+This document describes the Kuboard v4 High Availability (HA) production deployment: multiple Kuboard instances form a service cluster, a load balancer in front distributes traffic, and the database and Redis provide high availability and cross-instance state sharing respectively.
 
 ::: tip Intended audience
 Teams that have already completed a single-node deployment (see [Quick Start](./quickstart)) and are ready to run Kuboard as a production system over the long term.
 :::
+
+## Download the Orchestration Files
+
+The orchestration files referenced on this page can be downloaded directly:
+
+| File | Purpose |
+| --- | --- |
+| [docker-compose-ha-opengauss.yaml](/downloads/docker-compose-ha-opengauss.yaml) | The main scenario on this page: Redis Cluster (3 masters, 3 replicas) + OpenGauss + a dual-replica Nginx setup |
+| [docker-compose-mysql-redis.yaml](/downloads/docker-compose-mysql-redis.yaml) | Single-replica production reference: Redis Standalone + MySQL |
+
+### Companion Files
+
+The main scenario also needs an `opengauss-init.sh` in the **same directory** as the main compose file (the OpenGauss container init script); without it the OpenGauss container cannot initialize. Save the following as `opengauss-init.sh`:
+
+```sh
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+export DEBIAN_FRONTEND=noninteractive
+unset LD_LIBRARY_PATH
+
+apt-get update -qq
+apt-get install -y --no-install-recommends libxml2 ca-certificates >/dev/null
+
+cat > /usr/local/bin/gsql <<'EOF'
+#!/usr/bin/env bash
+export LD_LIBRARY_PATH="/usr/local/opengauss/lib:${LD_LIBRARY_PATH:-}"
+exec /usr/local/opengauss/bin/gsql "$@"
+EOF
+chmod +x /usr/local/bin/gsql
+```
+
+Create a `.env` in the same directory as well, with at least the image repository and version:
+
+```sh
+KUBOARD_IMAGE_REPO=swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard
+KUBOARD_VERSION=v4
+```
+
+Once ready, run the following in that directory and open `http://<deploy-host>:9001`:
+
+```sh
+docker compose -f docker-compose-ha-opengauss.yaml up -d
+```
 
 ## Deployment Topology
 
@@ -109,7 +153,7 @@ The confirmToken mechanism mentioned in older versions of the documentation is *
 
 ## Redis Environment Variable Reference
 
-Cache-related configuration is defined in `kuboard-server/src/main/resources/application.yaml` (`kuboard.application.cache.*`):
+Cache-related configuration is provided through `kuboard.application.cache.*`:
 
 | Environment Variable | Default | Description |
 |---------|--------|------|
@@ -165,7 +209,7 @@ export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
 ```
 
 ::: tip
-- The environment variable table in `deploy/docker-compose/README.md` writes the Sentinel master variable as `KUBOARD_CACHE_REDIS_MASTER_NAME`, but the actual code (application.yaml) uses **`KUBOARD_CACHE_REDIS_SENTINEL_MASTER`** — follow the latter.
+- Follow this page for the variable name: some earlier example files write the Sentinel master variable as `KUBOARD_CACHE_REDIS_MASTER_NAME`, but Kuboard actually reads **`KUBOARD_CACHE_REDIS_SENTINEL_MASTER`**.
 - In Redis Cluster mode, all keys and Pub/Sub channels use the hash tags `{kuboard:mcp}` / `{kuboard:mcp}:...`, so they land on the same slot under sharded routing, keeping related keys and subscription events routed consistently.
 :::
 

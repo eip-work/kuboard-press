@@ -1,0 +1,81 @@
+configs:
+  create_db_sql:
+    content: |
+      CREATE DATABASE kuboard DEFAULT CHARACTER SET = 'utf8mb4' DEFAULT COLLATE = 'utf8mb4_unicode_ci';
+      create user 'kuboard'@'%' identified by 'kuboardpwd';
+      grant all privileges on kuboard.* to 'kuboard'@'%';
+      FLUSH PRIVILEGES;
+  # Redis 6+ ACL：禁用 default 用户，只允许 kuboard 用户登录（Kuboard 通过
+  # KUBOARD_CACHE_REDIS_USERNAME / KUBOARD_CACHE_REDIS_PASSWORD 以该用户认证）
+  redis_acl_conf:
+    content: |
+      user default off
+      user kuboard on >Kuboard123 ~* &* +@all
+      appendonly yes
+      dir /data
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: Kuboard123
+      TZ: Asia/Shanghai
+    volumes:
+      - ./docker-compose-mysql-redis-data/kuboard-mysql:/var/lib/mysql:Z
+    configs:
+      - source: create_db_sql
+        target: /docker-entrypoint-initdb.d/create_db.sql
+        mode: 0777
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pKuboard123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  redis:
+    image: redis:7.2-alpine
+    command: redis-server /usr/local/etc/redis/redis.conf
+    configs:
+      - source: redis_acl_conf
+        target: /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./docker-compose-mysql-redis-data/kuboard-redis:/data
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "--user", "kuboard", "--pass", "Kuboard123", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  kuboard:
+    image: ${KUBOARD_IMAGE_REPO}:${KUBOARD_VERSION}
+    environment:
+      - DB_DRIVER=com.mysql.cj.jdbc.Driver
+      - DB_URL=jdbc:mysql://db:3306/kuboard?serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+      - DB_USERNAME=kuboard
+      - DB_PASSWORD=kuboardpwd
+      - KUBOARD_CACHE_PROVIDER=redis
+      - KUBOARD_CACHE_REDIS_MODE=standalone
+      - KUBOARD_CACHE_REDIS_NODES=redis:6379
+      - KUBOARD_CACHE_REDIS_USERNAME=kuboard
+      - KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
+    volumes:
+      - ./docker-compose-mysql-redis-data/kuboard-logs:/app/logs
+    ports:
+      - "8000:80"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s

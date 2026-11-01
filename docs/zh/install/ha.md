@@ -4,11 +4,55 @@ description: Kuboard V4 高可用部署：多副本实例 + Redis 分布式缓�
 
 # 高可用部署
 
-本文介绍 Kuboard V4（High Availability，HA）生产部署方案：多个 Kuboard 实例组成服务集群，前端由负载均衡器（Load Balancer）分发流量，数据库与 Redis 分别提供高可用与跨实例状态共享。内容以官方编排文件 `deploy/docker-compose/docker-compose-ha-opengauss.yaml` 与 kuboard-server 源码实现为准。
+本文介绍 Kuboard V4（High Availability，HA）生产部署方案：多个 Kuboard 实例组成服务集群，前端由负载均衡器（Load Balancer）分发流量，数据库与 Redis 分别提供高可用与跨实例状态共享。
 
 ::: tip 适用读者
 已经完成单机部署（参考 [快速开始](./quickstart)）并准备将 Kuboard 作为生产系统长期运行的团队。
 :::
+
+## 下载编排文件
+
+本页讲到的编排文件可直接下载使用：
+
+| 文件 | 用途 |
+| --- | --- |
+| [docker-compose-ha-opengauss.yaml](/downloads/docker-compose-ha-opengauss.yaml) | 本页主方案：Redis Cluster（3 主 3 从）+ OpenGauss + Nginx 双副本 |
+| [docker-compose-mysql-redis.yaml](/downloads/docker-compose-mysql-redis.yaml) | 单副本生产对照方案：Redis Standalone + MySQL |
+
+### 配套文件
+
+主方案还需在主 yaml 的**同一目录**放一个 `opengauss-init.sh`（OpenGauss 容器的初始化脚本），否则 OpenGauss 无法初始化。把它保存为 `opengauss-init.sh`：
+
+```sh
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+export DEBIAN_FRONTEND=noninteractive
+unset LD_LIBRARY_PATH
+
+apt-get update -qq
+apt-get install -y --no-install-recommends libxml2 ca-certificates >/dev/null
+
+cat > /usr/local/bin/gsql <<'EOF'
+#!/usr/bin/env bash
+export LD_LIBRARY_PATH="/usr/local/opengauss/lib:${LD_LIBRARY_PATH:-}"
+exec /usr/local/opengauss/bin/gsql "$@"
+EOF
+chmod +x /usr/local/bin/gsql
+```
+
+同一目录再建一个 `.env`，至少要有镜像仓库与版本两个变量：
+
+```sh
+KUBOARD_IMAGE_REPO=swr.cn-east-2.myhuaweicloud.com/kuboard/kuboard
+KUBOARD_VERSION=v4
+```
+
+准备好后，在该目录执行启动命令，浏览器访问 `http://<部署主机>:9001`：
+
+```sh
+docker compose -f docker-compose-ha-opengauss.yaml up -d
+```
 
 ## 部署拓扑
 
@@ -109,7 +153,7 @@ Kuboard 的缓存分为两类：**走 Spring CacheManager 的共享缓存**与**
 
 ## Redis 环境变量清单
 
-缓存相关配置定义在 `kuboard-server/src/main/resources/application.yaml`（`kuboard.application.cache.*`）：
+缓存相关配置通过 `kuboard.application.cache.*` 提供：
 
 | 环境变量 | 默认值 | 说明 |
 |---------|--------|------|
@@ -165,7 +209,7 @@ export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
 ```
 
 ::: tip
-- `deploy/docker-compose/README.md` 的环境变量表将 Sentinel 主节点变量写作 `KUBOARD_CACHE_REDIS_MASTER_NAME`，实际代码（application.yaml）使用的是 **`KUBOARD_CACHE_REDIS_SENTINEL_MASTER`**，请以此为准。
+- 变量名以本文为准：部分早期的示例文件把 Sentinel 主节点变量写作 `KUBOARD_CACHE_REDIS_MASTER_NAME`，Kuboard 实际识别的是 **`KUBOARD_CACHE_REDIS_SENTINEL_MASTER`**。
 - Redis Cluster 模式下所有 key 与 Pub/Sub channel 使用 hash tag `{kuboard:mcp}` / `{kuboard:mcp}:...`，保证在分片路由中落到同一 slot，相关 key 与订阅事件路由一致。
 :::
 
