@@ -1,4 +1,4 @@
-configs:
+﻿configs:
   create_db_sql:
     content: |
       CREATE USER kuboard PASSWORD 'Kuboard@123';
