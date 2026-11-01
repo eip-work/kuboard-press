@@ -6,7 +6,7 @@ description: "Connect AI agents to your Kubernetes clusters through the Kuboard 
 
 This page explains how to connect AI agents to Kuboard over MCP so they can query and operate your Kubernetes clusters directly, and how Kuboard approves any write operations an agent performs.
 
-Supported agent clients: Claude Desktop, Cursor, Windsurf, Zed, VS Code, Trae, Cline, Continue, **opencode**, Claude Code, Goose, OpenClaw, Hermes Agent and more.
+Supported agent clients (domestic mainstream first): Trae, Lingma, CodeBuddy, Qoder, Comate, Qwen Code, iFlow CLI, Kimi Code; other popular clients include Claude Code, Cursor, VS Code, Claude Desktop, Cline, Windsurf, **opencode**, Continue, Zed, Goose, OpenClaw, Hermes Agent and more.
 
 ## What MCP Provides
 

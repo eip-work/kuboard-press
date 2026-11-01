@@ -6,7 +6,7 @@ description: 通过 Kuboard MCP 让 AI 智能体直接操作 Kubernetes 集群�
 
 本页说明如何让 AI 智能体通过 MCP 协议接入 Kuboard，直接查询与操作 Kubernetes 集群，并了解 Kuboard 如何审批智能体的写入操作。
 
-支持的智能体客户端：Claude Desktop、Cursor、Windsurf、Zed、VS Code、Trae、Cline、Continue、**opencode**、Claude Code、Goose、OpenClaw、Hermes Agent 等。
+支持的智能体客户端（国内主流优先）：Trae、通义灵码、CodeBuddy、Qoder、文心快码、Qwen Code、iFlow CLI、Kimi Code；其他常用客户端还有 Claude Code、Cursor、VS Code、Claude Desktop、Cline、Windsurf、**opencode**、Continue、Zed、Goose、OpenClaw、Hermes Agent 等。
 
 ## MCP 提供的能力
 
