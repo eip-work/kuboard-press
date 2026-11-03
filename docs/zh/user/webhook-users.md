@@ -77,15 +77,15 @@ description: 通过 Webhook 把企业已有用户库（如 LDAP）接入 Kuboard
 | 2 | 用户未找到：拒绝登录，统一提示「用户名或密码错误」，避免暴露账号是否存在 |
 | 3 | 内部错误：返回网关错误，并显示 `message` / `details` |
 
-官方提供对接 LDAP 的完整示例 [eip-work/kuboard-v4-ldap-example](https://github.com/eip-work/kuboard-v4-ldap-example)（GitHub），克隆后执行 `docker compose up -d` 即可得到可配置的 webhook 用户服务。
+官方提供对接 LDAP 的完整示例 [eip-work/kuboard-v4-ldap-example](https://github.com/eip-work/kuboard-v4-ldap-example)（GitHub），克隆后执行 `docker compose up -d` 即可得到可配置的 webhook 用户服务；从零到 LDAP 登录成功的完整步骤见 [与 LDAP 集成](./ldap-webhook)。
 
 ::: danger Webhook 地址安全
-Kuboard 以 HTTP 直接调用您填写的 URL，**不附加任何签名或鉴权请求头**。请使用 HTTPS，并在服务端自行校验来源（如限制 IP、校验自定义请求头）；`message` / `details` 会出现在报错中，不要返回敏感信息。
+Kuboard 以 HTTP 直接调用您填写的 URL，默认**不附加任何签名或鉴权请求头**。请使用 HTTPS，并在服务端自行校验来源（如限制 IP、校验自定义请求头）；`message` / `details` 会出现在报错中，不要返回敏感信息。
 :::
 
 ## 第二步：在 Kuboard 中启用并配置
 
-进入 **系统设置 → 用户登录设置**（User Authentication Settings），在「**外部用户库**」区块打开「**启用外部用户 Webhook**」开关，填写「**外部用户 Webhook**」服务地址后点击「**保存**」。
+进入 **系统管理 → 设置 → 系统设置 → 用户登录设置**，在「**外部用户库**」区块打开「**启用外部用户 Webhook**」开关，填写「**外部用户 Webhook**」服务地址后点击「**保存**」。
 
 ![用户登录设置中的「外部用户库」区块](./webhook-users.assets/user-webhook-users-1.png)
 

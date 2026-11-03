@@ -77,17 +77,17 @@ You only need to provide one HTTP address and implement two kinds of requests on
 | 2 | User not found: login rejected with a unified "incorrect username or password" prompt, avoiding exposure of whether the account exists |
 | 3 | Internal error: returns a gateway error and displays `message` / `details` |
 
-The official project provides a complete LDAP integration example, [eip-work/kuboard-v4-ldap-example](https://github.com/eip-work/kuboard-v4-ldap-example) (GitHub). After cloning, run `docker compose up -d` to get a configurable webhook user service.
+The official project provides a complete LDAP integration example, [eip-work/kuboard-v4-ldap-example](https://github.com/eip-work/kuboard-v4-ldap-example) (GitHub). After cloning, run `docker compose up -d` to get a configurable webhook user service; the complete walkthrough from an empty deployment to a successful LDAP login is in [Integrate with LDAP](./ldap-webhook).
 
 ::: danger Webhook URL Security
-Kuboard calls the URL you fill in directly over HTTP, **without attaching any signature or authentication request header**. Please use HTTPS and validate the source on your service yourself (for example, restrict by IP or check a custom request header); the `message` / `details` fields appear in error messages — do not return sensitive information in them.
+Kuboard calls the URL you fill in directly over HTTP and **by default attaches no signature or authentication request header**. Please use HTTPS and validate the source on your service yourself (for example, restrict by IP or check a custom request header); the `message` / `details` fields appear in error messages — do not return sensitive information in them.
 :::
 
 ## Step 2: Enable and Configure in Kuboard
 
-Go to **System Settings → User Authentication Settings**; in the "**External User Library**" section, turn on the "**Enable External User Webhook**" toggle, fill in the "**External User Webhook**" service address, then click "**Save**".
+Go to **System Administration → Settings → System Settings → User Authentication Settings**; in the "**External User Repository**" section, turn on the "**Enable External User Webhook**" toggle, fill in the "**External User Webhook**" service address, then click "**Save**".
 
-<!-- screenshot-todo: the "External User Library" section in User Authentication Settings (same as ./webhook-users.assets/user-webhook-users-1.png on the zh page) -->
+<!-- screenshot-todo: the "External User Repository" section in User Authentication Settings (a current screenshot exists at ./ldap-webhook.assets/ldap-webhook-1.png and can replace ./webhook-users.assets/user-webhook-users-1.png) -->
 
 ::: tip URL Reachability
 This URL is accessed by the **Kuboard server** (not the browser), so fill in an address resolvable inside the cluster; do not use `localhost`.

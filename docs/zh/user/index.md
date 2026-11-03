@@ -19,6 +19,7 @@ description: 用户与认证总览：登录、密码策略、MFA、访问密钥�
 | [角色与权限](./roles) | 角色（Role）、授权规则、K8s RBAC 映射 | 梳理"谁能做什么" |
 | [OIDC 单点登录](./oidc) | OIDC（OpenID Connect）协议对接 Keycloak / Authing / 飞书等 | 企业统一身份接入 |
 | [Webhook 外部用户库](./webhook-users) | 通过 Webhook 接入 LDAP / 自研账号系统 | 已有账号体系对接 Kuboard |
+| [与 LDAP 集成](./ldap-webhook) | 通过 Webhook 对接 LDAP 的完整步骤：跑通样例、接入自有 LDAP、授予权限 | 企业已有 LDAP 目录 |
 
 ## 推荐阅读顺序
 

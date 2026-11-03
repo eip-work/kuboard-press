@@ -19,6 +19,7 @@ This section covers the full identity and access management (IAM) surface of Kub
 | [Roles](./roles) | Roles, authorization rules, mapping to K8s RBAC | Design who-can-do-what |
 | [OIDC SSO](./oidc) | OIDC (OpenID Connect) integration with Keycloak / Authing / Feishu and more | Enterprise single sign-on |
 | [Webhook External User Library](./webhook-users) | Bridge Kuboard to LDAP or a custom account system via Webhook | Reuse an existing identity backend |
+| [Integrate with LDAP](./ldap-webhook) | End-to-end LDAP integration via Webhook: run the sample, adapt it to your own LDAP, grant permissions | Connect an enterprise LDAP directory |
 
 ## Recommended Reading Order
 

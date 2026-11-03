@@ -145,6 +145,7 @@ const zhSidebar = {
       { text: 'OIDC 单点登录', link: '/zh/user/oidc' },
       { text: '与 GitLab 集成', link: '/zh/user/oidc-gitlab' },
       { text: 'Webhook 外部用户库', link: '/zh/user/webhook-users' },
+      { text: '与 LDAP 集成', link: '/zh/user/ldap-webhook' },
     ]},
   ],
   '/zh/mcp/': [
@@ -334,6 +335,7 @@ const enSidebar = {
       { text: 'OIDC SSO', link: '/en/user/oidc' },
       { text: 'Integrate with GitLab', link: '/en/user/oidc-gitlab' },
       { text: 'Webhook Users', link: '/en/user/webhook-users' },
+      { text: 'Integrate with LDAP', link: '/en/user/ldap-webhook' },
     ]},
   ],
   '/en/mcp/': [
