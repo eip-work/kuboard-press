@@ -1,106 +1,155 @@
 ---
-description: "Migrating from Kuboard v3 to v4: cannot be upgraded in place, run side by side, independent licensing, and a step-by-step migration path"
+description: "Migrating from Kuboard v3 to v4: the built-in migration wizard, preparation, post-migration tasks, unsupported items, and side-by-side deployment"
 ---
 
 # Migrating from Kuboard v3 to v4
 
-Kuboard v3 and v4 are two independent products, and v3 **cannot be upgraded in place** to v4. Clusters must be re-imported into v4, and users, licenses, add-ons, and configurations must be recreated in v4.
+Kuboard v3 and v4 are two independent products; v3 **cannot be upgraded in place** to v4. v4 ships a built-in **Migrate from v3** wizard that migrates v3 **users, groups, roles, first-stage (Kuboard) authorizations, branding and login policy**, and reads each cluster's **Kubernetes RBAC (second-stage authorization)** to rebuild it as v4 authorization rules.
 
-This article builds on the "A Note for Kuboard v3 Users" section in [Install Kuboard v4](./index), which covers the basic compatibility conclusions; this article provides the concrete migration steps.
+Clusters must be re-imported into v4, and **you must supply the cluster credentials yourself** — v3 deliberately does not return kubeconfig / tokens through its API.
+
+::: tip In one sentence
+The wizard migrates "people and permissions"; cluster credentials, licenses, MFA and access keys must be configured again.
+:::
 
 ## v3 and v4 Can Run Side by Side
 
 During the migration, v3 and v4 can run side by side without affecting each other:
 
-- **Deployment level**: v3 and v4 are mutually independent. v3 uses built-in storage, while v4 requires its own database instance (MySQL / MariaDB / OpenGauss, choose one). You can deploy the two in different servers or containers, or in different namespaces of the same Kubernetes cluster, accessed via different domains.
-- **Cluster level**: The same Kubernetes cluster can be imported into both v3 and v4 at the same time; both versions can manage the cluster normally.
-- **Same-named clusters**: If a cluster has the same name in v3 and v4, add-ons are not affected and work normally in both v3 and v4; if the names differ, the add-on resources still remain in the cluster, but you need to re-run the add-on initialization / activation flow in v4.
+- **Deployment level**: v3 uses built-in storage, while v4 requires its own database instance (MySQL / MariaDB / OpenGauss). You can deploy them on different servers / containers, or in different namespaces of the same Kubernetes cluster, accessed via different domains.
+- **Cluster level**: the same Kubernetes cluster can be imported into both v3 and v4; both versions can manage it normally.
+- **Same-named clusters**: if a cluster keeps the same name, add-ons are unaffected; if the names differ, add-on resources still exist in the cluster but must be re-initialized / activated in v4.
 
 ::: tip About this documentation site
-The old v3 documentation site will move to a separate domain, v3.kuboard.cn, separated from the v4 documentation site (this site), so that v3 users can keep reading historical materials.
+The old v3 documentation site will move to a separate domain, v3.kuboard.cn, separated from the v4 documentation site (this site).
+:::
+
+## Before You Start
+
+Please prepare the following:
+
+| Item | Notes |
+| --- | --- |
+| **v3 address** | `scheme://host[:port]` only, no path. Tick "Skip TLS certificate verification" for self-signed certificates |
+| **v3 administrator credentials** | Prefer username / password mode (a v3 admin that can read all users and permissions). Add the 6-digit code if MFA is enabled |
+| **v3 access key (optional)** | If v3 uses external SSO / LDAP, password mode may not work. Create an AK/SK under v3 "Profile → Access keys" and use the access key mode |
+| **kubeconfig or ServiceAccount Token per cluster** | v3 never returns cluster credentials. Prepare a credential that can reach the apiserver directly; v3 agent clusters also need a reachable apiserver address |
+| **RBAC read permission** | Second-stage authorization reads RoleBinding / ClusterRoleBinding. The credential needs `list` on those resources, otherwise the wizard warns that cluster RBAC cannot be migrated automatically — you can skip it |
+| **v4 license** | v3 licenses cannot be used for v4; request one in advance |
+| **v4 configuration backup** | Export a configuration backup before migrating, so you can roll back if needed |
+
+## Using the Migration Wizard
+
+In v4 go to **Settings → Migrate from v3** and follow the 7 steps:
+
+1. **Connect to v3** — enter the address and credentials, click "Test connection". The wizard shows counts of users / groups / roles / bindings / clusters in v3 (counts are a **lower bound**: only objects readable by the given account are counted).
+2. **Select content** — everything is selected by default; unsupported items are greyed out with an explanation.
+3. **Cluster credentials** — enter a kubeconfig or ServiceAccount Token for each v3 cluster and validate it (or "Validate all"). Clusters can be skipped explicitly.
+4. **Cluster RBAC (second stage)** — the wizard reads each cluster's Kubernetes RBAC and translates it into v4 roles and group-role bindings. **Rows for matched subjects are selected by default**; you can unselect rows, and map unmatched subjects to existing v4 groups.
+5. **Diff preview** — shows what will be created / updated / unchanged / conflicting / skipped, plus the "manual actions" list. Nothing is written to v4 yet.
+6. **Apply** — after confirmation, clusters are imported first, then users / groups / roles / bindings. Cluster RBAC runs in its own transaction and rolls back entirely on failure, with a retry entry.
+7. **Report** — lists migrated / skipped / manual actions / unsupported items / next steps, and lets you download a JSON report and the v4 configuration snapshot.
+
+::: tip Idempotent
+The wizard can be re-run: existing objects are mostly "unchanged", **passwords of existing users are never reset**, and roles / bindings are not duplicated. Run it once after all validations pass.
+:::
+
+::: tip Do not let users start using v4 mid-migration
+Re-running compares against v3 data; if users already changed permissions in v4, importing old data again may overwrite those changes.
+:::
+
+## After Migration
+
+| Task | Notes |
+| --- | --- |
+| **Tell users to change their password** | Migrated users start with `Kuboard123` and are forced to change it on first login |
+| **Complete cluster credentials** | Clusters without credentials or with failed validation must be completed in v4 "Cluster management"; wait for the full sync to finish |
+| **Review second-stage authorization** | Degraded rules / aggregated roles / unmatched subjects in the report need manual grants in v4 |
+| **Reconfigure SSO / LDAP / OIDC** | Login integrations are not migrated; configure them in v4 "Settings → User login settings" |
+| **Request and import a v4 license** | v3 licenses cannot be used in v4 |
+| **Re-bind MFA** | MFA is not migrated; users re-bind it under "Profile" |
+| **Recreate access keys (AK/SK)** | v3 access keys are not migrated (administrators cannot list them); create new ones in v4 and update MCP / CI configuration |
+| **Reconfigure audit policy** | v3 audit policy and history are not migrated; configure audit rules again in v4 |
+| **Verify** | Sign in as a regular user: change password, browse clusters / namespaces, open terminal and logs (requires WebSocket). Decommission v3 only after verification |
+
+## What Is Not Migrated
+
+The following has no readable API in v3 or no equivalent in v4, and must be rebuilt manually:
+
+| Item | Reason | What you need to do |
+| --- | --- | --- |
+| **v3 license** | Product policy: v3 / v4 licenses are not interchangeable | Request and import a v4 license |
+| **User passwords** | The v3 API never returns passwords | Sign in with the initial password and change it immediately |
+| **MFA** | v3 stores plaintext seeds / recovery codes, incompatible with v4 TOTP + bcrypt | Users re-bind MFA in v4 |
+| **v3 access keys (AK/SK)** | Scoped to the v3 user; administrators cannot list them | Recreate in v4 and update MCP / CI configuration |
+| **Audit policy / logs** | Different structure and storage (v3 history lives in a time-series DB) | Reconfigure in v4; archive old logs separately if needed |
+| **Access gateway (KuboardAccessGate)** | v4 has no equivalent | Accept the loss |
+| **SSO / LDAP / OIDC configuration** | v3 uses environment variables plus a built-in SSO; v4 configures login sources separately | Reconfigure in v4 |
+| **User preferences (default page / favorites / act-as)** | v4 has no storage for them | Users set them again |
+| **K8s object cache / addon state** | Cache is rebuilt from the apiserver; addon state lives in the cluster | Wait for the v4 sync; re-initialize addons per their docs |
+
+**Kubernetes RBAC rules that cannot be expressed in v4** are skipped and listed in the report, including:
+
+- rules limited by `resourceNames`;
+- `nonResourceURLs` (e.g. `/healthz`, `/metrics`);
+- verbs v4 does not support: `use` / `bind` / `escalate` / `impersonate`;
+- empty rules or roles that rely on `aggregationRule` (usually need manual review).
+
+In such cases the wizard **grants less rather than more**; complete them from the "manual actions" section of the report.
+
+::: warning Cluster name length
+v4 requires cluster names of 3–24 characters. A v3 cluster name outside that range still migrates (direct DB write), but must be renamed before editing it in the v4 UI.
 :::
 
 ## v3 and v4 Licensing Are Mutually Independent
 
-v3 license files and v4 licensing are mutually independent: a v3 license cannot be imported into v4, and a v4 license cannot be used in v3. When migrating to v4, you need to obtain and import a license for v4 separately; while v3 and v4 run side by side, each needs its own license. For the differences between the free and Enhanced editions, see [Licensing and Support](../support/).
+v3 license files and v4 licensing are mutually independent: a v3 license cannot be imported into v4, and a v4 license cannot be used in v3. While v3 and v4 run side by side, each needs its own license. For the differences between the free and Enhanced editions, see [Licensing and Support](../support/).
 
-::: tip
-After importing a license file in the v4 UI, you can check its status (Valid / Invalid / Expired) on the license list page; only proceed with subsequent steps once the import is confirmed successful.
-:::
+## Failure and Rollback
 
-## Recommended Migration Path
+1. **Before migrating**: export a configuration backup in v4 (a snapshot of the current state) and keep v3 running.
+2. **If migration fails**:
+   - metadata import is a **single transaction** and rolls back entirely;
+   - cluster import is **isolated per cluster** — failures are not persisted and are listed in the report;
+   - cluster RBAC import rolls back entirely by default and does not affect migrated metadata.
+3. **Full rollback**:
+   - import the pre-migration backup with `replace` mode + overwrite (this deletes objects created by the migration — review the impact first);
+   - or rebuild the v4 database (the migration tool only reads v3; v3 is unaffected).
+4. **Decommissioning v3**: only after every user can sign in, cluster sync is healthy and second-stage authorization has been reviewed.
 
-The migration path is an operational recommendation — validate it against your environment before executing.
+## FAQ
 
-1. **Deploy a v4 instance and initialize it**
-   Follow [Install Kuboard v4](./index) to prepare the database (MySQL / MariaDB / OpenGauss, choose one), and start v4 per [Quick Start](./quickstart) or [High Availability](./ha). Log in with the default administrator `admin` (default password `Kuboard123`) and change the password immediately.
+**The wizard cannot connect to v3.**
+Make sure the **v4 backend** can reach v3 (not the browser); tick "Skip TLS certificate verification" for self-signed certificates; enter only scheme, host and port.
 
-2. **Import the cluster**
-   Import the cluster from the v4 UI. **We recommend keeping the cluster name the same as in v3**, so that add-ons work normally in both v3 and v4; after importing, first verify that the cluster status and synchronization are normal.
+**v3 uses SSO / LDAP, so password mode does not work.**
+Use the access key (AK.SK) mode: create one under v3 "Profile → Access keys" and paste the AK/SK.
 
-3. **Rebuild workload views and cluster resource configuration**
-   Reconfigure the display and access of nodes, namespaces, and workloads in v4. Check whether resource types you used in v3 but have not yet validated in v4 (StorageClass, Ingress, gateways, etc.) display correctly in v4.
+**Cluster validation fails.**
+Check that the kubeconfig / Token is complete, the apiserver is reachable from the v4 backend, and tick "skip hostname verification" for self-signed certificates. v3 agent clusters must provide a directly reachable apiserver.
 
-4. **Check add-on compatibility**
-   Go to the v4 **add-on market** and check whether the add-ons you need can be installed / activated; if initialization scripts (e.g., CRD, RBAC) are required, complete the initialization per the add-on documentation before activating.
+**Cluster validation succeeds but it says RBAC cannot be read.**
+The credential lacks permission to list RoleBinding / ClusterRoleBinding, so second-stage authorization cannot be migrated automatically. Skip cluster RBAC for that cluster or retry with a credential that can read RBAC.
 
-5. **Migrate users and permissions**
-   Recreate users and user groups in v4 and configure authorization rules. v4's authorization model differs from v3's; reconfigure it per v4's authorization approach — see the "Manual Adjustments Checklist" below.
+**A migrated user sees nothing after signing in.**
+Check that the user's group is enabled, the group has role bindings, and the second-stage authorization was reviewed. Refresh the page, or ask an administrator to clear the authorization cache from "Platform health" and retry.
 
-6. **Validate**
-   Validate with a regular user account: log in, view clusters, operate workloads, open terminals and logs (dependent on WebSocket — make sure the reverse proxy allows it), and verify that the audit log and MCP (if used) chains work normally.
-
-7. **Take v3 offline**
-   After all features pass validation, gradually take the v3 instance offline. We don't recommend stopping v3 before validation is complete — running the two versions side by side is cheap.
-
-## Manual Adjustments Checklist
-
-The following items have **no** automatic migration channel in v4 and must be done manually:
-
-| Item | Description |
-| --- | --- |
-| Administrator and user system | The initial administrator in v4 is `admin` (default password `Kuboard123`), unrelated to v3 users |
-| Users / user groups | Must be recreated in v4, along with authorization rules |
-| Authorization rules | v4 uses a simpler authorization model (Kuboard-level / cluster-level authorization rules); re-grant users per v4's approach |
-| Cluster import | Clusters must be re-imported into v4, which performs a fresh full synchronization |
-| License files | v3 license files cannot be used in v4; obtain and import a separate license for v4 |
-| Add-on initialization | Under same-named clusters add-ons are not affected, but you still need to complete add-on installation / initialization / activation per the wizard in v4 |
-| External user stores | If v3 integrated external user stores such as LDAP, reconfigure the integration in v4 |
-| Reverse proxy / HTTPS / WebSocket | v4 must be mounted at the root path; the terminal and log features depend on WebSocket, so reconfigure the reverse proxy (Nginx / Ingress) |
-| Password policy and MFA | If v3 had password expiry or multi-factor authentication (MFA) enabled, set these policies again in v4 |
-
-## Common Migration Mapping Table
-
-| Kuboard v3 | Kuboard v4 | Description |
-| --- | --- | --- |
-| App store / add-ons | Add-on market | v4 is compatible with v3-version add-ons; installed add-ons exist as resources in the cluster |
-| Cluster management | Cluster management (import, edit, sync status) | The same cluster can be imported into both v3 and v4; add-ons are not affected when the cluster name is the same |
-| Workloads | Workload management | v4 covers v3's main features and supports cross-cluster / namespace lists and fuzzy search |
-| Container terminal / logs | Terminal and logs | Make sure the reverse proxy allows WebSocket |
-| Access in-cluster services / Pod ports | KuboardProxy | Corresponding features; configuration is described in the Usage Guide |
-| Continuous deployment / image updates | Continuous delivery (update image tags, restart workloads) | v4 provides the corresponding features |
-| v3 users / permissions | v4 users / authorization rules | Authorization models differ; must be reconfigured and cannot be migrated |
-| v3 license files | v4 licensing | Mutually independent; import the v4 license separately |
-| Built-in storage | MySQL / MariaDB / OpenGauss | Completely different storage layers |
-| Single-node deployment | Single-node or high-availability deployment | v4 supports high availability; see [High Availability](./ha) |
-
-::: tip
-For v3 features not listed in the table, verify them one by one against the v4 UI and the [Usage Guide](../guide/index).
-:::
+**Does the migration overwrite the existing v4 admin?**
+No. v3's built-in `admin` is skipped, and neither the v4 `admin` nor any existing user has its password reset.
 
 ## Version Upgrade vs. Version Migration
 
-These two concepts are easy to confuse, so note the difference:
+Two easily confused concepts:
 
-- **In-version upgrade of v4** (v4.x → v4.y): just change the image tag; the database is migrated automatically by v4 — see [Upgrade Kuboard](./upgrade);
-- **v3 → v4 migration** (this article): a migration between two independent products; there is no in-place upgrade channel and you must follow the steps in this article.
+- **v4 upgrade** (v4.x → v4.y): change the image tag; v4 migrates the database automatically. See [Upgrade Kuboard](./upgrade).
+- **v3 → v4 migration** (this article): migration between two independent products via the wizard plus manual completion of unsupported items. There is no in-place upgrade path.
 
 ## Related Documents
 
-- [Install Kuboard v4](./index) — installation, database preparation, environment variables, reverse proxy, and HA parameters
-- [Quick Start](./quickstart) — quickly bring up a v4 instance with docker compose
-- [Upgrade Kuboard](./upgrade) — in-version upgrades of v4
-- [High Availability](./ha) — v4 high-availability deployment
-- [Reverse Proxy](./reverse-proxy) — Nginx / Ingress configuration and WebSocket passthrough
-- [Usage Guide](../guide/index) — an overview of v4 features (clusters, workloads, add-on market, etc.)
-- [Licensing and Support](../support/) — v4 free / Enhanced edition feature comparison
+- [Install Kuboard v4](./index) — installation, database, environment variables, reverse proxy, HA
+- [Quick start](./quickstart) — bring up a v4 instance with docker compose
+- [Upgrade Kuboard](./upgrade) — in-place v4 upgrades
+- [High availability](./ha) — v4 HA deployment
+- [Reverse proxy](./reverse-proxy) — Nginx / Ingress and WebSocket
+- [User guide](../guide/index) — v4 feature overview
+- [Licensing and Support](../support/) — free vs. Enhanced editions
