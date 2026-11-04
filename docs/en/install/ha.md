@@ -399,6 +399,13 @@ server {
     proxy_pass http://kuboard_backend;
   }
 
+  # File browser HTTP streaming upload (raise the body limit and disable request buffering)
+  location /k8s-upload/ {
+    proxy_pass http://kuboard_backend;
+    client_max_body_size 0;       # overrides the server-level 10m
+    proxy_request_buffering off;  # forward as bytes arrive instead of buffering the file
+  }
+
   # MCP server endpoints (Streamable HTTP + SSE push)
   location /mcp {
     proxy_pass http://kuboard_backend;

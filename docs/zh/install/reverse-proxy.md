@@ -10,16 +10,17 @@ description: 通过 Nginx 反向代理 / Kubernetes Ingress 为 Kuboard 配置 H
 
 Kuboard 默认使用 HTTP 协议，方便快速试用；生产环境请务必启用 HTTPS。您可以使用 Kubernetes Ingress 直接启用 HTTPS 并转发到 Kuboard Service，也可以使用自建的 Nginx 反代 Kuboard 并在其上配置 HTTPS。
 
-## 三条注意事项
+## 注意事项
 
 - **WebContextRoot（根路径）**：Kuboard 必须挂在根路径访问，例如 `https://kuboard.yourcompany.com/`，不支持 `https://yourcompany.com/kuboard/` 这样的二级路径；
 - **启用 WebSocket**：终端和日志功能依赖 WebSocket，反向代理必须放行 WebSocket 升级请求，否则终端与日志无法正常使用；
 - **转发 `X-Forwarded-Host`**：启用 [OIDC 单点登录](../user/oidc) 时，回调地址由「前端 Origin 白名单」里登记的地址拼出，因此**白名单必须写用户浏览器实际访问的地址（含端口）**。`X-Forwarded-Host` 建议用 `$http_host`（保留端口），只设 `Host $host` 会丢掉端口，影响其它需要还原对外地址的功能。未启用 OIDC 时这一行也无副作用，建议一律加上。
 - **页面缓存**：Kuboard 会自动为页面入口（`index.html`）下发"不缓存"策略，并为带哈希的静态资源（`/assets/`）下发长期缓存，升级后浏览器会立即加载新版页面。请勿在反向代理上再为 `location /` 统一添加 `expires` 或 `Cache-Control` 配置，也不要对入口页面开启 `proxy_cache` 或 CDN 缓存 —— 否则升级 Kuboard 后浏览器可能仍然加载旧页面（表现为界面功能无响应、布局错乱等）。如需缓存加速，只对 `/assets/` 路径配置长缓存即可。
+- **大文件上传**：文件浏览器的 HTTP 流式上传走 `/k8s-upload/`，请求体大小默认受反向代理限制（Nginx 为 `client_max_body_size 1m`），超过即返回 **413**，表现为「上传失败：HTTP 413」。请在下文的 `location /k8s-upload/` 中放开该限制，并建议关闭 `proxy_request_buffering`，让字节边收边转发，而不是先由反向代理落一份完整的临时文件。
 
 ## Nginx 配置样例
 
-使用 Nginx 作为反向代理时，将注释标注的两处地址替换为您的域名和 Kuboard 节点地址后直接使用；如果 Nginx 上启用了 HTTPS，请一并取消两个 location 中 `# proxy_set_header X-Forwarded-Proto https;` 一行的注释。
+使用 Nginx 作为反向代理时，将注释标注的两处地址替换为您的域名和 Kuboard 节点地址后直接使用；如果 Nginx 上启用了 HTTPS，请一并取消各个 location 中 `# proxy_set_header X-Forwarded-Proto https;` 一行的注释。
 
 ```nginx
 server {
@@ -49,6 +50,22 @@ server {
     proxy_set_header X-Forwarded-Host $http_host;
     proxy_set_header X-Forwarded-Port $server_port;
     # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
+  }
+  # 容器文件浏览器的 HTTP 流式上传（大文件必须放开请求体限制）
+  location /k8s-upload/ {
+    proxy_pass  http://192.168.2.39:32567;  # 替换成你的节点地址
+    proxy_http_version 1.1;
+    proxy_pass_header Authorization;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
+    client_max_body_size 0;        # 0 = 不限制；默认 1m，超过即 413
+    proxy_request_buffering off;   # 边收边转，避免整份文件先落 Nginx 的临时文件
+    proxy_read_timeout 3600s;
+    proxy_send_timeout 3600s;
   }
   # Swagger / OpenAPI 文档（KUBOARD_SWAGGER_ENABLED=true 时需要）
   # 注意：location 不能带尾斜杠。写成 /v3/api-docs/ 时 nginx 会把 /v3/api-docs
@@ -104,6 +121,15 @@ spec:
 ```
 
 - `nginx.org/websocket-services` 与 `nginx.org/proxy-pass-headers` 两个注解用于开启 WebSocket 与透传认证头（如需会话保持或显示名，可自行补充 `nginx.com/sticky-cookie-services`、`k8s.kuboard.cn/displayName` 注解）。
+
+::: warning 大文件上传需要放开 Ingress 的请求体限制
+文件浏览器的 HTTP 流式上传（`/k8s-upload/`）同样受 Ingress 控制器的请求体大小限制，默认值通常为 1m，超过即返回 **413**：
+
+- **ingress-nginx**（`nginx.ingress.kubernetes.io/*`）：`nginx.ingress.kubernetes.io/proxy-body-size: "0"`，并建议 `nginx.ingress.kubernetes.io/proxy-request-buffering: "off"`；
+- **NGINX Ingress Controller**（`nginx.org/*`）：`nginx.org/client-max-body-size: "0"`。
+
+具体注解名称以所用 Ingress 控制器的官方文档为准。
+:::
 
 ## HA 多副本：粘性会话与 WebSocket 路径覆盖
 

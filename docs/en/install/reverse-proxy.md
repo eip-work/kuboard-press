@@ -10,16 +10,17 @@ Configure HTTPS and WebSocket for Kuboard (via an Nginx reverse proxy or a Kuber
 
 Kuboard uses plain HTTP by default so that you can try it out quickly. In production, make sure HTTPS is enabled. You can either enable HTTPS directly on a Kubernetes Ingress and forward traffic to the Kuboard Service, or set up your own Nginx in front of Kuboard and configure HTTPS on it.
 
-## Three Things to Note
+## Things to Note
 
 - **WebContextRoot (root path)**: Kuboard must be served from the root path, e.g. `https://kuboard.yourcompany.com/`; sub-paths such as `https://yourcompany.com/kuboard/` are not supported.
 - **WebSocket must be enabled**: the terminal and log features rely on WebSocket, so the reverse proxy must allow WebSocket upgrade requests, otherwise the terminal and logs will not work.
 - **Forward `X-Forwarded-Host`**: when [OIDC single sign-on](../user/oidc) is enabled, the callback URL is built from the origin registered in the **Allowed Frontend Origins** whitelist, so that whitelist must contain the address (including the port) users actually visit in the browser. Setting `X-Forwarded-Host` from `$http_host` (which keeps the port) is still recommended; `Host $host` drops the port and affects other features that need to reconstruct the external address. The directive is harmless when OIDC is off, so it is best added unconditionally.
 - **Page caching**: Kuboard automatically sends a no-cache policy for the page entry (`index.html`) and a long-lived cache policy for hashed static assets (`/assets/`), so browsers load the new frontend immediately after an upgrade. Do not add a blanket `expires` or `Cache-Control` for `location /` on your reverse proxy, and avoid `proxy_cache`/CDN caching of the entry page — otherwise browsers may keep serving the old page after an upgrade (symptoms include unresponsive UI and broken layout). If you want to cache for speed, configure long-lived caching for the `/assets/` path only.
+- **Large file uploads**: the file browser's HTTP streaming upload uses `/k8s-upload/`, and the request body is subject to the reverse proxy's size limit (Nginx defaults to `client_max_body_size 1m`), which makes any larger file fail with **413** (shown as "Upload failed: HTTP 413"). Raise the limit in the `location /k8s-upload/` block below, and keep `proxy_request_buffering off` so bytes are forwarded as they arrive instead of being written to a full temporary file first.
 
 ## Nginx Configuration Example
 
-When using Nginx as the reverse proxy, replace the two addresses marked in the comments with your domain and Kuboard node address, then use it directly; if HTTPS is enabled on Nginx, also uncomment the `# proxy_set_header X-Forwarded-Proto https;` line in the `location` blocks.
+When using Nginx as the reverse proxy, replace the two addresses marked in the comments with your domain and Kuboard node address, then use it directly; if HTTPS is enabled on Nginx, also uncomment the `# proxy_set_header X-Forwarded-Proto https;` line in each `location` block.
 
 ```nginx
 server {
@@ -49,6 +50,22 @@ server {
     proxy_set_header X-Forwarded-Host $http_host;
     proxy_set_header X-Forwarded-Port $server_port;
     # proxy_set_header X-Forwarded-Proto https; # enable this if you have enabled HTTPS on the reverse proxy
+  }
+  # File browser HTTP streaming upload (large files need the body size limit raised)
+  location /k8s-upload/ {
+    proxy_pass  http://192.168.2.39:32567;  # replace with your node address
+    proxy_http_version 1.1;
+    proxy_pass_header Authorization;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    # proxy_set_header X-Forwarded-Proto https; # enable this if you have enabled HTTPS on the reverse proxy
+    client_max_body_size 0;        # 0 = unlimited; the 1m default returns 413 for larger files
+    proxy_request_buffering off;   # forward as bytes arrive instead of buffering the whole file
+    proxy_read_timeout 3600s;
+    proxy_send_timeout 3600s;
   }
   # Swagger / OpenAPI docs (needed when KUBOARD_SWAGGER_ENABLED=true)
   # Note: the location must NOT end with a slash. With /v3/api-docs/ nginx
@@ -105,6 +122,15 @@ spec:
 ```
 
 - The two annotations `nginx.org/websocket-services` and `nginx.org/proxy-pass-headers` enable WebSocket and forward the authorization header (for session affinity or display name, you can add the `nginx.com/sticky-cookie-services` and `k8s.kuboard.cn/displayName` annotations yourself).
+
+::: warning Large uploads need the Ingress request body limit raised
+The file browser's HTTP streaming upload (`/k8s-upload/`) is also subject to the Ingress controller's request body size limit, which is usually 1m by default and returns **413** for anything larger:
+
+- **ingress-nginx** (`nginx.ingress.kubernetes.io/*`): `nginx.ingress.kubernetes.io/proxy-body-size: "0"`, plus `nginx.ingress.kubernetes.io/proxy-request-buffering: "off"` is recommended;
+- **NGINX Ingress Controller** (`nginx.org/*`): `nginx.org/client-max-body-size: "0"`.
+
+Check the official documentation of the controller you use for the exact annotation names.
+:::
 
 ## HA Multi-replica: Session Affinity and WebSocket Path Coverage
 

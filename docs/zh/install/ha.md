@@ -397,6 +397,13 @@ server {
     proxy_pass http://kuboard_backend;
   }
 
+  # 容器文件浏览器 HTTP 流式上传（大文件需放开请求体限制并关闭请求体缓冲）
+  location /k8s-upload/ {
+    proxy_pass http://kuboard_backend;
+    client_max_body_size 0;       # 覆盖 server 级的 10m
+    proxy_request_buffering off;  # 边收边转，避免整份文件先落临时文件
+  }
+
   # MCP server 端点（Streamable HTTP + SSE 推送）
   location /mcp {
     proxy_pass http://kuboard_backend;
