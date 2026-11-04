@@ -71,6 +71,7 @@ const zhSidebar = {
       { text: '导入集群', link: '/zh/guide/cluster/import' },
       { text: '编辑集群', link: '/zh/guide/cluster/edit' },
       { text: '同步状态', link: '/zh/guide/cluster/sync-status' },
+      { text: '证书到期时间', link: '/zh/guide/cluster/certificates' },
       { text: '资源导入导出', link: '/zh/guide/cluster/export-import' },
     ]},
     { text: '工作负载', items: [
@@ -242,6 +243,7 @@ const enGuideSidebar = [
     { text: 'Import Cluster', link: '/en/guide/cluster/import' },
     { text: 'Edit Cluster', link: '/en/guide/cluster/edit' },
     { text: 'Sync Status', link: '/en/guide/cluster/sync-status' },
+    { text: 'Certificate Expiry', link: '/en/guide/cluster/certificates' },
     { text: 'Export / Import', link: '/en/guide/cluster/export-import' },
   ]},
   { text: 'Workloads', items: [

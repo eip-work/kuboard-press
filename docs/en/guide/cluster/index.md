@@ -13,6 +13,7 @@ A cluster is the core object Kuboard manages. This section walks through the ful
 | [Import Cluster](./import) | Import a new cluster via kubeconfig or ServiceAccount | First-time connection to a K8s cluster |
 | [Edit Cluster](./edit) | Change cluster name, description, connection parameters and cache strategy | Adjust settings on an existing cluster |
 | [Sync Status](./sync-status) | Inspect full and incremental sync progress, error logs | Troubleshoot stuck or failing syncs |
+| [Certificate Expiry](./certificates) | Expiry of the API server certificate, Kuboard client certificate and cluster CA | Plan renewal before certificates expire |
 | [Resource Export and Import](./export-import) | Bulk import/export K8s resources (YAML) between clusters | Cross-cluster migration and DR |
 
 ## Recommended Reading Order
