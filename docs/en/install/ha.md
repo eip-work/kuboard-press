@@ -142,6 +142,10 @@ In single-instance (caffeine) mode, the following cross-instance state all lives
 | `K8sCapabilityCache` (cluster capability detection cache) | Always in-process Caffeine (versionCache TTL 1h / max 500, entryCache TTL 1h / max 2000), **not shared** | Same as left (not shared) | `K8sCapabilityCache` |
 | `ClusterClientBuilder` | Always in-process Caffeine | Same as left (not shared) | `CacheUtil.initSimpleCacheManager()` |
 
+::: tip The key names above carry no deployment prefix
+The table lists the **body** of the keys / channels. Once `KUBOARD_CACHE_REDIS_KEY_PREFIX` is set, the actual keys carry that prefix (e.g. `prod:{kuboard:mcp}:mcp-client-info:xxx`), and the Pub/Sub channels do as well.
+:::
+
 Two important conclusions follow:
 
 1. **Configuration-change consistency depends on the shared cache**: caches such as `SystemConfig` go through Spring CacheManager. In caffeine mode each replica keeps its own copy (stale for up to 5 minutes); in redis mode all replicas share the same Redis cache, so once any instance updates a configuration and evicts it, other replicas immediately read the new value.
@@ -164,6 +168,7 @@ Cache-related configuration is provided through `kuboard.application.cache.*`:
 | `KUBOARD_CACHE_REDIS_USERNAME` | empty | Redis 6+ ACL username (common to all three modes; empty means the `default` user) |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | empty | Redis password (common to all three modes) |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis logical database number (only effective in `standalone` / `sentinel` mode) |
+| `KUBOARD_CACHE_REDIS_KEY_PREFIX` | empty | Deployment-level prefix for Redis keys (required when several Kuboard deployments share one Redis, e.g. `prod` / `staging`), see "Several Kuboard deployments sharing one Redis" below |
 
 ::: tip About the Redis 6+ ACL username
 Redis 6 and later support multi-user ACL (`AUTH <username> <password>`). If the target Redis disables the `default` user and only allows a custom user, set the username as well:
@@ -175,7 +180,7 @@ export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
 
 - When the username is left empty (default), Kuboard only sends `AUTH <password>`, which is equivalent to the `default` user — same behavior as previous releases;
 - The username applies to **data nodes** (primary / replica) in all three modes; Sentinel is not included — Kuboard does not authenticate against Sentinel (no sentinel username / password is set), so Sentinel itself must not enable `requirepass`;
-- That user needs read / write / subscribe permissions on the key prefixes Kuboard uses (`kuboard:*`, `{kuboard:mcp}:*`, etc.) and the related Pub/Sub channels.
+- That user needs read / write / subscribe permissions on the key prefixes Kuboard uses (`kuboard:*`, `{kuboard:mcp}:*`, etc.) and the related Pub/Sub channels; if `KUBOARD_CACHE_REDIS_KEY_PREFIX` is set, those patterns must include the deployment prefix as well.
 :::
 
 Behavior per mode (see `RedisConfig.lettuceConnectionFactory()`):
@@ -212,6 +217,34 @@ export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
 - Follow this page for the variable name: some earlier example files write the Sentinel master variable as `KUBOARD_CACHE_REDIS_MASTER_NAME`, but Kuboard actually reads **`KUBOARD_CACHE_REDIS_SENTINEL_MASTER`**.
 - In Redis Cluster mode, all keys and Pub/Sub channels use the hash tags `{kuboard:mcp}` / `{kuboard:mcp}:...`, so they land on the same slot under sharded routing, keeping related keys and subscription events routed consistently.
 :::
+
+### Several Kuboard deployments sharing one Redis
+
+Sharing one Redis among the **replicas of the same deployment** is the normal usage (all the scenarios above). What needs isolation is **different Kuboard deployments** — for example production and staging sharing one Redis, or two compose stacks on the same host.
+
+Without isolation (the keys of both deployments are identical):
+
+- only one deployment can hold the scheduler leader lease; the other's sync scheduling / health checks / audit table creation stop entirely;
+- the menu / authority / system-config caches overwrite each other (visible as "permissions leaking between deployments");
+- page events (SSE) are delivered to both deployments.
+
+**Two ways to isolate (pick one, a prefix is preferred)**:
+
+```yaml
+environment:
+  - KUBOARD_CACHE_REDIS_KEY_PREFIX=prod # only A-Z a-z 0-9 . _ - allowed
+  # or: - KUBOARD_CACHE_REDIS_DATABASE=3 # standalone / sentinel only, ignored in cluster mode
+```
+
+- **All replicas of the same deployment must use the same prefix** (otherwise replicas cannot see each other and the leader lease splits into two);
+- The prefix may only contain letters, digits, `.`, `_` and `-`; a value containing a colon or braces is ignored and reported as a warning in the startup log;
+- When it is left empty (default), the keys are byte-for-byte identical to the ones used before: an upgrade neither clears caches, nor re-elects the leader, nor interrupts SSE subscriptions.
+
+**Switching the prefix requires a full restart**: during a rolling upgrade the old and the new prefix coexist, and for up to 120 seconds (one leader lease TTL) two scheduler leaders exist. Proceed with "stop every replica → change the prefix → start them together" instead of a rolling update.
+
+**Use the prefix as a cache version**: when a major upgrade changes the structure of the cached data, change the prefix to a versioned value (e.g. `prod-v435`); the old caches become invisible without a manual `FLUSHDB`. Even without changing the prefix, a cache value that cannot be deserialized is automatically evicted and reloaded from its source.
+
+For the full configuration and troubleshooting notes, see [Environment Variable Reference](../reference/kuboard-env).
 
 ## Cache Invalidation Propagation Mechanism
 

@@ -30,10 +30,15 @@ The platform detects problems across the following dimensions automatically and 
 | License | Expired, expiring soon (within 30 days), or not enough cluster capacity (per-site License count + 3 free per site) |
 | Database pool | Active connections near the limit, waiting threads piling up |
 | Reverse proxy | WebSocket upgrade headers lost, handshake rejected, missing `X-Forwarded-Proto`, rewritten Host, failed browser probe |
+| Redis cache namespace | A shared Redis is in use but no deployment-level key prefix is set (informational, does not affect the health score) |
 
 When everything is fine, the page shows "No known issue detected".
 
 Each issue entry shows: severity, title, evidence (time / cluster / resource involved, etc.) and a fix button. Clicking the fix button applies it immediately — **no backend restart needed**.
+
+::: tip Informational issues do not affect the score
+"Redis keys have no deployment prefix" is an informational (info) issue: not configuring a prefix is perfectly normal for a single deployment (empty by default, so an upgrade never clears the caches), therefore it only shows up in the issue list and does not deduct from the health score. It only needs to be addressed when another Kuboard deployment runs on the same Redis database — the entry has no one-click fix, so set the environment variable and restart, see [Environment Variable Reference](../reference/kuboard-env).
+:::
 
 ## One-Click Fixes
 
@@ -101,6 +106,7 @@ Lists each resource type's sync mode (**Watch / Polling / No cache**), polling i
 | Role permission changes have no effect for users | Click "Clear cache" (authority) here — the current user's menu and permissions are rebuilt immediately |
 | List data has not changed for a long time | "Restart Full Sync" for that cluster; run "Check Connectivity" first if the apiserver is unreachable |
 | The whole platform responds slowly | Look at the pool numbers under "Platform"; when saturated, restarting full sync usually relieves it right away |
+| Two Kuboard deployments share one Redis and one of them stops syncing, or permissions leak between them | Set `KUBOARD_CACHE_REDIS_KEY_PREFIX` (one value per deployment) and restart, see [Environment Variable Reference](../reference/kuboard-env) |
 | Pod terminal will not open, logs invisible | Click "Run Probe" under "Reverse Proxy" to find the broken link, then fix the proxy configuration |
 
 The interfaces involved in this section (`health.kuboard.cn`) are not listed among the existing Swagger UI groups; see the [API documentation overview](../reference/api) for access.

@@ -56,12 +56,58 @@ Single-replica deployments do not need to configure this group of variables; for
 | `KUBOARD_CACHE_REDIS_USERNAME` | empty | Redis 6+ ACL username; empty means the `default` user (`AUTH <password>` only) |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | empty | Password used to connect to Redis |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis database number |
+| `KUBOARD_CACHE_REDIS_KEY_PREFIX` | empty | Deployment-level prefix for Redis keys. Required when several Kuboard deployments share the same Redis database (e.g. `prod` / `staging`); only letters, digits, `.`, `_` and `-` are allowed — see the section below |
 
 Examples of `KUBOARD_CACHE_REDIS_NODES` written for each mode:
 
 - `standalone`: `10.99.0.8:6379`
 - `sentinel`: `10.99.0.10:6379,10.99.0.11:6379,10.99.0.12:6379`
 - `cluster`: `10.99.0.20:6379,10.99.0.21:6379,10.99.0.22:6379`
+
+### Several Kuboard deployments sharing one Redis
+
+Every key Kuboard writes to Redis carries a **deployment-level prefix** (the `KUBOARD_CACHE_REDIS_KEY_PREFIX` environment variable). It covers the shared caches (menu / authority / system config, ...), the scheduler leader lease, the SnowFlake slots, the JWT blacklist, the OIDC login state, the log buffer, the MCP sessions and rate limits, as well as every Pub/Sub channel.
+
+For a single deployment, **leave it empty** — with an empty prefix the keys are byte-for-byte identical to the ones used before, so an upgrade neither clears caches, nor re-elects the scheduler leader, nor interrupts SSE subscriptions.
+
+**When it is required**: two or more Kuboard deployments run against the same Redis database (production + staging, two tenants, several compose stacks on one host). Without isolation they interfere with each other:
+
+- only one of them can hold the scheduler leader lease; the other one's sync scheduling / health checks / audit table creation stop entirely;
+- the menu / authority / system-config caches overwrite each other (visible as "permissions leaking between deployments");
+- page events (SSE) are delivered to both deployments.
+
+**How to set it** (pick one, a prefix is preferred):
+
+```yaml
+environment:
+  - KUBOARD_CACHE_REDIS_KEY_PREFIX=prod # only A-Z a-z 0-9 . _ - allowed
+  # or: - KUBOARD_CACHE_REDIS_DATABASE=3 # standalone / sentinel only, ignored in cluster mode
+```
+
+- The prefix may only contain letters, digits, `.`, `_` and `-`; a value containing a colon or braces is ignored and reported as a warning in the startup log (it would otherwise change the Redis Cluster slot computation);
+- **All replicas of the same deployment must use the same value**;
+- Once a prefix is set, the Redis ACL patterns for keys / channels must include that prefix as well.
+
+**Switching the prefix requires a full restart**: the caches, leases and channels stored under the old prefix are invisible under the new one. During a rolling upgrade (`maxSurge ≥ 1`) the old and the new prefix coexist, and for up to 120 seconds (one leader lease TTL) **two scheduler leaders exist**. The change note should therefore say "stop every replica → change the prefix → start them together" instead of a rolling update.
+
+**The prefix can also serve as a "cache value version"**: the values cached in Redis are JSON documents carrying type information. When a major upgrade changes the structure of the cached data, changing the prefix to a versioned value (e.g. `prod-v435`) makes the old values invisible without a manual `FLUSHDB`. Even without changing the prefix, a cache value that cannot be deserialized is automatically evicted and reloaded from its source, so an upgrade never fails to start because of stale cache content.
+
+**How to verify**:
+
+- the startup log prints `Redis key prefix = '<prefix>'`; when it is not set, a warning is logged instead (pointing out the risk of several deployments sharing one Redis);
+- [Platform Health Diagnostics](../ops/health-diagnostics) reports "Redis keys have no deployment prefix" when a shared Redis is used without a prefix (informational, it does not affect the health score);
+- operational self-check:
+
+```sh
+# Without a prefix there should be exactly one scheduler leader lease
+redis-cli --scan --pattern 'kbd:scheduler:leader'
+# With a prefix (example prefix=prod)
+redis-cli --scan --pattern 'prod:*'
+```
+
+::: tip Newer keys have their own default prefix
+The browser-side probe results (reverse-proxy probe, request-size probe) use `kbd` as their prefix when no deployment prefix is configured (e.g. `kbd:probe:proxy`); with a prefix configured they carry it like every other key.
+:::
 
 ## Other Parameters
 

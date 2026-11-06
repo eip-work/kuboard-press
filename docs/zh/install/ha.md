@@ -142,6 +142,10 @@ Kuboard 的缓存分为两类：**走 Spring CacheManager 的共享缓存**与**
 | `K8sCapabilityCache`（集群能力探测缓存） | 恒为进程内 Caffeine（versionCache TTL 1h / max 500，entryCache TTL 1h / max 2000），**不共享** | 同左（不共享） | `K8sCapabilityCache` |
 | `ClusterClientBuilder` | 恒为进程内 Caffeine | 同左（不共享） | `CacheUtil.initSimpleCacheManager()` |
 
+::: tip 表中的 key 名未含部署前缀
+上表列出的是 key / channel 的**主体部分**。设置了 `KUBOARD_CACHE_REDIS_KEY_PREFIX` 后，实际的 key 会带上该前缀（如 `prod:{kuboard:mcp}:mcp-client-info:xxx`），Pub/Sub channel 同理。
+:::
+
 由此可以得出两个重要结论：
 
 1. **配置变更的一致性**依赖共享缓存：`SystemConfig` 等缓存走 Spring CacheManager，caffeine 模式下各副本各持一份（最长 5 分钟不一致），redis 模式下所有副本共享同一份 Redis 缓存，任一实例更新配置并 evict 后，其他副本立即可读到新值。
@@ -164,6 +168,7 @@ Kuboard 的缓存分为两类：**走 Spring CacheManager 的共享缓存**与**
 | `KUBOARD_CACHE_REDIS_USERNAME` | 空 | Redis 6+ ACL 用户名（三模式通用，留空表示使用 `default` 用户） |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | 空 | Redis 密码（三模式通用） |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis 逻辑库编号（仅 `standalone` / `sentinel` 模式生效） |
+| `KUBOARD_CACHE_REDIS_KEY_PREFIX` | 空 | Redis key 的部署级前缀（同一 Redis 上跑多套 Kuboard 时必设，如 `prod` / `staging`），见下文「多套 Kuboard 共用同一个 Redis」 |
 
 ::: tip 关于 Redis 6+ ACL 用户名
 Redis 6 及以上支持多用户 ACL（`AUTH <username> <password>`）。如果目标 Redis 禁用了 `default` 用户、只允许以自定义用户登录，请同时设置用户名：
@@ -175,7 +180,7 @@ export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
 
 - 用户名留空（默认）时只发送 `AUTH <password>`，等价于 `default` 用户，行为与旧版本一致；
 - 用户名作用于**数据节点**（主 / 从），三种模式通用；哨兵不在其列 —— Kuboard 不对 Sentinel 做 AUTH（不设置哨兵用户名 / 密码），因此哨兵自身不能开启 `requirepass`；
-- 该用户需要在 Kuboard 用到的 key 前缀（`kuboard:*`、`{kuboard:mcp}:*` 等）与 Pub/Sub channel 上具备读写 / 订阅权限。
+- 该用户需要在 Kuboard 用到的 key 前缀（`kuboard:*`、`{kuboard:mcp}:*` 等）与 Pub/Sub channel 上具备读写 / 订阅权限；若设置了 `KUBOARD_CACHE_REDIS_KEY_PREFIX`，这些前缀要相应带上部署前缀。
 :::
 
 各模式的行为（见 `RedisConfig.lettuceConnectionFactory()`）：
@@ -212,6 +217,34 @@ export KUBOARD_CACHE_REDIS_PASSWORD=Kuboard123
 - 变量名以本文为准：部分早期的示例文件把 Sentinel 主节点变量写作 `KUBOARD_CACHE_REDIS_MASTER_NAME`，Kuboard 实际识别的是 **`KUBOARD_CACHE_REDIS_SENTINEL_MASTER`**。
 - Redis Cluster 模式下所有 key 与 Pub/Sub channel 使用 hash tag `{kuboard:mcp}` / `{kuboard:mcp}:...`，保证在分片路由中落到同一 slot，相关 key 与订阅事件路由一致。
 :::
+
+### 多套 Kuboard 共用同一个 Redis
+
+同一套部署的多个副本共用一个 Redis 是**正常用法**（上面所有场景都是如此）。需要隔离的是**不同的 Kuboard 部署** —— 例如生产与测试共用一台 Redis、或者同一台机器上跑了两套编排。
+
+不隔离时的表现（两套部署的 key 完全重名）：
+
+- 只有一套能拿到调度 leader 租约，另一套的同步调度 / 健康巡检 / 审计建表全部停摆；
+- 菜单 / 权限 / 系统配置缓存互相覆盖（表现为「权限串台」）；
+- 页面事件（SSE）互相投递。
+
+**隔离方式（二选一，优先用前缀）**：
+
+```yaml
+environment:
+  - KUBOARD_CACHE_REDIS_KEY_PREFIX=prod # 只允许 A-Z a-z 0-9 . _ -
+  # 或：- KUBOARD_CACHE_REDIS_DATABASE=3 # 仅 standalone / sentinel 模式有效，cluster 模式忽略
+```
+
+- 同一套部署的**所有副本必须使用同一个前缀**（否则副本之间互相不可见，leader 租约会分裂成两套）；
+- 前缀只允许字母、数字、`.`、`_`、`-`；含冒号或花括号的取值会被忽略并在启动日志中告警；
+- 留空（默认）时 key 与升级前完全一致，升级不清缓存、不重选 leader、不断 SSE 订阅。
+
+**切换前缀必须一次全量重启**：滚动升级期间新旧前缀并存，最长 120 秒（一个 leader 租约的 TTL）内存在两套调度 leader。请按「停全部副本 → 改前缀 → 一起启动」执行，而不是滚动更新。
+
+**把前缀当缓存版本用**：跨大版本升级且缓存结构变化时，把前缀改成带版本号的值（如 `prod-v435`），旧缓存自然不可见，无需手工 `FLUSHDB`；即便不改前缀，读到无法反序列化的旧值时 Kuboard 也会自动清理并回源。
+
+完整的配置与排查说明见 [环境变量参考](../reference/kuboard-env)。
 
 ## 缓存失效传播机制
 

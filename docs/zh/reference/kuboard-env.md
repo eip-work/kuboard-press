@@ -56,12 +56,58 @@ description: 部署 Kuboard v4 时所需环境变量的参考清单：数据库�
 | `KUBOARD_CACHE_REDIS_USERNAME` | 空 | Redis 6+ ACL 用户名，留空表示使用 `default` 用户（仅 `AUTH <password>`） |
 | `KUBOARD_CACHE_REDIS_PASSWORD` | 空 | 连接 Redis 的密码 |
 | `KUBOARD_CACHE_REDIS_DATABASE` | `0` | Redis 数据库编号 |
+| `KUBOARD_CACHE_REDIS_KEY_PREFIX` | 空 | Redis key 的部署级前缀。多套 Kuboard 共用同一个 Redis database 时必须设置（如 `prod` / `staging`），只允许字母、数字、`.`、`_`、`-`，详见下方说明 |
 
 `KUBOARD_CACHE_REDIS_NODES` 各模式写法示例：
 
 - `standalone`：`10.99.0.8:6379`
 - `sentinel`：`10.99.0.10:6379,10.99.0.11:6379,10.99.0.12:6379`
 - `cluster`：`10.99.0.20:6379,10.99.0.21:6379,10.99.0.22:6379`
+
+### 多套 Kuboard 共用同一个 Redis
+
+Kuboard 写入 Redis 的 key 都带一个**部署级前缀**（环境变量 `KUBOARD_CACHE_REDIS_KEY_PREFIX`），覆盖共享缓存（菜单 / 权限 / 系统配置等）、调度 leader 租约、SnowFlake 槽位、JWT 黑名单、OIDC 登录 state、日志缓冲、MCP 会话与限流，以及全部 Pub/Sub 通道。
+
+单套部署**留空即可** —— 空前缀时 key 与升级前完全一致，升级不会清缓存、不会重新选举调度 leader、不会中断 SSE 订阅。
+
+**什么时候必须设置**：同一个 Redis database 上运行了两套及以上 Kuboard（生产 + 测试、两个租户、同一台机器上的多套编排）。不隔离会互相干扰：
+
+- 只有一套能拿到调度 leader 租约，另一套的同步调度 / 健康巡检 / 审计建表全部停摆；
+- 菜单 / 权限 / 系统配置缓存互相覆盖（表现为「权限串台」）；
+- 页面事件（SSE）互相投递。
+
+**怎么设置**（二选一，优先用前缀）：
+
+```yaml
+environment:
+  - KUBOARD_CACHE_REDIS_KEY_PREFIX=prod # 只允许 A-Z a-z 0-9 . _ -
+  # 或：- KUBOARD_CACHE_REDIS_DATABASE=3 # 仅 standalone / sentinel 模式有效，cluster 模式忽略
+```
+
+- 前缀只允许字母、数字、`.`、`_`、`-`；含冒号或花括号的取值会被忽略并在启动日志中告警（避免改变 Redis Cluster 的 slot 计算）；
+- 同一套部署的**所有副本必须使用同一个值**；
+- 设置前缀后，Redis ACL 授权的 key / 通道前缀也要相应带上该前缀。
+
+**切换前缀 = 一次全量重启**：旧前缀下的缓存、租约与通道对新前缀不可见。滚动升级（`maxSurge ≥ 1`）期间新旧前缀会并存，最长 120 秒（一个 leader 租约的 TTL）内**存在两套调度 leader**。变更说明里应写「停全部副本 → 改前缀 → 一起启动」，而不是滚动更新。
+
+**前缀也可当作「缓存值版本」**：Redis 中缓存的值是带类型标记的 JSON，跨大版本升级时若缓存结构发生变化，把前缀改成带版本号的值（如 `prod-v435`）即可让旧值自然不可见，不需要手工执行 `FLUSHDB`。即便不换前缀，读到无法反序列化的旧值时 Kuboard 也会自动清理该缓存条目并回源重新加载，不会导致启动失败。
+
+**如何确认生效**：
+
+- 启动日志会打印 `Redis key prefix = '<prefix>'`；未设置时是一条告警日志（提示多套部署共用同一 Redis 的风险）；
+- [平台健康诊断](../ops/health-diagnostics) 在使用共享 Redis 且未设置前缀时给出「Redis key 未设置部署前缀」的提示（提示级，不影响健康评分）；
+- 运维自查：
+
+```sh
+# 未设置前缀时：调度 leader 租约应只有一条
+redis-cli --scan --pattern 'kbd:scheduler:leader'
+# 设置前缀后（示例 prefix=prod）
+redis-cli --scan --pattern 'prod:*'
+```
+
+::: tip 较新引入的 key 有自己的默认前缀
+浏览器侧探测结果（反向代理探测、请求长度探测）在未配置前缀时使用 `kbd` 作为前缀（如 `kbd:probe:proxy`）；配置了前缀则与其它 key 一致带该前缀。
+:::
 
 ## 其他参数
 

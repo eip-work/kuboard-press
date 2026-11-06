@@ -185,6 +185,23 @@ environment:
 - `TZ`, `KUBOARD_CACHE_*`, etc. are unrelated to the version; keeping them unchanged is fine;
 - `KUBOARD_CACHE_PROVIDER` only affects the runtime cache (in-memory cache or Redis distributed cache, see [High Availability (HA) Deployment](./ha)); switching the cache mode does not trigger any data migration and has nothing to do with the database schema.
 
+### Redis Cache and Upgrades
+
+**An upgrade does not require clearing the Redis cache.** The values cached in Redis are JSON documents carrying type information; if an old cache entry can no longer be deserialized after the upgrade (its class structure changed), Kuboard automatically evicts that entry and reloads it from its source. The instance still starts, and there is no need to run `FLUSHDB` by hand.
+
+If you want the old and the new caches to be fully separated (e.g. a major upgrade that changes the cached structures a lot), change the deployment-level prefix to a versioned value:
+
+```yaml
+environment:
+  - KUBOARD_CACHE_REDIS_KEY_PREFIX=prod-v435 # only A-Z a-z 0-9 . _ - allowed
+```
+
+- With no prefix configured (the default), the keys before and after the upgrade are byte-for-byte identical — the upgrade neither clears caches, nor re-elects the scheduler leader, nor interrupts SSE subscriptions;
+- Changing the prefix makes the caches / leases / channels stored under the old prefix invisible, so it **must be done in a single full restart** (during a rolling upgrade the old and the new prefix coexist and for up to about two minutes two scheduler leaders exist) — see [High Availability (HA) Deployment](./ha);
+- All replicas of the same deployment must use the same prefix.
+
+See [Environment Variable Reference](../reference/kuboard-env) for the full description of the prefix.
+
 ### High-Availability Multi-replica Scenario
 
 Multiple replicas point to the same database. It is recommended to roll the replicas one at a time: upgrade one replica first, confirm the migration logs are normal, then upgrade the remaining replicas, to narrow the risk window. The migration scripts are idempotent, so concurrent migration across replicas does not conflict either.
