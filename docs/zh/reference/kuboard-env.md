@@ -118,6 +118,8 @@ redis-cli --scan --pattern 'prod:*'
 | `KUBOARD_SWAGGER_ENABLED` | `true` | 是否开启 Swagger UI 接口文档，设为 `false` 可关闭（访问方式见 [OpenAPI 接口文档](./api)） |
 | `KUBOARD_SPRING_BOOT_ADMIN_ENABLED` | `false` | 是否启用 Spring Boot Admin 监控页面 |
 | `SERVER_MGMT_PORT` | `9091` | Spring Boot 管理端点端口，一般无需修改 |
+| `KUBOARD_DDL_LOCK_TIMEOUT_SECONDS` | `300` | DDL 跨实例互斥锁的等待上限（秒）。多副本高可用同时启动时，只有拿到数据库级锁的实例执行 DDL，其余实例等待；超过该时长即启动失败（fail-fast）。表体量大时升级脚本耗时长，可酌情调大 |
+| `KUBOARD_MAX_HTTP_REQUEST_HEADER_SIZE` | `32KB` | 单次 HTTP 请求行 + 请求头的解析上限。资源列表页多选命名空间时浏览器会自动附加含完整页面 URL 的 `Referer`，命名空间较多时默认值会被撑破（HTTP 400）；按实际命名空间规模调整，且前置 Nginx / 网关 / 云 LB 的请求头长度限制需同步放宽 |
 
 ## 排障
 

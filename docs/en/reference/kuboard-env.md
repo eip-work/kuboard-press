@@ -118,6 +118,8 @@ The browser-side probe results (reverse-proxy probe, request-size probe) use `kb
 | `KUBOARD_SWAGGER_ENABLED` | `true` | Whether to enable the Swagger UI API documentation, set to `false` to disable (access method see [OpenAPI interface documentation](./api)) |
 | `KUBOARD_SPRING_BOOT_ADMIN_ENABLED` | `false` | Whether to enable the Spring Boot Admin monitoring page |
 | `SERVER_MGMT_PORT` | `9091` | Spring Boot management endpoint port, generally no need to change |
+| `KUBOARD_DDL_LOCK_TIMEOUT_SECONDS` | `300` | Upper bound (seconds) for waiting on the cross-instance DDL mutex. When several replicas start at the same time, only the instance that acquires the database-level lock runs the DDL scripts while the others wait; exceeding this timeout fails the startup (fail-fast). Raise it when the tables are large and the upgrade scripts take a long time |
+| `KUBOARD_MAX_HTTP_REQUEST_HEADER_SIZE` | `32KB` | Upper bound for parsing a single HTTP request line + headers. Browsers attach a `Referer` containing the full page URL when multiple namespaces are selected in a resource list, which can exceed the default with many namespaces (HTTP 400); adjust it to your namespace scale, and relax the header length limit of the upstream Nginx / gateway / cloud load balancer accordingly |
 
 ## Troubleshooting
 

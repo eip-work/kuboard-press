@@ -17,6 +17,7 @@ Kuboard 默认使用 HTTP 协议，方便快速试用；生产环境请务必启
 - **转发 `X-Forwarded-Host`**：启用 [OIDC 单点登录](../user/oidc) 时，回调地址由「前端 Origin 白名单」里登记的地址拼出，因此**白名单必须写用户浏览器实际访问的地址（含端口）**。`X-Forwarded-Host` 建议用 `$http_host`（保留端口），只设 `Host $host` 会丢掉端口，影响其它需要还原对外地址的功能。未启用 OIDC 时这一行也无副作用，建议一律加上。
 - **页面缓存**：Kuboard 会自动为页面入口（`index.html`）下发"不缓存"策略，并为带哈希的静态资源（`/assets/`）下发长期缓存，升级后浏览器会立即加载新版页面。请勿在反向代理上再为 `location /` 统一添加 `expires` 或 `Cache-Control` 配置，也不要对入口页面开启 `proxy_cache` 或 CDN 缓存 —— 否则升级 Kuboard 后浏览器可能仍然加载旧页面（表现为界面功能无响应、布局错乱等）。如需缓存加速，只对 `/assets/` 路径配置长缓存即可。
 - **大文件上传**：文件浏览器的 HTTP 流式上传走 `/k8s-upload/`，请求体大小默认受反向代理限制（Nginx 为 `client_max_body_size 1m`），超过即返回 **413**，表现为「上传失败：HTTP 413」。请在下文的 `location /k8s-upload/` 中放开该限制，并建议关闭 `proxy_request_buffering`，让字节边收边转发，而不是先由反向代理落一份完整的临时文件。
+- **大文件下载**：文件浏览器的 HTTP 流式下载走 `/k8s-download/`，响应是 chunked 流。反向代理默认会缓冲响应体，大文件下载会卡住、或把整个文件读进代理内存。请在下文的 `location /k8s-download/` 中关闭 `proxy_buffering`，并放宽 `proxy_read_timeout`。
 
 ## Nginx 配置样例
 
@@ -49,6 +50,21 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Host $http_host;
     proxy_set_header X-Forwarded-Port $server_port;
+    # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
+  }
+  # 容器文件浏览器的 HTTP 流式下载（chunked 响应，必须关闭缓冲）
+  location /k8s-download/ {
+    proxy_pass  http://192.168.2.39:32567;  # 替换成你的节点地址
+    proxy_http_version 1.1;
+    proxy_pass_header Authorization;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    proxy_buffering off;            # 关闭缓冲，否则大文件会卡死 / 内存暴涨
+    proxy_read_timeout 3600s;
+    proxy_send_timeout 3600s;
     # proxy_set_header X-Forwarded-Proto https; # 如果您在反向代理上启用了 HTTPS
   }
   # 容器文件浏览器的 HTTP 流式上传（大文件必须放开请求体限制）

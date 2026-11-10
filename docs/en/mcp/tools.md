@@ -1,10 +1,10 @@
 ---
-description: "Complete list of all 35 Kuboard MCP Server tools — every tool's name, key parameters, and purpose grouped into read / write / approval categories, plus the change approval flow that write tools must go through"
+description: "Complete list of all 39 Kuboard MCP Server tools — every tool's name, key parameters, and purpose grouped into read / write / approval categories, plus the change approval flow that write tools must go through"
 ---
 
 # Kuboard MCP Tools
 
-The Kuboard MCP Server provides 35 tools in total, grouped into three categories by purpose: read, write, and change approval. This page lists every tool's name, key parameters, and purpose for reference when configuring your agent.
+The Kuboard MCP Server provides 39 tools in total, grouped into three categories by purpose: read, write, and change approval. This page lists every tool's name, key parameters, and purpose for reference when configuring your agent.
 
 **Audience**: operations / platform engineers who want to give an AI agent (Agent) access to Kuboard cluster operations.
 
@@ -37,7 +37,7 @@ Write tools carry a danger level, treated differently by marker at approval time
 
 With "Force agent change approval" disabled, the 7 change approval (Plan) tools are hidden and the write tools become directly callable by the agent again.
 
-## All Tools at a Glance (35)
+## All Tools at a Glance (39)
 
 The table below lists all tools by the read / write / approval categories. Only key parameters are shown; refer to each tool's actual schema when configuring your agent.
 
@@ -62,6 +62,7 @@ The table below lists all tools by the read / write / approval categories. Only 
 | `prometheus_query_range` | Read | `clusterId`, `query`, `start`, `end`, `step` | PromQL range query |
 | `prometheus_label_values` | Read | `clusterId`, `label`, `matchSeries` (optional) | Query the values of a label |
 | `prometheus_buildinfo` | Read | `clusterId`, `timeout` (optional) | Query Prometheus version and health info |
+| `diagnose_workload` | Read | `clusterId`, `namespace`, `name` | Combined diagnosis for a workload: aggregates object status, Pod details, Events, Prometheus metrics and audit history into a "conclusion + evidence chain" |
 | `apply_k8s` | Write · MEDIUM | `clusterId`, `apiGroup`, `resource`, `namespace`, `yaml`, `dryRun` (optional) | Apply K8s YAML: update the resource if it exists, create it if it does not |
 | `patch_k8s` | Write · MEDIUM | `clusterId`, `apiGroup`, `resource`, `name`, `patches`, `namespace` (optional) | Modify resource fields with RFC 6902 JSON Patch |
 | `delete_k8s` | Write · MEDIUM | `clusterId`, `apiGroup`, `resource`, `name`, `namespace` (optional), `dryRun` (optional) | Delete a single resource; idempotently returns success when it does not exist |
@@ -78,6 +79,9 @@ The table below lists all tools by the read / write / approval categories. Only 
 | `await_plan_result` | Approval | `planId`, `timeoutSeconds` (optional, 1~1800, default 25), `sinceSeq` (optional) | Block waiting for the approval result; every return carries a `nextAction` telling the agent what to do next |
 | `apply_plan_after_approval` | Approval | `planId`, `approvalToken` (optional) | Continue executing after approval; when the token is omitted the server reads the already-approved token of that plan |
 | `apply_plan` | Approval | `planId`, `approvalToken` | Consume the `approvalToken` to actually execute all changes in the plan |
+| `list_plan_events` | Approval | `cursor` (optional), `limit` (optional, 1~200, default 50), `scope` (optional; `task` by default requires `taskId` / `user`), `taskId` (required when `scope=task`), `planIds` (optional, ≤20) | Pull the plan event stream by cursor (approval, execution progress, etc.); resumable across sessions, which prevents executing against stale state |
+| `await_plan_events` | Approval | `cursor` (optional), `timeoutSeconds` (optional, 1~1800, default 25), `scope` (optional; `task` by default requires `taskId` / `user`), `taskId` (required when `scope=task`) | Block waiting for new events, scoped by task / user; returns the same structure as `list_plan_events`. `timedOut=true` is normal semantics — call again |
+| `await_plan_results` | Approval | `planIds` (1~20), `timeoutSeconds` (optional), `cursor` (optional), `waitFor` (optional) | Block waiting for several known plans at once; the first one approved or reaching a terminal state is returned. The whole batch occupies only 1 waiter slot. Every return carries `nextActions` telling the agent what to do next |
 
 Log parameter notes: `container` is required for multi-container Pods and can be omitted for single-container ones; `previous` set to `true` returns logs from before the last restart (valid only for terminated containers); `sinceSeconds` returns only logs from the last N seconds — use it or `tailLines`, not both.
 
@@ -105,7 +109,7 @@ Once your agent is connected, a conversation like "restart nginx for me" roughly
 
 ## Change Plans: The Entry to Write Approval
 
-A change plan (Plan) is the only entry for submitting write operations to your approval, for the scenario where "the agent wants to change the cluster, but the change must be confirmed by you". The 7 tools are chained in a fixed order:
+A change plan (Plan) is the only entry for submitting write operations to your approval, for the scenario where "the agent wants to change the cluster, but the change must be confirmed by you". The 10 tools are chained in a fixed order:
 
 | Step | Tool | Parameters | Purpose |
 |---|---|---|---|

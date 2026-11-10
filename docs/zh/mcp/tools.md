@@ -1,10 +1,10 @@
 ---
-description: Kuboard MCP Server 全部 35 个工具的清单——按「读 / 写 / 审批」三类列出每个工具的名称、关键参数与用途，以及写入类工具必须经过的变更审批流程。
+description: Kuboard MCP Server 全部 39 个工具的清单——按「读 / 写 / 审批」三类列出每个工具的名称、关键参数与用途，以及写入类工具必须经过的变更审批流程。
 ---
 
 # Kuboard MCP 工具清单
 
-Kuboard MCP Server 共提供 35 个工具，按用途分为读取、写入、变更审批三类。本页列出全部工具的名称、关键参数与用途，供智能体配置时对照。
+Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变更审批三类。本页列出全部工具的名称、关键参数与用途，供智能体配置时对照。
 
 **适用对象**：需要把 Kuboard 集群操作能力接入智能体（Agent）的运维 / 平台工程师。
 
@@ -35,9 +35,9 @@ Kuboard MCP Server 共提供 35 个工具，按用途分为读取、写入、变
 - **HIGH**：`delete_k8s_collection`（尤其是删除 PVC）、`drain_node`、`evict_pod`——审批时会被显著标记，请重点核对影响范围
 :::
 
-关闭「Agent 操作强制审批」时，变更审批（Plan）这 7 个工具会被隐藏，写入类工具恢复为智能体可直接调用。
+关闭「Agent 操作强制审批」时，变更审批（Plan）这 10 个工具会被隐藏，写入类工具恢复为智能体可直接调用。
 
-## 工具一览（35 个）
+## 工具一览（39 个）
 
 下表按「读 / 写 / 审批」三类列出全部工具。参数只列关键的，配置智能体时以工具实际 schema 为准。
 
@@ -62,6 +62,7 @@ Kuboard MCP Server 共提供 35 个工具，按用途分为读取、写入、变
 | `prometheus_query_range` | 读 | `clusterId`、`query`、`start`、`end`、`step` | PromQL 范围查询 |
 | `prometheus_label_values` | 读 | `clusterId`、`label`、`matchSeries`（可选） | 查询 label 的取值 |
 | `prometheus_buildinfo` | 读 | `clusterId`、`timeout`（可选） | 查询 Prometheus 版本与健康信息 |
+| `diagnose_workload` | 读 | `clusterId`、`namespace`、`name` | 对工作负载做组合诊断：汇总对象状态、Pod 明细、Event、Prometheus 指标与审计变更史，返回「结论 + 证据链」 |
 | `apply_k8s` | 写 · MEDIUM | `clusterId`、`apiGroup`、`resource`、`namespace`、`yaml`、`dryRun`（可选） | 应用 K8s YAML：资源存在则更新，不存在则创建 |
 | `patch_k8s` | 写 · MEDIUM | `clusterId`、`apiGroup`、`resource`、`name`、`patches`、`namespace`（可选） | RFC 6902 JSON Patch 修改资源字段 |
 | `delete_k8s` | 写 · MEDIUM | `clusterId`、`apiGroup`、`resource`、`name`、`namespace`（可选）、`dryRun`（可选） | 删除单个资源，不存在时幂等返回成功 |
@@ -78,6 +79,9 @@ Kuboard MCP Server 共提供 35 个工具，按用途分为读取、写入、变
 | `await_plan_result` | 审批 | `planId`、`timeoutSeconds`（可选，1~1800，默认 25）、`sinceSeq`（可选） | 阻塞等待审批结果，每次返回带 `nextAction` 指引下一步动作 |
 | `apply_plan_after_approval` | 审批 | `planId`、`approvalToken`（可省略） | 审批通过后继续执行；省略令牌时由服务端读取该计划已审批的令牌 |
 | `apply_plan` | 审批 | `planId`、`approvalToken` | 消费 `approvalToken` 真正执行计划中的全部变更 |
+| `list_plan_events` | 审批 | `cursor`（可选）、`limit`（可选，1~200，默认 50）、`scope`（可选，`task` 默认需 `taskId` / `user`）、`taskId`（`scope=task` 必填）、`planIds`（可选，≤20） | 游标拉取计划事件流（审批、执行进度等），跨会话可续拉，防止误执行 |
+| `await_plan_events` | 审批 | `cursor`（可选）、`timeoutSeconds`（可选，1~1800，默认 25）、`scope`（可选，`task` 默认需 `taskId` / `user`）、`taskId`（`scope=task` 必填） | 按任务 / 用户作用域阻塞等待新事件，返回与 `list_plan_events` 相同结构；`timedOut=true` 属正常语义，再调一次即可 |
+| `await_plan_results` | 审批 | `planIds`（1~20 个）、`timeoutSeconds`（可选）、`cursor`（可选）、`waitFor`（可选） | 一次阻塞等待多个已知计划，谁先获批 / 进入终态先返回谁；整批只占 1 个等待者配额。每次返回带 `nextActions` 指引逐个执行 |
 
 日志参数说明：`container` 多容器 Pod 必须指定、单容器可省略；`previous` 置 `true` 时返回上一次重启前的日志（仅对已终止容器有效）；`sinceSeconds` 仅返回最近 N 秒的日志，与 `tailLines` 二选一。
 
@@ -105,7 +109,7 @@ Prometheus 查询受集群 RBAC 与限流约束：复杂聚合查询在 REJECT �
 
 ## 变更计划：写入审批的入口
 
-变更计划（Plan）是把写入操作提交给你审批的唯一入口，适用于「智能体要改动集群，但改动必须经过你确认」的场景。7 个工具按固定顺序串联使用：
+变更计划（Plan）是把写入操作提交给你审批的唯一入口，适用于「智能体要改动集群，但改动必须经过你确认」的场景。10 个工具按固定顺序串联使用：
 
 | 顺序 | 工具 | 参数 | 作用 |
 |---|---|---|---|
