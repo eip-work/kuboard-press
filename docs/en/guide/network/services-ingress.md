@@ -190,6 +190,10 @@ The detail page shows: basic information (name / namespace / labels / annotation
 
 Deletion works the same way as for Services (per-row or batch delete, type the name to confirm). After deletion the domain routing stops working immediately, but the Services and Pods are unaffected.
 
+::: tip Guidance after creation
+If the backend Service referenced by an Ingress does not exist in the namespace (a typo in the name entered while creating it), the detail page shows the missing service name and offers **Go to Services**. Services and workloads created from Kuboard also show a one-time next-step hint (a Service with no ready backend, a workload with no service entry, ...). These hints appear once, never block the flow, and **never create or modify any object automatically**.
+:::
+
 ## Troubleshooting: Where to Look When a Service Is Not Reachable
 
 If verification against the access address shown on the detail page still fails, work through the following in order:
