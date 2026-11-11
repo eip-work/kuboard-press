@@ -1,5 +1,5 @@
 ---
-description: "Kuboard Workload - Deployment: where to find it, list page fields and actions, creation (deployment strategy / update strategy / rolling update parameters), editing and YAML comparison, detail page (revision history / events / Pods), scaling, deletion and cascading policy, common operations (update image tag, restart, logs / terminal, CI/CD integration)"
+description: "Kuboard Workload - Deployment: where to find it, list page fields and actions, creation (deployment strategy / update strategy / rolling update parameters), editing and YAML comparison, detail page (network tab / related tab / revision history / events / Pods), scaling, deletion and cascading policy, common operations (update image tag, restart, logs / terminal, CI/CD integration)"
 ---
 
 # Deployment
@@ -175,6 +175,46 @@ The Pod area provides a **Delete all Pods of this ReplicaSet** button to the rig
 ### Pod Area
 
 The Pod area lists all Pods managed by the selected ReplicaSet and refreshes in real time with the events. Each Pod card shows the status label (Ready / Not Ready / Completed etc.), name, creation time, Pod IP (C) and node IP (H); hovering over a Pod allows **delete** and **view YAML**; clicking selects the Pod and its detailed information is shown on the right.
+
+### Network Tab
+
+The detail page provides object view tabs at the top: **Detail / Network / YAML / Related**. The **Network** tab answers a common operational question — **who exposes these Pods** — without walking through the Service and Ingress lists in the left navigation.
+
+Services are listed as parent rows, and the Ingresses pointing at them as indented child rows, so the chain "entry → service → Pods" is visible at a glance:
+
+| Column | Description |
+| --- | --- |
+| Object | Service / Ingress name; click to open its detail page |
+| Entry | Service: type (ClusterIP / NodePort / LoadBalancer, etc.), ClusterIP (Headless is labelled explicitly) and port mapping (e.g. `80 → 8080/TCP`); Ingress: host + path (e.g. `payment.example.com/pay`) and whether TLS is enabled |
+| Backend readiness | `ready backends / total backends`, taken from the Service's endpoint addresses |
+| State | See the state rules below |
+
+State rules:
+
+| State | Rule | Meaning and next step |
+| --- | --- | --- |
+| Available | ready == total (and total > 0) | All backends ready |
+| Partially ready | 0 < ready < total | Rolling update in progress, or some replicas are unhealthy |
+| Backends not ready | ready == 0 and total > 0 | The selector matches Pods, but no backend is ready: check the port mapping and readiness probes |
+| No backends matched | total == 0 | The selector matches no Pods yet: check the selector against the Pod template labels (expected when replicas is 0) |
+| Readiness unknown | Endpoint information unavailable | Usually a permission issue; the ready count is shown as `—` |
+
+- **Problems first**: Services in "Backends not ready / No backends matched" are sorted to the top and highlighted, with a one-line hint on what to check;
+- **Empty state**: when no Service selects the workload, the tab states "No Service selects this workload", lists the current Pod template labels and explains how to expose it;
+- **"No permission" is strictly separated from "no relation"**: without permission to view `services` / `ingresses`, the tab says so instead of showing an empty relation; if only Ingress permission is missing, the Service part is still shown;
+- **View in relation graph** at the top right jumps to the **Related** tab to explore further relations.
+
+::: tip Matching rule
+Relations are inferred from **the Service selector** against **the workload's Pod template labels**. It reflects "what should be related by declaration" and is not real traffic (network policies or Ingress controller state may also apply).
+:::
+
+The **Network** tab is available for **Deployment / StatefulSet / DaemonSet**; other resources do not show it.
+
+### Related Tab
+
+The **Related** tab renders a relation graph of the objects reachable from this one (owner references, selector matches, config references, etc.); drag the **Depth** slider to expand layer by layer.
+
+To make network entries visible without extra clicks, **workload objects default to depth 4** — from the workload the layers are "ReplicaSets → Pods → Services → Ingresses". Service / Ingress anchors also default to 4; other resources keep the default of 3. A depth you adjusted manually is preserved and takes precedence over the default.
 
 ## Scaling
 

@@ -224,6 +224,10 @@ Kuboard 的可视化表单未暴露 `updateStrategy`，请通过编辑页面中�
 
 由于 DaemonSet 的副本分布在满足调度条件的各个节点上，容器组列表中通常会看到**多个节点上的容器组**同时被列出，方便逐一巡检。
 
+::: tip 「网络」页签
+DaemonSet 详情页与 Deployment 一致，顶部提供 **详情 / 网络 / YAML / 关联资源** 页签。「网络」页签按 Service 选择器与容器组模板标签匹配，列出关联的 Service 与 Ingress，并展示端口映射、访问地址与就绪后端数量，异常项置顶；「关联资源」页签默认展开到第 4 层，可直接看到 Ingress。完整说明见 [Deployment 部署 - 网络页签](./deployments#网络页签)。
+:::
+
 ## 删除
 
 删除 DaemonSet 的入口有两个：

@@ -224,6 +224,10 @@ The Pods area lists all Pods whose owner is this DaemonSet (matched by the uid i
 
 Because the DaemonSet's replicas are distributed across all nodes that match the scheduling conditions, the Pods list usually shows **Pods from multiple nodes** at once, making it easy to inspect them one by one.
 
+::: tip Network tab
+Like Deployments, the DaemonSet detail page provides **Detail / Network / YAML / Related** tabs. The **Network** tab matches Service selectors against the Pod template labels, lists the related Services and Ingresses with port mappings, access addresses and backend readiness, and sorts problems first. The **Related** tab defaults to depth 4, so Ingresses are visible without extra clicks. See [Deployment - Network Tab](./deployments#network-tab) for the full description.
+:::
+
 ## Deleting
 
 There are two entry points for deleting a DaemonSet:

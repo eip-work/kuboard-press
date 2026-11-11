@@ -164,6 +164,10 @@ Click a StatefulSet name in the list page to enter the detail page. The page con
 
 The Pod area lists all Pods managed by this StatefulSet and refreshes in real time with cluster events: each Pod card shows the status (**Ready / Not Ready / Completed**), name, creation time, Pod IP, and node IP; hovering over a Pod allows **delete** and **view YAML**; click to select a Pod and its detailed information is shown on the right.
 
+::: tip Network tab
+Like Deployments, the StatefulSet detail page provides **Detail / Network / YAML / Related** tabs. The **Network** tab matches Service selectors against the Pod template labels, lists the related Services and Ingresses with port mappings, access addresses and backend readiness, and sorts problems first. The **Related** tab defaults to depth 4, so Ingresses are visible without extra clicks. See [Deployment - Network Tab](./deployments#network-tab) for the full description.
+:::
+
 ## Scaling
 
 Click the scale button on the detail page (the middle number shows `ready replicas / desired replicas` — red abnormal, yellow converging, green ready) to open the scale panel:
