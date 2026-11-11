@@ -200,12 +200,17 @@ State rules:
 | Readiness unknown | Endpoint information unavailable | Usually a permission issue; the ready count is shown as `—` |
 
 - **Problems first**: Services in "Backends not ready / No backends matched" are sorted to the top and highlighted, with a one-line hint on what to check;
-- **Empty state**: when no Service selects the workload, the tab states "No Service selects this workload", lists the current Pod template labels and explains how to expose it;
+- **Empty state**: when no Service selects the workload, the tab states "No Service selects this workload", lists the current Pod template labels and offers **Create a Service to expose this workload** — the selector and ports are prefilled, and the name defaults to the workload name (editable). Without `services` create permission it only offers **Generate YAML only** for someone with permission or for a pipeline;
 - **"No permission" is strictly separated from "no relation"**: without permission to view `services` / `ingresses`, the tab says so instead of showing an empty relation; if only Ingress permission is missing, the Service part is still shown;
 - **View in relation graph** at the top right jumps to the **Related** tab to explore further relations.
 
 ::: tip Matching rule
 Relations are inferred from **the Service selector** against **the workload's Pod template labels**. It reflects "what should be related by declaration" and is not real traffic (network policies or Ingress controller state may also apply).
+:::
+
+::: tip Guidance while creating and editing
+- After a workload is created, a one-time "Create a Service to expose it" hint appears (ignorable; it does not return after a refresh);
+- While editing a workload, changing the Pod template labels shows how many Services / Ingresses will stop matching, with a shortcut to this tab; Kuboard **never** updates those selectors automatically.
 :::
 
 The **Network** tab is available for **Deployment / StatefulSet / DaemonSet**; other resources do not show it.
