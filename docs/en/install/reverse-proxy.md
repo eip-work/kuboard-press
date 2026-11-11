@@ -18,6 +18,7 @@ Kuboard uses plain HTTP by default so that you can try it out quickly. In produc
 - **Page caching**: Kuboard automatically sends a no-cache policy for the page entry (`index.html`) and a long-lived cache policy for hashed static assets (`/assets/`), so browsers load the new frontend immediately after an upgrade. Do not add a blanket `expires` or `Cache-Control` for `location /` on your reverse proxy, and avoid `proxy_cache`/CDN caching of the entry page — otherwise browsers may keep serving the old page after an upgrade (symptoms include unresponsive UI and broken layout). If you want to cache for speed, configure long-lived caching for the `/assets/` path only.
 - **Large file uploads**: the file browser's HTTP streaming upload uses `/k8s-upload/`, and the request body is subject to the reverse proxy's size limit (Nginx defaults to `client_max_body_size 1m`), which makes any larger file fail with **413** (shown as "Upload failed: HTTP 413"). Raise the limit in the `location /k8s-upload/` block below, and keep `proxy_request_buffering off` so bytes are forwarded as they arrive instead of being written to a full temporary file first.
 - **Large file downloads**: the file browser's HTTP streaming download uses `/k8s-download/`, and the response is a chunked stream. A reverse proxy buffers response bodies by default, which makes large downloads stall or pulls the whole file into the proxy's memory. Disable `proxy_buffering` in the `location /k8s-download/` block below, and raise `proxy_read_timeout`.
+- **Resource lists with many namespaces selected**: the request line grows with the number of selected namespaces. Kuboard itself allows 32KB (`KUBOARD_MAX_HTTP_REQUEST_HEADER_SIZE`), but **nginx allows only about 8k** by default (`client_header_buffer_size 1k` + `large_client_header_buffers 4 8k`); beyond that it returns **400 / 414** and the list page simply fails to open. Raise both directives in the `server` block below to at least the Kuboard value.
 
 ## Nginx Configuration Example
 
@@ -27,6 +28,13 @@ When using Nginx as the reverse proxy, replace the two addresses marked in the c
 server {
   listen  80;
   server_name kuboard.yourdomain.com;   # replace with your domain
+
+  # Request line + header limit: Kuboard allows 32KB by default, nginx only about 8k.
+  # Without raising these, selecting many namespaces on a resource list returns
+  # 400 / 414 (the list page simply fails to open).
+  client_header_buffer_size 16k;
+  large_client_header_buffers 4 32k;
+
   location / {
     proxy_pass  http://192.168.2.39:32567;  # replace with your node address
     proxy_http_version 1.1;

@@ -18,6 +18,7 @@ Kuboard 默认使用 HTTP 协议，方便快速试用；生产环境请务必启
 - **页面缓存**：Kuboard 会自动为页面入口（`index.html`）下发"不缓存"策略，并为带哈希的静态资源（`/assets/`）下发长期缓存，升级后浏览器会立即加载新版页面。请勿在反向代理上再为 `location /` 统一添加 `expires` 或 `Cache-Control` 配置，也不要对入口页面开启 `proxy_cache` 或 CDN 缓存 —— 否则升级 Kuboard 后浏览器可能仍然加载旧页面（表现为界面功能无响应、布局错乱等）。如需缓存加速，只对 `/assets/` 路径配置长缓存即可。
 - **大文件上传**：文件浏览器的 HTTP 流式上传走 `/k8s-upload/`，请求体大小默认受反向代理限制（Nginx 为 `client_max_body_size 1m`），超过即返回 **413**，表现为「上传失败：HTTP 413」。请在下文的 `location /k8s-upload/` 中放开该限制，并建议关闭 `proxy_request_buffering`，让字节边收边转发，而不是先由反向代理落一份完整的临时文件。
 - **大文件下载**：文件浏览器的 HTTP 流式下载走 `/k8s-download/`，响应是 chunked 流。反向代理默认会缓冲响应体，大文件下载会卡住、或把整个文件读进代理内存。请在下文的 `location /k8s-download/` 中关闭 `proxy_buffering`，并放宽 `proxy_read_timeout`。
+- **多命名空间列表请求**：资源列表页多选名称空间时，请求行会随选择数量增长。Kuboard 自身上限为 32KB（`KUBOARD_MAX_HTTP_REQUEST_HEADER_SIZE`），但 **Nginx 默认只允许约 8k**（`client_header_buffer_size 1k` + `large_client_header_buffers 4 8k`），超出即返回 **400 / 414**，表现为「列表页打不开」。必须在下文的 `server` 块中把这两项放宽到不小于 Kuboard 的取值。
 
 ## Nginx 配置样例
 
@@ -27,6 +28,12 @@ Kuboard 默认使用 HTTP 协议，方便快速试用；生产环境请务必启
 server {
   listen  80;
   server_name kuboard.yourdomain.com;   # 替换成你的域名
+
+  # 请求行 + 请求头上限：Kuboard 默认 32KB，Nginx 默认约 8k —— 不同步放宽时，
+  # 资源列表页多选名称空间会返回 400 / 414（表现为「列表页打不开」）
+  client_header_buffer_size 16k;
+  large_client_header_buffers 4 32k;
+
   location / {
     proxy_pass  http://192.168.2.39:32567;  # 替换成你的节点地址
     proxy_http_version 1.1;
