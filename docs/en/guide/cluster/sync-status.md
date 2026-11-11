@@ -33,7 +33,7 @@ Maintained centrally in **Settings → System Settings → Cluster Cache Setting
 **Default cached resources** are as follows and can be adjusted as needed:
 
 - **watch**: pod, deployment, statefulset, daemonset, service, endpoint, endpointslice, event (kept for 168 hours by default after deletion) and DRA resources;
-- **polling (every 5 minutes)**: namespace, configmap, secret, persistentvolumeclaim, ingress, networkpolicy, horizontalpodautoscaler, job, cronjob, role, rolebinding, serviceaccount, customresourcedefinition;
+- **polling (every 5 minutes)**: namespace, node, configmap, secret, persistentvolumeclaim, ingress, networkpolicy, horizontalpodautoscaler, job, cronjob, role, rolebinding, serviceaccount, customresourcedefinition;
 - **polling (every 300 minutes)**: admission webhook configurations, validatingadmissionpolicy and its bindings, flowschema, prioritylevelconfiguration, runtimeclass.
 
 ## Cluster Status (Cache Health)
@@ -83,6 +83,52 @@ Right at the start of a sync — or when another instance is the one running it 
 
 ::: warning About Restart Full Sync
 This operation changes the cluster import status back to "Importing"; each resource first deletes its old cache, then writes the new data, so the resource list may be briefly empty or incomplete. With many clusters or large amounts of data, avoid running it during business peaks.
+:::
+
+## Sync Problems: Limited Sync and Failure Reasons
+
+Besides the normal states, two kinds of markers may show up in the sync list.
+
+### Limited Sync
+
+When a resource has so many objects that Kuboard judges it **cannot complete one full sync within the cluster's change window**, that resource is marked as "Limited Sync".
+
+What it means: the cached data is still readable, but **it is not current** — each full sync expires as soon as it finishes. On the **Cluster Details → Sync Status** page, expand the resource to see a one-line conclusion and the measured evidence:
+
+- **Conclusion**: one full sync takes about N minutes, while this cluster's change window is only about M seconds;
+- **Evidence**: current object count X, Y full syncs triggered recently, longest stable period Z minutes.
+
+Kuboard offers three suggestions:
+
+| Suggestion | What it does |
+|---|---|
+| Switch to direct query (no cache) | The resource is read from the cluster on every request, skipping the local cache. Data is current; the cost is slower lists when you have many clusters. **Always available** |
+| Raise the database write capacity | When write throughput is too low, Kuboard states how many rows per second are needed |
+| Switch to timed refresh | Suggests a refresh interval based on the measured duration of one full sync (5 minutes minimum) |
+
+The same conclusion also appears on the **Platform Health Diagnostics** page (the "Resource sync is limited" check), in the **Message Center** to-do list, and in the **cache status** pop-up.
+
+::: tip Limited sync is not a failure
+The data is still there and you can keep using the last snapshot. If the resource does not need to be real-time anyway, switch it to timed refresh or direct query.
+:::
+
+### Sync Failure Reasons
+
+When a sync fails, expanding the resource shows a "Failure Reason" card: **Failure Reason** (a one-line category), **Current Impact** (data still available / no data available), **Possible Causes** (0–2 items), and **What You Can Do** (actionable steps, some of them clickable).
+
+| Failure reason | What it means | What you can do |
+|---|---|---|
+| Cannot connect to the cluster | Network unreachable, connection refused, TLS handshake failed, or read timeout | Check the cluster address and network |
+| Invalid credentials or insufficient permissions | The credentials used to import the cluster have expired or their permissions were revoked | Update the cluster credentials |
+| Cluster data changed too fast, this sync was invalidated mid-way | The resource changes often and the data changed while it was being paged through | Retry later (the platform retries automatically) |
+| The cluster did not return complete data in time | The cluster timed out or rate-limited the request | Retry later; you can also switch to direct query |
+| Internal cluster error | The cluster itself returned an error | Retry later |
+| The data returned in one request is too large | A single page exceeds the amount Kuboard can handle | Reduce the page size |
+| Database write failed | Database connection, lock, or disk pressure | Raise the database write capacity |
+| Could not identify the specific cause | Fallback when none of the above match | Locate the cause in the sync logs |
+
+::: tip Where the raw error is
+The "Technical details" section holds the request URL, the status code and the raw response from the cluster — **please include it when reporting a problem**. Everywhere else only shows the categorized conclusion.
 :::
 
 ## FAQ

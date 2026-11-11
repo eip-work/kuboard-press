@@ -209,10 +209,26 @@ Entry: **Settings → System Settings → Interface Settings**. After saving sit
 | Page title / product name | Kuboard / Kubernetes multi-cluster management | Shown on the login page and browser tab |
 | Footer text | Official site domain by default | Can be changed to your own site domain |
 | System icon | Built-in icon | Upload JPG/PNG (≤50KB) |
+| Default palette | Deep Blue | Switches the primary color together with the success / warning / danger / info colors as one set; users can pick their own in Theme Settings in the header |
 | Google Analytics | Enabled | Collects anonymous usage data; no sensitive cluster data |
 | Terminal font size / line spacing | 14 / 1.2 | Terminal display |
 | Terminal theme type / name | dark / AtelierSulphurpool | Applies to new terminal sessions opened afterwards |
 | Terminal log lines | 500 | Max log lines echoed in the terminal |
+
+### Color Palette
+
+A "palette" defines the **primary color** together with the **success / warning / danger / info** colors as one set. Those colors are what actually appear together in the interface — letting users pick only a primary color while the semantic colors stay fixed would push the job of matching colors onto the user, and the tones end up clashing. Switching a palette switches the whole set.
+
+Six presets are built in: **Deep Blue** (default), Slate, Teal, Amber, Indigo, Forest.
+
+Precedence: **the user's own choice > the site default > the built-in default**.
+
+- **Site default**: Settings → System Settings → Interface Settings → **Default palette**, applied to every user who has not picked one;
+- **User's own choice**: Header → **Theme Settings** → **Color Palette**, affecting only the current user and leaving the site default unchanged.
+
+::: tip Colors change, layout does not
+A palette only covers the chromatic colors (the primary color and the four semantic colors). Neutral colors — background, borders, text — are shared across the site, so switching palettes never changes the layout or the readability baseline.
+:::
 
 ## Log Levels
 

@@ -1,5 +1,5 @@
 ---
-description: "Enable Horizontal Pod Autoscaling (HPA) for a Deployment / StatefulSet, configure CPU / memory metrics, view scaling conditions and events, autoscaling v1/v2 form differences and advanced configuration"
+description: "Enable Horizontal Pod Autoscaling (HPA) for a Deployment / StatefulSet: create / edit / detail page entries, the decision summary and scaling diagnostics, CPU / memory metrics, scaling conditions and events, autoscaling v1/v2 form differences and advanced configuration"
 ---
 
 # Horizontal Pod Autoscaling (HPA)
@@ -14,19 +14,24 @@ The cluster must have **metrics-server** (`metrics.k8s.io`) installed to provide
 
 ## Where to Find the Entry
 
-There are two entry points for managing HPA:
+There are three entry points for managing HPA:
 
-1. **Auto Scaling list page**: left navigation **Workloads → Auto Scaling** (Pod Auto Scalers) shows all HPAs by Namespace, with four columns: Reference (the scaled workload, click to jump to its detail page), Min Replicas, Max Replicas and Current Replicas;
-2. **Scaling panel on the workload detail page**: on the Deployment / StatefulSet detail page click **Scale**, and the panel opens with the **HPA summary** card on the right (the manual scaling card is on the left).
+1. **Auto Scaling list page**: left navigation **Workloads → Auto Scaling** (Pod Auto Scalers) shows all HPAs by Namespace. Each row shows the status, the scaled workload (Reference), the metrics, the replica count and the replica range; expanding a row shows that HPA's scaling conditions;
+2. **HPA detail page**: opened from the list page. The first screen answers "why are there N replicas right now", followed by metrics and thresholds, diagnostics (conditions and events), scaling behavior, the target workload, and the replica trend over time;
+3. **Scaling panel on the workload detail page**: on the Deployment / StatefulSet detail page click **Scale**, and the panel opens with the **HPA summary** card on the right (the manual scaling card is on the left).
 
-HPA has no standalone create / edit / detail page. Creation and editing are both done in the scaling panel on the workload detail page, where Kuboard automatically fills in the kind and name of the scaled workload. Kuboard also assumes the HPA has the same name as the workload; if no HPA with that name is found, the summary card only provides an **Enable Horizontal Pod Autoscaler** button.
+On the HPA card of the workload detail page, click **Edit HPA** to go straight to that HPA's edit page.
 
-## Enable Horizontal Pod Autoscaler
+## Create an HPA
 
-1. Open the Deployment / StatefulSet detail page and click the **Scale** button in the page header.
-2. In the **HPA summary** card on the right click **Enable Horizontal Pod Autoscaler**, review the defaults and submit: min replicas `1`, max replicas `2` (clusters on autoscaling/v1 additionally default to a 60% target CPU utilization).
+The create page asks for the scaled workload (kind, name, API version) and the replica range.
 
-After creation the summary card refreshes automatically; you can then switch to edit mode to configure the scaling spec and metrics.
+1. **From the workload detail page**: open the Deployment / StatefulSet detail page, click **Scale** in the page header, then click **Enable Horizontal Pod Autoscaler** in the **HPA summary** card on the right — the scaled workload is filled in for you;
+2. **From the Auto Scaling list page**: click the create button on the list page and fill in the scaled workload yourself.
+
+Review the defaults and submit: min replicas `1`, max replicas `2` (clusters on autoscaling/v1 additionally default to a 60% target CPU utilization).
+
+After creation the summary card on the workload detail page refreshes automatically, and you can configure the scaling spec and metrics there.
 
 ## Configure Specs and Metrics
 
@@ -80,6 +85,21 @@ spec:
           type: AverageValue
           averageValue: 200Mi
 ```
+
+## HPA Detail Page
+
+Open the HPA detail page by clicking the HPA name in the list. The page is organized as "conclusion first, details after":
+
+| Section | What it answers |
+| --- | --- |
+| Decision summary | Why there are N replicas right now |
+| Metrics and thresholds | Which metric is used and what the target is (adjustable in place) |
+| Diagnostics | Scaling conditions and related events (shown together) |
+| Scaling behavior | The scale-up / scale-down policy (collapsed when the default policy is used) |
+| Target workload | Which Deployment / StatefulSet is being scaled |
+| Trend | How the replica count changed over time |
+
+The status shown on the list page and the detail page is one of: **Normal**, **Replica limit reached**, **Scaled down to the minimum**, **Status to be confirmed**, **Abnormal**, **Unknown**.
 
 ## Conditions and Events
 
