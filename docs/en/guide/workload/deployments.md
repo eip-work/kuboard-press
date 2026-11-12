@@ -210,7 +210,8 @@ Relations are inferred from **the Service selector** against **the workload's Po
 
 ::: tip Guidance while creating and editing
 - After a workload is created, a one-time "Create a Service to expose it" hint appears (ignorable; it does not return after a refresh);
-- While editing a workload, changing the Pod template labels shows how many Services / Ingresses will stop matching, with a shortcut to this tab; Kuboard **never** updates those selectors automatically.
+- While editing a workload, changing the Pod template labels shows how many Services / Ingresses will stop matching, with a shortcut to this tab;
+  nothing is changed automatically by default — if you really want the fix applied together, tick **Also update the selectors of these Services when saving**. It lists each Service's old → new selector, runs item by item after the save succeeds and is audited; only the selector changes (not labels), and Ingresses are not touched.
 :::
 
 The **Network** tab is available for **Deployment / StatefulSet / DaemonSet**; other resources do not show it.
