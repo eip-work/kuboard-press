@@ -94,6 +94,12 @@ Kuboard 是基于 Kubernetes 的容器管理平台。本页说明如何获得授
 仅使用免费版功能、管理不超过 3 套集群时，无需授权即可直接使用；需要增强版能力时再导入授权文件即可。
 :::
 
+## 获取授权
+
+购买或续费增强版授权、查看已有订单，请登录 Kuboard 用户中心。用户中心使用手机号登录，与 Kuboard 账号无关；登录后可在“我的订单”中获取离线授权文件。
+
+<KbIframe src="https://uc-v3.kuboard.cn/public/home" title="Kuboard 用户中心" />
+
 ## 社区与商业支持
 
 免费版用户可通过微信/QQ 社群和 GitHub Issue 获得社区答疑；增强版用户另享专属答疑通道与远程协助。详见 [社区与商业支持](./community)。
@@ -101,7 +107,3 @@ Kuboard 是基于 Kubernetes 的容器管理平台。本页说明如何获得授
 ## 联系渠道
 
 <SupportStars />
-
-希望第一时间获取 Kuboard 更新动态与产品资讯？在此订阅：
-
-<KbIframe src="https://uc-v3.kuboard.cn/public/home" title="Kuboard 订阅" />

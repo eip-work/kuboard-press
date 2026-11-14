@@ -94,6 +94,12 @@ For how to obtain and import a license file, see [License Installation](./licens
 If you only use Free edition features and manage no more than 3 clusters, you can use Kuboard directly without a license. Import a license file when you need Enhanced edition capabilities.
 :::
 
+## Get a License
+
+To purchase or renew an Enhanced edition license, or to view your orders, sign in to the Kuboard user center. The user center uses a mobile number to sign in and is separate from your Kuboard account; after signing in, you can obtain an offline license file from **My Orders**. The user center currently provides a Chinese interface.
+
+<KbIframe src="https://uc-v3.kuboard.cn/public/home" title="Kuboard User Center" />
+
 ## Community & Commercial Support
 
 Free edition users can get community support through WeChat/QQ communities and GitHub Issues; Enhanced edition users also enjoy a dedicated Q&A channel and remote assistance. See [Community & Commercial Support](./community).
@@ -101,7 +107,3 @@ Free edition users can get community support through WeChat/QQ communities and G
 ## Contact
 
 <SupportStars />
-
-Want to stay up to date with Kuboard releases and product news? Subscribe here:
-
-<KbIframe src="https://uc-v3.kuboard.cn/public/home" title="Kuboard Subscription" />

@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useData } from 'vitepress'
 
 /**
  * KbIframe —— 嵌入 Kuboard 用户中心（uc-v3）等子站点的 iframe 组件。
  *
- * 子站点（如 https://uc-v3.kuboard.cn）在嵌入模式下会通过
- * `window.parent.postMessage({ kuboardCommandToParent: "<KUBOARD_FRAME_ID>:<command>", params }, "*")`
- * 与父页面通信，本组件负责：
+ * 子站点在嵌入模式下通过以下方式与父页面通信：
  *
- * 1. 向子站点 src 追加唯一 `KUBOARD_FRAME_ID`（用于识别消息来源）；
- * 2. 监听 `iframeSize` 消息，按子页面 body 实际高度自动调整 iframe 高度
- *    （避免出现内部滚动条、内容被裁切）；
- * 3. 监听 `openUserCenter` 消息，在新标签页打开用户中心链接
- *    （嵌入后登录成功再点击链接时，子站点不再自行跳转，而是交由父页面处理）；
- * 4. 监听 `message` 消息，展示成功/失败提示；
- * 5. 其余命令可通过 `commands` prop 注入自定义处理函数。
+ * 子 → 父：
+ *   window.parent.postMessage({
+ *     kuboardCommandToParent: "<KUBOARD_FRAME_ID>:<command>",
+ *     params
+ *   }, "<parentOrigin>")
+ *
+ * 父 → 子：
+ *   { kuboardCommandToIframe: "kuboard.cn:<KUBOARD_FRAME_ID>:<command>", params }
+ *
+ * 本组件负责：
+ * 1. 注入 frameId、主题、语言、parentOrigin 等参数；
+ * 2. 监听 ready / iframeSize / message / openUserCenter；
+ * 3. 主题或语言变化时通知子页面；
+ * 4. 子页面无响应时展示“在新标签页打开”兜底。
  */
 const props = withDefaults(
   defineProps<{
@@ -22,32 +28,59 @@ const props = withDefaults(
     commands?: Record<string, (params?: Record<string, unknown>) => void>
     initialHeight?: number
     title?: string
+    readyTimeout?: number
   }>(),
   {
     initialHeight: 480,
     title: 'Kuboard',
+    readyTimeout: 6000,
   },
 )
 
-// 唯一 frame id，用于匹配子站点 postMessage 中的命令来源
-const frameId = 'kb' + Math.random().toString(36).slice(2, 12)
+const { isDark, lang } = useData()
 
+const frameId = 'kb' + Math.random().toString(36).slice(2, 12)
 const srcBase = computed(() => new URL(props.src).origin)
 
 const frameSrc = computed(() => {
   const url = new URL(props.src)
   url.searchParams.set('KUBOARD_FRAME_ID', frameId)
+  url.searchParams.set('KUBOARD_EMBED', 'docs')
+  url.searchParams.set('KUBOARD_VERSION', 'v4')
+  // 主题/语言不在 URL 中更新：切换时通过 postMessage 通知子页面，
+  // 避免修改 iframe src 导致整页重新加载。
+  if (typeof window !== 'undefined') {
+    url.searchParams.set('KUBOARD_PARENT_ORIGIN', window.location.origin)
+  }
   return url.toString()
 })
 
 const height = ref(props.initialHeight)
+const ready = ref(false)
+const showFallback = ref(false)
 const frameRef = ref<HTMLIFrameElement | null>(null)
+let fallbackTimer: ReturnType<typeof setTimeout> | undefined
+
+function clearFallbackTimer() {
+  if (fallbackTimer) {
+    clearTimeout(fallbackTimer)
+    fallbackTimer = undefined
+  }
+}
+
+function scheduleFallback() {
+  clearFallbackTimer()
+  if (props.readyTimeout <= 0) return
+  fallbackTimer = setTimeout(() => {
+    if (!ready.value) showFallback.value = true
+  }, props.readyTimeout)
+}
 
 // 简易 toast（消息提示）
-const toasts = ref<Array<{ id: number; type: 'success' | 'error'; message: string }>>([])
+const toasts = ref<Array<{ id: number; type: 'success' | 'error' | 'info'; message: string }>>([])
 let toastSeq = 0
 
-function showToast(type: 'success' | 'error', message: string) {
+function showToast(type: 'success' | 'error' | 'info', message: string) {
   const id = ++toastSeq
   toasts.value.push({ id, type, message })
   setTimeout(() => {
@@ -55,17 +88,46 @@ function showToast(type: 'success' | 'error', message: string) {
   }, 4000)
 }
 
+function sendMessage(command: string, params?: Record<string, unknown>) {
+  frameRef.value?.contentWindow?.postMessage(
+    {
+      kuboardCommandToIframe: `kuboard.cn:${frameId}:${command}`,
+      params,
+    },
+    srcBase.value,
+  )
+}
+
+function sendInit() {
+  sendMessage('theme', { mode: isDark.value ? 'dark' : 'light' })
+  sendMessage('lang', { lang: lang.value === 'en' ? 'en' : 'zh' })
+}
+
+function onIframeLoad() {
+  ready.value = false
+  showFallback.value = false
+  sendInit()
+  scheduleFallback()
+}
+
 // 内置默认命令处理
 function handleDefaultCommand(command: string, params?: Record<string, unknown>) {
   switch (command) {
     case 'openUserCenter': {
       const path = typeof params?.path === 'string' ? params.path : ''
-      window.open(srcBase.value + path, '_blank', 'noopener,noreferrer')
+      if (!path) break
+      const target = new URL(path, props.src)
+      // 保留原始 src 上的参数（例如 KUBOARD_ACCESS_ENDPOINT、版本号）。
+      new URL(props.src).searchParams.forEach((value, key) => {
+        if (key !== 'KUBOARD_FRAME_ID') target.searchParams.set(key, value)
+      })
+      window.open(target.toString(), '_blank', 'noopener,noreferrer')
       break
     }
     case 'message': {
       if (params && typeof params.message === 'string') {
-        showToast(params.type === 'error' ? 'error' : 'success', params.message)
+        const type = params.type === 'error' ? 'error' : params.type === 'info' ? 'info' : 'success'
+        showToast(type, params.message)
       }
       break
     }
@@ -75,23 +137,43 @@ function handleDefaultCommand(command: string, params?: Record<string, unknown>)
 function onMessage(event: MessageEvent) {
   const data = event.data as { kuboardCommandToParent?: string; params?: Record<string, unknown> }
   if (!data || typeof data.kuboardCommandToParent !== 'string') return
+  // 只接受来自本 iframe、本子站点源的消息，避免同页面其它 iframe 伪造。
+  if (event.origin !== srcBase.value) return
+  if (frameRef.value?.contentWindow && event.source !== frameRef.value.contentWindow) return
+
   const prefix = frameId + ':'
   if (!data.kuboardCommandToParent.startsWith(prefix)) return
   const command = data.kuboardCommandToParent.slice(prefix.length)
   const params = data.params
 
-  // 自动高度：子页面每隔 1s 上报 body.clientHeight
+  if (command === 'ready') {
+    const h = params?.height
+    if (typeof h === 'number' && h > 0) {
+      height.value = Math.ceil(h)
+    }
+    ready.value = true
+    showFallback.value = false
+    clearFallbackTimer()
+    sendInit()
+    return
+  }
+
   if (command === 'iframeSize') {
     const h = params?.height
-    // 预留少量缓冲，避免子页面出现滚动条
-    const target = typeof h === 'number' && h > 0 ? h + 8 : height.value
-    if (Math.abs(target - height.value) > 2) {
+    const target = typeof h === 'number' && h > 0 ? Math.ceil(h) : height.value
+    if (Math.abs(target - height.value) > 1) {
       height.value = target
+    }
+    // 兼容尚未发送 ready 的旧版用户中心：能上报高度说明页面已经正常加载。
+    if (!ready.value) {
+      ready.value = true
+      showFallback.value = false
+      clearFallbackTimer()
+      sendInit()
     }
     return
   }
 
-  // 优先使用外部注入的命令处理函数，否则走内置默认
   const handler = props.commands?.[command]
   if (handler) {
     handler(params)
@@ -106,19 +188,35 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('message', onMessage)
+  clearFallbackTimer()
+})
+
+watch([isDark, lang], () => {
+  sendInit()
 })
 </script>
 
 <template>
   <div class="kb-iframe">
-    <iframe
-      ref="frameRef"
-      class="kb-iframe__frame"
-      :src="frameSrc"
-      :title="title"
-      :style="{ height: height + 'px' }"
-      loading="lazy"
-    />
+    <div class="kb-iframe__frame-wrap">
+      <iframe
+        ref="frameRef"
+        class="kb-iframe__frame"
+        :src="frameSrc"
+        :title="title"
+        :style="{ height: height + 'px', opacity: ready ? '1' : '0' }"
+        @load="onIframeLoad"
+      />
+      <div v-if="!ready && !showFallback" class="kb-iframe__skeleton" :style="{ height: height + 'px' }">
+        {{ lang === 'en' ? 'Loading user center…' : '正在加载用户中心…' }}
+      </div>
+    </div>
+    <div v-if="showFallback" class="kb-iframe__fallback">
+      {{ lang === 'en' ? 'The user center did not load in time.' : '用户中心未及时加载。' }}
+      <a :href="frameSrc" target="_blank" rel="noopener">
+        {{ lang === 'en' ? 'Open in a new tab' : '在新标签页打开' }}
+      </a>
+    </div>
     <TransitionGroup name="kb-toast" tag="div" class="kb-iframe__toasts">
       <div
         v-for="toast in toasts"
@@ -136,11 +234,40 @@ onBeforeUnmount(() => {
 .kb-iframe {
   margin: 1rem 0;
 }
+.kb-iframe__frame-wrap {
+  position: relative;
+}
 .kb-iframe__frame {
   display: block;
   width: 100%;
   border: none;
   border-radius: 8px;
+  transition: opacity 0.2s ease;
+}
+.kb-iframe__skeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+}
+.kb-iframe__fallback {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--vp-c-warning-1);
+  border-radius: 6px;
+  background: var(--vp-c-warning-soft);
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+}
+.kb-iframe__fallback a {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
 }
 .kb-iframe__toasts {
   position: fixed;
@@ -163,6 +290,11 @@ onBeforeUnmount(() => {
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-text-1);
   border: 1px solid var(--vp-c-brand-1);
+}
+.kb-iframe__toast--info {
+  background: var(--vp-c-default-soft);
+  color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-divider);
 }
 .kb-iframe__toast--error {
   background: rgba(211, 47, 47, 0.12);
