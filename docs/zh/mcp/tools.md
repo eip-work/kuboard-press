@@ -20,9 +20,9 @@ Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变
 
 | 类别 | 数量 | 说明 | 是否需要审批 |
 |---|---|---|---|
-| 读取类 | 19 | 查询集群、工作负载、Pod、日志、指标等，不修改任何资源 | 不需要，调用即返回 |
+| 读取类 | 20 | 查询集群、工作负载、Pod、日志、指标等，不修改任何资源 | 不需要，调用即返回 |
 | 写入类 | 9 | 创建 / 修改 / 删除 K8s 资源、重启与扩缩容、节点排水等 | **需要**，先走变更计划审批 |
-| 变更审批（Plan） | 7 | 把待执行的写操作提交给你审批，审批通过后执行 | 审批流程本身 |
+| 变更审批（Plan） | 10 | 把待执行的写操作提交给你审批，审批通过后执行 | 审批流程本身 |
 
 ::: warning 写入类工具必须审批
 开启「Agent 操作强制审批」后，9 个写入类工具对智能体**不可见、不可直接调用**。智能体必须通过变更计划流程执行：`create_plan` → `append_step_to_plan` → `finalize_plan` → 你在 Kuboard UI 审批 → `await_plan_result` 等待 → `apply_plan_after_approval` 执行。详见 [变更审批流程](./approval-flow) 与 [危险操作与确认令牌](./danger-levels)。
@@ -55,6 +55,7 @@ Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变
 | `list_k8s` | 读 | `clusterId`、`apiGroup`、`resource`、`namespace`（可选） | 列出任意已注册类型的 K8s 资源（ConfigMap / Secret / Service / Ingress / PVC 等） |
 | `get_k8s` | 读 | `clusterId`、`apiGroup`、`resource`、`name`、`namespace`（可选） | 获取单个 K8s 资源的详情 |
 | `list_events` | 读 | `clusterId`、`namespace`（可选）、`limit`（默认 50） | 列出集群事件，排查 ImagePullBackOff、CrashLoopBackOff 等故障 |
+| `diagnose_workload` | 读 | `clusterId`、`namespace`、`name`、`lookbackMinutes`（可选，默认 60）、`metrics`（可选）、`metricBaselines`（可选）、`maxFindings`（可选） | 对工作负载做组合诊断：对象状态 + Pod 明细 + Event + Prometheus 指标 + 审计变更史，返回「结论 + 证据链」；只读 |
 | `get_node_metrics` | 读 | `clusterId`、`name`（可选，缺省全部节点） | 查询节点 CPU / 内存实时用量 |
 | `get_pod_metrics` | 读 | `clusterId`、`namespace`（可选）、`name`（可选） | 查询 Pod CPU / 内存实时用量 |
 | `list_custom_resources` | 读 | `clusterId`、`apiGroup`、`resource`、`namespaced`、`namespace`（可选） | 列出指定 CRD 的实例（Operator / Helm 创建的 CR） |
@@ -78,6 +79,9 @@ Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变
 | `get_plan_approve_status` | 审批 | `planId` | 审批后查询每个 step 的结果，并返回 `approvalToken` |
 | `await_plan_result` | 审批 | `planId`、`timeoutSeconds`（可选，1~1800，默认 25）、`sinceSeq`（可选） | 阻塞等待审批结果，每次返回带 `nextAction` 指引下一步动作 |
 | `apply_plan_after_approval` | 审批 | `planId`、`approvalToken`（可省略） | 审批通过后继续执行；省略令牌时由服务端读取该计划已审批的令牌 |
+| `await_plan_results` | 审批 | `planIds`（1~20）、`timeoutSeconds`（可选）、`cursor`（可选）、`waitFor`（可选） | 批量阻塞等待：任一计划获批或进入终态即返回；整批只占 1 个等待者配额，返回带 nextActions（先干谁） |
+| `list_plan_events` | 审批 | `cursor`（可选）、`limit`（可选，默认 50）、`scope`（task / user）、`taskId`、`planIds`（可选） | 按游标拉取作用域内的审批 / 执行事件（pull 模式，不依赖推送）；新建计划会自动进入事件流 |
+| `await_plan_events` | 审批 | `cursor`（可选）、`timeoutSeconds`（可选，默认 25）、`scope`（task / user）、`taskId` | 阻塞等待作用域内出现任意新事件，返回结构同 list_plan_events + timedOut；timedOut 不是错误 |
 | `apply_plan` | 审批 | `planId`、`approvalToken` | 消费 `approvalToken` 真正执行计划中的全部变更 |
 | `list_plan_events` | 审批 | `cursor`（可选）、`limit`（可选，1~200，默认 50）、`scope`（可选，`task` 默认需 `taskId` / `user`）、`taskId`（`scope=task` 必填）、`planIds`（可选，≤20） | 游标拉取计划事件流（审批、执行进度等），跨会话可续拉，防止误执行 |
 | `await_plan_events` | 审批 | `cursor`（可选）、`timeoutSeconds`（可选，1~1800，默认 25）、`scope`（可选，`task` 默认需 `taskId` / `user`）、`taskId`（`scope=task` 必填） | 按任务 / 用户作用域阻塞等待新事件，返回与 `list_plan_events` 相同结构；`timedOut=true` 属正常语义，再调一次即可 |

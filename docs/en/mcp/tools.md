@@ -20,7 +20,7 @@ All tools are grouped by their **real side effects** into three categories: read
 
 | Category | Count | Description | Approval needed |
 |---|---|---|---|
-| Read | 19 | Query clusters, workloads, Pods, logs, metrics, etc.; never modify any resource | No — returns on call |
+| Read | 20 | Query clusters, workloads, Pods, logs, metrics, etc.; never modify any resource | No — returns on call |
 | Write | 9 | Create / modify / delete K8s resources, restart and scale, node drain, etc. | **Yes** — goes through change-plan approval first |
 | Change approval (Plan) | 7 | Submit the pending write operations to you for approval; executes after approval | The approval flow itself |
 
@@ -35,7 +35,7 @@ Write tools carry a danger level, treated differently by marker at approval time
 - **HIGH**: `delete_k8s_collection` (especially deleting PVCs), `drain_node`, `evict_pod` — prominently marked at approval time; double-check the impact scope of these
 :::
 
-With "Force agent change approval" disabled, the 7 change approval (Plan) tools are hidden and the write tools become directly callable by the agent again.
+With "Force agent change approval" disabled, the 10 change approval (Plan) tools are hidden and the write tools become directly callable by the agent again.
 
 ## All Tools at a Glance (39)
 
@@ -55,6 +55,7 @@ The table below lists all tools by the read / write / approval categories. Only 
 | `list_k8s` | Read | `clusterId`, `apiGroup`, `resource`, `namespace` (optional) | List K8s resources of any registered type (ConfigMap / Secret / Service / Ingress / PVC, etc.) |
 | `get_k8s` | Read | `clusterId`, `apiGroup`, `resource`, `name`, `namespace` (optional) | Get details of a single K8s resource |
 | `list_events` | Read | `clusterId`, `namespace` (optional), `limit` (default 50) | List cluster events; troubleshoot ImagePullBackOff, CrashLoopBackOff, etc. |
+| `diagnose_workload` | Read | `clusterId`, `namespace`, `name`, `lookbackMinutes` (optional, default 60), `metrics` (optional), `metricBaselines` (optional), `maxFindings` (optional) | Combined workload diagnosis: object status + Pod details + Events + Prometheus metrics + audit history; returns conclusions with an evidence chain (read-only) |
 | `get_node_metrics` | Read | `clusterId`, `name` (optional, defaults to all nodes) | Query real-time CPU / memory usage of nodes |
 | `get_pod_metrics` | Read | `clusterId`, `namespace` (optional), `name` (optional) | Query real-time CPU / memory usage of Pods |
 | `list_custom_resources` | Read | `clusterId`, `apiGroup`, `resource`, `namespaced`, `namespace` (optional) | List instances of a given CRD (CRs created by Operator / Helm) |
@@ -78,6 +79,9 @@ The table below lists all tools by the read / write / approval categories. Only 
 | `get_plan_approve_status` | Approval | `planId` | After approval, query the result of each step and return the `approvalToken` |
 | `await_plan_result` | Approval | `planId`, `timeoutSeconds` (optional, 1~1800, default 25), `sinceSeq` (optional) | Block waiting for the approval result; every return carries a `nextAction` telling the agent what to do next |
 | `apply_plan_after_approval` | Approval | `planId`, `approvalToken` (optional) | Continue executing after approval; when the token is omitted the server reads the already-approved token of that plan |
+| `await_plan_results` | Approval | `planIds` (1-20), `timeoutSeconds` (optional), `cursor` (optional), `waitFor` (optional) | Batch blocking wait: returns as soon as any plan is approved or terminal; the whole batch uses one waiter slot and returns nextActions |
+| `list_plan_events` | Approval | `cursor` (optional), `limit` (optional, default 50), `scope` (task / user), `taskId`, `planIds` (optional) | Pull approval / execution events for a scope by cursor; newly created plans enter the stream automatically |
+| `await_plan_events` | Approval | `cursor` (optional), `timeoutSeconds` (optional, default 25), `scope` (task / user), `taskId` | Block until any new event appears in the scope; same payload as list_plan_events plus timedOut (timedOut is not an error) |
 | `apply_plan` | Approval | `planId`, `approvalToken` | Consume the `approvalToken` to actually execute all changes in the plan |
 | `list_plan_events` | Approval | `cursor` (optional), `limit` (optional, 1~200, default 50), `scope` (optional; `task` by default requires `taskId` / `user`), `taskId` (required when `scope=task`), `planIds` (optional, ≤20) | Pull the plan event stream by cursor (approval, execution progress, etc.); resumable across sessions, which prevents executing against stale state |
 | `await_plan_events` | Approval | `cursor` (optional), `timeoutSeconds` (optional, 1~1800, default 25), `scope` (optional; `task` by default requires `taskId` / `user`), `taskId` (required when `scope=task`) | Block waiting for new events, scoped by task / user; returns the same structure as `list_plan_events`. `timedOut=true` is normal semantics — call again |

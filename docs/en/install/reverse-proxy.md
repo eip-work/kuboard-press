@@ -16,6 +16,7 @@ Kuboard uses plain HTTP by default so that you can try it out quickly. In produc
 - **WebSocket must be enabled**: the terminal and log features rely on WebSocket, so the reverse proxy must allow WebSocket upgrade requests, otherwise the terminal and logs will not work.
 - **Forward `X-Forwarded-Host`**: when [OIDC single sign-on](../user/oidc) is enabled, the callback URL is built from the origin registered in the **Allowed Frontend Origins** whitelist, so that whitelist must contain the address (including the port) users actually visit in the browser. Setting `X-Forwarded-Host` from `$http_host` (which keeps the port) is still recommended; `Host $host` drops the port and affects other features that need to reconstruct the external address. The directive is harmless when OIDC is off, so it is best added unconditionally.
 - **Page caching**: Kuboard automatically sends a no-cache policy for the page entry (`index.html`) and a long-lived cache policy for hashed static assets (`/assets/`), so browsers load the new frontend immediately after an upgrade. Do not add a blanket `expires` or `Cache-Control` for `location /` on your reverse proxy, and avoid `proxy_cache`/CDN caching of the entry page — otherwise browsers may keep serving the old page after an upgrade (symptoms include unresponsive UI and broken layout). If you want to cache for speed, configure long-lived caching for the `/assets/` path only.
+- **Large file downloads**: the file browser's HTTP streaming download uses `/k8s-download/`. The reverse proxy must disable response buffering (`proxy_buffering off`) and raise `proxy_read_timeout` / `proxy_send_timeout`; otherwise large files are buffered to the proxy disk first or the connection times out mid-transfer (shown as a download that hangs or aborts). Use the `location /k8s-download/` block below.
 - **Large file uploads**: the file browser's HTTP streaming upload uses `/k8s-upload/`, and the request body is subject to the reverse proxy's size limit (Nginx defaults to `client_max_body_size 1m`), which makes any larger file fail with **413** (shown as "Upload failed: HTTP 413"). Raise the limit in the `location /k8s-upload/` block below, and keep `proxy_request_buffering off` so bytes are forwarded as they arrive instead of being written to a full temporary file first.
 - **Large file downloads**: the file browser's HTTP streaming download uses `/k8s-download/`, and the response is a chunked stream. A reverse proxy buffers response bodies by default, which makes large downloads stall or pulls the whole file into the proxy's memory. Disable `proxy_buffering` in the `location /k8s-download/` block below, and raise `proxy_read_timeout`.
 - **Resource lists with many namespaces selected**: the request line grows with the number of selected namespaces. Kuboard itself allows 32KB (`KUBOARD_MAX_HTTP_REQUEST_HEADER_SIZE`), but **nginx allows only about 8k** by default (`client_header_buffer_size 1k` + `large_client_header_buffers 4 8k`); beyond that it returns **400 / 414** and the list page simply fails to open. Raise both directives in the `server` block below to at least the Kuboard value.
@@ -88,6 +89,21 @@ server {
     # proxy_set_header X-Forwarded-Proto https; # enable this if you have enabled HTTPS on the reverse proxy
     client_max_body_size 0;        # 0 = unlimited; the 1m default returns 413 for larger files
     proxy_request_buffering off;   # forward as bytes arrive instead of buffering the whole file
+    proxy_read_timeout 3600s;
+    proxy_send_timeout 3600s;
+  }
+  # File browser HTTP streaming downloads (disable buffering and raise read timeout for large files)
+  location /k8s-download/ {
+    proxy_pass  http://192.168.2.39:32567;  # replace with your node address
+    proxy_http_version 1.1;
+    proxy_pass_header Authorization;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    # proxy_set_header X-Forwarded-Proto https; # enable when HTTPS terminates on the proxy
+    proxy_buffering off;          # stream as it is read instead of buffering the whole file
     proxy_read_timeout 3600s;
     proxy_send_timeout 3600s;
   }
