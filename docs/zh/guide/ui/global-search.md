@@ -1,5 +1,5 @@
 ---
-description: 跨集群、跨资源类型按名称搜索 Kubernetes 对象：入口与快捷键、搜索范围、结果分组与跳转、最近访问、常见问题
+description: 跨集群、跨资源类型按名称搜索 Kubernetes 对象：入口与快捷键、搜索范围、结果中资源类型的排序规则、结果分组与跳转、最近访问、常见问题
 ---
 
 # 全局搜索
@@ -33,6 +33,26 @@ description: 跨集群、跨资源类型按名称搜索 Kubernetes 对象：入�
 :::
 
 默认已缓存并参与搜索的常见类型：Pod、Deployment、StatefulSet、DaemonSet、Namespace、Event、CRD 等。
+
+### 结果中资源类型的顺序
+
+一次搜索最多返回 30 条、每个类型最多 5 条，因此**类型的先后**决定了「配额先给谁、30 条上限先裁谁」。Kuboard 使用**固定的类型优先级表**，不按本次命中数排序（这样同一关键词在不同集群、不同时刻的第一屏是可预期的）：
+
+```text
+Pod → Deployment / StatefulSet / DaemonSet → Job / CronJob
+  → Service / Ingress → ConfigMap / Secret → PVC / PV / StorageClass
+  → Namespace / Node → HPA / PDB / LimitRange / ResourceQuota / PriorityClass
+  → NetworkPolicy → ServiceAccount / Role / RoleBinding / ClusterRole / ClusterRoleBinding
+  → 未登记类型（含开启缓存的 CR）→ Event → Endpoints / EndpointSlice → CRD / webhook / 其它系统类型
+```
+
+排序原则：
+
+- **点进去要执行动作的在前**（Pod 终端 / 日志、Deployment 重启 / 伸缩、Service 端口、ConfigMap 改配置）；
+- **自动生成或派生的对象在后**（Endpoints 名字就是 Service 名、Event、CRD 定义、webhook）——其中 Event 的名称形如 `<对象>.<hex>`，包含匹配必然命中一大片，若按命中数排序会把真正的目标挤出第一屏；
+- **未登记的类型（自定义资源）刻意不垫底**，它们是你真实的业务对象；同优先级内按 kind → resource 字典序兜底，新增 CRD 不会随机插队。
+
+「资源类型」下拉的顺序与结果分组顺序**同源**，因此下拉里靠前的类型，就是结果里先出现的类型。
 
 ## 使用步骤
 

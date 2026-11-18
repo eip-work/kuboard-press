@@ -27,13 +27,38 @@ The list page has the following main columns:
 | --- | --- |
 | (Row-leading expand) | Expand the row to view the "System Info" and "Node Config" cards, see below |
 | Roles | Role read from the node's `node-role.kubernetes.io/*` labels (control-plane / worker, etc.) |
+| Status | Ready / NotReady, derived **only** from the Ready condition in `status.conditions` (cordon is a *scheduling* state — see the "Scheduling" column; the two are independent) |
+| Labels | **Optional column** (appears when width allows, or pin it in column settings): shows the first 2 `k=v` pairs plus the remaining count; click to open the labels drawer and copy every pair as `k=v,k2=v2` |
+| Taints | **Optional column**: `key=value:effect` (or `key:effect` when the value is empty); multiple taints are laid out side by side |
+| Scheduling | Schedulable / Cordoned (`spec.unschedulable`, the `node.kubernetes.io/unschedulable` taint, or the `SchedulingDisabled` condition — any of the three) |
 | Version | kubelet version |
 | Internal IP | Node's internal network address |
 | Capacity | Three usage indicator bars for the node's CPU / memory / Pods: percentage + used / total |
 
-<!-- screenshot-todo: Node list page overview: cluster-wide CPU / Mem / Pods usage summary indicators at the top; table columns Roles (labels) / Version / Internal IP / Capacity (three usage bars); row-leading expand arrow -->
+<!-- screenshot-todo: Node list page overview: cluster-wide CPU / Mem / Pods usage summary indicators at the top; table columns Roles (labels) / Status / Labels / Taints / Scheduling / Version / Internal IP / Capacity; row-leading expand arrow -->
 
 At the top of the list page there is also a cluster-wide **CPU / Mem / Pods** usage summary (used / total + percentage), so you can see the overall cluster load at a glance.
+
+### Advanced Filters (Labels / Taints / Status)
+
+The **Filter** bar above the table filters nodes by labels, taints and scheduling status (issue #712). Click **Add filter** to pick a condition type; multiple conditions are ANDed:
+
+| Condition | What you can enter |
+| --- | --- |
+| Label | Label key (auto-completed from label keys already cached for the cluster) + operator: Exists / DoesNotExist / Equals / NotEquals / In / NotIn; separate multiple values for In / NotIn with commas |
+| Taint | Taint key (required) + taint value (optional) + effect (NoSchedule / PreferNoSchedule / NoExecute / any) |
+| Status | Ready / NotReady / Cordoned / Schedulable |
+
+Notes on the semantics:
+
+- Once a filter is applied the title shows **"N items (filtered)"** or **"hit X / total Y"**; the CPU / Mem / Pods summary indicators at the top are **cluster-wide** and unaffected by filters;
+- **Label** filters also work on the direct (uncached) list because the apiserver supports label selectors natively; **taint / status** filters rely on the node cache and are greyed out with an explanation on deployments without node caching — they never fail silently;
+- Filter conditions are synced to the address bar, so a copied link reproduces the same set of nodes; click **Clear filters** to reset;
+- When exporting CSV, "Current filter result" exports exactly these filtered nodes.
+
+::: tip Cordoned is not the same as NotReady
+"Cordoned" is a **scheduling** state (`spec.unschedulable` / the `node.kubernetes.io/unschedulable` taint / the `SchedulingDisabled` condition) that stops new Pods from being scheduled onto the node; the node's Ready condition can still be true. The Status and Scheduling columns therefore report them separately and never infer one from the other.
+:::
 
 ### Expanding to View System Info and Node Config
 

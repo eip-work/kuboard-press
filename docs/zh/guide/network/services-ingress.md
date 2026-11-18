@@ -1,5 +1,5 @@
 ---
-description: 服务与网络 - Service 与 Ingress：Service 四种类型（ClusterIP/NodePort/LoadBalancer/ExternalName）的创建编辑删除、端口与选择器配置、Ingress 七层路由规则与 TLS、IngressClass 说明，以及服务不可访问时的排障要点（Endpoints / Events）
+description: 服务与网络 - Service 与 Ingress：Service 四种类型（ClusterIP/NodePort/LoadBalancer/ExternalName）的创建编辑删除、端口与选择器配置、从工作负载详情页「网络」页签一键创建 Service / Ingress 与同步 Service 选择器、Ingress 七层路由规则与 TLS、IngressClass 说明，以及服务不可访问时的排障要点（Endpoints / Events）
 ---
 
 # Service 与 Ingress（服务发现与对外暴露）
@@ -130,6 +130,23 @@ ClusterIP 由集群自动分配（界面显示"自动分配"）。若需固定 I
 ::: tip 为什么 ping 不通服务
 ClusterIP 是虚拟 IP，由 kube-proxy 以 iptables / ipvs 规则转发，不支持 ICMP。ping 不通不代表服务不可用，请用 curl 或"代理"按钮验证。
 :::
+
+## 从工作负载详情页创建 Service / Ingress（网络页签）
+
+Deployment / StatefulSet / DaemonSet 的详情页有 **网络** 页签，直接回答「这组容器组被谁暴露出去」，并提供一键创建 Service 的入口：选择器与端口按容器组模板预填、名称默认与工作负载同名、同名 Service 会更新并保留原 ClusterIP；没有 `services` 创建权限时只能生成 YAML。页签的状态口径（可用 / 部分就绪 / 后端未就绪 / 未匹配到后端）、异常项置顶、权限区分，以及**编辑工作负载时同步 Service 选择器**的完整说明，见 [Deployment · 网络页签](../workload/deployments)。
+
+### 从 Service 快速创建 Ingress
+
+在「网络」页签的 Service 行右侧点 **添加 Ingress**：**后端锁定为当前 Service**（避免手填服务名写错导致 503），只需填写以下内容：
+
+- **IngressClass**：决定由哪个控制器接管；集群里没有任何 IngressClass 时会提示「先安装 Ingress 控制器」，否则创建出来也不会被消费；
+- **域名 / 路径 / 路径匹配**：域名支持通配符 `*.example.com`，最终访问地址在表单底部实时预览；
+- **TLS**：从本名称空间的 `kubernetes.io/tls` 证书密文里选择，开启后访问地址变为 `https://`；
+- **名称**：默认与 Service 同名，只影响对象名，不影响访问地址。
+
+创建后若控制器还没有分配入口地址，列表中显示「等待分配地址」，并提示检查 IngressClass / 控制器与域名解析；没有 `ingresses` 创建权限时只能生成 YAML 交给有权限的人执行。
+
+<!-- screenshot-todo: 工作负载详情页「网络」页签里 Service 行的「添加 Ingress」抽屉（IngressClass / 域名 / TLS / 地址预览） -->
 
 ## Ingress：七层 HTTP/HTTPS 路由
 

@@ -131,6 +131,23 @@ The top of the detail page shows the service type, ClusterIP and LoadBalancer ex
 ClusterIP is a virtual IP forwarded by kube-proxy via iptables / ipvs rules and does not support ICMP. A failed ping does not mean the service is down; verify with curl or the "Proxy" button instead.
 :::
 
+## Creating a Service / Ingress from the Workload Detail Page (Network Tab)
+
+The detail page of a Deployment / StatefulSet / DaemonSet has a **Network** tab that answers "who exposes this set of Pods" directly, and offers one-click Service creation: selector and ports are pre-filled from the pod template, the name defaults to the workload name, an existing same-named Service is updated while keeping its ClusterIP, and without `services` create permission it can only generate YAML. For the status semantics (Ready / Partially ready / Backend not ready / No endpoints matched), abnormal-first ordering, permission distinctions, and **syncing Service selectors while editing a workload**, see [Deployment · Network tab](../workload/deployments).
+
+### Creating an Ingress from a Service
+
+In the Network tab, click **Add Ingress** on a Service row: the **backend is locked to that Service** (so a typo cannot produce a 503), and you only fill in:
+
+- **IngressClass**: which controller takes this Ingress; when the cluster has no IngressClass at all it warns that a controller must be installed first, otherwise the Ingress will not be consumed;
+- **Host / path / path type**: hosts may use wildcards such as `*.example.com`; the final URL is previewed live at the bottom of the form;
+- **TLS**: pick a `kubernetes.io/tls` Secret from this namespace; when enabled the URL becomes `https://`;
+- **Name**: defaults to the Service name; it only affects the object name, not the URL.
+
+If the controller has not assigned an address yet, the list shows "Waiting for address" and suggests checking the IngressClass / controller and DNS resolution; without `ingresses` create permission it can only generate YAML for someone with permission to apply.
+
+<!-- screenshot-todo: "Add Ingress" drawer on a Service row of the workload "Network" tab (IngressClass / host / TLS / URL preview) -->
+
 ## Ingress: Layer-7 HTTP/HTTPS Routing
 
 Ingress is layer-7 routing: it forwards external HTTP/HTTPS requests to in-cluster Services by **hostname (host) + path**. The actual routing is implemented by the controller designated by the IngressClass (such as Nginx Ingress Controller or a cloud provider's LB controller).

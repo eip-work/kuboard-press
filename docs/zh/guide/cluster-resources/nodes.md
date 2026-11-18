@@ -27,13 +27,38 @@ description: 节点 Node 列表与详情页：集群用量汇总与单节点容�
 | --- | --- |
 | （行首展开） | 展开后查看「System Info」与「Node Config」两张卡片，见下文 |
 | Roles | 由节点 `node-role.kubernetes.io/*` 标签读出的角色（control-plane / worker 等） |
+| 状态 | 就绪 / 未就绪，只看 `status.conditions` 里的 Ready 条件（封禁是**调度状态**，见下方「调度」列，两者正交） |
+| Labels | **可选列**（按可用宽度自动出现，也可在列设置里固定）：显示前 2 个 `k=v` 与剩余数量；点击打开标签抽屉，可查看并复制全部 `k=v,k2=v2` |
+| Taints | **可选列**：`key=value:effect`（无 value 时为 `key:effect`），多个污点横向排列 |
+| 调度 | 可调度 / 已封禁（`spec.unschedulable`、`node.kubernetes.io/unschedulable` 污点、`SchedulingDisabled` 条件三信号取或） |
 | Version | kubelet 版本号 |
 | Internal IP | 节点内网地址 |
 | Capacity | 该节点的 CPU / 内存 / 容器组三条用量指示条：百分比 + 已用/总量 |
 
-<!-- screenshot-todo: 节点列表页整体：顶部 CPU/Mem/Pods 集群用量汇总指示条，表格列 Roles(标签)/Version/Internal IP/Capacity(三条用量条)，行首展开箭头 -->
+<!-- screenshot-todo: 节点列表页整体：顶部 CPU/Mem/Pods 集群用量汇总指示条，表格列 Roles(标签)/状态/Labels/Taints/调度/Version/Internal IP/Capacity，行首展开箭头 -->
 
 列表页顶部还有整集群的 **CPU / Mem / Pods** 用量汇总指示条（已用/总量 + 百分比），一眼看出集群整体水位。
+
+### 高级筛选（标签 / 污点 / 状态）
+
+列表顶部的 **筛选** 条支持按标签、污点与调度状态筛选节点（issue #712）。点 **添加筛选** 选择条件类型，多个条件之间是「与」的关系：
+
+| 条件 | 可填内容 |
+| --- | --- |
+| 标签 | 标签键（输入时从当前集群已缓存的标签键自动补全）+ 操作符：存在 / 不存在 / 等于 / 不等于 / 属于 / 不属于；「属于 / 不属于」的多个值用英文逗号分隔 |
+| 污点 | 污点键（必填）+ 污点值（可留空）+ 效果（NoSchedule / PreferNoSchedule / NoExecute / 不限） |
+| 状态 | 就绪 / 未就绪 / 已封禁 / 可调度 |
+
+几个口径：
+
+- 生效后列表标题旁显示 **「共 N 条（已筛选）」** 或 **「命中 X / 总 Y」**；顶部 CPU / Mem / Pods 汇总指示条是**全集群口径**，不受筛选影响；
+- **标签**筛选在「直查」模式下也能用（apiserver 原生支持）；**污点 / 状态**筛选依赖节点缓存，未开启节点缓存的部署上会置灰并给出提示，不会静默失效；
+- 筛选条件会同步进浏览器地址栏，复制链接即复现同一批节点；点 **清空筛选** 一次性复原；
+- 导出 CSV 时选「当前筛选结果」，导出的就是这批被筛选出来的节点。
+
+::: tip 封禁不等于未就绪
+「已封禁」是**调度状态**（`spec.unschedulable` / `node.kubernetes.io/unschedulable` 污点 / `SchedulingDisabled` 条件），表示新容器组不再调度到该节点；节点的 Ready 条件仍可能是就绪。「状态」列与「调度」列因此分开表达，两者互不推断。
+:::
 
 ### 展开查看系统信息与配置
 

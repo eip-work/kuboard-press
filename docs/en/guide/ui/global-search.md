@@ -1,5 +1,5 @@
 ---
-description: "Search Kubernetes objects across clusters and resource types by name: entry points and shortcuts, search scope, result grouping and navigation, recently visited, FAQ"
+description: "Search Kubernetes objects across clusters and resource types by name: entry points and shortcuts, search scope, resource-type ordering in results, result grouping and navigation, recently visited, FAQ"
 ---
 
 # Global Search
@@ -35,6 +35,26 @@ Object data comes from the cache that the cluster syncs automatically (see [Reso
 :::
 
 Common types cached by default and covered by search: Pods, Deployments, StatefulSets, DaemonSets, Namespaces, Events, CRDs and more.
+
+### Order of Resource Types in the Results
+
+A search returns at most 30 items and at most 5 per type, so the **order of types** decides who gets the quota first and who gets cut by the 30-item cap. Kuboard uses a **fixed priority table** instead of sorting by hit count, so the first screen for a keyword is predictable across clusters and over time:
+
+```text
+Pod → Deployment / StatefulSet / DaemonSet → Job / CronJob
+  → Service / Ingress → ConfigMap / Secret → PVC / PV / StorageClass
+  → Namespace / Node → HPA / PDB / LimitRange / ResourceQuota / PriorityClass
+  → NetworkPolicy → ServiceAccount / Role / RoleBinding / ClusterRole / ClusterRoleBinding
+  → unregistered types (incl. cached CRs) → Event → Endpoints / EndpointSlice → CRD / webhook / other system types
+```
+
+The principles behind the order:
+
+- **Types you act on come first** (Pod terminal / logs, Deployment restart / scale, Service ports, ConfigMap edits);
+- **Generated or derived objects come later** (an Endpoints object is named after its Service, Events, CRD definitions, webhooks). Event names look like `<object>.<hex>`, so a containment match hits a large batch — sorting by hit count would push the real target off the first screen;
+- **Unregistered types (custom resources) are deliberately not pushed to the bottom** — they are your real business objects; ties within the same priority are broken by kind → resource, so a newly added CRD never jumps ahead at random.
+
+The **Resource types** dropdown uses the same table, so the types listed earlier in the dropdown are also the ones that appear earlier in the results.
 
 ## Usage Steps
 

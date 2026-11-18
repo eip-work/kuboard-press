@@ -1,5 +1,5 @@
 ---
-description: "Commonalities of every Kubernetes resource list page in Kuboard: search/tree modes, cached vs direct data, common columns and actions, batch operations and permissions"
+description: "Commonalities of every Kubernetes resource list page in Kuboard: scope mode (multi-scope / single-scope), cached vs direct data, common columns and actions, CSV export, batch operations and permissions"
 ---
 
 # Resource List Pages
@@ -13,18 +13,24 @@ Open the list page of any resource from the left menu (for example **Workloads �
 | Area | Contents |
 | --- | --- |
 | Title bar | Resource name + links to the [Kubernetes official documentation](https://kubernetes.io/docs) (concepts + API reference) |
-| Toolbar | List-mode switch, cache status, auto-refresh, create and batch-action buttons |
-| Data area | Cluster / namespace selectors (search mode) or the resource tree on the left (tree mode) + the resource table |
+| Toolbar | Scope-mode (multi-scope / single-scope) segmented control, cache status, auto-refresh, create and batch-action buttons, CSV export |
+| Data area | Multi-scope: the resource tree on the left; single-scope: cluster / namespace selectors + the resource table |
 
-## Two List Modes
+## Scope Mode: Multi-Scope / Single-Scope
 
-A switch at the top right toggles between **search mode** and **tree mode** (your choice is remembered for next time):
+The **Scope mode** control in the toolbar is a segmented switch that decides *which clusters / namespaces this query covers*. Your choice is remembered for next time (older versions called these "tree mode / search mode"; the capability and URL parameters are unchanged):
 
-- **Search mode**: two selectors, **Cluster** and **Namespace**, appear at the top. After picking a cluster, the namespace can be a specific one or `all`, and the table below shows paginated results;
-- **Tree mode**: the left side shows a cluster → namespace tree (for namespaced resources) or a cluster tree (for cluster-scoped resources). Clicking a node filters the list.
+| Mode | How you pick the scope | Good for |
+| --- | --- | --- |
+| **Multi-scope** | The left side shows a cluster → namespace tree (namespaced resources) or a cluster tree (cluster-scoped resources); you can tick **several** clusters / namespaces at once. When collapsed, the button shows "Scope · N" | Comparing several namespaces, cross-cluster troubleshooting |
+| **Single-scope** | Queries **one namespace in one cluster** (the namespace can be `all`); filter conditions live in an inline **Filter** card above the table | Many clusters / namespaces but you only care about one spot; also the fallback when a list page fails to load because the request is too long |
+
+::: tip Switching from multi-scope to single-scope
+The switch takes the **first** item of your current selection and shows "Narrowed to `cluster/namespace` (was N)" at the top — it does not silently drop your selection, nor decide for you which ones to keep. Use "Back to multi-scope" when you need several namespaces at once.
+:::
 
 ::: tip Resource availability
-In tree mode, if the current resource is not installed on a cluster (e.g. the cluster has no Gateway API), the corresponding node shows a ⚠ icon; hovering it reveals an installation guide.
+In multi-scope mode, if the current resource is not installed on a cluster (e.g. the cluster has no Gateway API), the corresponding node shows a ⚠ icon; hovering it reveals an installation guide.
 :::
 
 ## Cached vs Direct Data
@@ -55,6 +61,38 @@ Every list page has the following common columns:
 - **Batch operations**: select rows and act on all of them, e.g. batch delete — the confirmation dialog distinguishes "items in the cluster" from "items in the cache" and handles them separately; workloads also support batch restart, etc.;
 - **Auto refresh**: the auto-refresh button in the toolbar; append `?autoRefresh=true` to the URL to enable it as soon as the page opens.
 
+## Export to CSV
+
+The **Export CSV** button at the end of the left-hand action group downloads the current list as a `.csv` file, using the range and columns you pick.
+
+**Export range** — choose one:
+
+| Range | Where it is generated | Notes |
+| --- | --- | --- |
+| Selected (N items) | Frontend | Only the rows you ticked; disabled when nothing is selected |
+| Current page (N rows) | Frontend | Only the current page (row count follows your page-size setting) |
+| Current filter result | Server | Runs the current search / advanced-filter conditions on the server, **not limited by pagination** |
+| All | Server | Every item in the current scope, **filter conditions ignored** |
+
+> Server-side export initially covers **nodes / pods / deployments** only. For other resources, "Current filter result / All" show "Provided in a later version"; use "Selected / Current page" instead.
+
+**Export columns**: pick the columns in the dialog (all selected by default). Structural columns — selection, expand, index, radio, operation — are never exported; the dialog notes "N column(s) are display only". Column values are the same ones the table uses, so the column set is identical across ranges.
+
+**Format and limits**:
+
+- UTF-8 with BOM, RFC 4180 escaping (commas / quotes / newlines / Chinese text open correctly in Excel); numbers are exported without unit suffixes;
+- Hard limit of **10,000 rows** per export: when the result is larger the dialog warns "Result is about N rows; only the first 10,000 rows will be exported" and requires you to tick "I understand that only 10,000 rows will be exported" — it never truncates silently or produces a half-written file.
+
+**Permissions and auditing**:
+
+- Data is scoped by your RBAC permissions: scopes you cannot read are **skipped** rather than failing the whole export, and the response header `X-Kuboard-Skipped-Scopes` carries the skipped count;
+- When no scope is readable at all the endpoint returns 403 (a JSON error body) instead of an empty file;
+- Every export writes an audit event; filter by resource on the **Audit** page to review them.
+
+::: tip Export and filters share one source
+The row count of a "Current filter result" export matches the "N items (filtered)" counter on the list; the export itself never changes your filters or selection.
+:::
+
 ## Filters Are Synced to the Address Bar
 
 The filter conditions of a list page (search keyword, cluster and namespace selection, page size) are **synced to the browser address bar**:
@@ -69,9 +107,9 @@ The parameters that appear in the address bar:
 
 | Parameter | Meaning |
 | --- | --- |
-| `mode` | List mode: `search` (search mode) or `tree` (tree mode) |
-| `clusterId` / `namespace` | The cluster and namespace selected in search mode |
-| `scopes` | The cluster / namespace nodes selected in tree mode |
+| `mode` | Scope mode: `search` (single-scope) or `tree` (multi-scope); values from older links still work |
+| `clusterId` / `namespace` | The cluster and namespace selected in single-scope mode |
+| `scopes` | The cluster / namespace nodes selected in multi-scope mode |
 | `pageSize` | Number of rows per page |
 | Filter conditions | One parameter per filter (e.g. name keyword, creation time range), named after the corresponding field in the table's filter boxes |
 
