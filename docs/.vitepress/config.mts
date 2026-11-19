@@ -51,6 +51,7 @@ const zhSidebar = {
       { text: '安装指南', link: '/zh/install/' },
     ]},
     { text: '生产部署', items: [
+      { text: '在 Kubernetes 中部署', link: '/zh/install/kubernetes' },
       { text: '高可用部署', link: '/zh/install/ha' },
       { text: '反向代理', link: '/zh/install/reverse-proxy' },
     ]},
@@ -299,6 +300,7 @@ const enSidebar = {
       { text: 'Installation Guide', link: '/en/install/' },
     ]},
     { text: 'Production Deployment', items: [
+      { text: 'Deploy on Kubernetes', link: '/en/install/kubernetes' },
       { text: 'High Availability', link: '/en/install/ha' },
       { text: 'Reverse Proxy', link: '/en/install/reverse-proxy' },
     ]},

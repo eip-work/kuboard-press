@@ -202,6 +202,10 @@ Please note:
 
 See [Reverse Proxy](./reverse-proxy) for complete Nginx and Ingress configuration examples.
 
+## Deploy on Kubernetes
+
+To run Kuboard inside a Kubernetes cluster, use the official manifests: a single instance with the bundled MariaDB, multiple replicas for high availability (with a shared Redis), or the application alone connected to an external database and Redis. Expose it through NodePort or an Ingress (Ingress with HTTPS is recommended for production). See [Deploy on Kubernetes](./kubernetes) for manifests, ingress settings, and verification steps.
+
 ## High Availability Deployment
 
 Kuboard V4 supports multi-replica HA deployment: multiple Kuboard instances form a service cluster behind a load balancer, sharing cross-instance state through a Redis distributed cache. For the full details — deployment topology, Redis environment variables, database HA recommendations, and failover behavior — see [High Availability Deployment](./ha).

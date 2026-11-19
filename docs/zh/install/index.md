@@ -204,6 +204,10 @@ Kuboard 默认使用 HTTP，便于快速试用。**生产环境请务必启用 H
 
 详细的 Nginx 与 Ingress 配置样例参见 [反向代理](./reverse-proxy)。
 
+## 在 Kubernetes 中部署
+
+如果 Kuboard 需要运行在 Kubernetes 集群内，可以使用官方 YAML 部署：单机（内置 MariaDB）、多副本高可用（共享 Redis），也可以只部署应用并连接外部数据库与 Redis；入口可用 NodePort 或 Ingress，生产建议 Ingress + HTTPS。部署清单、入口配置与验证步骤见 [在 Kubernetes 中部署](./kubernetes)。
+
 ## 高可用部署
 
 Kuboard V4 支持多副本高可用部署：多个 Kuboard 实例组成服务集群，由负载均衡器分发流量，并使用 Redis 分布式缓存共享跨实例状态。部署拓扑、Redis 环境变量、数据库高可用建议与故障切换行为等完整说明，请参考 [高可用部署](./ha)。
