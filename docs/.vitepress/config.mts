@@ -29,6 +29,7 @@ const zhNav = [
   { text: '参考', link: '/zh/reference/', activeMatch: '^/zh/reference/' },
   { text: '更新日志', link: '/zh/changelog/v4.x', activeMatch: '^/zh/changelog/' },
   { text: '支持', link: '/zh/support/', activeMatch: '^/zh/support/' },
+  { text: 'V3 文档', link: 'http://v3.kuboard.cn', target: '_blank', rel: 'noopener noreferrer' },
 ]
 
 const enNav = [
@@ -51,8 +52,8 @@ const zhSidebar = {
       { text: '安装指南', link: '/zh/install/' },
     ]},
     { text: '生产部署', items: [
-      { text: '在 Kubernetes 中部署', link: '/zh/install/kubernetes' },
       { text: '高可用部署', link: '/zh/install/ha' },
+      { text: '在 Kubernetes 中部署', link: '/zh/install/kubernetes' },
       { text: '反向代理', link: '/zh/install/reverse-proxy' },
     ]},
     { text: '升级与迁移', items: [

@@ -12,6 +12,8 @@ description: 一行命令开启Kubernetes多集群管理之路，Kuboard V4 安�
 - 您可以将同一个集群同时导入到 Kuboard v3 和 Kuboard v4。此时 Kuboard v3 / v4 都可以有效管理该集群。
   - 如果集群在 v3 以及 v4 中的名字相同，Kuboard 套件不受影响，在 V3 / V4 中都可以正常使用。
 
+如果您仍在使用 Kuboard v3，可以通过 [http://v3.kuboard.cn](http://v3.kuboard.cn) 访问 Kuboard V3 的文档。
+
 Kuboard v4 相较于 v3 主要差异如下：
 
 - Kubernetes 版本适配范围：
