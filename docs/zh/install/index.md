@@ -31,7 +31,7 @@ Kuboard v4 相较于 v3 主要差异如下：
 - 技术架构
   - 技术栈差异：
     - Kuboard v3 技术栈： vue 2.7 + golang 1.18 + etcd 3.4
-    - Kuboard v4 技术栈： vue 3.5 + java 1.17 + MySQL/MariaDB/Postgre（三种数据库选一）
+    - Kuboard v4 技术栈： vue 3.5 + spring boot 3.5 + java 25 + MySQL/MariaDB/PostgreSQL（三种数据库选一）
   - Kuboard v4 支持高可用部署
   - Kuboard v4 提供更丰富的 API 供用户调用
 
