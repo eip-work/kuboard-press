@@ -2,25 +2,26 @@
 layout: home
 hero:
   name: Kuboard V4
-  text: Make Kubernetes simple
-  tagline: Secure, free, and efficient multi-cluster management
+  text: Let agents act on Kubernetes. Keep control.
+  tagline: Every agent change becomes a loop you can approve, audit, and undo — reads pass, writes require approval.
   image:
     src: /kuboard-hero.svg
-    alt: Kuboard multi-cluster management
+    alt: Kuboard governable loop
   actions:
     - theme: brand
+      text: See the loop
+      link: '#governance'
+    - theme: alt
       text: Quick Start
       link: /en/install/quickstart
-    - theme: alt
-      text: Installation Guide
-      link: /en/install/
-    - theme: alt
-      text: Live Demo →
-      link: https://demo.kuboard.cn
-    - theme: alt
-      text: 中文
-      link: /zh/
 features:
+  - icon:
+      src: /icons/feature-mcp.svg
+      alt: Governable Loop
+      width: 64
+      height: 64
+    title: Governable Loop
+    details: Write tools are hidden from agents by default and must go through propose → approve → execute → audit → rollback — with one-time tokens, risk grading, and crash recovery.
   - icon:
       src: /icons/feature-install.svg
       alt: Quick Installation
@@ -35,13 +36,6 @@ features:
       height: 64
     title: Multi-cluster Management
     details: Built on Kubernetes 1.15 - 1.37, manage multiple clusters from one interface with cross-cluster queries.
-  - icon:
-      src: /icons/feature-mcp.svg
-      alt: MCP Integration
-      width: 64
-      height: 64
-    title: MCP Integration
-    details: Built-in MCP Server lets AI agents interact with your Kubernetes clusters — every write is guarded by human approval.
   - icon:
       src: /icons/feature-security.svg
       alt: Secure & Controllable
@@ -64,6 +58,20 @@ features:
     title: High Availability
     details: Multi-node deployment with load balancers, HA databases, and Redis distributed cache.
 ---
+
+## The Governable Loop {#governance}
+
+Reads pass freely; writes go through the gate. Every change an agent makes to your clusters lands on this loop:
+
+1. **Propose** — the agent creates a change plan step by step, with a dry-run for each step
+2. **Approve** — you see what will change and approve all or part of it; risk is graded
+3. **Execute** — a one-time token (time-limited, owner-only, single-use) is required to apply
+4. **Audit** — every write is recorded and attributed by session / credential
+5. **Rollback** — pre-change snapshots enable one-click rollback of an applied plan
+
+Under the hood it is still a full multi-cluster Kubernetes management UI — governance is a layer on top, not a replacement.
+
+→ [Approval Flow](/en/mcp/approval-flow) · [Danger Levels & Confirmation Tokens](/en/mcp/danger-levels)
 
 ## Architecture Overview
 

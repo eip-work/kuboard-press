@@ -32,6 +32,12 @@
   filter: drop-shadow(0 20px 40px rgba(52, 87, 213, 0.18));
 }
 
+/* 首页 hero 主标题（.text）文案较长，缩小一档避免过大/换行 */
+.VPHero .text {
+  font-size: clamp(1.375rem, 1rem + 1.6vw, 2.125rem) !important;
+  line-height: 1.25 !important;
+}
+
 @media (min-width: 1280px) {
   .VPHero .image,
   .VPHero .image-container,

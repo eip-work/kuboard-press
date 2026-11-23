@@ -2,25 +2,26 @@
 layout: home
 hero:
   name: Kuboard V4
-  text: 让 Kubernetes 更简单
-  tagline: 安全 / 免费 / 高效的多集群管理
+  text: 让 Agent 操作 K8s 时能动手也收得住
+  tagline: 读放行、写必审——把 Agent 的每次变更，变成可审批、可审计、可回滚的「可治理闭环」
   image:
     src: /kuboard-hero.svg
-    alt: Kuboard 多集群管理
+    alt: Kuboard 可治理闭环
   actions:
     - theme: brand
+      text: 看治理闭环
+      link: '#governance'
+    - theme: alt
       text: 快速开始
       link: /zh/install/quickstart
-    - theme: alt
-      text: 安装指南
-      link: /zh/install/
-    - theme: alt
-      text: 在线演示 →
-      link: https://demo.kuboard.cn
-    - theme: alt
-      text: English
-      link: /en/
 features:
+  - icon:
+      src: /icons/feature-mcp.svg
+      alt: 可治理闭环
+      width: 64
+      height: 64
+    title: 可治理闭环
+    details: 写操作默认对 Agent 隐藏，必须走「提议 → 审批 → 执行 → 审计 → 回滚」：一次性令牌、危险度分级、崩溃可恢复。
   - icon:
       src: /icons/feature-install.svg
       alt: 快速安装
@@ -35,13 +36,6 @@ features:
       height: 64
     title: 多集群管理
     details: 基于 Kubernetes 1.15 - 1.37，在一个界面中统一管理多个集群，支持跨集群查询与操作。
-  - icon:
-      src: /icons/feature-mcp.svg
-      alt: MCP 集成
-      width: 64
-      height: 64
-    title: MCP 集成
-    details: 内置 MCP Server，AI 智能体可直接与 Kubernetes 集群交互，所有写操作强制人工审批。
   - icon:
       src: /icons/feature-security.svg
       alt: 安全可控
@@ -64,6 +58,24 @@ features:
     title: 高可用部署
     details: 支持负载均衡 + 高可用数据库 + Redis 分布式缓存的多节点部署模式。
 ---
+
+## 可治理闭环 {#governance}
+
+<div style="margin: 8px 0 28px;">
+  <img src="/governance-loop.svg" alt="Kuboard 可治理闭环：提议 → 审批 → 执行 → 审计，回滚为虚线异常分支，审计后复盘并调整审批策略，策略回流到下一次审批" style="display: block; margin: 0 auto; max-width: 920px; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 32px rgba(52, 87, 213, 0.1);" />
+</div>
+
+读操作直接放行，写操作必须过闸。Agent 对集群的每次变更，都落在这条闭环上：
+
+1. **提议** — Agent 创建变更计划，逐步追加，每一步先 dry-run
+2. **审批** — 人看到要改什么，按全部或部分批准；危险度分级
+3. **执行** — 一次性令牌（限时、仅本人、只能消费一次）才能执行
+4. **审计** — 每次写操作留痕，按会话 / 凭证归因
+5. **回滚** — 执行前快照，对已执行的计划一键回滚
+
+底层仍是完整的多集群 K8s 管理台——治理是加在它上面的一层，不是替代它。
+
+→ [变更审批流程](/zh/mcp/approval-flow) · [危险操作与确认令牌](/zh/mcp/danger-levels)
 
 ## 架构概览
 

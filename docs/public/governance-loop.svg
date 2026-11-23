@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="gl-title gl-desc">
+  <title id="gl-title">Kuboard 可治理闭环</title>
+  <desc id="gl-desc">主流程：提议 → 审批 → 执行 → 审计；回滚为虚线异常分支；审计后复盘并调整审批策略，策略回流到下一次审批，形成闭环</desc>
+  <defs>
+    <marker id="gl-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#007af5"/>
+    </marker>
+    <linearGradient id="gl-boxbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f7ff"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .gl-n { fill: url(#gl-boxbg); stroke: #007af5; stroke-width: 2; }
+    .gl-d { fill: url(#gl-boxbg); stroke: #007af5; stroke-width: 2; stroke-dasharray: 6 5; }
+    .gl-t { font: 600 21px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f2a52; }
+    .gl-s { font: 400 13px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #5b7ba6; }
+    .gl-a { stroke: #007af5; stroke-width: 2.5; fill: none; }
+    .gl-ad { stroke: #007af5; stroke-width: 2; fill: none; stroke-dasharray: 6 5; }
+    .gl-lbl { font: 500 14px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #007af5; }
+  </style>
+
+  <!-- ===== 第一行：主流程 ===== -->
+  <rect class="gl-n" x="20" y="40" width="160" height="76" rx="14"/>
+  <text class="gl-t" x="100" y="72" text-anchor="middle">提议</text>
+  <text class="gl-s" x="100" y="97" text-anchor="middle">逐步追加 · dry-run</text>
+
+  <rect class="gl-n" x="210" y="40" width="160" height="76" rx="14"/>
+  <text class="gl-t" x="290" y="72" text-anchor="middle">审批</text>
+  <text class="gl-s" x="290" y="97" text-anchor="middle">全部 / 部分 · 危险度</text>
+
+  <rect class="gl-n" x="400" y="40" width="160" height="76" rx="14"/>
+  <text class="gl-t" x="480" y="72" text-anchor="middle">执行</text>
+  <text class="gl-s" x="480" y="97" text-anchor="middle">一次性令牌</text>
+
+  <rect class="gl-n" x="590" y="40" width="160" height="76" rx="14"/>
+  <text class="gl-t" x="670" y="72" text-anchor="middle">审计</text>
+  <text class="gl-s" x="670" y="97" text-anchor="middle">会话 / 凭证归因</text>
+
+  <line class="gl-a" x1="182" y1="78" x2="206" y2="78" marker-end="url(#gl-arrow)"/>
+  <line class="gl-a" x1="372" y1="78" x2="396" y2="78" marker-end="url(#gl-arrow)"/>
+  <line class="gl-a" x1="562" y1="78" x2="586" y2="78" marker-end="url(#gl-arrow)"/>
+
+  <!-- ===== 第二行：回滚（虚线异常分支） + 复盘 → 调整审批策略 ===== -->
+  <rect class="gl-d" x="400" y="170" width="160" height="70" rx="14"/>
+  <text class="gl-t" x="480" y="200" text-anchor="middle">回滚</text>
+  <text class="gl-s" x="480" y="223" text-anchor="middle">执行前快照 · 异常分支</text>
+
+  <rect class="gl-n" x="590" y="170" width="160" height="70" rx="14"/>
+  <text class="gl-t" x="670" y="200" text-anchor="middle">复盘</text>
+  <text class="gl-s" x="670" y="223" text-anchor="middle">执行前 / 后快照对比</text>
+
+  <rect class="gl-n" x="780" y="170" width="160" height="70" rx="14"/>
+  <text class="gl-t" x="860" y="200" text-anchor="middle">调整审批策略</text>
+  <text class="gl-s" x="860" y="223" text-anchor="middle">按回滚率收紧</text>
+
+  <!-- 执行 → 回滚（虚线） -->
+  <line class="gl-ad" x1="480" y1="118" x2="480" y2="166" marker-end="url(#gl-arrow)"/>
+  <!-- 审计 → 复盘 -->
+  <line class="gl-a" x1="670" y1="118" x2="670" y2="166" marker-end="url(#gl-arrow)"/>
+  <!-- 复盘 → 调整审批策略 -->
+  <line class="gl-a" x1="752" y1="205" x2="776" y2="205" marker-end="url(#gl-arrow)"/>
+
+  <!-- 回流：调整审批策略 → 审批 -->
+  <path class="gl-a" d="M860,240 L860,308 Q860,320 845,320 L305,320 Q290,320 290,305 L290,120" marker-end="url(#gl-arrow)"/>
+  <text class="gl-lbl" x="575" y="312" text-anchor="middle">调整后的策略作用于下一次审批</text>
+</svg>
