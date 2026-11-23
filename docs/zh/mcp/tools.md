@@ -1,10 +1,10 @@
 ---
-description: Kuboard MCP Server 全部 39 个工具的清单——按「读 / 写 / 审批」三类列出每个工具的名称、关键参数与用途，以及写入类工具必须经过的变更审批流程。
+description: Kuboard MCP Server 全部 41 个工具的清单——按「读 / 写 / 审批」三类列出每个工具的名称、关键参数与用途，以及写入类工具必须经过的变更审批流程。
 ---
 
 # Kuboard MCP 工具清单
 
-Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变更审批三类。本页列出全部工具的名称、关键参数与用途，供智能体配置时对照。
+Kuboard MCP Server 共提供 41 个工具，按用途分为读取、写入、变更审批三类。本页列出全部工具的名称、关键参数与用途，供智能体配置时对照。
 
 **适用对象**：需要把 Kuboard 集群操作能力接入智能体（Agent）的运维 / 平台工程师。
 
@@ -20,8 +20,8 @@ Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变
 
 | 类别 | 数量 | 说明 | 是否需要审批 |
 |---|---|---|---|
-| 读取类 | 20 | 查询集群、工作负载、Pod、日志、指标等，不修改任何资源 | 不需要，调用即返回 |
-| 写入类 | 9 | 创建 / 修改 / 删除 K8s 资源、重启与扩缩容、节点排水等 | **需要**，先走变更计划审批 |
+| 读取类 | 21 | 查询集群、工作负载、Pod、日志、指标等，不修改任何资源 | 不需要，调用即返回 |
+| 写入类 | 10 | 创建 / 修改 / 删除 K8s 资源、重启与扩缩容、节点排水、Pod 内执行命令等 | **需要**，先走变更计划审批 |
 | 变更审批（Plan） | 10 | 把待执行的写操作提交给你审批，审批通过后执行 | 审批流程本身 |
 
 ::: warning 写入类工具必须审批
@@ -37,7 +37,7 @@ Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变
 
 关闭「Agent 操作强制审批」时，变更审批（Plan）这 10 个工具会被隐藏，写入类工具恢复为智能体可直接调用。
 
-## 工具一览（39 个）
+## 工具一览（41 个）
 
 下表按「读 / 写 / 审批」三类列出全部工具。参数只列关键的，配置智能体时以工具实际 schema 为准。
 
@@ -73,6 +73,8 @@ Kuboard MCP Server 共提供 39 个工具，按用途分为读取、写入、变
 | `rollback_workload` | 写 | `clusterId`、`namespace`、`kind`、`name`、`revisionToRollback`（可选） | 回滚工作负载；省略 revision 时回滚到上一个版本 |
 | `drain_node` | 写 · HIGH | `clusterId`、`nodeName`、`force`（可选）、`gracePeriodSeconds`（可选）、`dryRun`（可选） | 节点排水：先标记不可调度，再驱逐该节点全部 Pod；`force=true` 时忽略 PodDisruptionBudget |
 | `evict_pod` | 写 · HIGH | `clusterId`、`namespace`、`podName`、`force`（可选）、`gracePeriodSeconds`（可选）、`dryRun`（可选） | 驱逐单个 Pod |
+| `exec_pod` | 读 | `clusterId`、`namespace`、`name`、`command`、`container`（可选）、`timeoutSeconds`（可选） | 在 Pod 容器内执行一条**只读**诊断命令（命令须命中只读白名单、不含 shell 元字符），返回 stdout / stderr / 退出状态；直接可调用，不进审批 |
+| `exec_pod_change` | 写 | `clusterId`、`namespace`、`name`、`command`、`container`（可选）、`timeoutSeconds`（可选）、`dryRun`（可选） | 在 Pod 容器内执行任意命令（含会改动状态的命令）；开启「Agent 操作强制审批」时对智能体隐藏，须通过 `append_step_to_plan(tool='exec_pod_change', ...)` 走人工审批 |
 | `create_plan` | 审批 | `description` | 创建一个空的变更计划，返回 `planId` |
 | `append_step_to_plan` | 审批 | `planId`、`tool`、`args`、`description` | 把待变更对象加入计划；`tool` 必须是 9 个写工具之一，加入前先 dry-run 校验 |
 | `finalize_plan` | 审批 | `planId` | 提交计划进入待审批状态，此后你在 Kuboard UI 可见并可审批 |

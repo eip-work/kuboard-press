@@ -1,10 +1,10 @@
 ---
-description: "Complete list of all 39 Kuboard MCP Server tools — every tool's name, key parameters, and purpose grouped into read / write / approval categories, plus the change approval flow that write tools must go through"
+description: "Complete list of all 41 Kuboard MCP Server tools — every tool's name, key parameters, and purpose grouped into read / write / approval categories, plus the change approval flow that write tools must go through"
 ---
 
 # Kuboard MCP Tools
 
-The Kuboard MCP Server provides 39 tools in total, grouped into three categories by purpose: read, write, and change approval. This page lists every tool's name, key parameters, and purpose for reference when configuring your agent.
+The Kuboard MCP Server provides 41 tools in total, grouped into three categories by purpose: read, write, and change approval. This page lists every tool's name, key parameters, and purpose for reference when configuring your agent.
 
 **Audience**: operations / platform engineers who want to give an AI agent (Agent) access to Kuboard cluster operations.
 
@@ -20,8 +20,8 @@ All tools are grouped by their **real side effects** into three categories: read
 
 | Category | Count | Description | Approval needed |
 |---|---|---|---|
-| Read | 20 | Query clusters, workloads, Pods, logs, metrics, etc.; never modify any resource | No — returns on call |
-| Write | 9 | Create / modify / delete K8s resources, restart and scale, node drain, etc. | **Yes** — goes through change-plan approval first |
+| Read | 21 | Query clusters, workloads, Pods, logs, metrics, etc.; never modify any resource | No — returns on call |
+| Write | 10 | Create / modify / delete K8s resources, restart and scale, node drain, run commands in Pods, etc. | **Yes** — goes through change-plan approval first |
 | Change approval (Plan) | 7 | Submit the pending write operations to you for approval; executes after approval | The approval flow itself |
 
 ::: warning Write tools require approval
@@ -37,7 +37,7 @@ Write tools carry a danger level, treated differently by marker at approval time
 
 With "Force agent change approval" disabled, the 10 change approval (Plan) tools are hidden and the write tools become directly callable by the agent again.
 
-## All Tools at a Glance (39)
+## All Tools at a Glance (41)
 
 The table below lists all tools by the read / write / approval categories. Only key parameters are shown; refer to each tool's actual schema when configuring your agent.
 
@@ -73,6 +73,8 @@ The table below lists all tools by the read / write / approval categories. Only 
 | `rollback_workload` | Write | `clusterId`, `namespace`, `kind`, `name`, `revisionToRollback` (optional) | Roll back a workload; rolls back to the previous revision when the revision is omitted |
 | `drain_node` | Write · HIGH | `clusterId`, `nodeName`, `force` (optional), `gracePeriodSeconds` (optional), `dryRun` (optional) | Drain a node: mark it unschedulable first, then evict all its Pods; `force=true` ignores PodDisruptionBudget |
 | `evict_pod` | Write · HIGH | `clusterId`, `namespace`, `podName`, `force` (optional), `gracePeriodSeconds` (optional), `dryRun` (optional) | Evict a single Pod |
+| `exec_pod` | Read | `clusterId`, `namespace`, `name`, `command`, `container` (optional), `timeoutSeconds` (optional) | Run a single **read-only** diagnostic command inside a Pod container (command must hit the read-only allowlist and contain no shell metacharacters); returns stdout / stderr / exit status; directly callable, no approval needed |
+| `exec_pod_change` | Write | `clusterId`, `namespace`, `name`, `command`, `container` (optional), `timeoutSeconds` (optional), `dryRun` (optional) | Run an arbitrary command inside a Pod container (including state-changing ones); hidden from the agent when "Force agent change approval" is on — must go through `append_step_to_plan(tool='exec_pod_change', ...)` for human approval |
 | `create_plan` | Approval | `description` | Create an empty change plan; returns `planId` |
 | `append_step_to_plan` | Approval | `planId`, `tool`, `args`, `description` | Add an object to change into the plan; `tool` must be one of the 9 write tools and is dry-run validated before being added |
 | `finalize_plan` | Approval | `planId` | Submit the plan into pending-approval state; from then on it is visible and approvable in the Kuboard UI |
